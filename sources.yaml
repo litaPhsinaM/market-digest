@@ -1,0 +1,48 @@
+# Curated sources. Quality bar: explains *why*, not just *what*; no stock-pick hype;
+# hosts with real credentials or newsroom standards. Add a source only if it clears that bar.
+#
+# kind: podcast -> url is the RSS feed (audio is sent to the model)
+# kind: youtube -> url is the channel's /videos page (captions are used when available)
+
+sources:
+  - id: indicator
+    name: The Indicator from Planet Money
+    kind: podcast
+    url: https://feeds.npr.org/510325/podcast.xml
+    cadence: daily (~10 min)
+    why: NPR's short daily episode on one economic idea, explained from scratch. Ideal for beginners.
+
+  - id: planet-money
+    name: Planet Money
+    kind: podcast
+    url: https://feeds.npr.org/510289/podcast.xml
+    cadence: 2x weekly (~25 min)
+    why: Long-form NPR stories that make how the economy works stick, with fact-checked reporting.
+
+  - id: odd-lots
+    name: Odd Lots (Bloomberg)
+    kind: podcast
+    url: https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/8a94442e-5a74-4fa2-8b8d-ae27003a8d6b/982f5071-765c-403d-969d-ae27003a8d83/podcast.rss
+    cadence: 2-3x weekly (~45 min)
+    why: Bloomberg's Joe Weisenthal and Tracy Alloway interview practitioners about markets and the plumbing behind them. More advanced.
+
+  - id: plain-bagel
+    name: The Plain Bagel
+    kind: youtube
+    url: https://www.youtube.com/@ThePlainBagel/videos
+    cadence: weekly (~15 min)
+    why: Richard Coffin, a CFA charterholder, explains valuation, market news and financial scams with no hype.
+
+  - id: ben-felix
+    name: Ben Felix (Common Sense Investing)
+    kind: youtube
+    url: https://www.youtube.com/@BenFelixCSI/videos
+    cadence: every few weeks (~20 min)
+    why: A portfolio manager who grounds every claim in academic research. The gold standard for evidence-based investing.
+
+  - id: patrick-boyle
+    name: Patrick Boyle
+    kind: youtube
+    url: https://www.youtube.com/@PBoyle/videos
+    cadence: weekly (~20 min)
+    why: An ex-hedge fund manager and finance professor. Dry-humoured breakdowns of companies, markets and financial news.
