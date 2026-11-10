@@ -520,6 +520,8 @@ body:has(.player:not([hidden])) .sitefoot { padding-bottom: 120px; }
 .st-cta { pointer-events: auto; align-self: flex-start; margin-top: 8px; background: #fff; color: #111; text-decoration: none; font-weight: 700; padding: 11px 18px; border-radius: 99px; }
 .st-nav { position: absolute; top: 0; bottom: 0; width: 40%; border: 0; background: none; z-index: 1; cursor: pointer; }
 .st-nav.prev { left: 0; } .st-nav.next { right: 0; width: 60%; }
+.stories { -webkit-tap-highlight-color: transparent; } /* no big flash over the tap zones on Android */
+.st-nav:focus-visible { outline-offset: -4px; border-radius: 0; }
 
 @media (max-width: 640px) {
   .search-btn .kbd { display: none; }
@@ -530,9 +532,19 @@ body:has(.player:not([hidden])) .sitefoot { padding-bottom: 120px; }
   .q-opts { grid-template-columns: 1fr; }
   .quiz { padding: 18px 16px; }
   .player { grid-template-columns: auto 1fr auto auto; bottom: 10px; }
-  .pl-tx { display: none; }
+  .pl-speed, .pl-tx { padding: 0 7px; font-size: .74rem; }
+  .player { gap: 8px; padding: 10px; }
   .st-card { height: calc(100vh - 80px); border-radius: 20px; padding: 60px 24px 28px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
 .col-side, .col-side > * { min-width: 0; }
 .co-row, .mv-list li { min-width: 0; }
+
+/* close button sits beside the story card on wider screens instead of over its corner */
+@media (min-width: 700px) { .st-x { right: calc(50vw - 260px - 56px); top: max(40px, calc(50vh - min(410px, 50vh - 45px))); } }
+/* reduced motion: keep the story timer readable (the bar is the only cue for how long a slide stays) */
+@media (prefers-reduced-motion: reduce) { .st-bars i.run { animation-duration: 9s !important; } }
+/* "In this episode" segment list */
+.segs { display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0 12px; font-size: .78rem; }
+.segs > span:first-child { color: var(--text-3); font-weight: 650; text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; align-self: center; margin-right: 2px; }
+.seg { background: var(--surface-2); border: 1px solid var(--line); border-radius: 99px; padding: 2px 9px; color: var(--text-2); }

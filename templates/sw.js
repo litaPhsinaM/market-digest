@@ -20,6 +20,8 @@ self.addEventListener("fetch", (e) => {
         caches.open(CACHE).then((c) => c.put(e.request, copy));
       }
       return res;
-    }).catch(() => caches.match(e.request).then((hit) => hit || caches.match("./index.html")))
+    // offline: cached copy, else send page visits to today's page (never serve HTML in place of a script or image)
+    }).catch(() => caches.match(e.request).then((hit) => hit ||
+      (e.request.mode === "navigate" && !url.pathname.endsWith("/index.html") ? Response.redirect("./index.html") : Response.error())))
   );
 });

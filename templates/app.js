@@ -13,6 +13,9 @@
   }
 
   function showTip(html, x, y) {
+    // an open modal dialog sits in the browser's top layer, so the tip must live inside it to be seen
+    const host = [...document.querySelectorAll("dialog[open]")].pop() || document.body;
+    if (tip.parentElement !== host) host.appendChild(tip);
     tip.innerHTML = html;
     tip.hidden = false;
     const r = tip.getBoundingClientRect();
@@ -74,7 +77,9 @@
     };
     hit.addEventListener("pointermove", show);
     hit.addEventListener("pointerdown", show);
-    hit.addEventListener("pointerleave", () => { xh.setAttribute("visibility", "hidden"); dot.setAttribute("visibility", "hidden"); hideTip(); });
+    hit.addEventListener("pointerleave", (e) => {
+      if (e.pointerType === "touch") return; // a finger "leaves" right after lifting; keep the reading until the next tap elsewhere
+      xh.setAttribute("visibility", "hidden"); dot.setAttribute("visibility", "hidden"); hideTip(); });
   }
 
   // sparklines
@@ -117,8 +122,17 @@
   });
   addEventListener("resize", () => document.querySelectorAll("dialog[open]").forEach(renderChart));
   // Deep link: page.html#co-NVDA opens that company.
-  const linked = location.hash.startsWith("#co-") && document.getElementById(decodeURIComponent(location.hash.slice(1)));
-  if (linked && linked.tagName === "DIALOG") { linked.showModal(); renderChart(linked); }
+  function openLinked() {
+    const linked = location.hash.startsWith("#co-") && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (linked && linked.tagName === "DIALOG" && !linked.open) { linked.showModal(); renderChart(linked); }
+  }
+  openLinked();
+  addEventListener("hashchange", openLinked); // e.g. picking a company in search while already on this page
+  // closing a deep-linked company clears the hash, so the same link can open it again
+  document.querySelectorAll(".co-dialog").forEach((d) => d.addEventListener("close", () => {
+    hideTip();
+    if (location.hash === "#" + d.id) history.replaceState(null, "", location.pathname + location.search);
+  }));
 
   // ---- info tooltips ----
   document.querySelectorAll("[data-tip]").forEach((b) => {
@@ -126,9 +140,13 @@
     b.addEventListener("mouseenter", on);
     b.addEventListener("focus", on);
     b.addEventListener("click", (e) => { e.stopPropagation(); on(); });
-    b.addEventListener("mouseleave", hideTip);
+    b.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") hideTip(); }); // touch: hidden by the next tap elsewhere
     b.addEventListener("blur", hideTip);
   });
+  // touch: tapping anywhere else dismisses a tip
+  document.addEventListener("pointerdown", (e) => {
+    if (e.pointerType === "touch" && !e.target.closest("[data-tip], .chart, .spark")) hideTip();
+  }, true);
 })();
 
 // movers tabs

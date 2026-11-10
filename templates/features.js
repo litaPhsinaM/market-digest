@@ -193,9 +193,10 @@
     palQ.addEventListener("keydown", (e) => {
       if (e.key === "ArrowDown") { e.preventDefault(); moveSel(1); }
       if (e.key === "ArrowUp") { e.preventDefault(); moveSel(-1); }
-      if (e.key === "Enter") { const a = $("li[aria-selected=true] a", palRes); if (a) location.href = a.href; }
+      if (e.key === "Enter") { const a = $("li[aria-selected=true] a", palRes); if (a) { pal.close(); location.href = a.href; } }
     });
-    pal.addEventListener("click", (e) => { if (e.target === pal) pal.close(); });
+    // close on pick too, so a result on this same page (just a #hash jump) doesn't leave the palette open
+    pal.addEventListener("click", (e) => { if (e.target === pal || e.target.closest("a")) pal.close(); });
   }
   $$("[data-search]").forEach((b) => b.addEventListener("click", openSearch));
   document.addEventListener("keydown", (e) => {
@@ -237,21 +238,25 @@
     if (on && !paused) { paused = true; clearTimeout(timer); remaining -= Date.now() - started; if (bar) bar.style.animationPlayState = "paused"; }
     else if (!on && paused) { paused = false; schedule(remaining); if (bar) bar.style.animationPlayState = "running"; }
   }
+  let opener = null;
   function openStories() {
     if (!slides.length) return;
+    opener = document.activeElement;
     cur = 0; paused = false; stories.hidden = false; document.body.classList.add("noscroll");
     renderSlide(); markActive();
+    $("#st-x").focus();
   }
-  function closeStories(finished) {
+  function closeStories(finished, toStory) {
     clearTimeout(timer); stories.hidden = true; document.body.classList.remove("noscroll");
+    if (!toStory && opener && opener.focus) opener.focus({ preventScroll: true });
     if (finished === true) toast("✓ You're caught up for today");
   }
   if (stories) {
     $$("[data-stories]").forEach((b) => b.addEventListener("click", openStories));
-    $("#st-x").addEventListener("click", closeStories);
+    $("#st-x").addEventListener("click", () => closeStories());
     $("#st-next").addEventListener("click", () => go(1));
     $("#st-prev").addEventListener("click", () => go(-1));
-    stories.addEventListener("click", (e) => { if (e.target.closest("[data-st-close]")) closeStories(); });
+    stories.addEventListener("click", (e) => { if (e.target.closest("[data-st-close]")) closeStories(false, true); });
     let downAt = 0, x0 = 0;
     stories.addEventListener("pointerdown", (e) => { downAt = Date.now(); x0 = e.clientX; pause(true); });
     stories.addEventListener("pointerup", (e) => {
@@ -264,6 +269,10 @@
       if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); go(1); }
       if (e.key === "ArrowLeft") go(-1);
       if (e.key === "Escape") closeStories();
+      if (e.key === "Tab") { // keep keyboard focus inside the overlay
+        const f = $$("button, a[href]", stories), i = f.indexOf(document.activeElement);
+        e.preventDefault(); f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+      }
     });
   }
 
