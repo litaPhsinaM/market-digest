@@ -1,6 +1,7 @@
 """Render saved summaries into a static site in ./site."""
 import datetime as dt
 import json
+import re
 import shutil
 from collections import defaultdict
 from pathlib import Path
@@ -62,6 +63,12 @@ def _search_index(items, hots, glossary, markets):
     return idx
 
 
+def _bold(text):
+    """Course text may use **bold**; everything else is escaped."""
+    from markupsafe import Markup, escape
+    return Markup(re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", str(escape(text))))
+
+
 def _slug(text):
     return "".join(ch if ch.isalnum() else "-" for ch in text.lower()).strip("-")
 
@@ -88,6 +95,13 @@ def build(root: Path):
             key = t["term"].strip().lower()
             entry = glossary.setdefault(key, {**t, "seen": []})
             entry["seen"].append({"date": it["digest_date"], "id": it["id"], "title": it["summary"]["headline"]})
+    course_path = data / "learn" / "course.json"
+    if course_path.exists():
+        for u in json.loads(course_path.read_text())["units"]:
+            for l in u["lessons"]:
+                for t in l.get("key_terms", []):
+                    entry = glossary.setdefault(t["term"].strip().lower(), {"term": t["term"], "definition": t["definition"], "example": "", "seen": []})
+                    entry.setdefault("lessons", []).append({"id": l["id"], "title": l["title"]})
     glossary = sorted(glossary.values(), key=lambda t: t["term"].lower())
 
     env = Environment(loader=FileSystemLoader(root / "templates"), autoescape=select_autoescape())
@@ -97,6 +111,7 @@ def build(root: Path):
     env.filters["qf"] = _quote_fmt
     env.filters["initials"] = _initials
     env.filters["slug"] = _slug
+    env.filters["bold"] = _bold
     env.globals["supabase"] = cfg.get("supabase") or {"url": "", "key": ""}
     markets = {p.stem: json.loads(p.read_text()) for p in (data / "market").glob("*.json")}
     src_index = {s["id"]: n for n, s in enumerate(srcs)}
@@ -104,7 +119,7 @@ def build(root: Path):
     if out.exists():
         shutil.rmtree(out)
     (out / "days").mkdir(parents=True)
-    for asset in ("style.css", "app.js", "features.js", "account.js", "supabase.js", "manifest.webmanifest"):
+    for asset in ("style.css", "app.js", "features.js", "account.js", "social.js", "learn.js", "supabase.js", "manifest.webmanifest"):
         shutil.copy(root / "templates" / asset, out / asset)
     shutil.copytree(root / "templates" / "icons", out / "icons")
     version = dt.datetime.now().strftime("%Y%m%d%H%M%S")
@@ -158,6 +173,11 @@ def build(root: Path):
     render("glossary.html", "glossary.html", "", terms=glossary)
     render("sources.html", "sources.html", "", sources=srcs, feeds=feeds)
     render("about.html", "about.html", "", n_podcasts=len(srcs), n_feeds=len(feeds))
+    render("play.html", "play.html", "")
+    course_path = data / "learn" / "course.json"
+    course = json.loads(course_path.read_text()) if course_path.exists() else None
+    lessons = [{**l, "unit": u["title"]} for u in course["units"] for l in u["lessons"]] if course else []
+    render("learn.html", "learn.html", "", course=course, lessons=lessons)
     (out / "search.json").write_text(json.dumps(_search_index(items, hots, glossary, markets), separators=(",", ":")))
     old = root / "site.old"
     if old.exists():

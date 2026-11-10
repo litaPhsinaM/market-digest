@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% set active = 'play' %}
+{% block title %}Play · Market Digest{% endblock %}
+{% block content %}
+<div id="play">
+<section class="play-hero">
+  <div>
+    <div class="eyebrow">Play</div>
+    <h1>Practise investing with zero risk</h1>
+    <p class="muted">Paper-trade a virtual $100,000, call where stocks go next, and compete with friends. Real prices, no real money.</p>
+  </div>
+  <div class="play-guest card" data-guest>
+    <b>Sign in to join</b>
+    <p class="muted small">Free, no password. Your $100,000 is waiting.</p>
+    <button class="btn" type="button" data-signin>Sign in</button>
+  </div>
+</section>
+
+<div class="play-grid">
+  <section class="card play-card" data-need-auth hidden>
+    <div class="pc-head">
+      <h2>💼 Your paper portfolio</h2>
+      <button class="info" type="button" data-tip="Everyone starts with $100,000 of virtual money. Orders fill at the next price update (usually the next morning), like a real order placed after the market closes, so nobody can trade on old prices." aria-label="How paper trading works">i</button>
+    </div>
+    <div class="pf-top">
+      <div><div class="muted small">Total value</div><div class="pf-total" id="pf-total">$100,000.00</div><div class="small" id="pf-ret"></div></div>
+      <div class="pf-split"><div><span class="muted small">Cash</span><b id="pf-cash">$100,000.00</b></div><div><span class="muted small">Invested</span><b id="pf-inv">$0.00</b></div></div>
+    </div>
+    <div class="trade qt" data-sym="" data-price="0">
+      <label class="small muted" for="qt-sym">Quick trade</label>
+      <select id="qt-sym" aria-label="Choose a stock or fund"></select>
+      <div class="trade-row"><input class="trade-qty" type="number" min="0" step="any" inputmode="decimal" placeholder="Shares" aria-label="Number of shares">
+        <button class="mini buy" type="button" data-trade="buy">Buy</button><button class="mini sell" type="button" data-trade="sell">Sell</button></div>
+      <div class="trade-est muted small"></div>
+    </div>
+    <table class="pf-table">
+      <thead><tr><th>Holding</th><th class="num">Shares</th><th class="num">Avg cost</th><th class="num">Now</th><th class="num">Value</th></tr></thead>
+      <tbody id="pf-pos"></tbody>
+    </table>
+    <h3 class="sub-h">Recent orders</h3>
+    <ul class="olist" id="pf-orders"></ul>
+  </section>
+
+  <section class="card play-card" data-need-auth hidden>
+    <div class="pc-head"><h2>🔮 Your calls</h2><span class="muted small" id="calls-sum"></span></div>
+    <p class="muted small">Open any company on the Today page and tap ▲ Higher or ▼ Lower. Calls are scored at the next day's price update.</p>
+    <ul class="olist" id="calls"></ul>
+  </section>
+
+  <section class="card play-card" data-need-auth hidden>
+    <div class="pc-head"><h2>👥 Friends</h2><button class="mini" type="button" data-edit-username>You: <span data-me-username>…</span></button></div>
+    <div class="invite">
+      <label class="small muted" for="invite-link">Your invite link: friends who open it follow you</label>
+      <div class="acct-row"><input id="invite-link" readonly><button class="btn" type="button" id="invite-copy">Copy</button></div>
+    </div>
+    <form id="find-form" class="acct-form">
+      <label class="small muted" for="find-in">Find a friend by username</label>
+      <div class="acct-row"><input id="find-in" placeholder="@username" autocapitalize="none"><button class="btn ghost" type="submit">Follow</button></div>
+    </form>
+    <div class="friends" id="friends-list"></div>
+  </section>
+
+  <section class="card play-card lb">
+    <div class="pc-head"><h2>🏆 Leaderboards</h2>
+      <div class="seg-tabs" role="tablist"><button type="button" role="tab" data-scope="all" aria-selected="true">Everyone</button><button type="button" role="tab" data-scope="friends" aria-selected="false">Friends</button></div>
+    </div>
+    <div class="board-tabs" role="tablist">
+      <button type="button" role="tab" data-board="streak" aria-selected="true">🔥 Streak</button>
+      <button type="button" role="tab" data-board="quiz" aria-selected="false">🧠 Quiz</button>
+      <button type="button" role="tab" data-board="calls" aria-selected="false">🔮 Calls</button>
+      <button type="button" role="tab" data-board="portfolio" aria-selected="false">💼 Portfolio</button>
+    </div>
+    <table class="lb-table">
+      <thead><tr><th>#</th><th>Player</th><th class="num" id="lb-col">🔥 Streak</th><th></th></tr></thead>
+      <tbody id="lb-body"></tbody>
+    </table>
+  </section>
+</div>
+<p class="asof">Games use real but delayed prices, with no real money. Nothing here is financial advice. Leaderboards show only usernames and game stats.</p>
+</div>
+{% endblock %}

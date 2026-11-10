@@ -15,6 +15,11 @@ INDICES = [
 ]
 
 
+# Index funds: always tradable in the paper-trading game so learners can try "just buy the market".
+FUNDS = ["SPY", "QQQ", "VTI"]
+FUND_NAMES = ["S&P 500 index fund (SPY)", "Nasdaq-100 index fund (QQQ)", "Total US market fund (VTI)"]
+
+
 def tickers_from_summaries(items: list[dict]) -> dict[str, list[str]]:
     """Map ticker -> ids of items that discuss it. Accepts 'Nvidia (NVDA)' or bare 'NVDA'."""
     found = {}
@@ -72,7 +77,7 @@ def _safe_news(t):
 
 
 def snapshot(tickers: list[str]) -> dict:
-    symbols = [s for s, _, _ in INDICES] + ["^VIX"] + tickers
+    symbols = [s for s, _, _ in INDICES] + ["^VIX"] + FUNDS + tickers
     hist = yf.download(symbols, period="1y", interval="1d", auto_adjust=True, progress=False, timeout=30)["Close"]
 
     def quote(sym):
@@ -124,7 +129,8 @@ def snapshot(tickers: list[str]) -> dict:
         companies = [c for c in ex.map(company, tickers) if c]
     return {"as_of": dt.datetime.now().astimezone().isoformat(timespec="minutes"),
             "indices": indices, "companies": companies, "movers": movers(),
-            "mood": mood(quote("^GSPC"), quote("^VIX"))}
+            "mood": mood(quote("^GSPC"), quote("^VIX")),
+            "funds": [{**q, "name": n} for f, n in zip(FUNDS, FUND_NAMES) if (q := quote(f))]}
 
 
 def mood(spx, vix):

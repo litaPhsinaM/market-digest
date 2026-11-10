@@ -67,7 +67,7 @@
     <strong>Learn the market in 5 minutes a day.</strong>
     Every morning we listen to {{ n_podcasts }} trusted finance podcasts and scan {{ n_feeds }} newsrooms, then explain what matters in plain English: key points, the numbers, the jargon and the lesson behind the news.
   </div>
-  <a class="btn ghost" href="{{ prefix }}about.html">How it works</a>
+  <div class="intro-acts"><a class="btn" href="{{ prefix }}learn.html">New to investing? Start here →</a><a class="btn ghost" href="{{ prefix }}about.html">How it works</a></div>
 </section>
 {% endif %}
 
@@ -122,9 +122,33 @@
 </section>
 {% endif %}
 
-<h2 class="section-title">Stories</h2>
+<div class="stories-head">
+  <h2 class="section-title">Today’s stories</h2>
+  <span class="muted small">Tap a story to read it · ✓ when you’re done</span>
+</div>
+<div class="story-grid">
 {% for it in items if it.summary.worth_reading %}{% set s = it.summary %}
-<article class="card ep" id="{{ it.id }}">
+  <button class="sc" type="button" data-story="{{ it.id }}" aria-label="Read: {{ s.headline }}">
+    <span class="sc-top">
+      <span class="avatar sm s{{ (src_index.get(it.source_id, 0) % 8) + 1 }}" aria-hidden="true">{{ it.source_name|initials }}</span>
+      <span class="sc-src">{{ it.source_name }}</span>
+      <span class="sc-done" aria-hidden="true">✓ Read</span>
+    </span>
+    <span class="sc-title">{{ s.headline }}</span>
+    <span class="sc-tldr">{{ s.tldr }}</span>
+    <span class="sc-meta">
+      {% if s.level %}<span class="level {{ s.level }}">{{ s.level }}</span>{% endif %}
+      <span>🎧 {{ it.duration|minutes }} min → 📖 2 min</span>
+      {% for raw in s.tickers[:2] %}{% set sym = (raw.split('(')[-1].rstrip(')')).strip() %}{% if sym in co_syms %}<span class="sc-tick">{{ sym }}</span>{% endif %}{% endfor %}
+    </span>
+  </button>
+{% endfor %}
+</div>
+
+{% for it in items if it.summary.worth_reading %}{% set s = it.summary %}
+<dialog class="sheet" id="{{ it.id }}" aria-labelledby="{{ it.id }}-h">
+<article class="ep">
+  <div class="sheet-grab" aria-hidden="true"></div>
   <header class="ep-head">
     <span class="avatar s{{ (src_index.get(it.source_id, 0) % 8) + 1 }}" aria-hidden="true">{{ it.source_name|initials }}</span>
     <div class="ep-who">
@@ -132,10 +156,10 @@
       <div class="ep-meta">{{ 'Video' if it.kind == 'youtube' else 'Podcast' }} · {{ it.duration|minutes }} min · {{ it.published }}</div>
     </div>
     <span class="level {{ s.level }}" title="How much background this assumes">{{ s.level }}</span>
-    <button class="readtick" type="button" data-read="{{ it.id }}" aria-pressed="false" aria-label="Mark this story as read"><span class="lbl" hidden>Mark as read</span>✓</button>
+    <button class="close" type="button" data-sheet-close aria-label="Close">×</button>
   </header>
 
-  <h3 class="ep-title">{{ s.headline }}</h3>
+  <h3 class="ep-title" id="{{ it.id }}-h">{{ s.headline }}</h3>
   <p class="ep-orig">Episode: “{{ it.title }}”</p>
   {% if s.segments and s.segments|length > 1 %}
   <div class="segs"><span>In this episode</span>{% for g in s.segments %}<span class="seg" title="{{ g }}">{{ g.split(". ")[0].split(", ")[0]|truncate(48, False, "…", 0) }}</span>{% endfor %}</div>
@@ -167,21 +191,24 @@
   </dl>
   {% endif %}
 
-  <footer class="ep-foot">
-    <div class="ep-tags">
-      {% for raw in s.tickers %}{% set sym = (raw.split('(')[-1].rstrip(')')).strip() %}
-        {% if sym in co_syms %}<button class="ticker" type="button" data-open="{{ sym }}">{{ sym }}</button>
-        {% else %}<span class="ticker off" title="No market data (may not be publicly traded yet)">{{ raw }}</span>{% endif %}
-      {% endfor %}
-      <span class="quality" title="How well-supported the source's claims are">{{ s.quality_note }}</span>
-    </div>
-    <div class="ep-acts">
-      <button class="share" type="button" data-share data-kind="{{ it.source_name }}" data-title="{{ s.headline }}" data-text="{{ s.tldr }}" aria-label="Share this story">Share</button>
-      <button class="readbtn" type="button" data-read="{{ it.id }}" aria-pressed="false"><span class="chk" aria-hidden="true">✓</span> <span class="lbl">Mark as read</span></button>
-      <a class="btn" href="{{ it.url }}" target="_blank" rel="noopener">Listen to the original ↗</a>
-    </div>
+  <div class="ep-tags sheet-tags">
+    {% for raw in s.tickers %}{% set sym = (raw.split('(')[-1].rstrip(')')).strip() %}
+      {% if sym in co_syms %}<button class="ticker" type="button" data-open="{{ sym }}">{{ sym }}</button>
+      {% else %}<span class="ticker off" title="No market data (may not be publicly traded yet)">{{ raw }}</span>{% endif %}
+    {% endfor %}
+    <span class="quality" title="How well-supported the source's claims are">{{ s.quality_note }}</span>
+  </div>
+  <div class="sheet-links">
+    <a href="{{ it.url }}" target="_blank" rel="noopener">🎧 Listen to the original ↗</a>
+    <button class="share" type="button" data-share data-kind="{{ it.source_name }}" data-title="{{ s.headline }}" data-text="{{ s.tldr }}">Share</button>
+  </div>
+
+  <footer class="sheet-foot">
+    <button class="readbtn big" type="button" data-read="{{ it.id }}" aria-pressed="false"><span class="chk" aria-hidden="true">✓</span> <span class="lbl">Mark as read</span></button>
+    <button class="btn ghost" type="button" data-next-story>Next story →</button>
   </footer>
 </article>
+</dialog>
 {% endfor %}
 
 {% if quiz and quiz.questions %}
@@ -328,6 +355,22 @@
     <div><dt>52-wk low</dt><dd>{{ st.low_52w|num }}</dd></div>
     <div><dt>Next earnings <button class="info" type="button" data-tip="The day the company reports its quarterly results. Stocks often move sharply on this day." aria-label="What is an earnings date?">i</button></dt><dd>{{ c.next_earnings or '—' }}</dd></div>
   </dl>
+
+  <div class="dlg-sec practice">
+    <h3>Practice <button class="info" type="button" data-tip="Free games with no real money. Predictions are scored at tomorrow's price update. Paper trades use a virtual $100,000 and fill at the next price update, like a real order placed after hours." aria-label="About practice games">i</button></h3>
+    <div class="practice-grid">
+      <div class="predict">
+        <div class="pr-q">Where will {{ c.symbol }} be at tomorrow’s update?</div>
+        <div class="pr-btns"><button class="pr up" type="button" data-predict="{{ c.symbol }}:up">▲ Higher</button><button class="pr down" type="button" data-predict="{{ c.symbol }}:down">▼ Lower</button></div>
+      </div>
+      <div class="trade" data-sym="{{ c.symbol }}" data-price="{{ c.price }}">
+        <div class="pr-q">Paper trade <span class="muted">(virtual $100k)</span></div>
+        <div class="trade-row"><input class="trade-qty" type="number" min="0" step="any" inputmode="decimal" placeholder="Shares" aria-label="Number of shares">
+          <button class="mini buy" type="button" data-trade="buy">Buy</button><button class="mini sell" type="button" data-trade="sell">Sell</button></div>
+        <div class="trade-est muted small"></div>
+      </div>
+    </div>
+  </div>
 
   {% if c.mentioned_in %}
   <div class="dlg-sec">

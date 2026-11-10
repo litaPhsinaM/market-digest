@@ -121,6 +121,12 @@ def write_extras(today: str):
     print("Writing quiz")
     q = summarize.quiz(items, hot)
     (QUIZ / f"{today}.json").write_text(json.dumps({"date": today, **q.model_dump()}, indent=1))
+    from digest import supa
+    if supa.available():
+        try:
+            supa.push_quiz_keys(today, q.model_dump())
+        except Exception as e:
+            print(f"! pushing quiz answers to Supabase failed: {e}")
 
     from digest import voice
     if not voice.available():
@@ -161,6 +167,12 @@ def write_market(today: str, cfg: dict):
         kept.append(c)
     snap["companies"] = kept
     (MARKET / f"{today}.json").write_text(json.dumps(snap, indent=1))
+    from digest import supa
+    if supa.available():
+        try:
+            supa.push_prices(snap)
+        except Exception as e:
+            print(f"! pushing prices to Supabase failed: {e}")
 
 
 def main():

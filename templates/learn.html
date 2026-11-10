@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% set active = 'learn' %}
+{% block title %}Learn · Market Digest{% endblock %}
+{% block content %}
+<section class="learn-hero">
+  <div class="eyebrow">Learn</div>
+  <h1>{{ course.title if course else "Start here: investing from zero" }}</h1>
+  <p class="lede">{{ course.intro if course else "A short course for complete beginners is on its way." }}</p>
+  {% if course %}
+  <div class="learn-progress" id="learn-progress" data-total="{{ lessons|length }}">
+    <svg class="ring big" viewBox="0 0 36 36" aria-hidden="true"><circle class="ring-bg" cx="18" cy="18" r="15"/><circle class="ring-fg" id="lp-ring" cx="18" cy="18" r="15"/></svg>
+    <div><b><span id="lp-n">0</span> of {{ lessons|length }} lessons</b><span class="muted small" id="lp-msg">About {{ lessons|sum(attribute='minutes') }} minutes in total, one a day is perfect</span></div>
+    <button class="btn" type="button" id="lp-next">Start lesson 1 →</button>
+  </div>
+  {% endif %}
+</section>
+
+{% if course %}
+{% for u in course.units %}
+<section class="unit">
+  <div class="unit-head"><span class="unit-n">Unit {{ loop.index }}</span><h2>{{ u.title }}</h2><p class="muted">{{ u.blurb }}</p></div>
+  <div class="lesson-grid">
+  {% for l in u.lessons %}
+    <button class="lc" type="button" data-lesson="{{ l.id }}">
+      <span class="lc-n">{{ l.id[1:]|int }}</span>
+      <span class="lc-body"><span class="lc-title">{{ l.title }}</span><span class="lc-hook">{{ l.hook }}</span></span>
+      <span class="lc-meta">{{ l.minutes }} min</span>
+      <span class="lc-done" aria-hidden="true">✓</span>
+    </button>
+  {% endfor %}
+  </div>
+</section>
+{% endfor %}
+
+{% for l in lessons %}
+<dialog class="sheet lesson" id="{{ l.id }}" aria-labelledby="{{ l.id }}-h" data-lesson-id="{{ l.id }}">
+<article class="ep">
+  <div class="sheet-grab" aria-hidden="true"></div>
+  <header class="ep-head">
+    <span class="avatar s1" aria-hidden="true">{{ l.id[1:]|int }}</span>
+    <div class="ep-who"><div class="ep-src">{{ l.unit }}</div><div class="ep-meta">Lesson {{ l.id[1:]|int }} of {{ lessons|length }} · {{ l.minutes }} min</div></div>
+    <button class="close" type="button" data-sheet-close aria-label="Close">×</button>
+  </header>
+  <h3 class="ep-title" id="{{ l.id }}-h">{{ l.title }}</h3>
+  {% for sec in l.sections %}
+  <h4>{{ sec.heading }}</h4>
+  {% for para in sec.body %}<p class="lp">{{ para|bold }}</p>{% endfor %}
+  {% endfor %}
+  {% if l.example %}
+  <div class="example"><div class="eyebrow">Example: {{ l.example.title }}</div>{% for para in l.example.body %}<p>{{ para|bold }}</p>{% endfor %}</div>
+  {% endif %}
+  {% if l.key_terms %}
+  <h4>Key terms</h4>
+  <dl class="terms">{% for t in l.key_terms %}<div class="term"><dt>{{ t.term }}</dt><dd>{{ t.definition }}</dd></div>{% endfor %}</dl>
+  {% endif %}
+  <div class="lesson"><div class="eyebrow">Remember</div><p>{{ l.takeaway }}</p></div>
+  {% if l.try_it %}<div class="tryit"><span aria-hidden="true">👉</span><div><b>Try it</b><p>{{ l.try_it }}</p></div></div>{% endif %}
+
+  <div class="lquiz" data-lesson-quiz="{{ l.id }}">
+    <h4>Check yourself</h4>
+    {% for q in l.quiz %}
+    <div class="q" data-q="{{ loop.index0 }}" data-answer="{{ q.answer }}">
+      <p class="q-text"><span class="q-n">{{ loop.index }}</span>{{ q.question }}</p>
+      <div class="q-opts">{% for o in q.options %}<button type="button" class="q-opt" data-opt="{{ loop.index0 }}"><span class="q-key">{{ 'ABCD'[loop.index0] }}</span>{{ o }}</button>{% endfor %}</div>
+      <p class="q-exp" hidden>{{ q.explanation }}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  <footer class="sheet-foot">
+    <button class="readbtn big" type="button" data-complete="{{ l.id }}" aria-pressed="false"><span class="chk" aria-hidden="true">✓</span> <span class="lbl">Complete lesson</span></button>
+    <button class="btn ghost" type="button" data-next-lesson>Next →</button>
+  </footer>
+</article>
+</dialog>
+{% endfor %}
+{% else %}
+<p class="muted">The lessons are being written and checked. Come back soon!</p>
+{% endif %}
+<p class="asof">For learning only, not personal financial advice. Rules and account types differ by country; examples use US accounts.</p>
+{% endblock %}

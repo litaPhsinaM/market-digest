@@ -12,6 +12,7 @@
   // "implicit" (tokens in the link) rather than PKCE: a PKCE link only works in the same browser storage that asked
   // for it, so opening the email on another device or tab silently failed.
   let user = null, channel = null;
+  MD.sb = sb;
   // Where sign-in links should come back to. A page opened as a local file can't be returned to, so the
   // email's 6-digit code is the way in there (and in the native app).
   const here = /^https?:$/.test(location.protocol) ? location.origin + location.pathname : undefined;
@@ -32,7 +33,7 @@
   } catch (e) {}
 
   // ---------- progress document ----------
-  const SYNCED = (k) => k === "days" || k === "stars" || k === "log" || k.startsWith("read:") || k.startsWith("quiz:");
+  const SYNCED = (k) => k === "days" || k === "stars" || k === "log" || k.startsWith("read:") || k.startsWith("quiz:") || k.startsWith("lesson:");
   function collect() {
     const doc = {};
     for (let i = 0; i < localStorage.length; i++) {
@@ -50,7 +51,7 @@
     out.days = [...new Set([...(a.days || []), ...(b.days || [])])].sort().slice(-400);
     const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
     for (const k of keys) {
-      if (k.startsWith("quiz:")) out[k] = { ...(b[k] || {}), ...(a[k] || {}) };
+      if (k.startsWith("quiz:") || k.startsWith("lesson:")) out[k] = { ...(b[k] || {}), ...(a[k] || {}) };
       if (k.startsWith("read:")) {
         const ids = new Set([...(a[k] || []), ...(b[k] || [])]);
         for (const [lk, v] of Object.entries(log)) if (lk.startsWith(k + ":")) v.on ? ids.add(lk.slice(k.length + 1)) : ids.delete(lk.slice(k.length + 1));
@@ -148,7 +149,7 @@
     b.disabled = false;
     if (error) { setMsg(error.message); return; }
     $("#acct-code-form").hidden = false;
-    setMsg(`Check ${email}: tap the link, or type the 6-digit code here.`);
+    setMsg(`📬 Check ${email} and tap “Sign in” (look in spam if it's not there). If the email shows a 6-digit code, you can type it below instead.`);
     $("#acct-code-in").focus();
   });
   $("#acct-code-form") && $("#acct-code-form").addEventListener("submit", async (e) => {
@@ -173,6 +174,8 @@
   sb.auth.onAuthStateChange((event, session) => {
     const was = user;
     user = session ? session.user : null;
+    MD.user = user;
+    document.dispatchEvent(new CustomEvent("md:auth", { detail: { user, event } }));
     renderAccount();
     if (user && (!was || was.id !== user.id)) {
       sync(); listen();

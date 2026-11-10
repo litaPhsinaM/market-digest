@@ -10,8 +10,9 @@
 <div class="gterm" id="{{ t.term|slug }}">
   <h3>{{ t.term }}</h3>
   <p>{{ t.definition }}</p>
-  <p class="ex">For example: {{ t.example }}</p>
-  <p class="refs">Came up in: {% for s in t.seen[:3] %}<a href="days/{{ s.date }}.html#{{ s.id }}">{{ s.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+  {% if t.example %}<p class="ex">For example: {{ t.example }}</p>{% endif %}
+  {% if t.lessons %}<p class="refs">Taught in: {% for l in t.lessons[:2] %}<a href="learn.html#{{ l.id }}">{{ l.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
+  {% if t.seen %}<p class="refs">Came up in: {% for s in t.seen[:3] %}<a href="days/{{ s.date }}.html#{{ s.id }}">{{ s.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
 </div>
 {% endfor %}
 {% endblock %}

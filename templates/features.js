@@ -85,6 +85,7 @@
       b.querySelector(".lbl").textContent = on ? "Read" : "Mark as read";
       b.closest(".ep")?.classList.toggle("is-read", on);
     });
+    $$(".sc[data-story]").forEach((c) => c.classList.toggle("is-read", read.includes(c.dataset.story)));
     const n = read.filter((id) => document.getElementById(id)).length;
     if ($("#read-n")) {
       $("#read-n").textContent = n;
@@ -102,12 +103,54 @@
     store.set("read:" + day, [...read]);
     renderRead();
     if (read.size === total && total) toast("🎉 You've read everything today!");
+    else if (on && b.closest("dialog.sheet")) toast("✓ Marked as read. Tap “Next story” to keep going");
   });
   renderRead();
-  $("#next-unread") && $("#next-unread").addEventListener("click", () => {
+  // ---------- story sheets: tap a card to read, ✓ to mark read, then on to the next ----------
+  const sheets = $$("dialog.sheet");
+  function openStory(id) {
+    const d = document.getElementById(id);
+    if (!d || !d.classList.contains("sheet")) return false;
+    $$("dialog[open]").forEach((x) => x !== d && x.close());
+    if (!d.open) d.showModal();
+    d.scrollTop = 0;
+    history.replaceState(null, "", "#" + id);
+    MD.track("story_open", { id });
+    return true;
+  }
+  function nextUnread(afterId) {
     const read = store.get("read:" + day, []);
-    const next = $$("article.ep").find((a) => !read.includes(a.id));
-    (next || $("#quiz") || $$("article.ep")[0])?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const ids = sheets.map((d) => d.id);
+    const start = afterId ? ids.indexOf(afterId) + 1 : 0;
+    return [...ids.slice(start), ...ids.slice(0, start)].find((id) => !read.includes(id) && id !== afterId);
+  }
+  function goNext(fromId) {
+    const next = nextUnread(fromId);
+    if (next) return openStory(next);
+    $$("dialog.sheet[open]").forEach((d) => d.close());
+    toast("🎉 That's every story. Try the quiz!");
+    $("#quiz")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  sheets.forEach((d) => {
+    d.addEventListener("click", (e) => { if (e.target === d || e.target.closest("[data-sheet-close]")) d.close(); });
+    d.addEventListener("close", () => { if (location.hash === "#" + d.id) history.replaceState(null, "", location.pathname + location.search); });
+  });
+  document.addEventListener("click", (e) => {
+    const card = e.target.closest("[data-story]");
+    if (card) return void openStory(card.dataset.story);
+    const nx = e.target.closest("[data-next-story]");
+    if (nx) return void goNext(nx.closest("dialog").id);
+    const a = e.target.closest('a[href^="#"]');
+    if (a && a.getAttribute("href").length > 1 && openStory(a.getAttribute("href").slice(1))) {
+      e.preventDefault();
+      a.closest("dialog:not(.sheet)")?.close();
+    }
+  });
+  addEventListener("hashchange", () => openStory(location.hash.slice(1)));
+  if (location.hash.length > 1) setTimeout(() => openStory(decodeURIComponent(location.hash.slice(1))), 0);
+  $("#next-unread") && $("#next-unread").addEventListener("click", () => {
+    const next = nextUnread(null);
+    next ? openStory(next) : $("#quiz")?.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
   // ---------- quiz ----------
