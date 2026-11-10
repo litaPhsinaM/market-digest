@@ -1,0 +1,20 @@
+{
+  "name": "market-digest-app",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Market Digest as a native Android/iOS app (Capacitor wrapper around the website).",
+  "scripts": {
+    "sync": "node sync-web.mjs && npx cap sync",
+    "apk": "npm run sync && cd android && ./gradlew assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.6.10",
+    "@capacitor/cli": "^7.6.10",
+    "@capacitor/core": "^7.6.10",
+    "@capacitor/splash-screen": "^7.0.5",
+    "@capacitor/status-bar": "^7.0.6"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^4.0.0"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "appId": "io.github.litaphsinam.marketdigest",
+  "appName": "Market Digest",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "backgroundColor": "#111110"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 900,
+      "backgroundColor": "#111110",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "overlaysWebView": false,
+      "backgroundColor": "#111110",
+      "style": "DARK"
+    }
+  }
+}
