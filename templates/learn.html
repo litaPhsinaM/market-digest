@@ -32,6 +32,34 @@
 </section>
 {% endfor %}
 
+{% if practice %}
+<section class="unit practice-sec" id="practice">
+  <div class="unit-head"><span class="unit-n">Practice</span><h2>Test yourself by level</h2>
+    <p class="muted">Original questions written to the topics of real finance programs and exams, from everyday money (FDIC/CFPB level) to analyst level (CFA Level I topics). Not affiliated with any of them.</p></div>
+  <div class="lvl-grid">
+    {% for key, emoji in [('foundation', '🟢'), ('intermediate', '🟡'), ('advanced', '🔴')] %}
+    <button class="lvl" type="button" data-level="{{ key }}">
+      <span class="lvl-top">{{ emoji }} <b>{{ key|capitalize }}</b><span class="lvl-best" data-best="{{ key }}"></span></span>
+      <span class="muted small">{{ practice.levels[key] }}</span>
+      <span class="small">{{ practice.questions|selectattr('level', 'equalto', key)|list|length }} questions · 10 per round</span>
+    </button>
+    {% endfor %}
+  </div>
+</section>
+<script type="application/json" id="practice-data">{{ practice.questions|tojson }}</script>
+<dialog class="sheet practice-run" id="practice-run" aria-label="Practice round">
+  <article class="ep">
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <header class="ep-head"><span class="avatar s3" aria-hidden="true">✎</span>
+      <div class="ep-who"><div class="ep-src" id="pr-title">Practice</div><div class="ep-meta" id="pr-meta"></div></div>
+      <button class="close" type="button" data-sheet-close aria-label="Close">×</button></header>
+    <div class="pr-bar"><span id="pr-bar"></span></div>
+    <div id="pr-q"></div>
+    <footer class="sheet-foot"><button class="btn" type="button" id="pr-next" disabled>Next question →</button></footer>
+  </article>
+</dialog>
+{% endif %}
+
 {% for l in lessons %}
 <dialog class="sheet lesson" id="{{ l.id }}" aria-labelledby="{{ l.id }}-h" data-lesson-id="{{ l.id }}">
 <article class="ep">
@@ -60,12 +88,22 @@
     <h4>Check yourself</h4>
     {% for q in l.quiz %}
     <div class="q" data-q="{{ loop.index0 }}" data-answer="{{ q.answer }}">
-      <p class="q-text"><span class="q-n">{{ loop.index }}</span>{{ q.question }}</p>
+      <p class="q-text"><span class="q-n">{{ loop.index }}</span><span>{{ q.question }}{% if q.difficulty %} <span class="diff d-{{ q.difficulty }}">{{ q.difficulty }}</span>{% endif %}</span></p>
       <div class="q-opts">{% for o in q.options %}<button type="button" class="q-opt" data-opt="{{ loop.index0 }}"><span class="q-key">{{ 'ABCD'[loop.index0] }}</span>{{ o }}</button>{% endfor %}</div>
       <p class="q-exp" hidden>{{ q.explanation }}</p>
     </div>
     {% endfor %}
   </div>
+
+  {% if l.resources %}
+  <h4>Go deeper <span class="h4-note">free, from the source</span></h4>
+  <ul class="res">
+    {% for r in l.resources %}<li><a href="{{ r.url }}" target="_blank" rel="noopener">
+      <span class="res-type t-{{ r.type }}">{{ {'article': '📄', 'video': '🎬', 'course': '🎓', 'exam': '📝', 'tool': '🧮'}.get(r.type, '🔗') }}</span>
+      <span class="res-main"><b>{{ r.title }}</b><span class="muted small">{{ r.publisher }} · {{ r.type }}</span></span>
+      {% if r.level %}<span class="diff d-{{ r.level }}">{{ r.level }}</span>{% endif %}</a></li>{% endfor %}
+  </ul>
+  {% endif %}
 
   <footer class="sheet-foot">
     <button class="readbtn big" type="button" data-complete="{{ l.id }}" aria-pressed="false"><span class="chk" aria-hidden="true">✓</span> <span class="lbl">Complete lesson</span></button>

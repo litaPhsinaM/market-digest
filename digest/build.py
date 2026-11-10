@@ -177,7 +177,9 @@ def build(root: Path):
     course_path = data / "learn" / "course.json"
     course = json.loads(course_path.read_text()) if course_path.exists() else None
     lessons = [{**l, "unit": u["title"]} for u in course["units"] for l in u["lessons"]] if course else []
-    render("learn.html", "learn.html", "", course=course, lessons=lessons)
+    practice_path = data / "learn" / "practice.json"
+    practice = json.loads(practice_path.read_text()) if practice_path.exists() else None
+    render("learn.html", "learn.html", "", course=course, lessons=lessons, practice=practice)
     (out / "search.json").write_text(json.dumps(_search_index(items, hots, glossary, markets), separators=(",", ":")))
     old = root / "site.old"
     if old.exists():

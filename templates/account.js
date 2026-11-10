@@ -33,7 +33,7 @@
   } catch (e) {}
 
   // ---------- progress document ----------
-  const SYNCED = (k) => k === "days" || k === "stars" || k === "log" || k.startsWith("read:") || k.startsWith("quiz:") || k.startsWith("lesson:");
+  const SYNCED = (k) => k === "days" || k === "stars" || k === "log" || k.startsWith("read:") || k.startsWith("quiz:") || k.startsWith("lesson:") || k.startsWith("practice:");
   function collect() {
     const doc = {};
     for (let i = 0; i < localStorage.length; i++) {
@@ -51,6 +51,7 @@
     out.days = [...new Set([...(a.days || []), ...(b.days || [])])].sort().slice(-400);
     const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
     for (const k of keys) {
+      if (k.startsWith("practice:")) out[k] = { best: Math.max(a[k]?.best || 0, b[k]?.best || 0), rounds: Math.max(a[k]?.rounds || 0, b[k]?.rounds || 0) };
       if (k.startsWith("quiz:") || k.startsWith("lesson:")) out[k] = { ...(b[k] || {}), ...(a[k] || {}) };
       if (k.startsWith("read:")) {
         const ids = new Set([...(a[k] || []), ...(b[k] || [])]);
