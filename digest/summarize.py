@@ -29,20 +29,42 @@ class Term(BaseModel):
 
 
 class ItemSummary(BaseModel):
-    worth_reading: bool = Field(description="False if the content is mostly ads, hype, filler or has no real substance.")
-    quality_note: str = Field(description="One line on the source's evidence quality, e.g. 'interviews a Fed economist; data-backed' or 'mostly host speculation'.")
-    headline: str = Field(description="A specific, informative headline. No clickbait.")
+    # Field order matters: the model writes fields in this order, so listing segments first makes it read the whole
+    # episode before summarizing, and the judgement fields come last.
+    segments: list[str] = Field(description="FIRST, list every distinct story/segment of the source in order, max 8 words each "
+                                            "(skip ads). E.g. 'Nvidia CEO affair probe', 'Mortgage rates at 7.18%', 'China consumer brands'.")
+    headline: str = Field(description="A specific, informative headline naming the main subject, e.g. 'Nvidia falls 6% as spy scandal widens'. "
+                                      "Never generic ('Key market updates', 'Market dynamics', '... and market dynamics'), no show name or date, "
+                                      "no question. If the source covers several stories, name the top two concretely, e.g. "
+                                      "'Anthropic sets $70-78 IPO range; Fed's Waller floats 50bp hike'.")
     tldr: str = Field(description="2-3 sentences: what this was about and the main takeaway.")
-    key_points: list[KeyPoint] = Field(description="3-6 most important points, in order of importance.")
-    numbers: list[Figure] = Field(description="The 3-5 MOST important figures stated in the source (never more than 5). Empty if none.")
-    lesson: str = Field(description="A general investing/economics principle this teaches that still applies next year to OTHER companies, "
-                                    "e.g. 'Adjusted earnings exclude costs management calls one-off; always compare them with GAAP earnings.' "
-                                    "Do not just restate the news.")
-    opinions_and_predictions: list[str] = Field(description="Claims that are opinion or forecast, attributed (e.g. 'Guest X expects...'). Empty if none.")
-    tickers: list[str] = Field(description="Companies/tickers discussed substantively, e.g. 'Nvidia (NVDA)'. Empty if none.")
-    glossary: list[Term] = Field(description="3-6 jargon terms used in the source that a beginner would not know.")
+    key_points: list[KeyPoint] = Field(description="3-6 most important points, in order of importance. Cover the whole source: draw from every "
+                                                   "substantive segment listed in segments, not just the first one. Use exact numbers and say "
+                                                   "who said it when it is a guest's view.")
+    numbers: list[Figure] = Field(description="The 3-5 MOST important market/economic/company figures, copied exactly as stated in the source "
+                                              "(never more than 5). Include the comparison if given (vs expected, vs last year). Never add a "
+                                              "date or year the source didn't say ('last year' stays 'last year'). Empty if none.")
+    lesson: str = Field(description="A general investing/economics principle this teaches that still applies next year to OTHER companies. "
+                                    "It must name a mechanism (cause → effect) a learner can reuse, and must not mention this episode, "
+                                    "'investors' or 'should'. Bad: 'This episode highlights the importance of corporate governance.' "
+                                    "Good: 'When a company's value is tied to one leader, the stock reacts to that person's risks (key-person "
+                                    "risk); boards reduce it with succession plans.' Bad: 'Investing should be simple.' Good: 'Most active "
+                                    "funds trail their index after fees, so low-cost index funds tend to win over long periods.'")
+    opinions_and_predictions: list[str] = Field(description="Only forecasts and judgements, never reported facts. Attribute each to the person "
+                                                            "who actually said it, with their role as introduced (e.g. 'Robert Armstrong (FT) "
+                                                            "thinks...'); if unsure who said it, write 'a guest'. If the speaker has a stake "
+                                                            "(e.g. invested in the company), say so. Empty if none.")
+    tickers: list[str] = Field(description="Publicly traded companies discussed substantively, as 'Name (TICKER)', e.g. 'Nvidia (NVDA)', "
+                                           "'Take-Two (TTWO)'. Use a ticker only if stated in the source or you are certain of it; otherwise "
+                                           "give the name alone. Companies not yet listed (pre-IPO) get no ticker. Empty if none.")
+    glossary: list[Term] = Field(description="3-6 jargon terms actually used in the source that a beginner would not know. Always include any "
+                                             "jargon you used in key_points or lesson. Skip everyday words (bipartisan, semiconductors, "
+                                             "valuations). The definition must be the correct general meaning, not this episode's spin.")
     level: str = Field(description="beginner | intermediate | advanced")
     topics: list[str] = Field(description="2-4 short lowercase topic tags, e.g. 'interest rates', 'ai stocks'.")
+    quality_note: str = Field(description="One line about the SOURCE, not this summary (never write 'this digest'): who speaks (reporter, "
+                                          "analyst, executive, investor with a stake) and whether claims are backed by data or are speculation.")
+    worth_reading: bool = Field(description="False if the content is mostly ads, hype, filler or has no real substance.")
 
 
 class Theme(BaseModel):
@@ -52,7 +74,9 @@ class Theme(BaseModel):
 
 
 class Concept(BaseModel):
-    concept: str = Field(description="A named finance/economics concept, e.g. 'Convertible debt', 'Syndication', 'Home-country bias'. Not a life lesson.")
+    concept: str = Field(description="A named finance/economics concept, e.g. 'Convertible debt', 'Syndication', 'Home-country bias'. Not a life lesson. "
+                                     "Prefer a concept with a mechanism that appeared in a story today (e.g. adjusted vs GAAP earnings, dilution, "
+                                     "amortization, key-person risk), not a generic one like diversification.")
     explanation: str = Field(description="A clear 4-6 sentence lesson: what it is, how it works, and how it showed up in today's sources.")
 
 
@@ -60,7 +84,9 @@ class DailyBrief(BaseModel):
     big_picture: str = Field(description="2-3 short sentences naming the most important things today. Plain, concrete, no grand unifying message.")
     themes: list[Theme] = Field(description="One theme per distinct topic. Merge stories ONLY when they are about the same subject (e.g. two episodes on the Fed).")
     concept_of_the_day: Concept
-    watch_for: list[str] = Field(description="Specific upcoming events the sources named (an earnings date, a Fed meeting, a data release, an IPO). Empty if none were named.")
+    watch_for: list[str] = Field(description="Dated or scheduled future events named in the summaries, each with its timing, e.g. 'Anthropic IPO "
+                                             "prices Wed Nov 18, trades Nov 19', 'December Fed meeting: 25 vs 50bp hike'. Risks, analysis or "
+                                             "restatements are NOT events. Empty if none.")
 
 
 class HotTopic(BaseModel):
@@ -69,8 +95,11 @@ class HotTopic(BaseModel):
     explanation: str = Field(description="2-3 plain-English sentences on what is being reported, using only the headlines/blurbs given.")
     why_it_matters: str = Field(description="One sentence on why a learner/investor should care, with any jargon explained.")
     tickers: list[str] = Field(description="US stock tickers of listed companies central to this story, e.g. ['NVDA']. Only real, "
-                                           "currently traded company tickers; no indexes, agencies or private companies. Empty if none.")
-    headline_ids: list[str] = Field(description="ids of the 2-5 headlines this topic is built from.")
+                                           "currently traded company tickers; no indexes, agencies or private companies. No crypto coins "
+                                           "(BTC, ETH), ETFs (TLT), or not-yet-listed companies (Binance, Anthropic before trading). Empty if none.")
+    headline_ids: list[str] = Field(description="ids of the 2-5 headlines whose title or blurb is about THIS exact story (names the same "
+                                                "company/event). Never repeat an id. Most headlines will not belong to any topic; leaving "
+                                                "them unused is expected.")
 
 
 class HotTopics(BaseModel):
@@ -87,9 +116,35 @@ headlines below (JSON: id, source, title, blurb).
 - You only have headlines and short blurbs: describe what is *reported*, and don't add facts or numbers
   that aren't in them.
 - Describe, don't prescribe: never say what investors should do.
+- Never build a topic from a headline that doesn't mention it. A topic needs at least 2 headlines unless it's a
+  major market-moving single report.
 
 Headlines:
 {headlines}"""
+
+class Repair(BaseModel):
+    headline: str = Field(description="Rewritten headline (or the original if it had no problem).")
+    tldr: str = Field(description="Rewritten tldr (or the original if it had no problem).")
+    lesson: str = Field(description="Rewritten lesson (or the original if it had no problem).")
+    key_points: list[KeyPoint] = Field(description="Key points with any flagged date/number removed (otherwise unchanged).")
+    opinions_and_predictions: list[str] = Field(description="Opinions with any flagged date/number removed (otherwise unchanged).")
+    segments: list[str] = Field(description="Segments with any flagged date/number removed (otherwise unchanged).")
+    quality_note: str = Field(description="Rewritten quality note (or the original if it had no problem).")
+
+
+REPAIR_PROMPT = """An editor flagged problems in this summary of "{title}" ({source}). Fix ONLY the flagged fields and
+return the others unchanged. Use only facts already in the summary.
+
+Problems:
+{problems}
+
+Rules for the lesson: a reusable cause → effect principle that applies to other companies or situations; don't
+mention the episode, "investors" or "should". Good example: "When a company's value is tied to one leader, the
+stock reacts to that person's risks (key-person risk); boards reduce it with succession plans."
+
+Summary (JSON):
+{summary}"""
+
 
 class QuizQuestion(BaseModel):
     question: str = Field(description="Tests understanding of a concept, term or number from today, not trivia like dates or names.")
@@ -169,6 +224,9 @@ Rules:
 - Be selective: a learner has 3 minutes for this. Quality over quantity in every list.
 - This is education, not advice. Describe, don't prescribe: never tell the reader to buy, sell or "be cautious",
   and never write "investors should…". Attribute recommendations to the person who made them.
+- Episodes often have several unrelated segments. Cover all substantive segments, not just the first.
+- Copy names and numbers exactly as spoken; do not convert "last year" into a year.
+- Never write "investors should", "be cautious", or "cautionary tale"; describe what happened and why.
 - Set worth_reading to false if the content is mostly hype, ads or filler; be honest."""
 
 BRIEF_PROMPT = """You are a finance teacher writing today's 3-minute overview for a beginner, based ONLY on the
@@ -229,10 +287,15 @@ def _upload(path: Path):
 
 # ---------- Ollama (text only) ----------
 
+def _ctx_for(prompt: str) -> int:
+    """Size the context to the input: a smaller KV cache is faster on short episodes."""
+    return min(40960, max(8192, int(len(prompt.split()) * 1.4) + 4096))
+
+
 def _ollama_generate(prompt: str, schema):
     body = json.dumps({
         "model": OLLAMA_MODEL, "stream": False, "think": False, "format": schema.model_json_schema(),
-        "messages": [{"role": "user", "content": prompt}], "options": {"temperature": 0.3, "num_ctx": 40960},
+        "messages": [{"role": "user", "content": prompt}], "options": {"temperature": 0.3, "num_ctx": _ctx_for(prompt)},
     }).encode()
     req = urllib.request.Request("http://localhost:11434/api/chat", body, {"Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=1800) as r:
@@ -242,10 +305,22 @@ def _ollama_generate(prompt: str, schema):
 # ---------- public API ----------
 
 def summarize_item(item, transcript: str | None = None, audio: Path | None = None) -> ItemSummary:
+    from digest import checks
     s = _summarize_item(item, transcript, audio)
     # Models don't always respect list lengths; keep the page skimmable.
     s.key_points, s.numbers, s.glossary = s.key_points[:6], s.numbers[:5], s.glossary[:6]
-    return s
+    d = s.model_dump()
+    problems = checks.check_item(d, transcript) if transcript else []
+    if problems:
+        print("    ↻ repairing: " + "; ".join(p.split(":")[0] for p in problems))
+        keep = {k: d[k] for k in ("headline", "tldr", "lesson", "key_points", "opinions_and_predictions", "quality_note", "segments")}
+        fix = _generate(REPAIR_PROMPT.format(title=item.title, source=item.source_name, problems="\n".join(f"- {p}" for p in problems),
+                                             summary=json.dumps(keep, indent=1)), Repair)
+        d.update(fix.model_dump())
+        left = [p for p in checks.check_item(d, transcript)]
+        if left:
+            print("    ! still flagged after repair: " + "; ".join(p.split(":")[0] for p in left))
+    return ItemSummary.model_validate(d)
 
 
 def _summarize_item(item, transcript, audio) -> ItemSummary:
@@ -282,13 +357,14 @@ def hot_topics(headlines: list[dict]) -> HotTopics:
     valid = {h["id"] for h in headlines}
     for t in result.topics:  # drop hallucinated ids; a topic with no real headline behind it is dropped
         t.headline_ids = [i for i in t.headline_ids if i in valid]
-    result.topics = [t for t in result.topics if t.headline_ids][:7]
-    return result
+    from digest import checks
+    kept = checks.check_hot([t.model_dump() for t in result.topics], {h["id"]: h for h in headlines})
+    return HotTopics(topics=[HotTopic(**t) for t in kept][:7])
 
 
 def daily_brief(items: list[dict]) -> DailyBrief:
     slim = [{"id": i["id"], "source": i["source_name"], **{k: i["summary"][k] for k in
-             ("headline", "tldr", "key_points", "lesson", "opinions_and_predictions")}} for i in items]
+             ("headline", "tldr", "key_points", "numbers", "lesson", "opinions_and_predictions")}} for i in items]
     prompt = BRIEF_PROMPT.format(summaries=json.dumps(slim, indent=1))
     if BACKEND == "ollama":
         return _ollama_generate(prompt, DailyBrief)
