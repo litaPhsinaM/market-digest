@@ -65,9 +65,10 @@
     if (p) {
       if (!(await ready())) return;
       const [sym, dir] = p.dataset.predict.split(":");
-      const { error } = await MD.sb.rpc("predict", { p_symbol: sym, p_direction: dir });
+      const conf = +(p.closest(".predict")?.querySelector(".conf-in")?.value || 60) / 100;
+      const { error } = await MD.sb.rpc("predict", { p_symbol: sym, p_direction: dir, p_confidence: conf });
       if (error) return MD.toast(errMsg(error));
-      MD.toast(`🔮 Called ${sym} ${dir === "up" ? "▲ up" : "▼ down"}. Scored at tomorrow's price update.`);
+      MD.toast(`🔮 ${Math.round(conf * 100)}% sure ${sym} goes ${dir === "up" ? "▲ up" : "▼ down"}. Scored at tomorrow's price update.`);
       MD.track("predict", { sym, dir });
       return;
     }
@@ -86,6 +87,8 @@
     }
   });
   document.addEventListener("input", (e) => {
+    const c = e.target.closest(".conf-in");
+    if (c) { c.closest(".conf").querySelector(".conf-v").textContent = c.value + "%"; return; }
     const q = e.target.closest(".trade-qty");
     if (!q) return;
     const box = q.closest(".trade"), est = $(".trade-est", box);
@@ -111,9 +114,11 @@
     } else if (board === "calls") {
       const { data, error } = await MD.sb.rpc("leaderboard_predictions");
       if (error) return (tbody.innerHTML = `<tr><td colspan="4">${esc(errMsg(error))}</td></tr>`);
-      rows = data.sort((a, b) => b.right_calls - a.right_calls || (b.accuracy || 0) - (a.accuracy || 0));
-      col = "🔮 Right calls (30 days)";
-      fmt = (r) => `${r.right_calls} <span class="muted">${r.accuracy != null ? r.accuracy + "%" : "pending"}</span>`;
+      // Rank by forecasting skill (Brier score vs. a 50/50 guess) once someone has 5+ scored calls; luck alone can't top this board.
+      const scored = (r) => r.calls >= 5 && r.skill != null;
+      rows = data.sort((a, b) => (scored(b) - scored(a)) || (b.skill ?? -999) - (a.skill ?? -999) || b.right_calls - a.right_calls);
+      col = "🔮 Forecasting skill (60 days)";
+      fmt = (r) => r.skill != null ? `<b>${r.skill > 0 ? "+" : ""}${r.skill}</b> <span class="muted">${r.right_calls}/${r.calls} right</span>` : `<span class="muted">${r.calls} pending</span>`;
     } else {
       const { data, error } = await MD.sb.rpc("leaderboard_portfolios");
       if (error) return (tbody.innerHTML = `<tr><td colspan="4">${esc(errMsg(error))}</td></tr>`);
@@ -250,13 +255,36 @@
       || `<li class="muted">No calls yet. Open any company on today's page and tap ▲ or ▼.</li>`;
   }
 
+  async function loadCalibration() {
+    const box = $("#calib");
+    if (!box || !MD.user) return;
+    const { data } = await MD.sb.rpc("my_calibration");
+    if (!data || !data.length) { box.innerHTML = `<p class="muted small">Your calibration chart appears after your first scored calls.</p>`; return; }
+    // Bars: how often you were right at each confidence level; the dashed tick is where a perfectly calibrated forecaster would be.
+    box.innerHTML = `<div class="cal-title small muted">When you say… you're right:</div>` + data.map((b) => {
+      const ideal = b.bucket + 5;
+      return `<div class="cal-row"><span class="cal-b">${b.bucket}–${b.bucket + 9}%</span>
+        <span class="cal-track"><span class="cal-fill ${b.hit_rate + 10 < ideal ? "over" : ""}" style="width:${b.hit_rate}%"></span><span class="cal-ideal" style="left:${ideal}%"></span></span>
+        <span class="cal-v">${b.hit_rate}% <span class="muted">(${b.calls})</span></span></div>`;
+    }).join("") + `<p class="muted small">Dashed line = perfectly calibrated. Bars well short of it mean you're overconfident at that level.</p>`;
+  }
+  async function loadCoach() {
+    const box = $("#coach");
+    if (!box || !MD.user) return;
+    const { data } = await MD.sb.rpc("coach");
+    const learn = (id) => `${location.pathname.replace(/[^/]*$/, "")}learn.html#${id}`;
+    box.innerHTML = (data || []).map((c) => `<div class="tip-card ${c.severity}"><span>${{ warn: "⚠️", info: "💡", good: "✅" }[c.severity] || "💡"}</span>
+        <div>${esc(c.message)} <a href="${learn(c.lesson)}">Learn why →</a></div></div>`).join("")
+      || `<p class="muted small">Your coach watches your trades for classic investor mistakes (panic selling, putting everything in one stock, overtrading) and explains them here.</p>`;
+  }
+
   function loadPlay() {
     if (!play) return;
     const signedIn = !!MD.user;
     $$("[data-need-auth]").forEach((el) => (el.hidden = !signedIn));
     $$("[data-guest]").forEach((el) => (el.hidden = signedIn));
     loadBoard();
-    if (signedIn) { loadFriends(); loadPortfolio(); loadCalls(); }
+    if (signedIn) { loadFriends(); loadPortfolio(); loadCalls(); loadCalibration(); loadCoach(); }
   }
   if (play) {
     $$("[data-board]").forEach((b) => b.addEventListener("click", () => {

@@ -119,7 +119,7 @@ def build(root: Path):
     if out.exists():
         shutil.rmtree(out)
     (out / "days").mkdir(parents=True)
-    for asset in ("style.css", "app.js", "features.js", "account.js", "social.js", "learn.js", "supabase.js", "manifest.webmanifest"):
+    for asset in ("style.css", "app.js", "features.js", "account.js", "social.js", "learn.js", "admin.js", "supabase.js", "manifest.webmanifest"):
         shutil.copy(root / "templates" / asset, out / asset)
     shutil.copytree(root / "templates" / "icons", out / "icons")
     version = dt.datetime.now().strftime("%Y%m%d%H%M%S")
@@ -174,6 +174,7 @@ def build(root: Path):
     render("sources.html", "sources.html", "", sources=srcs, feeds=feeds)
     render("about.html", "about.html", "", n_podcasts=len(srcs), n_feeds=len(feeds))
     render("play.html", "play.html", "")
+    render("admin.html", "admin.html", "")
     course_path = data / "learn" / "course.json"
     course = json.loads(course_path.read_text()) if course_path.exists() else None
     lessons = [{**l, "unit": u["title"]} for u in course["units"] for l in u["lessons"]] if course else []

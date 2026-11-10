@@ -361,7 +361,9 @@
     <div class="practice-grid">
       <div class="predict">
         <div class="pr-q">Where will {{ c.symbol }} be at tomorrow’s update?</div>
+        <label class="conf"><span>How sure? <b class="conf-v">60%</b></span><input class="conf-in" type="range" min="50" max="99" value="60" aria-label="How confident are you"></label>
         <div class="pr-btns"><button class="pr up" type="button" data-predict="{{ c.symbol }}:up">▲ Higher</button><button class="pr down" type="button" data-predict="{{ c.symbol }}:down">▼ Lower</button></div>
+        <div class="muted small">Scored for calibration: being 90% sure and wrong costs more than 55% sure and wrong.</div>
       </div>
       <div class="trade" data-sym="{{ c.symbol }}" data-price="{{ c.price }}">
         <div class="pr-q">Paper trade <span class="muted">(virtual $100k)</span></div>

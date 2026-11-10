@@ -33,6 +33,7 @@
         <button class="mini buy" type="button" data-trade="buy">Buy</button><button class="mini sell" type="button" data-trade="sell">Sell</button></div>
       <div class="trade-est muted small"></div>
     </div>
+    <div class="coach" id="coach"></div>
     <table class="pf-table">
       <thead><tr><th>Holding</th><th class="num">Shares</th><th class="num">Avg cost</th><th class="num">Now</th><th class="num">Value</th></tr></thead>
       <tbody id="pf-pos"></tbody>
@@ -44,6 +45,7 @@
   <section class="card play-card" data-need-auth hidden>
     <div class="pc-head"><h2>🔮 Your calls</h2><span class="muted small" id="calls-sum"></span></div>
     <p class="muted small">Open any company on the Today page and tap ▲ Higher or ▼ Lower. Calls are scored at the next day's price update.</p>
+    <div class="calib" id="calib"></div>
     <ul class="olist" id="calls"></ul>
   </section>
 
@@ -67,7 +69,7 @@
     <div class="board-tabs" role="tablist">
       <button type="button" role="tab" data-board="streak" aria-selected="true">🔥 Streak</button>
       <button type="button" role="tab" data-board="quiz" aria-selected="false">🧠 Quiz</button>
-      <button type="button" role="tab" data-board="calls" aria-selected="false">🔮 Calls</button>
+      <button type="button" role="tab" data-board="calls" aria-selected="false">🔮 Forecasting</button>
       <button type="button" role="tab" data-board="portfolio" aria-selected="false">💼 Portfolio</button>
     </div>
     <table class="lb-table">

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% set active = 'admin' %}
+{% block title %}Insights · Market Digest{% endblock %}
+{% block content %}
+<meta name="robots" content="noindex">
+<div id="admin">
+  <div class="dayhead">
+    <div><div class="eyebrow">Team only</div><h1>Insights</h1>
+      <p class="sub">How people use Market Digest. Anonymous device counts, plus signed-in accounts.</p></div>
+    <div class="seg-tabs" role="tablist" aria-label="Period">
+      <button type="button" role="tab" data-days="7" aria-selected="false">7 days</button>
+      <button type="button" role="tab" data-days="30" aria-selected="true">30 days</button>
+      <button type="button" role="tab" data-days="90" aria-selected="false">90 days</button>
+    </div>
+  </div>
+  <p class="muted" id="adm-gate">Sign in with an admin account to see insights.</p>
+  <div id="adm-body" hidden>
+    <div class="adm-tiles" id="adm-tiles"></div>
+    <div class="adm-grid">
+      <section class="card adm-card wide"><h2>Daily active devices</h2><p class="muted small">Unique devices that opened the app each day; the lighter line is signed-in devices.</p><div class="adm-chart" id="ch-daily"></div></section>
+      <section class="card adm-card"><h2>What people do</h2><p class="muted small">Event counts in the period.</p><div id="ch-features"></div></section>
+      <section class="card adm-card"><h2>Where they use it</h2><p class="muted small">Unique devices by platform.</p><div id="ch-platforms"></div></section>
+      <section class="card adm-card"><h2>Do they come back?</h2><p class="muted small">Of the devices first seen each week, the share that returned on a later day within 7 days.</p><div id="ch-retention"></div></section>
+      <section class="card adm-card"><h2>Course progress</h2><p class="muted small">Devices that completed each lesson. Big drops show where beginners give up.</p><div id="ch-lessons"></div></section>
+      <section class="card adm-card"><h2>Practice by level</h2><p class="muted small">Rounds played and average score out of 10.</p><div id="ch-practice"></div></section>
+      <section class="card adm-card"><h2>Sign-ups</h2><p class="muted small">New accounts per day.</p><div class="adm-chart" id="ch-signups"></div></section>
+    </div>
+  </div>
+</div>
+{% endblock %}

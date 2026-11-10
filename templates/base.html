@@ -122,6 +122,7 @@
 {% if active == 'learn' %}<script src="{{ prefix }}learn.js"></script>{% endif %}
 {% if supabase.url %}<script src="{{ prefix }}supabase.js"></script>
 <script src="{{ prefix }}account.js"></script>
-<script src="{{ prefix }}social.js"></script>{% endif %}
+<script src="{{ prefix }}social.js"></script>
+{% if active == 'admin' %}<script src="{{ prefix }}admin.js"></script>{% endif %}{% endif %}
 </body>
 </html>
