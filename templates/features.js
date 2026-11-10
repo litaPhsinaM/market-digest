@@ -1,13 +1,23 @@
 // Everyday features: theme, streak, reading progress, quiz, watchlist, ⌘K search, "Today in 60 seconds",
-// audio player, share cards, offline app. Personal progress lives only in this browser (localStorage).
+// audio player, share cards, offline app. Personal progress is saved in this browser (localStorage) first;
+// account.js syncs it across devices for signed-in users through the window.MD hooks below.
 (function () {
+  const MD = (window.MD = window.MD || {});
+  MD.changed = MD.changed || (() => {}); // account.js replaces these
+  MD.track = MD.track || (() => {});
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const base = document.body.dataset.base || "";
   const store = {
     get(k, d) { try { const v = localStorage.getItem("md:" + k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
-    set(k, v) { try { localStorage.setItem("md:" + k, JSON.stringify(v)); } catch (e) {} },
+    set(k, v) { try { localStorage.setItem("md:" + k, JSON.stringify(v)); } catch (e) {} MD.changed(k); },
   };
+  // Last-writer-wins log of toggles (read/unread, star/unstar) so un-doing something on one device syncs correctly.
+  function logToggle(key, on) {
+    const log = store.get("log", {});
+    log[key] = { on, t: Date.now() };
+    store.set("log", log);
+  }
   const todayLocal = () => new Date().toLocaleDateString("en-CA"); // YYYY-MM-DD
   const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
@@ -79,19 +89,26 @@
     if ($("#read-n")) {
       $("#read-n").textContent = n;
       $("#ring-fg").style.strokeDashoffset = 94.25 * (1 - (total ? n / total : 0));
-      $("#read-msg").textContent = n === 0 ? "Tap ✓ on a story when you're done" : n < total ? `${total - n} to go` : "All done today 🎉";
+      $("#read-msg").textContent = n === 0 ? "Tap ✓ on each story when you're done" : n < total ? `${total - n} to go · tap for the next` : "All done today 🎉";
     }
   }
   document.addEventListener("click", (e) => {
     const b = e.target.closest("[data-read]");
     if (!b) return;
     const read = new Set(store.get("read:" + day, []));
-    read.has(b.dataset.read) ? read.delete(b.dataset.read) : (read.add(b.dataset.read), markActive());
+    const on = !read.has(b.dataset.read);
+    on ? (read.add(b.dataset.read), markActive(), MD.track("story_read", { id: b.dataset.read })) : read.delete(b.dataset.read);
+    logToggle(`read:${day}:${b.dataset.read}`, on);
     store.set("read:" + day, [...read]);
     renderRead();
     if (read.size === total && total) toast("🎉 You've read everything today!");
   });
   renderRead();
+  $("#next-unread") && $("#next-unread").addEventListener("click", () => {
+    const read = store.get("read:" + day, []);
+    const next = $$("article.ep").find((a) => !read.includes(a.id));
+    (next || $("#quiz") || $$("article.ep")[0])?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
 
   // ---------- quiz ----------
   const quiz = $("#quiz");
@@ -128,10 +145,18 @@
         show(q, +o.dataset.opt, true);
         markActive();
         const { done, right } = score();
-        if (done === qs.length) toast(right === qs.length ? "🏆 Perfect score!" : `Quiz done: ${right}/${qs.length}. See you tomorrow!`);
+        if (done === qs.length) {
+          toast(right === qs.length ? "🏆 Perfect score!" : `Quiz done: ${right}/${qs.length}. See you tomorrow!`);
+          MD.track("quiz_done", { right, of: qs.length });
+        }
       }));
     });
     score();
+    MD.refreshQuiz = () => {  // answers arriving from another device
+      Object.assign(answers, store.get(key, {}));
+      qs.forEach((q) => { if (q.dataset.q in answers && !q.classList.contains("done")) show(q, answers[q.dataset.q], false); });
+      score();
+    };
   }
 
   // ---------- watchlist (stars) ----------
@@ -159,11 +184,17 @@
     const stars = store.get("stars", []);
     const i = stars.indexOf(b.dataset.star);
     i < 0 ? stars.push(b.dataset.star) : stars.splice(i, 1);
+    logToggle("star:" + b.dataset.star, i < 0);
     store.set("stars", stars);
+    if (i < 0) MD.track("star", { sym: b.dataset.star });
     renderStars();
     toast(i < 0 ? `★ ${b.dataset.star} added to your watchlist` : `${b.dataset.star} removed from your watchlist`);
   }, true);
   renderStars();
+
+  // Redraw everything personal, e.g. after account.js merges in progress from another device.
+  Object.assign(MD, { store, toast, todayLocal, logToggle,
+    refresh() { renderStreak(false); renderRead(); renderStars(); MD.refreshQuiz && MD.refreshQuiz(); } });
 
   // ---------- ⌘K search ----------
   const pal = $("#palette"), palQ = $("#pal-q"), palRes = $("#pal-res"), palHint = $("#pal-hint");
@@ -254,6 +285,7 @@
     if (!slides.length) return;
     opener = document.activeElement;
     cur = 0; paused = false; stories.hidden = false; document.body.classList.add("noscroll");
+    MD.track("stories_open");
     renderSlide(); markActive();
     $("#st-x").focus();
   }
@@ -294,7 +326,7 @@
     const playBtn = $("#pl-play"), seek = $("#pl-seek");
     const speeds = [1, 1.25, 1.5, 0.75];
     const sync = () => { playBtn.textContent = audio.paused ? "▶" : "❚❚"; playBtn.setAttribute("aria-label", audio.paused ? "Play" : "Pause"); };
-    $$("[data-listen]").forEach((b) => b.addEventListener("click", () => { player.hidden = false; audio.play(); markActive(); }));
+    $$("[data-listen]").forEach((b) => b.addEventListener("click", () => { player.hidden = false; audio.play(); markActive(); MD.track("listen"); }));
     playBtn.addEventListener("click", () => (audio.paused ? audio.play() : audio.pause()));
     audio.addEventListener("play", sync); audio.addEventListener("pause", sync);
     audio.addEventListener("loadedmetadata", () => ($("#pl-dur").textContent = fmt(audio.duration)));
@@ -360,7 +392,7 @@
   }
   document.addEventListener("click", (e) => {
     const b = e.target.closest("[data-share]");
-    if (b) shareCard(b.dataset.kind, b.dataset.title, b.dataset.text);
+    if (b) { shareCard(b.dataset.kind, b.dataset.title, b.dataset.text); MD.track("share"); }
   });
 
   // ---------- offline / installable app ----------

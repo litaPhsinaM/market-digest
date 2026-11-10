@@ -95,13 +95,14 @@ def build(root: Path):
     env.filters["qf"] = _quote_fmt
     env.filters["initials"] = _initials
     env.filters["slug"] = _slug
+    env.globals["supabase"] = cfg.get("supabase") or {"url": "", "key": ""}
     markets = {p.stem: json.loads(p.read_text()) for p in (data / "market").glob("*.json")}
     src_index = {s["id"]: n for n, s in enumerate(srcs)}
 
     if out.exists():
         shutil.rmtree(out)
     (out / "days").mkdir(parents=True)
-    for asset in ("style.css", "app.js", "features.js", "manifest.webmanifest"):
+    for asset in ("style.css", "app.js", "features.js", "account.js", "supabase.js", "manifest.webmanifest"):
         shutil.copy(root / "templates" / asset, out / asset)
     shutil.copytree(root / "templates" / "icons", out / "icons")
     version = dt.datetime.now().strftime("%Y%m%d%H%M%S")

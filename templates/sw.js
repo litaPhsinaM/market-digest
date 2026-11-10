@@ -1,7 +1,7 @@
 // Offline support: pages are fetched fresh when online (network first) and served from cache when offline.
 const CACHE = "digest-__VERSION__";
 const CORE = ["./", "./index.html", "./style.css", "./app.js", "./features.js", "./search.json",
-              "./glossary.html", "./archive.html", "./icons/icon-192.png"];
+              "./glossary.html", "./archive.html", "./icons/icon-192.png", "./account.js", "./supabase.js"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE)).then(() => self.skipWaiting()));

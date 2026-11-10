@@ -35,10 +35,10 @@
   </a>
   {% endif %}
   {% if good %}
-  <div class="act progress" title="Stories you've read today">
+  <button class="act progress" type="button" id="next-unread" title="Go to the next story you haven't read">
     <svg class="ring" viewBox="0 0 36 36" aria-hidden="true"><circle class="ring-bg" cx="18" cy="18" r="15"/><circle class="ring-fg" id="ring-fg" cx="18" cy="18" r="15"/></svg>
-    <span><b><span id="read-n">0</span> / {{ good|length }} read</b><small id="read-msg">Tap ✓ on a story when you're done</small></span>
-  </div>
+    <span><b><span id="read-n">0</span> / {{ good|length }} read</b><small id="read-msg">Tap ✓ on each story when you're done</small></span>
+  </button>
   {% endif %}
 </div>
 
@@ -132,12 +132,13 @@
       <div class="ep-meta">{{ 'Video' if it.kind == 'youtube' else 'Podcast' }} · {{ it.duration|minutes }} min · {{ it.published }}</div>
     </div>
     <span class="level {{ s.level }}" title="How much background this assumes">{{ s.level }}</span>
+    <button class="readtick" type="button" data-read="{{ it.id }}" aria-pressed="false" aria-label="Mark this story as read"><span class="lbl" hidden>Mark as read</span>✓</button>
   </header>
 
   <h3 class="ep-title">{{ s.headline }}</h3>
   <p class="ep-orig">Episode: “{{ it.title }}”</p>
   {% if s.segments and s.segments|length > 1 %}
-  <div class="segs"><span>In this episode</span>{% for g in s.segments %}<span class="seg">{{ g }}</span>{% endfor %}</div>
+  <div class="segs"><span>In this episode</span>{% for g in s.segments %}<span class="seg" title="{{ g }}">{{ g.split(". ")[0].split(", ")[0]|truncate(48, False, "…", 0) }}</span>{% endfor %}</div>
   {% endif %}
   <p class="tldr">{{ s.tldr }}</p>
 

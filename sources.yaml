@@ -144,6 +144,12 @@ news:
   - {name: Federal Reserve, url: "https://www.federalreserve.gov/feeds/press_all.xml"}
   - {name: SEC, url: "https://www.sec.gov/news/pressreleases.rss"}
 
+# Optional accounts + sync. Both values are public by design (the key is Supabase's "publishable" key;
+# row-level security in supabase/migrations keeps each user's data private).
+supabase:
+  url: https://ndyjrfbpgpfttmvmeero.supabase.co
+  key: sb_publishable_leFURZvh0a0GLK3Zq0-GbA_Qg_pHBk2
+
 # Companies shown every day in "Companies in the news", in addition to any company
 # an episode or hot topic discusses. Use the exchange ticker symbol.
 watchlist: [NVDA, AAPL, MSFT, GOOGL, AMZN, TSLA]

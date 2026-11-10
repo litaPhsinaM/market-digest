@@ -19,7 +19,7 @@
 <link rel="icon" href="{{ prefix }}icons/icon-192.png">
 <link rel="stylesheet" href="{{ prefix }}style.css">
 </head>
-<body data-base="{{ prefix }}">
+<body data-base="{{ prefix }}" data-sb-url="{{ supabase.url }}" data-sb-key="{{ supabase.key }}">
 <header class="appbar">
   <div class="appbar-in">
     <a class="brand" href="{{ prefix }}index.html">
@@ -39,6 +39,7 @@
         <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M14 14l4 4"/></svg>
         <span class="kbd">⌘K</span>
       </button>
+      <button class="tool acct-btn" type="button" id="acct-btn" hidden></button>
       <button class="tool" type="button" id="theme-btn" aria-label="Switch theme">
         <svg class="i-sun" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.5"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M4.3 15.7l1.4-1.4M14.3 5.7l1.4-1.4"/></svg>
         <svg class="i-moon" viewBox="0 0 20 20" aria-hidden="true"><path d="M16 12.5A6.5 6.5 0 0 1 7.5 4a6.5 6.5 0 1 0 8.5 8.5z"/></svg>
@@ -68,9 +69,41 @@
   <p class="pal-hint" id="pal-hint">Try “inflation”, “P/E ratio” or “Nvidia”.</p>
 </dialog>
 
+<dialog class="acct" id="acct" aria-labelledby="acct-h">
+  <button class="close" type="button" data-acct-close aria-label="Close">×</button>
+  <div id="acct-out">
+    <div class="acct-badge" aria-hidden="true">🔥</div>
+    <h2 id="acct-h">Keep your streak everywhere</h2>
+    <p class="muted">Sign in to sync your streak, stories read, quiz scores and watchlist between your phone and computer. Optional: everything works without an account.</p>
+    <button class="acct-google" id="acct-google" type="button" hidden>
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>
+      Continue with Google
+    </button>
+    <form id="acct-email-form" class="acct-form">
+      <label for="acct-email-in">Email</label>
+      <div class="acct-row"><input id="acct-email-in" type="email" required placeholder="you@example.com" autocomplete="email"><button class="btn" type="submit">Send link</button></div>
+    </form>
+    <form id="acct-code-form" class="acct-form" hidden>
+      <label for="acct-code-in">6-digit code from the email</label>
+      <div class="acct-row"><input id="acct-code-in" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" placeholder="123456"><button class="btn" type="submit">Verify</button></div>
+    </form>
+    <p class="acct-msg" id="acct-msg" hidden></p>
+    <p class="acct-fine">No password needed. We only store your progress; see <a href="{{ prefix }}about.html">About</a>.</p>
+  </div>
+  <div id="acct-in" hidden>
+    <h2 id="acct-name"></h2>
+    <p class="muted" id="acct-email"></p>
+    <div class="acct-stats" id="acct-stats"></div>
+    <p class="acct-status"><span class="dot" aria-hidden="true"></span><span id="acct-status">Synced across your devices</span></p>
+    <button class="btn ghost" type="button" id="acct-signout">Sign out</button>
+  </div>
+</dialog>
+
 <div class="tip" id="tip" role="tooltip" hidden></div>
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 <script src="{{ prefix }}app.js"></script>
 <script src="{{ prefix }}features.js"></script>
+{% if supabase.url %}<script src="{{ prefix }}supabase.js"></script>
+<script src="{{ prefix }}account.js"></script>{% endif %}
 </body>
 </html>

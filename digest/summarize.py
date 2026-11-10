@@ -1,5 +1,6 @@
 """Turn an episode/video into a learner-focused summary, and a set of summaries into a daily brief."""
 import json
+import re
 import os
 import time
 import urllib.request
@@ -309,6 +310,8 @@ def summarize_item(item, transcript: str | None = None, audio: Path | None = Non
     s = _summarize_item(item, transcript, audio)
     # Models don't always respect list lengths; keep the page skimmable.
     s.key_points, s.numbers, s.glossary = s.key_points[:6], s.numbers[:5], s.glossary[:6]
+    # Segments are short tags ("Nvidia CEO affair probe"); models sometimes write whole paragraphs.
+    s.segments = [" ".join(re.split(r"[.,;:]\s", g, maxsplit=1)[0].split()[:9]) for g in s.segments][:10]
     d = s.model_dump()
     problems = checks.check_item(d, transcript) if transcript else []
     if problems:
