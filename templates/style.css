@@ -725,3 +725,6 @@ button.act.progress { cursor: pointer; font: inherit; }
 .tryit { display: flex; gap: 12px; background: var(--warn-soft); border-radius: 12px; padding: 12px 16px; margin: 16px 0; }
 .tryit p { font-size: .92rem; margin-top: 2px; }
 .lquiz { margin-top: 10px; }
+/* right-answer bounce: subtle, so full-width options never spill off narrow screens */
+@keyframes nudge { 0% { transform: scale(1); } 40% { transform: scale(1.03); } 100% { transform: scale(1); } }
+.q.burst .q-opt.right { animation: nudge .45s cubic-bezier(.3, 1.6, .5, 1); }
