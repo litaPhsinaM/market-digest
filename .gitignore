@@ -5,3 +5,5 @@ __pycache__/
 site/
 data/transcripts/
 .venv-tts/
+site.tmp/
+site.old/

@@ -8,8 +8,13 @@
   const $ = (s, r = document) => r.querySelector(s);
   const native = !!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform());
   const platform = native ? window.Capacitor.getPlatform() : matchMedia("(display-mode: standalone)").matches ? "pwa" : "web";
-  const sb = supabase.createClient(url, key, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, flowType: "pkce" } });
+  const sb = supabase.createClient(url, key, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, flowType: "implicit" } });
+  // "implicit" (tokens in the link) rather than PKCE: a PKCE link only works in the same browser storage that asked
+  // for it, so opening the email on another device or tab silently failed.
   let user = null, channel = null;
+  // Where sign-in links should come back to. A page opened as a local file can't be returned to, so the
+  // email's 6-digit code is the way in there (and in the native app).
+  const here = /^https?:$/.test(location.protocol) ? location.origin + location.pathname : undefined;
 
   // ---------- anonymous usage events ----------
   let device;
@@ -130,7 +135,7 @@
     if (s.external && s.external.google && !native) $("#acct-google").hidden = false;
   }).catch(() => {});
   $("#acct-google") && $("#acct-google").addEventListener("click", () => {
-    sb.auth.signInWithOAuth({ provider: "google", options: { redirectTo: location.origin + location.pathname } });
+    sb.auth.signInWithOAuth({ provider: "google", options: { redirectTo: here } });
   });
 
   // Email: a sign-in link, or the 6-digit code from the same email (works inside the app and across devices).
@@ -139,7 +144,7 @@
     e.preventDefault();
     email = $("#acct-email-in").value.trim();
     const b = e.submitter || $("#acct-email-form button"); b.disabled = true;
-    const { error } = await sb.auth.signInWithOtp({ email, options: { emailRedirectTo: native ? undefined : location.origin + location.pathname } });
+    const { error } = await sb.auth.signInWithOtp({ email, options: { emailRedirectTo: native ? undefined : here } });
     b.disabled = false;
     if (error) { setMsg(error.message); return; }
     $("#acct-code-form").hidden = false;
@@ -157,6 +162,13 @@
     MD.toast("Signed out. Your progress stays on this device.");
     dlg.close();
   });
+
+  // A link that failed (expired, already used) comes back with an error in the URL; say so instead of failing silently.
+  const urlErr = new URLSearchParams(location.hash.slice(1) || location.search).get("error_description");
+  if (urlErr) {
+    setTimeout(() => MD.toast("Sign-in link didn't work: " + urlErr.replace(/\+/g, " ") + ". Please request a new one."), 400);
+    history.replaceState(null, "", location.pathname);
+  }
 
   sb.auth.onAuthStateChange((event, session) => {
     const was = user;

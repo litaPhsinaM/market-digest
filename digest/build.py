@@ -67,7 +67,9 @@ def _slug(text):
 
 
 def build(root: Path):
-    data, out = root / "data", root / "site"
+    # Build into a temporary folder and swap it in at the end, so the live site is never half-built,
+    # and a failed build leaves the previous site untouched.
+    data, final, out = root / "data", root / "site", root / "site.tmp"
     items = [json.loads(p.read_text()) for p in sorted((data / "items").glob("*.json"))]
     briefs = {p.stem: json.loads(p.read_text()) for p in (data / "briefs").glob("*.json")}
     cfg = yaml.safe_load((root / "sources.yaml").read_text())
@@ -157,4 +159,11 @@ def build(root: Path):
     render("sources.html", "sources.html", "", sources=srcs, feeds=feeds)
     render("about.html", "about.html", "", n_podcasts=len(srcs), n_feeds=len(feeds))
     (out / "search.json").write_text(json.dumps(_search_index(items, hots, glossary, markets), separators=(",", ":")))
-    print(f"Built site: {len(dates)} days, {len(items)} items, {len(glossary)} glossary terms → {out}/index.html")
+    old = root / "site.old"
+    if old.exists():
+        shutil.rmtree(old)
+    if final.exists():
+        final.rename(old)
+    out.rename(final)
+    shutil.rmtree(old, ignore_errors=True)
+    print(f"Built site: {len(dates)} days, {len(items)} items, {len(glossary)} glossary terms → {final}/index.html")
