@@ -1,4 +1,5 @@
 """Daily market snapshot: index strip + company cards (price history, key stats, headlines). Free, via yfinance."""
+import concurrent.futures
 import datetime as dt
 import math
 import re
@@ -25,6 +26,24 @@ def tickers_from_summaries(items: list[dict]) -> dict[str, list[str]]:
     return found
 
 
+_pool = concurrent.futures.ThreadPoolExecutor(max_workers=4)
+
+
+def _with_timeout(fn, secs: int = 30):
+    """Yahoo calls occasionally hang for many minutes; give up on any single call after `secs`."""
+    return _pool.submit(fn).result(timeout=secs)
+
+
+_GENERIC = {"inc", "corp", "corporation", "company", "co", "the", "group", "holdings", "ltd", "plc", "class", "trust", "fund", "etf"}
+
+
+def name_matches(company_name: str, text: str) -> bool:
+    """True if the company's distinctive name word appears in text, e.g. 'NVIDIA Corporation' in a story about Nvidia.
+    Guards against models guessing a real ticker that belongs to a different company."""
+    words = [w for w in re.findall(r"[a-z0-9&]+", company_name.lower()) if w not in _GENERIC and len(w) > 1]
+    return bool(words) and re.search(r"\b" + re.escape(words[0]), text.lower()) is not None
+
+
 def _num(x):
     return None if x is None or (isinstance(x, float) and math.isnan(x)) else x
 
@@ -45,9 +64,16 @@ def _news(t, limit=3):
     return out
 
 
+def _safe_news(t):
+    try:
+        return _with_timeout(lambda: _news(t))
+    except Exception:
+        return []
+
+
 def snapshot(tickers: list[str]) -> dict:
     symbols = [s for s, _, _ in INDICES] + tickers
-    hist = yf.download(symbols, period="1y", interval="1d", auto_adjust=True, progress=False)["Close"]
+    hist = yf.download(symbols, period="1y", interval="1d", auto_adjust=True, progress=False, timeout=30)["Close"]
 
     def quote(sym):
         if sym not in hist or hist[sym].dropna().empty:
@@ -63,24 +89,24 @@ def snapshot(tickers: list[str]) -> dict:
         if q:
             indices.append({**q, "name": name, "explain": explain})
 
-    companies = []
-    for sym in tickers:
+    def company(sym):
         q = quote(sym)
         if not q:  # unlisted (e.g. pre-IPO) or bad ticker
-            continue
+            return None
         t = yf.Ticker(sym)
         try:
-            info = t.info
+            info = _with_timeout(lambda: t.info)
         except Exception:
             info = {}
         try:
-            cal = t.calendar or {}
+            cal = _with_timeout(lambda: t.calendar) or {}
             earn = cal.get("Earnings Date") or []
             next_earn = earn[0].isoformat() if earn else None
         except Exception:
             next_earn = None
-        companies.append({
+        return {
             **q, "name": info.get("shortName") or info.get("longName") or sym,
+            "quote_type": info.get("quoteType"),
             "exchange": info.get("fullExchangeName") or info.get("exchange", ""),
             "sector": info.get("sector"), "website": info.get("website"),
             "stats": {
@@ -90,7 +116,27 @@ def snapshot(tickers: list[str]) -> dict:
                 "high_52w": _num(info.get("fiftyTwoWeekHigh")), "low_52w": _num(info.get("fiftyTwoWeekLow")),
             },
             "next_earnings": next_earn,
-            "news": _news(t),
-        })
+            "news": _safe_news(t),
+        }
+
+    # Fetch companies in parallel (each needs 3 Yahoo calls); a separate pool avoids nesting in _pool.
+    with concurrent.futures.ThreadPoolExecutor(max_workers=6) as ex:
+        companies = [c for c in ex.map(company, tickers) if c]
     return {"as_of": dt.datetime.now().astimezone().isoformat(timespec="minutes"),
-            "indices": indices, "companies": companies}
+            "indices": indices, "companies": companies, "movers": movers()}
+
+
+def movers(count: int = 5) -> dict:
+    """Biggest US gainers/losers and most-traded stocks today (large enough to matter: > $2B market cap)."""
+    out = {}
+    for key in ("day_gainers", "day_losers", "most_actives"):
+        try:
+            quotes = _with_timeout(lambda: yf.screen(key, count=count * 3)["quotes"])
+        except Exception as e:
+            print(f"! movers {key}: {e!r}")
+            continue
+        out[key] = [{"symbol": q["symbol"], "name": q.get("shortName") or q["symbol"],
+                     "price": q.get("regularMarketPrice"), "change_pct": q.get("regularMarketChangePercent", 0),
+                     "change": q.get("regularMarketChange", 0)}
+                    for q in quotes if (q.get("marketCap") or 0) > 2e9][:count]
+    return out

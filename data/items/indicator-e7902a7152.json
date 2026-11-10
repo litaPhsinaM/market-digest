@@ -13,72 +13,73 @@
  "model": "qwen3:14b",
  "summary": {
   "worth_reading": true,
-  "quality_note": "The episode provides a clear explanation of how streaming services have changed the economics of sitcom production and why sitcoms are less common now.",
-  "headline": "Why Sitcoms Are Less Common Now",
-  "tldr": "Streaming services have changed the way sitcoms are made and sold, making them less profitable and harder to produce.",
+  "quality_note": "This digest explains why sitcoms are less common now, based on a conversation with Mike Schur, a TV show creator. It's a good example of how economics and technology can change industries.",
+  "headline": "Why Are There Fewer Sitcoms on TV Now?",
+  "tldr": "Streaming services have changed how TV shows are made and sold, making it harder for sitcoms to be profitable. This has led to fewer sitcoms being created, even though they are still popular with audiences.",
   "key_points": [
    {
-    "point": "Sitcoms used to be popular and profitable, especially through syndication (reruns on other channels).",
-    "why_it_matters": "Syndication allowed networks to make money from reruns, which helped offset the costs of producing new episodes."
+    "point": "Sitcoms used to be a big part of TV, but now they make up less than 2% of new shows in the 2020s, down from 12% in the 1990s.",
+    "why_it_matters": "This shows a big shift in what kinds of TV shows are being made."
    },
    {
-    "point": "Streaming services buy shows for fewer episodes and pay less per episode.",
-    "why_it_matters": "This makes sitcoms more expensive to produce and less profitable for studios."
+    "point": "In the past, sitcoms could lose money on their first run but still make money later through syndication (reruns on other channels).",
+    "why_it_matters": "This gave creators a chance to recoup costs over time."
    },
    {
-    "point": "Streaming services value shows based on minutes watched, not the number of households tuning in.",
-    "why_it_matters": "Hour-long shows are more valuable than half-hour sitcoms, which makes sitcoms less attractive to streamers."
+    "point": "Streaming services usually buy fewer episodes of a show, which makes each episode more expensive to produce.",
+    "why_it_matters": "This changes how TV studios calculate their costs and profits."
    },
    {
-    "point": "Comedies often need time to develop and find their rhythm, but streaming services expect quick results.",
+    "point": "Streaming services value shows based on how many minutes people watch, not how many people watch them. This makes sitcoms (which are shorter) less valuable.",
+    "why_it_matters": "This affects what kinds of shows are made and how they are structured."
+   },
+   {
+    "point": "Comedies often need time to develop and find their rhythm, but streaming services want shows to be successful quickly.",
     "why_it_matters": "This makes it harder for sitcoms to succeed in the streaming era."
-   },
-   {
-    "point": "Sitcoms are harder to sell internationally because humor is culturally specific.",
-    "why_it_matters": "This further reduces the profitability of sitcoms compared to dramas, which are easier to translate and sell globally."
-   },
-   {
-    "point": "Mike Schur, a sitcom creator, has had to adapt his approach to fit the new streaming model.",
-    "why_it_matters": "Even successful creators are finding it harder to make sitcoms in the current environment."
    }
   ],
   "numbers": [
    {
-    "figure": "In the 1990s, sitcoms made up about 12% of new shows.",
-    "context": "In the 2020s, sitcoms make up less than 2% of new shows."
+    "figure": "12%",
+    "context": "Percentage of new shows that were sitcoms in the 1990s."
    },
    {
-    "figure": "Close to a quarter of Americans watched at least one Seinfeld episode this year.",
-    "context": "Seinfeld ended in 1998."
+    "figure": "less than 2%",
+    "context": "Percentage of new shows that are sitcoms in the 2020s."
    },
    {
-    "figure": "Half a million accounts watched episodes of The Office daily.",
-    "context": "The Office ended shortly after Barack Obama was sworn in for his second term."
+    "figure": "22 episodes",
+    "context": "Number of episodes that sitcoms used to be made with in the past."
+   },
+   {
+    "figure": "8 episodes",
+    "context": "Number of episodes that some sitcoms are now made with, due to changes in streaming economics."
    }
   ],
-  "lesson": "The way we watch TV has changed, and that has affected what kinds of shows are made. Sitcoms are less common now because of changes in how streaming services operate and how they value different types of content.",
+  "lesson": "The way TV is made and sold has changed a lot with the rise of streaming services. These changes have made it harder for sitcoms to be profitable, even though they are still popular with audiences.",
   "opinions_and_predictions": [
-   "Mike Schur says the economics of TV have changed dramatically in the last 15 years, and one of the casualties has been comedy.",
-   "Mike Schur says it's unlikely that anyone will be able to make a sitcom the old way anymore, with 22-episode seasons and casual hangout shows."
+   "Mike Schur said that the economics of TV have changed dramatically in the last 15 years, and one of the casualties has been the comedy.",
+   "Mike Schur said that it's unlikely anyone would be able to make a sitcom the old way, with 22 episodes and a casual hangout format, in today's market.",
+   "Mike Schur said that the streaming world system does not give comedies the time they need to experiment and find their footing."
   ],
   "tickers": [],
   "glossary": [
    {
     "term": "syndication",
-    "definition": "When reruns of a show are sold to other channels for broadcasting.",
-    "example": "In the past, networks would sell reruns of popular shows to cable channels."
+    "definition": "When reruns of a TV show are sold to other channels for broadcasting, usually after the show has finished its initial run on a network or streaming service. This can be a way for studios to make money from a show long after it has been created.",
+    "example": "Shows like Seinfeld and The Office became very popular through syndication."
    },
    {
     "term": "amortization",
-    "definition": "An accounting principle where the cost of a big purchase is spread out over time.",
-    "example": "If a TV studio spends $3 million on a set, they used to spread that cost over 22 episodes, but now they might spread it over only 8 episodes."
+    "definition": "An accounting principle where the cost of a large purchase is spread out over time. In TV production, this means spreading the cost of making a show over the number of episodes.",
+    "example": "If a set costs $3 million, it might be spread over 22 episodes, but now it might be spread over 8 episodes, making each episode more expensive."
    }
   ],
   "level": "beginner",
   "topics": [
-   "media",
-   "economics",
-   "entertainment"
+   "TV and media",
+   "Economics",
+   "Streaming services"
   ]
  }
 }

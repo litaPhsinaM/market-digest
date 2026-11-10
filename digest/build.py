@@ -46,12 +46,14 @@ def build(root: Path):
     data, out = root / "data", root / "site"
     items = [json.loads(p.read_text()) for p in sorted((data / "items").glob("*.json"))]
     briefs = {p.stem: json.loads(p.read_text()) for p in (data / "briefs").glob("*.json")}
-    srcs = yaml.safe_load((root / "sources.yaml").read_text())["sources"]
+    cfg = yaml.safe_load((root / "sources.yaml").read_text())
+    srcs, feeds = cfg["sources"], cfg.get("news", [])
+    hots = {p.stem: json.loads(p.read_text()) for p in (data / "hot").glob("*.json")} if (data / "hot").exists() else {}
 
     days = defaultdict(list)
     for it in items:
         days[it["digest_date"]].append(it)
-    dates = sorted(days, reverse=True)
+    dates = sorted(set(days) | set(hots), reverse=True)
 
     glossary = {}
     for it in sorted(items, key=lambda i: i["digest_date"]):
@@ -79,11 +81,21 @@ def build(root: Path):
     def day_ctx(date):
         its = sorted(days[date], key=lambda i: (not i["summary"]["worth_reading"], i["source_name"]))
         mkt = markets.get(date)
+        hot = hots.get(date)
+        if hot:  # one link per outlet, so "Bloomberg ×3" reads as three different newsrooms
+            for t in hot["topics"]:
+                by_src = {}
+                for i in t["headline_ids"]:
+                    h = hot["headlines"].get(i)
+                    if h:
+                        by_src.setdefault(h["source"], h)
+                t["links"] = list(by_src.values())[:4]
         if mkt:
             for c in mkt["companies"]:
                 if c.get("next_earnings") and c["next_earnings"] < date:
                     c["next_earnings"] = None
-        return {"date": date, "brief": briefs.get(date), "items": its, "market": mkt,
+        return {"date": date, "brief": briefs.get(date), "items": its, "market": mkt, "hot": hots.get(date),
+                "n_podcasts": len(srcs), "n_feeds": len(feeds),
                 "by_id": {i["id"]: i for i in its}, "src_index": src_index,
                 "pretty_date": dt.date.fromisoformat(date).strftime("%A, %B %-d, %Y"),
                 "listen_min": sum(_minutes(i["duration"]) for i in its)}
@@ -102,5 +114,6 @@ def build(root: Path):
     render("archive.html", "archive.html", "",
            days=[{"date": d, **day_ctx(d)} for d in dates])
     render("glossary.html", "glossary.html", "", terms=glossary)
-    render("sources.html", "sources.html", "", sources=srcs)
+    render("sources.html", "sources.html", "", sources=srcs, feeds=feeds)
+    render("about.html", "about.html", "", n_podcasts=len(srcs), n_feeds=len(feeds))
     print(f"Built site: {len(dates)} days, {len(items)} items, {len(glossary)} glossary terms → {out}/index.html")

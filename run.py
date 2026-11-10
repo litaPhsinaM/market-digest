@@ -10,6 +10,7 @@ import argparse
 import datetime as dt
 import json
 import os
+import re
 import sys
 import tempfile
 import traceback
@@ -22,6 +23,7 @@ from digest import build, sources, summarize
 ROOT = Path(__file__).parent
 DATA = ROOT / "data"
 ITEMS, BRIEFS, TRANSCRIPTS, MARKET = DATA / "items", DATA / "briefs", DATA / "transcripts", DATA / "market"
+HOT = DATA / "hot"
 STATE = DATA / "state.json"
 
 
@@ -92,15 +94,47 @@ def redo(ids: list[str], today: str):
     build.build(ROOT)
 
 
+def write_hot(today: str, cfg: dict):
+    from digest import news
+    headlines = news.collect(cfg.get("news", []))
+    print(f"Picking hot topics from {len(headlines)} headlines")
+    if not headlines:
+        return
+    topics = summarize.hot_topics(headlines[:150])
+    used = {i for t in topics.topics for i in t.headline_ids}
+    (HOT / f"{today}.json").write_text(json.dumps({
+        "date": today, "topics": topics.model_dump()["topics"],
+        "headlines": {h["id"]: h for h in headlines if h["id"] in used},
+        "latest": headlines[:12], "feeds": len(cfg.get("news", [])), "scanned": len(headlines),
+    }, indent=1))
+
+
 def write_market(today: str, cfg: dict):
     from digest import market
     todays = [r for r in (json.loads(p.read_text()) for p in ITEMS.glob("*.json")) if r["digest_date"] == today]
     mentioned = market.tickers_from_summaries(todays)
-    tickers = list(dict.fromkeys(list(mentioned) + cfg.get("watchlist", [])))
+    # Text each ticker was mentioned in, so we can check the ticker really is the company being discussed.
+    context = {sym: " ".join(json.dumps(r["summary"]) for r in todays if r["id"] in ids) for sym, ids in mentioned.items()}
+    hot = HOT / f"{today}.json"
+    if hot.exists():
+        for t in json.loads(hot.read_text())["topics"]:
+            for sym in t["tickers"]:
+                sym = sym.strip().upper()
+                if re.fullmatch(r"[A-Z]{1,5}(\.[A-Z])?", sym):
+                    mentioned.setdefault(sym, [])
+                    context[sym] = context.get(sym, "") + f" {t['title']} {t['explanation']}"
+    watchlist = cfg.get("watchlist", [])
+    tickers = list(dict.fromkeys(list(mentioned) + watchlist))
     print(f"Fetching market snapshot for {len(tickers)} companies")
     snap = market.snapshot(tickers)
+    kept = []
     for c in snap["companies"]:
+        if c["symbol"] not in watchlist and not market.name_matches(c["name"], context.get(c["symbol"], "")):
+            print(f"  dropped {c['symbol']} ({c['name']}): not the company the story is about")
+            continue
         c["mentioned_in"] = mentioned.get(c["symbol"], [])
+        kept.append(c)
+    snap["companies"] = kept
     (MARKET / f"{today}.json").write_text(json.dumps(snap, indent=1))
 
 
@@ -109,13 +143,14 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--build-only", action="store_true")
     ap.add_argument("--market-only", action="store_true", help="refresh today's market snapshot, then build")
+    ap.add_argument("--hot-only", action="store_true", help="refresh today's hot topics and market snapshot, then build")
     ap.add_argument("--redo", nargs="*", metavar="ID",
                     help="re-summarize saved items from their transcripts (all of today's if no ids), redo the brief, build")
     ap.add_argument("--source", help="only this source id")
     ap.add_argument("--limit", type=int, default=2, help="max new items per source")
     args = ap.parse_args()
 
-    for d in (ITEMS, BRIEFS, TRANSCRIPTS, MARKET):
+    for d in (ITEMS, BRIEFS, TRANSCRIPTS, MARKET, HOT):
         d.mkdir(parents=True, exist_ok=True)
     if args.build_only:
         build.build(ROOT)
@@ -124,7 +159,9 @@ def main():
     cfg = yaml.safe_load((ROOT / "sources.yaml").read_text())
     state = load_state()
     today = dt.date.today().isoformat()
-    if args.market_only:
+    if args.market_only or args.hot_only:
+        if args.hot_only:
+            write_hot(today, cfg)
         write_market(today, cfg)
         build.build(ROOT)
         return
@@ -165,6 +202,10 @@ def main():
         return
     if new_count:
         write_brief(today)
+    try:
+        write_hot(today, cfg)
+    except Exception as e:
+        print(f"! hot topics failed: {e}")
     try:
         write_market(today, cfg)
     except Exception as e:  # prices are a nice-to-have; never block the digest

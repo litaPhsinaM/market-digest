@@ -63,6 +63,36 @@ class DailyBrief(BaseModel):
     watch_for: list[str] = Field(description="Specific upcoming events the sources named (an earnings date, a Fed meeting, a data release, an IPO). Empty if none were named.")
 
 
+class HotTopic(BaseModel):
+    title: str = Field(description="Specific, factual headline for ONE story, e.g. 'October inflation came in hotter than expected'. "
+                                   "Never a category like 'AI and tech innovation' or 'Market volatility'.")
+    explanation: str = Field(description="2-3 plain-English sentences on what is being reported, using only the headlines/blurbs given.")
+    why_it_matters: str = Field(description="One sentence on why a learner/investor should care, with any jargon explained.")
+    tickers: list[str] = Field(description="US stock tickers of listed companies central to this story, e.g. ['NVDA']. Only real, "
+                                           "currently traded company tickers; no indexes, agencies or private companies. Empty if none.")
+    headline_ids: list[str] = Field(description="ids of the 2-5 headlines this topic is built from.")
+
+
+class HotTopics(BaseModel):
+    topics: list[HotTopic] = Field(description="The 3-7 biggest specific business, market, economy and tech stories, most important first. "
+                                               "Fewer is better than padding with vague topics.")
+
+
+HOT_PROMPT = """You are a finance editor picking today's hottest stories for a beginner investor, from the newsroom
+headlines below (JSON: id, source, title, blurb).
+- Each topic is ONE specific news story (an event, a company, a data release), never a broad category.
+  Group headlines about that same story together. Prefer stories reported by several outlets.
+- Focus on markets, the economy, companies, deals, central banks and technology. Skip celebrity, sport and
+  politics unless it clearly moves markets.
+- You only have headlines and short blurbs: describe what is *reported*, and don't add facts or numbers
+  that aren't in them.
+- Describe, don't prescribe: never say what investors should do.
+
+Headlines:
+{headlines}"""
+
+MAX_TRANSCRIPT_WORDS = 22000  # ~2 h of speech; keeps long shows inside the local model's context
+
 ITEM_PROMPT = """You are a patient finance teacher writing a daily study digest for a motivated beginner
 who wants to understand markets, companies and the economy.
 
@@ -75,7 +105,8 @@ Rules:
 - Write in plain English. When a jargon word is unavoidable, explain it briefly in parentheses the first time.
 - Be specific: "the Fed held rates at 4.25-4.5%" beats "the Fed made a decision". Keep negative signs on numbers.
 - Be selective: a learner has 3 minutes for this. Quality over quantity in every list.
-- This is education, not advice. Never tell the reader to buy or sell anything.
+- This is education, not advice. Describe, don't prescribe: never tell the reader to buy, sell or "be cautious",
+  and never write "investors should…". Attribute recommendations to the person who made them.
 - Set worth_reading to false if the content is mostly hype, ads or filler; be honest."""
 
 BRIEF_PROMPT = """You are a finance teacher writing today's 3-minute overview for a beginner, based ONLY on the
@@ -139,7 +170,7 @@ def _upload(path: Path):
 def _ollama_generate(prompt: str, schema):
     body = json.dumps({
         "model": OLLAMA_MODEL, "stream": False, "think": False, "format": schema.model_json_schema(),
-        "messages": [{"role": "user", "content": prompt}], "options": {"temperature": 0.3, "num_ctx": 32768},
+        "messages": [{"role": "user", "content": prompt}], "options": {"temperature": 0.3, "num_ctx": 40960},
     }).encode()
     req = urllib.request.Request("http://localhost:11434/api/chat", body, {"Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=1800) as r:
@@ -156,6 +187,10 @@ def summarize_item(item, transcript: str | None = None, audio: Path | None = Non
 
 
 def _summarize_item(item, transcript, audio) -> ItemSummary:
+    if transcript:
+        words = transcript.split()
+        if len(words) > MAX_TRANSCRIPT_WORDS:
+            transcript = " ".join(words[:MAX_TRANSCRIPT_WORDS]) + " [transcript truncated]"
     prompt = ITEM_PROMPT.format(kind="video" if item.kind == "youtube" else "podcast episode",
                                 title=item.title, source=item.source_name)
     if BACKEND == "ollama":
@@ -175,6 +210,18 @@ def _summarize_item(item, transcript, audio) -> ItemSummary:
     # No captions: let Gemini watch the YouTube video directly.
     video = types.Part(file_data=types.FileData(file_uri=item.media_url))
     return _gemini_generate([video, prompt], ItemSummary)
+
+
+def hot_topics(headlines: list[dict]) -> HotTopics:
+    slim = [{k: h[k] for k in ("id", "source", "title", "blurb")} for h in headlines]
+    prompt = HOT_PROMPT.format(headlines=json.dumps(slim, indent=0))
+    gen = _ollama_generate if BACKEND == "ollama" else (lambda p, s: _gemini_generate([p], s))
+    result = gen(prompt, HotTopics)
+    valid = {h["id"] for h in headlines}
+    for t in result.topics:  # drop hallucinated ids; a topic with no real headline behind it is dropped
+        t.headline_ids = [i for i in t.headline_ids if i in valid]
+    result.topics = [t for t in result.topics if t.headline_ids][:7]
+    return result
 
 
 def daily_brief(items: list[dict]) -> DailyBrief:

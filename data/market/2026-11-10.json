@@ -1,16 +1,12 @@
 {
- "as_of": "2026-11-10T11:54-08:00",
+ "as_of": "2026-11-10T13:01-08:00",
  "indices": [
   {
    "symbol": "^GSPC",
-   "price": 7514.71,
-   "change": -35.22990000000027,
-   "change_pct": -0.46662490651084854,
+   "price": 7520.9902,
+   "change": -28.94970000000012,
+   "change_pct": -0.38344278740549687,
    "history": [
-    [
-     "2025-11-10",
-     6832.4302
-    ],
     [
      "2025-11-11",
      6846.6099
@@ -1013,7 +1009,7 @@
     ],
     [
      "2026-11-10",
-     7514.71
+     7520.9902
     ]
    ],
    "name": "S&P 500",
@@ -1021,14 +1017,10 @@
   },
   {
    "symbol": "^IXIC",
-   "price": 25014.8223,
-   "change": -238.318299999999,
-   "change_pct": -0.943717471719141,
+   "price": 25065.875,
+   "change": -187.2655999999988,
+   "change_pct": -0.7415537059972555,
    "history": [
-    [
-     "2025-11-10",
-     23527.1699
-    ],
     [
      "2025-11-11",
      23468.3008
@@ -2031,7 +2023,7 @@
     ],
     [
      "2026-11-10",
-     25014.8223
+     25065.875
     ]
    ],
    "name": "Nasdaq",
@@ -2039,14 +2031,10 @@
   },
   {
    "symbol": "^DJI",
-   "price": 52246.3984,
-   "change": -143.35160000000178,
-   "change_pct": -0.27362527975415274,
+   "price": 52233.0781,
+   "change": -156.6719000000012,
+   "change_pct": -0.2990506730801368,
    "history": [
-    [
-     "2025-11-10",
-     47368.6289
-    ],
     [
      "2025-11-11",
      47927.9609
@@ -3049,7 +3037,7 @@
     ],
     [
      "2026-11-10",
-     52246.3984
+     52233.0781
     ]
    ],
    "name": "Dow Jones",
@@ -3057,9 +3045,9 @@
   },
   {
    "symbol": "^TNX",
-   "price": 4.992,
-   "change": 0.1280000000000001,
-   "change_pct": 2.6315789473684292,
+   "price": 4.983,
+   "change": 0.11899999999999977,
+   "change_pct": 2.4465460526315708,
    "history": [
     [
      "2025-11-10",
@@ -4067,7 +4055,7 @@
     ],
     [
      "2026-11-10",
-     4.992
+     4.983
     ]
    ],
    "name": "10-yr Treasury",
@@ -4075,9 +4063,9 @@
   },
   {
    "symbol": "BTC-USD",
-   "price": 73455.9609,
-   "change": -1767.1875,
-   "change_pct": -2.3492602178826094,
+   "price": 73784.3516,
+   "change": -1438.796800000011,
+   "change_pct": -1.9127048396714197,
    "history": [
     [
      "2025-11-10",
@@ -5541,7 +5529,7 @@
     ],
     [
      "2026-11-10",
-     73455.9609
+     73784.3516
     ]
    ],
    "name": "Bitcoin",
@@ -5551,14 +5539,10 @@
  "companies": [
   {
    "symbol": "NVDA",
-   "price": 167.275,
-   "change": -11.394999999999982,
-   "change_pct": -6.377679520904456,
+   "price": 168.7956,
+   "change": -9.87439999999998,
+   "change_pct": -5.5266133094531655,
    "history": [
-    [
-     "2025-11-10",
-     198.5742
-    ],
     [
      "2025-11-11",
      192.6983
@@ -5589,7 +5573,7 @@
     ],
     [
      "2025-11-20",
-     180.2082
+     180.2083
     ],
     [
      "2025-11-21",
@@ -6561,19 +6545,20 @@
     ],
     [
      "2026-11-10",
-     167.275
+     168.7956
     ]
    ],
    "name": "NVIDIA Corporation",
+   "quote_type": "EQUITY",
    "exchange": "NasdaqGS",
    "sector": "Technology",
    "website": "https://www.nvidia.com",
    "stats": {
     "open": 173.98,
     "high": 174.65,
-    "low": 166.24,
-    "market_cap": 4038947766272,
-    "pe": 21.146019,
+    "low": 165.89,
+    "market_cap": 4075908235264,
+    "pe": 21.339525,
     "dividend_yield": 0.56,
     "high_52w": 243.37,
     "low_52w": 164.27
@@ -6587,15 +6572,1064 @@
      "date": "2026-11-10"
     },
     {
+     "title": "Nvidia in the hot seat, Anthropic to test the IPO market, hotter-than-expected US inflation",
+     "source": "Yahoo Finance Video",
+     "url": "https://finance.yahoo.com/video/nvidia-in-the-hot-seat-anthropic-to-test-the-ipo-market-hotter-than-expected-us-inflation-184626512.html",
+     "date": "2026-11-10"
+    },
+    {
      "title": "Alleged plot to spy on Jensen Huang: Why it's bullish for AI.",
      "source": "Yahoo Finance Video",
      "url": "https://finance.yahoo.com/video/alleged-plot-to-spy-on-jensen-huang-why-its-bullish-for-ai-182150462.html",
      "date": "2026-11-10"
+    }
+   ],
+   "mentioned_in": []
+  },
+  {
+   "symbol": "IHRT",
+   "price": 0.619,
+   "change": -1.151,
+   "change_pct": -65.02824858757062,
+   "history": [
+    [
+     "2025-11-11",
+     4.3
+    ],
+    [
+     "2025-11-12",
+     4.25
+    ],
+    [
+     "2025-11-13",
+     4.18
+    ],
+    [
+     "2025-11-14",
+     4.07
+    ],
+    [
+     "2025-11-17",
+     4.01
+    ],
+    [
+     "2025-11-18",
+     3.99
+    ],
+    [
+     "2025-11-19",
+     3.93
+    ],
+    [
+     "2025-11-20",
+     3.84
+    ],
+    [
+     "2025-11-21",
+     3.87
+    ],
+    [
+     "2025-11-24",
+     3.83
+    ],
+    [
+     "2025-11-25",
+     3.72
+    ],
+    [
+     "2025-11-26",
+     3.84
+    ],
+    [
+     "2025-11-28",
+     3.93
+    ],
+    [
+     "2025-12-01",
+     3.89
+    ],
+    [
+     "2025-12-02",
+     3.72
+    ],
+    [
+     "2025-12-03",
+     3.76
+    ],
+    [
+     "2025-12-04",
+     3.74
+    ],
+    [
+     "2025-12-05",
+     3.71
+    ],
+    [
+     "2025-12-08",
+     3.71
+    ],
+    [
+     "2025-12-09",
+     4.2
+    ],
+    [
+     "2025-12-10",
+     4.715
+    ],
+    [
+     "2025-12-11",
+     5.1
+    ],
+    [
+     "2025-12-12",
+     4.74
+    ],
+    [
+     "2025-12-15",
+     4.41
+    ],
+    [
+     "2025-12-16",
+     4.54
+    ],
+    [
+     "2025-12-17",
+     4.28
+    ],
+    [
+     "2025-12-18",
+     4.36
+    ],
+    [
+     "2025-12-19",
+     4.4
+    ],
+    [
+     "2025-12-22",
+     4.62
+    ],
+    [
+     "2025-12-23",
+     4.55
+    ],
+    [
+     "2025-12-24",
+     4.51
+    ],
+    [
+     "2025-12-26",
+     4.41
+    ],
+    [
+     "2025-12-29",
+     4.22
+    ],
+    [
+     "2025-12-30",
+     4.25
+    ],
+    [
+     "2025-12-31",
+     4.16
+    ],
+    [
+     "2026-01-02",
+     4.15
+    ],
+    [
+     "2026-01-05",
+     4.1
+    ],
+    [
+     "2026-01-06",
+     4.12
+    ],
+    [
+     "2026-01-07",
+     3.91
+    ],
+    [
+     "2026-01-08",
+     3.98
+    ],
+    [
+     "2026-01-09",
+     3.84
+    ],
+    [
+     "2026-01-12",
+     3.82
+    ],
+    [
+     "2026-01-13",
+     3.91
+    ],
+    [
+     "2026-01-14",
+     3.78
+    ],
+    [
+     "2026-01-15",
+     3.84
+    ],
+    [
+     "2026-01-16",
+     3.79
+    ],
+    [
+     "2026-01-20",
+     3.68
+    ],
+    [
+     "2026-01-21",
+     3.77
+    ],
+    [
+     "2026-01-22",
+     3.85
+    ],
+    [
+     "2026-01-23",
+     3.64
+    ],
+    [
+     "2026-01-26",
+     3.6
+    ],
+    [
+     "2026-01-27",
+     3.39
+    ],
+    [
+     "2026-01-28",
+     3.19
+    ],
+    [
+     "2026-01-29",
+     3.11
+    ],
+    [
+     "2026-01-30",
+     3.24
+    ],
+    [
+     "2026-02-02",
+     3.31
+    ],
+    [
+     "2026-02-03",
+     3.21
+    ],
+    [
+     "2026-02-04",
+     3.23
+    ],
+    [
+     "2026-02-05",
+     3.18
+    ],
+    [
+     "2026-02-06",
+     3.24
+    ],
+    [
+     "2026-02-09",
+     3.34
+    ],
+    [
+     "2026-02-10",
+     3.59
+    ],
+    [
+     "2026-02-11",
+     3.6
+    ],
+    [
+     "2026-02-12",
+     3.45
+    ],
+    [
+     "2026-02-13",
+     3.49
+    ],
+    [
+     "2026-02-17",
+     3.42
+    ],
+    [
+     "2026-02-18",
+     3.5
+    ],
+    [
+     "2026-02-19",
+     3.51
+    ],
+    [
+     "2026-02-20",
+     3.61
+    ],
+    [
+     "2026-02-23",
+     3.45
+    ],
+    [
+     "2026-02-24",
+     3.155
+    ],
+    [
+     "2026-02-25",
+     3.17
+    ],
+    [
+     "2026-02-26",
+     3.19
+    ],
+    [
+     "2026-02-27",
+     3.27
+    ],
+    [
+     "2026-03-02",
+     3.1
+    ],
+    [
+     "2026-03-03",
+     2.945
+    ],
+    [
+     "2026-03-04",
+     3.08
+    ],
+    [
+     "2026-03-05",
+     3.23
+    ],
+    [
+     "2026-03-06",
+     3.24
+    ],
+    [
+     "2026-03-09",
+     3.03
+    ],
+    [
+     "2026-03-10",
+     3.09
+    ],
+    [
+     "2026-03-11",
+     2.955
+    ],
+    [
+     "2026-03-12",
+     2.77
+    ],
+    [
+     "2026-03-13",
+     2.67
+    ],
+    [
+     "2026-03-16",
+     2.76
+    ],
+    [
+     "2026-03-17",
+     2.91
+    ],
+    [
+     "2026-03-18",
+     2.66
+    ],
+    [
+     "2026-03-19",
+     2.58
+    ],
+    [
+     "2026-03-20",
+     2.49
+    ],
+    [
+     "2026-03-23",
+     2.86
+    ],
+    [
+     "2026-03-24",
+     2.73
+    ],
+    [
+     "2026-03-25",
+     2.8
+    ],
+    [
+     "2026-03-26",
+     2.84
+    ],
+    [
+     "2026-03-27",
+     2.8
+    ],
+    [
+     "2026-03-30",
+     2.8
+    ],
+    [
+     "2026-03-31",
+     2.92
+    ],
+    [
+     "2026-04-01",
+     2.99
+    ],
+    [
+     "2026-04-02",
+     3.15
+    ],
+    [
+     "2026-04-06",
+     3.2
+    ],
+    [
+     "2026-04-07",
+     3.28
+    ],
+    [
+     "2026-04-08",
+     3.5
+    ],
+    [
+     "2026-04-09",
+     3.51
+    ],
+    [
+     "2026-04-10",
+     3.6
+    ],
+    [
+     "2026-04-13",
+     3.73
+    ],
+    [
+     "2026-04-14",
+     3.89
+    ],
+    [
+     "2026-04-15",
+     3.93
+    ],
+    [
+     "2026-04-16",
+     3.74
+    ],
+    [
+     "2026-04-17",
+     4.1
+    ],
+    [
+     "2026-04-20",
+     4.18
+    ],
+    [
+     "2026-04-21",
+     4.18
+    ],
+    [
+     "2026-04-22",
+     4.18
+    ],
+    [
+     "2026-04-23",
+     4.01
+    ],
+    [
+     "2026-04-24",
+     5.42
+    ],
+    [
+     "2026-04-27",
+     5.25
+    ],
+    [
+     "2026-04-28",
+     5.34
+    ],
+    [
+     "2026-04-29",
+     5.1
+    ],
+    [
+     "2026-04-30",
+     5.97
+    ],
+    [
+     "2026-05-01",
+     6.33
+    ],
+    [
+     "2026-05-04",
+     6.15
+    ],
+    [
+     "2026-05-05",
+     6.28
+    ],
+    [
+     "2026-05-06",
+     5.87
+    ],
+    [
+     "2026-05-07",
+     5.67
+    ],
+    [
+     "2026-05-08",
+     5.68
+    ],
+    [
+     "2026-05-11",
+     5.49
+    ],
+    [
+     "2026-05-12",
+     4.85
+    ],
+    [
+     "2026-05-13",
+     5.21
+    ],
+    [
+     "2026-05-14",
+     4.765
+    ],
+    [
+     "2026-05-15",
+     4.785
+    ],
+    [
+     "2026-05-18",
+     5.18
+    ],
+    [
+     "2026-05-19",
+     4.7
+    ],
+    [
+     "2026-05-20",
+     4.75
+    ],
+    [
+     "2026-05-21",
+     4.88
+    ],
+    [
+     "2026-05-22",
+     4.41
+    ],
+    [
+     "2026-05-26",
+     4.91
+    ],
+    [
+     "2026-05-27",
+     5.04
+    ],
+    [
+     "2026-05-28",
+     4.85
+    ],
+    [
+     "2026-05-29",
+     4.31
+    ],
+    [
+     "2026-06-01",
+     4.345
+    ],
+    [
+     "2026-06-02",
+     4.18
+    ],
+    [
+     "2026-06-03",
+     3.94
+    ],
+    [
+     "2026-06-04",
+     4.21
+    ],
+    [
+     "2026-06-05",
+     3.89
+    ],
+    [
+     "2026-06-08",
+     3.99
+    ],
+    [
+     "2026-06-09",
+     3.83
+    ],
+    [
+     "2026-06-10",
+     3.9
+    ],
+    [
+     "2026-06-11",
+     3.95
+    ],
+    [
+     "2026-06-12",
+     3.99
+    ],
+    [
+     "2026-06-15",
+     3.99
+    ],
+    [
+     "2026-06-16",
+     3.99
+    ],
+    [
+     "2026-06-17",
+     3.74
+    ],
+    [
+     "2026-06-18",
+     3.59
+    ],
+    [
+     "2026-06-22",
+     3.86
+    ],
+    [
+     "2026-06-23",
+     3.91
+    ],
+    [
+     "2026-06-24",
+     3.995
+    ],
+    [
+     "2026-06-25",
+     4.11
+    ],
+    [
+     "2026-06-26",
+     4.32
+    ],
+    [
+     "2026-06-29",
+     4.49
+    ],
+    [
+     "2026-06-30",
+     4.29
+    ],
+    [
+     "2026-07-01",
+     4.35
+    ],
+    [
+     "2026-07-02",
+     4.38
+    ],
+    [
+     "2026-07-06",
+     4.22
+    ],
+    [
+     "2026-07-07",
+     4.03
+    ],
+    [
+     "2026-07-08",
+     4.03
+    ],
+    [
+     "2026-07-09",
+     4.07
+    ],
+    [
+     "2026-07-10",
+     4.12
+    ],
+    [
+     "2026-07-13",
+     4.02
+    ],
+    [
+     "2026-07-14",
+     3.8
+    ],
+    [
+     "2026-07-15",
+     3.95
+    ],
+    [
+     "2026-07-16",
+     3.87
+    ],
+    [
+     "2026-07-17",
+     3.83
+    ],
+    [
+     "2026-07-20",
+     3.95
+    ],
+    [
+     "2026-07-21",
+     3.74
+    ],
+    [
+     "2026-07-22",
+     3.67
+    ],
+    [
+     "2026-07-23",
+     3.65
+    ],
+    [
+     "2026-07-24",
+     3.54
+    ],
+    [
+     "2026-07-27",
+     3.62
+    ],
+    [
+     "2026-07-28",
+     3.55
+    ],
+    [
+     "2026-07-29",
+     3.51
+    ],
+    [
+     "2026-07-30",
+     3.5
+    ],
+    [
+     "2026-07-31",
+     3.59
+    ],
+    [
+     "2026-08-03",
+     3.98
+    ],
+    [
+     "2026-08-04",
+     3.85
+    ],
+    [
+     "2026-08-05",
+     3.81
+    ],
+    [
+     "2026-08-06",
+     3.8
+    ],
+    [
+     "2026-08-07",
+     3.86
+    ],
+    [
+     "2026-08-10",
+     3.71
+    ],
+    [
+     "2026-08-11",
+     2.935
+    ],
+    [
+     "2026-08-12",
+     2.91
+    ],
+    [
+     "2026-08-13",
+     3.0
+    ],
+    [
+     "2026-08-14",
+     2.95
+    ],
+    [
+     "2026-08-17",
+     2.96
+    ],
+    [
+     "2026-08-18",
+     3.01
+    ],
+    [
+     "2026-08-19",
+     3.11
+    ],
+    [
+     "2026-08-20",
+     2.895
+    ],
+    [
+     "2026-08-21",
+     2.79
+    ],
+    [
+     "2026-08-24",
+     2.68
+    ],
+    [
+     "2026-08-25",
+     2.68
+    ],
+    [
+     "2026-08-26",
+     2.68
+    ],
+    [
+     "2026-08-27",
+     2.69
+    ],
+    [
+     "2026-08-28",
+     2.75
+    ],
+    [
+     "2026-08-31",
+     2.72
+    ],
+    [
+     "2026-09-01",
+     2.7
+    ],
+    [
+     "2026-09-02",
+     2.84
+    ],
+    [
+     "2026-09-03",
+     2.84
+    ],
+    [
+     "2026-09-04",
+     2.805
+    ],
+    [
+     "2026-09-08",
+     2.66
+    ],
+    [
+     "2026-09-09",
+     2.59
+    ],
+    [
+     "2026-09-10",
+     2.72
+    ],
+    [
+     "2026-09-11",
+     2.7
+    ],
+    [
+     "2026-09-14",
+     2.73
+    ],
+    [
+     "2026-09-15",
+     2.635
+    ],
+    [
+     "2026-09-16",
+     2.55
+    ],
+    [
+     "2026-09-17",
+     2.43
+    ],
+    [
+     "2026-09-18",
+     2.36
+    ],
+    [
+     "2026-09-21",
+     2.405
+    ],
+    [
+     "2026-09-22",
+     2.41
+    ],
+    [
+     "2026-09-23",
+     2.35
+    ],
+    [
+     "2026-09-24",
+     2.26
+    ],
+    [
+     "2026-09-25",
+     2.29
+    ],
+    [
+     "2026-09-28",
+     2.22
+    ],
+    [
+     "2026-09-29",
+     2.175
+    ],
+    [
+     "2026-09-30",
+     2.1
+    ],
+    [
+     "2026-10-01",
+     2.1
+    ],
+    [
+     "2026-10-02",
+     1.94
+    ],
+    [
+     "2026-10-05",
+     2.05
+    ],
+    [
+     "2026-10-06",
+     2.01
+    ],
+    [
+     "2026-10-07",
+     2.02
+    ],
+    [
+     "2026-10-08",
+     1.97
+    ],
+    [
+     "2026-10-09",
+     1.92
+    ],
+    [
+     "2026-10-12",
+     1.91
+    ],
+    [
+     "2026-10-13",
+     1.86
+    ],
+    [
+     "2026-10-14",
+     1.73
+    ],
+    [
+     "2026-10-15",
+     1.77
+    ],
+    [
+     "2026-10-16",
+     1.64
+    ],
+    [
+     "2026-10-19",
+     1.51
+    ],
+    [
+     "2026-10-20",
+     1.5
+    ],
+    [
+     "2026-10-21",
+     1.53
+    ],
+    [
+     "2026-10-22",
+     1.72
+    ],
+    [
+     "2026-10-23",
+     1.87
+    ],
+    [
+     "2026-10-26",
+     1.77
+    ],
+    [
+     "2026-10-27",
+     1.72
+    ],
+    [
+     "2026-10-28",
+     1.56
+    ],
+    [
+     "2026-10-29",
+     1.76
+    ],
+    [
+     "2026-10-30",
+     1.84
+    ],
+    [
+     "2026-11-02",
+     1.81
+    ],
+    [
+     "2026-11-03",
+     2.09
+    ],
+    [
+     "2026-11-04",
+     2.05
+    ],
+    [
+     "2026-11-05",
+     1.87
+    ],
+    [
+     "2026-11-06",
+     1.77
+    ],
+    [
+     "2026-11-09",
+     1.77
+    ],
+    [
+     "2026-11-10",
+     0.619
+    ]
+   ],
+   "name": "iHeartMedia, Inc.",
+   "quote_type": "EQUITY",
+   "exchange": "NasdaqGS",
+   "sector": "Communication Services",
+   "website": "https://www.iheartmedia.com",
+   "stats": {
+    "open": 0.97,
+    "high": 1.0,
+    "low": 0.59,
+    "market_cap": 95814496,
+    "pe": null,
+    "dividend_yield": 0.0,
+    "high_52w": 6.56,
+    "low_52w": 0.59
+   },
+   "next_earnings": "2026-11-09",
+   "news": [
+    {
+     "title": "iHeartMedia: 3 Key Takeaways for Long-Term Investors",
+     "source": "Motley Fool",
+     "url": "https://www.fool.com/earnings/takeaways/2026/11/10/iheartmedia-3-key-takeaways-for-long-term-investors/",
+     "date": "2026-11-10"
     },
     {
-     "title": "Top strategist: Nvidia CEO Jensen Huang's affair highlights key risk for tech companies",
-     "source": "Yahoo Finance",
-     "url": "https://finance.yahoo.com/technology/article/top-strategist-nvidia-ceo-jensen-huangs-affair-highlights-key-risk-for-tech-companies-184212599.html",
+     "title": "iHeartMedia (IHRT) Q3 earnings report preview: what to look for",
+     "source": "StockStory",
+     "url": "https://finance.yahoo.com/media-advertising/articles/iheartmedia-ihrt-q3-earnings-report-152536771.html",
+     "date": "2026-11-10"
+    },
+    {
+     "title": "iHeartMedia Inc (IHRT) Q3 2026 Earnings Call Highlights: Podcasting Surges 24. ...",
+     "source": "GuruFocus.com",
+     "url": "https://finance.yahoo.com/media-advertising/articles/iheartmedia-inc-ihrt-q3-2026-051155663.html",
      "date": "2026-11-10"
     }
    ],
@@ -6603,21 +7637,17 @@
   },
   {
    "symbol": "AAPL",
-   "price": 348.64,
-   "change": -2.0500000000000114,
-   "change_pct": -0.5845618637543182,
+   "price": 348.51,
+   "change": -2.180000000000007,
+   "change_pct": -0.6216316404802025,
    "history": [
-    [
-     "2025-11-10",
-     268.6986
-    ],
     [
      "2025-11-11",
      274.5028
     ],
     [
      "2025-11-12",
-     272.7276
+     272.7277
     ],
     [
      "2025-11-13",
@@ -6653,7 +7683,7 @@
     ],
     [
      "2025-11-25",
-     276.2181
+     276.2182
     ],
     [
      "2025-11-26",
@@ -6681,7 +7711,7 @@
     ],
     [
      "2025-12-05",
-     278.0233
+     278.0232
     ],
     [
      "2025-12-08",
@@ -6693,11 +7723,11 @@
     ],
     [
      "2025-12-10",
-     278.0233
+     278.0232
     ],
     [
      "2025-12-11",
-     277.2752
+     277.2753
     ],
     [
      "2025-12-12",
@@ -6725,7 +7755,7 @@
     ],
     [
      "2025-12-22",
-     270.2345
+     270.2344
     ],
     [
      "2025-12-23",
@@ -6769,7 +7799,7 @@
     ],
     [
      "2026-01-08",
-     258.3369
+     258.3368
     ],
     [
      "2026-01-09",
@@ -6781,7 +7811,7 @@
     ],
     [
      "2026-01-13",
-     260.3413
+     260.3414
     ],
     [
      "2026-01-14",
@@ -6801,7 +7831,7 @@
     ],
     [
      "2026-01-21",
-     246.9778
+     246.9777
     ],
     [
      "2026-01-22",
@@ -7005,7 +8035,7 @@
     ],
     [
      "2026-04-06",
-     258.3989
+     258.3988
     ],
     [
      "2026-04-07",
@@ -7017,7 +8047,7 @@
     ],
     [
      "2026-04-09",
-     260.026
+     260.0259
     ],
     [
      "2026-04-10",
@@ -7085,7 +8115,7 @@
     ],
     [
      "2026-05-04",
-     276.3368
+     276.3369
     ],
     [
      "2026-05-05",
@@ -7093,11 +8123,11 @@
     ],
     [
      "2026-05-06",
-     286.9979
+     286.9978
     ],
     [
      "2026-05-07",
-     286.928
+     286.9279
     ],
     [
      "2026-05-08",
@@ -7613,10 +8643,11 @@
     ],
     [
      "2026-11-10",
-     348.64
+     348.51
     ]
    ],
    "name": "Apple Inc.",
+   "quote_type": "EQUITY",
    "exchange": "NasdaqGS",
    "sector": "Technology",
    "website": "https://www.apple.com",
@@ -7624,8 +8655,8 @@
     "open": 351.545,
     "high": 353.87,
     "low": 346.4605,
-    "market_cap": 5066209099776,
-    "pe": 38.821827,
+    "market_cap": 5064611069952,
+    "pe": 38.80958,
     "dividend_yield": 0.31,
     "high_52w": 355.38,
     "low_52w": 243.42
@@ -7645,9 +8676,9 @@
      "date": "2026-11-10"
     },
     {
-     "title": "Apple\u2019s Dividend Is Tiny, but its Business Advantage is Massive",
-     "source": "Insider Monkey",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/apple-dividend-tiny-business-advantage-192939467.html",
+     "title": "Apple users get urgent security warning over iPhone flaw",
+     "source": "TheStreet",
+     "url": "https://www.thestreet.com/crypto/technology/apple-users-get-urgent-security-warning-over-iphone-flaw",
      "date": "2026-11-10"
     }
    ],
@@ -7655,21 +8686,17 @@
   },
   {
    "symbol": "MSFT",
-   "price": 534.83,
-   "change": -10.349999999999909,
-   "change_pct": -1.8984555559631522,
+   "price": 533.16,
+   "change": -12.019999999999982,
+   "change_pct": -2.2047764041234097,
    "history": [
-    [
-     "2025-11-10",
-     501.8707
-    ],
     [
      "2025-11-11",
      504.5289
     ],
     [
      "2025-11-12",
-     506.9688
+     506.9689
     ],
     [
      "2025-11-13",
@@ -8665,10 +9692,11 @@
     ],
     [
      "2026-11-10",
-     534.83
+     533.16
     ]
    ],
    "name": "Microsoft Corporation",
+   "quote_type": "EQUITY",
    "exchange": "NasdaqGS",
    "sector": "Technology",
    "website": "https://www.microsoft.com",
@@ -8676,14 +9704,20 @@
     "open": 543.41,
     "high": 544.15,
     "low": 526.365,
-    "market_cap": 3971751608320,
-    "pe": 27.913885,
+    "market_cap": 3959349575680,
+    "pe": 27.826721,
     "dividend_yield": 0.72,
     "high_52w": 559.15,
     "low_52w": 349.2
    },
    "next_earnings": "2027-01-27",
    "news": [
+    {
+     "title": "Stock Market Today: Dow Dips As Nvidia Dives; Microsoft Skids On Anthropic Tools Move (Live Coverage)",
+     "source": "Investor's Business Daily",
+     "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-cpi-inflation-report-anthropic-ipo/?src=A00220&yptr=yahoo",
+     "date": "2026-11-10"
+    },
     {
      "title": "5 Best Tech Stocks That Pay Dividends",
      "source": "Insider Monkey",
@@ -8695,26 +9729,16 @@
      "source": "GuruFocus.com",
      "url": "https://finance.yahoo.com/technology/ai/articles/microsoft-warns-trade-crackdown-could-193904641.html",
      "date": "2026-11-10"
-    },
-    {
-     "title": "Microsoft Stock Falls On Anthropic Challenge To Office Software",
-     "source": "Investor's Business Daily",
-     "url": "https://www.investors.com/news/technology/microsoft-stock-anthropic-challenge-office-software/?src=A00220&yptr=yahoo",
-     "date": "2026-11-10"
     }
    ],
    "mentioned_in": []
   },
   {
    "symbol": "GOOGL",
-   "price": 287.255,
-   "change": -0.8949999999999818,
-   "change_pct": -0.3106021169529738,
+   "price": 287.38,
+   "change": -0.7699999999999818,
+   "change_pct": -0.26722193302098907,
    "history": [
-    [
-     "2025-11-10",
-     289.3475
-    ],
     [
      "2025-11-11",
      290.5544
@@ -8733,7 +9757,7 @@
     ],
     [
      "2025-11-17",
-     284.2806
+     284.2807
     ],
     [
      "2025-11-18",
@@ -8749,7 +9773,7 @@
     ],
     [
      "2025-11-21",
-     298.8827
+     298.8828
     ],
     [
      "2025-11-24",
@@ -9717,10 +10741,11 @@
     ],
     [
      "2026-11-10",
-     287.255
+     287.38
     ]
    ],
    "name": "Alphabet Inc.",
+   "quote_type": "EQUITY",
    "exchange": "NasdaqGS",
    "sector": "Communication Services",
    "website": "https://abc.xyz",
@@ -9728,8 +10753,8 @@
     "open": 289.11,
     "high": 292.02,
     "low": 285.68,
-    "market_cap": 3531144167424,
-    "pe": 14.998695,
+    "market_cap": 3533049692160,
+    "pe": 15.006789,
     "dividend_yield": 0.31,
     "high_52w": 408.61,
     "low_52w": 270.7
@@ -9737,21 +10762,21 @@
    "next_earnings": "2026-10-28",
    "news": [
     {
-     "title": "Microsoft Stock Falls On Anthropic Challenge To Office Software",
-     "source": "Investor's Business Daily",
-     "url": "https://www.investors.com/news/technology/microsoft-stock-anthropic-challenge-office-software/?src=A00220&yptr=yahoo",
+     "title": "Google's SpaceX investment takes an unexpected turn",
+     "source": "TheStreet",
+     "url": "https://www.thestreet.com/investing/stocks/googles-spacex-investment-is-taking-an-unexpected-turn",
      "date": "2026-11-10"
     },
     {
-     "title": "AMD Gains 25% Against NVDA in 2 Days: Chip Analyst Says Lisa Su Is \u2018at Her Best\u2019",
-     "source": "Benzinga Prediction Markets",
-     "url": "https://www.benzinga.com/markets/prediction-markets/26/11/63115849/amd-lisa-su?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral",
-     "date": "2026-11-10"
-    },
-    {
-     "title": "3 AI Stocks With Revenue Growth Over 41%",
+     "title": "Alphabet (GOOGL) Launches Gemini For Healthcare",
      "source": "Simply Wall St.",
-     "url": "https://finance.yahoo.com/technology/ai/articles/3-ai-stocks-revenue-growth-191330590.html",
+     "url": "https://finance.yahoo.com/technology/ai/articles/alphabet-googl-launches-gemini-healthcare-201113086.html",
+     "date": "2026-11-10"
+    },
+    {
+     "title": "Is Fervo Energy (FRVO) Undervalued Following Its Google Deal And Cape Station Launch?",
+     "source": "Simply Wall St.",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/fervo-energy-frvo-undervalued-following-201055205.html",
      "date": "2026-11-10"
     }
    ],
@@ -9759,14 +10784,10 @@
   },
   {
    "symbol": "AMZN",
-   "price": 271.88,
-   "change": 4.949999999999989,
-   "change_pct": 1.8544187614730312,
+   "price": 270.87,
+   "change": 3.9399999999999977,
+   "change_pct": 1.4760424081219803,
    "history": [
-    [
-     "2025-11-10",
-     248.4
-    ],
     [
      "2025-11-11",
      249.1
@@ -10769,10 +11790,11 @@
     ],
     [
      "2026-11-10",
-     271.88
+     270.87
     ]
    ],
    "name": "Amazon.com, Inc.",
+   "quote_type": "EQUITY",
    "exchange": "NasdaqGS",
    "sector": "Consumer Cyclical",
    "website": "https://www.amazon.com",
@@ -10780,14 +11802,20 @@
     "open": 266.33,
     "high": 272.88,
     "low": 266.1402,
-    "market_cap": 2939334164480,
-    "pe": 21.974932,
+    "market_cap": 2928954572800,
+    "pe": 21.897331,
     "dividend_yield": 0.0,
     "high_52w": 287.2,
     "low_52w": 196.0
    },
    "next_earnings": "2026-10-29",
    "news": [
+    {
+     "title": "Stock Market Today: Dow Dips As Nvidia Dives; Microsoft Skids On Anthropic Tools Move (Live Coverage)",
+     "source": "Investor's Business Daily",
+     "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-cpi-inflation-report-anthropic-ipo/?src=A00220&yptr=yahoo",
+     "date": "2026-11-10"
+    },
     {
      "title": "Anthropic's Blockbuster IPO Filing Contains a Surprising Nod to Washington",
      "source": "GuruFocus.com",
@@ -10799,26 +11827,16 @@
      "source": "Simply Wall St.",
      "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-com-amzn-bargain-maritime-191151615.html",
      "date": "2026-11-10"
-    },
-    {
-     "title": "Dow Leader Amazon Approaches Latest Buy Point As Ferrari Races Higher On Formula 1 Strength",
-     "source": "Investor's Business Daily",
-     "url": "https://www.investors.com/stock-lists/stocks-near-a-buy-zone/dow-jones-amazon-stock-amzn-ferrari-formula-1/?src=A00220&yptr=yahoo",
-     "date": "2026-11-10"
     }
    ],
    "mentioned_in": []
   },
   {
    "symbol": "TSLA",
-   "price": 378.665,
-   "change": 0.6150000000000091,
-   "change_pct": 0.16267689459066315,
+   "price": 379.78,
+   "change": 1.7299999999999613,
+   "change_pct": 0.45761142705991187,
    "history": [
-    [
-     "2025-11-10",
-     445.23
-    ],
     [
      "2025-11-11",
      439.62
@@ -11821,19 +12839,20 @@
     ],
     [
      "2026-11-10",
-     378.665
+     379.78
     ]
    ],
    "name": "Tesla, Inc.",
+   "quote_type": "EQUITY",
    "exchange": "NasdaqGS",
    "sector": "Consumer Cyclical",
    "website": "https://www.tesla.com",
    "stats": {
     "open": 370.54,
-    "high": 379.42096,
+    "high": 380.0,
     "low": 370.43,
-    "market_cap": 1495921328128,
-    "pe": 415.87912,
+    "market_cap": 1501178494976,
+    "pe": 417.34064,
     "dividend_yield": 0.0,
     "high_52w": 498.83,
     "low_52w": 297.38
@@ -11841,25 +12860,138 @@
    "next_earnings": "2027-01-27",
    "news": [
     {
-     "title": "Nvidia CEO Huang Gets More Bad News. Cathie Wood Keeps the Faith.",
-     "source": "Barrons.com",
-     "url": "https://www.barrons.com/articles/nvidia-stock-price-huang-cathie-wood-ef9d5868?siteid=yhoof2&yptr=yahoo",
-     "date": "2026-11-10"
-    },
-    {
-     "title": "Tesla Stocks Move Lower a Day After San Antonio Robotaxi Launch",
-     "source": "GuruFocus.com",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/tesla-stocks-move-lower-day-174917522.html",
-     "date": "2026-11-10"
-    },
-    {
-     "title": "These AI Growth Stocks Stand Out In November 2026",
+     "title": "Top 3 Founder Run Stocks With Earnings Growth Over 15%",
      "source": "Simply Wall St.",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/ai-growth-stocks-stand-november-171550246.html",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/top-3-founder-run-stocks-200943803.html",
+     "date": "2026-11-10"
+    },
+    {
+     "title": "Elon Musk Says Tesla's Cybertruck Backlog Is Too Big To Clear Before Production Ends \u2014 Orders Extra Shift",
+     "source": "Benzinga",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/elon-musk-says-teslas-cybertruck-193006712.html",
+     "date": "2026-11-10"
+    },
+    {
+     "title": "Nvidia in the hot seat, Anthropic to test the IPO market, hotter-than-expected US inflation",
+     "source": "Yahoo Finance Video",
+     "url": "https://finance.yahoo.com/video/nvidia-in-the-hot-seat-anthropic-to-test-the-ipo-market-hotter-than-expected-us-inflation-184626512.html",
      "date": "2026-11-10"
     }
    ],
    "mentioned_in": []
   }
- ]
+ ],
+ "movers": {
+  "day_gainers": [
+   {
+    "symbol": "AAON",
+    "name": "AAON, Inc.",
+    "price": 75.01,
+    "change_pct": 19.309692,
+    "change": 12.140003
+   },
+   {
+    "symbol": "CSQR",
+    "name": "Csquare, Inc.",
+    "price": 17.52,
+    "change_pct": 14.734774,
+    "change": 2.25
+   },
+   {
+    "symbol": "ACAD",
+    "name": "ACADIA Pharmaceuticals Inc.",
+    "price": 18.28,
+    "change_pct": 10.787883,
+    "change": 1.7800007
+   },
+   {
+    "symbol": "CHTR",
+    "name": "Charter Communications, Inc.",
+    "price": 134.06,
+    "change_pct": 10.610561,
+    "change": 12.860001
+   },
+   {
+    "symbol": "MARA",
+    "name": "MARA Holdings, Inc.",
+    "price": 7.34,
+    "change_pct": 10.542173,
+    "change": 0.7000003
+   }
+  ],
+  "day_losers": [
+   {
+    "symbol": "HIMS",
+    "name": "Hims & Hers Health, Inc.",
+    "price": 19.1493,
+    "change_pct": -16.524414,
+    "change": -3.790701
+   },
+   {
+    "symbol": "EQPT",
+    "name": "EquipmentShare.com Inc",
+    "price": 13.535,
+    "change_pct": -16.502155,
+    "change": -2.6749992
+   },
+   {
+    "symbol": "LEGN",
+    "name": "Legend Biotech Corporation",
+    "price": 20.41,
+    "change_pct": -15.973656,
+    "change": -3.880001
+   },
+   {
+    "symbol": "NOVT",
+    "name": "Novanta Inc.",
+    "price": 123.71,
+    "change_pct": -15.255512,
+    "change": -22.269997
+   },
+   {
+    "symbol": "PS",
+    "name": "Pershing Square Inc.",
+    "price": 44.25,
+    "change_pct": -14.821945,
+    "change": -7.700001
+   }
+  ],
+  "most_actives": [
+   {
+    "symbol": "NVDA",
+    "name": "NVIDIA Corporation",
+    "price": 168.79564,
+    "change_pct": -5.5265903,
+    "change": -9.874359
+   },
+   {
+    "symbol": "INTC",
+    "name": "Intel Corporation",
+    "price": 58.13,
+    "change_pct": -2.0885932,
+    "change": -1.2399979
+   },
+   {
+    "symbol": "SPCX",
+    "name": "Space Exploration Technologies ",
+    "price": 143.09,
+    "change_pct": 0.71794814,
+    "change": 1.019989
+   },
+   {
+    "symbol": "GRAB",
+    "name": "Grab Holdings Limited",
+    "price": 3.35,
+    "change_pct": -2.6162834,
+    "change": -0.09000015
+   },
+   {
+    "symbol": "IREN",
+    "name": "IREN LIMITED",
+    "price": 19.73,
+    "change_pct": -7.8468018,
+    "change": -1.6800003
+   }
+  ]
+ }
 }

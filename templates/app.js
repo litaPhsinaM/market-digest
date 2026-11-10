@@ -130,3 +130,10 @@
     b.addEventListener("blur", hideTip);
   });
 })();
+
+// movers tabs
+document.querySelectorAll(".mv-tabs button").forEach((b) => b.addEventListener("click", () => {
+  const box = b.closest(".movers");
+  box.querySelectorAll(".mv-tabs button").forEach((x) => x.setAttribute("aria-selected", x === b));
+  box.querySelectorAll("[data-mv-list]").forEach((l) => (l.hidden = l.dataset.mvList !== b.dataset.mv));
+}));

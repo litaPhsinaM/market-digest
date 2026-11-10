@@ -1,13 +1,56 @@
 # Curated sources. Quality bar: explains *why*, not just *what*; no stock-pick hype;
 # hosts with real credentials or newsroom standards. Add a source only if it clears that bar.
 #
-# kind: podcast -> url is the RSS feed (audio is sent to the model)
-# kind: youtube -> url is the channel's /videos page (captions are used when available)
+# Podcasts are read from their official public RSS feeds (the same feeds podcast apps use).
+# group: daily = news of the day, learn = explainers / evergreen, deep = expert long-form
 
 sources:
+  # --- daily news ---
+  - id: wsj-whats-news
+    name: WSJ What's News
+    kind: podcast
+    group: daily
+    url: https://video-api.shdsvc.dowjones.io/api/podcasts/the%20wall%20street%20journal%20whats%20news/feed
+    cadence: twice daily (~15 min)
+    why: The Wall Street Journal's newsroom on the day's top business and world stories.
+
+  - id: bloomberg-surveillance
+    name: Bloomberg Surveillance
+    kind: podcast
+    group: daily
+    url: https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/8e704079-ca57-4eac-9741-ae27003e2b7f/9739700c-72c3-4176-ae55-ae27003e2b96/podcast.rss
+    cadence: daily
+    why: Bloomberg's flagship markets show, with interviews with economists, strategists and CEOs.
+
+  - id: squawk-pod
+    name: Squawk Pod (CNBC)
+    kind: podcast
+    group: daily
+    url: https://feeds.simplecast.com/VHAcgaw_
+    cadence: weekdays (~25 min)
+    why: CNBC's Squawk Box team on the day's market-moving stories and CEO interviews.
+
+  - id: marketplace
+    name: Marketplace
+    kind: podcast
+    group: daily
+    url: https://feeds.publicradio.org/public_feeds/marketplace
+    cadence: weekdays (~30 min)
+    why: American Public Media's daily show on the economy, explained for everyone.
+
+  - id: prof-g-markets
+    name: Prof G Markets
+    kind: podcast
+    group: daily
+    url: https://feeds.megaphone.fm/profgmarkets
+    cadence: daily (~30 min)
+    why: NYU professor Scott Galloway and Ed Elson on the week's biggest companies and deals. Opinionated, so read the opinions section.
+
+  # --- learn ---
   - id: indicator
     name: The Indicator from Planet Money
     kind: podcast
+    group: learn
     url: https://feeds.npr.org/510325/podcast.xml
     cadence: daily (~10 min)
     why: NPR's short daily episode on one economic idea, explained from scratch. Ideal for beginners.
@@ -15,38 +58,92 @@ sources:
   - id: planet-money
     name: Planet Money
     kind: podcast
+    group: learn
     url: https://feeds.npr.org/510289/podcast.xml
     cadence: 2x weekly (~25 min)
     why: Long-form NPR stories that make how the economy works stick, with fact-checked reporting.
 
-  - id: odd-lots
-    name: Odd Lots (Bloomberg)
-    kind: podcast
-    url: https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/8a94442e-5a74-4fa2-8b8d-ae27003a8d6b/982f5071-765c-403d-969d-ae27003a8d83/podcast.rss
-    cadence: 2-3x weekly (~45 min)
-    why: Bloomberg's Joe Weisenthal and Tracy Alloway interview practitioners about markets and the plumbing behind them. More advanced.
-
   - id: plain-bagel
     name: The Plain Bagel
-    kind: youtube
-    url: https://www.youtube.com/@ThePlainBagel/videos
+    kind: podcast
+    group: learn
+    url: https://feeds.megaphone.fm/the-plain-bagel
     cadence: weekly (~15 min)
     why: Richard Coffin, a CFA charterholder, explains valuation, market news and financial scams with no hype.
 
-  - id: ben-felix
-    name: Ben Felix (Common Sense Investing)
-    kind: youtube
-    url: https://www.youtube.com/@BenFelixCSI/videos
-    cadence: every few weeks (~20 min)
-    why: A portfolio manager who grounds every claim in academic research. The gold standard for evidence-based investing.
+  - id: animal-spirits
+    name: Animal Spirits
+    kind: podcast
+    group: learn
+    url: https://feeds.megaphone.fm/TCP6464651487
+    cadence: 2x weekly (~60 min)
+    why: Michael Batnick and Ben Carlson talk markets and personal finance for regular investors, grounded in data.
+
+  - id: wsj-your-money
+    name: WSJ Your Money Briefing
+    kind: podcast
+    group: learn
+    url: https://video-api.shdsvc.dowjones.io/api/podcasts/the%20wall%20street%20journals%20your%20money%20matters/feed
+    cadence: weekly (~20 min)
+    why: "The Wall Street Journal on personal finance: saving, taxes, retirement and money decisions."
+
+  - id: freakonomics
+    name: Freakonomics Radio
+    kind: podcast
+    group: learn
+    url: https://feeds.simplecast.com/Y8lFbOT4
+    cadence: weekly (~45 min)
+    why: Stephen Dubner on the hidden economics behind everyday life, with leading researchers.
+
+  # --- deep ---
+  - id: odd-lots
+    name: Odd Lots (Bloomberg)
+    kind: podcast
+    group: deep
+    url: https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/8a94442e-5a74-4fa2-8b8d-ae27003a8d6b/982f5071-765c-403d-969d-ae27003a8d83/podcast.rss
+    cadence: 2-3x weekly (~45 min)
+    why: Bloomberg's Joe Weisenthal and Tracy Alloway interview practitioners about markets and the plumbing behind them.
+
+  - id: rational-reminder
+    name: Rational Reminder (Ben Felix)
+    kind: podcast
+    group: deep
+    url: https://rss.libsyn.com/shows/127327/destinations/763774.xml
+    cadence: weekly (~60 min)
+    why: Portfolio managers Ben Felix and Cameron Passmore on evidence-based investing, often with leading finance academics.
 
   - id: patrick-boyle
-    name: Patrick Boyle
-    kind: youtube
-    url: https://www.youtube.com/@PBoyle/videos
+    name: Patrick Boyle On Finance
+    kind: podcast
+    group: deep
+    url: https://anchor.fm/s/fc0914e0/podcast/rss
     cadence: weekly (~20 min)
     why: An ex-hedge fund manager and finance professor. Dry-humoured breakdowns of companies, markets and financial news.
 
+  - id: goldman-exchanges
+    name: Exchanges (Goldman Sachs)
+    kind: podcast
+    group: deep
+    url: https://feeds.megaphone.fm/GLD9218176758
+    cadence: weekly (~25 min)
+    why: Goldman Sachs analysts and executives on markets, the economy and big industry shifts. A bank's own view, so read critically.
+
+# Newsroom headlines for "What's hot". Only the headline and the feed's own short blurb are used,
+# never the full article; every topic links back to the original stories.
+news:
+  - {name: Bloomberg Markets, url: "https://feeds.bloomberg.com/markets/news.rss"}
+  - {name: Bloomberg Technology, url: "https://feeds.bloomberg.com/technology/news.rss"}
+  - {name: CNBC, url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114"}
+  - {name: CNBC Markets, url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=15839069"}
+  - {name: CNBC Tech, url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=19854910"}
+  - {name: WSJ Markets, url: "https://feeds.content.dowjones.io/public/rss/RSSMarketsMain"}
+  - {name: MarketWatch, url: "https://feeds.content.dowjones.io/public/rss/mw_topstories"}
+  - {name: Financial Times, url: "https://www.ft.com/rss/home"}
+  - {name: The Economist, url: "https://www.economist.com/finance-and-economics/rss.xml"}
+  - {name: TechCrunch, url: "https://techcrunch.com/feed/"}
+  - {name: Federal Reserve, url: "https://www.federalreserve.gov/feeds/press_all.xml"}
+  - {name: SEC, url: "https://www.sec.gov/news/pressreleases.rss"}
+
 # Companies shown every day in "Companies in the news", in addition to any company
-# an episode discusses. Use the exchange ticker symbol.
+# an episode or hot topic discusses. Use the exchange ticker symbol.
 watchlist: [NVDA, AAPL, MSFT, GOOGL, AMZN, TSLA]

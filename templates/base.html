@@ -20,6 +20,7 @@
       <a href="{{ prefix }}archive.html" {% if active == 'archive' %}aria-current="page"{% endif %}>Archive</a>
       <a href="{{ prefix }}glossary.html" {% if active == 'glossary' %}aria-current="page"{% endif %}>Glossary</a>
       <a href="{{ prefix }}sources.html" {% if active == 'sources' %}aria-current="page"{% endif %}>Sources</a>
+      <a href="{{ prefix }}about.html" {% if active == 'about' %}aria-current="page"{% endif %}>About</a>
     </nav>
   </div>
 </header>
@@ -27,9 +28,12 @@
 {% block content %}{% endblock %}
 </main>
 <footer class="sitefoot">
-  <p>Summaries are written by AI from public podcasts and videos, for learning. They can contain mistakes,
+  <p>Summaries are written by AI from public podcast episodes and newsroom headlines, for learning. They can contain mistakes,
   so check the original (linked on every story) before relying on a number. Market data is from Yahoo Finance and may be delayed.
   <strong>Nothing here is financial advice.</strong></p>
+  <p>Not affiliated with any show, newsroom or company mentioned. Summaries link to and credit the original creators.
+  Creator who wants a show removed? <a href="https://github.com/litaPhsinaM/market-digest/issues/new?title=Removal%20request">Open a request</a>.
+  · <a href="{{ prefix }}about.html">About</a></p>
 </footer>
 <div class="tip" id="tip" role="tooltip" hidden></div>
 <script src="{{ prefix }}app.js"></script>

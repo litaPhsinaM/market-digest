@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% set active = 'about' %}
+{% block title %}About · Market Digest{% endblock %}
+{% block content %}
+<section class="about-hero">
+  <div class="eyebrow">About Market Digest</div>
+  <h1>Learn the market in 5 minutes a day.</h1>
+  <p class="lede">The best finance shows are long, fast and full of jargon. Market Digest listens to them for you and turns each one
+    into a short, plain-English study page, with the market data beside it.</p>
+  <a class="btn" href="index.html">Read today’s digest →</a>
+</section>
+
+<section class="about-sec">
+  <h2>Why it exists</h2>
+  <div class="why-grid">
+    <div class="card why"><h3>Too much to follow</h3><p>Hours of podcasts and hundreds of headlines every day. Nobody learning to invest has time for all of it.</p></div>
+    <div class="card why"><h3>Too much jargon</h3><p>Basis points, convertible notes, P/E ratios… Every term is explained in plain English, with an example, and saved to a growing glossary.</p></div>
+    <div class="card why"><h3>Too much noise</h3><p>No hype channels or stock tips. Only hosts and newsrooms with real credentials, with opinions clearly separated from facts.</p></div>
+  </div>
+</section>
+
+<section class="about-sec">
+  <h2>How it works</h2>
+  <ol class="steps">
+    <li><span class="step-n">1</span><div><h3>Find</h3><p>Every morning we check {{ n_podcasts }} hand-picked podcasts and {{ n_feeds }} newsroom feeds for anything new.</p></div></li>
+    <li><span class="step-n">2</span><div><h3>Listen</h3><p>Each new episode is transcribed word for word by an open-source speech model (Whisper).</p></div></li>
+    <li><span class="step-n">3</span><div><h3>Understand</h3><p>An AI model reads the transcript like a teacher and writes the key points, the important numbers, the lesson and the
+      jargon to know. It is told to use only what the source said, to keep forecasts and opinions separate, and to flag low-value episodes instead of summarizing them.</p></div></li>
+    <li><span class="step-n">4</span><div><h3>Connect</h3><p>Headlines from across the newsrooms are grouped into the day’s hottest stories, and prices, charts and headlines are added for the companies involved.</p></div></li>
+    <li><span class="step-n">5</span><div><h3>Publish</h3><p>Everything becomes one daily page, archived forever, with a searchable glossary of every term so far.</p></div></li>
+  </ol>
+</section>
+
+<section class="about-sec">
+  <h2>What to keep in mind</h2>
+  <ul class="fine">
+    <li><strong>It’s AI-written.</strong> Summaries are checked for accuracy, but mistakes can happen. Every story links to the original, so check it before relying on a number.</li>
+    <li><strong>It’s for learning, not advice.</strong> Nothing here is a recommendation to buy or sell anything.</li>
+    <li><strong>Credit goes to the creators.</strong> We publish short summaries in our own words, never transcripts or full articles, and always link back.
+      If you enjoy a show, listen to it or subscribe. Market Digest is not affiliated with any show, newsroom or company mentioned.</li>
+    <li><strong>Market data</strong> comes from Yahoo Finance, is a snapshot from the morning run, and may be delayed.</li>
+    <li><strong>Creators:</strong> if you’d like your show removed, <a href="https://github.com/litaPhsinaM/market-digest/issues/new?title=Removal%20request">open a request</a> and we’ll take it down promptly.</li>
+  </ul>
+  <p class="muted"><a href="sources.html">See every source and why it was chosen →</a></p>
+</section>
+{% endblock %}

@@ -1,0 +1,582 @@
+{
+ "date": "2026-11-10",
+ "topics": [
+  {
+   "title": "Nvidia CEO Jensen Huang's affair with an alleged Chinese spy",
+   "explanation": "Multiple outlets report that Nvidia CEO Jensen Huang is under investigation for his affair with a woman connected to Chinese intelligence. The scandal has raised concerns about national security and Nvidia's dealings with China. The Nvidia board has hired law firm Wachtell Lipton to lead the probe, and the affair has complicated Nvidia's existing China-related issues.",
+   "why_it_matters": "The scandal has sparked scrutiny over Nvidia's ties to China and its potential impact on U.S. national security, while also affecting the company's stock and reputation.",
+   "tickers": [
+    "NVDA"
+   ],
+   "headline_ids": [
+    "h028fe8b3",
+    "hd496d457",
+    "hd101f627",
+    "hcfd647cb",
+    "h4e45e63f",
+    "h8051d200",
+    "h8625966f",
+    "h47a38f7c",
+    "h84cf07d6",
+    "h4d67c691",
+    "h940b8a32",
+    "hfc17e326",
+    "h5f8ecb54",
+    "h05c5fd62",
+    "h8ad028b7",
+    "h4d0571f0"
+   ]
+  },
+  {
+   "title": "Anthropic's $1.4 trillion IPO",
+   "explanation": "Anthropic is targeting a $1.4 trillion valuation in its IPO, which is expected to be the largest in AI history. The IPO is set to price on November 18 and trade the following day. The company's founders are each expected to sell about $250 million worth of shares in the offering.",
+   "why_it_matters": "Anthropic's IPO is a major event in the AI sector and will be a test of investor appetite for AI companies following a recent selloff in the space.",
+   "tickers": [
+    "ANTH"
+   ],
+   "headline_ids": [
+    "h68e4f98a",
+    "h9a5bae24",
+    "hd8530ee6",
+    "h9f181d60",
+    "hcaef6b4e",
+    "ha2d67064",
+    "h8e89ca04",
+    "h75272258",
+    "hdbacfd04",
+    "h860fc8b7",
+    "h8149be24",
+    "h3a10cf0a",
+    "h8eebb20f",
+    "h05045298"
+   ]
+  },
+  {
+   "title": "Inflation concerns and Fed rate hike expectations",
+   "explanation": "Recent inflation data and comments from Federal Reserve officials have raised concerns about the potential for higher interest rates. The CPI report showed inflation remaining higher than expected, and the 10-year Treasury yield has risen to 5% as investors anticipate more aggressive rate hikes.",
+   "why_it_matters": "Inflation and the potential for rate hikes are major concerns for investors, as they affect the broader stock market and bond yields.",
+   "tickers": [
+    "TLT",
+    "TLT"
+   ],
+   "headline_ids": [
+    "h1fb3ee79",
+    "hd101f627",
+    "h8625966f",
+    "h8051d200",
+    "h214f01b5",
+    "h52d453c5",
+    "h8d33fc13",
+    "hd8d887b5",
+    "h2f74281a"
+   ]
+  },
+  {
+   "title": "Binance hack and cryptocurrency security concerns",
+   "explanation": "Hackers stole $6.3 billion from Binance in the largest ever heist. The stolen funds were largely in Bitcoin and Ether, and the incident has raised concerns about the security of cryptocurrency exchanges and the need for stronger measures to protect digital assets.",
+   "why_it_matters": "The Binance hack has highlighted the risks in the crypto space and the need for improved security measures, which could impact investor confidence in the sector.",
+   "tickers": [
+    "BNB",
+    "BTC",
+    "ETH"
+   ],
+   "headline_ids": [
+    "hb660a3a2",
+    "h8fce71d1",
+    "h39abe7e6"
+   ]
+  },
+  {
+   "title": "IHeartMedia's debt collapse and stock plunge",
+   "explanation": "IHeartMedia's debt has fallen to record lows, and its shares have dropped 67% after the company missed earnings estimates. The company's financial situation has raised concerns about its ability to meet obligations and maintain operations.",
+   "why_it_matters": "IHeartMedia's financial struggles are a cautionary tale for investors in the media and entertainment sector, highlighting the risks of overleveraging and poor performance.",
+   "tickers": [
+    "IHRT"
+   ],
+   "headline_ids": [
+    "h7914f33e"
+   ]
+  },
+  {
+   "title": "Tokenization of stocks and the evolution of the stock market",
+   "explanation": "Tokenization is changing how investors can access, transfer, and use stocks. The New York Stock Exchange has announced it will settle tokenized stocks exclusively through the Avalanche blockchain, signaling a shift in how financial markets operate.",
+   "why_it_matters": "Tokenization is a significant development in the financial industry, offering new ways for investors to engage with stocks and potentially increasing market efficiency.",
+   "tickers": [
+    "AVAX",
+    "NYX"
+   ],
+   "headline_ids": [
+    "h964c15c7",
+    "h7868890a",
+    "h78dfe9df",
+    "h7868890a"
+   ]
+  },
+  {
+   "title": "Nvidia's China revenue exposure",
+   "explanation": "Nvidia's revenue from China is a significant portion of its sales, despite export controls. The company's ties to China have come under scrutiny following the scandal involving its CEO's affair with an alleged Chinese spy.",
+   "why_it_matters": "Nvidia's exposure to China is a key issue for investors, as it affects the company's operations, reputation, and potential regulatory risks.",
+   "tickers": [
+    "NVDA"
+   ],
+   "headline_ids": [
+    "h05045298",
+    "h36207b0c"
+   ]
+  }
+ ],
+ "headlines": {
+  "h028fe8b3": {
+   "id": "h028fe8b3",
+   "source": "CNBC",
+   "title": "Schumer accuses Trump of defending Nvidia CEO Jensen Huang at cost of national security",
+   "blurb": "Rep. John Moolenaar, R-Mich., the Republican chairman of the Select Committee on China and told CNBC he expects answers about Jensen Huang's relationship.",
+   "url": "https://www.cnbc.com/2026/11/10/moolenaar-nvidia-jensen-huang-affair-chinese-spy.html",
+   "published": "2026-11-10T20:33"
+  },
+  "h1fb3ee79": {
+   "id": "h1fb3ee79",
+   "source": "MarketWatch",
+   "title": "Aggressive Fed rate hikes are quickly becoming the biggest risk to stocks in 2027, says economist",
+   "blurb": "The Fed remains too optimistic on its ability to tame inflation, and markets may be too complacent, economist Neil Dutta warns.",
+   "url": "https://www.marketwatch.com/story/an-overzealous-fed-is-quickly-becoming-the-biggest-risk-to-stocks-in-2027-ba28e51d?mod=mw_rss_topstories",
+   "published": "2026-11-10T20:27"
+  },
+  "hd496d457": {
+   "id": "hd496d457",
+   "source": "CNBC Tech",
+   "title": "Nvidia board member Stephen Neal could play big role in probe of CEO Jensen Huang",
+   "blurb": "Stephen Neal is the lead independent director on the Nvidia board of directors. His past clients include Theranos fraudster Elizabeth Holmes.",
+   "url": "https://www.cnbc.com/2026/11/09/nvidia-jensen-huang-investigation.html",
+   "published": "2026-11-10T20:22"
+  },
+  "hd101f627": {
+   "id": "hd101f627",
+   "source": "CNBC",
+   "title": "S&P 500 falls after hot CPI ignites inflation concerns: Live updates",
+   "blurb": "Traders reacted to a pivotal consumer inflation report as well as new comments from a key Federal Reserve official.",
+   "url": "https://www.cnbc.com/2026/11/09/stock-market-today-live-updates.html",
+   "published": "2026-11-10T20:17"
+  },
+  "h68e4f98a": {
+   "id": "h68e4f98a",
+   "source": "Bloomberg Markets",
+   "title": "Anthropic Targets $1.4 Trillion Valuation in Blockbuster IPO",
+   "blurb": "Anthropic is seeking a valuation of about $1.4 trillion in its initial public offering, a bid to make history as the first frontier artificial intelligence lab to go public. The company\u2019s IPO is set to price on Wednesday, Nov. 18 and trade the following day. Bailey Lipschultz\u2026",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-10/anthropic-targets-1-4-trillion-valuation-in-ipo-video-mwb4e46h",
+   "published": "2026-11-10T20:05"
+  },
+  "hb660a3a2": {
+   "id": "hb660a3a2",
+   "source": "Bloomberg Technology",
+   "title": "Major Blockchains Have Not Been Hacked: Securitize CEO",
+   "blurb": "Carlos Domingo, chairman, co-founder, and CEO of Securitize, joins Isabelle Lee and Tim Stenovec on \"Bloomberg Crypto.\" Hackers stole $6.3 billion from Binance in the biggest ever heist. (Source: Bloomberg)",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-10/major-blockchains-have-not-been-hacked-securitize-ceo-video-mwb4dc60",
+   "published": "2026-11-10T20:05"
+  },
+  "hcfd647cb": {
+   "id": "hcfd647cb",
+   "source": "CNBC",
+   "title": "Nvidia hires law firm Wachtell Lipton to lead Jensen Huang affair probe",
+   "blurb": "On Sunday, Huang admitted to having an affair with a woman who has been connected to Chinese intelligence by reports in The New York Times and Financial Times.",
+   "url": "https://www.cnbc.com/2026/11/10/nvidia-wachtell-lipton-huang-affair.html",
+   "published": "2026-11-10T20:01"
+  },
+  "h4e45e63f": {
+   "id": "h4e45e63f",
+   "source": "Bloomberg Technology",
+   "title": "Coinbase Gets National Bank Charter Approval",
+   "blurb": "Bloomberg's Olga Kharif joins Isabelle Lee and Tim Stenovec on \"Bloomberg Crypto.\" Coinbase, the largest US crypto exchange, said a key regulator has fully signed off on its request to become a nationally chartered trust bank, the latest example of firms in the digital-asset\u2026",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-10/coinbase-gets-national-bank-charter-approval-video",
+   "published": "2026-11-10T20:00"
+  },
+  "h7914f33e": {
+   "id": "h7914f33e",
+   "source": "Bloomberg Markets",
+   "title": "IHeart\u2019s Debt Collapses, Shares Sink 67% After Big Earnings Miss",
+   "blurb": "IHeartMedia Inc.\u2019s debt has plunged to record lows along with its shares after the audio-entertainment company\u2019s latest earnings projections fell far short of analyst estimates.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-10/iheart-s-debt-collapses-shares-sink-67-after-big-earnings-miss",
+   "published": "2026-11-10T19:57"
+  },
+  "h9a5bae24": {
+   "id": "h9a5bae24",
+   "source": "TechCrunch",
+   "title": "All 7 Anthropic founders will each cash out about $250M in IPO",
+   "blurb": "Each of the seven co-founders plans to sell exactly the same number of shares in the IPO, which would bring each of them about $250 million in cash at the midpoint of the price range while leaving the group in control of the company.",
+   "url": "https://techcrunch.com/2026/11/10/all-7-anthropic-founders-will-each-cash-out-about-250m-in-ipo/",
+   "published": "2026-11-10T19:57"
+  },
+  "h8051d200": {
+   "id": "h8051d200",
+   "source": "Financial Times",
+   "title": "Weil partners approve plan to shut down law firm",
+   "blurb": "Dissolution of nearly century-old firm formalised after a series of defections plunged it into crisis",
+   "url": "https://www.ft.com/content/7088e087-c688-485a-8e8d-efb6b75bc571?syn-25a6b1a6=1",
+   "published": "2026-11-10T19:52"
+  },
+  "hd8530ee6": {
+   "id": "hd8530ee6",
+   "source": "CNBC",
+   "title": "Traders bet on a pop for Anthropic's historic IPO",
+   "blurb": "Perpetual futures traders see Anthropic popping on its IPO",
+   "url": "https://www.cnbc.com/2026/11/10/traders-bet-on-a-pop-for-anthropics-historic-ipo.html",
+   "published": "2026-11-10T19:51"
+  },
+  "h8625966f": {
+   "id": "h8625966f",
+   "source": "CNBC",
+   "title": "10-year Treasury yield races back to 5% as inflation data, Waller comments drive rate hike expectations",
+   "blurb": "Treasury yields moved higher after a hotter-than-expected CPI report.",
+   "url": "https://www.cnbc.com/2026/11/10/us-bonds-treasurys-yields.html",
+   "published": "2026-11-10T19:51"
+  },
+  "h9f181d60": {
+   "id": "h9f181d60",
+   "source": "MarketWatch",
+   "title": "Anthropic officially sets the stage for an IPO valuing the company north of $1 trillion",
+   "blurb": "Anthropic could raise up to $63 billion in an IPO expected to take place next week.",
+   "url": "https://www.marketwatch.com/story/anthropic-reportedly-retracts-ipo-terms-sent-to-banks-by-mistake-exposing-jitters-over-ai-investments-6116578d?mod=mw_rss_topstories",
+   "published": "2026-11-10T19:47"
+  },
+  "h39abe7e6": {
+   "id": "h39abe7e6",
+   "source": "Bloomberg Technology",
+   "title": "Need Crypto Security At More Layers: Anchorage CEO",
+   "blurb": "Nathan McCaully, co-founder and CEO Anchorage Digital, joins Isabelle Lee and Tim Stenovec on \"Bloomberg Crypto.\" They discuss the historic Binance hack and the need for increased security measures at every level of digital assets. (Source: Bloomberg)",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-10/need-crypto-security-at-more-layers-anchorage-ceo-video",
+   "published": "2026-11-10T19:32"
+  },
+  "h47a38f7c": {
+   "id": "h47a38f7c",
+   "source": "CNBC Markets",
+   "title": "Small caps have lagged large stocks in the past decade. Why Baron Capital sees a turnaround",
+   "blurb": "The small-cap index Russell 2000 is up 13% in 2026, ahead of the S&P 500's nearly 10% advance in that time.",
+   "url": "https://www.cnbc.com/2026/11/10/baron-capital-small-cap-stock-picks.html",
+   "published": "2026-11-10T19:23"
+  },
+  "h84cf07d6": {
+   "id": "h84cf07d6",
+   "source": "Bloomberg Technology",
+   "title": "Nvidia Board Members Tap Wachtell Lipton\u2019s Kim for Huang Probe",
+   "blurb": "Nvidia Corp.\u2019s independent board members tapped a former top federal prosecutor to help probe Chief Executive Officer Jensen Huang\u2019s relationship with a suspected Chinese spy.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-10/nvidia-board-members-tap-wachtell-lipton-to-probe-ceo-affair",
+   "published": "2026-11-10T19:21"
+  },
+  "h8fce71d1": {
+   "id": "h8fce71d1",
+   "source": "Bloomberg Technology",
+   "title": "How Hackers Pulled Off the Greatest Heist Ever",
+   "blurb": "Bloomberg's Vildana Hajric joins Isabelle Lee and Tim Stenovec on \"Bloomberg Crypto.\" Hackers stole $6.3 billion from Binance in the biggest ever heist. Around $3.13 billion is with the hackers in wallets linked to the theft, mostly denominated in Bitcoin and Ether. A further\u2026",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-10/how-hackers-pulled-off-the-greatest-heist-ever-video",
+   "published": "2026-11-10T19:17"
+  },
+  "h78dfe9df": {
+   "id": "h78dfe9df",
+   "source": "Bloomberg Technology",
+   "title": "NYSE Taps Avalanche For Tokenized Stocks",
+   "blurb": "Morgan Krupetsky, vice president of Onchain Finance at Ava Labs joins Isabelle Lee and Tim Stenovec on \"Bloomberg Crypto.\" The New York Stock Exchange announced it will settle tokenized stocks for its round-the-clock platform exclusively through the Avalanche blockchain. Ava\u2026",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-10/nyse-taps-avalanche-for-tokenized-stocks-video",
+   "published": "2026-11-10T19:13"
+  },
+  "h860fc8b7": {
+   "id": "h860fc8b7",
+   "source": "Bloomberg Markets",
+   "title": "Pizza Hut Looks to Sell $1 Billion of Bonds to Fund Its Buyout",
+   "blurb": "Pizza Hut is looking to sell around $1 billion of bonds backed by its franchise agreements and related fees, to help fund its buyout by private equity firm LongRange Capital LLC.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-10/pizza-hut-looks-to-sell-1-billion-of-bonds-to-fund-its-buyout",
+   "published": "2026-11-10T19:01"
+  },
+  "hcaef6b4e": {
+   "id": "hcaef6b4e",
+   "source": "Bloomberg Technology",
+   "title": "Anthropic Targets $1.4T Valuation in Blockbuster IPO",
+   "blurb": "Anthropic is seeking a $1.4 trillion fully diluted valuation as it prepares to become the first frontier AI lab to go public, testing investor appetite after a sharp selloff in AI stocks. Bloomberg\u2019s Bailey Lipschultz and Rachel Metz break down demand for the offering, the\u2026",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-10/anthropic-targets-1-4t-valuation-in-blockbuster-ipo-video",
+   "published": "2026-11-10T18:57"
+  },
+  "ha2d67064": {
+   "id": "ha2d67064",
+   "source": "Bloomberg Technology",
+   "title": "Anthropic\u2019s $1.4 Trillion IPO Bet Tests AI Appetite",
+   "blurb": "Bloomberg\u2019s Riley Griffin breaks down Anthropic's big goal of seeking a $1.4 trillion valuation in an IPO that could raise more money than SpaceX's blockbuster debut. Plus, Nvidia shares are down for a second straight day following the scandal surrounding CEO Jensen Huang's\u2026",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-10/bloomberg-tech-11-10-2026-video",
+   "published": "2026-11-10T18:56"
+  },
+  "h8e89ca04": {
+   "id": "h8e89ca04",
+   "source": "WSJ Markets",
+   "title": "Anthropic to Seek $1.3 Trillion Valuation in IPO",
+   "blurb": "The Claude maker\u2019s stock-market debut is seen as a litmus test for investors on edge over the AI trade.",
+   "url": "https://www.wsj.com/finance/stocks/anthropic-ipo-valuation-8337b669?mod=rss_markets_main",
+   "published": "2026-11-10T18:41"
+  },
+  "h8d33fc13": {
+   "id": "h8d33fc13",
+   "source": "MarketWatch",
+   "title": "Americans are more concerned about retirement than ever. Politicians should pay attention.",
+   "blurb": "Retirement is now part of the affordability crisis, and it can\u2019t be fixed by individual behavior alone",
+   "url": "https://www.marketwatch.com/story/retirement-is-now-part-of-the-affordability-crisis-politicians-should-pay-attention-2923b2d7?mod=mw_rss_topstories",
+   "published": "2026-11-10T18:41"
+  },
+  "h964c15c7": {
+   "id": "h964c15c7",
+   "source": "CNBC",
+   "title": "Tokenization: The next evolution of the stock market",
+   "blurb": "Tokenization is beginning to change how investors can access, transfer and use stocks without replacing the market infrastructure beneath them.",
+   "url": "https://www.cnbc.com/2026/11/10/tokenization-market-evolution.html",
+   "published": "2026-11-10T18:28"
+  },
+  "h7868890a": {
+   "id": "h7868890a",
+   "source": "CNBC",
+   "title": "Credit card debt climbs to a record $1.29 trillion, New York Fed research finds",
+   "blurb": "As high prices continue to strain household budgets, many consumers have turned to credit cards to help make ends meet.",
+   "url": "https://www.cnbc.com/2026/11/10/credit-card-debt-record.html",
+   "published": "2026-11-10T18:08"
+  },
+  "hd8d887b5": {
+   "id": "hd8d887b5",
+   "source": "WSJ Markets",
+   "title": "U.S. 10-Year Treasury Tops 5% on Expectations of Higher Interest Rates",
+   "blurb": "Treasury yields rose with the 10-year benchmark moving above 5%, as hotter-than-expected inflation added to hawkish comments by a Federal Reserve official to fuel bets on a steep interest-rate increase next month.",
+   "url": "https://www.wsj.com/economy/central-banking/treasury-yields-edge-up-ahead-of-u-s-inflation-data-7a55db79?mod=rss_markets_main",
+   "published": "2026-11-10T18:07"
+  },
+  "h4d67c691": {
+   "id": "h4d67c691",
+   "source": "CNBC Tech",
+   "title": "Nvidia falls for second day as investors weigh fallout of CEO\u2019s affair with alleged spy",
+   "blurb": "Investors continue to weigh the potential fallout from CEO Jensen Huang's affair with an alleged Chinese spy.",
+   "url": "https://www.cnbc.com/2026/11/10/nvidia-nvda-jensen-huang-affair-chinese-spy.html",
+   "published": "2026-11-10T17:05"
+  },
+  "h940b8a32": {
+   "id": "h940b8a32",
+   "source": "TechCrunch",
+   "title": "Nvidia CEO Jensen Huang\u2019s affair with alleged Chinese spy: a timeline",
+   "blurb": "The affair could have ramifications for national security as the U.S. and China race to develop the most advanced AI infrastructure.",
+   "url": "https://techcrunch.com/2026/11/10/nvidia-ceo-jensen-huangs-affair-with-alleged-chinese-spy-a-timeline/",
+   "published": "2026-11-10T17:04"
+  },
+  "h8149be24": {
+   "id": "h8149be24",
+   "source": "CNBC",
+   "title": "U.S. gas prices fall below $4 for the first time since July",
+   "blurb": "Americans may finally find some relief at the pump.",
+   "url": "https://www.cnbc.com/2026/11/10/us-gas-prices-below-four-dollars.html",
+   "published": "2026-11-10T16:29"
+  },
+  "h75272258": {
+   "id": "h75272258",
+   "source": "CNBC Tech",
+   "title": "Anthropic sets IPO price range of $70 to $78, looks to start trading Nov. 19, sources say",
+   "blurb": "Anthropic's IPO is expected to come roughly five months after Elon Musk took SpaceX public in a record offering.",
+   "url": "https://www.cnbc.com/2026/11/10/anthropic-sets-price-range-of-70-to-78-in-upcoming-ipo.html",
+   "published": "2026-11-10T15:42"
+  },
+  "h05045298": {
+   "id": "h05045298",
+   "source": "TechCrunch",
+   "title": "Meta\u2019s AI agent Muse lands on Apple Watch and Android Wear OS",
+   "blurb": "Users can now interact with Meta\u2019s AI assistant through voice calls, text messages, or dictation on their Apple Watch.",
+   "url": "https://techcrunch.com/2026/11/10/metas-ai-agent-muse-lands-on-apple-watch-and-wear-os/",
+   "published": "2026-11-10T15:29"
+  },
+  "hfc17e326": {
+   "id": "hfc17e326",
+   "source": "CNBC",
+   "title": "Jensen Huang's affair with alleged Chinese spy further complicates Nvidia\u2019s China problem",
+   "blurb": "The allegations against Jensen Huang have brought new attention to the Nvidia CEO's potential influence over U.S. policy on chip sales to China.",
+   "url": "https://www.cnbc.com/2026/11/10/jensen-huang-nvidia-china-ties.html",
+   "published": "2026-11-10T15:04"
+  },
+  "h8eebb20f": {
+   "id": "h8eebb20f",
+   "source": "Bloomberg Markets",
+   "title": "GFL Environmental Rejects Takeover Bids, Opts to Remain Public",
+   "blurb": "Canada\u2019s GFL Environmental Inc. said it rejected buyout proposals and will stay public, ending a monthslong process that attracted interest from investors including Blackstone Inc. and Brookfield Asset Management Ltd.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-10/gfl-environmental-rejects-takeover-bids-opts-to-remain-public",
+   "published": "2026-11-10T13:30"
+  },
+  "h36207b0c": {
+   "id": "h36207b0c",
+   "source": "CNBC Markets",
+   "title": "Here are Tuesday's biggest analyst calls: Nvidia, SpaceX, American Airlines, Ralph Lauren, MongoDB & more",
+   "blurb": "Here are Tuesday's biggest calls on Wall Street.",
+   "url": "https://www.cnbc.com/2026/11/10/tuesday-biggest-analyst-calls-like-nvidia.html",
+   "published": "2026-11-10T13:18"
+  },
+  "h3a10cf0a": {
+   "id": "h3a10cf0a",
+   "source": "CNBC Markets",
+   "title": "This airline stock could soar despite higher fuel costs, Rothschild says",
+   "blurb": "American Airlines Group is likely to see its shares rise due to higher fares and investment in key travel hubs, according to Rothschild & Co. Redburn.",
+   "url": "https://www.cnbc.com/2026/11/10/this-airline-stock-could-soar-despite-higher-fuel-costs-analyst-says.html",
+   "published": "2026-11-10T13:17"
+  },
+  "hdbacfd04": {
+   "id": "hdbacfd04",
+   "source": "Financial Times",
+   "title": "Anthropic targets valuation of up to $1.4tn in IPO",
+   "blurb": "The Claude maker plans to raise as much as $64bn in highly anticipated listing",
+   "url": "https://www.ft.com/content/5654e210-4be3-4550-b975-129c9a2e7fe5?syn-25a6b1a6=1",
+   "published": "2026-11-10T13:07"
+  },
+  "h4d0571f0": {
+   "id": "h4d0571f0",
+   "source": "CNBC Tech",
+   "title": "Nvidia scandal fails to bring down the tech bulls as spy investigation widens",
+   "blurb": "President Trump says FBI is \"looking into\" Huang while class action suit emerges",
+   "url": "https://www.cnbc.com/2026/11/10/nvidia-scandal-fails-to-bring-down-the-tech-bulls-as-spy-investigation-widens.html",
+   "published": "2026-11-10T11:41"
+  },
+  "h5f8ecb54": {
+   "id": "h5f8ecb54",
+   "source": "WSJ Markets",
+   "title": "CoreWeave Brings AI\u2019s Financing Concern Into Focus",
+   "blurb": "Plus, Nvidia\u2019s spy-scandal storm rages, and corporate America braces for investigations.",
+   "url": "https://www.wsj.com/finance/investing/coreweave-brings-ais-financing-concern-into-focus-20f3a19e?mod=rss_markets_main",
+   "published": "2026-11-10T11:25"
+  },
+  "h05c5fd62": {
+   "id": "h05c5fd62",
+   "source": "WSJ Markets",
+   "title": "The Nvidia Affair Is Terrible Timing for Corporate America",
+   "blurb": "Plus: Anthropic\u2019s diminishing returns, energy inflation pass-throughs, and how AI could commodify work.",
+   "url": "https://www.wsj.com/finance/investing/the-nvidia-affair-is-terrible-timing-for-corporate-america-aa3166c2?mod=rss_markets_main",
+   "published": "2026-11-10T11:05"
+  },
+  "h8ad028b7": {
+   "id": "h8ad028b7",
+   "source": "WSJ Markets",
+   "title": "Stock Market Today: Yields Jump as Inflation Comes in Hotter Than Expected",
+   "blurb": "Nvidia stock slides for second straight day; Nasdaq falls 1%",
+   "url": "https://www.wsj.com/livecoverage/stock-market-cpi-inflation-11-10-2026?mod=rss_markets_main",
+   "published": "2026-11-10T10:01"
+  },
+  "h214f01b5": {
+   "id": "h214f01b5",
+   "source": "Bloomberg Markets",
+   "title": "Gold Tumbles as Hot US Inflation, Fedspeak Fuel Fed Hike Bets",
+   "blurb": "Gold extended its decline after a hotter-than-expected US inflation report and remarks from policymakers reinforced bets that the Federal Reserve will raise interest rates next month.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-10/gold-holds-gain-above-4-100-as-lower-oil-eases-inflation-woes",
+   "published": "2026-11-10T00:04"
+  },
+  "h52d453c5": {
+   "id": "h52d453c5",
+   "source": "Bloomberg Markets",
+   "title": "Stocks, Bonds Fall as Fed-Hike Chorus Grows Louder: Markets Wrap",
+   "blurb": "Faster-than-estimated inflation data spurred losses in stocks and bonds, with Wall Street also rattled by signals from some Federal Reserve officials that they may need to lift rates more aggressively.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-09/stock-market-today-dow-s-p-live-updates",
+   "published": "2026-11-09T22:16"
+  },
+  "h2f74281a": {
+   "id": "h2f74281a",
+   "source": "CNBC Tech",
+   "title": "Goldman CEO Solomon says AI financing remains strong despite market jitters",
+   "blurb": "Goldman CEO David Solomon says investor appetite for AI infrastructure remains strong despite a reset in AI stocks and political uncertainty around data centers.",
+   "url": "https://www.cnbc.com/2026/11/09/goldman-ceo-ai-financing-market.html",
+   "published": "2026-11-09T18:14"
+  }
+ },
+ "latest": [
+  {
+   "id": "h028fe8b3",
+   "source": "CNBC",
+   "title": "Schumer accuses Trump of defending Nvidia CEO Jensen Huang at cost of national security",
+   "blurb": "Rep. John Moolenaar, R-Mich., the Republican chairman of the Select Committee on China and told CNBC he expects answers about Jensen Huang's relationship.",
+   "url": "https://www.cnbc.com/2026/11/10/moolenaar-nvidia-jensen-huang-affair-chinese-spy.html",
+   "published": "2026-11-10T20:33"
+  },
+  {
+   "id": "h1fb3ee79",
+   "source": "MarketWatch",
+   "title": "Aggressive Fed rate hikes are quickly becoming the biggest risk to stocks in 2027, says economist",
+   "blurb": "The Fed remains too optimistic on its ability to tame inflation, and markets may be too complacent, economist Neil Dutta warns.",
+   "url": "https://www.marketwatch.com/story/an-overzealous-fed-is-quickly-becoming-the-biggest-risk-to-stocks-in-2027-ba28e51d?mod=mw_rss_topstories",
+   "published": "2026-11-10T20:27"
+  },
+  {
+   "id": "h2cb5ccf3",
+   "source": "CNBC",
+   "title": "It's time to buy the dip on this key aerospace supplier. Why the shares can rebound",
+   "blurb": "The Pittsburgh-based company makes some of the most critical components in jet engines and power turbines.",
+   "url": "https://www.cnbc.com/2026/11/10/its-time-to-buy-the-dip-on-this-key-aerospace-supplier-why-im-buying.html",
+   "published": "2026-11-10T20:26"
+  },
+  {
+   "id": "hb6b86d12",
+   "source": "CNBC",
+   "title": "Jim Jordan elected House GOP leader",
+   "blurb": "House Speaker Mike Johnson, R-La., announced the day after Election Day he would not run for minority leader in the 120th Congress.",
+   "url": "https://www.cnbc.com/2026/11/10/jim-jordan-congress-republicans-midterm.html",
+   "published": "2026-11-10T20:24"
+  },
+  {
+   "id": "hd496d457",
+   "source": "CNBC Tech",
+   "title": "Nvidia board member Stephen Neal could play big role in probe of CEO Jensen Huang",
+   "blurb": "Stephen Neal is the lead independent director on the Nvidia board of directors. His past clients include Theranos fraudster Elizabeth Holmes.",
+   "url": "https://www.cnbc.com/2026/11/09/nvidia-jensen-huang-investigation.html",
+   "published": "2026-11-10T20:22"
+  },
+  {
+   "id": "hd101f627",
+   "source": "CNBC",
+   "title": "S&P 500 falls after hot CPI ignites inflation concerns: Live updates",
+   "blurb": "Traders reacted to a pivotal consumer inflation report as well as new comments from a key Federal Reserve official.",
+   "url": "https://www.cnbc.com/2026/11/09/stock-market-today-live-updates.html",
+   "published": "2026-11-10T20:17"
+  },
+  {
+   "id": "h68e4f98a",
+   "source": "Bloomberg Markets",
+   "title": "Anthropic Targets $1.4 Trillion Valuation in Blockbuster IPO",
+   "blurb": "Anthropic is seeking a valuation of about $1.4 trillion in its initial public offering, a bid to make history as the first frontier artificial intelligence lab to go public. The company\u2019s IPO is set to price on Wednesday, Nov. 18 and trade the following day. Bailey Lipschultz\u2026",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-10/anthropic-targets-1-4-trillion-valuation-in-ipo-video-mwb4e46h",
+   "published": "2026-11-10T20:05"
+  },
+  {
+   "id": "hb660a3a2",
+   "source": "Bloomberg Technology",
+   "title": "Major Blockchains Have Not Been Hacked: Securitize CEO",
+   "blurb": "Carlos Domingo, chairman, co-founder, and CEO of Securitize, joins Isabelle Lee and Tim Stenovec on \"Bloomberg Crypto.\" Hackers stole $6.3 billion from Binance in the biggest ever heist. (Source: Bloomberg)",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-10/major-blockchains-have-not-been-hacked-securitize-ceo-video-mwb4dc60",
+   "published": "2026-11-10T20:05"
+  },
+  {
+   "id": "ha8c7b35d",
+   "source": "Financial Times",
+   "title": "US commerce department delays Megaspeed\u2019s inclusion on trade blacklist",
+   "blurb": "Company connected to alleged Chinese spy who had affair with Nvidia chief Jensen Huang was left off \u2018entity list\u2019",
+   "url": "https://www.ft.com/content/afb6c960-a910-4d67-9588-73ba3bea5b06?syn-25a6b1a6=1",
+   "published": "2026-11-10T20:05"
+  },
+  {
+   "id": "hcfd647cb",
+   "source": "CNBC",
+   "title": "Nvidia hires law firm Wachtell Lipton to lead Jensen Huang affair probe",
+   "blurb": "On Sunday, Huang admitted to having an affair with a woman who has been connected to Chinese intelligence by reports in The New York Times and Financial Times.",
+   "url": "https://www.cnbc.com/2026/11/10/nvidia-wachtell-lipton-huang-affair.html",
+   "published": "2026-11-10T20:01"
+  },
+  {
+   "id": "h4e45e63f",
+   "source": "Bloomberg Technology",
+   "title": "Coinbase Gets National Bank Charter Approval",
+   "blurb": "Bloomberg's Olga Kharif joins Isabelle Lee and Tim Stenovec on \"Bloomberg Crypto.\" Coinbase, the largest US crypto exchange, said a key regulator has fully signed off on its request to become a nationally chartered trust bank, the latest example of firms in the digital-asset\u2026",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-10/coinbase-gets-national-bank-charter-approval-video",
+   "published": "2026-11-10T20:00"
+  },
+  {
+   "id": "hfb5e3d8f",
+   "source": "Financial Times",
+   "title": "US regulator postpones Wall Street push to trade AI computing futures",
+   "blurb": "The Commodity Futures Trading Commission raises concerns over price manipulation as exchanges race to create new asset class",
+   "url": "https://www.ft.com/content/269b0245-44c4-4e34-94df-202bef642539?syn-25a6b1a6=1",
+   "published": "2026-11-10T19:58"
+  }
+ ],
+ "feeds": 12,
+ "scanned": 130
+}

@@ -3,12 +3,27 @@
 {% block title %}Sources · Market Digest{% endblock %}
 {% block content %}
 <h1>Sources</h1>
-<p class="muted">Hand-picked for explaining <em>why</em>, not just <em>what</em>: hosts with real credentials or newsroom standards, and no stock-tip hype.</p>
-{% for s in sources if s.enabled is not false %}
-<div class="gterm">
-  <h3>{{ s.name }}</h3>
-  <p class="muted">{{ 'Podcast' if s.kind == 'podcast' else 'YouTube' }} · {{ s.cadence }}</p>
-  <p>{{ s.why }}</p>
+<p class="muted">Hand-picked for explaining <em>why</em>, not just <em>what</em>: hosts with real credentials or newsroom standards, and no stock-tip hype.
+  Market Digest is not affiliated with any of them, so if you like a show, go and listen to it.</p>
+
+{% for group, label, blurb in [('daily', 'Daily news', 'What happened today in markets and business.'),
+                               ('learn', 'Learn the basics', 'Explainers that make the economy and investing click.'),
+                               ('deep', 'Go deeper', 'Expert long-form for when you want more.')] %}
+<h2 class="section-title">{{ label }} <span class="muted small">{{ blurb }}</span></h2>
+<div class="src-grid">
+{% for s in sources if s.group == group and s.enabled is not false %}
+  <div class="card src">
+    <h3>{{ s.name }}</h3>
+    <p class="muted small">Podcast · {{ s.cadence }}</p>
+    <p>{{ s.why }}</p>
+  </div>
+{% endfor %}
 </div>
 {% endfor %}
+
+{% if feeds %}
+<h2 class="section-title">Newsrooms <span class="muted small">Headlines used for “What’s hot”</span></h2>
+<p class="muted small" style="margin-bottom:12px">Only the headline and each feed’s own short summary are used, never the full article. Every topic links to the original reporting.</p>
+<div class="feed-list">{% for f in feeds %}<span class="feed">{{ f.name }}</span>{% endfor %}</div>
+{% endif %}
 {% endblock %}

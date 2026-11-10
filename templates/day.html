@@ -38,8 +38,42 @@
 <p class="asof">Previous close vs latest price · 1-month trend · as of {{ market.as_of[:10] }} {{ market.as_of[11:16] }} · Yahoo Finance</p>
 {% endif %}
 
+{% if is_home %}
+<section class="intro">
+  <div>
+    <strong>Learn the market in 5 minutes a day.</strong>
+    Every morning we listen to {{ n_podcasts }} trusted finance podcasts and scan {{ n_feeds }} newsrooms, then explain what matters in plain English: key points, the numbers, the jargon and the lesson behind the news.
+  </div>
+  <a class="btn ghost" href="{{ prefix }}about.html">How it works</a>
+</section>
+{% endif %}
+
 <div class="layout">
 <div class="col-main">
+
+{% if hot and hot.topics %}
+<section class="hot" aria-labelledby="hot-h">
+  <div class="hot-head">
+    <h2 class="section-title" id="hot-h">What’s hot <span class="live-dot" aria-hidden="true"></span></h2>
+    <span class="muted small">From {{ hot.scanned }} headlines across {{ hot.feeds }} newsrooms</span>
+  </div>
+  <div class="hot-grid">
+  {% for t in hot.topics %}
+    <article class="card hot-card{{ ' lead' if loop.first }}">
+      <div class="hot-rank">{{ loop.index }}</div>
+      <h3>{{ t.title }}</h3>
+      <p>{{ t.explanation }}</p>
+      <p class="hot-why"><span class="eyebrow">Why it matters</span> {{ t.why_it_matters }}</p>
+      <div class="hot-foot">
+        {% for sym in t.tickers if sym in co_syms %}<button class="ticker" type="button" data-open="{{ sym }}">{{ sym }}</button>{% endfor %}
+        <ul class="hot-src">{% for h in t.links %}<li><a href="{{ h.url }}" target="_blank" rel="noopener" title="{{ h.title }}">{{ h.source }}</a></li>{% endfor %}</ul>
+      </div>
+    </article>
+  {% endfor %}
+  </div>
+  <p class="asof">Based on headlines and the newsrooms’ own short summaries. Tap a source to read the full article.</p>
+</section>
+{% endif %}
 
 {% if brief %}
 <section class="card brief">
@@ -143,6 +177,25 @@
     {% endfor %}
     </ul>
     <p class="side-note">Tap a company for its chart, key stats and latest headlines.</p>
+  </section>
+  {% endif %}
+
+  {% if market and market.movers %}
+  <section class="card side movers">
+    <h2 class="side-title">Biggest movers today <button class="info" type="button" data-tip="US stocks worth more than $2 billion with the biggest % moves today, and the most-traded stocks by volume. Big moves usually follow news such as earnings." aria-label="About movers">i</button></h2>
+    <div class="mv-tabs" role="tablist">
+      {% for key, label in [('day_gainers', 'Gainers'), ('day_losers', 'Losers'), ('most_actives', 'Most active')] if market.movers[key] %}
+      <button type="button" role="tab" data-mv="{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}">{{ label }}</button>
+      {% endfor %}
+    </div>
+    {% for key in ['day_gainers', 'day_losers', 'most_actives'] if market.movers[key] %}
+    <ul class="mv-list" data-mv-list="{{ key }}" {% if not loop.first %}hidden{% endif %}>
+      {% for m in market.movers[key] %}
+      <li><span class="mv-id"><span class="co-name">{{ m.name|replace(', Inc.', '')|replace(' Inc.', '')|replace(' Corporation', '') }}</span><span class="co-sym">{{ m.symbol }}</span></span>
+        <span class="co-px"><span class="co-price">{{ '$%.2f'|format(m.price) if m.price else '—' }}</span>{{ chg(m) }}</span></li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
   </section>
   {% endif %}
 
