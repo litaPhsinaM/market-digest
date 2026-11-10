@@ -19,6 +19,29 @@
   </nav>
 </div>
 
+{% set good = items|selectattr("summary.worth_reading")|list %}
+<div class="actions" data-day="{{ date }}" data-total="{{ good|length }}">
+  <button class="act primary" type="button" data-stories>
+    <span class="act-ic" aria-hidden="true">▶</span><span><b>Today in 60 seconds</b><small>Swipe through the day</small></span>
+  </button>
+  {% if audio %}
+  <button class="act" type="button" data-listen>
+    <span class="act-ic" aria-hidden="true">🎧</span><span><b>Listen</b><small>3-min audio briefing</small></span>
+  </button>
+  {% endif %}
+  {% if quiz and quiz.questions %}
+  <a class="act" href="#quiz">
+    <span class="act-ic" aria-hidden="true">🧠</span><span><b>Daily quiz</b><small id="quiz-status">{{ quiz.questions|length }} questions</small></span>
+  </a>
+  {% endif %}
+  {% if good %}
+  <div class="act progress" title="Stories you've read today">
+    <svg class="ring" viewBox="0 0 36 36" aria-hidden="true"><circle class="ring-bg" cx="18" cy="18" r="15"/><circle class="ring-fg" id="ring-fg" cx="18" cy="18" r="15"/></svg>
+    <span><b><span id="read-n">0</span> / {{ good|length }} read</b><small id="read-msg">Tap ✓ on a story when you're done</small></span>
+  </div>
+  {% endif %}
+</div>
+
 {% if market %}
 <section class="strip" aria-label="Markets">
   {% for q in market.indices %}{% set f = q|qf %}
@@ -66,6 +89,7 @@
       <p class="hot-why"><span class="eyebrow">Why it matters</span> {{ t.why_it_matters }}</p>
       <div class="hot-foot">
         {% for sym in t.tickers if sym in co_syms %}<button class="ticker" type="button" data-open="{{ sym }}">{{ sym }}</button>{% endfor %}
+        <button class="share" type="button" data-share data-kind="What's hot" data-title="{{ t.title }}" data-text="{{ t.explanation }}" aria-label="Share this story">Share</button>
         <ul class="hot-src">{% for h in t.links %}<li><a href="{{ h.url }}" target="_blank" rel="noopener" title="{{ h.title }}">{{ h.source }}</a></li>{% endfor %}</ul>
       </div>
     </article>
@@ -147,10 +171,32 @@
       {% endfor %}
       <span class="quality" title="How well-supported the source's claims are">{{ s.quality_note }}</span>
     </div>
-    <a class="btn" href="{{ it.url }}" target="_blank" rel="noopener">{{ 'Watch' if it.kind == 'youtube' else 'Listen' }} on {{ 'YouTube' if it.kind == 'youtube' else 'the original' }} ↗</a>
+    <div class="ep-acts">
+      <button class="share" type="button" data-share data-kind="{{ it.source_name }}" data-title="{{ s.headline }}" data-text="{{ s.tldr }}" aria-label="Share this story">Share</button>
+      <button class="readbtn" type="button" data-read="{{ it.id }}" aria-pressed="false"><span class="chk" aria-hidden="true">✓</span> <span class="lbl">Mark as read</span></button>
+      <a class="btn" href="{{ it.url }}" target="_blank" rel="noopener">Listen to the original ↗</a>
+    </div>
   </footer>
 </article>
 {% endfor %}
+
+{% if quiz and quiz.questions %}
+<section class="card quiz" id="quiz" data-day="{{ date }}">
+  <div class="quiz-head">
+    <div><div class="eyebrow">Daily quiz</div><h2>Test what you learned today</h2></div>
+    <span class="quiz-score" id="quiz-score" hidden></span>
+  </div>
+  {% for q in quiz.questions %}{% set qi = loop.index0 %}
+  <div class="q" data-q="{{ qi }}" data-answer="{{ q.answer }}">
+    <p class="q-text"><span class="q-n">{{ loop.index }}</span>{{ q.question }}</p>
+    <div class="q-opts">
+      {% for o in q.options %}<button type="button" class="q-opt" data-opt="{{ loop.index0 }}"><span class="q-key">{{ 'ABCD'[loop.index0] }}</span>{{ o }}</button>{% endfor %}
+    </div>
+    <p class="q-exp" hidden>{{ q.explanation }}</p>
+  </div>
+  {% endfor %}
+</section>
+{% endif %}
 
 {% set skipped = items|rejectattr("summary.worth_reading")|list %}
 {% if skipped %}
@@ -162,21 +208,48 @@
 </div>
 
 <aside class="col-side">
+  {% if market and market.mood %}{% set m = market.mood %}
+  <section class="card side mood">
+    <h2 class="side-title">Market mood <button class="info" type="button" data-tip="Our simple gauge from 0 (extreme fear) to 100 (extreme greed), averaging today's S&P 500 move, its past month, and the VIX, which measures how much turbulence investors expect. It describes the mood; it doesn't predict anything." aria-label="About market mood">i</button></h2>
+    <div class="gauge" style="--score: {{ m.score }}">
+      <svg viewBox="0 0 120 68" aria-hidden="true">
+        <defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="var(--down)"/><stop offset=".5" stop-color="var(--warn)"/><stop offset="1" stop-color="var(--up)"/></linearGradient></defs>
+        <path class="g-track" d="M10 60 A50 50 0 0 1 110 60"/>
+        <path class="g-fill" d="M10 60 A50 50 0 0 1 110 60" pathLength="100"/>
+        <line class="g-needle" x1="60" y1="60" x2="60" y2="18" style="transform: rotate({{ (m.score * 1.8 - 90)|round(1) }}deg)"/>
+        <circle class="g-hub" cx="60" cy="60" r="4"/>
+      </svg>
+      <div class="g-read"><span class="g-score">{{ m.score }}</span><span class="g-label">{{ m.label }}</span></div>
+    </div>
+    <ul class="g-parts">{% for p in m.parts %}<li><span>{{ p.name }}</span><b>{{ p.value }}</b></li>{% endfor %}</ul>
+  </section>
+  {% endif %}
+
   {% if companies %}
   <section class="card side">
     <h2 class="side-title">Companies in the news</h2>
     <ul class="cos">
     {% for c in companies %}{% set f = c|qf %}
-      <li><button class="co-row" type="button" data-open="{{ c.symbol }}">
+      <li class="co-li" data-sym="{{ c.symbol }}"><button class="co-row" type="button" data-open="{{ c.symbol }}">
         <span class="co-logo" aria-hidden="true">{{ c.symbol[:1] }}</span>
         <span class="co-id"><span class="co-name">{{ c.name|replace(', Inc.', '')|replace(' Inc.', '')|replace(' Corporation', '') }}</span>
           <span class="co-sym">{{ c.symbol }}{% if c.mentioned_in %} · <span class="mention">in today’s stories</span>{% endif %}</span></span>
         <svg class="spark sm" data-series='{{ c.history[-23:]|tojson }}' aria-hidden="true"></svg>
         <span class="co-px"><span class="co-price">{{ f.price }}</span>{{ chg(c) }}</span>
-      </button></li>
+      </button><button class="star" type="button" data-star="{{ c.symbol }}" aria-pressed="false" aria-label="Add {{ c.symbol }} to your watchlist">☆</button></li>
     {% endfor %}
     </ul>
-    <p class="side-note">Tap a company for its chart, key stats and latest headlines.</p>
+    <p class="side-note">Tap a company for its chart, stats and headlines. ☆ Star one to pin it to the top.</p>
+  </section>
+  {% endif %}
+
+  {% if earnings %}
+  <section class="card side">
+    <h2 class="side-title">Earnings coming up <button class="info" type="button" data-tip="Every three months, public companies report their results: sales, profit and their outlook. Prices often jump or drop on the day, depending on whether results beat what analysts expected." aria-label="About earnings">i</button></h2>
+    <ul class="earn">{% for c in earnings %}{% set d = c.next_earnings %}
+      <li class="earn-li" data-sym="{{ c.symbol }}"><span class="earn-date"><b>{{ d[8:10]|int }}</b><small>{{ ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d[5:7]|int - 1] }}</small></span>
+        <button class="earn-co" type="button" data-open="{{ c.symbol }}"><span class="co-name">{{ c.name|replace(', Inc.', '')|replace(' Inc.', '')|replace(' Corporation', '') }}</span><span class="co-sym">{{ c.symbol }} reports results</span></button></li>
+    {% endfor %}</ul>
   </section>
   {% endif %}
 
@@ -225,6 +298,7 @@
       <h2 id="co-{{ c.symbol }}-name">{{ c.name }}</h2>
       <div class="co-sym">{{ c.exchange }}: {{ c.symbol }}{% if c.sector %} · {{ c.sector }}{% endif %}</div>
     </div>
+    <button class="star lg" type="button" data-star="{{ c.symbol }}" aria-pressed="false" aria-label="Add {{ c.symbol }} to your watchlist">☆</button>
     <button class="close" type="button" data-close aria-label="Close">×</button>
   </div>
 
@@ -267,4 +341,34 @@
   <p class="dlg-foot">Prices from Yahoo Finance, may be delayed. Snapshot taken {{ market.as_of[:10] }}. Not financial advice.</p>
 </dialog>
 {% endfor %}
+
+{% if audio %}
+<div class="player" id="player" hidden>
+  <audio id="audio" preload="none" src="{{ prefix }}audio/{{ date }}.mp3"></audio>
+  <button class="pl-play" type="button" id="pl-play" aria-label="Play">▶</button>
+  <div class="pl-mid">
+    <div class="pl-title"><b>Morning briefing</b> · {{ pretty_date }}</div>
+    <input class="pl-seek" id="pl-seek" type="range" min="0" max="1000" value="0" aria-label="Seek">
+    <div class="pl-time"><span id="pl-cur">0:00</span><span id="pl-dur">3:00</span></div>
+  </div>
+  <button class="pl-speed" type="button" id="pl-speed" aria-label="Playback speed">1×</button>
+  <button class="pl-tx" type="button" id="pl-tx" aria-expanded="false">Transcript</button>
+  <button class="pl-x" type="button" id="pl-x" aria-label="Close player">×</button>
+  <div class="pl-script" id="pl-script" hidden>{% for para in audio.script.split('\n') if para.strip() %}<p>{{ para }}</p>{% endfor %}</div>
+</div>
+{% endif %}
+
+{% set slides = [{'kind': 'cover', 'title': pretty_date, 'text': (brief.big_picture if brief else ''), 'mood': (market.mood if market and market.mood else none)}] %}
+{% if hot %}{% for t in hot.topics[:5] %}{% set _ = slides.append({'kind': 'hot', 'label': 'What’s hot · ' ~ loop.index, 'title': t.title, 'text': t.explanation, 'why': t.why_it_matters}) %}{% endfor %}{% endif %}
+{% for it in good %}{% set _ = slides.append({'kind': 'story', 'label': it.source_name, 'title': it.summary.headline, 'text': it.summary.tldr, 'lesson': it.summary.lesson, 'href': '#' ~ it.id}) %}{% endfor %}
+{% if brief %}{% set _ = slides.append({'kind': 'concept', 'label': 'Concept of the day', 'title': brief.concept_of_the_day.concept, 'text': brief.concept_of_the_day.explanation}) %}{% endif %}
+{% if quiz and quiz.questions %}{% set _ = slides.append({'kind': 'quiz', 'label': 'Daily quiz', 'title': 'Ready to test yourself?', 'text': quiz.questions|length ~ ' quick questions on what you just learned.', 'href': '#quiz'}) %}{% endif %}
+<script type="application/json" id="slides-data">{{ slides|tojson }}</script>
+<div class="stories" id="stories" hidden role="dialog" aria-modal="true" aria-label="Today in 60 seconds">
+  <div class="st-bars" id="st-bars"></div>
+  <button class="st-x" type="button" id="st-x" aria-label="Close">×</button>
+  <div class="st-card" id="st-card"></div>
+  <button class="st-nav prev" type="button" id="st-prev" aria-label="Previous"></button>
+  <button class="st-nav next" type="button" id="st-next" aria-label="Next"></button>
+</div>
 {% endblock %}

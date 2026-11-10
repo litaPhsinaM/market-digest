@@ -1,11 +1,11 @@
 {
- "as_of": "2026-11-10T13:01-08:00",
+ "as_of": "2026-11-10T14:14-08:00",
  "indices": [
   {
    "symbol": "^GSPC",
-   "price": 7520.9902,
-   "change": -28.94970000000012,
-   "change_pct": -0.38344278740549687,
+   "price": 7520.9302,
+   "change": -29.00970000000052,
+   "change_pct": -0.38423749571835364,
    "history": [
     [
      "2025-11-11",
@@ -1009,7 +1009,7 @@
     ],
     [
      "2026-11-10",
-     7520.9902
+     7520.9302
     ]
    ],
    "name": "S&P 500",
@@ -2031,9 +2031,9 @@
   },
   {
    "symbol": "^DJI",
-   "price": 52233.0781,
-   "change": -156.6719000000012,
-   "change_pct": -0.2990506730801368,
+   "price": 52231.8906,
+   "change": -157.8594000000012,
+   "change_pct": -0.30131733783803627,
    "history": [
     [
      "2025-11-11",
@@ -3037,7 +3037,7 @@
     ],
     [
      "2026-11-10",
-     52233.0781
+     52231.8906
     ]
    ],
    "name": "Dow Jones",
@@ -4063,9 +4063,9 @@
   },
   {
    "symbol": "BTC-USD",
-   "price": 73784.3516,
-   "change": -1438.796800000011,
-   "change_pct": -1.9127048396714197,
+   "price": 73835.0078,
+   "change": -1388.1405999999988,
+   "change_pct": -1.8453636008673113,
    "history": [
     [
      "2025-11-10",
@@ -5529,7 +5529,7 @@
     ],
     [
      "2026-11-10",
-     73784.3516
+     73835.0078
     ]
    ],
    "name": "Bitcoin",
@@ -5539,9 +5539,9 @@
  "companies": [
   {
    "symbol": "NVDA",
-   "price": 168.7956,
-   "change": -9.87439999999998,
-   "change_pct": -5.5266133094531655,
+   "price": 168.89,
+   "change": -9.780000000000001,
+   "change_pct": -5.473778474282199,
    "history": [
     [
      "2025-11-11",
@@ -5613,7 +5613,7 @@
     ],
     [
      "2025-12-05",
-     181.9842
+     181.9841
     ],
     [
      "2025-12-08",
@@ -5773,7 +5773,7 @@
     ],
     [
      "2026-02-04",
-     173.7833
+     173.7834
     ],
     [
      "2026-02-05",
@@ -5781,7 +5781,7 @@
     ],
     [
      "2026-02-06",
-     184.9771
+     184.9772
     ],
     [
      "2026-02-09",
@@ -5873,7 +5873,7 @@
     ],
     [
      "2026-03-12",
-     182.7224
+     182.7223
     ],
     [
      "2026-03-13",
@@ -5897,7 +5897,7 @@
     ],
     [
      "2026-03-20",
-     172.3061
+     172.3062
     ],
     [
      "2026-03-23",
@@ -5933,7 +5933,7 @@
     ],
     [
      "2026-04-02",
-     176.9854
+     176.9855
     ],
     [
      "2026-04-06",
@@ -6545,7 +6545,7 @@
     ],
     [
      "2026-11-10",
-     168.7956
+     168.89
     ]
    ],
    "name": "NVIDIA Corporation",
@@ -6557,8 +6557,8 @@
     "open": 173.98,
     "high": 174.65,
     "low": 165.89,
-    "market_cap": 4075908235264,
-    "pe": 21.339525,
+    "market_cap": 4078186790912,
+    "pe": 21.351454,
     "dividend_yield": 0.56,
     "high_52w": 243.37,
     "low_52w": 164.27
@@ -8676,9 +8676,9 @@
      "date": "2026-11-10"
     },
     {
-     "title": "Apple users get urgent security warning over iPhone flaw",
-     "source": "TheStreet",
-     "url": "https://www.thestreet.com/crypto/technology/apple-users-get-urgent-security-warning-over-iphone-flaw",
+     "title": "Meta's Ember is a bet on cheaper models with competitors",
+     "source": "Yahoo Finance Video",
+     "url": "https://finance.yahoo.com/video/metas-ember-is-a-bet-on-cheaper-models-with-competitors-215556435.html",
      "date": "2026-11-10"
     }
    ],
@@ -8696,7 +8696,7 @@
     ],
     [
      "2025-11-12",
-     506.9689
+     506.9688
     ],
     [
      "2025-11-13",
@@ -8704,7 +8704,7 @@
     ],
     [
      "2025-11-14",
-     506.0166
+     506.0167
     ],
     [
      "2025-11-17",
@@ -8724,7 +8724,7 @@
     ],
     [
      "2025-11-21",
-     469.1436
+     469.1437
     ],
     [
      "2025-11-24",
@@ -8732,7 +8732,7 @@
     ],
     [
      "2025-11-25",
-     473.983
+     473.9829
     ],
     [
      "2025-11-26",
@@ -8760,7 +8760,7 @@
     ],
     [
      "2025-12-05",
-     480.1141
+     480.114
     ],
     [
      "2025-12-08",
@@ -8788,7 +8788,7 @@
     ],
     [
      "2025-12-16",
-     473.3868
+     473.3867
     ],
     [
      "2025-12-17",
@@ -8872,7 +8872,7 @@
     ],
     [
      "2026-01-16",
-     456.9609
+     456.961
     ],
     [
      "2026-01-20",
@@ -8884,7 +8884,7 @@
     ],
     [
      "2026-01-22",
-     448.296
+     448.2959
     ],
     [
      "2026-01-23",
@@ -8916,7 +8916,7 @@
     ],
     [
      "2026-02-03",
-     408.6177
+     408.6176
     ],
     [
      "2026-02-04",
@@ -8928,7 +8928,7 @@
     ],
     [
      "2026-02-06",
-     398.6112
+     398.6111
     ],
     [
      "2026-02-09",
@@ -8944,7 +8944,7 @@
     ],
     [
      "2026-02-12",
-     399.3068
+     399.3067
     ],
     [
      "2026-02-13",
@@ -9713,21 +9713,21 @@
    "next_earnings": "2027-01-27",
    "news": [
     {
-     "title": "Stock Market Today: Dow Dips As Nvidia Dives; Microsoft Skids On Anthropic Tools Move (Live Coverage)",
+     "title": "Dow Jones Futures: Stock Market Falls On Surging Treasury Yields, Nvidia Sell-Off; CoreWeave Rises Late",
      "source": "Investor's Business Daily",
-     "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-cpi-inflation-report-anthropic-ipo/?src=A00220&yptr=yahoo",
+     "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-treasury-yields-nvidia-coreweave/?src=A00220&yptr=yahoo",
      "date": "2026-11-10"
     },
     {
-     "title": "5 Best Tech Stocks That Pay Dividends",
-     "source": "Insider Monkey",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/5-best-tech-stocks-pay-194142629.html",
+     "title": "Tech, Media & Telecom Roundup: Market Talk",
+     "source": "The Wall Street Journal",
+     "url": "https://www.wsj.com/business/tech-media-telecom-roundup-market-talk-491215dc?siteid=yhoof2&yptr=yahoo",
      "date": "2026-11-10"
     },
     {
-     "title": "Microsoft Warns a New Trade Crackdown Could Derail America's AI Boom",
-     "source": "GuruFocus.com",
-     "url": "https://finance.yahoo.com/technology/ai/articles/microsoft-warns-trade-crackdown-could-193904641.html",
+     "title": "Meta's Ember is a bet on cheaper models with competitors",
+     "source": "Yahoo Finance Video",
+     "url": "https://finance.yahoo.com/video/metas-ember-is-a-bet-on-cheaper-models-with-competitors-215556435.html",
      "date": "2026-11-10"
     }
    ],
@@ -9757,7 +9757,7 @@
     ],
     [
      "2025-11-17",
-     284.2807
+     284.2806
     ],
     [
      "2025-11-18",
@@ -9773,7 +9773,7 @@
     ],
     [
      "2025-11-21",
-     298.8828
+     298.8827
     ],
     [
      "2025-11-24",
@@ -10762,21 +10762,21 @@
    "next_earnings": "2026-10-28",
    "news": [
     {
-     "title": "Google's SpaceX investment takes an unexpected turn",
-     "source": "TheStreet",
-     "url": "https://www.thestreet.com/investing/stocks/googles-spacex-investment-is-taking-an-unexpected-turn",
+     "title": "Tech, Media & Telecom Roundup: Market Talk",
+     "source": "The Wall Street Journal",
+     "url": "https://www.wsj.com/business/tech-media-telecom-roundup-market-talk-491215dc?siteid=yhoof2&yptr=yahoo",
      "date": "2026-11-10"
     },
     {
-     "title": "Alphabet (GOOGL) Launches Gemini For Healthcare",
-     "source": "Simply Wall St.",
-     "url": "https://finance.yahoo.com/technology/ai/articles/alphabet-googl-launches-gemini-healthcare-201113086.html",
+     "title": "Why the Data Center Backlash Could Fall Flat: Increased Costs \u201ca Trade That These Hyperscalers Are Still Going to Want to Make\u201d",
+     "source": "TIKR",
+     "url": "https://www.tikr.com/blog/why-the-data-center-backlash-could-fall-flat-increased-costs-a-trade-that-these-hyperscalers-are-still-going-to-want-to-make?ref=yahoofinance&tlnk=yf-261110-h47c46w6",
      "date": "2026-11-10"
     },
     {
-     "title": "Is Fervo Energy (FRVO) Undervalued Following Its Google Deal And Cape Station Launch?",
-     "source": "Simply Wall St.",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/fervo-energy-frvo-undervalued-following-201055205.html",
+     "title": "Microsoft Stock Falls On Anthropic Challenge To Office Software",
+     "source": "Investor's Business Daily",
+     "url": "https://www.investors.com/news/technology/microsoft-stock-anthropic-challenge-office-software/?src=A00220&yptr=yahoo",
      "date": "2026-11-10"
     }
    ],
@@ -11811,21 +11811,21 @@
    "next_earnings": "2026-10-29",
    "news": [
     {
-     "title": "Stock Market Today: Dow Dips As Nvidia Dives; Microsoft Skids On Anthropic Tools Move (Live Coverage)",
+     "title": "Stock Market Today: Dow Dips As Yields Soar; Nvidia Dives; Anthropic Seeks This IPO Price",
      "source": "Investor's Business Daily",
      "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-cpi-inflation-report-anthropic-ipo/?src=A00220&yptr=yahoo",
      "date": "2026-11-10"
     },
     {
-     "title": "Anthropic's Blockbuster IPO Filing Contains a Surprising Nod to Washington",
-     "source": "GuruFocus.com",
-     "url": "https://finance.yahoo.com/technology/ai/articles/anthropics-blockbuster-ipo-filing-contains-193149088.html",
+     "title": "Why the Data Center Backlash Could Fall Flat: Increased Costs \u201ca Trade That These Hyperscalers Are Still Going to Want to Make\u201d",
+     "source": "TIKR",
+     "url": "https://www.tikr.com/blog/why-the-data-center-backlash-could-fall-flat-increased-costs-a-trade-that-these-hyperscalers-are-still-going-to-want-to-make?ref=yahoofinance&tlnk=yf-261110-h47c46w6",
      "date": "2026-11-10"
     },
     {
-     "title": "Can Amazon.com (AMZN) Be A Bargain After Its Maritime Satellite Reseller Deal?",
-     "source": "Simply Wall St.",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-com-amzn-bargain-maritime-191151615.html",
+     "title": "Want Extra Cash for the Holidays? 12 Companies Hiring Seasonal Workers",
+     "source": "The Penny Hoarder",
+     "url": "https://finance.yahoo.com/small-business/articles/looking-seasonal-hiring-holidays-2026-133127137.html",
      "date": "2026-11-10"
     }
    ],
@@ -12866,15 +12866,15 @@
      "date": "2026-11-10"
     },
     {
-     "title": "Elon Musk Says Tesla's Cybertruck Backlog Is Too Big To Clear Before Production Ends \u2014 Orders Extra Shift",
-     "source": "Benzinga",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/elon-musk-says-teslas-cybertruck-193006712.html",
+     "title": "Nvidia CEO Huang Gets More Bad News. Cathie Wood Keeps the Faith.",
+     "source": "Barrons.com",
+     "url": "https://www.barrons.com/articles/nvidia-stock-price-huang-cathie-wood-ef9d5868?siteid=yhoof2&yptr=yahoo",
      "date": "2026-11-10"
     },
     {
-     "title": "Nvidia in the hot seat, Anthropic to test the IPO market, hotter-than-expected US inflation",
-     "source": "Yahoo Finance Video",
-     "url": "https://finance.yahoo.com/video/nvidia-in-the-hot-seat-anthropic-to-test-the-ipo-market-hotter-than-expected-us-inflation-184626512.html",
+     "title": "Elon Musk Says Tesla's Cybertruck Backlog Is Too Big To Clear Before Production Ends \u2014 Orders Extra Shift",
+     "source": "Benzinga",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/elon-musk-says-teslas-cybertruck-193006712.html",
      "date": "2026-11-10"
     }
    ],
@@ -12894,7 +12894,7 @@
     "symbol": "CSQR",
     "name": "Csquare, Inc.",
     "price": 17.52,
-    "change_pct": 14.734774,
+    "change_pct": 14.7348,
     "change": 2.25
    },
    {
@@ -12923,9 +12923,9 @@
    {
     "symbol": "HIMS",
     "name": "Hims & Hers Health, Inc.",
-    "price": 19.1493,
-    "change_pct": -16.524414,
-    "change": -3.790701
+    "price": 19.13,
+    "change_pct": -16.6085,
+    "change": -3.81
    },
    {
     "symbol": "EQPT",
@@ -12951,18 +12951,25 @@
    {
     "symbol": "PS",
     "name": "Pershing Square Inc.",
-    "price": 44.25,
-    "change_pct": -14.821945,
-    "change": -7.700001
+    "price": 44.2,
+    "change_pct": -14.9182,
+    "change": -7.75
    }
   ],
   "most_actives": [
    {
     "symbol": "NVDA",
     "name": "NVIDIA Corporation",
-    "price": 168.79564,
-    "change_pct": -5.5265903,
-    "change": -9.874359
+    "price": 168.89,
+    "change_pct": -5.4737782,
+    "change": -9.779999
+   },
+   {
+    "symbol": "JHX",
+    "name": "James Hardie Industries plc.",
+    "price": 29.05,
+    "change_pct": -2.97262,
+    "change": -0.890001
    },
    {
     "symbol": "INTC",
@@ -12972,13 +12979,6 @@
     "change": -1.2399979
    },
    {
-    "symbol": "SPCX",
-    "name": "Space Exploration Technologies ",
-    "price": 143.09,
-    "change_pct": 0.71794814,
-    "change": 1.019989
-   },
-   {
     "symbol": "GRAB",
     "name": "Grab Holdings Limited",
     "price": 3.35,
@@ -12986,11 +12986,32 @@
     "change": -0.09000015
    },
    {
-    "symbol": "IREN",
-    "name": "IREN LIMITED",
-    "price": 19.73,
-    "change_pct": -7.8468018,
-    "change": -1.6800003
+    "symbol": "SPCX",
+    "name": "Space Exploration Technologies ",
+    "price": 143.09,
+    "change_pct": 0.71794814,
+    "change": 1.019989
+   }
+  ]
+ },
+ "mood": {
+  "score": 38,
+  "label": "Fear",
+  "parts": [
+   {
+    "name": "Today's S&P 500 move",
+    "value": "-0.38%",
+    "score": 40.39406260704116
+   },
+   {
+    "name": "S&P 500 past month",
+    "value": "-3.7%",
+    "score": 12.797374141334487
+   },
+   {
+    "name": "VIX (expected volatility)",
+    "value": "19.5",
+    "score": 62.0
    }
   ]
  }

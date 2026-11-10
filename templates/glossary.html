@@ -7,7 +7,7 @@
 <input id="q" class="search" type="search" placeholder="Filter terms…" oninput="
   const q=this.value.toLowerCase();document.querySelectorAll('.gterm').forEach(e=>e.hidden=!e.textContent.toLowerCase().includes(q))">
 {% for t in terms %}
-<div class="gterm">
+<div class="gterm" id="{{ t.term|slug }}">
   <h3>{{ t.term }}</h3>
   <p>{{ t.definition }}</p>
   <p class="ex">For example: {{ t.example }}</p>

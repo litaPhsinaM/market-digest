@@ -42,13 +42,38 @@ def _quote_fmt(q):
     return {"price": f"{prefix}{q['price']:,.{digits}f}", "change": f"{'+' if pct >= 0 else '−'}{abs(pct):.2f}%"}
 
 
+def _search_index(items, hots, glossary, markets):
+    """Everything searchable from the ⌘K palette: stories, hot topics, glossary terms, companies."""
+    idx = []
+    for it in items:
+        if it["summary"]["worth_reading"]:
+            idx.append({"k": "Story", "t": it["summary"]["headline"], "s": it["summary"]["tldr"], "m": it["source_name"],
+                        "d": it["digest_date"], "u": f"days/{it['digest_date']}.html#{it['id']}"})
+    for date, hot in hots.items():
+        for t in hot["topics"]:
+            idx.append({"k": "Hot", "t": t["title"], "s": t["explanation"], "m": "What's hot", "d": date, "u": f"days/{date}.html#hot-h"})
+    for t in glossary:
+        idx.append({"k": "Term", "t": t["term"], "s": t["definition"], "m": "Glossary", "u": "glossary.html#" + _slug(t["term"])})
+    if markets:
+        latest = markets[max(markets)]
+        for c in latest["companies"]:
+            idx.append({"k": "Company", "t": f"{c['name']} ({c['symbol']})", "s": c.get("sector") or "", "m": c["symbol"],
+                        "u": f"index.html#co-{c['symbol']}"})
+    return idx
+
+
+def _slug(text):
+    return "".join(ch if ch.isalnum() else "-" for ch in text.lower()).strip("-")
+
+
 def build(root: Path):
     data, out = root / "data", root / "site"
     items = [json.loads(p.read_text()) for p in sorted((data / "items").glob("*.json"))]
     briefs = {p.stem: json.loads(p.read_text()) for p in (data / "briefs").glob("*.json")}
     cfg = yaml.safe_load((root / "sources.yaml").read_text())
     srcs, feeds = cfg["sources"], cfg.get("news", [])
-    hots = {p.stem: json.loads(p.read_text()) for p in (data / "hot").glob("*.json")} if (data / "hot").exists() else {}
+    load = lambda sub: {p.stem: json.loads(p.read_text()) for p in (data / sub).glob("*.json")} if (data / sub).exists() else {}
+    hots, quizzes, audio = load("hot"), load("quiz"), load("audio")
 
     days = defaultdict(list)
     for it in items:
@@ -69,14 +94,23 @@ def build(root: Path):
     env.filters["big"] = _big
     env.filters["qf"] = _quote_fmt
     env.filters["initials"] = _initials
+    env.filters["slug"] = _slug
     markets = {p.stem: json.loads(p.read_text()) for p in (data / "market").glob("*.json")}
     src_index = {s["id"]: n for n, s in enumerate(srcs)}
 
     if out.exists():
         shutil.rmtree(out)
     (out / "days").mkdir(parents=True)
-    for asset in ("style.css", "app.js"):
+    for asset in ("style.css", "app.js", "features.js", "manifest.webmanifest"):
         shutil.copy(root / "templates" / asset, out / asset)
+    shutil.copytree(root / "templates" / "icons", out / "icons")
+    version = dt.datetime.now().strftime("%Y%m%d%H%M%S")
+    (out / "sw.js").write_text((root / "templates" / "sw.js").read_text().replace("__VERSION__", version))
+    (out / "audio").mkdir()
+    for date in audio:
+        mp3 = data / "audio" / f"{date}.mp3"
+        if mp3.exists():
+            shutil.copy(mp3, out / "audio" / mp3.name)
 
     def day_ctx(date):
         its = sorted(days[date], key=lambda i: (not i["summary"]["worth_reading"], i["source_name"]))
@@ -94,7 +128,12 @@ def build(root: Path):
             for c in mkt["companies"]:
                 if c.get("next_earnings") and c["next_earnings"] < date:
                     c["next_earnings"] = None
+        soon = (dt.date.fromisoformat(date) + dt.timedelta(days=14)).isoformat()
+        earnings = sorted((c for c in (mkt or {}).get("companies", []) if c.get("next_earnings") and c["next_earnings"] <= soon),
+                          key=lambda c: c["next_earnings"])
         return {"date": date, "brief": briefs.get(date), "items": its, "market": mkt, "hot": hots.get(date),
+                "quiz": quizzes.get(date), "earnings": earnings,
+                "audio": audio.get(date) if (out / "audio" / f"{date}.mp3").exists() else None,
                 "n_podcasts": len(srcs), "n_feeds": len(feeds),
                 "by_id": {i["id"]: i for i in its}, "src_index": src_index,
                 "pretty_date": dt.date.fromisoformat(date).strftime("%A, %B %-d, %Y"),
@@ -116,4 +155,5 @@ def build(root: Path):
     render("glossary.html", "glossary.html", "", terms=glossary)
     render("sources.html", "sources.html", "", sources=srcs, feeds=feeds)
     render("about.html", "about.html", "", n_podcasts=len(srcs), n_feeds=len(feeds))
+    (out / "search.json").write_text(json.dumps(_search_index(items, hots, glossary, markets), separators=(",", ":")))
     print(f"Built site: {len(dates)} days, {len(items)} items, {len(glossary)} glossary terms → {out}/index.html")

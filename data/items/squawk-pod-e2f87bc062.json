@@ -1,0 +1,97 @@
+{
+ "id": "squawk-pod-e2f87bc062",
+ "source_id": "squawk-pod",
+ "source_name": "Squawk Pod (CNBC)",
+ "kind": "podcast",
+ "title": "Anthropic\u2019s IPO Set, GTA VI Pre-Sales, & Nvidia\u2019s Scandal 11/10/26",
+ "url": "https://www.cnbc.com",
+ "media_url": "https://dts.podtrac.com/redirect.mp3/cnbc.simplecastaudio.com/2abef7ca-625f-4c74-9157-968d7da67c81/episodes/990508b7-8d22-4ea4-a4d3-4945bf4a1274/audio/128/default.mp3?aid=rss_feed&awCollectionId=2abef7ca-625f-4c74-9157-968d7da67c81&awEpisodeId=990508b7-8d22-4ea4-a4d3-4945bf4a1274&feed=VHAcgaw_",
+ "published": "2026-11-10",
+ "duration": 2393,
+ "digest_date": "2026-11-10",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "worth_reading": true,
+  "quality_note": "The episode covers three major topics: Anthropic's IPO, the NVIDIA spy scandal, and the pre-sales success of GTA VI. It provides specific details on market movements, company strategies, and political implications.",
+  "headline": "Key Market and Business Updates from Squawk Pod (11/10/26)",
+  "tldr": "This episode covers Anthropic's $100 billion IPO, the ongoing NVIDIA spy scandal involving CEO Jensen Huang, and the strong pre-sales for Grand Theft Auto VI.",
+  "key_points": [
+   {
+    "point": "Anthropic is planning a $100 billion IPO with a price range of $70 to $78 per share.",
+    "why_it_matters": "This is one of the largest IPOs in history and reflects strong investor confidence in the AI sector."
+   },
+   {
+    "point": "NVIDIA CEO Jensen Huang is involved in a scandal involving an alleged affair with a Chinese spy, with President Trump claiming he was unaware of the situation.",
+    "why_it_matters": "The scandal raises questions about the intersection of business, politics, and national security, and could impact NVIDIA's stock and reputation."
+   },
+   {
+    "point": "Grand Theft Auto VI has exceeded pre-sales expectations, with Take-Two Interactive's CEO expressing optimism about the game's success.",
+    "why_it_matters": "Strong pre-sales indicate high consumer demand and could boost Take-Two's financial performance."
+   },
+   {
+    "point": "Federal Reserve Governor Christopher Waller is leaning toward a rate hike in December, even if inflation data is lower than expected.",
+    "why_it_matters": "This suggests the Fed may continue tightening monetary policy to control inflation, which could affect the broader economy and financial markets."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "1.4 trillion dollars",
+    "context": "Potential valuation of Anthropic on a fully diluted basis if the IPO is priced at the high end of the range."
+   },
+   {
+    "figure": "64.35 billion dollars",
+    "context": "Public offering portion of Anthropic's IPO."
+   },
+   {
+    "figure": "26 billion dollars",
+    "context": "Private placement portion of Anthropic's IPO."
+   },
+   {
+    "figure": "81 billion dollars",
+    "context": "Annualized revenue run rate for Anthropic."
+   },
+   {
+    "figure": "7.71 million units",
+    "context": "Estimated pre-bookings for Grand Theft Auto VI, based on research from Censor Tower."
+   }
+  ],
+  "lesson": "This episode highlights the interconnectedness of technology, politics, and finance, showing how major events in one area can ripple across the economy and markets.",
+  "opinions_and_predictions": [
+   "Leslie Picker: 'Anthropic is amending its S1 filing, officially kicking off its roadshow today, looking at least initially to price between $70 and $78 per share.'",
+   "Lo Tony: 'Anthropic is an amazing company and a great investment opportunity. The strategics want to show that support for the company.'",
+   "Andrew Ross Sorkin: 'The market's consensus is that you will see a rate hike in December.'",
+   "Strauss Zelnick: 'We expect to have a phenomenal year, obviously.'"
+  ],
+  "tickers": [
+   "NVDA (NVIDIA)",
+   "TWO (Take-Two Interactive)",
+   "ANTH (Anthropic)"
+  ],
+  "glossary": [
+   {
+    "term": "IPO",
+    "definition": "Initial Public Offering, the process through which a private company offers its shares to the public for the first time, allowing it to raise capital from public investors and list on a stock exchange.",
+    "example": "Anthropic is planning a $100 billion IPO."
+   },
+   {
+    "term": "Circular financing",
+    "definition": "A situation where a company raises capital from investors who already have business relationships with the company, creating a loop of investment and support.",
+    "example": "Anthropic's IPO includes private placements from companies like NVIDIA and Google, which already have business relationships with the company."
+   },
+   {
+    "term": "Rate hike",
+    "definition": "An increase in interest rates by a central bank, such as the Federal Reserve, to control inflation and stabilize the economy.",
+    "example": "Federal Reserve Governor Christopher Waller is leaning toward a rate hike in December."
+   }
+  ],
+  "level": "beginner",
+  "topics": [
+   "IPOs",
+   "AI",
+   "Video Games",
+   "Monetary Policy",
+   "Corporate Scandals"
+  ]
+ }
+}

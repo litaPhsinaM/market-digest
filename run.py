@@ -23,7 +23,7 @@ from digest import build, sources, summarize
 ROOT = Path(__file__).parent
 DATA = ROOT / "data"
 ITEMS, BRIEFS, TRANSCRIPTS, MARKET = DATA / "items", DATA / "briefs", DATA / "transcripts", DATA / "market"
-HOT = DATA / "hot"
+HOT, QUIZ, AUDIO = DATA / "hot", DATA / "quiz", DATA / "audio"
 STATE = DATA / "state.json"
 
 
@@ -109,6 +109,31 @@ def write_hot(today: str, cfg: dict):
     }, indent=1))
 
 
+def write_extras(today: str):
+    """Daily quiz + spoken briefing, built from today's stories and hot topics."""
+    items = [r for r in (json.loads(p.read_text()) for p in ITEMS.glob("*.json"))
+             if r["digest_date"] == today and r["summary"]["worth_reading"]]
+    hot_p, brief_p = HOT / f"{today}.json", BRIEFS / f"{today}.json"
+    hot = json.loads(hot_p.read_text()) if hot_p.exists() else None
+    brief = json.loads(brief_p.read_text()) if brief_p.exists() else None
+    if not items and not hot:
+        return
+    print("Writing quiz")
+    q = summarize.quiz(items, hot)
+    (QUIZ / f"{today}.json").write_text(json.dumps({"date": today, **q.model_dump()}, indent=1))
+
+    from digest import voice
+    if not voice.available():
+        print("  (no .venv-tts, skipping audio briefing)")
+        return
+    print("Writing audio briefing")
+    words = dt.date.fromisoformat(today).strftime("%A, %B %-d")
+    b = summarize.briefing(items, hot, brief, words)
+    voice.speak(b.script, AUDIO / f"{today}.mp3")
+    (AUDIO / f"{today}.json").write_text(json.dumps({"date": today, "script": b.script}, indent=1))
+    voice.prune(AUDIO)
+
+
 def write_market(today: str, cfg: dict):
     from digest import market
     todays = [r for r in (json.loads(p.read_text()) for p in ITEMS.glob("*.json")) if r["digest_date"] == today]
@@ -144,13 +169,14 @@ def main():
     ap.add_argument("--build-only", action="store_true")
     ap.add_argument("--market-only", action="store_true", help="refresh today's market snapshot, then build")
     ap.add_argument("--hot-only", action="store_true", help="refresh today's hot topics and market snapshot, then build")
+    ap.add_argument("--extras-only", action="store_true", help="regenerate today's quiz and audio briefing, then build")
     ap.add_argument("--redo", nargs="*", metavar="ID",
                     help="re-summarize saved items from their transcripts (all of today's if no ids), redo the brief, build")
     ap.add_argument("--source", help="only this source id")
     ap.add_argument("--limit", type=int, default=2, help="max new items per source")
     args = ap.parse_args()
 
-    for d in (ITEMS, BRIEFS, TRANSCRIPTS, MARKET, HOT):
+    for d in (ITEMS, BRIEFS, TRANSCRIPTS, MARKET, HOT, QUIZ, AUDIO):
         d.mkdir(parents=True, exist_ok=True)
     if args.build_only:
         build.build(ROOT)
@@ -163,6 +189,10 @@ def main():
         if args.hot_only:
             write_hot(today, cfg)
         write_market(today, cfg)
+        build.build(ROOT)
+        return
+    if args.extras_only:
+        write_extras(today)
         build.build(ROOT)
         return
     if args.redo is not None:
@@ -210,6 +240,10 @@ def main():
         write_market(today, cfg)
     except Exception as e:  # prices are a nice-to-have; never block the digest
         print(f"! market snapshot failed: {e}")
+    try:
+        write_extras(today)
+    except Exception as e:
+        print(f"! quiz/audio failed: {e}")
     build.build(ROOT)
 
 

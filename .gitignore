@@ -4,3 +4,4 @@ __pycache__/
 .env
 site/
 data/transcripts/
+.venv-tts/

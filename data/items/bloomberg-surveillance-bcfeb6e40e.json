@@ -1,0 +1,96 @@
+{
+ "id": "bloomberg-surveillance-bcfeb6e40e",
+ "source_id": "bloomberg-surveillance",
+ "source_name": "Bloomberg Surveillance",
+ "kind": "podcast",
+ "title": "Bloomberg Surveillance TV: November 10th, 2026",
+ "url": "https://omny.fm/shows/bloomberg-surveillance/bloomberg-surveillance-tv-november-10th-2026",
+ "media_url": "https://podtrac.com/pts/redirect.mp3/tracking.swap.fm/track/UVBrz8bN8aM2Xe47PEPu/traffic.omny.fm/d/clips/e73c998e-6e60-432f-8610-ae210140c5b1/8e704079-ca57-4eac-9741-ae27003e2b7f/f230069a-24b8-4af2-840a-b4fe0115c671/audio.mp3?utm_source=Podcast&in_playlist=9739700c-72c3-4176-ae55-ae27003e2b96",
+ "published": "2026-11-10",
+ "duration": 1240,
+ "digest_date": "2026-11-10",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "worth_reading": true,
+  "quality_note": "The content provides valuable insights into market sentiment, tech earnings, the Fed's potential rate decisions, and geopolitical impacts on oil prices. It's informative and relevant for a learner.",
+  "headline": "Market Volatility, Tech Earnings, and the Fed's Dilemma",
+  "tldr": "The market is in a period of uncertainty ahead of tech earnings and CPI data. Cameron Dawson of New Edge Wealth suggests that valuations and seasonality could support a rebound. The Anthropic IPO highlights investor sentiment toward AI and tech, but questions remain about its long-term impact on earnings. The Fed faces a tough decision on rate hikes, with some officials hinting at a potential 50-basis-point increase in December if inflation remains sticky. Meanwhile, geopolitical tensions in the Middle East and oil price fluctuations continue to influence markets.",
+  "key_points": [
+   {
+    "point": "Market sentiment is low, with positioning at the 20th percentile, but valuations are down 30% year-over-year, suggesting potential for a rebound if sentiment improves.",
+    "why_it_matters": "This indicates that the market may be undervalued and could see a recovery if investor confidence returns."
+   },
+   {
+    "point": "The Anthropic IPO is seen as a signal for investor confidence in AI and tech, but its long-term impact on earnings and the semiconductor industry is still uncertain.",
+    "why_it_matters": "The IPO could influence the broader tech sector and semiconductor earnings, which are expected to grow significantly."
+   },
+   {
+    "point": "Semiconductors are trading at 14.5 times earnings, a valuation level that historically coincides with peak earnings. However, sell-side estimates suggest continued growth through 2027 and 2028.",
+    "why_it_matters": "This discrepancy between valuations and earnings expectations may indicate a potential peak in semiconductor earnings."
+   },
+   {
+    "point": "The Fed is under pressure to act on inflation, with some officials suggesting a 50-basis-point rate hike in December if core CPI remains high.",
+    "why_it_matters": "A larger rate hike could increase market volatility and impact IPOs and valuations."
+   },
+   {
+    "point": "Oil prices have dropped below $90 per barrel, but geopolitical tensions in the Middle East remain a concern.",
+    "why_it_matters": "Lower oil prices are a tailwind for the economy, but ongoing tensions could disrupt global markets."
+   },
+   {
+    "point": "CPI data showed higher-than-expected increases in several categories, including food, energy, and services, signaling potential second-round effects of inflation.",
+    "why_it_matters": "These increases could lead to broader inflationary pressures, prompting the Fed to take further action."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "30%",
+    "context": "Valuations are down 30% year-over-year."
+   },
+   {
+    "figure": "14.5",
+    "context": "Semiconductors are trading at 14.5 times earnings."
+   },
+   {
+    "figure": "0.3%",
+    "context": "Core CPI increased by 0.3% month-over-month."
+   },
+   {
+    "figure": "50 basis points",
+    "context": "Some Fed officials are considering a 50-basis-point rate hike in December."
+   }
+  ],
+  "lesson": "Markets are influenced by a mix of economic data, investor sentiment, and geopolitical events. Understanding these factors is key to interpreting market movements and potential outcomes.",
+  "opinions_and_predictions": [
+   "Cameron Dawson: 'Valuations are down 30% year-over-year, so there's room for a little bit of relief rally if sentiment improves even just slightly.'",
+   "Tiffany Wilding of PIMCO: 'The Fed wants to make sure that this [inflation] doesn't broaden out and create more persistent inflation across the economy.'",
+   "Chris Waller: 'If core inflation comes in around 0.3% or higher, a strong policy move might be needed, including a 50 basis point rate hike.'"
+  ],
+  "tickers": [],
+  "glossary": [
+   {
+    "term": "CPI",
+    "definition": "Consumer Price Index, a measure of inflation that tracks changes in the price of a basket of goods and services over time. It's used to gauge the purchasing power of a currency and the cost of living in an economy.",
+    "example": "A rise in CPI indicates that prices for goods and services are increasing, which can lead to higher inflation."
+   },
+   {
+    "term": "Valuations",
+    "definition": "The estimated worth of a company or asset, often based on financial metrics such as earnings, revenue, or book value. In markets, valuations can influence investor behavior and price movements.",
+    "example": "If a stock is trading at a low valuation, it may be seen as undervalued and could potentially rise in price."
+   },
+   {
+    "term": "Semiconductors",
+    "definition": "Tiny electronic components used in a wide range of devices, from computers to smartphones. The semiconductor industry is a key driver of technological innovation and economic growth.",
+    "example": "The demand for semiconductors has surged with the rise of artificial intelligence and cloud computing."
+   }
+  ],
+  "level": "beginner",
+  "topics": [
+   "Market sentiment",
+   "Inflation and CPI",
+   "Fed policy",
+   "Tech sector and IPOs",
+   "Geopolitical risk"
+  ]
+ }
+}

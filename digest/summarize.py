@@ -91,6 +91,68 @@ headlines below (JSON: id, source, title, blurb).
 Headlines:
 {headlines}"""
 
+class QuizQuestion(BaseModel):
+    question: str = Field(description="Tests understanding of a concept, term or number from today, not trivia like dates or names.")
+    options: list[str] = Field(description="Exactly 4 short answer options; wrong ones must be plausible.")
+    answer: int = Field(description="0-based index of the correct option.")
+    explanation: str = Field(description="2 sentences: why the answer is right, teaching the idea. Reference today's story.")
+    item_id: str = Field(description="id of the story or hot topic the question comes from.")
+
+
+class Quiz(BaseModel):
+    questions: list[QuizQuestion] = Field(description="Exactly 3 questions: one on a jargon term, one on what a number means, one on why a story matters.")
+
+
+class Briefing(BaseModel):
+    script: str = Field(description="The spoken script, 380-480 words.")
+
+
+QUIZ_PROMPT = """You write a quick daily quiz for a beginner learning about markets, like Duolingo for finance.
+From today's stories and hot topics below (JSON), write 3 multiple-choice questions.
+- Test understanding ("What does a P/E of 20 mean?"), never memory of trivia ("On what date…").
+- Every question must be answerable from the material; the explanation teaches the idea.
+- Vary which option is correct.
+
+Material:
+{material}"""
+
+BRIEFING_PROMPT = """Write a 3-minute spoken morning briefing (380-480 words) for a beginner investor, read aloud by a warm,
+clear radio host. Use ONLY the material below (JSON).
+- Open with "Good morning, this is Market Digest for {date}." then the biggest story.
+- Cover the 3-4 most important stories, then end with today's concept explained simply, and a one-line sign-off.
+- Write for the ear: short sentences, no lists, no markdown, no URLs, no tickers (say "Nvidia", not "NVDA").
+  Write numbers the way you'd say them ("about six and a half billion dollars", "five percent").
+- No investment advice.
+
+Material:
+{material}"""
+
+
+def _material(items: list[dict], hot: dict | None) -> str:
+    stories = [{"id": i["id"], "source": i["source_name"], **{k: i["summary"][k] for k in
+                ("headline", "tldr", "key_points", "numbers", "lesson", "glossary")}} for i in items]
+    topics = [{"id": f"hot-{n}", **{k: t[k] for k in ("title", "explanation", "why_it_matters")}}
+              for n, t in enumerate((hot or {}).get("topics", []))]
+    return json.dumps({"stories": stories, "hot_topics": topics}, indent=0)
+
+
+def _generate(prompt: str, schema):
+    return _ollama_generate(prompt, schema) if BACKEND == "ollama" else _gemini_generate([prompt], schema)
+
+
+def quiz(items: list[dict], hot: dict | None) -> Quiz:
+    q = _generate(QUIZ_PROMPT.format(material=_material(items, hot)), Quiz)
+    q.questions = [x for x in q.questions if len(x.options) == 4 and 0 <= x.answer < 4][:3]
+    return q
+
+
+def briefing(items: list[dict], hot: dict | None, brief: dict | None, date_words: str) -> Briefing:
+    material = json.loads(_material(items, hot))
+    if brief:
+        material["concept_of_the_day"] = brief["concept_of_the_day"]
+    return _generate(BRIEFING_PROMPT.format(material=json.dumps(material, indent=0), date=date_words), Briefing)
+
+
 MAX_TRANSCRIPT_WORDS = 22000  # ~2 h of speech; keeps long shows inside the local model's context
 
 ITEM_PROMPT = """You are a patient finance teacher writing a daily study digest for a motivated beginner

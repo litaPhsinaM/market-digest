@@ -72,7 +72,7 @@ def _safe_news(t):
 
 
 def snapshot(tickers: list[str]) -> dict:
-    symbols = [s for s, _, _ in INDICES] + tickers
+    symbols = [s for s, _, _ in INDICES] + ["^VIX"] + tickers
     hist = yf.download(symbols, period="1y", interval="1d", auto_adjust=True, progress=False, timeout=30)["Close"]
 
     def quote(sym):
@@ -123,7 +123,25 @@ def snapshot(tickers: list[str]) -> dict:
     with concurrent.futures.ThreadPoolExecutor(max_workers=6) as ex:
         companies = [c for c in ex.map(company, tickers) if c]
     return {"as_of": dt.datetime.now().astimezone().isoformat(timespec="minutes"),
-            "indices": indices, "companies": companies, "movers": movers()}
+            "indices": indices, "companies": companies, "movers": movers(),
+            "mood": mood(quote("^GSPC"), quote("^VIX"))}
+
+
+def mood(spx, vix):
+    """A simple fear/greed score (0-100) from three public signals. Our own gauge, kept deliberately transparent."""
+    if not spx or not vix:
+        return None
+    clamp = lambda v: max(0.0, min(100.0, v))
+    hist = [p[1] for p in spx["history"]]
+    month = (hist[-1] / hist[-23] - 1) * 100 if len(hist) > 23 else 0
+    parts = [
+        {"name": "Today's S&P 500 move", "value": f"{spx['change_pct']:+.2f}%", "score": clamp(50 + spx["change_pct"] * 25)},
+        {"name": "S&P 500 past month", "value": f"{month:+.1f}%", "score": clamp(50 + month * 10)},
+        {"name": "VIX (expected volatility)", "value": f"{vix['price']:.1f}", "score": clamp((30 - vix["price"]) / 17 * 100)},
+    ]
+    score = round(sum(p["score"] for p in parts) / len(parts))
+    label = next(l for cut, l in ((20, "Extreme fear"), (40, "Fear"), (60, "Neutral"), (80, "Greed"), (101, "Extreme greed")) if score < cut)
+    return {"score": score, "label": label, "parts": parts}
 
 
 def movers(count: int = 5) -> dict:
