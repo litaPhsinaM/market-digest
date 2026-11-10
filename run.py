@@ -21,7 +21,7 @@ from digest import build, sources, summarize
 
 ROOT = Path(__file__).parent
 DATA = ROOT / "data"
-ITEMS, BRIEFS, TRANSCRIPTS = DATA / "items", DATA / "briefs", DATA / "transcripts"
+ITEMS, BRIEFS, TRANSCRIPTS, MARKET = DATA / "items", DATA / "briefs", DATA / "transcripts", DATA / "market"
 STATE = DATA / "state.json"
 
 
@@ -75,15 +75,47 @@ def write_brief(today: str):
     (BRIEFS / f"{today}.json").write_text(json.dumps({"date": today, **brief.model_dump()}, indent=1))
 
 
+def redo(ids: list[str], today: str):
+    records = [json.loads(p.read_text()) for p in ITEMS.glob("*.json")]
+    records = [r for r in records if (r["id"] in ids if ids else r["digest_date"] == today)]
+    for r in records:
+        tpath = TRANSCRIPTS / f"{r['id']}.txt"
+        if not tpath.exists():
+            print(f"! {r['id']}: no saved transcript, skipping")
+            continue
+        item = sources.Item(**{k: r[k] for k in sources.Item.__dataclass_fields__})
+        print(f"  ↻ {item.source_name}: {item.title}")
+        r["summary"] = summarize.summarize_item(item, transcript=tpath.read_text()).model_dump()
+        (ITEMS / f"{item.id}.json").write_text(json.dumps(r, indent=1))
+    for date in sorted({r["digest_date"] for r in records}):
+        write_brief(date)
+    build.build(ROOT)
+
+
+def write_market(today: str, cfg: dict):
+    from digest import market
+    todays = [r for r in (json.loads(p.read_text()) for p in ITEMS.glob("*.json")) if r["digest_date"] == today]
+    mentioned = market.tickers_from_summaries(todays)
+    tickers = list(dict.fromkeys(list(mentioned) + cfg.get("watchlist", [])))
+    print(f"Fetching market snapshot for {len(tickers)} companies")
+    snap = market.snapshot(tickers)
+    for c in snap["companies"]:
+        c["mentioned_in"] = mentioned.get(c["symbol"], [])
+    (MARKET / f"{today}.json").write_text(json.dumps(snap, indent=1))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--build-only", action="store_true")
+    ap.add_argument("--market-only", action="store_true", help="refresh today's market snapshot, then build")
+    ap.add_argument("--redo", nargs="*", metavar="ID",
+                    help="re-summarize saved items from their transcripts (all of today's if no ids), redo the brief, build")
     ap.add_argument("--source", help="only this source id")
     ap.add_argument("--limit", type=int, default=2, help="max new items per source")
     args = ap.parse_args()
 
-    for d in (ITEMS, BRIEFS, TRANSCRIPTS):
+    for d in (ITEMS, BRIEFS, TRANSCRIPTS, MARKET):
         d.mkdir(parents=True, exist_ok=True)
     if args.build_only:
         build.build(ROOT)
@@ -92,6 +124,13 @@ def main():
     cfg = yaml.safe_load((ROOT / "sources.yaml").read_text())
     state = load_state()
     today = dt.date.today().isoformat()
+    if args.market_only:
+        write_market(today, cfg)
+        build.build(ROOT)
+        return
+    if args.redo is not None:
+        redo(args.redo, today)
+        return
     new_count = 0
 
     for src in cfg["sources"]:
@@ -126,6 +165,10 @@ def main():
         return
     if new_count:
         write_brief(today)
+    try:
+        write_market(today, cfg)
+    except Exception as e:  # prices are a nice-to-have; never block the digest
+        print(f"! market snapshot failed: {e}")
     build.build(ROOT)
 
 

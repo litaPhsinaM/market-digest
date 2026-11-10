@@ -1,0 +1,84 @@
+{
+ "id": "indicator-e7902a7152",
+ "source_id": "indicator",
+ "source_name": "The Indicator from Planet Money",
+ "kind": "podcast",
+ "title": "Where did all the sitcoms go?",
+ "url": "https://www.npr.org/2026/11/10/nx-s1-6035016/where-did-all-the-sitcoms-go",
+ "media_url": "https://prfx.byspotify.com/e/play.podtrac.com/npr-510325/npr.simplecastaudio.com/0a4e8d3b-fe23-4948-9e39-20fcf16f9331/episodes/2550a0a1-85e9-47a0-97cf-89932b37f40a/audio/128/default.mp3?awCollectionId=0a4e8d3b-fe23-4948-9e39-20fcf16f9331&awEpisodeId=2550a0a1-85e9-47a0-97cf-89932b37f40a&feed=IFy3imsg&t=podcast&e=nx-s1-6035016&p=510325&d=562&size=8999166",
+ "published": "2026-11-10",
+ "duration": 562,
+ "digest_date": "2026-11-10",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "worth_reading": true,
+  "quality_note": "The episode provides a clear explanation of how streaming services have changed the economics of sitcom production and why sitcoms are less common now.",
+  "headline": "Why Sitcoms Are Less Common Now",
+  "tldr": "Streaming services have changed the way sitcoms are made and sold, making them less profitable and harder to produce.",
+  "key_points": [
+   {
+    "point": "Sitcoms used to be popular and profitable, especially through syndication (reruns on other channels).",
+    "why_it_matters": "Syndication allowed networks to make money from reruns, which helped offset the costs of producing new episodes."
+   },
+   {
+    "point": "Streaming services buy shows for fewer episodes and pay less per episode.",
+    "why_it_matters": "This makes sitcoms more expensive to produce and less profitable for studios."
+   },
+   {
+    "point": "Streaming services value shows based on minutes watched, not the number of households tuning in.",
+    "why_it_matters": "Hour-long shows are more valuable than half-hour sitcoms, which makes sitcoms less attractive to streamers."
+   },
+   {
+    "point": "Comedies often need time to develop and find their rhythm, but streaming services expect quick results.",
+    "why_it_matters": "This makes it harder for sitcoms to succeed in the streaming era."
+   },
+   {
+    "point": "Sitcoms are harder to sell internationally because humor is culturally specific.",
+    "why_it_matters": "This further reduces the profitability of sitcoms compared to dramas, which are easier to translate and sell globally."
+   },
+   {
+    "point": "Mike Schur, a sitcom creator, has had to adapt his approach to fit the new streaming model.",
+    "why_it_matters": "Even successful creators are finding it harder to make sitcoms in the current environment."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "In the 1990s, sitcoms made up about 12% of new shows.",
+    "context": "In the 2020s, sitcoms make up less than 2% of new shows."
+   },
+   {
+    "figure": "Close to a quarter of Americans watched at least one Seinfeld episode this year.",
+    "context": "Seinfeld ended in 1998."
+   },
+   {
+    "figure": "Half a million accounts watched episodes of The Office daily.",
+    "context": "The Office ended shortly after Barack Obama was sworn in for his second term."
+   }
+  ],
+  "lesson": "The way we watch TV has changed, and that has affected what kinds of shows are made. Sitcoms are less common now because of changes in how streaming services operate and how they value different types of content.",
+  "opinions_and_predictions": [
+   "Mike Schur says the economics of TV have changed dramatically in the last 15 years, and one of the casualties has been comedy.",
+   "Mike Schur says it's unlikely that anyone will be able to make a sitcom the old way anymore, with 22-episode seasons and casual hangout shows."
+  ],
+  "tickers": [],
+  "glossary": [
+   {
+    "term": "syndication",
+    "definition": "When reruns of a show are sold to other channels for broadcasting.",
+    "example": "In the past, networks would sell reruns of popular shows to cable channels."
+   },
+   {
+    "term": "amortization",
+    "definition": "An accounting principle where the cost of a big purchase is spread out over time.",
+    "example": "If a TV studio spends $3 million on a set, they used to spread that cost over 22 episodes, but now they might spread it over only 8 episodes."
+   }
+  ],
+  "level": "beginner",
+  "topics": [
+   "media",
+   "economics",
+   "entertainment"
+  ]
+ }
+}

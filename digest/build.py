@@ -1,4 +1,5 @@
 """Render saved summaries into a static site in ./site."""
+import datetime as dt
 import json
 import shutil
 from collections import defaultdict
@@ -10,6 +11,35 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 def _minutes(secs):
     return round((secs or 0) / 60)
+
+
+def _num(v, digits=2):
+    return "—" if v is None else f"{v:,.{digits}f}"
+
+
+def _big(v):
+    if v is None:
+        return "—"
+    for div, suf in ((1e12, "T"), (1e9, "B"), (1e6, "M")):
+        if abs(v) >= div:
+            return f"{v / div:.2f}{suf}"
+    return f"{v:,.0f}"
+
+
+def _initials(name):
+    words = [w for w in name.split() if w[0].isalpha() and w.lower() not in ("the", "from", "of", "and")]
+    return "".join(w[0].upper() for w in words[:2])
+
+
+def _quote_fmt(q):
+    """Display strings for a quote. Yields are shown in % with basis-point moves, like on a trading desk."""
+    if q["symbol"] == "^TNX":
+        bp = q["change"] * 100
+        return {"price": f"{q['price']:.2f}%", "change": f"{'+' if bp >= 0 else '−'}{abs(bp):.0f} bp"}
+    prefix = "$" if q["symbol"] == "BTC-USD" or not q["symbol"].startswith("^") else ""
+    digits = 0 if q["symbol"] == "BTC-USD" else 2
+    pct = q["change_pct"]
+    return {"price": f"{prefix}{q['price']:,.{digits}f}", "change": f"{'+' if pct >= 0 else '−'}{abs(pct):.2f}%"}
 
 
 def build(root: Path):
@@ -33,16 +63,29 @@ def build(root: Path):
 
     env = Environment(loader=FileSystemLoader(root / "templates"), autoescape=select_autoescape())
     env.filters["minutes"] = _minutes
+    env.filters["num"] = _num
+    env.filters["big"] = _big
+    env.filters["qf"] = _quote_fmt
+    env.filters["initials"] = _initials
+    markets = {p.stem: json.loads(p.read_text()) for p in (data / "market").glob("*.json")}
+    src_index = {s["id"]: n for n, s in enumerate(srcs)}
 
     if out.exists():
         shutil.rmtree(out)
     (out / "days").mkdir(parents=True)
-    shutil.copy(root / "templates" / "style.css", out / "style.css")
+    for asset in ("style.css", "app.js"):
+        shutil.copy(root / "templates" / asset, out / asset)
 
     def day_ctx(date):
         its = sorted(days[date], key=lambda i: (not i["summary"]["worth_reading"], i["source_name"]))
-        return {"date": date, "brief": briefs.get(date), "items": its,
-                "by_id": {i["id"]: i for i in its},
+        mkt = markets.get(date)
+        if mkt:
+            for c in mkt["companies"]:
+                if c.get("next_earnings") and c["next_earnings"] < date:
+                    c["next_earnings"] = None
+        return {"date": date, "brief": briefs.get(date), "items": its, "market": mkt,
+                "by_id": {i["id"]: i for i in its}, "src_index": src_index,
+                "pretty_date": dt.date.fromisoformat(date).strftime("%A, %B %-d, %Y"),
                 "listen_min": sum(_minutes(i["duration"]) for i in its)}
 
     def render(name, path, prefix, **ctx):

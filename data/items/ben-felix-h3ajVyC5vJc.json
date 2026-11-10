@@ -1,0 +1,84 @@
+{
+ "id": "ben-felix-h3ajVyC5vJc",
+ "source_id": "ben-felix",
+ "source_name": "Ben Felix (Common Sense Investing)",
+ "kind": "youtube",
+ "title": "Breaking Down My Investment Portfolio",
+ "url": "https://www.youtube.com/watch?v=h3ajVyC5vJc",
+ "media_url": "https://www.youtube.com/watch?v=h3ajVyC5vJc",
+ "published": "2026-10-18",
+ "duration": 1137,
+ "digest_date": "2026-11-10",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "worth_reading": true,
+  "quality_note": "The video provides a detailed and personal account of Ben Felix's investment strategy, his upbringing, and the influences that shaped his views on money and investing. It is educational, informative, and avoids hype or sales pitches.",
+  "headline": "Ben Felix shares his personal investment strategy and the influences behind it",
+  "tldr": "Ben Felix, a Chief Investment Officer, explains his personal investment approach, which includes a low-cost global equity fund, a private equity holding in his employer's parent company, a home, and some cash. He also discusses how his upbringing and education shaped his views on money and investing.",
+  "key_points": [
+   {
+    "point": "Ben Felix's investment strategy is simple and largely focused on one low-cost global equity fund, which is similar to what he recommends to his clients at PWL Capital.",
+    "why_it_matters": "This shows that even professionals often use simple, diversified strategies for their own money."
+   },
+   {
+    "point": "He holds a private equity stake in OneDigital, the parent company of PWL Capital, which he acquired through stock options and equity from his own firm.",
+    "why_it_matters": "This is an example of how personal investments can be tied to one's career, though it's not a strategy he recommends for others."
+   },
+   {
+    "point": "Ben owns a home, which he admits has been a poor financial investment but has been a great place for his family.",
+    "why_it_matters": "This highlights the balance between financial decisions and personal happiness, which is a common theme in personal finance."
+   },
+   {
+    "point": "He keeps more cash than is typical, partly due to recent renovation costs and for psychological comfort.",
+    "why_it_matters": "This shows how personal needs and emotions can influence investment decisions."
+   },
+   {
+    "point": "Ben discusses research on the relationship between income and happiness, noting that the correlation is weak and that money alone does not guarantee a good life.",
+    "why_it_matters": "This reinforces the idea that personal finance is not just about wealth accumulation but also about quality of life."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "A 2018 global study found that life evaluation leveled off around $105,000 of income (about $137,000 today).",
+    "context": "This study looked at the point at which additional income no longer significantly improves life satisfaction."
+   },
+   {
+    "figure": "A 2023 adversarial collaboration found that happiness continues to rise with income for most people, but plateaus for the least happy individuals.",
+    "context": "This study aimed to determine whether there is a plateau in happiness as income increases."
+   }
+  ],
+  "lesson": "Investing is personal and should reflect your values, goals, and lifestyle. Diversification, low costs, and long-term thinking are important, but so is balancing financial decisions with personal happiness and family needs.",
+  "opinions_and_predictions": [
+   "Ben Felix believes that having access to lots of money does not necessarily create a good life for either adults or children. (Ben Felix)",
+   "He thinks that the relationship between life satisfaction and income is weaker than people might expect. (Ben Felix)",
+   "He believes that investing in his own company, OneDigital, has been his most successful investment so far, though he acknowledges that a lot of that outcome is due to luck. (Ben Felix)",
+   "He thinks that owning a home has been the right decision for his family, even though it has been a poor financial investment. (Ben Felix)"
+  ],
+  "tickers": [],
+  "glossary": [
+   {
+    "term": "Private equity",
+    "definition": "Investing in private companies, usually by buying a stake in the company directly or through a fund. These investments are not publicly traded on stock exchanges and can be more complex and less liquid than public investments.",
+    "example": "Ben Felix's investment in OneDigital is an example of a private equity holding."
+   },
+   {
+    "term": "Index fund",
+    "definition": "A type of investment fund that tracks a specific market index, such as the S&P 500. These funds are designed to replicate the performance of the index they track and are typically low-cost.",
+    "example": "Dimensional Global Equity Portfolio is not technically an index fund, but it is similar in that it is low-cost and broadly diversified."
+   },
+   {
+    "term": "Home country bias",
+    "definition": "The tendency to invest more in one's own country's assets than in foreign ones. This can be due to familiarity, information, or emotional attachment.",
+    "example": "Ben Felix's portfolio has a larger allocation to Canadian stocks than its share of the global market, which is an example of home country bias."
+   }
+  ],
+  "level": "beginner",
+  "topics": [
+   "Investment strategies",
+   "Personal finance",
+   "Behavioral economics",
+   "Wealth management"
+  ]
+ }
+}

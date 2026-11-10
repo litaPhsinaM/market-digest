@@ -4,24 +4,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% block title %}Market Digest{% endblock %}</title>
+<meta name="description" content="A daily, plain-English digest of trusted finance podcasts and videos, for people learning to invest.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f6f5c'/%3E%3Cpath d='M7 21l6-6 4 4 8-9' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="{{ prefix }}style.css">
 </head>
 <body>
-<header class="site">
-  <a class="brand" href="{{ prefix }}index.html">Market Digest</a>
-  <nav>
-    <a href="{{ prefix }}index.html">Today</a>
-    <a href="{{ prefix }}archive.html">Archive</a>
-    <a href="{{ prefix }}glossary.html">Glossary</a>
-    <a href="{{ prefix }}sources.html">Sources</a>
-  </nav>
+<header class="appbar">
+  <div class="appbar-in">
+    <a class="brand" href="{{ prefix }}index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8"/><path d="M7 21l6-6 4 4 8-9"/></svg>
+      <span>Market Digest</span>
+    </a>
+    <nav class="tabs" aria-label="Sections">
+      <a href="{{ prefix }}index.html" {% if active == 'today' %}aria-current="page"{% endif %}>Today</a>
+      <a href="{{ prefix }}archive.html" {% if active == 'archive' %}aria-current="page"{% endif %}>Archive</a>
+      <a href="{{ prefix }}glossary.html" {% if active == 'glossary' %}aria-current="page"{% endif %}>Glossary</a>
+      <a href="{{ prefix }}sources.html" {% if active == 'sources' %}aria-current="page"{% endif %}>Sources</a>
+    </nav>
+  </div>
 </header>
-<main>
+<main class="page">
 {% block content %}{% endblock %}
 </main>
-<footer>
-  AI-written summaries of public podcasts and videos, made for learning. Summaries can contain mistakes,
-  so check the original (linked on every item) before relying on a number. This is not financial advice.
+<footer class="sitefoot">
+  <p>Summaries are written by AI from public podcasts and videos, for learning. They can contain mistakes,
+  so check the original (linked on every story) before relying on a number. Market data is from Yahoo Finance and may be delayed.
+  <strong>Nothing here is financial advice.</strong></p>
 </footer>
+<div class="tip" id="tip" role="tooltip" hidden></div>
+<script src="{{ prefix }}app.js"></script>
 </body>
 </html>

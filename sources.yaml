@@ -46,3 +46,7 @@ sources:
     url: https://www.youtube.com/@PBoyle/videos
     cadence: weekly (~20 min)
     why: An ex-hedge fund manager and finance professor. Dry-humoured breakdowns of companies, markets and financial news.
+
+# Companies shown every day in "Companies in the news", in addition to any company
+# an episode discusses. Use the exchange ticker symbol.
+watchlist: [NVDA, AAPL, MSFT, GOOGL, AMZN, TSLA]

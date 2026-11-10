@@ -8,7 +8,7 @@ from pathlib import Path
 from pydantic import BaseModel, Field
 
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
-OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen3:4b")
+OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen3:14b")
 BACKEND = os.environ.get("DIGEST_BACKEND", "gemini")  # gemini | ollama
 
 
@@ -18,8 +18,8 @@ class KeyPoint(BaseModel):
 
 
 class Figure(BaseModel):
-    figure: str = Field(description="A number exactly as stated in the source, e.g. '4.25%', '$3.2 trillion'.")
-    context: str = Field(description="What the number measures and how to read it.")
+    figure: str = Field(description="ONLY the number with its unit, as stated in the source, keeping its sign. Max ~12 characters, e.g. '-4.3%', '$3.2T', '1.8x'.")
+    context: str = Field(description="One short sentence: what the number measures and how to read it.")
 
 
 class Term(BaseModel):
@@ -34,8 +34,10 @@ class ItemSummary(BaseModel):
     headline: str = Field(description="A specific, informative headline. No clickbait.")
     tldr: str = Field(description="2-3 sentences: what this was about and the main takeaway.")
     key_points: list[KeyPoint] = Field(description="3-6 most important points, in order of importance.")
-    numbers: list[Figure] = Field(description="Up to 5 key figures stated in the source. Empty if none.")
-    lesson: str = Field(description="The evergreen concept a learner should take away, beyond today's news.")
+    numbers: list[Figure] = Field(description="The 3-5 MOST important figures stated in the source (never more than 5). Empty if none.")
+    lesson: str = Field(description="A general investing/economics principle this teaches that still applies next year to OTHER companies, "
+                                    "e.g. 'Adjusted earnings exclude costs management calls one-off; always compare them with GAAP earnings.' "
+                                    "Do not just restate the news.")
     opinions_and_predictions: list[str] = Field(description="Claims that are opinion or forecast, attributed (e.g. 'Guest X expects...'). Empty if none.")
     tickers: list[str] = Field(description="Companies/tickers discussed substantively, e.g. 'Nvidia (NVDA)'. Empty if none.")
     glossary: list[Term] = Field(description="3-6 jargon terms used in the source that a beginner would not know.")
@@ -44,21 +46,21 @@ class ItemSummary(BaseModel):
 
 
 class Theme(BaseModel):
-    title: str
-    explanation: str = Field(description="3-5 sentences connecting what the sources said on this theme.")
+    title: str = Field(description="Concrete and specific, e.g. 'Streaming broke the sitcom business model', never abstract like 'The power of long-term thinking'.")
+    explanation: str = Field(description="2-4 sentences on what the source(s) said and why it matters.")
     item_ids: list[str]
 
 
 class Concept(BaseModel):
-    concept: str
-    explanation: str = Field(description="A clear 4-6 sentence lesson, with an example drawn from today's sources.")
+    concept: str = Field(description="A named finance/economics concept, e.g. 'Convertible debt', 'Syndication', 'Home-country bias'. Not a life lesson.")
+    explanation: str = Field(description="A clear 4-6 sentence lesson: what it is, how it works, and how it showed up in today's sources.")
 
 
 class DailyBrief(BaseModel):
-    big_picture: str = Field(description="3-4 sentences: what mattered today and how it connects.")
-    themes: list[Theme] = Field(description="2-4 themes across the sources. Only themes with real substance.")
+    big_picture: str = Field(description="2-3 short sentences naming the most important things today. Plain, concrete, no grand unifying message.")
+    themes: list[Theme] = Field(description="One theme per distinct topic. Merge stories ONLY when they are about the same subject (e.g. two episodes on the Fed).")
     concept_of_the_day: Concept
-    watch_for: list[str] = Field(description="Upcoming events/data the sources flagged as worth watching. Empty if none.")
+    watch_for: list[str] = Field(description="Specific upcoming events the sources named (an earnings date, a Fed meeting, a data release, an IPO). Empty if none were named.")
 
 
 ITEM_PROMPT = """You are a patient finance teacher writing a daily study digest for a motivated beginner
@@ -71,14 +73,19 @@ Rules:
 - Skip sponsor reads, ads and housekeeping completely.
 - Separate fact from opinion: put forecasts and personal views in opinions_and_predictions, attributed to who said them.
 - Write in plain English. When a jargon word is unavoidable, explain it briefly in parentheses the first time.
-- Be specific: "the Fed held rates at 4.25-4.5%" beats "the Fed made a decision".
+- Be specific: "the Fed held rates at 4.25-4.5%" beats "the Fed made a decision". Keep negative signs on numbers.
+- Be selective: a learner has 3 minutes for this. Quality over quantity in every list.
 - This is education, not advice. Never tell the reader to buy or sell anything.
 - Set worth_reading to false if the content is mostly hype, ads or filler; be honest."""
 
 BRIEF_PROMPT = """You are a finance teacher writing today's 3-minute overview for a beginner, based ONLY on the
-summaries below (JSON). Connect the dots between sources where they genuinely overlap; don't force links.
-Pick the single most useful concept from today as concept_of_the_day and teach it well.
-No investment advice. Refer to items by their id in item_ids.
+summaries below (JSON).
+- Stories on unrelated topics stay separate. Never invent a common thread or a moral that ties them together;
+  "today covered three unrelated topics" is a perfectly good answer.
+- No filler or platitudes ("decisions are shaped by many factors", "long-term thinking matters"). Every sentence
+  must contain a specific fact, name or number from the summaries.
+- concept_of_the_day is the single most useful named finance concept from today, taught well.
+- No investment advice. Refer to items by their id in item_ids.
 
 Summaries:
 {summaries}"""
@@ -142,6 +149,13 @@ def _ollama_generate(prompt: str, schema):
 # ---------- public API ----------
 
 def summarize_item(item, transcript: str | None = None, audio: Path | None = None) -> ItemSummary:
+    s = _summarize_item(item, transcript, audio)
+    # Models don't always respect list lengths; keep the page skimmable.
+    s.key_points, s.numbers, s.glossary = s.key_points[:6], s.numbers[:5], s.glossary[:6]
+    return s
+
+
+def _summarize_item(item, transcript, audio) -> ItemSummary:
     prompt = ITEM_PROMPT.format(kind="video" if item.kind == "youtube" else "podcast episode",
                                 title=item.title, source=item.source_name)
     if BACKEND == "ollama":
