@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Glossary · Market Digest{% endblock %}
+{% block content %}
+<h1>Glossary</h1>
+<p class="muted">Every term that has come up so far, in plain English. {{ terms|length }} terms.</p>
+<input id="q" class="search" type="search" placeholder="Filter terms…" oninput="
+  const q=this.value.toLowerCase();document.querySelectorAll('.gterm').forEach(e=>e.hidden=!e.textContent.toLowerCase().includes(q))">
+{% for t in terms %}
+<div class="gterm">
+  <h3>{{ t.term }}</h3>
+  <p>{{ t.definition }}</p>
+  <p class="ex">For example: {{ t.example }}</p>
+  <p class="refs">Came up in: {% for s in t.seen[:3] %}<a href="days/{{ s.date }}.html#{{ s.id }}">{{ s.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+</div>
+{% endfor %}
+{% endblock %}

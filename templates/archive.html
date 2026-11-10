@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Archive · Market Digest{% endblock %}
+{% block content %}
+<h1>Archive</h1>
+{% for d in days %}
+<section class="arch">
+  <h3><a href="days/{{ d.date }}.html">{{ d.date }}</a></h3>
+  {% if d.brief %}<p class="muted">Concept of the day: {{ d.brief.concept_of_the_day.concept }}</p>{% endif %}
+  <ul>{% for it in d.items if it.summary.worth_reading %}<li><a href="days/{{ d.date }}.html#{{ it.id }}">{{ it.summary.headline }}</a> <span class="muted">· {{ it.source_name }}</span></li>{% endfor %}</ul>
+</section>
+{% else %}<p>Nothing yet.</p>{% endfor %}
+{% endblock %}

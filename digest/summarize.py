@@ -131,7 +131,7 @@ def _upload(path: Path):
 
 def _ollama_generate(prompt: str, schema):
     body = json.dumps({
-        "model": OLLAMA_MODEL, "stream": False, "format": schema.model_json_schema(),
+        "model": OLLAMA_MODEL, "stream": False, "think": False, "format": schema.model_json_schema(),
         "messages": [{"role": "user", "content": prompt}], "options": {"temperature": 0.3, "num_ctx": 32768},
     }).encode()
     req = urllib.request.Request("http://localhost:11434/api/chat", body, {"Content-Type": "application/json"})

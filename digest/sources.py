@@ -1,7 +1,6 @@
 """Find new episodes/videos and fetch their text (captions) or audio."""
 import datetime as dt
 import hashlib
-import json
 import re
 import subprocess
 import sys
@@ -92,31 +91,19 @@ def list_source(src: dict, limit: int) -> list[Item]:
     return (list_podcast if src["kind"] == "podcast" else list_youtube)(src, limit)
 
 
-def youtube_transcript(item: Item) -> str | None:
-    """Return caption text (manual preferred, else auto) and fix the publish date. None if unavailable."""
-    out = subprocess.run(YTDLP + ["-j", "--skip-download", item.media_url],
-                         capture_output=True, text=True, timeout=120)
+def youtube_audio(item: Item, dest_dir: Path) -> Path:
+    """Download a video's audio track and fix its publish date. (YouTube 429s caption downloads.)"""
+    out = subprocess.run(
+        YTDLP + ["-f", "bestaudio[ext=m4a]/bestaudio", "-o", str(dest_dir / "audio.%(ext)s"),
+                 "--print", "after_move:%(upload_date)s\t%(filepath)s", item.media_url],
+        capture_output=True, text=True, timeout=600,
+    )
     if out.returncode != 0:
-        return None
-    info = json.loads(out.stdout)
-    if info.get("upload_date"):
-        d = info["upload_date"]
-        item.published = f"{d[:4]}-{d[4:6]}-{d[6:]}"
-    for pool in (info.get("subtitles") or {}, info.get("automatic_captions") or {}):
-        for lang in ("en", "en-US", "en-GB", "en-orig"):
-            track = next((t for t in pool.get(lang, []) if t.get("ext") == "json3"), None)
-            if track:
-                return _json3_to_text(_get(track["url"]))
-    return None
-
-
-def _json3_to_text(raw: bytes) -> str:
-    words = []
-    for ev in json.loads(raw).get("events", []):
-        for seg in ev.get("segs") or []:
-            words.append(seg.get("utf8", ""))
-    text = re.sub(r"\s+", " ", "".join(words)).strip()
-    return text
+        raise RuntimeError(f"yt-dlp failed: {out.stderr.strip()[-300:]}")
+    date, path = out.stdout.strip().splitlines()[-1].split("\t", 1)
+    if len(date) == 8:
+        item.published = f"{date[:4]}-{date[4:6]}-{date[6:]}"
+    return Path(path)
 
 
 def download(url: str, dest: Path) -> Path:

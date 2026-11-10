@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Market Digest · {{ date }}{% endblock %}
+{% block content %}
+<div class="dayhead">
+  <h1>{{ date }}</h1>
+  <p class="muted">{{ items|length }} episode{{ '' if items|length == 1 else 's' }} · about {{ listen_min }} min of listening, summarized</p>
+</div>
+
+{% if brief %}
+<section class="brief">
+  <h2>The big picture</h2>
+  <p>{{ brief.big_picture }}</p>
+
+  {% for t in brief.themes %}
+  <div class="theme">
+    <h3>{{ t.title }}</h3>
+    <p>{{ t.explanation }}</p>
+    <p class="refs">{% for id in t.item_ids if id in by_id %}<a href="#{{ id }}">{{ by_id[id].source_name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+  </div>
+  {% endfor %}
+
+  <div class="concept">
+    <div class="label">Concept of the day</div>
+    <h3>{{ brief.concept_of_the_day.concept }}</h3>
+    <p>{{ brief.concept_of_the_day.explanation }}</p>
+  </div>
+
+  {% if brief.watch_for %}
+  <h3>Worth watching</h3>
+  <ul>{% for w in brief.watch_for %}<li>{{ w }}</li>{% endfor %}</ul>
+  {% endif %}
+</section>
+{% endif %}
+
+{% set good = items|selectattr("summary.worth_reading")|list %}
+{% set skipped = items|rejectattr("summary.worth_reading")|list %}
+
+{% for it in good %}{% set s = it.summary %}
+<article class="item" id="{{ it.id }}">
+  <div class="meta">
+    <span class="src">{{ it.source_name }}</span>
+    <span class="badge {{ s.level }}">{{ s.level }}</span>
+    <span class="muted">{{ it.duration|minutes }} min · {{ it.published }}</span>
+  </div>
+  <h2>{{ s.headline }}</h2>
+  <p class="orig muted">“{{ it.title }}”</p>
+  <p class="tldr">{{ s.tldr }}</p>
+
+  <h4>Key points</h4>
+  <ol class="points">
+    {% for k in s.key_points %}<li><strong>{{ k.point }}</strong><span class="why">{{ k.why_it_matters }}</span></li>{% endfor %}
+  </ol>
+
+  {% if s.numbers %}
+  <h4>Numbers that matter</h4>
+  <table class="nums">
+    {% for n in s.numbers %}<tr><td class="fig">{{ n.figure }}</td><td>{{ n.context }}</td></tr>{% endfor %}
+  </table>
+  {% endif %}
+
+  <div class="lesson"><div class="label">The lesson</div>{{ s.lesson }}</div>
+
+  {% if s.opinions_and_predictions %}
+  <h4>Opinions and forecasts <span class="muted">(views, not facts)</span></h4>
+  <ul class="ops">{% for o in s.opinions_and_predictions %}<li>{{ o }}</li>{% endfor %}</ul>
+  {% endif %}
+
+  {% if s.glossary %}
+  <h4>Words to know</h4>
+  <dl class="terms">
+    {% for t in s.glossary %}<dt>{{ t.term }}</dt><dd>{{ t.definition }}<span class="ex">For example: {{ t.example }}</span></dd>{% endfor %}
+  </dl>
+  {% endif %}
+
+  <div class="foot">
+    {% if s.tickers %}<span>{% for t in s.tickers %}<span class="tick">{{ t }}</span>{% endfor %}</span>{% endif %}
+    <span class="muted">Source quality: {{ s.quality_note }}</span>
+    <a class="orig-link" href="{{ it.url }}">{{ 'Watch' if it.kind == 'youtube' else 'Listen to' }} the original →</a>
+  </div>
+</article>
+{% endfor %}
+
+{% if skipped %}
+<details class="skipped">
+  <summary>{{ skipped|length }} skipped as low-value</summary>
+  <ul>{% for it in skipped %}<li><a href="{{ it.url }}">{{ it.title }}</a> ({{ it.source_name }}): {{ it.summary.quality_note }}</li>{% endfor %}</ul>
+</details>
+{% endif %}
+
+<nav class="pager">
+  {% if nav.older %}<a href="{{ prefix }}days/{{ nav.older }}.html">← {{ nav.older }}</a>{% else %}<span></span>{% endif %}
+  {% if nav.newer %}<a href="{{ prefix }}days/{{ nav.newer }}.html">{{ nav.newer }} →</a>{% endif %}
+</nav>
+{% endblock %}
