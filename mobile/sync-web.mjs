@@ -13,7 +13,7 @@ const config = {
   appName: "Market Digest",
   webDir: "www",
   ...(live ? { server: { url: live, androidScheme: "https" } } : { server: { androidScheme: "https" } }),
-  android: { backgroundColor: "#111110" },
+  android: { backgroundColor: "#111110", adjustMarginsForEdgeToEdge: "force" },
   plugins: {
     SplashScreen: { launchShowDuration: 900, backgroundColor: "#111110", showSpinner: false },
     StatusBar: { overlaysWebView: false, backgroundColor: "#111110", style: "DARK" },

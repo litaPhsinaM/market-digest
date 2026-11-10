@@ -6,7 +6,8 @@
     "androidScheme": "https"
   },
   "android": {
-    "backgroundColor": "#111110"
+    "backgroundColor": "#111110",
+    "adjustMarginsForEdgeToEdge": "force"
   },
   "plugins": {
     "SplashScreen": {

@@ -20,10 +20,21 @@
   // ---------- theme ----------
   const themeBtn = $("#theme-btn");
   const effective = () => document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  // In the Android/iOS app, keep the phone's status bar in step with the theme (dark icons on light, and vice versa).
+  function syncStatusBar() {
+    const bar = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.StatusBar;
+    if (!bar) return;
+    const dark = effective() === "dark";
+    bar.setStyle({ style: dark ? "DARK" : "LIGHT" }).catch(() => {});
+    bar.setBackgroundColor({ color: dark ? "#111110" : "#f4f3ef" }).catch(() => {});
+  }
+  syncStatusBar();
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", syncStatusBar);
   themeBtn && themeBtn.addEventListener("click", () => {
     const next = effective() === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = next;
     try { localStorage.setItem("theme", next); } catch (e) {}
+    syncStatusBar();
   });
 
   // ---------- streak ----------
