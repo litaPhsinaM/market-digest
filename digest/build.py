@@ -69,6 +69,27 @@ def _bold(text):
     return Markup(re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", str(escape(text))))
 
 
+def _scorecard(data):
+    path = data / "claims.json"
+    ledger = json.loads(path.read_text()) if path.exists() else []
+    scored = [c for c in ledger if c["status"] in ("right", "wrong")]
+    acc = lambda cs: round(100 * sum(c["status"] == "right" for c in cs) / len(cs)) if cs else None
+    people = defaultdict(list)
+    for c in scored:
+        people[c["speaker"]].append(c)
+    speakers = sorted(({"speaker": k, "role": v[-1]["role"], "scored": len(v), "right": sum(c["status"] == "right" for c in v), "accuracy": acc(v)}
+                       for k, v in people.items() if len(v) >= 3), key=lambda s: (-s["accuracy"], -s["scored"]))
+    shows = defaultdict(list)
+    for c in ledger:
+        shows[c["source"]].append(c)
+    show_rows = sorted(({"source": k, "total": len(v), "scored": sum(c["status"] in ("right", "wrong") for c in v),
+                         "accuracy": acc([c for c in v if c["status"] in ("right", "wrong")])} for k, v in shows.items()), key=lambda s: -s["total"])
+    return {"stats": {"total": len(ledger), "open": sum(c["status"] == "open" for c in ledger), "scored": len(scored), "accuracy": acc(scored)},
+            "since": min((c["said_on"] for c in ledger), default=None), "speakers": speakers, "shows": show_rows,
+            "open": sorted((c for c in ledger if c["status"] in ("open", "awaiting_check")), key=lambda c: c["deadline"]),
+            "resolved": sorted(scored, key=lambda c: c.get("resolved_on", ""), reverse=True)[:50]}
+
+
 def _slug(text):
     return "".join(ch if ch.isalnum() else "-" for ch in text.lower()).strip("-")
 
@@ -175,6 +196,7 @@ def build(root: Path):
     render("about.html", "about.html", "", n_podcasts=len(srcs), n_feeds=len(feeds))
     render("play.html", "play.html", "")
     render("admin.html", "admin.html", "")
+    render("scorecard.html", "scorecard.html", "", **_scorecard(data))
     course_path = data / "learn" / "course.json"
     course = json.loads(course_path.read_text()) if course_path.exists() else None
     lessons = [{**l, "unit": u["title"]} for u in course["units"] for l in u["lessons"]] if course else []

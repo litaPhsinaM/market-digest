@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% set active = 'scorecard' %}
+{% block title %}Pundit Scorecard · Market Digest{% endblock %}
+{% block content %}
+<section class="learn-hero">
+  <div class="eyebrow">Scorecard</div>
+  <h1>Who's actually right about markets?</h1>
+  <p class="lede">Every day we log the checkable forecasts made on the shows we follow, in the speaker's exact words, and score them when
+    their deadline arrives. Market calls are checked automatically against real closing prices.</p>
+  <div class="sc-stats">
+    <div><b>{{ stats.total }}</b><span>forecasts logged</span></div>
+    <div><b>{{ stats.open }}</b><span>still open</span></div>
+    <div><b>{{ stats.scored }}</b><span>scored</span></div>
+    <div><b>{{ stats.accuracy if stats.accuracy is not none else '—' }}{{ '%' if stats.accuracy is not none }}</b><span>right so far</span></div>
+  </div>
+  {% if since %}<p class="muted small">Tracking since {{ since }}. Rankings need at least 3 scored forecasts per person, so this page fills up over the coming weeks.</p>{% endif %}
+</section>
+
+<div class="play-grid">
+  <section class="card play-card">
+    <div class="pc-head"><h2>🎯 Most accurate voices</h2></div>
+    {% if speakers %}
+    <table class="lb-table"><thead><tr><th>#</th><th>Who</th><th class="num">Right</th><th class="num">Accuracy</th></tr></thead><tbody>
+      {% for s in speakers %}<tr><td class="rank">{{ loop.index }}</td><td><b>{{ s.speaker }}</b><div class="muted small">{{ s.role }}</div></td>
+        <td class="num">{{ s.right }}/{{ s.scored }}</td><td class="num">{{ s.accuracy }}%</td></tr>{% endfor %}
+    </tbody></table>
+    {% else %}<p class="muted">No one has 3 scored forecasts yet. Check back as deadlines pass.</p>{% endif %}
+  </section>
+  <section class="card play-card">
+    <div class="pc-head"><h2>📻 By show</h2></div>
+    {% if shows %}
+    <table class="lb-table"><thead><tr><th>Show</th><th class="num">Logged</th><th class="num">Scored</th><th class="num">Right</th></tr></thead><tbody>
+      {% for s in shows %}<tr><td><b>{{ s.source }}</b></td><td class="num">{{ s.total }}</td><td class="num">{{ s.scored }}</td>
+        <td class="num">{{ (s.accuracy ~ '%') if s.accuracy is not none else '—' }}</td></tr>{% endfor %}
+    </tbody></table>
+    {% else %}<p class="muted">Nothing logged yet.</p>{% endif %}
+  </section>
+</div>
+
+{% macro claim_row(c) %}
+<li class="claim">
+  <div class="cl-top"><span class="st st-{{ 'right' if c.status == 'right' else 'wrong' if c.status == 'wrong' else 'pending' }}">
+    {{ {'open': '⏳ open', 'right': '✅ right', 'wrong': '❌ wrong', 'awaiting_check': '🔎 awaiting check'}.get(c.status, c.status) }}</span>
+    <b>{{ c.speaker }}</b> <span class="muted small">{{ c.role }}</span></div>
+  <p class="cl-claim">{{ c.claim }}</p>
+  <blockquote>“{{ c.quote }}”</blockquote>
+  <div class="muted small">Said {{ c.said_on }} on <a href="{{ c.url }}" target="_blank" rel="noopener">{{ c.source }}</a> · deadline {{ c.deadline }}
+    {% if c.start_price %} · {{ c.symbol }} {{ '%.2f'|format(c.start_price) }} → {{ '%.2f'|format(c.end_price) }}{% endif %}</div>
+</li>
+{% endmacro %}
+
+<h2 class="section-title">⏳ Open forecasts <span class="muted small">soonest deadline first</span></h2>
+<ul class="claims">{% for c in open %}{{ claim_row(c) }}{% else %}<li class="muted">None open right now.</li>{% endfor %}</ul>
+
+{% if resolved %}
+<h2 class="section-title">Scored</h2>
+<ul class="claims">{% for c in resolved %}{{ claim_row(c) }}{% endfor %}</ul>
+{% endif %}
+<p class="asof">Forecasts are extracted by AI and only kept if the exact quote is found in the episode transcript. Market calls are scored on closing prices;
+  others are marked "awaiting check" until verified. Spotted a mistake? <a href="https://github.com/litaPhsinaM/market-digest/issues/new?title=Scorecard%20correction">Tell us</a>.</p>
+{% endblock %}

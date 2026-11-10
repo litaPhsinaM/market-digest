@@ -64,6 +64,8 @@ def process(item, today: str) -> bool:
               "summary": summary.model_dump()}
     (ITEMS / f"{item.id}.json").write_text(json.dumps(record, indent=1))
     print(f"    {'✓' if summary.worth_reading else '✗ not worth reading:'} {summary.headline}")
+    if content.get("transcript") and summary.worth_reading:
+        log_claims(item, content["transcript"])
     return True
 
 
@@ -75,6 +77,26 @@ def write_brief(today: str):
     print(f"Writing daily brief from {len(todays)} items")
     brief = summarize.daily_brief(todays)
     (BRIEFS / f"{today}.json").write_text(json.dumps({"date": today, **brief.model_dump()}, indent=1))
+
+
+def log_claims(item, transcript: str):
+    from digest import claims
+    try:
+        claims.add(claims.extract(item, transcript))
+    except Exception as e:
+        print(f"    ! forecast extraction failed: {e}")
+
+
+def backfill_claims():
+    from digest import claims
+    have = {c["item_id"] for c in claims.load()}
+    for p in sorted(ITEMS.glob("*.json")):
+        r = json.loads(p.read_text())
+        t = TRANSCRIPTS / f"{r['id']}.txt"
+        if r["id"] in have or not t.exists() or not r["summary"]["worth_reading"]:
+            continue
+        print(f"  🎙 {r['source_name']}: {r['title']}")
+        log_claims(sources.Item(**{k: r[k] for k in sources.Item.__dataclass_fields__}), t.read_text())
 
 
 def redo(ids: list[str], today: str):
@@ -182,6 +204,7 @@ def main():
     ap.add_argument("--market-only", action="store_true", help="refresh today's market snapshot, then build")
     ap.add_argument("--hot-only", action="store_true", help="refresh today's hot topics and market snapshot, then build")
     ap.add_argument("--extras-only", action="store_true", help="regenerate today's quiz and audio briefing, then build")
+    ap.add_argument("--claims", action="store_true", help="log forecasts for saved episodes that don't have them yet, score due ones, build")
     ap.add_argument("--redo", nargs="*", metavar="ID",
                     help="re-summarize saved items from their transcripts (all of today's if no ids), redo the brief, build")
     ap.add_argument("--source", help="only this source id")
@@ -201,6 +224,12 @@ def main():
         if args.hot_only:
             write_hot(today, cfg)
         write_market(today, cfg)
+        build.build(ROOT)
+        return
+    if args.claims:
+        from digest import claims
+        backfill_claims()
+        claims.resolve()
         build.build(ROOT)
         return
     if args.extras_only:
@@ -256,6 +285,11 @@ def main():
         write_extras(today)
     except Exception as e:
         print(f"! quiz/audio failed: {e}")
+    try:
+        from digest import claims
+        claims.resolve()
+    except Exception as e:
+        print(f"! scoring forecasts failed: {e}")
     build.build(ROOT)
 
 
