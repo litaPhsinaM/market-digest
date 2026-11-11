@@ -302,7 +302,7 @@
     const cta = s.href ? `<a class="st-cta" href="${esc(s.href)}" data-st-close>${s.kind === "quiz" ? "Take the quiz →" : "Read the full story →"}</a>` : "";
     $("#st-card").className = "st-card k-" + s.kind;
     $("#st-card").innerHTML = s.kind === "cover"
-      ? `<div class="st-brand">Market Digest</div><div class="st-label">Today in 60 seconds</div><h2>${esc(s.title)}</h2>${mood}<p>${esc(s.text)}</p><div class="st-tap">Tap to start →</div>`
+      ? `<div class="st-brand">Market Digest</div><div class="st-label">Today in 60 seconds</div><h2>${esc(s.title)}</h2>${mood}<p>${esc(s.text)}</p><div class="st-tap">Tap the right side for the next card · left to go back · hold to pause</div>`
       : `<div class="st-label">${esc(s.label)}</div><h2>${esc(s.title)}</h2><p>${esc(s.text)}</p>${extra}${cta}`;
     $("#st-card").classList.remove("in"); void $("#st-card").offsetWidth; $("#st-card").classList.add("in");
     schedule(DUR);
