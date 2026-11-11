@@ -1,0 +1,63 @@
+{
+ "id": "planet-money-cca577193f",
+ "source_id": "planet-money",
+ "source_name": "Planet Money",
+ "kind": "podcast",
+ "title": "Inside the insurance industry\u2019s destruction lab",
+ "url": "https://www.npr.org/2026/11/06/nx-s1-6032860/fire-insurance-industry-destruction-lab",
+ "media_url": "https://tracking.swap.fm/track/XvDEoI11TR00olTUO8US/prfx.byspotify.com/e/play.podtrac.com/npr-510289/npr.simplecastaudio.com/43b5acee-463e-4612-95ad-d2596d9dd337/episodes/1e049bd1-7af5-4822-bae2-28d526ef53fd/audio/128/default.mp3?awCollectionId=43b5acee-463e-4612-95ad-d2596d9dd337&awEpisodeId=1e049bd1-7af5-4822-bae2-28d526ef53fd&feed=hvWWWzRv&t=podcast&e=nx-s1-6032860&p=510289&d=1943&size=31091653",
+ "published": "2026-11-06",
+ "duration": 1943,
+ "digest_date": "2026-11-10",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "segments": [],
+  "headline": "Inside the insurance industry\u2019s destruction lab",
+  "tldr": "The insurance industry is using a destruction lab in South Carolina to test how homes and materials hold up to disasters like wildfires, hurricanes, and hail. This research helps insurers better price risk and encourages safer building practices.",
+  "key_points": [
+   {
+    "point": "A destruction lab in South Carolina tests homes and materials against disasters like wildfires, hurricanes, and hail.",
+    "why_it_matters": "This research helps insurers understand how to reduce losses and encourages safer building practices."
+   },
+   {
+    "point": "Insurance companies fund the lab to better understand risk and improve building standards.",
+    "why_it_matters": "By testing materials and construction methods, the lab helps reduce the financial impact of disasters on insurers and homeowners."
+   },
+   {
+    "point": "The lab has tested how different roofing materials and building techniques affect damage from storms and wildfires.",
+    "why_it_matters": "Findings from the lab have led to changes in building codes and insurance policies, helping reduce damage and insurance costs."
+   },
+   {
+    "point": "Insurance companies work together on research but must avoid antitrust violations by keeping some information private.",
+    "why_it_matters": "This collaboration helps improve safety but requires careful handling to avoid legal issues."
+   },
+   {
+    "point": "Some homeowners face high insurance costs or are denied coverage even after making their homes more fire-resistant.",
+    "why_it_matters": "This highlights the complexity of insurance pricing and the challenges of making homes safer in high-risk areas."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "50,000",
+    "context": "Over 50,000 people in Alabama have fortified their roofs to reduce damage from storms."
+   }
+  ],
+  "lesson": "The insurance industry is using scientific research to understand and reduce the risks of natural disasters. This research helps make buildings safer and can lower insurance costs, but challenges remain in making these improvements accessible to all homeowners.",
+  "opinions_and_predictions": [
+   "Julie Rochman says that the insurance industry is trying to reduce the financial impact of disasters by improving building standards and encouraging safer construction practices.",
+   "Ann Cope believes that making homes more fire-resistant can help communities stay together after a disaster and reduce insurance payouts."
+  ],
+  "tickers": [],
+  "glossary": [],
+  "level": "beginner",
+  "topics": [
+   "insurance",
+   "disaster preparedness",
+   "building codes",
+   "risk management"
+  ],
+  "quality_note": "The content is educational and provides a clear overview of how the insurance industry is using research to improve safety and reduce losses from natural disasters.",
+  "worth_reading": true
+ }
+}

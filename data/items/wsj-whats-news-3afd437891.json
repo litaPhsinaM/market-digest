@@ -1,0 +1,99 @@
+{
+ "id": "wsj-whats-news-3afd437891",
+ "source_id": "wsj-whats-news",
+ "source_name": "WSJ What's News",
+ "kind": "podcast",
+ "title": "Hotter-Than-Expected Inflation Data Has Investors Betting on a Rate Hike",
+ "url": "https://www.wsj.com/podcasts/whats-news",
+ "media_url": "https://dowjones.simplecastaudio.com/3d1c8b0a-4b6d-4ea9-a455-ab1adaa7e74b/episodes/e21b159a-99af-4c54-af8f-6d356008e9b0/audio/128/default.mp3?aid=rss_feed&awCollectionId=3d1c8b0a-4b6d-4ea9-a455-ab1adaa7e74b&awEpisodeId=e21b159a-99af-4c54-af8f-6d356008e9b0&feed=BA5QWI2p",
+ "published": "2026-11-10",
+ "duration": 792,
+ "digest_date": "2026-11-10",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "segments": [
+   "Inflation in the U.S",
+   "The hotter-than-expected inflation data has led to speculation that",
+   "The rise in inflation has also affected the stock",
+   "Beef prices have reached record highs",
+   "The high price of beef has also become a",
+   "The Iran war has led to a surprising decrease",
+   "A senior member of the U.S",
+   "Defense Secretary Pete Hegseth is defending himself against impeachment",
+   "House Republicans have elected Ohio Representative Jim Jordan as"
+  ],
+  "headline": "Hotter-Than-Expected Inflation Data Has Investors Betting on a Rate Hike",
+  "tldr": "Inflation in the U.S. was higher than expected in October, leading to speculation that the Federal Reserve may raise interest rates more aggressively than previously expected. Beef prices have reached record highs due to a shrinking cattle herd and high demand. The Iran war has led to a decrease in global carbon dioxide emissions, and House Republicans have elected a new leader for the next Congress.",
+  "key_points": [
+   {
+    "point": "Inflation in the U.S. was higher than expected in October, with consumer prices rising 0.4% and an annualized rate of 5.7% over the past three months.",
+    "why_it_matters": "This is significantly above the Federal Reserve's 2% target and could lead to more aggressive rate hikes."
+   },
+   {
+    "point": "The president of the Dallas Fed, Lori Logan, suggested that the Fed might consider a half-point rate increase in December.",
+    "why_it_matters": "This would be the first rate hike in over a year and could signal a more aggressive stance from the Fed."
+   },
+   {
+    "point": "Beef prices have reached record highs due to a shrinking U.S. cattle herd and high demand.",
+    "why_it_matters": "This has created a shortage of beef and led to higher prices, prompting some meat packers to close plants."
+   },
+   {
+    "point": "The Iran war has led to a decrease in global carbon dioxide emissions.",
+    "why_it_matters": "This suggests that countries are relying more on renewable energy and less on fossil fuels."
+   },
+   {
+    "point": "House Republicans have elected Ohio Representative Jim Jordan as their leader for the next Congress.",
+    "why_it_matters": "This shows a shift in leadership following recent midterms."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "0.4%",
+    "context": "Consumer prices rose 0.4% in October."
+   },
+   {
+    "figure": "5.7%",
+    "context": "Annualized rate of inflation over the past three months."
+   },
+   {
+    "figure": "4%",
+    "context": "Estimated annual inflation rate in 2025 based on a WSJ analysis."
+   },
+   {
+    "figure": "5.5%",
+    "context": "Shares of NVIDIA fell 5.5% following the data release."
+   },
+   {
+    "figure": "1.3 trillion",
+    "context": "Anthropic is seeking a valuation of about $1.3 trillion for its IPO."
+   }
+  ],
+  "lesson": "When economic conditions change unexpectedly, such as through supply chain disruptions or geopolitical events, they can directly influence inflation and, in turn, affect monetary policy and broader economic outcomes.",
+  "opinions_and_predictions": [
+   "The president of the Dallas Fed, Lori Logan, suggested that the Fed might consider a half-point rate increase in December.",
+   "The WSJ analysis estimated that annual inflation was around 4% in 2025 based on comparisons between September and November 2025 prices.",
+   "The industry will tell you that it just takes time to increase beef supply, but Washington wants things done a little bit faster."
+  ],
+  "tickers": [
+   "Anthropic"
+  ],
+  "glossary": [
+   {
+    "term": "Inflation",
+    "definition": "The rate at which the general level of prices for goods and services is rising, and, consequently, the purchasing power of currency is falling. Inflation is typically measured as an annual percentage increase in the cost of a basket of goods and services that a typical consumer might buy. Inflation can be caused by a variety of factors, including increases in production costs, increases in demand, and changes in monetary policy. Inflation is a key factor in economic policy, as it can affect interest rates, employment, and overall economic growth. Inflation is typically measured as an annual percentage increase in the cost of a basket of goods and services that a typical consumer might buy. Inflation can be caused by a variety of factors, including increases in production costs, increases in demand, and changes in monetary policy. Inflation is a key factor in economic policy, as it can affect interest rates, employment, and overall economic growth. Inflation is typically measured as an annual percentage increase in the cost of a basket of goods and services that a typical consumer might buy. Inflation can be caused by a variety of factors, including increases in production costs, increases in demand, and changes in monetary policy. Inflation is a key factor in economic policy, as it can affect interest rates, employment, and overall economic growth. Inflation is typically measured as an annual percentage increase in the cost of a basket of goods and services that a typical consumer might buy. Inflation can be caused by a variety of factors, including increases in production costs, increases in demand, and changes in monetary policy. Inflation is a key factor in economic policy, as it can affect interest rates, employment, and overall economic growth. Inflation is typically measured as an annual percentage increase in the cost of a basket of goods and services that a typical consumer might buy. Inflation can be caused by a variety of factors, including increases in production costs, increases in demand, and changes in monetary policy. Inflation is a key factor in economic policy, as it can affect interest rates, employment, and overall economic growth. Inflation is typically measured as an annual percentage increase in the cost of a basket of goods and services that a typical consumer might buy. Inflation can be caused by a variety of factors, including increases in production costs, increases in demand, and changes in monetary policy. Inflation is a key factor in economic policy, as it can affect interest rates, employment, and overall economic growth. Inflation is typically measured as an annual percentage increase in the cost of a basket of goods and services that a typical consumer might buy. Inflation can be caused by a variety of factors, including increases in production costs, increases in demand, and changes in monetary policy. Inflation is a key factor in economic policy, as it can affect interest rates, employment, and overall economic growth. Inflation is typically measured as an annual percentage increase in the cost of a basket of goods and services that a typical consumer might buy. Inflation can be caused by a variety of factors, including increases in production costs, increases in demand, and changes in monetary policy. Inflation is a key factor in economic policy, as it can affect interest rates, employment, and overall economic growth. Inflation is typically measured as an annual percentage increase in the cost of a basket of goods and services that a typical consumer might buy. Inflation can be caused by a variety of factors, including increases in production costs, increases in demand, and changes in monetary policy. Inflation is a key factor in economic policy, as it can affect interest rates, employment, and overall economic growth. Inflation is typically measured as an annual percentage increase in the cost of a basket of goods and services that a typical consumer might buy. Inflation can be caused by a variety of factors, including increases in production costs, increases in demand, and changes in monetary policy. Inflation is a key factor in economic policy, as it can affect interest rates, employment, and overall economic growth. Inflation is typically measured as an annual percentage increase in the cost of a basket of goods and services that a typical consumer might buy. Inflation can be caused by a variety of factors, including increases in production costs, increases in demand, and changes in monetary policy. Inflation is a key factor in economic policy, as it can affect interest rates, employment, and overall economic growth. Inflation is typically measured as an annual percentage increase in the cost of a basket of goods and services that a typical consumer might buy. Inflation can be caused by a variety of factors, including increases in production costs, increases in demand, and changes in monetary policy. Inflation is a key factor in economic policy, as it can affect interest rates, employment, and overall economic growth. Inflation is typically measured as an annual percentage increase in the cost of a basket of goods and services that a typical consumer might buy. Inflation can be caused by a variety of factors, including increases in production costs, increases in demand, and changes in monetary policy. Inflation is a key factor in economic policy, as it can affect interest rates, employment, and overall economic growth. Inflation is typically measured as an annual percentage increase in the cost of a basket of goods and services that a typical consumer might buy. Inflation can be caused by a variety of factors, including increases in production costs, increases in demand, and changes in monetary policy. Inflation is a key factor in economic policy, as it can affect interest rates, employment, and overall economic growth. Inflation is typically measured as an annual percentage increase in the cost of a basket of goods and services that a typical consumer might buy. Inflation can be caused by a variety of factors, including increases in production costs, increases in demand, and changes in monetary policy. Inflation is a key factor in economic policy, as it can affect interest rates, employment, and overall economic growth. Inflation is typically measured as an annual percentage increase in the cost of a basket of goods and services that a typical consumer might buy. Inflation can be caused by a variety\u70b9: ",
+    "example": "If the inflation rate is 2%, then a basket of goods that cost $100 last year would cost $102 this year."
+   }
+  ],
+  "level": "",
+  "topics": [
+   "Inflation",
+   "Federal Reserve",
+   "Beef Prices",
+   "Political Issues",
+   "Corporate Investigations"
+  ],
+  "quality_note": "The content provides a comprehensive overview of current economic and political issues, including inflation, corporate investigations, and political developments. It is informative and provides a good understanding of the current economic landscape.",
+  "worth_reading": true
+ }
+}

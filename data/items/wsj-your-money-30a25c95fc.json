@@ -1,0 +1,107 @@
+{
+ "id": "wsj-your-money-30a25c95fc",
+ "source_id": "wsj-your-money",
+ "source_name": "WSJ Your Money Briefing",
+ "kind": "podcast",
+ "title": "What\u2019s News in Markets: AI Blues, Musk Under the Microscope, Housing Hope",
+ "url": "https://www.wsj.com/podcasts/your-money-matters",
+ "media_url": "https://dowjones.simplecastaudio.com/6549bd7e-b1b3-4333-8a34-08c1efc472c9/episodes/cba3567b-9602-43e7-ae45-3d6e9e5d62b1/audio/128/default.mp3?aid=rss_feed&awCollectionId=6549bd7e-b1b3-4333-8a34-08c1efc472c9&awEpisodeId=cba3567b-9602-43e7-ae45-3d6e9e5d62b1&feed=VYCXJ_UH",
+ "published": "2026-11-07",
+ "duration": 339,
+ "digest_date": "2026-11-10",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "segments": [
+   "The midterm election results led to a sharp sell-off",
+   "Investors were initially optimistic about a divided government",
+   "The Philadelphia Semiconductor Index dropped more than 12%",
+   "Elon Musk faced challenges following the election",
+   "Homebuilder stocks saw a boost after the election",
+   "However"
+  ],
+  "headline": "Midterm Election Results Spook AI Stocks, Musk Faces Scrutiny, Housing Sector Sees Mixed Signals",
+  "tldr": "The midterm election results led to a sharp decline in stock markets, particularly in AI-related sectors. Homebuilder stocks saw a boost, but analysts remain cautious about a housing market rebound.",
+  "key_points": [
+   {
+    "point": "The midterm election results caused a significant sell-off in the stock market, with the Nasdaq losing about $2.5 trillion in value in a single day.",
+    "why_it_matters": "The election results raised concerns about the future of the AI industry and its impact on the broader market."
+   },
+   {
+    "point": "Voters supported measures that could slow the construction of new data centers, potentially affecting AI investment and related sectors.",
+    "why_it_matters": "This could reduce demand for chips and equipment used in data centers, impacting companies like NVIDIA, AMD, and Micron."
+   },
+   {
+    "point": "Elon Musk faced challenges with Tesla's stock declining 10.4% and potential investigations into his role in the Trump administration.",
+    "why_it_matters": "Democrats may scrutinize Musk's business practices, potentially affecting future plans like a Tesla-SpaceX merger."
+   },
+   {
+    "point": "Homebuilder stocks saw a boost after the election, with companies like DR Horton, Pulte Group, and Lennar experiencing gains.",
+    "why_it_matters": "Investors are optimistic about potential policy changes that could help reduce mortgage rates and ease labor shortages in the construction industry."
+   },
+   {
+    "point": "Analysts believe a housing market rebound is unlikely in the near future due to weak demand, rising costs, and the typical slowdown in the industry during this time of year.",
+    "why_it_matters": "Despite some optimism, the housing market is still facing challenges that may limit its recovery."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "1,500 points",
+    "context": "The Dow's biggest one-day gain in more than a year on Wednesday."
+   },
+   {
+    "figure": "3.4 percent",
+    "context": "The Nasdaq's decline for the week."
+   },
+   {
+    "figure": "2.7 percent",
+    "context": "The S&P 500's decline for the week."
+   },
+   {
+    "figure": "0.9 percent",
+    "context": "The Dow's decline for the week."
+   },
+   {
+    "figure": "13 percent",
+    "context": "The drop in Brent crude futures."
+   }
+  ],
+  "lesson": "When a sector's growth depends on political outcomes, market volatility follows; diversification and policy monitoring become critical for long-term stability.",
+  "opinions_and_predictions": [
+   "Analysts say a potential merger between Tesla and SpaceX could face more scrutiny under a Democratic Congress.",
+   "Some say the price tag of Anthropic's planned IPO may need to come down by hundreds of billions of dollars.",
+   "Analysts say a rebound in the housing market probably isn't in the cards for the rest of this year."
+  ],
+  "tickers": [
+   "AMD",
+   "Micron",
+   "Tesla",
+   "SpaceX",
+   "DR Horton",
+   "Pulte Group",
+   "Lennar"
+  ],
+  "glossary": [
+   {
+    "term": "Correction",
+    "definition": "A decline in stock prices of 10% or more from a recent high, often seen as a sign of a market downturn or adjustment period for overvalued stocks or sectors.",
+    "example": "The Nasdaq fell into correction territory, indicating a significant drop in its value."
+   },
+   {
+    "term": "IPO",
+    "definition": "Initial Public Offering, the process through which a private company offers its shares to the public for the first time.",
+    "example": "Anthropic's planned IPO is being reevaluated by major backers due to concerns about its valuation."
+   }
+  ],
+  "level": "beginner",
+  "topics": [
+   "Market Volatility",
+   "AI Industry",
+   "Political Impact on Markets",
+   "Housing Market",
+   "Investor Sentiment"
+  ],
+  "quality_note": "The content provides a clear and detailed overview of recent market movements and their causes, making it a valuable resource for learners.",
+  "worth_reading": true
+ }
+}

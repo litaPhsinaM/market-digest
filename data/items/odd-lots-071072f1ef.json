@@ -1,0 +1,94 @@
+{
+ "id": "odd-lots-071072f1ef",
+ "source_id": "odd-lots",
+ "source_name": "Odd Lots (Bloomberg)",
+ "kind": "podcast",
+ "title": "This Is How New York City Takes Out Its Trash",
+ "url": "https://omny.fm/shows/odd-lots/this-is-how-new-york-city-takes-out-its-trash",
+ "media_url": "https://podtrac.com/pts/redirect.mp3/tracking.swap.fm/track/UVBrz8bN8aM2Xe47PEPu/traffic.omny.fm/d/clips/e73c998e-6e60-432f-8610-ae210140c5b1/8a94442e-5a74-4fa2-8b8d-ae27003a8d6b/15e58d4b-0964-4cc7-a53b-b4fa01669ff2/audio.mp3?utm_source=Podcast&in_playlist=982f5071-765c-403d-969d-ae27003a8d83",
+ "published": "2026-11-09",
+ "duration": 3178,
+ "digest_date": "2026-11-10",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "segments": [
+   "The episode discusses the history and logistics of trash",
+   "New York City's Department of Sanitation is working on",
+   "The city's unique street grid and lack of alleys",
+   "New York City has moved from a landfill model",
+   "The city's recycling system is protected by long-term contracts",
+   "Compost programs are being expanded",
+   "New York City is implementing on-street containerization for trash",
+   "The city is addressing concerns about littering through anti-littering",
+   "The episode concludes with a discussion on the importance"
+  ],
+  "headline": "New York City's Trash Collection System: History, Challenges, and the 'Trash Revolution'",
+  "tldr": "New York City's trash collection system has evolved from the black bag model to modern containerization, with a focus on sustainability, data-driven planning, and improving public cleanliness. The city is implementing new programs to address long-standing issues, including littering, recycling, and composting.",
+  "key_points": [
+   {
+    "point": "New York City's trash collection system has a unique history, including the shift from metal garbage cans to black bags in the 1970s, which led to long-term cleanliness and rodent issues.",
+    "why_it_matters": "This historical context explains the challenges the city faces in modernizing its waste management system."
+   },
+   {
+    "point": "The city is moving from a landfill model to a waste export model, using transfer stations and modern infrastructure to process and transport trash more sustainably.",
+    "why_it_matters": "This shift reflects a broader effort to improve environmental sustainability and reduce the impact of waste on the city."
+   },
+   {
+    "point": "New York City is implementing on-street containerization for trash collection, with pilot programs in West Harlem and Brooklyn, involving new truck designs and careful planning.",
+    "why_it_matters": "This initiative is part of a larger 'trash revolution' aimed at improving cleanliness and efficiency in waste management."
+   },
+   {
+    "point": "The city is addressing littering through anti-littering campaigns, public education, and design changes inspired by urban planning theories that link public space ownership to cleanliness.",
+    "why_it_matters": "These efforts aim to foster a sense of responsibility among residents and improve the overall cleanliness of public spaces."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "24 million pounds of trash, recycling, and compostable material collected daily by the Department of Sanitation.",
+    "context": "This highlights the scale of the city's waste management operations."
+   },
+   {
+    "figure": "70,000-block volumetric analysis conducted to support the transition to containerization.",
+    "context": "This data-driven approach was essential for planning the new waste collection system."
+   },
+   {
+    "figure": "33-acre compost facility in Staten Island that processes food waste into compost for parks, gardens, and wastewater treatment.",
+    "context": "This facility is part of the city's efforts to divert waste from landfills and promote sustainable practices."
+   }
+  ],
+  "lesson": "New York City's approach to trash collection is a complex, data-driven effort that balances historical challenges, modern sustainability goals, and the need for public engagement. The city's 'trash revolution' demonstrates the importance of adapting waste management systems to local conditions while addressing long-standing issues with cleanliness and environmental impact.",
+  "opinions_and_predictions": [
+   "Josh Goodman, Deputy Commissioner at the Department of Sanitation, believes that the city's commitment to full universal service is essential for maintaining public trust and ensuring that all residents have access to clean streets.",
+   "The city's move toward on-street containerization is expected to reduce the physical strain on sanitation workers and improve the efficiency of trash collection."
+  ],
+  "tickers": [],
+  "glossary": [
+   {
+    "term": "Containerization",
+    "definition": "A waste management system that uses designated containers for trash collection, as opposed to traditional methods like black bags on the curb.",
+    "example": "New York City is implementing on-street containerization to improve cleanliness and efficiency."
+   },
+   {
+    "term": "Transfer stations",
+    "definition": "Facilities where trash is collected from collection trucks and then transferred to larger vehicles for transport to landfills or recycling centers.",
+    "example": "New York City has built five transfer stations as part of its waste export model."
+   },
+   {
+    "term": "Composting",
+    "definition": "The process of breaking down organic waste, such as food scraps, into nutrient-rich compost that can be used in gardening and agriculture.",
+    "example": "New York City's compost program processes food waste into compost for parks and gardens."
+   }
+  ],
+  "level": "",
+  "topics": [
+   "Waste Management",
+   "Urban Planning",
+   "Sustainability",
+   "Public Services",
+   "Environmental Policy"
+  ],
+  "quality_note": "Josh Goodman, Deputy Commissioner at the Department of Sanitation, provides data-backed insights into the challenges and progress of New York City's trash collection system. Other claims are based on the city's documented efforts and public statements.",
+  "worth_reading": true
+ }
+}

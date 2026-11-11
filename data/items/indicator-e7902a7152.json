@@ -12,74 +12,70 @@
  "backend": "ollama",
  "model": "qwen3:14b",
  "summary": {
-  "worth_reading": true,
-  "quality_note": "This digest explains why sitcoms are less common now, based on a conversation with Mike Schur, a TV show creator. It's a good example of how economics and technology can change industries.",
-  "headline": "Why Are There Fewer Sitcoms on TV Now?",
-  "tldr": "Streaming services have changed how TV shows are made and sold, making it harder for sitcoms to be profitable. This has led to fewer sitcoms being created, even though they are still popular with audiences.",
+  "segments": [
+   "Sitcoms like Seinfeld, The Office, and How I Met Your Mother are no longer being made as much as they used to be. These shows were popular because they had a long tail of success, meaning they continued to be watched and sold for years after they ended.",
+   "In the 1990s, sitcoms made up about 12% of new shows. In the 2020s, that number is less than 2%. Even though sitcoms are still popular, many of them ended their runs over a decade ago.",
+   "Mike Schur, a sitcom creator, says the economics of TV changed with the rise of streaming. In the past, sitcoms could lose money on their first run but make money later through syndication, where reruns are sold to other channels.",
+   "Streaming changed this model. Now, streamers buy shows for fewer episodes, which increases production costs. This is because of an accounting principle called amortization, where the cost of a big purchase is spread out over time. Fewer episodes mean the cost per episode is higher.",
+   "Another challenge for sitcoms is that they often need time to develop. They need several episodes to find their rhythm, but streaming platforms want shows that can attract viewers quickly. This makes it hard for sitcoms to experiment and find their footing.",
+   "Streaming platforms also measure success differently. They count minutes watched, not the number of households tuning in. This makes hour-long shows more valuable than half-hour sitcoms.",
+   "Because of these changes, sitcoms are less valuable overseas and more expensive to make. This has led streamers to focus more on other types of shows, like dramas, which are easier to sell internationally.",
+   "Mike Schur is trying to adapt to the new model. His new show, Dig, has elements of workplace comedy and cliffhangers to keep viewers watching. It's tailored to the current era and includes a central mystery to drive engagement.",
+   "Mike says it's hard to convince streamers to make traditional sitcoms with long seasons and casual, hangout-style storytelling. He doesn't know of anyone who has successfully done this in the streaming era."
+  ],
+  "headline": "Why are sitcoms becoming less common in the streaming era?",
+  "tldr": "Sitcoms are becoming less common because streaming changed the economics of TV. Sitcoms are harder to make profitable now, and they need more time to develop, which streaming platforms don't always allow.",
   "key_points": [
    {
-    "point": "Sitcoms used to be a big part of TV, but now they make up less than 2% of new shows in the 2020s, down from 12% in the 1990s.",
-    "why_it_matters": "This shows a big shift in what kinds of TV shows are being made."
+    "point": "Sitcoms used to be profitable through syndication, but streaming has changed that model.",
+    "why_it_matters": "This has made sitcoms more expensive to produce and less valuable to streamers."
    },
    {
-    "point": "In the past, sitcoms could lose money on their first run but still make money later through syndication (reruns on other channels).",
-    "why_it_matters": "This gave creators a chance to recoup costs over time."
+    "point": "Streaming platforms prefer shows that can attract viewers quickly, which makes it hard for sitcoms to develop.",
+    "why_it_matters": "Sitcoms often need time to find their rhythm, but streaming platforms want immediate success."
    },
    {
-    "point": "Streaming services usually buy fewer episodes of a show, which makes each episode more expensive to produce.",
-    "why_it_matters": "This changes how TV studios calculate their costs and profits."
+    "point": "Streaming platforms measure success by minutes watched, not by the number of households tuning in.",
+    "why_it_matters": "This makes hour-long shows more valuable than half-hour sitcoms."
    },
    {
-    "point": "Streaming services value shows based on how many minutes people watch, not how many people watch them. This makes sitcoms (which are shorter) less valuable.",
-    "why_it_matters": "This affects what kinds of shows are made and how they are structured."
-   },
-   {
-    "point": "Comedies often need time to develop and find their rhythm, but streaming services want shows to be successful quickly.",
-    "why_it_matters": "This makes it harder for sitcoms to succeed in the streaming era."
+    "point": "Sitcoms are harder to sell internationally because humor is cultural and doesn't always translate.",
+    "why_it_matters": "This has led streamers to focus more on dramas, which are easier to sell globally."
    }
   ],
   "numbers": [
    {
     "figure": "12%",
-    "context": "Percentage of new shows that were sitcoms in the 1990s."
+    "context": "The percentage of new shows that were sitcoms in the 1990s."
    },
    {
     "figure": "less than 2%",
-    "context": "Percentage of new shows that are sitcoms in the 2020s."
+    "context": "The percentage of new shows that are sitcoms in the 2020s."
    },
    {
     "figure": "22 episodes",
-    "context": "Number of episodes that sitcoms used to be made with in the past."
+    "context": "The number of episodes that sitcoms used to have in a season."
    },
    {
     "figure": "8 episodes",
-    "context": "Number of episodes that some sitcoms are now made with, due to changes in streaming economics."
+    "context": "The number of episodes that streamers often buy for a show."
    }
   ],
-  "lesson": "The way TV is made and sold has changed a lot with the rise of streaming services. These changes have made it harder for sitcoms to be profitable, even though they are still popular with audiences.",
+  "lesson": "The way we make and watch TV has changed, and sitcoms are struggling to adapt. Understanding these changes can help explain why certain types of shows are more common now than others.",
   "opinions_and_predictions": [
-   "Mike Schur said that the economics of TV have changed dramatically in the last 15 years, and one of the casualties has been the comedy.",
-   "Mike Schur said that it's unlikely anyone would be able to make a sitcom the old way, with 22 episodes and a casual hangout format, in today's market.",
-   "Mike Schur said that the streaming world system does not give comedies the time they need to experiment and find their footing."
+   "Mike Schur says that the economics of streaming have made it harder to make traditional sitcoms. He believes that the system doesn't give comedies the time they need to develop.",
+   "Mike Schur thinks it's unlikely that traditional sitcoms will be made the same way they were in the past. He says it's hard to convince streamers to make long seasons with casual, hangout-style storytelling."
   ],
   "tickers": [],
-  "glossary": [
-   {
-    "term": "syndication",
-    "definition": "When reruns of a TV show are sold to other channels for broadcasting, usually after the show has finished its initial run on a network or streaming service. This can be a way for studios to make money from a show long after it has been created.",
-    "example": "Shows like Seinfeld and The Office became very popular through syndication."
-   },
-   {
-    "term": "amortization",
-    "definition": "An accounting principle where the cost of a large purchase is spread out over time. In TV production, this means spreading the cost of making a show over the number of episodes.",
-    "example": "If a set costs $3 million, it might be spread over 22 episodes, but now it might be spread over 8 episodes, making each episode more expensive."
-   }
-  ],
+  "glossary": [],
   "level": "beginner",
   "topics": [
-   "TV and media",
-   "Economics",
-   "Streaming services"
-  ]
+   "TV economics",
+   "Streaming platforms",
+   "Sitcoms",
+   "Syndication"
+  ],
+  "quality_note": "Mike Schur, a sitcom creator, provides data-backed insights into how the rise of streaming has affected sitcom production and success.",
+  "worth_reading": true
  }
 }

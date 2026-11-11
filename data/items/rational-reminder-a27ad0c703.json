@@ -1,0 +1,76 @@
+{
+ "id": "rational-reminder-a27ad0c703",
+ "source_id": "rational-reminder",
+ "source_name": "Rational Reminder (Ben Felix)",
+ "kind": "podcast",
+ "title": "Breaking Down Our Investment Portfolios | #434",
+ "url": "https://rationalreminder.libsyn.com/breaking-down-our-investment-portfolios",
+ "media_url": "https://dts.podtrac.com/redirect.mp3/traffic.libsyn.com/secure/rationalreminder/RRP_-_EP.434_-_AUDIO_V4.mp3?dest-id=763774",
+ "published": "2026-11-05",
+ "duration": 5380,
+ "digest_date": "2026-11-10",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "segments": [
+   "The episode begins with a client story featuring Brady",
+   "Ben and Dan discuss their personal investment strategies",
+   "Ben shares his personal financial journey",
+   "Dan reflects on his early career in financial services",
+   "Both Ben and Dan discuss their decision to own",
+   "The episode concludes with a review of a covered"
+  ],
+  "headline": "Ben and Dan discuss their investment strategies, the importance of evidence-based financial planning, and personal financial decisions that balance wealth maximization with quality of life.",
+  "tldr": "Ben and Dan share their investment approaches, emphasizing low-cost, diversified portfolios and the importance of evidence-based decision-making. They also reflect on personal financial choices, such as owning a home and holding cash, and discuss the role of research in shaping their strategies.",
+  "key_points": [
+   {
+    "point": "Evidence-based financial planning is crucial for long-term success, similar to evidence-based medicine.",
+    "why_it_matters": "It helps investors make informed decisions based on research rather than intuition or market timing."
+   },
+   {
+    "point": "Financial planning is more than just investing; it involves insurance, retirement planning, and other complex factors.",
+    "why_it_matters": "A holistic approach is necessary to manage all aspects of personal finance effectively."
+   },
+   {
+    "point": "Actively managed funds generally underperform compared to low-cost, diversified index funds.",
+    "why_it_matters": "This is supported by decades of academic research and is a key principle in evidence-based investing."
+   },
+   {
+    "point": "Owning a home can be a poor financial investment but may provide significant quality-of-life benefits.",
+    "why_it_matters": "It's important to consider both financial and non-financial factors when making investment decisions."
+   },
+   {
+    "point": "Cash can serve as a buffer during market volatility, even if it means forgoing potential investment returns.",
+    "why_it_matters": "Having liquidity can provide peace of mind and flexibility in uncertain economic conditions."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "The 2018 global study found that happiness plateaus at around $105,000 in North America.",
+    "context": "This is the income level above which happiness stops improving."
+   },
+   {
+    "figure": "The 2021 study found that happiness continues to rise with income for happy people, but not for unhappy people.",
+    "context": "This suggests that income and happiness are not directly correlated for all individuals."
+   }
+  ],
+  "lesson": "When decisions are based on evidence and long-term goals, they tend to lead to more consistent and sustainable outcomes; short-term focus often results in less predictable and less effective results.",
+  "opinions_and_predictions": [
+   "Ben: 'I think that money can help, especially if you're already really happy, but it far from guarantees a good life.'",
+   "Dan: 'I don't think suboptimal is irrational. They're not the same thing.'",
+   "Ben: 'I think that the decisions that you've described and hopefully the ones I've described as well, they're not for everybody.'"
+  ],
+  "tickers": [],
+  "glossary": [],
+  "level": "beginner",
+  "topics": [
+   "Evidence-based investing",
+   "Financial planning",
+   "Index funds vs. actively managed funds",
+   "Personal finance and happiness",
+   "Asset allocation"
+  ],
+  "quality_note": "The episode provides a comprehensive overview of personal and professional investment strategies, emphasizing the importance of research and long-term planning. The speakers are analysts, and the claims are data-backed.",
+  "worth_reading": true
+ }
+}

@@ -12,68 +12,84 @@
  "backend": "ollama",
  "model": "qwen3:14b",
  "summary": {
-  "worth_reading": true,
-  "quality_note": "This video provides a personal and educational perspective on investing, with clear explanations of investment choices and the influence of personal experience and research on financial decisions.",
-  "headline": "Ben Felix Shares His Investment Strategy and Life Lessons",
-  "tldr": "Ben Felix, a Chief Investment Officer, shares his personal investment strategy, which includes a low-cost global equity fund, a private equity stake in his own company, a home, and some cash. He also discusses how his upbringing and research on wealth and happiness shape his financial decisions.",
+  "segments": [
+   "Ben Felix explains how he invests his own money, which is mostly in one public equity fund and a private equity holding in his firm's parent company, OneDigital. He also owns a house and holds some cash.",
+   "He grew up in elite boarding schools in Canada and was surrounded by wealth, which taught him that money doesn't guarantee happiness. Research shows that after a certain income level, happiness doesn't increase much, and higher income can sometimes lead to more stress and less satisfaction.",
+   "He studied mechanical engineering and later did an MBA with a finance concentration. During his MBA, he worked in the financial services industry and realized that many financial products were more about sales than advice. This led him to focus on low-cost, evidence-based investing strategies.",
+   "He learned about the Fama and French three-factor model during his MBA, which influenced his investment approach. He now uses Dimensional Global Equity Portfolio, a low-cost, broadly diversified fund that tilts toward smaller, more profitable companies.",
+   "He does not invest in bonds because he has a low tolerance for volatility. He has been all-equity for a long time, and a 2025 paper supports a diversified all-equity portfolio as optimal for most people over their lifetime.",
+   "A significant portion of his portfolio is in private equity, specifically in OneDigital, the parent company of his firm, PWL Capital. He acknowledges the risks of this investment but believes it was a good decision for him personally because of his deep involvement in the company's growth.",
+   "He bought a house in late 2020 after renting for most of his adult life. While owning a home has been a poor financial investment, it has been a great place for his family to live. He values the stability and comfort it provides.",
+   "He holds more cash than he probably needs, partly due to recent renovation costs. While this is not a strategic or tactical allocation, it provides psychological comfort and flexibility for future spending or investing."
+  ],
+  "headline": "Ben Felix's Investment Portfolio: Mostly Public Equity, Some Private Equity, a House, and Cash",
+  "tldr": "Ben Felix invests mostly in a low-cost, broadly diversified public equity fund, has a private equity holding in his firm's parent company, owns a house, and holds some cash. He emphasizes that personal finance is personal and that money is a tool for building a good life, not just maximizing wealth.",
   "key_points": [
    {
-    "point": "Ben Felix's investment strategy is simple and low-cost, with most of his money in a global equity fund called the Dimensional Global Equity Portfolio.",
-    "why_it_matters": "This fund is broadly diversified and follows research-based strategies, such as tilting toward smaller, more profitable companies."
+    "point": "Ben Felix's main investment is in the Dimensional Global Equity Portfolio, a low-cost, broadly diversified public equity fund.",
+    "why_it_matters": "This fund is based on academic research and tilts toward smaller, more profitable companies."
    },
    {
-    "point": "He owns a private equity stake in OneDigital, the parent company of PWL Capital, which he helped grow.",
-    "why_it_matters": "This is a direct investment in a company he knows well, though it carries significant idiosyncratic risk."
+    "point": "He has a private equity holding in OneDigital, the parent company of his firm, PWL Capital.",
+    "why_it_matters": "This is a direct investment in a company he helped grow, though it carries significant idiosyncratic risk."
    },
    {
-    "point": "He owns a home, which he admits is not a great financial investment but is a great place for his family.",
-    "why_it_matters": "Owning a home locks in housing costs but comes with unexpected expenses and opportunity costs."
+    "point": "He owns a house that has been a poor financial investment but a great home for his family.",
+    "why_it_matters": "Owning a home locks in housing costs but comes with high maintenance and opportunity costs."
    },
    {
-    "point": "He holds more cash than necessary, partly due to recent renovation costs and for psychological comfort.",
-    "why_it_matters": "Having a cash buffer provides flexibility, even if it means missing out on potential investment returns."
+    "point": "He holds more cash than needed, partly due to recent renovation costs and for psychological comfort.",
+    "why_it_matters": "Cash provides flexibility but has an opportunity cost if not invested."
    }
   ],
   "numbers": [
    {
     "figure": "69.7%",
-    "context": "Of US equity mutual funds from 1991 to 2020, this percentage underperformed a simple S&P 500 index ETF."
+    "context": "Of nearly 8,000 US equity mutual funds from 1991 to 2020, 69.7% trailed a simple S&P 500 index ETF."
    },
    {
     "figure": "$105,000",
-    "context": "In 2018, life evaluation leveled off around this income level in North America (adjusted for inflation to $137,000 today)."
+    "context": "In 2018, life evaluation leveled off around $105,000 of income in North America (adjusted for inflation, about $137,000 today)."
    },
    {
     "figure": "$65,000",
-    "context": "In 2018, day-to-day happiness leveled off around this income level in North America (adjusted for inflation to $85,000 today)."
+    "context": "Day-to-day happiness leveled off around $65,000 in the 2018 study (adjusted for inflation, about $85,000 today)."
    }
   ],
-  "lesson": "Investing should be simple, evidence-based, and aligned with your personal goals and values. Not all financial decisions are purely about maximizing wealth.",
+  "lesson": "When personal decisions involve significant financial commitments, they often carry unique risks and trade-offs that depend on individual circumstances and long-term goals.",
   "opinions_and_predictions": [
    "Ben Felix believes that having access to lots of money does not necessarily create a good life for either adults or children (based on research).",
-   "He thinks that the relationship between life satisfaction and income is weaker than people intuitively expect.",
-   "He is skeptical of private market investments and high-fee actively managed mutual funds, citing research that shows they rarely outperform low-cost index funds."
+   "He thinks that a diversified all-equity portfolio with about a third in domestic stocks and two-thirds in international stocks is optimal for most people over their lifetime (based on a 2025 paper).",
+   "He acknowledges that investing in the same company that pays your salary is generally considered bad advice, but he believes it was a deliberate decision for him personally."
   ],
   "tickers": [],
   "glossary": [
    {
     "term": "Index fund",
-    "definition": "A type of mutual fund or exchange-traded fund (ETF) that tracks a market index, such as the S&P 500, and aims to replicate its performance by holding all or a representative sample of the securities in the index. (This is different from the Dimensional funds, which are not technically index funds but use similar principles.)",
-    "example": "An index fund that tracks the S&P 500 would hold stocks of all the companies in the index."
+    "definition": "A type of mutual fund or exchange-traded fund (ETF) that aims to replicate the performance of a specific market index, such as the S&P 500, by holding all or a representative sample of the securities in that index. (Used in the context of comparing Dimensional funds to index funds.)",
+    "example": "The S&P 500 index fund holds stocks of 500 large US companies."
    },
    {
     "term": "Private equity",
-    "definition": "A type of investment in private companies, typically through the purchase of shares or ownership stakes. Unlike public equities, private equity is not traded on public stock exchanges.",
-    "example": "Ben Felix's investment in OneDigital is an example of private equity."
+    "definition": "A form of investment in private companies, typically involving the purchase of a controlling interest in the company. Private equity investments are not publicly traded and are usually made by institutional investors or high-net-worth individuals. (Used in the context of Ben's investment in OneDigital.)",
+    "example": "An investment in a private company like OneDigital."
+   },
+   {
+    "term": "Opportunity cost",
+    "definition": "The cost of an alternative that must be forgone in order to pursue a certain action. In investing, it refers to the potential return that could have been earned by investing in a different asset. (Used in the context of owning a home versus renting.)",
+    "example": "The opportunity cost of buying a home is the return that could have been earned by investing the money in the stock market."
    }
   ],
   "level": "beginner",
   "topics": [
-   "Investment strategy",
+   "Investment strategies",
    "Personal finance",
-   "Wealth and happiness",
-   "Diversification",
-   "Private equity"
-  ]
+   "Equity funds",
+   "Private equity",
+   "Home ownership",
+   "Cash management"
+  ],
+  "quality_note": "The content is educational and provides a detailed, personal perspective on investing and personal finance. It includes research, personal experiences, and practical insights.",
+  "worth_reading": true
  }
 }

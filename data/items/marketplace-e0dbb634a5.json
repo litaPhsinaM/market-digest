@@ -12,36 +12,46 @@
  "backend": "ollama",
  "model": "qwen3:14b",
  "summary": {
-  "worth_reading": true,
-  "quality_note": "This digest focuses on key insights from the podcast, including the risks of tying a company's identity to a single CEO, the impact of NVIDIA's CEO scandal, and the challenges faced by small businesses. It avoids hype and provides a clear, concise summary.",
-  "headline": "The Cost of Executive Blunders and Market Dynamics",
-  "tldr": "The podcast discusses the risks of tying a company's identity to a single CEO, the impact of NVIDIA's CEO scandal, and the challenges faced by small businesses in a changing economic environment.",
+  "segments": [
+   "NVIDIA's CEO, Jensen Huang, is under investigation for an affair with a woman suspected of being a spy for China. This has raised concerns about national security and could damage NVIDIA's reputation and stock price.",
+   "Having a highly visible CEO can be both beneficial and risky for a company. A well-known CEO can make a company more relatable and influence stock prices positively, but if the CEO faces controversy or personal issues, it can harm the company significantly.",
+   "Corporate boards should plan for succession and identify potential leaders within the company to avoid a leadership vacuum if a charismatic CEO is suddenly removed.",
+   "The average 30-year fixed mortgage rate is 7.18%, which is a recent low but still high by historical standards. Experts predict the rate may stay around 7% in the near future, but it's unlikely to drop significantly.",
+   "Mortgage rates are tied to the 10-year Treasury bond. While rates have slightly decreased, factors like the war in the Middle East and inflation may prevent a significant boost in the housing market.",
+   "Home prices are slowly decreasing, but the supply of homes remains low, making it difficult for wages to catch up to housing costs. Builders are facing challenges like high material costs, labor shortages, and competition for skilled workers.",
+   "Erin Calvo-Bacci, a small business owner, sold her candy company due to rising costs and uncertainty. She now plans to teach high school students about entrepreneurship.",
+   "The stock market had a strong performance, with the Dow, Nasdaq, and S&P 500 all rising significantly. NVIDIA's stock fell, while AMD's stock rose.",
+   "China has become a major global manufacturer, producing high-quality goods like computer chips, self-driving cars, and camera lenses. Younger generations are more accepting of 'Made in China' products due to their quality and innovation.",
+   "Stephanie Servi turned her Etsy shop into a full-time business selling fiber arts tools after leaving her corporate job due to health issues. She now runs a yarn shop from home, allowing her to manage her work around her physical limitations."
+  ],
+  "headline": "The cost of executive blunders and the evolving role of China in global manufacturing",
+  "tldr": "This episode discusses the risks of having a highly visible CEO, the impact of rising mortgage rates on the housing market, the challenges faced by small businesses, and the changing perception of 'Made in China' products.",
   "key_points": [
    {
-    "point": "Having a highly visible CEO can be both beneficial and risky for a company.",
-    "why_it_matters": "A well-known CEO can humanize a company and influence stock prices, but it also ties the company's reputation to one person, increasing vulnerability to public and investor sentiment shifts."
+    "point": "NVIDIA's CEO is under investigation for an affair with a woman suspected of being a spy for China.",
+    "why_it_matters": "This could damage NVIDIA's reputation and stock price."
    },
    {
-    "point": "NVIDIA's CEO, Jensen Huang, is under investigation for an affair with a woman suspected of being a spy for China.",
-    "why_it_matters": "This incident could harm NVIDIA's reputation and the broader perception of AI, despite the company's strong market position."
+    "point": "Having a well-known CEO can be both beneficial and risky for a company.",
+    "why_it_matters": "A charismatic CEO can boost a company's image and stock price, but controversy can lead to significant harm."
    },
    {
-    "point": "Corporate boards are encouraged to plan for succession to avoid leadership gaps.",
-    "why_it_matters": "Succession planning is critical to ensure smooth transitions and avoid disruption if a CEO is removed or leaves unexpectedly."
+    "point": "Corporate boards should plan for succession and identify potential leaders within the company.",
+    "why_it_matters": "This helps avoid a leadership vacuum if a CEO is suddenly removed."
    },
    {
-    "point": "Mortgage rates have recently dropped to 7.18% for a 30-year fixed rate, but experts believe this won't significantly boost the housing market.",
-    "why_it_matters": "Factors like the Middle East conflict, inflation, and tariffs continue to influence the housing market, despite lower rates."
+    "point": "Mortgage rates have slightly decreased but are still high, and the housing market is unlikely to see a significant boost.",
+    "why_it_matters": "This affects both buyers and sellers in the housing market."
    },
    {
-    "point": "Small business owner Erin Calvo-Bacci sold her candy company due to rising costs and uncertainty.",
-    "why_it_matters": "This highlights the challenges small businesses face with inflation, logistics, and unpredictable market conditions."
+    "point": "China has become a major global manufacturer of high-quality goods.",
+    "why_it_matters": "Younger generations are more accepting of 'Made in China' products due to their quality and innovation."
    }
   ],
   "numbers": [
    {
     "figure": "7.18%",
-    "context": "The average 30-year fixed rate mortgage according to Freddie Mac."
+    "context": "The average 30-year fixed mortgage rate."
    },
    {
     "figure": "4.88%",
@@ -49,36 +59,37 @@
    },
    {
     "figure": "23 years",
-    "context": "The length of time Erin Calvo-Bacci ran her business before selling it."
+    "context": "The length of time Erin Calvo-Bacci ran her business."
    }
   ],
-  "lesson": "This episode highlights the importance of leadership resilience, the impact of public perception on corporate value, and the challenges of running a business in an unpredictable economic environment.",
+  "lesson": "When a company's success depends heavily on a single leader, personal scandals or controversies can significantly harm its reputation and stock value; boards can mitigate this risk by implementing strong succession planning.",
   "opinions_and_predictions": [
-   "Guy Sakala predicts mortgage rates will remain around 7% in the next month or two.",
+   "Guy Sakala predicts mortgage rates will stay around 7% in the near future.",
    "Daryl Fairweather believes home prices are slowly correcting down, which could improve affordability."
   ],
   "tickers": [
-   "NVIDIA",
-   "Advanced Micro Devices"
+   "AMD"
   ],
   "glossary": [
    {
-    "term": "Succession planning",
-    "definition": "A process by which companies prepare for the transition of leadership, ensuring there is a qualified leader ready to take over if the current CEO leaves or is removed unexpectedly.",
-    "example": "A board might identify and develop potential leaders within the company to avoid a leadership gap."
+    "term": "Mortgage rate",
+    "definition": "The interest rate charged on a mortgage loan, which affects the cost of borrowing for homebuyers and sellers.",
+    "example": "A 30-year fixed mortgage rate of 7.18% means a borrower will pay 7.18% interest over the life of the loan."
    },
    {
-    "term": "Mortgage rate",
-    "definition": "The interest rate charged on a mortgage loan, which is influenced by factors like inflation, economic conditions, and the performance of the stock market.",
-    "example": "A 30-year fixed mortgage rate of 7.18% means the borrower will pay that rate for the entire 30 years of the loan."
+    "term": "Succession planning",
+    "definition": "The process of identifying and developing potential leaders within a company to ensure a smooth transition if a key leader leaves or is removed.",
+    "example": "A company's board may identify top talent within the organization to prepare for future leadership changes."
    }
   ],
   "level": "beginner",
   "topics": [
-   "Leadership",
-   "Market dynamics",
+   "Corporate leadership",
+   "Market trends",
    "Small business challenges",
-   "Economic indicators"
-  ]
+   "Global manufacturing"
+  ],
+  "quality_note": "This episode provides a comprehensive look at various topics, including corporate leadership, market trends, small business challenges, and global manufacturing. It is well-suited for a learner looking to understand the complexities of the business world. The content is presented by an analyst and includes data-backed claims.",
+  "worth_reading": true
  }
 }

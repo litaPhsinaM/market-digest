@@ -1,36 +1,41 @@
 {
  "date": "2026-11-10",
- "big_picture": "Today covered three unrelated topics: Ben Felix's investment strategy, the decline of sitcoms in the streaming era, and Anthropic's financial structure as revealed in its S1 prospectus. Each topic stands alone with no common thread or moral connecting them.",
+ "big_picture": "Today covered three unrelated topics: market dynamics and inflation concerns, the insurance industry's use of destruction labs to test building materials, and the financial and personal investment strategies of Ben Felix. Each topic stands on its own with no shared theme or moral.",
  "themes": [
   {
-   "title": "Ben Felix's Investment Strategy",
-   "explanation": "Ben Felix, a Chief Investment Officer, holds most of his money in a low-cost global equity fund called the Dimensional Global Equity Portfolio, which is broadly diversified and tilts toward smaller, more profitable companies. He also owns a private equity stake in OneDigital, his home, and holds more cash than necessary for psychological comfort. He is skeptical of high-fee actively managed mutual funds and private market investments, citing research that shows they rarely outperform low-cost index funds.",
+   "title": "Market dynamics and inflation concerns",
+   "explanation": "The market is cautiously optimistic ahead of tech earnings and CPI data, with concerns about inflation and potential Fed rate hikes. Core CPI data came in higher than expected, raising concerns about inflation persistence. The Fed may consider a 50 basis point rate hike if inflation remains high. The Anthropic IPO may signal investor sentiment and impact the tech and semiconductor sectors. Semiconductor earnings have grown 120% this year. Oil prices have dropped, but geopolitical tensions with Iran remain unresolved. Cameron Dawson of New Edge Wealth believes the market may rebound due to low valuations and seasonal trends. Tiffany Wilding of PIMCO suggests the Fed may consider a 50 basis point rate hike if inflation remains high. Amrita Sen of Energy Aspects notes that diplomatic impasse with Iran could persist, affecting geopolitical risk.",
+   "item_ids": [
+    "bloomberg-surveillance-bcfeb6e40e",
+    "wsj-whats-news-6528d9cbfc",
+    "plain-bagel-6ZrgRjdJs3o",
+    "marketplace-e0dbb634a5",
+    "squawk-pod-e2f87bc062",
+    "prof-g-markets-6075c4061a"
+   ]
+  },
+  {
+   "title": "The insurance industry's use of destruction labs to test building materials",
+   "explanation": "The insurance industry is using a destruction lab in South Carolina to test how homes and materials hold up to disasters like wildfires, hurricanes, and hail. This research helps insurers better price risk and encourages safer building practices. Insurance companies fund the lab to better understand risk and improve building standards. The lab has tested how different roofing materials and building techniques affect damage from storms and wildfires. Insurance companies work together on research but must avoid antitrust violations by keeping some information private. Some homeowners face high insurance costs or are denied coverage even after making their homes more fire-resistant. Julie Rochman says that the insurance industry is trying to reduce the financial impact of disasters by improving building standards and encouraging safer construction practices. Ann Cope believes that making homes more fire-resistant can help communities stay together after a disaster and reduce insurance payouts. Over 50,000 people in Alabama have fortified their roofs to reduce damage from storms.",
+   "item_ids": [
+    "planet-money-cca577193f"
+   ]
+  },
+  {
+   "title": "Ben Felix's investment and personal finance strategies",
+   "explanation": "Ben Felix invests mostly in a low-cost, broadly diversified public equity fund, has a private equity holding in his firm's parent company, owns a house, and holds some cash. He emphasizes that personal finance is personal and that money is a tool for building a good life, not just maximizing wealth. His main investment is in the Dimensional Global Equity Portfolio, a low-cost, broadly diversified public equity fund. He has a private equity holding in OneDigital, the parent company of his firm, PWL Capital. He owns a house that has been a poor financial investment but a great home for his family. He holds more cash than needed, partly due to recent renovation costs and for psychological comfort. Ben Felix believes that having access to lots of money does not necessarily create a good life for either adults or children (based on research). He thinks that a diversified all-equity portfolio with about a third in domestic stocks and two-thirds in international stocks is optimal for most people over their lifetime (based on a 2025 paper). He acknowledges that investing in the same company that pays your salary is generally considered bad advice, but he believes it was a deliberate decision for him personally. Of nearly 8,000 US equity mutual funds from 1991 to 2020, 69.7% trailed a simple S&P 500 index ETF. In 2018, life evaluation leveled off around $105,000 of income in North America (adjusted for inflation, about $137,000 today). Day-to-day happiness leveled off around $65,000 in the 2018 study (adjusted for inflation, about $85,000 today).",
    "item_ids": [
     "ben-felix-h3ajVyC5vJc"
-   ]
-  },
-  {
-   "title": "The Decline of Sitcoms",
-   "explanation": "Sitcoms now make up less than 2% of new shows in the 2020s, down from 12% in the 1990s. Streaming services have changed how TV shows are made and sold, making sitcoms less profitable. Streaming platforms buy fewer episodes, value shows based on minutes watched, and prefer shows that succeed quickly, which makes it harder for sitcoms to develop and find their rhythm.",
-   "item_ids": [
-    "indicator-e7902a7152"
-   ]
-  },
-  {
-   "title": "Anthropic's Financial Structure",
-   "explanation": "Anthropic has $108.6 billion in convertible notes and $157.5 billion in redeemable convertible preferred stock, which will convert to shares before the IPO, leading to significant dilution. The company has a complex share structure with multiple classes that limit public investor voting power. Despite holding $91% of its assets in cash, it has a massive shareholder deficit of $127.6 billion, indicating technical insolvency on paper. Revenue grew from $386 million in 2024 to $16.3 billion in the first half of 2026, but the company's operating margin remains negative at 4.3%.",
-   "item_ids": [
-    "plain-bagel-6ZrgRjdJs3o"
    ]
   }
  ],
  "concept_of_the_day": {
   "concept": "Diversification",
-  "explanation": "Diversification is the practice of spreading investments across different assets to reduce risk. Ben Felix's investment strategy includes a low-cost global equity fund that is broadly diversified and follows research-based strategies, such as tilting toward smaller, more profitable companies. This helps reduce the risk of losing money due to poor performance in any single asset or sector."
+  "explanation": "Diversification is the practice of spreading investments across different assets, sectors, or geographic regions to reduce risk. In Ben Felix's investment strategy, he uses a low-cost, broadly diversified public equity fund, which is based on academic research and tilts toward smaller, more profitable companies. This approach helps mitigate the risk of any single investment underperforming. Diversification is also relevant to the insurance industry's use of destruction labs, as they test various materials and construction methods to reduce the financial impact of disasters on insurers and homeowners. Finally, diversification is a key principle in the insurance industry's research, as it helps reduce the financial impact of disasters by improving building standards and encouraging safer construction practices."
  },
  "watch_for": [
-  "Ben Felix's private equity stake in OneDigital carries significant idiosyncratic risk, which is a reminder that even well-informed investors can face losses from concentrated investments.",
-  "Anthropic's complex share structure with multiple voting classes could limit the influence of public investors, which is a risk for future shareholders.",
-  "Streaming services value shows based on minutes watched, which makes sitcoms less valuable and harder to produce in the current market."
+  "The Fed may consider a 50 basis point rate hike if inflation remains high.",
+  "Over 50,000 people in Alabama have fortified their roofs to reduce damage from storms.",
+  "Ben Felix's main investment is in the Dimensional Global Equity Portfolio, a low-cost, broadly diversified public equity fund."
  ]
 }

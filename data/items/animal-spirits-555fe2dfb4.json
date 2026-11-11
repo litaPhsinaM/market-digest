@@ -1,0 +1,95 @@
+{
+ "id": "animal-spirits-555fe2dfb4",
+ "source_id": "animal-spirits",
+ "source_name": "Animal Spirits",
+ "kind": "podcast",
+ "title": "Talk Your Book: Customized and Income",
+ "url": "https://pdst.fm/e/mgln.ai/e/309/traffic.megaphone.fm/TCP3626672095.mp3",
+ "media_url": "https://pdst.fm/e/mgln.ai/e/309/traffic.megaphone.fm/TCP3626672095.mp3",
+ "published": "2026-11-09",
+ "duration": 2017,
+ "digest_date": "2026-11-10",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "segments": [
+   "Dimensional Fund Advisors discusses how financial advisors are using",
+   "Neos discusses structured products that use options to generate"
+  ],
+  "headline": "Customization and Income Strategies in Investing",
+  "tldr": "This episode covers how separately managed accounts (SMAs) are being used for customization and tax management, and how structured products with options are being used to generate income for investors.",
+  "key_points": [
+   {
+    "point": "Separately managed accounts (SMAs) allow for more control over tax loss harvesting, which can help offset capital gains and reduce tax liability.",
+    "why_it_matters": "This is especially valuable for clients with large unrealized gains."
+   },
+   {
+    "point": "Dimensional's SMAs use a daily approach to tax management and aim to provide about 10 years of tax alpha before running out of tax loss harvesting opportunities.",
+    "why_it_matters": "This helps advisors and clients plan for long-term tax management."
+   },
+   {
+    "point": "Neos offers structured products that use options to generate income for investors. These products allow investors to sell upside participation in exchange for income.",
+    "why_it_matters": "This provides convenience and allows investors to generate income without managing complex strategies themselves."
+   },
+   {
+    "point": "Neos offers a variety of products, including income-focused versions of major indices and fixed income funds with option overlays.",
+    "why_it_matters": "This allows investors to generate income in different parts of their portfolio."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "10 years",
+    "context": "Dimensional's SMAs aim to provide about 10 years of tax alpha before running out of tax loss harvesting opportunities."
+   },
+   {
+    "figure": "13% to 15%",
+    "context": "QQI, one of Neos' funds, provides a distribution yield of 13% to 15% per year."
+   },
+   {
+    "figure": "7% to 9%",
+    "context": "QQH, a version of Neos' NASDAQ 100 fund, provides a lower distribution yield of 7% to 9% per year but includes explicit downside protection."
+   }
+  ],
+  "lesson": "When strategies are used to customize investments and generate income, they can help manage tax liability and produce returns, but they also introduce trade-offs that require careful planning and execution.",
+  "opinions_and_predictions": [
+   "Wes Matthews: 'Investors love the easy button. People pay for convenience.'",
+   "Wes Matthews: 'It's not just in our universe. They do that everywhere.'",
+   "Casey Walsh-Jason: 'I think it's much more digestible to break it out that way because I get out of this misnomer of what tax alpha actually is and spending a whole meeting educating people on just a term instead of the actual results.'"
+  ],
+  "tickers": [
+   "dimensional.com",
+   "neosfunds.com"
+  ],
+  "glossary": [
+   {
+    "term": "SMAs",
+    "definition": "Separately managed accounts are investment vehicles that allow for more customization and control over tax management compared to ETFs or mutual funds. They are typically used by financial advisors for clients with specific needs or large portfolios.",
+    "example": "An SMA might be used to manage tax loss harvesting for a client with large unrealized gains."
+   },
+   {
+    "term": "Tax alpha",
+    "definition": "Tax alpha refers to the additional return an investor can achieve after taxes by using tax management strategies, such as tax loss harvesting. It is not the same as tax loss harvesting itself, but includes other factors like income management.",
+    "example": "Dimensional's SMAs aim to provide about 10 years of tax alpha before running out of tax loss harvesting opportunities."
+   },
+   {
+    "term": "Tax loss harvesting",
+    "definition": "Tax loss harvesting is a strategy where investors sell securities at a loss to offset capital gains taxes. This can help reduce the overall tax liability of an investment portfolio.",
+    "example": "In the first half of the year, Dimensional was able to capture about 3.5% to 5% of the account value in losses through tax loss harvesting."
+   },
+   {
+    "term": "Options",
+    "definition": "Options are financial contracts that give the buyer the right, but not the obligation, to buy or sell an asset at a predetermined price within a specified time period. They can be used to generate income or provide downside protection.",
+    "example": "Neos offers structured products that use options to generate income for investors."
+   }
+  ],
+  "level": "beginner",
+  "topics": [
+   "Investing",
+   "Tax management",
+   "Structured products",
+   "Separately managed accounts"
+  ],
+  "quality_note": "The content is informative and provides a clear overview of customization and income strategies in investing. It covers both SMAs and structured products, and includes specific examples and numbers.",
+  "worth_reading": true
+ }
+}

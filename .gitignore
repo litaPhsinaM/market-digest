@@ -7,3 +7,4 @@ data/transcripts/
 .venv-tts/
 site.tmp/
 site.old/
+.DS_Store

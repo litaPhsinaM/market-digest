@@ -1,0 +1,81 @@
+{
+ "id": "prof-g-markets-6075c4061a",
+ "source_id": "prof-g-markets",
+ "source_name": "Prof G Markets",
+ "kind": "podcast",
+ "title": "Scandal At Nvidia: Is This The End For Jensen Huang?",
+ "url": "https://www.podtrac.com/pts/redirect.mp3/pdst.fm/e/pscrb.fm/rss/p/mgln.ai/e/257/traffic.megaphone.fm/VMP7383656073.mp3",
+ "media_url": "https://www.podtrac.com/pts/redirect.mp3/pdst.fm/e/pscrb.fm/rss/p/mgln.ai/e/257/traffic.megaphone.fm/VMP7383656073.mp3",
+ "published": "2026-11-10",
+ "duration": 2294,
+ "digest_date": "2026-11-10",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "segments": [
+   "NVIDIA CEO Jensen Huang admitted to having an affair with Alice Huang, a senior executive at Megaspeed International, a cloud compute provider and NVIDIA's biggest customer in Southeast Asia. U.S. officials believe Alice was recruited by a Chinese spy agency to collect information on Jensen. NVIDIA's board has launched an independent investigation, and lawmakers have requested a closed-door briefing with Jensen on the company's security protocols and his interactions with Alice. NVIDIA shares fell as much as 8% and closed down 4%.",
+   "Congress is considering strengthening export controls on AI chips, which could significantly disrupt NVIDIA's business. This incident may increase scrutiny on tech companies' dealings with the administration, especially as the Democrats take control on Capitol Hill. Jensen Huang may face pressure to step down as CEO, but his board has a fiduciary duty to NVIDIA shareholders and may decide he stays."
+  ],
+  "headline": "NVIDIA CEO Jensen Huang's Affair with Alice Huang, Accused of Being a Chinese Spy, Sparks Investigation and Market Volatility",
+  "tldr": "NVIDIA CEO Jensen Huang's affair with Alice Huang, a senior executive at Megaspeed International accused of being a Chinese spy, has led to an internal investigation and potential legislative action. The incident has caused NVIDIA's stock to drop and raised questions about the company's security and export controls.",
+  "key_points": [
+   {
+    "point": "Jensen Huang admitted to an affair with Alice Huang, a senior executive at Megaspeed International, who is accused of being a Chinese spy.",
+    "why_it_matters": "This has raised concerns about potential leaks of sensitive information and the security of NVIDIA's operations."
+   },
+   {
+    "point": "NVIDIA's board has launched an independent investigation into the affair and the company's security protocols.",
+    "why_it_matters": "The investigation may determine whether Jensen Huang or the company was compromised and could influence his future role as CEO."
+   },
+   {
+    "point": "Congress is considering strengthening export controls on AI chips, which could disrupt NVIDIA's business and limit sales to China.",
+    "why_it_matters": "This could have a significant impact on NVIDIA's revenue and market position, especially if export restrictions are implemented."
+   },
+   {
+    "point": "The incident has caused NVIDIA's stock to drop by as much as 8%, reflecting investor concerns about the company's governance and potential regulatory actions.",
+    "why_it_matters": "Market volatility highlights the sensitivity of the situation and the potential long-term consequences for NVIDIA."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "4%",
+    "context": "NVIDIA shares closed down 4% following the revelation of Jensen Huang's affair and the alleged involvement of Alice Huang with a Chinese spy agency."
+   },
+   {
+    "figure": "5 billion",
+    "context": "Megaspeed International, the company where Alice Huang worked, purchased nearly $5 billion in NVIDIA chips in 2024."
+   }
+  ],
+  "lesson": "When a company's leadership is entangled in personal misconduct that intersects with national security concerns, it can trigger regulatory scrutiny and market instability.",
+  "opinions_and_predictions": [
+   "Ashley Gold: Congress may strengthen export controls on AI chips, which could significantly disrupt NVIDIA's business.",
+   "Robert Armstrong: Jensen Huang may face pressure to step down as CEO, but his board may decide he stays due to his importance to the company.",
+   "Robert Armstrong: If the revenue and profit from AI investments eventually appear, current concerns about the AI trade may become less relevant."
+  ],
+  "tickers": [
+   "NVDA"
+  ],
+  "glossary": [
+   {
+    "term": "Export controls",
+    "definition": "Regulations that restrict the export of certain goods, technologies, or services, often for national security or foreign policy reasons. In this context, export controls on AI chips could limit NVIDIA's ability to sell its products to certain countries, such as China, to prevent the transfer of sensitive technology that could be used for military or strategic purposes by foreign governments or entities.",
+    "example": "If export controls are strengthened, NVIDIA may no longer be able to sell its AI chips to Chinese companies, which could significantly impact its revenue."
+   },
+   {
+    "term": "Corporate governance",
+    "definition": "The system of rules, practices, and processes by which a company is directed and controlled. It involves balancing the interests of a company's many stakeholders, including shareholders, management, employees, customers, suppliers, and the community. Good corporate governance ensures that a company is managed in a way that is ethical, transparent, and accountable.",
+    "example": "The investigation into Jensen Huang's affair is an example of corporate governance in action, as it involves examining the company's internal controls and ensuring that the CEO's actions do not compromise the company's security or reputation."
+   }
+  ],
+  "level": "beginner",
+  "topics": [
+   "Corporate Governance",
+   "Geopolitical Risks",
+   "Market Reactions",
+   "AI Industry",
+   "Export Controls"
+  ],
+  "quality_note": "The summary is presented by a reporter, and the claims are based on information from the episode, including statements from officials and market data.",
+  "worth_reading": true
+ }
+}
