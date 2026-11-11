@@ -36,7 +36,9 @@
   function openUsername() {
     const d = $("#uname");
     if (!d) return;
-    $("#uname-in").value = (MD.user.email || "").split("@")[0].toLowerCase().replace(/[^a-z0-9_]/g, "").slice(0, 20);
+    // Never suggest the email's first part: usernames are public on the leaderboards. Keep the current one, or suggest a random handle.
+    const words = ["bull", "bear", "alpha", "delta", "theta", "quant", "ticker", "candle", "dip", "rally", "index", "yield"];
+    $("#uname-in").value = (profile && profile.username) || `${words[Math.floor(Math.random() * words.length)]}_${Math.floor(100 + Math.random() * 900)}`;
     $("#uname-msg").hidden = true;
     d.showModal();
   }
