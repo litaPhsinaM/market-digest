@@ -995,3 +995,29 @@ button.act.progress { cursor: pointer; font: inherit; }
 .stale { margin: 0 0 14px; padding: 10px 14px; border-radius: 12px; background: var(--warn-soft); font-size: .9rem; }
 .call-made { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 12px; background: var(--accent-soft); margin-top: 4px; }
 .tk-group { font-size: .74rem; font-weight: 750; text-transform: uppercase; letter-spacing: .06em; color: var(--text-3); padding: 14px 4px 4px; }
+
+/* =================== phone bottom tab bar =================== */
+.tabbar { display: none; }
+@media (max-width: 640px) {
+  .tabs { display: none; }
+  .brand span { display: inline; font-size: .98rem; }
+  .tabbar { display: grid; grid-template-columns: repeat(5, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    padding: 6px 6px max(8px, env(safe-area-inset-bottom)); border-top: 1px solid var(--line);
+    background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px); }
+  .tabbar a, .tabbar button { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 4px 0; border: 0; background: none;
+    color: var(--text-3); text-decoration: none; font: inherit; font-size: .68rem; font-weight: 650; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .tabbar .tb-ic { font-size: 1.25rem; line-height: 1.2; filter: grayscale(1); opacity: .75; transition: transform .15s ease; }
+  .tabbar [aria-current="page"] { color: var(--text); }
+  .tabbar [aria-current="page"] .tb-ic { filter: none; opacity: 1; transform: translateY(-1px) scale(1.08); }
+  body { padding-bottom: 72px; }
+  .player { bottom: 82px; }
+  .toast { bottom: 90px; }
+  body:has(.player:not([hidden])) .toast { bottom: 170px; }
+  .more-links { display: grid; gap: 8px; margin: 4px 0 12px; }
+  .more-links a { display: grid; grid-template-columns: 34px 1fr; grid-template-rows: auto auto; column-gap: 10px; align-items: center;
+    padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); color: var(--text); text-decoration: none; }
+  .more-links a span { grid-row: span 2; font-size: 1.4rem; text-align: center; }
+  .more-links small { color: var(--text-3); }
+  .more-links a[hidden] { display: none; }
+  .more-close { width: 100%; height: 46px; margin-bottom: 8px; }
+}

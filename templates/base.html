@@ -51,6 +51,26 @@
     </div>
   </div>
 </header>
+<nav class="tabbar" aria-label="Sections">
+  <a href="{{ prefix }}index.html" {% if active == 'today' %}aria-current="page"{% endif %}><span class="tb-ic" aria-hidden="true">📰</span><span>Today</span></a>
+  <a href="{{ prefix }}learn.html" {% if active == 'learn' %}aria-current="page"{% endif %}><span class="tb-ic" aria-hidden="true">🎓</span><span>Learn</span></a>
+  <a href="{{ prefix }}play.html" {% if active == 'play' %}aria-current="page"{% endif %}><span class="tb-ic" aria-hidden="true">🎮</span><span>Play</span></a>
+  <a href="{{ prefix }}scorecard.html" {% if active == 'scorecard' %}aria-current="page"{% endif %}><span class="tb-ic" aria-hidden="true">🎙</span><span>Scorecard</span></a>
+  <button type="button" data-more {% if active in ['archive', 'glossary', 'sources', 'about', 'admin'] %}aria-current="page"{% endif %}><span class="tb-ic" aria-hidden="true">☰</span><span>More</span></button>
+</nav>
+<dialog class="sheet more-sheet" id="more" aria-label="More">
+  <div class="ep">
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <div class="more-links">
+      <a href="{{ prefix }}glossary.html"><span>📖</span><b>Glossary</b><small>Every term, explained simply</small></a>
+      <a href="{{ prefix }}archive.html"><span>🗂</span><b>Archive</b><small>Past days’ digests</small></a>
+      <a href="{{ prefix }}sources.html"><span>📻</span><b>Sources</b><small>The shows and newsrooms we follow</small></a>
+      <a href="{{ prefix }}about.html"><span>ℹ️</span><b>About</b><small>How Market Digest works</small></a>
+      <a href="{{ prefix }}admin.html" data-admin-only hidden><span>🛠</span><b>Admin</b><small>Insights and people</small></a>
+    </div>
+    <button class="btn ghost more-close" type="button" data-sheet-close>Close</button>
+  </div>
+</dialog>
 <main class="page">
 {% block content %}{% endblock %}
 </main>

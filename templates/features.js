@@ -323,6 +323,13 @@
   Object.assign(MD, { store, toast, todayLocal, logToggle,
     refresh() { renderStreak(false); renderRead(); renderStars(); MD.refreshQuiz && MD.refreshQuiz(); } });
 
+  // ---------- phone tab bar: "More" sheet ----------
+  const more = $("#more");
+  if (more) {
+    document.addEventListener("click", (e) => { if (e.target.closest("[data-more]")) more.showModal(); });
+    more.addEventListener("click", (e) => { if (e.target === more || e.target.closest("[data-sheet-close]")) more.close(); });
+  }
+
   // ---------- ⌘K search ----------
   const pal = $("#palette"), palQ = $("#pal-q"), palRes = $("#pal-res"), palHint = $("#pal-hint");
   let index = null, sel = 0;
