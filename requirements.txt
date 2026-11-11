@@ -6,3 +6,5 @@ pydantic==2.14.1
 PyYAML==6.0.3
 yfinance==1.8.0
 yt-dlp==2026.10.21
+psycopg==3.3.8
+psycopg-binary==3.3.8
