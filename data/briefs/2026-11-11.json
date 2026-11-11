@@ -1,0 +1,71 @@
+{
+ "date": "2026-11-11",
+ "big_picture": "AI stocks bounced back after CoreWeave's strong results, even as the scandal around Nvidia CEO Jensen Huang deepened. October inflation came in hot (prices up 0.4% in a month), so markets now expect the Fed to raise interest rates in December.",
+ "themes": [
+  {
+   "title": "CoreWeave's results revived the AI trade",
+   "explanation": "CoreWeave, which rents out AI computing power, beat expectations and its stock jumped, lifting tech stocks with it. Hosts on Bloomberg and WSJ said investors still believe in AI spending, though CoreWeave is funding its growth with customer prepayments and debt, which some see as a risk.",
+   "item_ids": [
+    "bloomberg-surveillance-1ed3071941",
+    "wsj-whats-news-6680bc96c8",
+    "bloomberg-surveillance-7158140a44"
+   ]
+  },
+  {
+   "title": "Nvidia's CEO scandal hit the stock and drew Congress in",
+   "explanation": "Allegations that Jensen Huang had a relationship with a suspected Chinese spy have knocked Nvidia's stock down more than 30%. Shows discussed congressional scrutiny, export-control questions and the risk of depending on one famous leader with no clear successor (key-person risk).",
+   "item_ids": [
+    "prof-g-markets-b87c14274b",
+    "squawk-pod-dcc4867c8d",
+    "bloomberg-surveillance-1ed3071941"
+   ]
+  },
+  {
+   "title": "Hot inflation puts a December rate hike in play",
+   "explanation": "Consumer prices rose 0.4% in October after 0.6% in September, above forecasts. The two-year Treasury yield, which tracks expected Fed moves, jumped to 4.78%, and prediction-market odds of a December hike reached 86%.",
+   "item_ids": [
+    "prof-g-markets-b87c14274b",
+    "bloomberg-surveillance-7158140a44"
+   ]
+  },
+  {
+   "title": "OpenAI vs Anthropic: revenue is not profit",
+   "explanation": "OpenAI's quarterly revenue reached about $10 billion but it is still losing heavily, while Anthropic reported $17 billion with much smaller losses. Anthropic's IPO is the next big test of how much investors will pay for AI companies.",
+   "item_ids": [
+    "wsj-whats-news-6680bc96c8",
+    "prof-g-markets-b87c14274b"
+   ]
+  },
+  {
+   "title": "A rough week for tech earnings and crypto",
+   "explanation": "Alphabet fell about 12.6% in a day and Intel almost 29% after disappointing results, and the Binance exchange lost $6.3 billion to hackers. Animal Spirits said too much leverage at some hedge funds made the selloff worse.",
+   "item_ids": [
+    "wsj-your-money-9960c002c5",
+    "animal-spirits-c5645409e3"
+   ]
+  },
+  {
+   "title": "The stock market isn't the economy, but it's getting closer",
+   "explanation": "The Indicator explained that the 10 biggest companies are now 40% of the S&P 500's value (16% a decade ago), and 40% of American adults own no stocks at all. 'New era' parts of the economy like AI grow fast while older industries barely grow.",
+   "item_ids": [
+    "indicator-97c6953b0e"
+   ]
+  },
+  {
+   "title": "How immigrant networks build businesses",
+   "explanation": "Planet Money traced how Yemeni families' experience running bodegas, with loans from family and friends, helped a new generation open coffeehouses across the US: an example of how social networks shape which industries a community succeeds in.",
+   "item_ids": [
+    "planet-money-0ac0d4163e"
+   ]
+  }
+ ],
+ "concept_of_the_day": {
+  "concept": "Market concentration",
+  "explanation": "Market concentration means a few very large companies make up a big share of an index. In the S&P 500 the 10 biggest companies are now about 40% of its total value, versus 16% ten years ago, and almost all are tech companies. Because the index is weighted by size, a big move in one giant, like Nvidia's 30% fall this month, moves the whole index. So an 'S&P 500 index fund' is less spread out than its 500 names suggest, which is why today's shows kept linking one company's scandal to the whole market."
+ },
+ "watch_for": [
+  "December Fed meeting: markets put the odds of a rate hike at about 86% after hot October inflation",
+  "Anthropic's IPO: reported to be several times oversubscribed, targeting about a $1.3 trillion valuation",
+  "Congress plans to call Nvidia CEO Jensen Huang to answer questions about the alleged spy affair"
+ ]
+}

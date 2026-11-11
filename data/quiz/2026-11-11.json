@@ -1,0 +1,41 @@
+{
+ "date": "2026-11-11",
+ "questions": [
+  {
+   "question": "The Indicator said the 10 biggest companies are now about 40% of the S&P 500's value, up from 16% ten years ago. What does that mean for someone who owns an S&P 500 index fund?",
+   "options": [
+    "Their money is spread evenly across 500 companies",
+    "A big move in a few giant companies now moves their fund a lot more",
+    "The fund now only holds 10 companies",
+    "The fund has become less risky than ten years ago"
+   ],
+   "answer": 1,
+   "explanation": "An S&P 500 fund is weighted by company size, so the biggest companies count the most. With the top 10 at 40%, a fall in one giant like Nvidia drags the whole fund down more than it used to. This is market concentration.",
+   "item_id": "indicator-97c6953b0e"
+  },
+  {
+   "question": "OpenAI's quarterly revenue reached about $10 billion, yet it is still losing money. How can both be true?",
+   "options": [
+    "Revenue counts money coming in; profit is what's left after costs, and its costs are even higher",
+    "Revenue is only counted after a company is profitable",
+    "Losses mean revenue fell from the last quarter",
+    "Private companies don't have to report revenue"
+   ],
+   "answer": 0,
+   "explanation": "Revenue is everything customers pay; profit (or loss) is revenue minus all costs. OpenAI spends heavily on computing power, so its costs exceed its $10 billion of sales, while Anthropic reported $17 billion with much smaller losses.",
+   "item_id": "wsj-whats-news-6680bc96c8"
+  },
+  {
+   "question": "After hot October inflation, the two-year Treasury yield jumped to 4.78% and the odds of a December Fed rate hike rose to about 86%. Why would rising inflation make a rate hike more likely?",
+   "options": [
+    "The Fed raises rates to make borrowing cheaper so prices fall",
+    "Higher rates make borrowing more expensive, which cools spending and slows price rises",
+    "The Fed must raise rates whenever stocks fall",
+    "Rate hikes increase the amount of money in the economy"
+   ],
+   "answer": 1,
+   "explanation": "When prices rise too fast, the Fed can raise interest rates so loans cost more; people and companies then spend less, which eases inflation. The two-year Treasury yield rises when markets expect that, as it did here.",
+   "item_id": "prof-g-markets-b87c14274b"
+  }
+ ]
+}

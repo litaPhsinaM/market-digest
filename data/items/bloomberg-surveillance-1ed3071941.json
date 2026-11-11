@@ -38,7 +38,7 @@
     "why_it_matters": "This highlights the growing political and regulatory challenges facing key tech companies, especially those involved in national security."
    },
    {
-    "point": "NVIDIA's succession planning is unclear, and there is concern about the impact of Jensen Wang's potential departure.",
+    "point": "NVIDIA's succession planning is unclear, and there is concern about the impact of Jensen Huang's potential departure.",
     "why_it_matters": "This raises questions about NVIDIA's ability to maintain its leadership position in the AI sector without a clear plan for succession."
    }
   ],
@@ -64,8 +64,10 @@
    "Jay: NVIDIA's lack of clear succession planning could be a problem if Jensen Wang leaves, unlike Apple's smooth transition with Tim Cook."
   ],
   "tickers": [
+   "NVDA",
+   "CRWV",
    "AMD",
-   "Broadcom"
+   "AVGO"
   ],
   "glossary": [
    {

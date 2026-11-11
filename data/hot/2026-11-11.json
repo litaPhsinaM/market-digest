@@ -1,0 +1,341 @@
+{
+ "date": "2026-11-11",
+ "topics": [
+  {
+   "title": "CoreWeave's strong quarter sends AI stocks higher",
+   "explanation": "CoreWeave, a company that rents out AI computing power, beat revenue forecasts and raised its outlook. Its shares jumped about 26%, and the Nasdaq 100 rose about 3% as worries about an AI slowdown eased.",
+   "why_it_matters": "CoreWeave is seen as a test of whether AI spending is paying off, so its results move the whole 'AI trade': the group of stocks investors buy as a bet on AI.",
+   "tickers": [
+    "CRWV"
+   ],
+   "headline_ids": [
+    "h16dadfeb",
+    "hb913f5db",
+    "h5a160247",
+    "h71ade603",
+    "he4e6c2d5"
+   ]
+  },
+  {
+   "title": "Congress and Nvidia's own lawyers look into Jensen Huang's alleged spy affair",
+   "explanation": "Lawmakers plan to call Nvidia CEO Jensen Huang to answer for an alleged affair with a suspected Chinese spy, and Nvidia hired the law firm Wachtell Lipton to lead an internal probe. Baird downgraded the stock over worries about Huang and AI uncertainty.",
+   "why_it_matters": "When a company's value is closely tied to one leader, doubts about that person can hit the stock hard. This is called key-person risk.",
+   "tickers": [
+    "NVDA"
+   ],
+   "headline_ids": [
+    "h90a2e604",
+    "hcfd647cb",
+    "h10c409e7",
+    "hde74ae44",
+    "h7befb337"
+   ]
+  },
+  {
+   "title": "Anthropic's IPO draws heavy demand",
+   "explanation": "Anthropic's share sale is reported to be several times oversubscribed, meaning investors asked for far more shares than are on offer, and its roadshow (meetings to pitch big investors) has begun.",
+   "why_it_matters": "An IPO (initial public offering) is when a private company first sells shares to the public. Strong demand can mean a higher price and shows how much investors will pay for AI companies.",
+   "tickers": [],
+   "headline_ids": [
+    "hd40728ad",
+    "h02bdbab4",
+    "he8b1d541",
+    "h3bbd319f"
+   ]
+  },
+  {
+   "title": "Traders bet on a Fed rate hike, pushing yields up and gold down",
+   "explanation": "Bond yields in Asia rose on growing expectations that the US Federal Reserve will raise interest rates, and gold fell below $4,000 an ounce as traders weighed inflation data and comments from Fed officials.",
+   "why_it_matters": "Higher interest rates make bonds pay more, which tends to pull money away from assets that pay no interest, like gold, and makes borrowing more expensive across the economy.",
+   "tickers": [],
+   "headline_ids": [
+    "hf699ac85",
+    "hcef6e664"
+   ]
+  },
+  {
+   "title": "Stocks you can trade around the clock, as tokens",
+   "explanation": "An affiliate of the New York Stock Exchange plans to launch 24/7 trading of 'tokenized' stocks this month, and Payward, backed by Nasdaq, launched tokenized versions of European stocks.",
+   "why_it_matters": "A tokenized stock is a digital token, recorded on a blockchain, that tracks a real share. It could let people trade outside normal market hours (9:30 am to 4 pm New York time).",
+   "tickers": [],
+   "headline_ids": [
+    "h29d76d93",
+    "had491f8b"
+   ]
+  },
+  {
+   "title": "Meta's longtime head of infrastructure is leaving",
+   "explanation": "Meta's head of infrastructure, who oversees its data centers, is leaving and will be succeeded by a former Amazon Web Services (AWS) cloud executive.",
+   "why_it_matters": "Big tech companies are spending tens of billions on AI data centers, so who runs that build-out matters to investors.",
+   "tickers": [
+    "META"
+   ],
+   "headline_ids": [
+    "h6bc57b8d",
+    "h592e6678"
+   ]
+  }
+ ],
+ "headlines": {
+  "hb913f5db": {
+   "id": "hb913f5db",
+   "source": "CNBC Tech",
+   "title": "CoreWeave beats on revenue and lifts guidance, easing AI slowdown concerns",
+   "blurb": "CoreWeave's stock has been hammered heading into the neocloud's Q3 earnings report.",
+   "url": "https://www.cnbc.com/2026/11/10/coreweave-crwv-q3-earnings-report-2026.html",
+   "published": "2026-11-10T23:16"
+  },
+  "hcef6e664": {
+   "id": "hcef6e664",
+   "source": "Bloomberg Markets",
+   "title": "Gold Falls Below $4,000 as Traders Assess Inflation, Fed Remarks",
+   "blurb": "Gold slipped, extending losses triggered by a high US inflation print and hawkish remarks from Federal Reserve officials that reinforced expectations of a December rate hike.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-10/gold-holds-loss-near-4-000-on-hot-us-inflation-fed-remarks",
+   "published": "2026-11-10T23:33"
+  },
+  "h6bc57b8d": {
+   "id": "h6bc57b8d",
+   "source": "TechCrunch",
+   "title": "Meta is losing its longtime head of infrastructure",
+   "blurb": "Santosh Janardhan, who originally joined the company in 2009, will be stepping down from his role.",
+   "url": "https://techcrunch.com/2026/11/11/meta-is-losing-its-longtime-head-of-infrastructure/",
+   "published": "2026-11-11T20:12"
+  },
+  "h592e6678": {
+   "id": "h592e6678",
+   "source": "CNBC Tech",
+   "title": "Meta head of infrastructure will leave and be succeeded by former AWS cloud exec",
+   "blurb": "Meta's head of infrastructure and co-head of engineering Santosh Janardhan will leave in 2027, with former AWS senior vice president David Brown taking over.",
+   "url": "https://www.cnbc.com/2026/11/11/meta-infrastructure-departure-aws-cloud.html",
+   "published": "2026-11-11T18:57"
+  },
+  "hd40728ad": {
+   "id": "hd40728ad",
+   "source": "Bloomberg Technology",
+   "title": "Anthropic\u2019s IPO Is Said to Be Multiple Times Oversubscribed",
+   "blurb": "Anthropic PBC\u2019s initial public offering has drawn multiple times the orders for the shares available, according to people familiar with the matter, as demand accelerates for potentially the biggest first-time share sale ever. Bloomberg's Sridhar Natarajan joins to discuss.\u2026",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-11/anthropic-s-ipo-said-to-be-multiple-times-oversubscribed-video",
+   "published": "2026-11-11T17:46"
+  },
+  "he4e6c2d5": {
+   "id": "he4e6c2d5",
+   "source": "Financial Times",
+   "title": "US tech stocks surge as AI trade revives",
+   "blurb": "Nasdaq erases last week\u2019s losses as CoreWeave results and prospect of higher Anthropic IPO valuation boost sentiment",
+   "url": "https://www.ft.com/content/639de881-6017-454f-abfa-cfb191d1e7cd?syn-25a6b1a6=1",
+   "published": "2026-11-11T18:42"
+  },
+  "h71ade603": {
+   "id": "h71ade603",
+   "source": "Bloomberg Markets",
+   "title": "Nasdaq 100 Advances 3% as Easing AI Anxiety Draws Dip Buyers In",
+   "blurb": "US technology stocks rallied Wednesday, putting the technology-heavy Nasdaq 100 index on path to erase losses since the US midterm election, as excitement over the artificial intelligence trade returned.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-11/us-equity-futures-rise-as-ai-enthusiasm-counters-hot-inflation",
+   "published": "2026-11-11T13:28"
+  },
+  "h5a160247": {
+   "id": "h5a160247",
+   "source": "WSJ Markets",
+   "title": "Nasdaq Jumps After CoreWeave Re-Energizes AI Trade",
+   "blurb": "Tech stocks are rallying after upbeat earnings from CoreWeave eased investors\u2019 fears about the AI trade.",
+   "url": "https://www.wsj.com/finance/commodities-futures/nasdaq-futures-rally-as-ai-optimism-returns-af100e62?mod=rss_markets_main",
+   "published": "2026-11-11T19:36"
+  },
+  "h90a2e604": {
+   "id": "h90a2e604",
+   "source": "TechCrunch",
+   "title": "Congress to call Jensen Huang in to answer for alleged Chinese spy affair",
+   "blurb": "Nvidia CEO Jensen Huang has until the end of the day Wednesday to answer a call from House Republicans for a closed-door briefing on his affair with alleged Chinese spy.",
+   "url": "https://techcrunch.com/2026/11/11/congress-to-call-jensen-huang-in-to-answer-for-alleged-chinese-spy-affair/",
+   "published": "2026-11-11T19:22"
+  },
+  "h02bdbab4": {
+   "id": "h02bdbab4",
+   "source": "Bloomberg Technology",
+   "title": "Anthropic IPO Demand Surges as CoreWeave Calms AI Fears",
+   "blurb": "Bloomberg\u2019s Riley Griffin takes a look at Anthropic's potentially record-breaking IPO, with sources saying it's already multiple times oversubscribed. Plus, CoreWeave reassures Wall Street with third-quarter sales topping analyst estimates and easing fears about the debt tied to\u2026",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-11/bloomberg-tech-11-10-2026-video",
+   "published": "2026-11-11T18:42"
+  },
+  "he8b1d541": {
+   "id": "he8b1d541",
+   "source": "MarketWatch",
+   "title": "Anthropic\u2019s IPO roadshow kicks off \u2014 and the big money is already lining up",
+   "blurb": "Despite nagging concerns over the AI trade, Anthropic\u2019s IPO is reportedly seeing very strong demand.",
+   "url": "https://www.marketwatch.com/story/anthropics-ipo-roadshow-kicks-off-and-the-big-money-is-already-lining-up-7cdd4f8b?mod=mw_rss_topstories",
+   "published": "2026-11-11T16:03"
+  },
+  "h29d76d93": {
+   "id": "h29d76d93",
+   "source": "WSJ Markets",
+   "title": "NYSE Affiliate to Launch 24/7 Tokenized Stock Trading This Month",
+   "blurb": "Eligible U.S. customers will be able to trade tokenized versions of more than 70 assets starting on Nov. 23, said Intercontinental Exchange and OKX\u2019s joint venture OKXICE.",
+   "url": "https://www.wsj.com/finance/investing/nyse-affiliate-to-launch-24-7-tokenized-stock-trading-this-month-b3f0843a?mod=rss_markets_main",
+   "published": "2026-11-11T17:03"
+  },
+  "had491f8b": {
+   "id": "had491f8b",
+   "source": "WSJ Markets",
+   "title": "Nasdaq-Backed Payward Launches Tokenized Versions of European Stocks",
+   "blurb": "The Nasdaq-backed company launched tokenized versions of more than 200 of the most-traded U.K. and European stocks.",
+   "url": "https://www.wsj.com/finance/stocks/payward-to-launch-tokenized-versions-of-u-k-european-stocks-ae35dc78?mod=rss_markets_main",
+   "published": "2026-11-11T11:57"
+  },
+  "h7befb337": {
+   "id": "h7befb337",
+   "source": "CNBC",
+   "title": "Nvidia shares rebound as Jensen Huang faces scrutiny ahead of earnings",
+   "blurb": "Investors are assessing whether CEO Jensen Huang's affair will have spillover effects on Nvidia's business.",
+   "url": "https://www.cnbc.com/2026/11/11/nvidia-stock-jensen-huang-affair-china.html",
+   "published": "2026-11-11T17:39"
+  },
+  "hde74ae44": {
+   "id": "hde74ae44",
+   "source": "Bloomberg Technology",
+   "title": "Nvidia China Scandal Demands Answers, Says Congressman",
+   "blurb": "Rep. Raja Krishnamoorthi says Congress needs answers from Nvidia CEO Jensen Huang over his reported relationship with a woman suspected of ties to Chinese intelligence, and says lawmakers could consider a subpoena if Huang doesn\u2019t voluntarily appear. The Illinois Democrat also\u2026",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-11/nvidia-china-scandal-demands-answers-says-congressman-video",
+   "published": "2026-11-11T19:03"
+  },
+  "h3bbd319f": {
+   "id": "h3bbd319f",
+   "source": "CNBC Tech",
+   "title": "Anthropic opens Australian retail IPO offering as AI scrutiny intensifies",
+   "blurb": "Anthropic opened its Australia retail IPO offering on Wednesday, allowing individual investors to apply for shares ahead of its planned IPO.",
+   "url": "https://www.cnbc.com/2026/11/11/anthopic-australian-retail-ipo-offering-.html",
+   "published": "2026-11-11T01:52"
+  },
+  "h10c409e7": {
+   "id": "h10c409e7",
+   "source": "CNBC Markets",
+   "title": "Baird downgrades Nvidia on CEO Huang worries, AI uncertainty",
+   "blurb": "The investment bank moved its rating on the stock to neutral, and slashed its price target.",
+   "url": "https://www.cnbc.com/2026/11/11/nvidia-baird-downgrade-ceo-ai-capex.html",
+   "published": "2026-11-11T12:25"
+  },
+  "hf699ac85": {
+   "id": "hf699ac85",
+   "source": "WSJ Markets",
+   "title": "Asian Bond Yields Rise on Growing Expectations for Fed Rate Hike",
+   "blurb": "Hotter-than-expected U.S. inflation data and Federal Reserve officials\u2019 hawkish commentary raised the chances of a rate increase next month.",
+   "url": "https://www.wsj.com/finance/asian-bond-yields-rise-on-growing-expectations-for-fed-rate-hike-a2491a28?mod=rss_markets_main",
+   "published": "2026-11-11T06:37"
+  },
+  "hcfd647cb": {
+   "id": "hcfd647cb",
+   "source": "CNBC Tech",
+   "title": "Nvidia hires law firm Wachtell Lipton to lead Jensen Huang affair probe",
+   "blurb": "On Sunday, Huang admitted to having an affair with a woman who has been connected to Chinese intelligence by reports in The New York Times and Financial Times.",
+   "url": "https://www.cnbc.com/2026/11/10/nvidia-wachtell-lipton-huang-affair.html",
+   "published": "2026-11-10T20:01"
+  },
+  "h16dadfeb": {
+   "id": "h16dadfeb",
+   "source": "CNBC",
+   "title": "CoreWeave soars 26% as CEO reaffirms AI compute demand after strong Q3 report",
+   "blurb": "Neoclouds such as CoreWeave, Nebius and IREN have come under scrutiny this month as investors assessed the sustainability of the AI trade.",
+   "url": "https://www.cnbc.com/2026/11/11/coreweave-crwv-outlook-earnings-ai.html",
+   "published": "2026-11-11T17:38"
+  }
+ },
+ "latest": [
+  {
+   "id": "h0d92f57c",
+   "source": "TechCrunch",
+   "title": "Why the data center you dread might never even be built",
+   "blurb": "The data center boom is running into serious real-world obstacles, from widespread local opposition and permitting delays to a scramble for electricity. Before those challenges even come into play, though, there\u2019s a more basic problem: A lot of the projects being announced may\u2026",
+   "url": "https://techcrunch.com/video/why-the-data-center-you-dread-might-never-even-be-built/",
+   "published": "2026-11-11T20:15"
+  },
+  {
+   "id": "h6bc57b8d",
+   "source": "TechCrunch",
+   "title": "Meta is losing its longtime head of infrastructure",
+   "blurb": "Santosh Janardhan, who originally joined the company in 2009, will be stepping down from his role.",
+   "url": "https://techcrunch.com/2026/11/11/meta-is-losing-its-longtime-head-of-infrastructure/",
+   "published": "2026-11-11T20:12"
+  },
+  {
+   "id": "hdcea4cb6",
+   "source": "TechCrunch",
+   "title": "Olaf Sakkers is betting he can beat the emerging-manager squeeze",
+   "blurb": "Entering into the world of venture capital has never been easy, especially as a first-time fund manager. But it's especially daunting right now. Olaf Sakkers has spent the past five years proving that difficult doesn't mean impossible.",
+   "url": "https://techcrunch.com/2026/11/11/olaf-sakkers-is-betting-he-can-beat-the-emerging-manager-squeeze/",
+   "published": "2026-11-11T20:04"
+  },
+  {
+   "id": "h3a7234e8",
+   "source": "CNBC",
+   "title": "Canada\u2019s ambassador warns Trump tariffs are driving up costs, threatening U.S. investment",
+   "blurb": "U.S.-Canada trade tensions persist as Trump's tariffs drive up costs, threaten investment and complicate negotiations between the two countries.",
+   "url": "https://www.cnbc.com/2026/11/11/canada-ambassador-trump-tariffs-investments.html",
+   "published": "2026-11-11T20:02"
+  },
+  {
+   "id": "h1b381d91",
+   "source": "CNBC",
+   "title": "United Airlines moves to block AI agents from its platform over security concerns",
+   "blurb": "Companies across industries \u2060are \u200ctaking divergent approaches to the \u2060rapid rise of AI agents capable of carrying out tasks on behalf of users.",
+   "url": "https://www.cnbc.com/2026/11/11/united-airlines-ai-agents.html",
+   "published": "2026-11-11T20:02"
+  },
+  {
+   "id": "hed60891a",
+   "source": "MarketWatch",
+   "title": "Should a widow leave her late partner\u2019s home to her stepkids \u2014 or cut off contact with them?",
+   "blurb": "\u201cIt would be a less drastic step than selling the home now and splitting the proceeds.\u201d",
+   "url": "https://www.marketwatch.com/story/she-can-always-change-her-mind-should-a-widow-leave-the-family-home-to-her-stepchildren-649b06af?mod=mw_rss_topstories",
+   "published": "2026-11-11T20:00"
+  },
+  {
+   "id": "hf854ddcf",
+   "source": "CNBC",
+   "title": "Stick with high-quality AI bonds as debt worries persist, says Morgan Stanley",
+   "blurb": "Morgan Stanley sees a more attractive entry point in high-quality hyperscaler bonds as investors remain wary of the debt funding the AI build-out.",
+   "url": "https://www.cnbc.com/2026/11/11/morgan-stanley-ai-bonds-hyperscalers-credit.html",
+   "published": "2026-11-11T19:59"
+  },
+  {
+   "id": "h76d1f8d4",
+   "source": "Bloomberg Markets",
+   "title": "Crunch Fitness Seeks to Borrow $800 Million From ABS Bond Sale",
+   "blurb": "Crunch Fitness is looking to raise about $800 million from a bond sale backed by the company\u2019s franchise revenue, adding to a string of companies tapping the whole-business securitization market in recent weeks.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-11/crunch-fitness-seeks-to-borrow-800-million-from-abs-bond-sale",
+   "published": "2026-11-11T19:56"
+  },
+  {
+   "id": "h166e0f6b",
+   "source": "CNBC",
+   "title": "Mississippi Senate: Scott Colom lead over Hyde-Smith pops to more than 4,400 votes",
+   "blurb": "Tuesday was the deadline for provisional ballots to be resolved in Mississippi, and the deadline for the receipt of mail-in absentee ballots.",
+   "url": "https://www.cnbc.com/2026/11/10/mississippi-senate-scott-colom-hyde-smith.html",
+   "published": "2026-11-11T19:55"
+  },
+  {
+   "id": "he4db49d8",
+   "source": "CNBC",
+   "title": "Social Security could pay full benefits until 2059 if taxable payroll kept pace with GDP: AARP report",
+   "blurb": "An aging work force is not the only reason Social Security's trust funds now have a looming shortfall, according to AARP Public Policy Institute research.",
+   "url": "https://www.cnbc.com/2026/11/11/social-security-benefits-taxable-payroll-gdp.html",
+   "published": "2026-11-11T19:54"
+  },
+  {
+   "id": "hc063829a",
+   "source": "TechCrunch",
+   "title": "CoreWeave turns to customer prepayments, shorter contracts to fund AI growth",
+   "blurb": "CoreWeave is increasingly asking customers to pay upfront, borrowing against specific contracts, and even looking to short-term deals that could lead to higher prices, according to the company\u2019s third-quarter earnings.",
+   "url": "https://techcrunch.com/2026/11/11/coreweave-turns-to-customer-prepayments-shorter-contracts-to-fund-ai-growth/",
+   "published": "2026-11-11T19:54"
+  },
+  {
+   "id": "h22d4f965",
+   "source": "Bloomberg Technology",
+   "title": "Rubenstein on the Anthropic IPO, Nvidia CEO Scandal",
+   "blurb": "Carlyle Group co-Chairman and Bloomberg Host David Rubenstein talks about the anticipated initial public offering of Anthropic and the scandal involving Nvidia CEO Jensen Huang. He expects the Anthropic valuation to reach $1.3 trillion and he thinks Huang will stay on as leader\u2026",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-11/rubenstein-on-the-anthropic-ipo-nvidia-ceo-scandal-video",
+   "published": "2026-11-11T19:53"
+  }
+ ],
+ "feeds": 12,
+ "scanned": 121
+}

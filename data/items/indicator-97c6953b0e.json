@@ -37,7 +37,7 @@
    },
    {
     "point": "The stock market is heavily concentrated in tech stocks.",
-    "why_it_matters": "Tech stocks now make up 40% of the S&P 500's total market value, compared to 16% ten years ago."
+    "why_it_matters": "The 10 biggest companies in the S&P 500 now make up 40% of its total market value, and all but one are tech companies. Ten years ago the top 10 were just 16%, spread across different industries."
    },
    {
     "point": "There are concerns about an 'AI bubble' and its potential impact.",
@@ -59,7 +59,7 @@
    },
    {
     "figure": "40%",
-    "context": "of the S&P 500's total market value is made up of tech stocks."
+    "context": "of the S&P 500's total market value is in its 10 biggest companies (16% ten years ago)."
    }
   ],
   "lesson": "The stock market and the economy are different, but they are more closely linked now. The economy is split into two parts, and the stock market is dominated by tech companies. There are concerns about an AI bubble and its potential impact on the economy.",
