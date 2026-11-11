@@ -137,9 +137,24 @@
         <td><b>${esc(r.display_name || r.username)}</b> <span class="muted">@${esc(r.username)}</span></td>
         <td class="num">${fmt(r)}</td>
         <td>${MD.user && r.id !== MD.user.id ? `<button class="mini" type="button" data-follow="${r.id}">Follow</button>` : ""}</td></tr>`).join("")
-      : `<tr><td colspan="4" class="muted">${scope === "friends" ? "No friends here yet. Share your invite link!" : "Nobody here yet. Be the first!"}</td></tr>`;
+      : `<tr><td colspan="4">${emptyBoard()}</td></tr>`;
     markFollowing();
   }
+
+  // Empty boards say exactly how to get on them, with a button that does it.
+  function emptyBoard() {
+    const base = location.pathname.replace(/[^/]*$/, "");
+    if (!MD.user) return `<div class="lb-empty"><b>Be the first on the board 🏆</b><span>Sign in (free, no password) to start your streak, take quizzes, make calls and trade.</span><button class="btn" type="button" data-signin-now>Sign in</button></div>`;
+    if (!profile || !profile.username) return `<div class="lb-empty"><b>You're not on the board yet</b><span>Leaderboards show usernames only. Pick one and you'll appear here.</span><button class="btn" type="button" data-edit-username>Pick a username</button></div>`;
+    if (scope === "friends") return `<div class="lb-empty"><b>No friends here yet 👥</b><span>Copy your invite link above and send it to a friend: they'll follow you as soon as they open it.</span></div>`;
+    return {
+      streak: `<div class="lb-empty"><b>No streaks yet 🔥</b><span>Read a story or take a quiz today to start yours.</span><a class="btn" href="${base}index.html">Go to today's stories</a></div>`,
+      quiz: `<div class="lb-empty"><b>No quiz scores yet 🧠</b><span>Answer today's quiz or a practice round to get on this board.</span><a class="btn" href="${base}learn.html#practice">Try a practice round</a></div>`,
+      calls: `<div class="lb-empty"><b>No calls scored yet 🔮</b><span>Make today's call on the home page. It's scored at tomorrow's price update; rankings start after 5 scored calls.</span><a class="btn" href="${base}index.html#call-h">Make today's call</a></div>`,
+      portfolio: `<div class="lb-empty"><b>No portfolios yet 💼</b><span>Place your first paper trade in the box above. Try SPY: the whole S&P 500 in one fund.</span></div>`,
+    }[board];
+  }
+  document.addEventListener("click", (e) => { if (e.target.closest("[data-signin-now]")) needAccount("Sign in to join the game"); });
 
   async function markFollowing() {
     if (!MD.user) return;

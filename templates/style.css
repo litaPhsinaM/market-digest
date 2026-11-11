@@ -912,3 +912,6 @@ button.act.progress { cursor: pointer; font: inherit; }
 .call-top h2 { font-size: 1.15rem; font-weight: 720; margin: 4px 0 2px; line-height: 1.3; }
 .call-card .pr { height: 46px; font-size: 1rem; }
 .call-more { display: inline-block; margin-top: 12px; font-weight: 650; text-decoration: none; }
+.lb-empty { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 14px 4px; }
+.lb-empty span { color: var(--text-2); font-size: .9rem; }
+.lb-empty .btn { margin-top: 4px; }
