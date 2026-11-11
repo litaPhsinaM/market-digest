@@ -49,8 +49,15 @@
     $("#rg-go").textContent = "Update my range";
   }
 
+  // Until the database has the game functions (migration 017), keep the new cards and boards out of sight.
+  const setReady = (ok) => {
+    ["#range", "#stats", "[data-board=skill]", "[data-board=range]"].forEach((sel) => { const el = $(sel); if (el) el.hidden = !ok; });
+    return ok;
+  };
+
   async function loadRange() {
-    const { data } = await MD.sb.rpc("range_question");
+    const { data, error } = await MD.sb.rpc("range_question");
+    if (!setReady(!error)) return;
     q = data && data[0];
     if (!q || !q.price) { $("#rg-q").textContent = "Prices aren't available right now. Try again soon."; return; }
     const move = q.prev_close ? (q.price / q.prev_close - 1) * 100 : null;
@@ -89,6 +96,7 @@
 
   async function loadStats() {
     const grid = $("#qs-grid");
+    if ($("#stats").hidden) return;
     if (!MD.user) { grid.innerHTML = `<p class="muted">Sign in and make a trade to see how you stack up against the market.</p>`; return; }
     const [{ data: m }, { data: k }] = await Promise.all([MD.sb.rpc("my_market_compare"), MD.sb.rpc("my_skill")]);
     const mc = m && m[0], sk = k && k[0];
@@ -108,7 +116,8 @@
 
   ["#rg-center", "#rg-width"].forEach((s) => $(s).addEventListener("input", draw));
   $("#rg-go").addEventListener("click", lockIn);
-  const go = () => { loadRange(); loadStats(); };
+  setReady(false);
+  const go = async () => { await loadRange(); loadStats(); };
   document.addEventListener("md:auth", go);
   if (MD.authReady) go();
   setInterval(() => { if (!document.hidden) loadStats(); }, 60000);
