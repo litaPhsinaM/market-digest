@@ -36,7 +36,7 @@
     "why_it_matters": "This will lead to massive dilution for class A shareholders."
    },
    {
-    "point": "Revenue is growing rapidly, with $16.3 billion in the first half of 2026, but the company is still not profitable on a gap-compliant basis.",
+    "point": "Revenue is growing rapidly, with $16.3 billion in the first half of 2026, but the company is still not profitable on a GAAP basis.",
     "why_it_matters": "The company is still burning through cash despite showing strong adjusted financials."
    },
    {
@@ -50,8 +50,8 @@
   ],
   "numbers": [
    {
-    "figure": "1,000%",
-    "context": "Revenue growth over a period of time."
+    "figure": "14 times",
+    "context": "Revenue in the first half of 2026 ($16.3 billion) was 14 times the same period of 2025."
    },
    {
     "figure": "10%",
@@ -63,7 +63,7 @@
    },
    {
     "figure": "-4.3%",
-    "context": "Operating margin in the first half of 2026 based on gap-compliant figures."
+    "context": "Operating margin in the first half of 2026 based on GAAP figures."
    },
    {
     "figure": "$108.6 billion",
@@ -91,7 +91,7 @@
    {
     "term": "Debt-to-asset ratio",
     "definition": "A measure of a company's leverage, calculated by dividing total debt by total assets.",
-    "example": "Anthropic's debt-to-asset ratio is 1.8, which means it is technically insolvent."
+    "example": "Counting its convertible notes and convertible preferred stock as debt, Anthropic's debt-to-asset ratio is 1.8: liabilities exceed assets, so it is technically insolvent on paper."
    },
    {
     "term": "Price-to-sales ratio",

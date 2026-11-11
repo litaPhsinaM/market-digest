@@ -21,16 +21,16 @@
   "tldr": "Today's episode of Squawk Pod covers a range of topics, including a scandal involving NVIDIA CEO Jensen Huang, Anthropic's upcoming $100 billion IPO, and the strong pre-sales for Grand Theft Auto VI. The episode also discusses the potential for a Federal Reserve rate hike and the impact of these events on the market.",
   "key_points": [
    {
-    "point": "NVIDIA CEO Jensen Huang is at the center of a spy and sex scandal. President Trump claims he was unaware of the situation and says Jensen Huang is suffering greatly due to the scandal. The FBI is investigating, but the focus is unclear. NVIDIA has been accused of using political influence to protect its customer, Megaspeed, from government investigations.",
+    "point": "NVIDIA CEO Jensen Huang is at the center of a spy and sex scandal. President Trump says he didn't hear about it before taking Huang to Beijing, that Huang told him he had no idea the woman was a spy, and that Huang is suffering greatly. The FBI is investigating, but the focus is unclear. NVIDIA has been accused of using political influence to protect its customer, Megaspeed, from government investigations.",
     "why_it_matters": "This scandal has raised concerns about the company's relationship with the Trump administration and its influence in political matters."
    },
    {
-    "point": "Anthropic is planning an IPO with a price range of $70 to $78 per share. The IPO is expected to raise up to $100 billion, with significant private placements from companies like NVIDIA, Google, and Microsoft. The company is valued at around $1.2 to $1.4 trillion on a fully diluted basis.",
+    "point": "Anthropic is planning an IPO with a price range of $70 to $78 per share. Including a $26 billion cornerstone private placement from companies like NVIDIA, Alphabet and Microsoft, and the greenshoe option, the total raise could reach about $100 billion. The company is valued at around $1.26 to $1.4 trillion on a fully diluted basis.",
     "why_it_matters": "This is a major event in the AI industry and will be closely watched by investors. The IPO is expected to be one of the largest in history."
    },
    {
     "point": "Grand Theft Auto VI (GTA VI) is highly anticipated and has exceeded pre-sale expectations. Take-Two Interactive, the owner of GTA, is optimistic about the game's success despite economic challenges. The game is expected to be a major hit and will be released on November 19, 2026.",
-    "why_it_matters": "The game is the most anticipated video game in history and is expected to be a major success. It will be a significant event for the gaming industry."
+    "why_it_matters": "Barron's called it likely the most anticipated video game in history, so its launch is a big test for Take-Two and the gaming industry."
    }
   ],
   "numbers": [
@@ -40,15 +40,15 @@
    },
    {
     "figure": "100 billion dollars",
-    "context": "Expected total amount raised by Anthropic in its IPO"
+    "context": "Possible total raised, including the private placement and greenshoe (the public offering itself is about $64 billion at the top of the range)"
    },
    {
-    "figure": "1.2 to 1.4 trillion dollars",
+    "figure": "1.26 to 1.4 trillion dollars",
     "context": "Valuation of Anthropic on a fully diluted basis"
    },
    {
     "figure": "7.71 million units",
-    "context": "Pre-bookings for GTA VI according to Censor Tower"
+    "context": "Pre-bookings for GTA VI according to Sensor Tower"
    },
    {
     "figure": "751 million dollars",
@@ -57,11 +57,11 @@
   ],
   "lesson": "When a company's reputation or leadership is tied to controversial events, its market value and public perception are directly affected; strong succession planning and transparency can mitigate these risks.",
   "opinions_and_predictions": [
-   "Federal Reserve Governor Christopher Waller is leaning towards voting for an interest rate hike next month, even if October inflation data comes in on the cool side. He believes further tightening of monetary policy will be needed to return inflation to a path that will reach 2 percent in the median term.",
+   "Federal Reserve Governor Christopher Waller is leaning towards voting for an interest rate hike next month, even if October inflation data comes in on the cool side. He believes further tightening of monetary policy will be needed to return inflation to a path that will reach 2 percent in the medium term.",
    "If the October inflation data comes in hotter than expected, Waller would consider a 50 basis point hike instead of the usual 25 basis points.",
    "The market's consensus is that a rate hike of 25 basis points is expected at the next meeting, with an 88 percent chance of this happening.",
-   "Leslie Picker believes that Anthropic's IPO may be increased in price range if the company is fully covered in the range it has set.",
-   "Lo Tony believes that Anthropic is an amazing company and a great investment opportunity, despite concerns about circular financing.",
+   "Leslie Picker reports the IPO is already covered at its $70 to $78 range; whether the range gets raised remains to be seen.",
+   "Lo Toney believes that Anthropic is an amazing company and a great investment opportunity, despite concerns about circular financing.",
    "Strauss Zelnick is optimistic about the success of GTA VI, despite economic challenges, and believes that interactive entertainment is a real bargain for consumers."
   ],
   "tickers": [],
@@ -73,12 +73,12 @@
    },
    {
     "term": "Fully diluted basis",
-    "definition": "A valuation method that assumes all potential shares, including those that could be issued in the future, are already outstanding. This provides a more accurate picture of a company's value.",
+    "definition": "Counting all shares that could exist, including those from options, warrants and convertible securities, as if they were already outstanding. It gives a more complete count of the shares sharing in the company's value.",
     "example": "Anthropic is valued at around $1.2 to $1.4 trillion on a fully diluted basis."
    },
    {
     "term": "Circular financing",
-    "definition": "A situation in which a company raises capital from investors who are also its customers, suppliers, or partners. This can create a conflict of interest and may not be in the best interest of all stakeholders.",
+    "definition": "An arrangement where money moves in a loop: a supplier or partner invests in a company, and the company then spends that money on the investor's own products or services. Critics worry it can make demand look stronger than it really is.",
     "example": "Anthropic's IPO includes private placements from companies that are already its customers or partners, which has raised concerns about circular financing."
    }
   ],

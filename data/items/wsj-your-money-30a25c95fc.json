@@ -63,23 +63,24 @@
    },
    {
     "figure": "13 percent",
-    "context": "The drop in Brent crude futures."
+    "context": "Brent crude futures fell more than 13 percent this week, ending below $99 a barrel."
    }
   ],
-  "lesson": "When a sector's growth depends on political outcomes, market volatility follows; diversification and policy monitoring become critical for long-term stability.",
+  "lesson": "When a sector's growth depends on political outcomes, election results can move its stocks sharply in either direction.",
   "opinions_and_predictions": [
    "Analysts say a potential merger between Tesla and SpaceX could face more scrutiny under a Democratic Congress.",
    "Some say the price tag of Anthropic's planned IPO may need to come down by hundreds of billions of dollars.",
    "Analysts say a rebound in the housing market probably isn't in the cards for the rest of this year."
   ],
   "tickers": [
-   "AMD",
-   "Micron",
-   "Tesla",
+   "Nvidia (NVDA)",
+   "Advanced Micro Devices (AMD)",
+   "Micron (MU)",
+   "Tesla (TSLA)",
    "SpaceX",
-   "DR Horton",
-   "Pulte Group",
-   "Lennar"
+   "D.R. Horton (DHI)",
+   "PulteGroup (PHM)",
+   "Lennar (LEN)"
   ],
   "glossary": [
    {

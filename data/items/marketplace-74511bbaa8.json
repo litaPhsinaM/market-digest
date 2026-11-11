@@ -60,7 +60,7 @@
    },
    {
     "figure": "$1.3 trillion",
-    "context": "Credit card balances in the third quarter of 2025"
+    "context": "Credit card balances hit a record of nearly $1.3 trillion in the third quarter, per the New York Fed."
    }
   ],
   "lesson": "Inflation is still a major concern, with prices rising across the economy. The Federal Reserve is likely to take action to address this, and consumers are feeling the pressure. Understanding inflation and its causes is important for making informed financial decisions.",
@@ -75,11 +75,7 @@
    "Debnel Chowdhury with S&P Global Energy says we don't expect the damage to be repaired in a meaningful way until next year.",
    "Jean Chatzky says retirees are often scared to spend their savings, which has a significant impact on the economy."
   ],
-  "tickers": [
-   "DOW: 52,231",
-   "NASDAQ: 25,065",
-   "S&P 500: 7,520"
-  ],
+  "tickers": [],
   "glossary": [
    {
     "term": "CPI",
@@ -98,7 +94,7 @@
    },
    {
     "term": "Interest rates",
-    "definition": "The cost of borrowing money, set by the Federal Reserve. (Interest rates affect the economy and inflation.)",
+    "definition": "The cost of borrowing money, shown as a yearly percentage. The Federal Reserve sets a target for one key short-term rate (the federal funds rate), which influences, but does not directly set, rates on loans, mortgages and savings.",
     "example": "The Federal Reserve is expected to raise interest rates again in December."
    },
    {

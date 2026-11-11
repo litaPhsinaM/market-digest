@@ -14,27 +14,27 @@
    "item_id": "bloomberg-surveillance-bcfeb6e40e"
   },
   {
-   "question": "Which of the following is a likely consequence of a 50 basis point rate hike by the Federal Reserve?",
+   "question": "What is the Federal Reserve mainly trying to achieve when it raises interest rates by 50 basis points?",
    "options": [
-    "A) A decrease in the value of the dollar.",
-    "B) A decrease in consumer spending.",
-    "C) A decrease in inflation.",
-    "D) A decrease in corporate borrowing costs."
+    "A) Weaken the value of the dollar.",
+    "B) Lower interest rates on new mortgages.",
+    "C) Slow inflation by making borrowing more expensive.",
+    "D) Cut corporate borrowing costs."
    ],
    "answer": 2,
-   "explanation": "A 50 basis point rate hike by the Federal Reserve is likely to lead to a decrease in inflation. The Fed typically raises interest rates to combat inflation by making borrowing more expensive, which can slow down economic activity and reduce demand. This, in turn, can help bring inflation under control. While higher rates may also reduce consumer spending and borrowing, the primary goal of a rate hike in the context of inflation is to reduce it, not necessarily to directly affect the dollar's value or corporate borrowing costs in the short term.",
+   "explanation": "The Fed raises interest rates to bring inflation down. Higher rates make borrowing more expensive, which cools spending and demand over time. Higher rates tend to strengthen the dollar and raise mortgage and corporate borrowing costs, so the other options describe the opposite of what usually happens.",
    "item_id": "bloomberg-surveillance-bcfeb6e40e"
   },
   {
-   "question": "What is the main reason investors are cautious about a housing market rebound despite recent gains in homebuilder stocks?",
+   "question": "According to analysts, why is a housing market rebound unlikely for the rest of this year, despite recent gains in homebuilder stocks?",
    "options": [
-    "A) High mortgage rates are still a barrier for buyers.",
+    "A) Builders still face weak demand and rising costs, heading into their slower season.",
     "B) The housing market is too small to have a significant impact on the economy.",
     "C) Homebuilder stocks are overvalued compared to other sectors.",
     "D) There is too much competition among homebuilders."
    ],
    "answer": 0,
-   "explanation": "Investors are cautious about a housing market rebound despite recent gains in homebuilder stocks because high mortgage rates are still a barrier for buyers. Even though homebuilder stocks may be performing well due to expectations of policy changes or reduced labor shortages, the overall housing market is still facing challenges such as weak demand, rising costs, and the typical seasonal slowdown. High mortgage rates make it more expensive for potential buyers to purchase homes, which can limit the recovery of the housing market in the near term.",
+   "explanation": "Homebuilder stocks rallied after the election on hopes that policy changes could bring down mortgage rates and ease labor shortages. But analysts say a rebound probably isn't in the cards this year because builders are still struggling with weak demand and rising costs, and the industry is heading into its typically slower season.",
    "item_id": "wsj-your-money-30a25c95fc"
   }
  ]
