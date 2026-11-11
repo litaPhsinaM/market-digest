@@ -448,5 +448,23 @@
   "target": null,
   "deadline": "2026-12-31",
   "status": "open"
+ },
+ {
+  "id": "goldman-exchanges-46ea7cfbbb-0",
+  "item_id": "goldman-exchanges-46ea7cfbbb",
+  "source": "Exchanges (Goldman Sachs)",
+  "episode": "Playing for Scale: The Future of Sports Investing",
+  "url": "https://mgln.ai/e/1720/traffic.megaphone.fm/GLD8882478019.mp3",
+  "said_on": "2026-11-11",
+  "speaker": "Nicole Pullen-Ross",
+  "role": "Head of Northeast Private Wealth Management and Sports and Entertainment Solutions at Goldman Sachs",
+  "quote": "And so the global media rights market has grown 41 percent since 2020 to about 57.8 billion in 2025 and is expected to reach 67 billion in 2026.",
+  "claim": "The global media rights market will reach $67 billion in 2026.",
+  "kind": "other",
+  "subject": "global media rights market",
+  "symbol": null,
+  "target": null,
+  "deadline": "2026-12-31",
+  "status": "open"
  }
 ]

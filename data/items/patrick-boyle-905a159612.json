@@ -1,0 +1,120 @@
+{
+ "id": "patrick-boyle-905a159612",
+ "source_id": "patrick-boyle",
+ "source_name": "Patrick Boyle On Finance",
+ "kind": "podcast",
+ "title": "How North Korea Pulled Off the Biggest Heist in History",
+ "url": "https://podcasters.spotify.com/pod/show/patrickboyle/episodes/How-North-Korea-Pulled-Off-the-Biggest-Heist-in-History-e3rpbj5",
+ "media_url": "https://traffic.megaphone.fm/APO4916719564.mp3",
+ "published": "2026-11-07",
+ "duration": 2356,
+ "digest_date": "2026-11-11",
+ "backend": "gemini",
+ "model": "gemini-3.5-flash",
+ "summary": {
+  "segments": [
+   "Binance suffers $6.3B North Korean crypto hack",
+   "Binance regulatory background and compliance history",
+   "North Korea cyber warfare and laundering history",
+   "Ethereum EIP-7702 vulnerability and attack mechanics",
+   "Social engineering and fake job interview exploit",
+   "Tether and Circle freeze stolen stablecoins",
+   "Market reaction and Binance natural hedge reserves",
+   "Suspicious customer activity in internal Binance files"
+  ],
+  "headline": "North Korea steals $6.3 billion from Binance in historic crypto heist",
+  "tldr": "North Korean state hackers executed the largest theft in history, taking roughly $6.3 billion from crypto exchange Binance by exploiting human security weaknesses and smart contract rules. Stablecoin issuers Tether and Circle stepped in to freeze $2.4 billion of the stolen funds, while Binance promised to cover all customer losses despite facing $4.7 billion in withdrawals.",
+  "key_points": [
+   {
+    "point": "North Korea's cyber unit, Trader Trader, stole roughly $6.3 billion from Binance, taking most of it within the first 30 minutes of the attack.",
+    "why_it_matters": "This represents the largest single heist in history, surpassing both conventional bank robberies and previous cryptocurrency breaches."
+   },
+   {
+    "point": "Hackers breached Binance's signing system via a months-long social engineering effort involving fake job interviews, malware, and Ethereum feature EIP-7702 to conduct blind signing.",
+    "why_it_matters": "The breach succeeded not by breaking underlying blockchain cryptography, but by exploiting human error and automated signing permissions within corporate software."
+   },
+   {
+    "point": "Centralized stablecoin issuers Tether and Circle froze approximately $2.4 billion of the stolen tokens shortly after the attack.",
+    "why_it_matters": "This highlights how major crypto networks rely on centralized intermediaries capable of acting like traditional banks to halt or reverse transactions during crises."
+   },
+   {
+    "point": "Binance froze withdrawals until Sunday morning, during which customers pulled out $4.7 billion (about 3% of assets), and pledged to cover all remaining losses.",
+    "why_it_matters": "While exchange liability terms limited legal obligation to pay, large trading revenue allowed Binance to absorb losses to protect corporate reputation and customer retention."
+   },
+   {
+    "point": "Binance kept its emergency reserve fund in Bitcoin, which dropped by about $100 million right when the market reacted to the hack.",
+    "why_it_matters": "Matching asset reserves directly to liabilities can fail if market panic lowers the market value of the collateral asset during a crisis."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "$6.3B",
+    "context": "Total value of cryptocurrency stolen from Binance in the North Korea hack."
+   },
+   {
+    "figure": "$2.4B",
+    "context": "Amount of stolen stablecoins frozen by issuers Tether and Circle."
+   },
+   {
+    "figure": "$4.7B",
+    "context": "Total customer withdrawals processed after Binance lifted its hold."
+   },
+   {
+    "figure": "8,400",
+    "context": "Estimated number of personnel working in North Korea's cyber warfare unit."
+   },
+   {
+    "figure": "335M",
+    "context": "Total number of registered users on the Binance exchange platform."
+   }
+  ],
+  "lesson": "Holding emergency reserve funds in volatile assets creates wrong-way risk, where the value of collateral declines simultaneously with an increase in liability obligations.",
+  "opinions_and_predictions": [
+   "Elliptic told the FT that the hack was almost certainly the largest theft of any kind in human history.",
+   "Alexander Shirtcliff (lawyer at Edwin Coe) noted that Binance's terms of service limit customer liability, meaning its pledge to cover losses is not legally binding.",
+   "Matt Levine stated that stablecoin issuers using blacklist functions results in centralized intermediaries performing a quasi-law enforcement function.",
+   "Tom Robinson (Elliptic) expects stolen funds to eventually be sold off to over-the-counter brokers who ask few questions.",
+   "Kelly Yee (Talos) noted that the market treated the hack as an operational shock rather than a systemic failure."
+  ],
+  "tickers": [
+   "Coinbase (COIN)",
+   "Strategy (MSTR)"
+  ],
+  "glossary": [
+   {
+    "term": "hot wallet",
+    "definition": "An internet-connected crypto wallet that automatically processes instant user deposits and withdrawals without manual approval.",
+    "example": "Binance held $2.5 billion in an online hot wallet to payout automatic Ethereum requests."
+   },
+   {
+    "term": "blind signing",
+    "definition": "The act of authorizing a digital transaction or smart contract without reading or verifying the underlying code.",
+    "example": "Binance's automated system engaged in blind signing when approving the hacker's payload."
+   },
+   {
+    "term": "stablecoin",
+    "definition": "A cryptocurrency designed to maintain a stable value by pegging to a fiat currency like the US dollar.",
+    "example": "Tether and Circle issued stablecoins that were frozen following the attack."
+   },
+   {
+    "term": "reverse solicitation",
+    "definition": "A legal scenario where a customer seeks out a foreign financial firm entirely on their own initiative without active marketing by the firm.",
+    "example": "Binance cited reverse solicitation to explain why European residents continued to use its exchange."
+   },
+   {
+    "term": "natural hedge",
+    "definition": "A risk management tactic where an entity matches assets and liabilities in the same currency or asset type.",
+    "example": "Binance used Bitcoin to back customer Bitcoin obligations as a natural hedge."
+   }
+  ],
+  "level": "intermediate",
+  "topics": [
+   "crypto",
+   "cybersecurity",
+   "regulation",
+   "banking"
+  ],
+  "quality_note": "Host Patrick Boyle provides detailed factual reporting sourced from major news outlets (FT, Bloomberg, WSJ) along with financial analysis and commentary.",
+  "worth_reading": true
+ }
+}

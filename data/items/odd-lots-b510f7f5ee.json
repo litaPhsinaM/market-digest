@@ -1,0 +1,120 @@
+{
+ "id": "odd-lots-b510f7f5ee",
+ "source_id": "odd-lots",
+ "source_name": "Odd Lots (Bloomberg)",
+ "kind": "podcast",
+ "title": "The Perfect Storm That Clobbered Hedge Funds",
+ "url": "https://omny.fm/shows/odd-lots/the-perfect-storm-that-clobbered-hedge-funds",
+ "media_url": "https://podtrac.com/pts/redirect.mp3/tracking.swap.fm/track/UVBrz8bN8aM2Xe47PEPu/traffic.omny.fm/d/clips/e73c998e-6e60-432f-8610-ae210140c5b1/8a94442e-5a74-4fa2-8b8d-ae27003a8d6b/d50c15fb-6c5a-4836-89a2-b4fe0174107c/audio.mp3?utm_source=Podcast&in_playlist=982f5071-765c-403d-969d-ae27003a8d83",
+ "published": "2026-11-11",
+ "duration": 3118,
+ "digest_date": "2026-11-11",
+ "backend": "gemini",
+ "model": "gemini-3.5-flash",
+ "summary": {
+  "segments": [
+   "Hedge fund performance hits October low",
+   "Multi-strat fund models face correlation shock",
+   "AI-concentrated funds suffer sharp drawdowns",
+   "Post-election stock market sell-off mechanisms",
+   "Option gamma and systematic fund forced selling",
+   "Shifting AI capital expenditure narrative",
+   "Neocloud dynamics and Anthropic IPO outlook"
+  ],
+  "headline": "Hedge fund multi-strats suffer rare October losses; option gamma accelerates stock market sell-off",
+  "tldr": "Major multi-strategy hedge funds suffered rare simultaneous losses in October as crowded positions across AI equities, bonds, and macro trades unravelled together. Market technicals, including options dealer negative gamma and vol-control selling, subsequently amplified a sharp post-election market sell-off as narratives shifted around AI infrastructure spending.",
+  "key_points": [
+   {
+    "point": "Top multi-strategy hedge funds including Millennium (-2.3%), Balyasny, ExodusPoint, and Point72 lost money simultaneously in October despite their multi-pod, uncorrelated risk design.",
+    "why_it_matters": "Institutional investors pay hedge funds management fees to protect capital during downturns; synchronized losses reveal hidden correlation across seemingly independent strategies."
+   },
+   {
+    "point": "AI concentration hit specialized funds heavily, with single-strategy fund Vara dropping 33% in October and macro fund Kirkoswald down 6.4%.",
+    "why_it_matters": "Extremely high concentration in winning momentum themes creates severe downside tail risk when market sentiment turns."
+   },
+   {
+    "point": "Multi-strategy funds utilize strict centralized risk limits where a 5% loss often halves a portfolio manager's capital and further loss leads to liquidation.",
+    "why_it_matters": "Ruthless risk limits protect fund platforms overall but force rapid selling in downturns, exacerbating broader market volatility."
+   },
+   {
+    "point": "PivotalPath reported that 10 major hedge firms controlled $2.2 trillion in leveraged gross assets, with $350 billion backing crowded trades.",
+    "why_it_matters": "High leverage on identical trades means small price declines trigger large forced liquidations across the industry."
+   },
+   {
+    "point": "A sharp Thursday market sell-off was magnified by options dealers sitting in negative gamma, requiring them to sell into market weakness to stay hedged.",
+    "why_it_matters": "Market structure and derivative positioning can drive severe price declines independent of fundamental economic news."
+   },
+   {
+    "point": "Investor sentiment pivoted from viewing high tech company capital expenditure as a growth driver to worrying about free cash flow, borrowing costs, and power grid constraints.",
+    "why_it_matters": "Changes in fundamental narrative can reprice entire sectors even when underlying operational demand remains high."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "-2.3%",
+    "context": "October performance loss for Millennium, a rare drop for the steady multi-strat fund."
+   },
+   {
+    "figure": "-33%",
+    "context": "October drawdown for AI-concentrated fund Vara."
+   },
+   {
+    "figure": "-6.4%",
+    "context": "October loss for macro hedge fund Kirkoswald, its worst monthly drop since launch."
+   },
+   {
+    "figure": "$350B",
+    "context": "Capital backing crowded hedge fund positions out of $2.2T in gross assets studied by PivotalPath."
+   },
+   {
+    "figure": "$1.4T",
+    "context": "Target preliminary valuation for Anthropic's planned IPO."
+   }
+  ],
+  "lesson": "When separate trading strategies hold overlapping underlying risk factors, severe price shocks turn low historical correlation into total correlation, forcing simultaneous liquidations.",
+  "opinions_and_predictions": [
+   "Nishant Kumar (Bloomberg News) believes the final two months of the year will be extremely difficult for hedge funds to take risk because many key portfolio managers have been fired or are on non-compete leave.",
+   "Michael Ball (Bloomberg News) expects that the AI market story needs several months to stabilize as regulatory concerns and local power infrastructure bottlenecks are worked out.",
+   "Michael Ball (Bloomberg News) thinks compute demand growth remains firmly intact on an upward curve despite negative market noise surrounding specialized cloud providers."
+  ],
+  "tickers": [
+   "Nvidia (NVDA)",
+   "Microsoft (MSFT)",
+   "Amazon (AMZN)",
+   "Alphabet (GOOGL)",
+   "Meta (META)",
+   "IREN (IREN)"
+  ],
+  "glossary": [
+   {
+    "term": "Multi-strategy fund",
+    "definition": "A hedge fund that allocates capital across dozens of independent trading teams (pods) to diversify across different markets and asset classes.",
+    "example": "Millennium runs hundreds of distinct pods inside one hedge fund structure."
+   },
+   {
+    "term": "Negative gamma",
+    "definition": "A position in options market-making where dealers must sell underlying stocks as prices fall and buy as prices rise, accelerating market swings.",
+    "example": "Dealers in negative gamma were forced to sell equities aggressively on Thursday morning, deepening the drop."
+   },
+   {
+    "term": "De-grossing",
+    "definition": "Reducing total portfolio size by closing out both long (buy) and short (sell) bets to trim overall exposure.",
+    "example": "Volatile markets forced several systematic funds into rapid de-grossing."
+   },
+   {
+    "term": "Neoclouds",
+    "definition": "Specialized cloud computing infrastructure providers built specifically to rent out high-performance AI processors.",
+    "example": "Neocloud firms like CoreWeave and IREN borrow heavily to buy specialized chips and power data centers."
+   }
+  ],
+  "level": "intermediate",
+  "topics": [
+   "hedge funds",
+   "market volatility",
+   "options trading",
+   "ai stocks"
+  ],
+  "quality_note": "Hosted by Bloomberg journalists Tracy Alloway and Joe Weisenthal, featuring Bloomberg hedge fund correspondent Nishant Kumar and macro strategist Michael Ball offering verified reporting and market analysis.",
+  "worth_reading": true
+ }
+}
