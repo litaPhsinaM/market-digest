@@ -1,5 +1,6 @@
 """Daily market snapshot: index strip + company cards (price history, key stats, headlines). Free, via yfinance."""
 import concurrent.futures
+from zoneinfo import ZoneInfo
 import datetime as dt
 import math
 import re
@@ -127,7 +128,8 @@ def snapshot(tickers: list[str]) -> dict:
     # Fetch companies in parallel (each needs 3 Yahoo calls); a separate pool avoids nesting in _pool.
     with concurrent.futures.ThreadPoolExecutor(max_workers=6) as ex:
         companies = [c for c in ex.map(company, tickers) if c]
-    return {"as_of": dt.datetime.now().astimezone().isoformat(timespec="minutes"),
+    # Market time (New York), the same wherever this runs (Mac or cloud).
+    return {"as_of": dt.datetime.now(ZoneInfo("America/New_York")).isoformat(timespec="minutes"),
             "indices": indices, "companies": companies, "movers": movers(),
             "mood": mood(quote("^GSPC"), quote("^VIX")),
             "funds": [{**q, "name": n} for f, n in zip(FUNDS, FUND_NAMES) if (q := quote(f))]}
