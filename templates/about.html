@@ -59,28 +59,31 @@
   </div>
 
   <div class="eng-flow" aria-label="How a day's digest is made">
-    <div class="ef"><span>🎧</span><b>Listen</b><small>Podcast RSS → audio → <b>Whisper</b> (speech-to-text) on Apple Silicon</small></div>
+    <div class="ef"><span>🎧</span><b>Listen</b><small>Podcast RSS → audio → <b>Gemini</b> transcribes it, word for word</small></div>
     <div class="ef-arrow" aria-hidden="true">→</div>
-    <div class="ef"><span>🧠</span><b>Understand</b><small><b>Qwen 14B</b> via Ollama writes structured summaries, quizzes and the brief</small></div>
+    <div class="ef"><span>🧠</span><b>Understand</b><small><b>Gemini Flash</b> writes structured summaries, the brief, quiz and forecasts</small></div>
     <div class="ef-arrow" aria-hidden="true">→</div>
     <div class="ef"><span>🔎</span><b>Check</b><small>Automatic fact checks before anything is published</small></div>
     <div class="ef-arrow" aria-hidden="true">→</div>
-    <div class="ef"><span>🎙</span><b>Voice</b><small><b>Kokoro</b> text-to-speech records the 3-minute briefing</small></div>
+    <div class="ef"><span>🎙</span><b>Voice</b><small>Open-source <b>Kokoro</b> text-to-speech records the 3-minute briefing</small></div>
     <div class="ef-arrow" aria-hidden="true">→</div>
     <div class="ef"><span>🚀</span><b>Ship</b><small>Static site built and deployed to GitHub Pages in ~30 s</small></div>
   </div>
 
   <div class="eng-grid">
-    <div class="card eng-card"><h3>🧠 Local AI, no API bills</h3>
-      <p>Transcription, summaries, quizzes and the voice all run on open-source models on a MacBook, once a day. Because the AI
-        works once per day rather than once per visitor, the cost doesn't grow with the number of users.</p></div>
+    <div class="card eng-card"><h3>🧠 Serverless AI, $0 to run</h3>
+      <p>Every morning a cloud job wakes up, listens to the new episodes with Google's Gemini models and writes the day's
+        content: no laptop, no servers to run. If a model is busy or out of free quota it falls back to the next one, and
+        the same pipeline can run fully offline on a Mac with open-source models (Whisper + Qwen 14B). Because the AI works
+        once per day rather than once per visitor, cost doesn't grow with the number of users.</p></div>
     <div class="card eng-card"><h3>🔎 Guard rails against AI mistakes</h3>
       <p>Every number and date in a summary must appear in the episode transcript, or it's removed. Stock tickers are checked
         against Nasdaq's official list. A forecast only reaches the Scorecard if the speaker's exact quote is found in the
         transcript. Headlines and lessons that are vague or sound like advice get rewritten automatically.</p></div>
-    <div class="card eng-card"><h3>☁️ Prices that update themselves</h3>
-      <p>A scheduled cloud job fetches market prices every 15 minutes while the US market is open, writes them to the
-        database and republishes the site. No laptop needed.</p></div>
+    <div class="card eng-card"><h3>⏰ The database is the clock</h3>
+      <p>A scheduler inside the database (pg_cron) starts the price job every 15 minutes while the US market is open and the
+        daily digest each weekday at 5:30 am New York time. It knows the NYSE calendar, so holidays and 1 pm half-days never
+        fill a trade or score a call at a stale price.</p></div>
     <div class="card eng-card"><h3>🎮 Cheat-proof games</h3>
       <p>Paper trades and predictions are settled inside the database, never in your browser. Orders fill at the <em>next</em>
         market-hours price (so nobody can trade on old news), quiz scores are checked against hidden answer keys, and rewards
@@ -106,11 +109,12 @@
   <details class="eng-stack">
     <summary>The full stack</summary>
     <ul>
-      <li><b>AI:</b> Whisper large-v3-turbo (mlx-whisper), Qwen3 14B (Ollama), Kokoro-82M (mlx-audio), with structured JSON outputs validated by Pydantic</li>
+      <li><b>AI (cloud):</b> Google Gemini Flash / Flash-Lite with automatic model fallback; Kokoro-82M text-to-speech (ONNX on CPU)</li>
+      <li><b>AI (offline mode):</b> Whisper large-v3-turbo (mlx-whisper), Qwen3 14B (Ollama), Kokoro-82M (mlx-audio). Either way, structured JSON outputs are validated by Pydantic</li>
       <li><b>Pipeline:</b> Python, RSS (feedparser), Yahoo Finance data (yfinance), Jinja templates → static HTML</li>
       <li><b>Front end:</b> plain HTML, CSS and JavaScript (no framework), hand-drawn SVG charts, a service worker for offline use</li>
       <li><b>Backend:</b> Supabase (Postgres, auth, realtime) with row-level security and database functions for all game logic</li>
-      <li><b>Hosting &amp; automation:</b> GitHub Pages, GitHub Actions (deploys and the 15-minute price job)</li>
+      <li><b>Hosting &amp; automation:</b> GitHub Pages, GitHub Actions (daily digest, 15-minute price job, deploys), started by Supabase pg_cron + pg_net, with the GitHub token in Supabase Vault</li>
       <li><b>Mobile:</b> Capacitor 7 Android app; installable web app on iPhone</li>
     </ul>
   </details>

@@ -13,7 +13,8 @@ behind the news. It's built for people who are new to investing.
 ### 📰 Today
 - **Story cards** for each new episode: tap for the full study sheet with key points, the numbers that matter, the
   lesson, opinions kept separate from facts, words to know, and a link to the original. Tap **✓** when you've read it.
-- **What's hot**: the day's biggest stories, grouped from newsroom headlines, each with "why it matters".
+- **Top stories**: the day's biggest stories, grouped from 100+ newsroom headlines, each with "why it matters".
+  On phones they're a swipeable card stack.
 - **Today in 60 seconds**: swipe through the day as full-screen cards.
 - **Audio briefing**: a 3-minute spoken summary of the day.
 - **Daily quiz**: three questions on today's stories.
@@ -45,7 +46,9 @@ when their deadline passes. Over time it shows who is actually right about marke
 
 ### Everywhere
 🔥 streaks · ⌘K search across every story, term and company · light/dark mode · works offline once loaded ·
-installable as an app · share any story as an image.
+installable as an app · share any story as an image · a phone layout with a bottom tab bar and a swipeable market
+strip · honest timing labels (market open, closed, weekend or holiday; prices running late) · light days get bigger
+cards so the page never looks empty.
 
 ## Accounts, sync and privacy
 
@@ -80,19 +83,24 @@ more) and 12 newsroom feeds; the full list with the reason each was chosen is on
 ### How it works
 
 ```
-Mac (daily)                                   GitHub Pages                Supabase
-podcast RSS → Whisper (mlx) → Qwen 14B   ──►  static site (this repo,  ◄─►  accounts, synced progress,
-(Ollama) → summaries, brief, hot topics,      rebuilt on every push)        games, usage events
-quiz, audio (Kokoro), forecasts + prices
+Supabase pg_cron (the clock)
+ ├─ 5:30 am ET weekdays → GitHub Actions "Daily digest": podcast RSS → Gemini transcript + summary → checks →
+ │                         brief, hot topics, quiz, Kokoro audio, forecasts → commit data/ → publish
+ └─ every 15 min, market hours → GitHub Actions "Update prices": Yahoo Finance → Supabase (fills trades, scores
+                                 calls) → publish
+GitHub Pages: the static site (this repo)  ◄─►  Supabase: accounts, synced progress, games, usage events
 ```
 
-The AI runs once a day on one Mac (local models, no API costs), or in GitHub Actions with Gemini's free tier (below). The site is static; the browser talks to Supabase
-directly with the public key, and row-level security keeps each user's data private. The Android app (`mobile/`) is a
-Capacitor shell that loads the live site, so content and features update without a new APK.
+The AI runs once a day in GitHub Actions on Gemini's free tier (falling back across Flash models), or on a Mac with
+local models (Whisper + Qwen 14B via Ollama) as an offline backup. The site is static; the browser talks to Supabase
+directly with the public key, and row-level security keeps each user's data private. Jobs are started by Supabase's
+pg_cron (GitHub's own scheduler skips runs), and the NYSE holiday calendar lives in `digest/hours.py` and the database.
+The Android app (`mobile/`) is a Capacitor shell that loads the live site, so content and features update without a
+new APK.
 
 ### Setup
 
-Requirements: macOS on Apple Silicon, Python 3.10+, Node 20+, [Ollama](https://ollama.com) with `qwen3:14b`, ffmpeg.
+Requirements: Python 3.10+ and a Gemini API key (free tier). For the offline Mac mode: Apple Silicon, [Ollama](https://ollama.com) with `qwen3:14b`, ffmpeg. Node 20+ for the Android app.
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
