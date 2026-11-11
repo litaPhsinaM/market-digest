@@ -63,21 +63,43 @@ def _post(table: str, rows: list[dict], upsert: bool = False):
 
 
 def push_prices(snapshot: dict):
-    rows, seen = [], set()
-    as_of = snapshot["as_of"]
-    for q in snapshot.get("indices", []) + snapshot.get("funds", []) + snapshot.get("companies", []):
-        if q["symbol"] not in seen:
-            seen.add(q["symbol"])
-            rows.append({"symbol": q["symbol"], "as_of": as_of, "price": round(q["price"], 4), "name": q.get("name")})
-    for q in snapshot.get("universe", []):
-        if q["symbol"] not in seen:
-            seen.add(q["symbol"])
-            rows.append({"symbol": q["symbol"], "as_of": as_of, "price": round(q["price"], 4), "name": q["name"]})
-    for group in (snapshot.get("movers") or {}).values():
-        for m in group:
-            if m["symbol"] not in seen and m.get("price"):
-                seen.add(m["symbol"])
-                rows.append({"symbol": m["symbol"], "as_of": as_of, "price": round(m["price"], 4), "name": m.get("name")})
+    """The database fills pending orders and scores predictions on any price stamped Mon-Fri 9:30-16:00 New York
+    time (see the on_new_price trigger), so only send it prices that really are from today's session:
+      - a symbol that hasn't traded today (holiday, halt, Yahoo gap) would fill orders at an old close: skipped;
+      - on a holiday or after a 1 pm early close the trigger can't tell the market is shut: stale prices skipped;
+      - after the close, today's prices are the closing prices: stamped at the close, so orders placed before
+        the bell fill at the close and orders placed after it wait for the next open.
+    """
+    import datetime as dt
+    import math
+    import re
+    from digest import hours
+    as_of = dt.datetime.fromisoformat(snapshot["as_of"]).astimezone(hours.NY)
+    today = as_of.date().isoformat()
+    sess = hours.session(as_of.date())
+    fresh_as_of = sess[1] if sess and as_of > sess[1] else as_of
+    in_window = lambda t: t.weekday() < 5 and dt.time(9, 30) <= t.time() <= dt.time(16, 0)
+    session_ok = lambda t: bool(sess) and sess[0] <= t <= sess[1]
+
+    rows, seen, skipped = [], set(), 0
+    quotes = (snapshot.get("indices", []) + snapshot.get("funds", []) + snapshot.get("companies", [])
+              + snapshot.get("universe", []) + [m for g in (snapshot.get("movers") or {}).values() for m in g])
+    for q in quotes:
+        sym, price = q.get("symbol"), q.get("price")
+        if sym in seen or not isinstance(price, (int, float)) or not math.isfinite(price) or price <= 0 \
+                or not re.fullmatch(r"[A-Z0-9.^=\-]{1,12}", sym or ""):
+            continue  # one bad quote must not fail the whole batch (the table rejects it)
+        seen.add(sym)
+        fresh = q.get("date") is not None and q["date"] >= today
+        t = fresh_as_of if fresh and not sym.endswith("-USD") else as_of  # crypto trades on after the bell
+        if in_window(t) and not (fresh and session_ok(t)):
+            skipped += 1
+            continue
+        rows.append({"symbol": sym, "as_of": t.isoformat(), "price": round(float(price), 4), "name": q.get("name")})
+    if skipped:
+        print(f"  {skipped} prices not from today's session, not sent (they'd fill orders at a stale price)")
+    if not rows:
+        return
     if _db_url():
         _upsert_sql("prices", rows, "symbol, as_of")
     else:
