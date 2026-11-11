@@ -1,11 +1,12 @@
 """Daily market snapshot: index strip + company cards (price history, key stats, headlines). Free, via yfinance."""
 import concurrent.futures
-from zoneinfo import ZoneInfo
 import datetime as dt
 import math
 import re
 
 import yfinance as yf
+
+from digest import hours
 
 INDICES = [
     ("^GSPC", "S&P 500", "The 500 biggest US companies. When people say 'the market', they usually mean this."),
@@ -97,6 +98,11 @@ def _safe_news(t):
 
 
 def snapshot(tickers: list[str]) -> dict:
+    # Stamp the time before fetching: an order placed after this moment must not fill at these (older) prices.
+    now = dt.datetime.now(hours.NY).replace(second=0, microsecond=0)
+    today = now.date().isoformat()
+    sess = hours.session(now.date())
+    traded_today = bool(sess) and now >= sess[0]  # a trading session has started today
     symbols = list(dict.fromkeys([s for s, _, _ in INDICES] + ["^VIX"] + FUNDS + tickers + list(UNIVERSE)))
     hist = yf.download(symbols, period="1y", interval="1d", auto_adjust=True, progress=False, timeout=30)["Close"]
 
@@ -105,7 +111,9 @@ def snapshot(tickers: list[str]) -> dict:
             return None
         s = _series(hist[sym])
         last, prev = s[-1][1], s[-2][1] if len(s) > 1 else s[-1][1]
-        return {"symbol": sym, "price": last, "change": last - prev,
+        if traded_today and s[-1][0] < today:  # no trade yet today (halted, or its market is shut): no move today
+            prev = last
+        return {"symbol": sym, "price": last, "change": last - prev, "date": s[-1][0],
                 "change_pct": (last / prev - 1) * 100 if prev else 0, "history": s}
 
     indices = []
@@ -148,12 +156,12 @@ def snapshot(tickers: list[str]) -> dict:
     with concurrent.futures.ThreadPoolExecutor(max_workers=6) as ex:
         companies = [c for c in ex.map(company, tickers) if c]
     # Market time (New York), the same wherever this runs (Mac or cloud).
-    return {"as_of": dt.datetime.now(ZoneInfo("America/New_York")).isoformat(timespec="minutes"),
+    return {"as_of": now.isoformat(timespec="minutes"),
             "indices": indices, "companies": companies, "movers": movers(),
             "mood": mood(quote("^GSPC"), quote("^VIX")),
             "funds": [{**q, "name": n} for f, n in zip(FUNDS, FUND_NAMES) if (q := quote(f))],
             # price-only quotes (no history) keep the snapshot small; the game reads history from the database
-            "universe": [{"symbol": sym, "name": name, "price": q["price"], "change_pct": q["change_pct"]}
+            "universe": [{"symbol": sym, "name": name, "price": q["price"], "change_pct": q["change_pct"], "date": q["date"]}
                          for sym, name in UNIVERSE.items() if (q := quote(sym))]}
 
 
@@ -184,7 +192,9 @@ def movers(count: int = 5) -> dict:
             print(f"! movers {key}: {e!r}")
             continue
         out[key] = [{"symbol": q["symbol"], "name": q.get("shortName") or q["symbol"],
-                     "price": q.get("regularMarketPrice"), "change_pct": q.get("regularMarketChangePercent", 0),
-                     "change": q.get("regularMarketChange", 0)}
+                     "price": _num(q.get("regularMarketPrice")), "change_pct": _num(q.get("regularMarketChangePercent")) or 0,
+                     "change": _num(q.get("regularMarketChange")) or 0,
+                     "date": dt.datetime.fromtimestamp(q["regularMarketTime"], hours.NY).date().isoformat()
+                             if q.get("regularMarketTime") else None}
                     for q in quotes if (q.get("marketCap") or 0) > 2e9][:count]
     return out

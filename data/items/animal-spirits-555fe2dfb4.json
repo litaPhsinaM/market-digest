@@ -43,11 +43,11 @@
    },
    {
     "figure": "13% to 15%",
-    "context": "QQI, one of Neos' funds, provides a distribution yield of 13% to 15% per year."
+    "context": "QQQI, Neos' Nasdaq-100 high income fund, provides a distribution yield of 13% to 15% per year."
    },
    {
     "figure": "7% to 9%",
-    "context": "QQH, a version of Neos' NASDAQ 100 fund, provides a lower distribution yield of 7% to 9% per year but includes explicit downside protection."
+    "context": "QQQH, a hedged version of Neos' Nasdaq-100 income fund, provides a lower distribution yield of 7% to 9% per year but includes explicit downside protection."
    }
   ],
   "lesson": "When strategies are used to customize investments and generate income, they can help manage tax liability and produce returns, but they also introduce trade-offs that require careful planning and execution.",
@@ -56,10 +56,7 @@
    "Wes Matthews: 'It's not just in our universe. They do that everywhere.'",
    "Casey Walsh-Jason: 'I think it's much more digestible to break it out that way because I get out of this misnomer of what tax alpha actually is and spending a whole meeting educating people on just a term instead of the actual results.'"
   ],
-  "tickers": [
-   "dimensional.com",
-   "neosfunds.com"
-  ],
+  "tickers": [],
   "glossary": [
    {
     "term": "SMAs",

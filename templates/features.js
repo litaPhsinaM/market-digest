@@ -19,12 +19,31 @@
     store.set("log", log);
   }
   const todayLocal = () => new Date().toLocaleDateString("en-CA"); // YYYY-MM-DD
+
+  // US market hours in New York time, wherever the visitor is. Keep these dates in sync with digest/hours.py.
+  const CLOSED = ("2026-01-01 2026-01-19 2026-02-16 2026-04-03 2026-05-25 2026-06-19 2026-07-03 2026-09-07 2026-11-26 " +
+    "2026-12-25 2027-01-01 2027-01-18 2027-02-15 2027-03-26 2027-05-31 2027-06-18 2027-07-05 2027-09-06 2027-11-25 2027-12-24").split(" ");
+  const EARLY = ["2026-11-27", "2026-12-24", "2027-11-26"]; // close at 1 pm ET
+  MD.market = (when = new Date()) => {
+    const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York", year: "numeric", month: "2-digit",
+      day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23", weekday: "short" }).formatToParts(when).map((x) => [x.type, x.value]));
+    const day = `${p.year}-${p.month}-${p.day}`, hm = +p.hour * 100 + +p.minute, close = EARLY.includes(day) ? 1300 : 1600;
+    const why = p.weekday === "Sat" || p.weekday === "Sun" ? "weekend" : CLOSED.includes(day) ? "holiday" : hm < 930 ? "before" : hm >= close ? "after" : "";
+    const label = { weekend: "Market closed for the weekend", holiday: "Market closed today (holiday)",
+      before: "Market opens at 9:30 am ET", after: `Market closed at ${close === 1300 ? "1 pm" : "4 pm"} ET` }[why] || "Market open";
+    const sinceOpen = Math.floor(hm / 100) * 60 + (hm % 100) - 570; // minutes since 9:30 am ET
+    return { open: !why, why, day, label, sinceOpen };
+  };
   const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
   function toast(msg) {
     const t = $("#toast");
-    t.textContent = msg; t.hidden = false; t.classList.add("on");
-    clearTimeout(toast.h); toast.h = setTimeout(() => { t.classList.remove("on"); setTimeout(() => (t.hidden = true), 250); }, 2400);
+    t.textContent = msg; t.hidden = false;
+    // As a popover the toast sits in the top layer, so it shows above an open sheet/dialog (and its blurred backdrop),
+    // not behind it. Re-showing it puts it above a dialog opened after it.
+    if (t.showPopover) { try { if (t.matches(":popover-open")) t.hidePopover(); t.showPopover(); } catch (e) { /* not supported */ } }
+    t.classList.add("on");
+    clearTimeout(toast.h); toast.h = setTimeout(() => { t.classList.remove("on"); setTimeout(() => { t.hidden = true; try { t.hidePopover && t.hidePopover(); } catch (e) {} }, 250); }, 2400);
   }
 
   // ---------- theme ----------
@@ -221,8 +240,33 @@
   $$("[data-stack]").forEach(initStack);
 
   // Yesterday's digest still up (today's not generated yet)? Say so instead of pretending it's today's.
+  // Compared with the New York date: the digest is a US-market day, so a visitor abroad isn't told it's late.
+  const mkt = MD.market();
   const stale = $("#stale");
-  if (stale && stale.dataset.date < todayLocal()) stale.hidden = false;
+  if (stale && stale.dataset.date < mkt.day) {
+    stale.hidden = false;
+    const live = $("[data-live]", stale);
+    if (live && !mkt.open) live.textContent = `${mkt.label}: prices are from the last close. Games and lessons are open.`;
+  }
+  // Today's call is scored at the first market-hours update 20+ hours later: "tomorrow" only if that's tomorrow.
+  const call = $("[data-call-sym]");
+  if (call) {
+    let t = new Date(Date.now() + 20 * 3600e3);
+    for (let i = 0; i < 1500 && !MD.market(t).open; i++) t = new Date(t.getTime() + 15 * 60e3);
+    const tmr = MD.market(new Date(Date.now() + 24 * 3600e3)).day;
+    if (MD.market(t).day !== tmr) {
+      const wd = t.toLocaleDateString("en-US", { timeZone: "America/New_York", weekday: "long" });
+      $$("[data-settle]", call).forEach((el) => { el.textContent = el.dataset.settle === "pos" ? `${wd}’s` : wd; });
+    }
+  }
+  // "as of" lines under prices: say whether the market is open, and flag prices that stopped updating.
+  $$("[data-asof]").forEach((el) => {
+    const age = (Date.now() - new Date(el.dataset.asof)) / 60000;
+    const st = $("[data-mkt]", el);
+    if (!st || isNaN(age)) return;
+    st.textContent = mkt.open && age > 45 && mkt.sinceOpen > 45 ? `⚠ Market open, but these prices are ${age < 90 ? Math.round(age) + " min" : Math.round(age / 60) + " h"} old (update delayed)`
+      : mkt.open ? "Market open · updates every 15 min" : `${mkt.label} · updates resume at the next open`;
+  });
 
   // First-visit intro: shown until dismissed or until the visitor has used the app on another day.
   const intro = $("#intro");

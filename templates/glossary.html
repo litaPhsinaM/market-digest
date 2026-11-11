@@ -4,8 +4,10 @@
 {% block content %}
 <h1>Glossary</h1>
 <p class="muted">Every term that has come up so far, in plain English. {{ terms|length }} terms.</p>
-<input id="q" class="search" type="search" placeholder="Filter terms…" oninput="
-  const q=this.value.toLowerCase();document.querySelectorAll('.gterm').forEach(e=>e.hidden=!e.textContent.toLowerCase().includes(q))">
+<input id="q" class="search" type="search" placeholder="Filter terms…" aria-label="Filter terms" oninput="
+  const q=this.value.toLowerCase();let n=0;document.querySelectorAll('.gterm').forEach(e=>{e.hidden=!e.textContent.toLowerCase().includes(q);n+=!e.hidden});
+  const none=document.getElementById('g-none');none.hidden=n>0;none.querySelector('b').textContent=this.value">
+<p class="muted" id="g-none" hidden>No terms match “<b></b>”. Try a shorter word, or search everything with the 🔍 button.</p>
 {% for t in terms %}
 <div class="gterm" id="{{ t.term|slug }}">
   <h3>{{ t.term }}</h3>

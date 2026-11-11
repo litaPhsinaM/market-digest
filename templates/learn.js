@@ -141,16 +141,17 @@
       }
     });
     $("#pr-next").addEventListener("click", () => {
+      if (round.finished) return run.close();  // "Done" on the score screen
       if (round.i + 1 < round.qs.length) { round.i++; return showQ(); }
+      round.finished = true;
       const key = "practice:" + round.level, prev = MD.store.get(key, {});
       MD.store.set(key, { best: Math.max(prev.best || 0, round.right), rounds: (prev.rounds || 0) + 1 });
       const days = new Set(MD.store.get("days", [])); days.add(MD.todayLocal()); MD.store.set("days", [...days].sort());
       MD.refresh(); MD.track("practice_done", { level: round.level, right: round.right });
       $("#pr-bar").style.width = "100%";
-      const msg = round.right >= 9 ? "🏆 Outstanding!" : round.right >= 7 ? "🎉 Strong work!" : round.right >= 5 ? "👍 Solid. Review the lessons linked above and try again." : "📘 Good start. The linked lessons will help.";
+      const msg = round.right >= 9 ? "🏆 Outstanding!" : round.right >= 7 ? "🎉 Strong work!" : round.right >= 5 ? "👍 Solid. Review the lessons for the ones you missed and try again." : "📘 Good start. The lessons above this practice section will help.";
       $("#pr-q").innerHTML = `<div class="pr-done"><div class="pr-score">${round.right}/${round.qs.length}</div><p>${msg}</p></div>`;
       $("#pr-next").textContent = "Done";
-      $("#pr-next").onclick = () => { $("#pr-next").onclick = null; run.close(); };
     });
   }
 

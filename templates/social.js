@@ -122,16 +122,18 @@
       const scored = (r) => r.calls >= 5 && r.skill != null;
       rows = data.sort((a, b) => (scored(b) - scored(a)) || (b.skill ?? -999) - (a.skill ?? -999) || b.right_calls - a.right_calls);
       col = "🔮 Forecasting skill (60 days)";
-      fmt = (r) => r.skill != null ? `<b>${r.skill > 0 ? "+" : ""}${r.skill}</b> <span class="muted">${r.right_calls}/${r.calls} right</span>` : `<span class="muted">${r.calls} pending</span>`;
+      fmt = (r) => r.skill != null ? `<b>${r.skill > 0 ? "+" : ""}${r.skill}</b> <span class="muted">${r.right_calls} right of ${r.calls} calls</span>` : `<span class="muted">${r.calls} pending</span>`;
     } else {
       const { data, error } = await MD.sb.rpc("leaderboard_portfolios");
       if (error) return (tbody.innerHTML = `<tr><td colspan="4">${esc(errMsg(error))}</td></tr>`);
       rows = board === "networth" ? data.sort((a, b) => b.value - a.value) : data.sort((a, b) => b.return_pct - a.return_pct);
       col = board === "networth" ? "💰 Net worth" : "💼 Investment return";
-      fmt = (r) => board === "networth" ? `<b>${money(r.value)}</b> <span class="muted">earned ${money(r.deposits)}</span>`
+      // deposits = the $10,000 start + money earned by learning, so "earned" is the part above the start.
+      fmt = (r) => board === "networth" ? `<b>${money(r.value)}</b>${r.deposits > 10000 ? ` <span class="muted">${money(r.deposits - 10000)} earned</span>` : ""}`
         : `<span class="${r.return_pct >= 0 ? "pos" : "neg"}">${pct(r.return_pct)}</span> <span class="muted">${money(r.value)}</span>`;
     }
     friendCount = null;
+    if (scope === "friends" && !MD.user) rows = [];  // signed out: no friends list, show the sign-in prompt instead of everyone
     if (scope === "friends" && MD.user) {
       const { data } = await MD.sb.from("follows").select("followee").eq("follower", MD.user.id);
       friendCount = (data || []).length;
@@ -238,17 +240,25 @@
   const shortName = (n) => String(n || "").replace(/,? (Inc|Corp|Corporation|Holdings|Ltd|plc)\.?$/i, "").replace(/ (Inc|Corporation)\.?,?/, "");
 
   async function loadPrices() {
-    // Every price update since launch is small (≈30 symbols × a few updates a day), so fetch recent history once.
-    const { data } = await MD.sb.from("prices").select("symbol, as_of, price, name").order("as_of", { ascending: true }).limit(5000);
+    // Newest first: the API returns at most 1,000 rows per request and ~100 symbols are saved every 15 minutes, so an
+    // oldest-first query would show prices frozen at launch. The latest 4,000 rows reach back past the previous close.
+    const pages = await Promise.all([0, 1, 2, 3].map((i) => MD.sb.from("prices").select("symbol, as_of, price, name")
+      .order("as_of", { ascending: false }).order("symbol").range(i * 1000, i * 1000 + 999)));
+    const seen = new Set();
+    const rows = pages.flatMap((r) => r.data || []).filter((r) => !seen.has(r.symbol + r.as_of) && seen.add(r.symbol + r.as_of)).reverse();
+    const nyDay = new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" });
     prices = {};
-    for (const r of data || []) {
+    for (const r of rows) {
       const p = (prices[r.symbol] ||= { hist: [], name: r.name });
       p.hist.push([r.as_of, Number(r.price)]);
       p.name = r.name || p.name;
     }
     for (const p of Object.values(prices)) {
       p.price = p.hist[p.hist.length - 1][1];
-      p.prev = p.hist.length > 1 ? p.hist[p.hist.length - 2][1] : p.price;
+      // "today" = change since the last price of an earlier (New York) day, i.e. the previous close
+      const day = nyDay.format(new Date(p.hist[p.hist.length - 1][0]));
+      const before = p.hist.filter((h) => nyDay.format(new Date(h[0])) < day).pop();
+      p.prev = before ? before[1] : p.hist[0][1];
     }
   }
 
@@ -334,7 +344,7 @@
     const banner = $("#pf-pending");
     banner.hidden = !pending.length;
     if (pending.length) {
-      banner.innerHTML = `⏳ <b>${pending.length} order${pending.length > 1 ? "s" : ""}</b> will fill at the next price update ${marketOpenNow() ? "(within 15 min)" : "(when the market opens at 9:30 am ET)"}: ` +
+      banner.innerHTML = `⏳ <b>${pending.length} order${pending.length > 1 ? "s" : ""}</b> will fill at the next price update (${fillWhen()}): ` +
         pending.map((o) => `<span class="pend">${o.side === "buy" ? "Buy" : "Sell"} ${Number(o.qty)} ${esc(o.symbol)}</span>`).join(" ");
     }
 
@@ -363,10 +373,12 @@
         <span>${esc(r.reason)}</span><span class="muted small">${new Date(r.created_at).toLocaleDateString([], { month: "short", day: "numeric" })}</span></li>`).join("")
       || `<li class="muted">Nothing yet. Finish lesson 1 on the Learn tab for your first $500.</li>`;
   }
-  const marketOpenNow = () => {
-    const ny = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" }));
-    const hm = ny.getHours() * 100 + ny.getMinutes();
-    return ny.getDay() >= 1 && ny.getDay() <= 5 && hm >= 930 && hm < 1600;
+  // When a new order will fill: honest about closed markets and about price updates that are running late.
+  const fillWhen = () => {
+    const m = MD.market();
+    if (!m.open) return "when the market next opens at 9:30 am ET";
+    const last = Math.max(0, ...Object.values(prices).map((p) => Date.parse(p.hist[p.hist.length - 1][0])));
+    return last && m.sinceOpen > 45 && Date.now() - last > 45 * 60e3 ? "as soon as price updates resume (they're running late)" : "within 15 minutes";
   };
 
   // ---------- friends race ----------
@@ -476,9 +488,10 @@
       if (u) { tk.unit = u.dataset.unit; $$("[data-unit]").forEach((b) => b.setAttribute("aria-selected", b === u)); $("#tk-amt").value = ""; return updateEst(); }
       const a = e.target.closest("[data-amt]");
       if (a) {
-        const t = prices[tk.sym];
-        tk.unit = "usd"; $$("[data-unit]").forEach((b) => b.setAttribute("aria-selected", b.dataset.unit === "usd"));
-        $("#tk-amt").value = a.dataset.amt === "max" ? (tk.side === "buy" ? Math.floor(myPortfolio.cash * 100) / 100 : Math.floor(held(tk.sym) * t.price * 100) / 100) : a.dataset.amt;
+        // "Max" on a sell = every share you own (a dollar amount would round down and leave a sliver behind).
+        const sellAll = a.dataset.amt === "max" && tk.side === "sell";
+        tk.unit = sellAll ? "shares" : "usd"; $$("[data-unit]").forEach((b) => b.setAttribute("aria-selected", b.dataset.unit === tk.unit));
+        $("#tk-amt").value = sellAll ? held(tk.sym) : a.dataset.amt === "max" ? Math.floor(myPortfolio.cash * 100) / 100 : a.dataset.amt;
         return updateEst();
       }
       if (e.target.closest("#tk-go")) {
@@ -489,7 +502,7 @@
         if (error) { MD.toast(errMsg(error)); return updateEst(); }
         MD.track("paper_order", { sym: tk.sym, side: tk.side });
         $("#tk-done-title").textContent = `${tk.side === "buy" ? "Buy" : "Sell"} order placed`;
-        $("#tk-done-text").textContent = `${q.toLocaleString(undefined, { maximumFractionDigits: 4 })} shares of ${tk.sym}. It fills at the next price update${marketOpenNow() ? ", within 15 minutes" : ", when the market opens at 9:30 am ET"}.`;
+        $("#tk-done-text").textContent = `${q.toLocaleString(undefined, { maximumFractionDigits: 4 })} shares of ${tk.sym}. It fills at the next price update, ${fillWhen()}.`;
         showStep("tk-done");
         loadPortfolio();
       }
@@ -588,7 +601,7 @@
     $(".pr-btns", card).hidden = true; $(".conf", card).hidden = true;
     const made = $(".call-made", card); made.hidden = false;
     made.innerHTML = `<b>Your call is in: ${p.direction === "up" ? "▲ higher" : "▼ lower"}, ${Math.round(p.confidence * 100)}% sure.</b>
-      <span class="muted small">Scored at the next price update after ${new Date(new Date(p.made_at).getTime() + 20 * 3600e3).toLocaleString([], { weekday: "short", hour: "numeric", minute: "2-digit" })}. Right calls earn up to $400.</span>`;
+      <span class="muted small">Scored at the first market-hours price update after ${new Date(new Date(p.made_at).getTime() + 20 * 3600e3).toLocaleString([], { weekday: "short", hour: "numeric", minute: "2-digit" })}. Right calls earn up to $400.</span>`;
   }
   document.addEventListener("click", (e) => { if (e.target.closest("[data-call-sym] [data-predict]")) setTimeout(showMyCall, 800); });
 

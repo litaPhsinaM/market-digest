@@ -180,6 +180,10 @@ def write_market(today: str, cfg: dict):
     tickers = list(dict.fromkeys(list(mentioned) + watchlist))
     print(f"Fetching market snapshot for {len(tickers)} companies")
     snap = market.snapshot(tickers)
+    # Yahoo sometimes rate-limits or fails wholesale without raising: don't replace a good snapshot with an empty one.
+    if not snap["indices"] or len(snap["universe"]) < len(market.UNIVERSE) // 2:
+        raise RuntimeError(f"Yahoo returned too little ({len(snap['indices'])} indices, {len(snap['universe'])} of "
+                           f"{len(market.UNIVERSE)} stocks); keeping the last snapshot")
     kept = []
     for c in snap["companies"]:
         if c["symbol"] not in watchlist and not market.name_matches(c["name"], context.get(c["symbol"], "")):
@@ -221,6 +225,10 @@ def main():
     state = load_state()
     today = dt.date.today().isoformat()
     if args.market_only or args.hot_only:
+        # Market data is filed by the New York date (the cloud job runs in UTC, which is tomorrow by evening ET).
+        if args.market_only:
+            from digest import hours
+            today = dt.datetime.now(hours.NY).date().isoformat()
         if args.hot_only:
             write_hot(today, cfg)
         write_market(today, cfg)
