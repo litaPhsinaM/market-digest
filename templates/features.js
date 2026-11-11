@@ -39,6 +39,10 @@
     bar.setBackgroundColor({ color: dark ? "#111110" : "#f4f3ef" }).catch(() => {});
   }
   syncStatusBar();
+  // Android's splash screen resets the status bar icons when it fades out (often after this first call), and so can
+  // coming back from another app, so set it again once the splash is gone and on every return to the app.
+  setTimeout(syncStatusBar, 1500);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) syncStatusBar(); });
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", syncStatusBar);
   themeBtn && themeBtn.addEventListener("click", () => {
     const next = effective() === "dark" ? "light" : "dark";
@@ -46,6 +50,12 @@
     try { localStorage.setItem("theme", next); } catch (e) {}
     syncStatusBar();
   });
+
+  // On a phone the section tabs scroll sideways: make sure the current one (e.g. Play) is in view.
+  const curTab = $(".tabs [aria-current=page]");
+  if (curTab && curTab.parentElement.scrollWidth > curTab.parentElement.clientWidth) {
+    curTab.parentElement.scrollLeft = curTab.offsetLeft - curTab.parentElement.offsetLeft - 8;
+  }
 
   // ---------- streak ----------
   function markActive() {
@@ -438,8 +448,26 @@
     if (b) { shareCard(b.dataset.kind, b.dataset.title, b.dataset.text); MD.track("share"); }
   });
 
+  // ---------- Android app: the BACK button closes whatever is open before it leaves the page or the app ----------
+  const capApp = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App;
+  if (capApp && capApp.addListener) {
+    capApp.addListener("backButton", ({ canGoBack }) => {
+      const tip = $("#tip");
+      if (tip && !tip.hidden) return void (tip.hidden = true);
+      if (stories && !stories.hidden) return closeStories();
+      const open = $$("dialog[open]");
+      if (open.length) return open[open.length - 1].close();
+      if (canGoBack) history.back();
+      else capApp.exitApp();
+    });
+  }
+
   // ---------- offline / installable app ----------
   if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
-    addEventListener("load", () => navigator.serviceWorker.register(base + "sw.js").catch(() => {}));
+    addEventListener("load", () => navigator.serviceWorker.register(base + "sw.js", { updateViaCache: "none" })
+      .then((r) => r.update()).catch(() => {}));
+    // When a new version takes over, reload once so the page isn't a mix of old and new.
+    let reloaded = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => { if (!reloaded) { reloaded = true; location.reload(); } });
   }
 })();

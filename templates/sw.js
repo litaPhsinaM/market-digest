@@ -13,8 +13,11 @@ self.addEventListener("activate", (e) => {
 self.addEventListener("fetch", (e) => {
   const url = new URL(e.request.url);
   if (e.request.method !== "GET" || url.origin !== location.origin) return;
+  // "no-cache" = always ask the server if there's something newer (cheap: unchanged files come back as 304),
+  // instead of trusting the browser's 10-minute copy from GitHub Pages. Audio can use the normal cache.
+  const fresh = url.pathname.endsWith(".mp3") ? e.request : new Request(e.request, { cache: "no-cache" });
   e.respondWith(
-    fetch(e.request).then((res) => {
+    fetch(fresh).then((res) => {
       if (res.ok && !url.pathname.endsWith(".mp3")) {
         const copy = res.clone();
         caches.open(CACHE).then((c) => c.put(e.request, copy));
