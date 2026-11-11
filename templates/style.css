@@ -915,3 +915,75 @@ button.act.progress { cursor: pointer; font: inherit; }
 .lb-empty { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 14px 4px; }
 .lb-empty span { color: var(--text-2); font-size: .9rem; }
 .lb-empty .btn { margin-top: 4px; }
+
+/* =================== Play: brokerage-style =================== */
+.play-guest-hero { padding: 28px 26px; margin-bottom: 18px; background: radial-gradient(120% 140% at 100% 0%, color-mix(in srgb, var(--up) 30%, var(--surface)), var(--surface) 60%); }
+.play-guest-hero h1 { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -0.02em; margin: 6px 0 8px; }
+.big-cta { margin-top: 14px; height: 48px; padding: 0 22px; font-size: 1rem; background: var(--up); color: #fff; }
+.pf-hero { position: relative; padding: 8px 2px 20px; margin-bottom: 8px; }
+.pf-label { font-size: .9rem; font-weight: 650; color: var(--text-2); display: flex; align-items: center; gap: 6px; }
+.pf-hero .pf-total { font-size: clamp(2.4rem, 7vw, 3.6rem); font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; line-height: 1.05; margin: 4px 0 8px; }
+.pf-changes { display: flex; flex-wrap: wrap; gap: 8px; }
+.pf-chip { display: inline-flex; align-items: center; gap: 4px; font-size: .84rem; font-weight: 700; padding: 3px 9px; border-radius: 8px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pf-chip.up { color: var(--up); background: var(--up-soft); } .pf-chip.down { color: var(--down); background: var(--down-soft); }
+.pf-chip:empty { display: none; }
+.pf-chart { height: 140px; margin: 16px 0 10px; }
+.pf-chart svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.pf-chart .ln { fill: none; stroke-width: 2.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.pf-chart .fill { opacity: .12; } .pf-chart .base { stroke: var(--line-strong); stroke-dasharray: 3 4; vector-effect: non-scaling-stroke; }
+.pf-chart .up .ln { stroke: var(--up); } .pf-chart .up .fill { fill: var(--up); }
+.pf-chart .down .ln { stroke: var(--down); } .pf-chart .down .fill { fill: var(--down); }
+.pf-flat { height: 100%; display: flex; align-items: center; } .pf-flat span { flex: 1; border-top: 2px dashed var(--line-strong); }
+.pf-bp { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; font-size: .9rem; color: var(--text-2); }
+.pf-bp b { color: var(--text); font-variant-numeric: tabular-nums; }
+.pf-pending { margin-top: 12px; padding: 10px 14px; border-radius: 12px; background: var(--warn-soft); color: var(--text); font-size: .88rem; line-height: 1.6; }
+.pend { display: inline-block; background: var(--surface); border-radius: 6px; padding: 0 7px; margin: 0 2px; font-weight: 650; font-size: .8rem; }
+.pf-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.trade-btn { height: 48px; padding: 0 30px; font-size: 1rem; font-weight: 750; background: var(--up); color: #fff; }
+.pf-hero.down .trade-btn, .pf-hero.down .big-cta { background: var(--down); }
+.play-cols { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+.play-main, .play-side { display: grid; gap: 16px; min-width: 0; }
+
+.race { display: grid; gap: 10px; }
+.racer { display: grid; grid-template-columns: 28px minmax(60px, 120px) 1fr 76px; align-items: center; gap: 10px; }
+.racer.me .r-name { font-weight: 800; }
+.r-rank { font-weight: 800; text-align: center; }
+.r-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.r-track { height: 14px; background: var(--surface-2); border-radius: 7px; overflow: hidden; }
+.r-bar { display: block; height: 100%; border-radius: 7px; transition: width .8s cubic-bezier(.2, .9, .3, 1); }
+.r-bar.up { background: linear-gradient(90deg, color-mix(in srgb, var(--up) 60%, transparent), var(--up)); }
+.r-bar.down { background: linear-gradient(90deg, color-mix(in srgb, var(--down) 60%, transparent), var(--down)); }
+.r-val { text-align: right; font-variant-numeric: tabular-nums; }
+
+.holdings, .tk-list { list-style: none; margin: 0; padding: 0; }
+.h-row, .tk-item { width: 100%; display: flex; align-items: center; gap: 12px; padding: 12px 4px; border: 0; border-top: 1px solid var(--line); background: none; cursor: pointer; text-align: left; color: var(--text); }
+.holdings li:first-child .h-row, .tk-list li:first-child .tk-item { border-top: 0; }
+.h-row:hover, .tk-item:hover { background: var(--surface-2); border-radius: 10px; }
+.h-id { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.h-id .muted { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.h-val { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; font-variant-numeric: tabular-nums; }
+.h-spark { width: 60px; height: 24px; flex: none; } .h-spark path { fill: none; stroke-width: 1.8; }
+.h-spark.up path { stroke: var(--up); } .h-spark.down path { stroke: var(--down); }
+.h-empty { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 10px 2px; }
+
+.trade-sheet { width: min(560px, calc(100vw - 24px)); }
+.tk-search { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line-strong); background: var(--surface-2); color: var(--text); font: inherit; margin: 12px 0 6px; }
+.tk-hint { margin-bottom: 8px; }
+.tk-list { max-height: 55vh; overflow-y: auto; }
+.tk-price { display: flex; align-items: baseline; gap: 10px; margin: 10px 0 14px; }
+.tk-price span:first-child { font-size: 2rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.tk-side, .tk-unit { margin-bottom: 10px; }
+.tk-side button { flex: 1; }
+.tk-amount { display: flex; align-items: center; gap: 6px; font-size: 2.2rem; font-weight: 800; border-bottom: 2px solid var(--line-strong); padding: 6px 0; margin: 6px 0 10px; }
+.tk-amount span { color: var(--text-3); }
+.tk-amount input { flex: 1; min-width: 0; border: 0; outline: 0; background: none; color: var(--text); font: inherit; font-variant-numeric: tabular-nums; }
+.tk-quick { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.tk-est { min-height: 1.4em; margin-bottom: 4px; }
+.tk-go { width: 100%; height: 52px; font-size: 1rem; font-weight: 750; margin-top: 12px; background: var(--up); color: #fff; }
+.tk-go.sell { background: var(--down); }
+.tk-go:disabled { background: var(--surface-2); color: var(--text-3); cursor: not-allowed; opacity: 1; }
+.tk-note { margin-top: 10px; }
+.tk-done { text-align: center; padding: 30px 10px 20px; }
+.tk-check { width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 12px; background: var(--up); color: #fff; font-size: 2.2rem; font-weight: 800; display: grid; place-items: center; animation: pop .5s cubic-bezier(.3, 1.6, .5, 1); }
+.tk-done p { margin: 6px 0 18px; }
+@media (max-width: 860px) { .play-cols { grid-template-columns: 1fr; } .racer { grid-template-columns: 26px minmax(50px, 90px) 1fr 70px; } }

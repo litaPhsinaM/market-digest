@@ -102,7 +102,7 @@
 
   // ---------- Play page ----------
   const play = $("#play");
-  let board = "streak", scope = "all", friendCount = null;
+  let board = "portfolio", scope = "all", friendCount = null;
   async function loadBoard() {
     const tbody = $("#lb-body");
     if (!tbody) return;
@@ -226,50 +226,251 @@
     try { await navigator.clipboard.writeText(v); MD.toast("Invite link copied"); } catch (e) { $("#invite-link").select(); }
   });
 
+  // ---------- portfolio (Robinhood-style) ----------
+  let prices = {};      // symbol -> {price, name, prev, hist: [[iso, price], ...]}
+  let myPortfolio = { cash: 100000, rows: [] };
+  const NAMES = { SPY: "S&P 500 index fund", QQQ: "Nasdaq-100 index fund", VTI: "Total US market fund" };
+  const shortName = (n) => String(n || "").replace(/,? (Inc|Corp|Corporation|Holdings|Ltd|plc)\.?$/i, "").replace(/ (Inc|Corporation)\.?,?/, "");
+
+  async function loadPrices() {
+    // Every price update since launch is small (≈30 symbols × a few updates a day), so fetch recent history once.
+    const { data } = await MD.sb.from("prices").select("symbol, as_of, price, name").order("as_of", { ascending: true }).limit(5000);
+    prices = {};
+    for (const r of data || []) {
+      const p = (prices[r.symbol] ||= { hist: [], name: r.name });
+      p.hist.push([r.as_of, Number(r.price)]);
+      p.name = r.name || p.name;
+    }
+    for (const p of Object.values(prices)) {
+      p.price = p.hist[p.hist.length - 1][1];
+      p.prev = p.hist.length > 1 ? p.hist[p.hist.length - 2][1] : p.price;
+    }
+  }
+
+  // Portfolio value at each price update, rebuilt from your actual fills (cash + shares held × price at that time).
+  function valueSeries(orders) {
+    const fills = orders.filter((o) => o.status === "filled").sort((a, b) => new Date(a.filled_at) - new Date(b.filled_at));
+    const times = [...new Set(Object.values(prices).flatMap((p) => p.hist.map((h) => h[0])))].sort();
+    const start = fills.length ? fills[0].filled_at : null;
+    const out = [];
+    for (const t of times) {
+      if (start && t < start) continue;
+      let cash = 100000; const held = {};
+      for (const f of fills) {
+        if (f.filled_at > t) break;
+        const amt = Number(f.qty) * Number(f.fill_price);
+        if (f.side === "buy") { cash -= amt; held[f.symbol] = (held[f.symbol] || 0) + Number(f.qty); }
+        else { cash += amt; held[f.symbol] = (held[f.symbol] || 0) - Number(f.qty); }
+      }
+      let v = cash;
+      for (const [s, q] of Object.entries(held)) {
+        const h = prices[s]?.hist.filter((x) => x[0] <= t).pop();
+        if (h) v += q * h[1];
+      }
+      out.push([t, v]);
+    }
+    return out;
+  }
+
+  function lineChart(el, series, up) {
+    if (series.length < 2) { el.innerHTML = `<div class="pf-flat"><span></span></div>`; return; }
+    const W = el.clientWidth || 600, H = 140, vals = series.map((s) => s[1]);
+    let lo = Math.min(...vals, 100000), hi = Math.max(...vals, 100000); const pad = (hi - lo) * 0.1 || 1; lo -= pad; hi += pad;
+    const X = (i) => (i / (series.length - 1)) * W, Y = (v) => H - ((v - lo) / (hi - lo)) * H;
+    const d = series.map((s, i) => `${i ? "L" : "M"}${X(i).toFixed(1)},${Y(s[1]).toFixed(1)}`).join("");
+    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" class="${up ? "up" : "down"}" role="img" aria-label="Portfolio value over time">
+      <line class="base" x1="0" x2="${W}" y1="${Y(100000)}" y2="${Y(100000)}"/><path class="fill" d="${d}L${W},${H}L0,${H}Z"/><path class="ln" d="${d}"/></svg>`;
+  }
+  const sparkline = (hist) => {
+    if (!hist || hist.length < 2) return "";
+    const v = hist.map((h) => h[1]), lo = Math.min(...v), hi = Math.max(...v), r = hi - lo || 1;
+    const d = v.map((x, i) => `${i ? "L" : "M"}${(i / (v.length - 1) * 60).toFixed(1)},${(22 - (x - lo) / r * 20).toFixed(1)}`).join("");
+    return `<svg class="h-spark ${v[v.length - 1] >= v[0] ? "up" : "down"}" viewBox="0 0 60 24" aria-hidden="true"><path d="${d}"/></svg>`;
+  };
+  const chip = (el, val, label, isPct = true) => {
+    el.className = "pf-chip " + (val >= 0 ? "up" : "down");
+    el.textContent = `${val >= 0 ? "▲" : "▼"} ${isPct ? pct(val) : money(Math.abs(val))} ${label}`;
+  };
+
   async function loadPortfolio() {
     const box = $("#portfolio");
     if (!box || !MD.user) return;
-    const [{ data: pf }, { data: pos }, { data: orders }, { data: lp }] = await Promise.all([
+    const [{ data: pf }, { data: pos }, { data: orders }] = await Promise.all([
       MD.sb.from("portfolios").select("cash").eq("user_id", MD.user.id).maybeSingle(),
       MD.sb.from("positions").select("*").eq("user_id", MD.user.id),
-      MD.sb.from("orders").select("*").eq("user_id", MD.user.id).order("placed_at", { ascending: false }).limit(15),
-      MD.sb.from("latest_prices").select("symbol, price, name, as_of"),
+      MD.sb.from("orders").select("*").eq("user_id", MD.user.id).order("placed_at", { ascending: false }).limit(200),
+      loadPrices(),
     ]);
-    const price = Object.fromEntries((lp || []).map((p) => [p.symbol, p]));
     const cash = pf ? Number(pf.cash) : 100000;
-    const rows = (pos || []).map((p) => ({ ...p, now: price[p.symbol]?.price ?? p.avg_buy_price, name: price[p.symbol]?.name || p.symbol }));
+    const rows = (pos || []).map((p) => {
+      const q = prices[p.symbol] || {};
+      const now = q.price ?? Number(p.avg_buy_price);
+      return { ...p, qty: Number(p.qty), avg: Number(p.avg_buy_price), now, prev: q.prev ?? now, name: NAMES[p.symbol] || shortName(q.name) || p.symbol, hist: q.hist };
+    }).sort((a, b) => b.qty * b.now - a.qty * a.now);
+    myPortfolio = { cash, rows };
     const invested = rows.reduce((s, r) => s + r.qty * r.now, 0);
     const total = cash + invested, ret = (total / 100000 - 1) * 100;
+    const todayChange = rows.reduce((s, r) => s + r.qty * (r.now - r.prev), 0);
     $("#pf-total").textContent = money(total);
-    $("#pf-ret").innerHTML = `<span class="${ret >= 0 ? "pos" : "neg"}">${pct(ret)}</span> since you started with $100,000`;
+    chip($("#pf-today"), todayChange, "today", false);
+    chip($("#pf-ret"), ret, "all time");
     $("#pf-cash").textContent = money(cash);
     $("#pf-inv").textContent = money(invested);
-    $("#pf-pos").innerHTML = rows.length ? rows.map((r) => {
-      const g = (r.now / r.avg_buy_price - 1) * 100;
-      return `<tr><td><b>${esc(r.symbol)}</b><div class="muted small">${esc(r.name)}</div></td><td class="num">${Number(r.qty).toLocaleString()}</td>
-        <td class="num">${money(r.avg_buy_price)}</td><td class="num">${money(r.now)}</td><td class="num">${money(r.qty * r.now)} <span class="${g >= 0 ? "pos" : "neg"}">${pct(g)}</span></td></tr>`;
-    }).join("") : `<tr><td colspan="5" class="muted">No holdings yet. Try buying a few shares of SPY (the whole S&P 500 in one fund) below.</td></tr>`;
-    $("#pf-orders").innerHTML = (orders || []).map((o) => `<li><span class="st st-${o.status}">${o.status}</span>
-        ${o.side === "buy" ? "Buy" : "Sell"} ${Number(o.qty)} <b>${esc(o.symbol)}</b>
-        ${o.fill_price ? "at " + money(o.fill_price) : ""} <span class="muted">${new Date(o.placed_at).toLocaleString()}</span>
-        ${o.note ? `<span class="muted">· ${esc(o.note)}</span>` : ""}
-        ${o.status === "pending" ? `<button class="mini" type="button" data-cancel="${o.id}">Cancel</button>` : ""}</li>`).join("") || `<li class="muted">No orders yet.</li>`;
-    const sel = $("#qt-sym");
-    if (sel && !sel.options.length) {
-      const tradable = (lp || []).filter((p) => !p.symbol.startsWith("^")).sort((a, b) => a.symbol.localeCompare(b.symbol));
-      const funds = ["SPY", "QQQ", "VTI"];
-      sel.innerHTML = tradable.sort((a, b) => (funds.includes(b.symbol) - funds.includes(a.symbol))).map((p) => `<option value="${esc(p.symbol)}" data-price="${p.price}">${esc(p.symbol)} · ${esc(p.name || "")} · ${money(p.price)}</option>`).join("");
-      // Set the starting choice directly (not via a synthetic change event) so the cost estimate always works.
-      const box = sel.closest(".trade"), opt = sel.options[0];
-      if (opt) { box.dataset.sym = opt.value; box.dataset.price = opt.dataset.price; }
+    // No fills yet: a flat dashed line instead of a chart of nothing.
+    const filled = (orders || []).some((o) => o.status === "filled");
+    lineChart($("#pf-chart"), filled ? valueSeries(orders || []) : [], ret >= 0);
+    box.classList.toggle("down", ret < 0);
+
+    const pending = (orders || []).filter((o) => o.status === "pending");
+    const banner = $("#pf-pending");
+    banner.hidden = !pending.length;
+    if (pending.length) {
+      banner.innerHTML = `⏳ <b>${pending.length} order${pending.length > 1 ? "s" : ""}</b> will fill at the next price update ${marketOpenNow() ? "(within 15 min)" : "(when the market opens at 9:30 am ET)"}: ` +
+        pending.map((o) => `<span class="pend">${o.side === "buy" ? "Buy" : "Sell"} ${Number(o.qty)} ${esc(o.symbol)}</span>`).join(" ");
     }
+
+    $("#pf-pos").innerHTML = rows.length ? rows.map((r) => {
+      const g = (r.now / r.avg - 1) * 100, value = r.qty * r.now;
+      return `<li><button type="button" class="h-row" data-trade-sym="${esc(r.symbol)}">
+        <span class="co-logo">${esc(r.symbol[0])}</span>
+        <span class="h-id"><b>${esc(r.symbol)}</b><span class="muted small">${Number(r.qty).toLocaleString(undefined, { maximumFractionDigits: 4 })} shares</span></span>
+        ${sparkline(r.hist)}
+        <span class="h-val"><b>${money(value)}</b><span class="pf-chip ${g >= 0 ? "up" : "down"}">${g >= 0 ? "▲" : "▼"} ${pct(g)}</span></span></button></li>`;
+    }).join("") : `<li class="h-empty"><b>No holdings yet</b><span class="muted">Your $100,000 is waiting. Most beginners start with an index fund like <b>SPY</b>.</span>
+        <button class="btn" type="button" data-trade-sym="SPY">Buy SPY</button></li>`;
+
+    $("#pf-orders").innerHTML = (orders || []).slice(0, 15).map((o) => `<li><span class="st st-${o.status}">${o.status}</span>
+        ${o.side === "buy" ? "Buy" : "Sell"} ${Number(o.qty).toLocaleString(undefined, { maximumFractionDigits: 4 })} <b>${esc(o.symbol)}</b>
+        ${o.fill_price ? "at " + money(o.fill_price) : ""} <span class="muted small">${new Date(o.placed_at).toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}</span>
+        ${o.note ? `<span class="muted small">· ${esc(o.note)}</span>` : ""}
+        ${o.status === "pending" ? `<button class="mini" type="button" data-cancel="${o.id}">Cancel</button>` : ""}</li>`).join("") || `<li class="muted">No orders yet.</li>`;
+    loadRace(total);
   }
-  $("#qt-sym") && $("#qt-sym").addEventListener("change", (e) => {
-    const box = e.target.closest(".trade"), opt = e.target.selectedOptions[0];
-    if (!opt) return;
-    box.dataset.sym = opt.value; box.dataset.price = opt.dataset.price;
-    $(".trade-qty", box).dispatchEvent(new Event("input", { bubbles: true }));
-  });
+  const marketOpenNow = () => {
+    const ny = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" }));
+    const hm = ny.getHours() * 100 + ny.getMinutes();
+    return ny.getDay() >= 1 && ny.getDay() <= 5 && hm >= 930 && hm < 1600;
+  };
+
+  // ---------- friends race ----------
+  async function loadRace(myTotal) {
+    const box = $("#race");
+    if (!box) return;
+    const [{ data: board }, { data: fol }] = await Promise.all([
+      MD.sb.rpc("leaderboard_portfolios"),
+      MD.sb.from("follows").select("followee").eq("follower", MD.user.id),
+    ]);
+    const ids = new Set((fol || []).map((f) => f.followee).concat(MD.user.id));
+    let racers = (board || []).filter((r) => ids.has(r.id)).map((r) => ({ ...r, me: r.id === MD.user.id }));
+    if (!racers.some((r) => r.me)) racers.push({ id: MD.user.id, me: true, username: (profile && profile.username) || "you", display_name: "You", return_pct: (myTotal / 100000 - 1) * 100, value: myTotal });
+    racers.sort((a, b) => b.return_pct - a.return_pct);
+    const maxAbs = Math.max(1, ...racers.map((r) => Math.abs(r.return_pct)));
+    box.innerHTML = racers.map((r, i) => `<div class="racer ${r.me ? "me" : ""}">
+        <span class="r-rank">${i === 0 && racers.length > 1 ? "👑" : i + 1}</span>
+        <span class="r-name">${r.me ? "You" : esc(r.display_name || r.username)}</span>
+        <span class="r-track"><span class="r-bar ${r.return_pct >= 0 ? "up" : "down"}" style="width:${Math.max(4, Math.abs(r.return_pct) / maxAbs * 100)}%"></span></span>
+        <span class="r-val ${r.return_pct >= 0 ? "pos" : "neg"}">${pct(Number(r.return_pct))}</span></div>`).join("")
+      + (racers.length < 2 ? `<p class="muted small">Invite a friend to race: whoever grows their $100,000 the most wins. <button class="mini" type="button" id="race-invite">Copy invite link</button></p>` : "");
+    const me = racers.findIndex((r) => r.me);
+    $("#race-note").textContent = racers.length < 2 ? "" : me === 0 ? "You're in the lead 👑" : `You're #${me + 1} · ${(racers[0].return_pct - racers[me].return_pct).toFixed(2)}% behind ${racers[0].display_name || racers[0].username}`;
+  }
+  const copyInvite = async () => {
+    const v = $("#invite-link").value;
+    if (!v) return (MD.user ? openUsername() : needAccount());
+    try { await navigator.clipboard.writeText(v); MD.toast("Invite link copied: send it to a friend 🏁"); } catch (e) { $("#invite-link").select(); }
+  };
+  document.addEventListener("click", (e) => { if (e.target.closest("#race-invite, #invite-copy-2")) copyInvite(); });
+
+  // ---------- trade ticket ----------
+  const tk = { sym: null, side: "buy", unit: "usd" };
+  const tradeDlg = $("#trade");
+  const tradables = () => Object.entries(prices).filter(([s]) => !s.startsWith("^")).map(([s, p]) => ({ sym: s, ...p, name: NAMES[s] || shortName(p.name) || s }))
+    .sort((a, b) => (["SPY", "QQQ", "VTI"].indexOf(b.sym) + 1 > 0) - (["SPY", "QQQ", "VTI"].indexOf(a.sym) + 1 > 0) || a.sym.localeCompare(b.sym));
+  function renderPick() {
+    const q = ($("#tk-search").value || "").trim().toLowerCase();
+    const list = tradables().filter((t) => !q || t.sym.toLowerCase().includes(q) || t.name.toLowerCase().includes(q));
+    $("#tk-list").innerHTML = list.map((t) => { const m = (t.price / t.prev - 1) * 100;
+      return `<li><button type="button" class="tk-item" data-pick="${esc(t.sym)}"><span class="co-logo">${esc(t.sym[0])}</span>
+        <span class="h-id"><b>${esc(t.sym)}</b><span class="muted small">${esc(t.name)}</span></span>${sparkline(t.hist)}
+        <span class="h-val"><b>${money(t.price)}</b><span class="pf-chip ${m >= 0 ? "up" : "down"}">${m >= 0 ? "▲" : "▼"} ${pct(m)}</span></span></button></li>`; }).join("")
+      || `<li class="muted">No match. Only stocks shown on today's page and the SPY, QQQ, VTI funds can be traded here.</li>`;
+  }
+  function showStep(step) { ["tk-pick", "tk-ticket", "tk-done"].forEach((id) => ($("#" + id).hidden = id !== step)); }
+  async function openTrade(sym) {
+    if (!(await ready())) return;
+    if (!Object.keys(prices).length) await loadPrices();
+    $("#tk-search").value = ""; renderPick();
+    sym ? openTicket(sym) : showStep("tk-pick");
+    tradeDlg.showModal();
+  }
+  function openTicket(sym) {
+    const t = tradables().find((x) => x.sym === sym);
+    if (!t) return MD.toast("That one can't be traded here yet");
+    tk.sym = sym;
+    $("#tk-name").textContent = t.name; $("#tk-sym").textContent = sym;
+    $("#tk-price").textContent = money(t.price);
+    const m = (t.price / t.prev - 1) * 100; chip($("#tk-move"), m, "today");
+    $("#tk-amt").value = ""; setSide(tk.side); showStep("tk-ticket"); updateEst();
+    setTimeout(() => $("#tk-amt").focus(), 50);
+  }
+  function held(sym) { return myPortfolio.rows.find((r) => r.symbol === sym)?.qty || 0; }
+  function setSide(side) {
+    tk.side = side;
+    $$("[data-side]").forEach((b) => b.setAttribute("aria-selected", b.dataset.side === side));
+    $("#tk-go").classList.toggle("sell", side === "sell");
+    updateEst();
+  }
+  function shares() {
+    const t = prices[tk.sym], a = parseFloat($("#tk-amt").value);
+    if (!t || !(a > 0)) return 0;
+    return tk.unit === "usd" ? a / t.price : a;
+  }
+  function updateEst() {
+    const t = prices[tk.sym]; if (!t) return;
+    const q = shares(), cost = q * t.price;
+    $("#tk-unit-sym").textContent = tk.unit === "usd" ? "$" : "#";
+    $("#tk-est").innerHTML = q ? (tk.unit === "usd" ? `≈ <b>${q.toLocaleString(undefined, { maximumFractionDigits: 4 })} shares</b>` : `≈ <b>${money(cost)}</b>`) + ` at ${money(t.price)}` : "";
+    $("#tk-bp").textContent = tk.side === "buy" ? `Buying power ${money(myPortfolio.cash)}` : `You own ${held(tk.sym).toLocaleString(undefined, { maximumFractionDigits: 4 })} shares`;
+    const tooMuch = tk.side === "buy" ? cost > myPortfolio.cash + 0.005 : q > held(tk.sym) + 1e-9;
+    $("#tk-go").disabled = !q || tooMuch;
+    $("#tk-go").textContent = !q ? "Enter an amount" : tooMuch ? (tk.side === "buy" ? "Not enough buying power" : "You don't own that many") : `${tk.side === "buy" ? "Buy" : "Sell"} ${tk.unit === "usd" ? money(cost) : q + " shares"} of ${tk.sym}`;
+  }
+  if (tradeDlg) {
+    document.addEventListener("click", (e) => {
+      const o = e.target.closest("[data-open-trade]"); if (o) return openTrade();
+      const s = e.target.closest("[data-trade-sym]"); if (s) return openTrade(s.dataset.tradeSym);
+    });
+    tradeDlg.addEventListener("click", async (e) => {
+      if (e.target === tradeDlg || e.target.closest("[data-sheet-close]")) return tradeDlg.close();
+      const p = e.target.closest("[data-pick]"); if (p) return openTicket(p.dataset.pick);
+      if (e.target.closest("[data-tk-back]")) return showStep("tk-pick");
+      const sd = e.target.closest("[data-side]"); if (sd) return setSide(sd.dataset.side);
+      const u = e.target.closest("[data-unit]");
+      if (u) { tk.unit = u.dataset.unit; $$("[data-unit]").forEach((b) => b.setAttribute("aria-selected", b === u)); $("#tk-amt").value = ""; return updateEst(); }
+      const a = e.target.closest("[data-amt]");
+      if (a) {
+        const t = prices[tk.sym];
+        tk.unit = "usd"; $$("[data-unit]").forEach((b) => b.setAttribute("aria-selected", b.dataset.unit === "usd"));
+        $("#tk-amt").value = a.dataset.amt === "max" ? (tk.side === "buy" ? Math.floor(myPortfolio.cash * 100) / 100 : Math.floor(held(tk.sym) * t.price * 100) / 100) : a.dataset.amt;
+        return updateEst();
+      }
+      if (e.target.closest("#tk-go")) {
+        const q = Math.floor(shares() * 10000) / 10000;
+        if (!q) return;
+        $("#tk-go").disabled = true; $("#tk-go").textContent = "Placing…";
+        const { error } = await MD.sb.rpc("place_order", { p_symbol: tk.sym, p_side: tk.side, p_qty: q });
+        if (error) { MD.toast(errMsg(error)); return updateEst(); }
+        MD.track("paper_order", { sym: tk.sym, side: tk.side });
+        $("#tk-done-title").textContent = `${tk.side === "buy" ? "Buy" : "Sell"} order placed`;
+        $("#tk-done-text").textContent = `${q.toLocaleString(undefined, { maximumFractionDigits: 4 })} shares of ${tk.sym}. It fills at the next price update${marketOpenNow() ? ", within 15 minutes" : ", when the market opens at 9:30 am ET"}.`;
+        showStep("tk-done");
+        loadPortfolio();
+      }
+    });
+    $("#tk-amt").addEventListener("input", updateEst);
+    $("#tk-search").addEventListener("input", renderPick);
+  }
+
   document.addEventListener("click", async (e) => {
     const b = e.target.closest("[data-cancel]");
     if (!b) return;
