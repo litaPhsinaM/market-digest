@@ -1,0 +1,104 @@
+{
+ "id": "wsj-whats-news-6680bc96c8",
+ "source_id": "wsj-whats-news",
+ "source_name": "WSJ What's News",
+ "kind": "podcast",
+ "title": "Tech Stocks Rebound Even As OpenAI Logs Heavy Losses",
+ "url": "https://www.wsj.com/podcasts/whats-news",
+ "media_url": "https://dowjones.simplecastaudio.com/3d1c8b0a-4b6d-4ea9-a455-ab1adaa7e74b/episodes/718a64f1-2665-444b-bcf9-eac2062d23ea/audio/128/default.mp3?aid=rss_feed&awCollectionId=3d1c8b0a-4b6d-4ea9-a455-ab1adaa7e74b&awEpisodeId=718a64f1-2665-444b-bcf9-eac2062d23ea&feed=BA5QWI2p",
+ "published": "2026-11-11",
+ "duration": 814,
+ "digest_date": "2026-11-11",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "segments": [
+   "OpenAI's third quarter revenue almost doubled to $10 billion",
+   "Tech stocks are rallying this morning on CoreWeave results",
+   "JP Morgan analysts say CoreWeave has answered investors' key",
+   "President Trump's deal for Russia to supply diesel to"
+  ],
+  "headline": "Tech Stocks Rebound Even As OpenAI Logs Heavy Losses",
+  "tldr": "OpenAI's revenue has grown significantly, but it's still losing money. Tech stocks are rising due to better-than-expected results from CoreWeave and investments in AI companies. Trump's deal for Russian diesel to the U.S. has stalled.",
+  "key_points": [
+   {
+    "point": "OpenAI's revenue almost doubled to $10 billion in Q3, but it's still losing money.",
+    "why_it_matters": "This shows that despite revenue growth, OpenAI is struggling to be profitable compared to its rival Anthropic."
+   },
+   {
+    "point": "Anthropic's revenue was $17 billion in Q3, and its losses are much narrower than OpenAI's.",
+    "why_it_matters": "This highlights the competitive gap between OpenAI and Anthropic, with Anthropic being more financially stable."
+   },
+   {
+    "point": "Tech stocks are rising due to better-than-expected results from CoreWeave and investments in AI companies like Anthropic and OpenAI.",
+    "why_it_matters": "This suggests that investors are becoming more confident in the AI sector despite some companies still losing money."
+   },
+   {
+    "point": "TSMC is investing $500 million each in Anthropic and OpenAI, showing strong confidence in the AI sector.",
+    "why_it_matters": "This investment from a major chipmaker indicates that the AI industry is seen as a key growth area."
+   },
+   {
+    "point": "President Trump's deal for Russian diesel to the U.S. has stalled because U.S. oil companies are unwilling to buy the fuel due to international sanctions and lack of a diesel supply shortage.",
+    "why_it_matters": "This shows that geopolitical and economic factors can impact even high-profile deals."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "10 billion",
+    "context": "OpenAI's third quarter revenue"
+   },
+   {
+    "figure": "17 billion",
+    "context": "Anthropic's third quarter revenue"
+   },
+   {
+    "figure": "500 million",
+    "context": "TSMC's investment in Anthropic and OpenAI"
+   }
+  ],
+  "lesson": "Even with strong revenue growth, companies like OpenAI are still losing money. Tech stocks are rising due to better-than-expected results and investments in AI companies. However, geopolitical and economic factors can impact even high-profile deals.",
+  "opinions_and_predictions": [
+   "Joe Stoner: 'This market needed a shot in the arm. And it's got one from several sources.'",
+   "JP Morgan analysts: 'CoreWeave has answered investors' key concern about its ability to fund itself.'",
+   "Analysts: 'Overlapping roles among AI suppliers, customers, and investors create complex dependencies.'",
+   "Thomas Massey: 'The impeachment effort isn't over and said he plans to force another War Powers vote before leaving office.'"
+  ],
+  "tickers": [
+   "OpenAI",
+   "Anthropic",
+   "CoreWeave",
+   "Alibaba"
+  ],
+  "glossary": [
+   {
+    "term": "IPO",
+    "definition": "Initial Public Offering - the process of a private company offering its shares to the public for the first time, allowing it to raise capital from public investors and become a publicly traded company on a stock exchange. (IPOs are often used by companies to raise money for expansion, research, or other business needs.)",
+    "example": "Anthropic is expected to have an IPO next week."
+   },
+   {
+    "term": "revenue",
+    "definition": "The total amount of money a company receives from its business activities, such as sales of goods or services. (Revenue is a key indicator of a company's financial health and growth.)",
+    "example": "OpenAI's revenue almost doubled to $10 billion in the third quarter."
+   },
+   {
+    "term": "operating losses",
+    "definition": "A situation where a company's expenses exceed its revenue, resulting in a negative profit. (Operating losses can be a sign that a company is not generating enough income to cover its costs.)",
+    "example": "OpenAI is still logging heavy operating losses despite its revenue growth."
+   },
+   {
+    "term": "AI",
+    "definition": "Artificial Intelligence - the simulation of human intelligence in machines that are programmed to think, learn, and make decisions. (AI is used in various applications, including chatbots, self-driving cars, and data analysis.)",
+    "example": "OpenAI and Anthropic are both companies working on AI technologies."
+   }
+  ],
+  "level": "beginner",
+  "topics": [
+   "AI industry",
+   "Tech stocks",
+   "Corporate finance",
+   "Geopolitical issues"
+  ],
+  "quality_note": "This digest covers the main points of the episode, focusing on the financial performance of AI companies, the impact on tech stocks, and the stalled Russian diesel deal. The summary includes statements from analysts and executives, with claims backed by financial data such as revenue figures and investment amounts.",
+  "worth_reading": true
+ }
+}

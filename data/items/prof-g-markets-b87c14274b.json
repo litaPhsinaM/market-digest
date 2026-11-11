@@ -1,0 +1,102 @@
+{
+ "id": "prof-g-markets-b87c14274b",
+ "source_id": "prof-g-markets",
+ "source_name": "Prof G Markets",
+ "kind": "podcast",
+ "title": "Nvidia Has Lost $1.5 Trillion \u2014 Is The Worst Still To Come?",
+ "url": "https://www.podtrac.com/pts/redirect.mp3/pdst.fm/e/pscrb.fm/rss/p/mgln.ai/e/257/traffic.megaphone.fm/VMP7327004569.mp3",
+ "media_url": "https://www.podtrac.com/pts/redirect.mp3/pdst.fm/e/pscrb.fm/rss/p/mgln.ai/e/257/traffic.megaphone.fm/VMP7327004569.mp3",
+ "published": "2026-11-11",
+ "duration": 2061,
+ "digest_date": "2026-11-11",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "segments": [
+   "NVIDIA's stock has dropped over 30% from its October",
+   "Gil Luria",
+   "NVIDIA's stock is now trading at a lower multiple",
+   "CoreWeave's stock had a brief rebound after earnings",
+   "Inflation in October exceeded expectations",
+   "Justin Wolfers",
+   "Anthropic's IPO valuation has dropped from $2 trillion to"
+  ],
+  "headline": "NVIDIA's stock plummets amid scandal, raising questions about its future and the broader AI sector.",
+  "tldr": "NVIDIA's stock has lost over $1 trillion in value due to a scandal involving its CEO and potential legal risks. Inflation remains a concern, and AI sector valuations are cooling, as seen with Anthropic's lower IPO valuation.",
+  "key_points": [
+   {
+    "point": "NVIDIA's stock has dropped over 30% from its October highs due to a scandal involving its CEO, Jensen Huang.",
+    "why_it_matters": "The scandal has raised concerns about potential legal and regulatory risks, including possible export restrictions and the impact of Jensen Huang's potential departure."
+   },
+   {
+    "point": "Up to 20% of NVIDIA's Asia sales may have been funneled to China, according to Gil Luria.",
+    "why_it_matters": "This could pose a risk to the company's business if the investigation finds wrongdoing."
+   },
+   {
+    "point": "NVIDIA's stock is now trading at a lower multiple than traditional consumer staples like Walmart and Coca-Cola.",
+    "why_it_matters": "This raises questions about whether it's a buying opportunity, though Gil Luria suggests that NVIDIA carries higher risks compared to companies like Broadcom and AMD."
+   },
+   {
+    "point": "CoreWeave's stock had a brief rebound after earnings, but the company faces significant challenges, including a negative return on investment.",
+    "why_it_matters": "The risk of NVIDIA bailing them out has diminished due to the uncertainty around Jensen Huang's leadership."
+   },
+   {
+    "point": "Inflation in October exceeded expectations, with consumer prices rising 0.4%.",
+    "why_it_matters": "The two-year Treasury yield jumped to 4.78%, signaling expectations of further rate hikes by the Federal Reserve."
+   },
+   {
+    "point": "Anthropic's IPO valuation has dropped from $2 trillion to $1.3 trillion.",
+    "why_it_matters": "This aligns with broader market trends where AI stocks like NVIDIA and others have seen significant declines in valuation."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "30%",
+    "context": "NVIDIA's stock has dropped over 30% from its October highs."
+   },
+   {
+    "figure": "0.4%",
+    "context": "Consumer prices rose 0.4% in October."
+   },
+   {
+    "figure": "4.78%",
+    "context": "The two-year Treasury yield jumped to 4.78%."
+   },
+   {
+    "figure": "1.3 trillion",
+    "context": "Anthropic's IPO valuation is now $1.3 trillion."
+   }
+  ],
+  "lesson": "Market values can be heavily influenced by scandals, regulatory risks, and broader economic factors like inflation. The AI sector, while promising, is not immune to valuation corrections and market sentiment shifts.",
+  "opinions_and_predictions": [
+   "Gil Luria estimates that up to 20% of NVIDIA's Asia sales may have been funneled to China, which could pose a risk to the company's business if the investigation finds wrongdoing.",
+   "Gil Luria suggests that while there may be a buying opportunity in the semiconductor sector, NVIDIA carries higher risks compared to companies like Broadcom and AMD.",
+   "Justin Wolfers expressed a hawkish view on inflation, suggesting that the Federal Reserve may need to implement additional rate hikes."
+  ],
+  "tickers": [
+   "NVDA"
+  ],
+  "glossary": [
+   {
+    "term": "PE ratio",
+    "definition": "Price-to-earnings ratio, a valuation metric that compares a company's stock price to its earnings per share. A lower PE ratio suggests a stock is undervalued relative to its earnings potential, while a higher PE ratio suggests it is overvalued or expected to grow rapidly in the future. (PE ratio is also known as the price multiple.)",
+    "example": "NVIDIA is trading at a forward PE ratio of 12, which is lower than companies like Walmart and Coca-Cola."
+   },
+   {
+    "term": "AI ecosystem",
+    "definition": "A network of companies, technologies, and services that support the development and application of artificial intelligence. This includes hardware manufacturers, software developers, and service providers that enable AI innovation and deployment.",
+    "example": "Jensen Huang has been instrumental in building the AI ecosystem, which includes companies like NVIDIA, OpenAI, and others."
+   }
+  ],
+  "level": "",
+  "topics": [
+   "NVIDIA scandal",
+   "AI sector valuation",
+   "Inflation",
+   "CoreWeave challenges",
+   "Anthropic IPO"
+  ],
+  "quality_note": "This digest includes key points, numbers, and opinions from the discussion. Gil Luria (analyst) and Justin Wolfers (analyst) provided data-backed insights, while other claims are based on analysis and interpretation.",
+  "worth_reading": true
+ }
+}

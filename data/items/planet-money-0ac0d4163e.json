@@ -1,0 +1,62 @@
+{
+ "id": "planet-money-0ac0d4163e",
+ "source_id": "planet-money",
+ "source_name": "Planet Money",
+ "kind": "podcast",
+ "title": "How bodegas led to the Yemeni coffeehouse explosion",
+ "url": "https://www.npr.org/2026/11/11/nx-s1-6036839/yemeni-coffee-house-bodega-immigrant-entrepreneur",
+ "media_url": "https://tracking.swap.fm/track/XvDEoI11TR00olTUO8US/prfx.byspotify.com/e/play.podtrac.com/npr-510289/npr.simplecastaudio.com/43b5acee-463e-4612-95ad-d2596d9dd337/episodes/2b2b7650-a4cf-405c-89a0-9c4dc4e2daf7/audio/128/default.mp3?awCollectionId=43b5acee-463e-4612-95ad-d2596d9dd337&awEpisodeId=2b2b7650-a4cf-405c-89a0-9c4dc4e2daf7&feed=hvWWWzRv&t=podcast&e=nx-s1-6036839&p=510289&d=1441&size=23060985",
+ "published": "2026-11-11",
+ "duration": 1441,
+ "digest_date": "2026-11-11",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "segments": [],
+  "headline": "How bodegas led to the Yemeni coffeehouse explosion",
+  "tldr": "Yemeni immigrants in the U.S. have a long history of running bodegas. A new generation is using that experience to open Yemeni coffeehouses that serve as community spaces and cater to late-night needs. The success of these coffeehouses is partly due to the strong social networks and entrepreneurship traditions within the Yemeni community.",
+  "key_points": [
+   {
+    "point": "Yemeni immigrants have been running bodegas in the U.S. for decades, often starting with informal loans from family and friends.",
+    "why_it_matters": "This experience with small businesses and community support laid the foundation for the later success of Yemeni coffeehouses."
+   },
+   {
+    "point": "Yemeni coffeehouses are popular among Muslim and Arab American communities, offering a family-friendly, late-night space that feels different from traditional coffee shops.",
+    "why_it_matters": "These coffeehouses fill a niche by providing a welcoming environment for families and communities that previously lacked such a space."
+   },
+   {
+    "point": "Hakeem Soleimani, a Yemeni-American entrepreneur, opened one of the first Yemeni coffeehouses in Brooklyn in 2019. His father ran a bodega nearby, and Hakeem used his family's connections and experience to start his coffee business.",
+    "why_it_matters": "Hakeem's story shows how the skills and networks developed in bodegas can be applied to new ventures like coffeehouses."
+   },
+   {
+    "point": "Yemeni Americans have a strong tradition of entrepreneurship, and many have built successful chains of coffeehouses across the U.S.",
+    "why_it_matters": "This reflects a broader trend of immigrant communities specializing in certain industries, often due to social and economic factors."
+   },
+   {
+    "point": "Economists like Bill Kerr have studied why some immigrant groups cluster in specific industries. Factors like smaller population size and strong social ties within the community contribute to this clustering.",
+    "why_it_matters": "This helps explain why Yemeni immigrants, among others, have been particularly successful in running bodegas and now coffeehouses."
+   },
+   {
+    "point": "Hakeem faced challenges in importing coffee from Yemen due to the country's civil war and economic instability, but he found ways to work around these obstacles.",
+    "why_it_matters": "This shows the persistence and resourcefulness required to build a business in a new industry, even with difficult external conditions."
+   }
+  ],
+  "numbers": [],
+  "lesson": "Immigrant communities often develop strong networks that help them succeed in specific industries. These networks can be passed down through generations, allowing new entrepreneurs to build on the experience of their parents. Yemeni Americans, for example, used their history of running bodegas to create a new kind of business: the Yemeni coffeehouse.",
+  "opinions_and_predictions": [
+   "Bill Kerr suggests that immigrant groups with strong social ties and smaller populations are more likely to cluster in specific industries.",
+   "Hakeem Soleimani believes that the success of Yemeni coffeehouses is due to the demand for late-night spaces and the community's long history with coffee."
+  ],
+  "tickers": [],
+  "glossary": [],
+  "level": "beginner",
+  "topics": [
+   "immigration",
+   "entrepreneurship",
+   "community",
+   "economics"
+  ],
+  "quality_note": "The analyst provides a clear and interesting story about how a specific immigrant group used its history and social networks to build a new kind of business. It's informative and engaging for a beginner. The claims are data-backed, referencing studies by economists like Bill Kerr and specific examples like Hakeem Soleimani's business.",
+  "worth_reading": true
+ }
+}

@@ -97,9 +97,10 @@ def infer_kind(model_kind: str, text: str) -> str:
     k, t = model_kind.lower(), text.lower()
     if k in PRICE_KINDS | {"rate_hike", "rate_cut", "rate_hold"}:
         return k
-    if re.search(r"rate hike|hike rates|raise rates|tighten", t): return "rate_hike"
-    if re.search(r"rate cut|cut rates|lower rates|ease", t): return "rate_cut"
-    if re.search(r"(hold|pause|keep) rates|on hold", t): return "rate_hold"
+    fed = re.search(r"\b(fed|federal reserve|fomc|central bank|ecb|bank of (england|japan|canada)|rate)s?\b", t)
+    if fed and re.search(r"\b(rate hikes?|hike rates|raise rates|tighten(ing)?)\b", t): return "rate_hike"
+    if fed and re.search(r"\b(rate cuts?|cut rates|lower rates|eas(e|ing))\b", t): return "rate_cut"
+    if fed and re.search(r"\b((hold|pause|keep) rates|on hold)\b", t): return "rate_hold"
     if re.search(r"\b(above|over|at least) [\d$]", t): return "above"
     if re.search(r"\b(below|under) [\d$]", t): return "below"
     if re.search(r"higher|rise|rally|rebound|go up|gain|climb|bull", t): return "up"
@@ -156,6 +157,8 @@ def extract(item, transcript: str) -> list[dict]:
         sym = _symbol(c.subject) if kind in PRICE_KINDS else None
         if kind in PRICE_KINDS and not sym:
             kind = "other"  # can't price it automatically
+        if c.target is not None and 1900 <= c.target <= 2100 and float(c.target).is_integer() and str(int(c.target)) in c.deadline_said + c.deadline:
+            c.target = None  # the model put the deadline year in the target field
         if kind in {"above", "below"} and c.target is None:
             kind = "other"
         kept.append({

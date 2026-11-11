@@ -1,0 +1,76 @@
+{
+ "id": "squawk-pod-dcc4867c8d",
+ "source_id": "squawk-pod",
+ "source_name": "Squawk Pod (CNBC)",
+ "kind": "podcast",
+ "title": "Across the Aisle in 2027: Working with Rep. Jim Jordan 11/11/26",
+ "url": "https://www.cnbc.com",
+ "media_url": "https://dts.podtrac.com/redirect.mp3/cnbc.simplecastaudio.com/2abef7ca-625f-4c74-9157-968d7da67c81/episodes/f90abba6-f24d-48da-bc55-2bb1a0c37e0f/audio/128/default.mp3?aid=rss_feed&awCollectionId=2abef7ca-625f-4c74-9157-968d7da67c81&awEpisodeId=f90abba6-f24d-48da-bc55-2bb1a0c37e0f&feed=VHAcgaw_",
+ "published": "2026-11-11",
+ "duration": 2674,
+ "digest_date": "2026-11-11",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "segments": [
+   "The episode discusses the ongoing controversy surrounding NVIDIA CEO",
+   "The episode also covers the political landscape following the",
+   "The episode touches on the financial impact of the",
+   "The episode also discusses the potential for congressional oversight"
+  ],
+  "headline": "NVIDIA's Jensen Huang Scandal and the New Republican Leadership in the House",
+  "tldr": "The episode covers the ongoing controversy surrounding NVIDIA CEO Jensen Huang, the political implications of the 2026 midterm elections, and the potential for congressional oversight and investigations into the Trump administration.",
+  "key_points": [
+   {
+    "point": "NVIDIA CEO Jensen Huang is under investigation following allegations of a relationship with a suspected Chinese spy.",
+    "why_it_matters": "The scandal has raised concerns about national security risks related to NVIDIA's chip sales and has led to a significant decline in the company's stock price."
+   },
+   {
+    "point": "Rep. Jim Jordan has been elected as the new Republican leader in the House, signaling a shift toward a more activist and unified Republican base.",
+    "why_it_matters": "Jordan's leadership may influence the Republican strategy in the upcoming years, particularly in relation to the Trump administration and potential conflicts with the Democratic majority."
+   },
+   {
+    "point": "Jensen Huang's net worth has dropped by over $50 billion, with a significant portion of his shares held in trusts with his wife, Lori.",
+    "why_it_matters": "This structure may provide some stability for NVIDIA shareholders in the event of a potential divorce or legal battle, as the shares are held in trusts rather than directly by Huang."
+   },
+   {
+    "point": "House Democratic Caucus Chair Peter Aguilar emphasizes the need for accountability and lowering costs for Americans, while expressing a willingness to work with Republicans on bipartisan issues.",
+    "why_it_matters": "Aguilar's comments highlight the potential for collaboration between the two parties on key issues such as healthcare and gas prices, while also emphasizing the need for oversight of the Trump administration."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "530 million shares",
+    "context": "The main trust, known as a revocable or marital trust, holds about 530 million shares of NVIDIA."
+   },
+   {
+    "figure": "$140 billion",
+    "context": "Jensen Huang's net worth is now at about $140 billion, down from over $140 billion in the past month."
+   },
+   {
+    "figure": "260 seats",
+    "context": "The House Democratic caucus has 260 seats, giving them a strong mandate to push for policy changes and accountability."
+   }
+  ],
+  "lesson": "When corporate and political interests intersect, especially around national security and economic policy, the potential for bipartisan cooperation depends on shared priorities and mutual accountability.",
+  "opinions_and_predictions": [
+   "Former Congressman Patrick McHenry suggests that the election of Jim Jordan as the new Republican leader signals a shift toward a more activist and unified Republican base, which could influence the party's strategy in the coming years.",
+   "Wealth editor Robert Frank notes that Jensen Huang's complex web of trusts may provide some stability for NVIDIA shareholders in the event of a potential divorce or legal battle.",
+   "House Democratic Caucus Chair Peter Aguilar emphasizes the need for accountability and lowering costs for Americans, while expressing a willingness to work with Republicans on bipartisan issues."
+  ],
+  "tickers": [
+   "NVDA"
+  ],
+  "glossary": [],
+  "level": "beginner",
+  "topics": [
+   "Politics",
+   "Economy",
+   "Corporate Scandals",
+   "Leadership",
+   "Accountability"
+  ],
+  "quality_note": "The content is substantive and covers a range of important topics, including corporate scandals, political leadership, and economic policy.",
+  "worth_reading": true
+ }
+}

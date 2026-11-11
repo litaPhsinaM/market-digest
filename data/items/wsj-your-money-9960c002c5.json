@@ -1,0 +1,109 @@
+{
+ "id": "wsj-your-money-9960c002c5",
+ "source_id": "wsj-your-money",
+ "source_name": "WSJ Your Money Briefing",
+ "kind": "podcast",
+ "title": "What\u2019s News in Markets: AI Selloff Deepens, Tech Earnings Disappoint, Binance Hack",
+ "url": "https://www.wsj.com/podcasts/your-money-matters",
+ "media_url": "https://dowjones.simplecastaudio.com/6549bd7e-b1b3-4333-8a34-08c1efc472c9/episodes/ac905a54-1206-40bd-bbeb-015cd62a99ed/audio/128/default.mp3?aid=rss_feed&awCollectionId=6549bd7e-b1b3-4333-8a34-08c1efc472c9&awEpisodeId=ac905a54-1206-40bd-bbeb-015cd62a99ed&feed=VYCXJ_UH",
+ "published": "2026-10-31",
+ "duration": 343,
+ "digest_date": "2026-11-11",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "segments": [
+   "AI companies are struggling to access affordable capital due",
+   "Anthropic filed paperwork to go public",
+   "The Federal Reserve held interest rates steady",
+   "Tech earnings disappointed investors",
+   "Alphabet had its worst trading day ever",
+   "Intel also had its worst trading day ever",
+   "Amazon reported higher-than-expected revenue growth from AWS but still",
+   "Investors are concerned about potential U.S",
+   "ExxonMobil and Chevron reported record quarterly earnings due to",
+   "Brent crude oil prices ended the week at around"
+  ],
+  "headline": "AI Selloff Deepens, Tech Earnings Disappoint, Binance Hack",
+  "tldr": "AI companies face capital challenges, tech earnings disappointed investors, and Binance suffered a major hack, all contributing to a volatile week in markets.",
+  "key_points": [
+   {
+    "point": "AI companies are struggling to raise capital due to high interest rates.",
+    "why_it_matters": "This makes it harder for AI firms to fund expensive infrastructure projects."
+   },
+   {
+    "point": "Alphabet and Intel had their worst trading days ever due to disappointing earnings.",
+    "why_it_matters": "This highlights investor concerns about the profitability of major tech companies."
+   },
+   {
+    "point": "Binance was hacked, with $6.3 billion stolen, leading to a drop in crypto-related stocks.",
+    "why_it_matters": "This shows the risks associated with digital currency exchanges and the broader crypto market."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "-12.6%",
+    "context": "Alphabet's share price drop on Thursday."
+   },
+   {
+    "figure": "-29%",
+    "context": "Intel's share price drop on Friday."
+   },
+   {
+    "figure": "$6.3 billion",
+    "context": "Amount stolen in the Binance hack."
+   },
+   {
+    "figure": "$15.4 billion",
+    "context": "ExxonMobil's quarterly earnings."
+   },
+   {
+    "figure": "$9.9 billion",
+    "context": "Chevron's quarterly earnings."
+   }
+  ],
+  "lesson": "Markets react strongly to earnings reports and major events like hacks or geopolitical tensions. Even well-known companies can face significant losses if they miss expectations.",
+  "opinions_and_predictions": [
+   "Investors are asking when AI investments will become profitable, indicating skepticism about near-term returns.",
+   "The threat of U.S. military strikes against Iran has raised concerns about potential instability in energy markets."
+  ],
+  "tickers": [
+   "Alphabet",
+   "Intel",
+   "Amazon",
+   "ExxonMobil",
+   "Chevron",
+   "Binance",
+   "Coinbase",
+   "Strategy",
+   "Robinhood"
+  ],
+  "glossary": [
+   {
+    "term": "AI",
+    "definition": "Artificial Intelligence, a branch of computer science that enables machines to perform tasks that typically require human intelligence, such as learning, problem-solving, and decision-making.",
+    "example": "Companies like Anthropic and Alphabet are investing heavily in AI."
+   },
+   {
+    "term": "Market cap",
+    "definition": "The total value of a company's outstanding shares, calculated by multiplying the number of shares by the current stock price.",
+    "example": "Alphabet lost $497 billion in market cap after its earnings report."
+   },
+   {
+    "term": "Hacker",
+    "definition": "A person who gains unauthorized access to a computer system or network, often with the intent to steal data or cause damage.",
+    "example": "North Korean state-sponsored hackers were behind the Binance hack."
+   }
+  ],
+  "level": "beginner",
+  "topics": [
+   "AI and technology",
+   "Earnings reports",
+   "Cryptocurrency",
+   "Geopolitical risk",
+   "Energy markets"
+  ],
+  "quality_note": "This summary is based on data from the article and includes statements attributed to analysts and reporters. Claims are data-backed and reflect market reactions to specific events.",
+  "worth_reading": true
+ }
+}

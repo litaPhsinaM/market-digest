@@ -1,0 +1,92 @@
+{
+ "id": "bloomberg-surveillance-1ed3071941",
+ "source_id": "bloomberg-surveillance",
+ "source_name": "Bloomberg Surveillance",
+ "kind": "podcast",
+ "title": "Bloomberg Surveillance TV: November 11th, 2026",
+ "url": "https://omny.fm/shows/bloomberg-surveillance/bloomberg-surveillance-tv-november-11th-2026",
+ "media_url": "https://podtrac.com/pts/redirect.mp3/tracking.swap.fm/track/UVBrz8bN8aM2Xe47PEPu/traffic.omny.fm/d/clips/e73c998e-6e60-432f-8610-ae210140c5b1/8e704079-ca57-4eac-9741-ae27003e2b7f/28411c67-640a-456d-85b6-b4ff0124436f/audio.mp3?utm_source=Podcast&in_playlist=9739700c-72c3-4176-ae55-ae27003e2b96",
+ "published": "2026-11-11",
+ "duration": 1507,
+ "digest_date": "2026-11-11",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "segments": [
+   "Tech stocks rose after strong results from CoreWeave",
+   "The Anthropic IPO is seen as a potential catalyst",
+   "Bond markets saw a significant increase in yields",
+   "The U.S",
+   "NVIDIA is facing congressional scrutiny over potential ties to",
+   "NVIDIA's succession planning is unclear",
+   "NVIDIA's sales to China and Southeast Asia are significant",
+   "If Jensen Wang leaves"
+  ],
+  "headline": "Tech and AI Trade Remain Strong Despite Scrutiny and Leadership Uncertainty",
+  "tldr": "Tech stocks, particularly those tied to AI, are performing well despite concerns about leadership changes at NVIDIA and increased regulatory scrutiny. The AI trade is seen as resilient, with potential catalysts like the Anthropic IPO. However, NVIDIA faces political and regulatory challenges that could impact its short-term performance.",
+  "key_points": [
+   {
+    "point": "CoreWeave's results boosted tech stocks, and the AI trade is still viewed as strong.",
+    "why_it_matters": "This suggests continued investor confidence in AI-related companies despite some concerns about the data center build-out."
+   },
+   {
+    "point": "The Anthropic IPO is seen as a potential catalyst for the AI trade.",
+    "why_it_matters": "A successful IPO could increase investor confidence and potentially lead to higher valuations for AI-related companies."
+   },
+   {
+    "point": "NVIDIA faces congressional scrutiny over potential ties to a Chinese spy and export control issues.",
+    "why_it_matters": "This highlights the growing political and regulatory challenges facing key tech companies, especially those involved in national security."
+   },
+   {
+    "point": "NVIDIA's succession planning is unclear, and there is concern about the impact of Jensen Wang's potential departure.",
+    "why_it_matters": "This raises questions about NVIDIA's ability to maintain its leadership position in the AI sector without a clear plan for succession."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "15.6%",
+    "context": "Consensus growth forecast for the tech sector in 2027."
+   },
+   {
+    "figure": "10%",
+    "context": "Julian Emanuel's estimate for tech sector growth in 2027."
+   },
+   {
+    "figure": "20%",
+    "context": "Estimated proportion of NVIDIA's sales going to China and Southeast Asia."
+   }
+  ],
+  "lesson": "When a company's success depends on a single leader and faces external regulatory pressures, its stock may remain resilient in the long term but is vulnerable to short-term volatility.",
+  "opinions_and_predictions": [
+   "Julian Emanuel (Evercore): The AI theme has much further to run, and the market is not overly concerned about Jensen Wang stepping down from NVIDIA.",
+   "Julian Emanuel: The Anthropic IPO is a potential catalyst for the AI trade and could lead to higher valuations and retail participation.",
+   "Jay (analyst): The risk of Jensen Wang being removed from his role at NVIDIA is significant, and it could change the company's trajectory.",
+   "Jay: NVIDIA's lack of clear succession planning could be a problem if Jensen Wang leaves, unlike Apple's smooth transition with Tim Cook."
+  ],
+  "tickers": [
+   "AMD",
+   "Broadcom"
+  ],
+  "glossary": [
+   {
+    "term": "AI trade",
+    "definition": "Investment in companies involved in artificial intelligence, such as those developing AI chips or software, which is seen as a growing sector in the tech industry.",
+    "example": "Companies like NVIDIA and AMD are part of the AI trade."
+   },
+   {
+    "term": "succession planning",
+    "definition": "A process by which a company prepares for the transition of leadership, ensuring that there is a clear plan for who will take over key roles if current leaders leave.",
+    "example": "NVIDIA is criticized for not having a clear succession plan for its CEO."
+   }
+  ],
+  "level": "beginner",
+  "topics": [
+   "AI and Tech Stocks",
+   "Regulatory Scrutiny",
+   "Leadership Changes",
+   "Market Catalysts"
+  ],
+  "quality_note": "This digest provides a clear summary of key points from the podcast, focusing on the AI trade, NVIDIA's challenges, and the potential impact of regulatory and leadership changes on the tech sector. The content includes statements from analysts and executives, and claims are based on market observations and predictions rather than definitive data.",
+  "worth_reading": true
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "id": "bloomberg-surveillance-7158140a44",
+ "source_id": "bloomberg-surveillance",
+ "source_name": "Bloomberg Surveillance",
+ "kind": "podcast",
+ "title": "AI Stocks Rebound as Fed Hike Bets Return",
+ "url": "https://omny.fm/shows/bloomberg-surveillance/ai-stocks-rebound-as-fed-hike-bets-return",
+ "media_url": "https://podtrac.com/pts/redirect.mp3/tracking.swap.fm/track/UVBrz8bN8aM2Xe47PEPu/traffic.omny.fm/d/clips/e73c998e-6e60-432f-8610-ae210140c5b1/8e704079-ca57-4eac-9741-ae27003e2b7f/ee12e2ec-9aad-4c73-bbe8-b4ff00deed25/audio.mp3?utm_source=Podcast&in_playlist=9739700c-72c3-4176-ae55-ae27003e2b96",
+ "published": "2026-11-11",
+ "duration": 1913,
+ "digest_date": "2026-11-11",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "segments": [],
+  "headline": "AI Stocks Rebound as Fed Hike Bets Return",
+  "tldr": "AI stocks rose as investors anticipated higher interest rates from the Federal Reserve, reflecting renewed confidence in the economy and tech sector.",
+  "key_points": [
+   {
+    "point": "AI stocks experienced a rebound.",
+    "why_it_matters": "This indicates renewed investor confidence in the AI sector."
+   },
+   {
+    "point": "The Federal Reserve is expected to raise interest rates.",
+    "why_it_matters": "Higher interest rates can signal a stronger economy and influence investment trends."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "36%",
+    "context": "Year-to-date hyperscaler insurance represents 36% of the aggregate capex forecast by Goldman Investment Research."
+   },
+   {
+    "figure": "35%",
+    "context": "Penciling in 35% of hyperscalers."
+   }
+  ],
+  "lesson": "When market expectations shift toward higher interest rates or stronger economic conditions, stocks tied to sectors like AI may experience rebounds, reflecting broader changes in investor sentiment.",
+  "opinions_and_predictions": [
+   "Amanda Leinem, chief credit strategist at Goldman Sachs, noted that the credit market is adapting to the increased issuance by hyperscalers, expecting ongoing spread widening to allow this debt to clear at a higher discount.",
+   "Gotham Mukunda, lecturer at the Yale School of Management, suggested that the scandal involving NVIDIA could lead to significant investigations and legal consequences, impacting the company's future."
+  ],
+  "tickers": [],
+  "glossary": [],
+  "level": "beginner",
+  "topics": [
+   "AI stocks",
+   "Federal Reserve",
+   "Investor confidence",
+   "Economic conditions"
+  ],
+  "quality_note": "The content provides insights into market trends and economic factors influencing AI stocks, offering valuable educational information for beginners.",
+  "worth_reading": true
+ }
+}

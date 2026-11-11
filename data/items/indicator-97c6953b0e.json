@@ -1,0 +1,84 @@
+{
+ "id": "indicator-97c6953b0e",
+ "source_id": "indicator",
+ "source_name": "The Indicator from Planet Money",
+ "kind": "podcast",
+ "title": "So \u2026 is the stock market the economy now?",
+ "url": "https://www.npr.org/2026/11/11/nx-s1-6035794/so-is-the-stock-market-the-economy-now",
+ "media_url": "https://prfx.byspotify.com/e/play.podtrac.com/npr-510325/npr.simplecastaudio.com/0a4e8d3b-fe23-4948-9e39-20fcf16f9331/episodes/e5bf7c5b-d982-4d6a-ad30-47bd21c60b54/audio/128/default.mp3?awCollectionId=0a4e8d3b-fe23-4948-9e39-20fcf16f9331&awEpisodeId=e5bf7c5b-d982-4d6a-ad30-47bd21c60b54&feed=IFy3imsg&t=podcast&e=nx-s1-6035794&p=510325&d=520&size=8335864",
+ "published": "2026-11-11",
+ "duration": 520,
+ "digest_date": "2026-11-11",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "segments": [
+   "The stock market is not the economy",
+   "The stock market today is unique and may be",
+   "Jim Paulson created a 'Walmart recession signal' by comparing",
+   "The stock market is heavily concentrated in tech stocks",
+   "A report by the Open Markets Institute and Americans",
+   "If the stock market sinks"
+  ],
+  "headline": "The stock market and the economy are different, but they are more closely linked than ever before.",
+  "tldr": "The stock market is not the economy, but it's more connected to it now. The economy is split into 'new era' and 'old era' parts, and the stock market is dominated by tech companies. A 'Walmart recession signal' suggests parts of the economy are weak, and there are concerns about an AI bubble and its potential impact.",
+  "key_points": [
+   {
+    "point": "The stock market is not the economy, but they are more connected now.",
+    "why_it_matters": "The stock market reflects the value of publicly traded companies, while the economy includes all economic activity."
+   },
+   {
+    "point": "The U.S. economy is split into 'new era' (AI, software) and 'old era' (traditional industries) parts.",
+    "why_it_matters": "New era GDP has grown 13% annually, while old era GDP has grown just 1% annually."
+   },
+   {
+    "point": "The 'Walmart recession signal' suggests parts of the economy are weak.",
+    "why_it_matters": "Walmart's stock has outperformed luxury brands and the S&P 500, which may indicate economic stress for lower-income consumers."
+   },
+   {
+    "point": "The stock market is heavily concentrated in tech stocks.",
+    "why_it_matters": "Tech stocks now make up 40% of the S&P 500's total market value, compared to 16% ten years ago."
+   },
+   {
+    "point": "There are concerns about an 'AI bubble' and its potential impact.",
+    "why_it_matters": "A report warns of risks such as the heavy concentration of the stock market in tech stocks and circular financing deals between tech companies."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "40%",
+    "context": "of American adults are not invested in stocks."
+   },
+   {
+    "figure": "13%",
+    "context": "annual growth rate of 'new era' GDP over the last two years."
+   },
+   {
+    "figure": "1%",
+    "context": "annual growth rate of 'old era' GDP over the last two years."
+   },
+   {
+    "figure": "40%",
+    "context": "of the S&P 500's total market value is made up of tech stocks."
+   }
+  ],
+  "lesson": "The stock market and the economy are different, but they are more closely linked now. The economy is split into two parts, and the stock market is dominated by tech companies. There are concerns about an AI bubble and its potential impact on the economy.",
+  "opinions_and_predictions": [
+   "Jim Paulson says the U.S. economy is split into two parts and that the current stock market reflects this split.",
+   "Jim Paulson believes the 'Walmart recession signal' suggests parts of the economy have been weak for some time.",
+   "Maya Jenkins and her co-authors warn of an 'AI bubble' and its potential impact on the financial system."
+  ],
+  "tickers": [],
+  "glossary": [],
+  "level": "",
+  "topics": [
+   "economy",
+   "stock market",
+   "AI",
+   "recession",
+   "financial crisis"
+  ],
+  "quality_note": "The content is substantive and provides a clear explanation of the relationship between the stock market and the economy, as well as concerns about the current state of the economy and the potential for an AI bubble.",
+  "worth_reading": true
+ }
+}

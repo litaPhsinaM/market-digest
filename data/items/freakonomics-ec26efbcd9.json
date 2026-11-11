@@ -1,0 +1,61 @@
+{
+ "id": "freakonomics-ec26efbcd9",
+ "source_id": "freakonomics",
+ "source_name": "Freakonomics Radio",
+ "kind": "podcast",
+ "title": "What Now? with Trevor Noah | Michael Che: The Unspoken Rules of Comedy",
+ "url": "https://freakonomics.com",
+ "media_url": "https://mgln.ai/e/2/pdst.fm/e/dts.podtrac.com/redirect.mp3/stitcher.simplecastaudio.com/2be48404-a43c-4fa8-a32c-760a3216272e/episodes/1c43a65c-f6cc-42a2-b725-2908c200c239/audio/128/default.mp3?aid=rss_feed&awCollectionId=2be48404-a43c-4fa8-a32c-760a3216272e&awEpisodeId=1c43a65c-f6cc-42a2-b725-2908c200c239&feed=Y8lFbOT4",
+ "published": "2026-11-04",
+ "duration": 627,
+ "digest_date": "2026-11-11",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "segments": [],
+  "headline": "Discussion on Fame, Money, and Identity in Comedy",
+  "tldr": "Michael Che discusses the relationship between fame, money, and identity as a Black comedian in America, highlighting the importance of visibility and the unspoken rules of comedy.",
+  "key_points": [
+   {
+    "point": "Michael Che believes that Black people are naturally community-oriented and that money can provide freedom for Black individuals in America.",
+    "why_it_matters": "This reflects on the social and economic challenges faced by Black people and how financial independence can influence personal and public perception."
+   },
+   {
+    "point": "Che suggests that fame can bridge the gap of ignorance and allow people to see him as an individual, not just as part of a group.",
+    "why_it_matters": "This highlights the power of fame in changing public perception and challenging stereotypes."
+   },
+   {
+    "point": "Che discusses the idea of 'signaling' through appearance, such as wearing expensive items, to show prominence and avoid discrimination.",
+    "why_it_matters": "This reflects on how appearance can be used as a tool to navigate societal biases and gain respect."
+   },
+   {
+    "point": "Che shares a story about Michael B. Jordan and how he dealt with the pressure of being a Black man in a role that was previously associated with white actors.",
+    "why_it_matters": "This illustrates the challenges of breaking barriers in entertainment and the importance of representation."
+   },
+   {
+    "point": "Che and Trevor Noah discuss the mutual support they provided each other in their careers, emphasizing the importance of having more Black voices in comedy and media.",
+    "why_it_matters": "This highlights the significance of community and solidarity in overcoming systemic barriers in the entertainment industry."
+   }
+  ],
+  "numbers": [],
+  "lesson": "This conversation explores the unspoken rules of comedy and the challenges of being a Black performer in America, emphasizing the importance of visibility, identity, and community support.",
+  "opinions_and_predictions": [
+   "Michael Che believes that money can provide freedom for Black people in America (Michael Che).",
+   "Che suggests that fame can bridge the gap of ignorance and allow people to see him as an individual (Michael Che).",
+   "Che believes that Black people often use appearance to signal prominence and avoid discrimination (Michael Che).",
+   "Che reflects on the importance of having more Black voices in comedy and media (Michael Che and Trevor Noah)."
+  ],
+  "tickers": [],
+  "glossary": [],
+  "level": "beginner",
+  "topics": [
+   "comedy",
+   "identity",
+   "fame",
+   "representation",
+   "Black culture"
+  ],
+  "quality_note": "The content is substantive and provides insight into the experiences of Black comedians in America.",
+  "worth_reading": true
+ }
+}

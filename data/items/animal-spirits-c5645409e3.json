@@ -1,0 +1,93 @@
+{
+ "id": "animal-spirits-c5645409e3",
+ "source_id": "animal-spirits",
+ "source_name": "Animal Spirits",
+ "kind": "podcast",
+ "title": "What the Hell Just Happened?! (EP. 490)",
+ "url": "https://pdst.fm/e/mgln.ai/e/309/traffic.megaphone.fm/TCP3712784701.mp3",
+ "media_url": "https://pdst.fm/e/mgln.ai/e/309/traffic.megaphone.fm/TCP3712784701.mp3",
+ "published": "2026-11-11",
+ "duration": 4394,
+ "digest_date": "2026-11-11",
+ "backend": "ollama",
+ "model": "qwen3:14b",
+ "summary": {
+  "segments": [
+   "The episode discusses the recent volatility in the stock",
+   "The hosts reflect on the unpredictable nature of the",
+   "The discussion highlights the impact of the mid-term elections",
+   "The hosts explore the role of hedge funds in",
+   "The episode touches on the AI trade and its",
+   "The hosts discuss the broader implications of the AI",
+   "The episode also includes a segment on the personal",
+   "The hosts conclude with a discussion on the future"
+  ],
+  "headline": "Market Volatility Amid Mid-Term Elections and AI Trade Shifts",
+  "tldr": "The episode covers recent market volatility, the impact of the mid-term elections, the role of hedge funds, and the AI trade's influence on the stock market.",
+  "key_points": [
+   {
+    "point": "The NASDAQ 100 and other major indices experienced a sharp decline, attributed to a combination of factors including election outcomes, AI trade dynamics, and market sentiment shifts.",
+    "why_it_matters": "This highlights the unpredictable nature of the market and the complex interplay of factors influencing investor behavior."
+   },
+   {
+    "point": "The hosts reflect on the rapid shifts in market narratives, noting that the market is influenced by a wide range of factors, including political events and investor behavior.",
+    "why_it_matters": "This underscores the importance of understanding the broader context in which market movements occur."
+   },
+   {
+    "point": "The discussion highlights the impact of the mid-term elections, with a focus on how the results may have influenced market sentiment and the potential for a shift in political power affecting the economy and corporate strategies.",
+    "why_it_matters": "This illustrates the potential for political events to have a significant impact on market dynamics."
+   },
+   {
+    "point": "The hosts explore the role of hedge funds in market volatility, suggesting that excessive leverage and the over-leveraged positions of some hedge funds may have contributed to the recent market downturn.",
+    "why_it_matters": "This highlights the risks associated with excessive leverage in the financial markets."
+   },
+   {
+    "point": "The episode touches on the impact of the AI trade on the market, with a focus on the performance of semiconductor stocks and the broader tech sector, noting that these stocks have been heavily impacted by recent market movements.",
+    "why_it_matters": "This underscores the importance of the AI trade in shaping market trends and investor sentiment."
+   },
+   {
+    "point": "The hosts discuss the broader implications of the AI trade, including the potential for a shift in investor sentiment and the possibility of a market correction or rotation.",
+    "why_it_matters": "This highlights the potential for significant changes in market dynamics as the AI trade evolves."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "NASDAQ 100 fell six something percent",
+    "context": "This refers to the sharp decline in the NASDAQ 100 index following the mid-term elections."
+   },
+   {
+    "figure": "S&P was down more than 4%",
+    "context": "This refers to the decline in the S&P 500 index following the mid-term elections."
+   },
+   {
+    "figure": "Emerging markets were down 6%",
+    "context": "This refers to the decline in emerging market indices following the mid-term elections."
+   },
+   {
+    "figure": "Semiconductor stocks were down 11%",
+    "context": "This refers to the decline in semiconductor stocks following the mid-term elections."
+   },
+   {
+    "figure": "South Korea was down 14%",
+    "context": "This refers to the decline in the South Korean stock market following the mid-term elections."
+   }
+  ],
+  "lesson": "When markets are influenced by a combination of political events and technological trends, volatility increases as investor sentiment shifts rapidly in response to external shocks.",
+  "opinions_and_predictions": [
+   "The hosts suggest that the AI trade may be entering a period of correction or rotation, with potential for a shift in investor sentiment.",
+   "The hosts express the view that the market is currently in a state of flux, with rapid shifts in sentiment and the potential for continued volatility."
+  ],
+  "tickers": [],
+  "glossary": [],
+  "level": "beginner",
+  "topics": [
+   "Market Volatility",
+   "Election Impact",
+   "AI Trade",
+   "Hedge Funds",
+   "Investor Behavior"
+  ],
+  "quality_note": "The episode provides a comprehensive overview of recent market dynamics, offering insights into the factors influencing market behavior and the potential for future volatility. The analysis is presented by analysts and includes data-backed observations on market trends and investor sentiment.",
+  "worth_reading": true
+ }
+}
