@@ -1,0 +1,1809 @@
+{
+  "levels": {
+    "foundation": "Everyday money: saving, banking safety, inflation, scams and the very basics of investing.",
+    "intermediate": "How markets and products work: orders, funds, bonds, dividends, accounts and risk, at the level of an industry-essentials exam.",
+    "advanced": "Finance-exam-style concepts with calculations: time value of money, bond pricing and duration, valuation ratios, portfolio risk and return."
+  },
+  "questions": [
+    {
+      "id": "p001",
+      "level": "foundation",
+      "topic": "Saving vs investing",
+      "lesson": "l01",
+      "question": "You'll need $4,000 for a deposit on an apartment in six months. Which choice best matches that time horizon?",
+      "options": [
+        "A single growth stock",
+        "A 30-year bond fund",
+        "An insured savings account",
+        "Bitcoin"
+      ],
+      "answer": 2,
+      "explanation": "Money needed within months should be kept safe and easy to reach, because there's no time to recover from a fall.",
+      "basis": "Adapted from SEC Investor.gov: Save and Invest (public domain)",
+      "learn_more": {
+        "title": "Save and Invest",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/save-and-invest"
+      }
+    },
+    {
+      "id": "p002",
+      "level": "foundation",
+      "topic": "Time horizon",
+      "lesson": "l01",
+      "question": "What does 'time horizon' mean in investing?",
+      "options": [
+        "How long the stock market is open each day",
+        "How long until you expect to need the money",
+        "How long a company has been in business",
+        "How long it takes an order to fill"
+      ],
+      "answer": 1,
+      "explanation": "Your time horizon is the period before you need the money; it shapes how much risk makes sense.",
+      "basis": "Adapted from SEC Investor.gov glossary: Time Horizon (public domain)",
+      "learn_more": {
+        "title": "Time Horizon",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/time-horizon"
+      }
+    },
+    {
+      "id": "p003",
+      "level": "foundation",
+      "topic": "Compound interest",
+      "lesson": "l02",
+      "question": "You deposit $1,000 at 5% interest compounded once a year. How much do you have after two years?",
+      "options": [
+        "$1,100.00",
+        "$1,050.00",
+        "$1,105.00",
+        "$1,102.50"
+      ],
+      "answer": 3,
+      "explanation": "Year one: $1,050. Year two: $1,050 x 1.05 = $1,102.50. The extra $2.50 is interest earned on interest.",
+      "basis": "Adapted from SEC Investor.gov: Compound Interest (public domain)",
+      "learn_more": {
+        "title": "Compound Interest",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/compound-interest"
+      }
+    },
+    {
+      "id": "p004",
+      "level": "foundation",
+      "topic": "Compound interest",
+      "lesson": "l02",
+      "question": "Two friends each invest the same amount at the same rate. One starts at 25, the other at 35. Both stop at 65. Who likely ends up with more?",
+      "options": [
+        "The one who started at 35, because they invest closer to retirement",
+        "They end up with the same amount",
+        "The one who started at 25, because the money compounds for longer",
+        "It depends only on luck"
+      ],
+      "answer": 2,
+      "explanation": "With the same rate and amount, extra years of compounding usually make the biggest difference.",
+      "basis": "Adapted from SEC Investor.gov: Compound Interest (public domain)",
+      "learn_more": {
+        "title": "Compound Interest Calculator",
+        "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+      }
+    },
+    {
+      "id": "p005",
+      "level": "foundation",
+      "topic": "Compound interest",
+      "lesson": "l02",
+      "question": "Why can carrying a credit card balance be so costly over time?",
+      "options": [
+        "The interest compounds, so you pay interest on past interest",
+        "Credit card interest is charged only once",
+        "The bank reduces your balance each month",
+        "Credit card interest is tax-deductible"
+      ],
+      "answer": 0,
+      "explanation": "Compounding works against you on debt: unpaid interest is added to the balance and then charged interest itself.",
+      "basis": "Adapted from CFPB: How does compound interest work? (public domain)",
+      "learn_more": {
+        "title": "How does compound interest work?",
+        "url": "https://www.consumerfinance.gov/ask-cfpb/how-does-compound-interest-work-en-1683/"
+      }
+    },
+    {
+      "id": "p006",
+      "level": "foundation",
+      "topic": "APY vs simple rate",
+      "lesson": "l02",
+      "question": "A savings account advertises an APY. What does APY include that a simple interest rate doesn't?",
+      "options": [
+        "The bank's fees",
+        "Inflation",
+        "Taxes owed on the interest",
+        "The effect of compounding during the year"
+      ],
+      "answer": 3,
+      "explanation": "Annual percentage yield shows what you'd earn in a year including compounding, so it's useful for comparing accounts.",
+      "basis": "FDIC Money Smart (topic: saving) (public domain)",
+      "learn_more": {
+        "title": "Money Smart",
+        "url": "https://www.fdic.gov/consumer-resource-center/money-smart"
+      }
+    },
+    {
+      "id": "p007",
+      "level": "foundation",
+      "topic": "Inflation",
+      "lesson": "l03",
+      "question": "If inflation is 3% a year, what happens to $100 kept in a drawer?",
+      "options": [
+        "It grows by 3% a year",
+        "It buys less each year",
+        "It keeps exactly the same buying power",
+        "It is automatically adjusted by the bank"
+      ],
+      "answer": 1,
+      "explanation": "The number stays at $100, but prices rise, so its buying power shrinks.",
+      "basis": "Adapted from SEC Investor.gov: What is Risk? (inflation risk) (public domain)",
+      "learn_more": {
+        "title": "What is Risk?",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/what-risk"
+      }
+    },
+    {
+      "id": "p008",
+      "level": "foundation",
+      "topic": "Inflation",
+      "lesson": "l03",
+      "question": "What inflation rate does the US Federal Reserve aim for over the longer run?",
+      "options": [
+        "About 2% a year",
+        "0%, so prices never change",
+        "About 5% a year",
+        "It has no target"
+      ],
+      "answer": 0,
+      "explanation": "The Fed says inflation of 2% over the longer run is most consistent with its goals of maximum employment and stable prices.",
+      "basis": "Adapted from Federal Reserve Board FAQ (public domain)",
+      "learn_more": {
+        "title": "Why does the Federal Reserve aim for inflation of 2 percent over the longer run?",
+        "url": "https://www.federalreserve.gov/faqs/economy_14400.htm"
+      }
+    },
+    {
+      "id": "p009",
+      "level": "foundation",
+      "topic": "Inflation-protected savings",
+      "lesson": "l03",
+      "question": "What is special about US Treasury I bonds?",
+      "options": [
+        "They are guaranteed to double every 5 years",
+        "They are stocks issued by the Treasury",
+        "Their interest rate includes a part linked to inflation",
+        "They are insured by the FDIC"
+      ],
+      "answer": 2,
+      "explanation": "I bonds have a fixed rate plus an inflation rate that adjusts, so they help savings keep up with prices.",
+      "basis": "Adapted from TreasuryDirect: I bonds (public domain)",
+      "learn_more": {
+        "title": "I bonds",
+        "url": "https://www.treasurydirect.gov/savings-bonds/i-bonds/"
+      }
+    },
+    {
+      "id": "p010",
+      "level": "foundation",
+      "topic": "Emergency fund",
+      "lesson": "l04",
+      "question": "Which is the best use of an emergency fund?",
+      "options": [
+        "Buying a stock that's rising quickly",
+        "Paying for an unexpected car repair needed to get to work",
+        "A planned holiday next year",
+        "A new phone because the old one is out of fashion"
+      ],
+      "answer": 1,
+      "explanation": "An emergency fund is for genuine, unexpected needs, so you don't have to borrow or sell investments at a bad time.",
+      "basis": "FDIC Money Smart (topic: saving) (public domain)",
+      "learn_more": {
+        "title": "Money Smart",
+        "url": "https://www.fdic.gov/consumer-resource-center/money-smart"
+      }
+    },
+    {
+      "id": "p011",
+      "level": "foundation",
+      "topic": "Emergency fund",
+      "lesson": "l04",
+      "question": "You want a $3,000 emergency fund within 12 months. Roughly how much should you save each month?",
+      "options": [
+        "$300",
+        "$200",
+        "$120",
+        "$250"
+      ],
+      "answer": 3,
+      "explanation": "$3,000 divided by 12 months is $250 a month.",
+      "basis": "Adapted from SEC Investor.gov: Savings Goal Calculator (public domain)",
+      "learn_more": {
+        "title": "Savings Goal Calculator",
+        "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator"
+      }
+    },
+    {
+      "id": "p012",
+      "level": "foundation",
+      "topic": "FDIC insurance",
+      "lesson": "l04",
+      "question": "What does FDIC insurance protect?",
+      "options": [
+        "Your stocks if their price falls",
+        "Money lost to a scam",
+        "Deposits at an insured bank if the bank fails, up to the limit",
+        "Contents of a safe deposit box"
+      ],
+      "answer": 2,
+      "explanation": "FDIC insurance covers deposit accounts such as checking, savings, money market deposit accounts and CDs if an insured bank fails.",
+      "basis": "Adapted from FDIC: Understanding Deposit Insurance (public domain)",
+      "learn_more": {
+        "title": "Understanding Deposit Insurance",
+        "url": "https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance"
+      }
+    },
+    {
+      "id": "p013",
+      "level": "foundation",
+      "topic": "FDIC insurance",
+      "lesson": "l04",
+      "question": "Which of these is covered by FDIC insurance?",
+      "options": [
+        "A certificate of deposit at an insured bank",
+        "Shares of a stock fund bought at a bank",
+        "A municipal bond",
+        "Crypto held in an app"
+      ],
+      "answer": 0,
+      "explanation": "CDs at insured banks are deposits and are covered up to the limit. Investments are not, even if sold at a bank.",
+      "basis": "Adapted from FDIC: Are My Deposit Accounts Insured by the FDIC? (public domain)",
+      "learn_more": {
+        "title": "Are My Deposit Accounts Insured by the FDIC?",
+        "url": "https://www.fdic.gov/resources/deposit-insurance/financial-products-insured"
+      }
+    },
+    {
+      "id": "p014",
+      "level": "foundation",
+      "topic": "FDIC insurance",
+      "lesson": "l04",
+      "question": "Jamie has $180,000 in savings and $90,000 in checking, both in Jamie's own name at the same insured bank. How much is FDIC insured?",
+      "options": [
+        "$270,000",
+        "$180,000",
+        "$500,000",
+        "$250,000"
+      ],
+      "answer": 3,
+      "explanation": "Single accounts owned by one person at one bank are added together ($270,000) and insured up to $250,000 in total for that ownership category.",
+      "basis": "Adapted from FDIC: Understanding Deposit Insurance (public domain)",
+      "learn_more": {
+        "title": "Understanding Deposit Insurance",
+        "url": "https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance"
+      }
+    },
+    {
+      "id": "p015",
+      "level": "foundation",
+      "topic": "SIPC",
+      "lesson": "l04",
+      "question": "Your brokerage account drops 25% because the market fell. Does SIPC cover that loss?",
+      "options": [
+        "Yes, SIPC refunds market losses up to $500,000",
+        "No, SIPC does not protect against investments losing value",
+        "Yes, but only for stocks",
+        "Only if you file a claim within a week"
+      ],
+      "answer": 1,
+      "explanation": "SIPC helps when a member brokerage firm fails and customer assets are missing. It never covers ordinary market losses.",
+      "basis": "SIPC: What SIPC Protects",
+      "learn_more": {
+        "title": "What SIPC Protects",
+        "url": "https://www.sipc.org/for-investors/what-sipc-protects"
+      }
+    },
+    {
+      "id": "p016",
+      "level": "foundation",
+      "topic": "Treasury bills",
+      "lesson": "l04",
+      "question": "What is a Treasury bill?",
+      "options": [
+        "A short-term loan to the US government lasting a year or less",
+        "A bill you pay to the IRS",
+        "A share in the US Treasury",
+        "A 30-year government bond"
+      ],
+      "answer": 0,
+      "explanation": "T-bills are short-term US government securities and are considered among the safest assets.",
+      "basis": "Adapted from TreasuryDirect: Treasury Bills (public domain)",
+      "learn_more": {
+        "title": "Treasury Bills",
+        "url": "https://www.treasurydirect.gov/marketable-securities/treasury-bills/"
+      }
+    },
+    {
+      "id": "p017",
+      "level": "foundation",
+      "topic": "CDs",
+      "lesson": "l04",
+      "question": "What is the usual trade-off with a certificate of deposit (CD)?",
+      "options": [
+        "Higher risk in exchange for unlimited withdrawals",
+        "No interest in exchange for FDIC insurance",
+        "A fixed rate in exchange for leaving the money for a set term, with a penalty for early withdrawal",
+        "A variable rate that follows the stock market"
+      ],
+      "answer": 2,
+      "explanation": "CDs lock your money for a term at a set rate; taking it out early usually costs a penalty.",
+      "basis": "Adapted from SEC Investor.gov: Certificates of Deposit (public domain)",
+      "learn_more": {
+        "title": "Certificates of Deposit (CDs)",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/certificates-deposit-cds"
+      }
+    },
+    {
+      "id": "p018",
+      "level": "foundation",
+      "topic": "Money market funds",
+      "lesson": "l04",
+      "question": "How is a money market fund different from a money market deposit account at a bank?",
+      "options": [
+        "They are the same thing",
+        "The fund is an investment and isn't FDIC insured; the bank account is a deposit that is",
+        "The fund is FDIC insured; the bank account is not",
+        "The fund holds stocks; the account holds bonds"
+      ],
+      "answer": 1,
+      "explanation": "Money market funds are low-risk investments but not guaranteed. Money market deposit accounts are bank deposits covered by FDIC insurance.",
+      "basis": "Adapted from SEC Investor.gov: Money Market Fund (public domain)",
+      "learn_more": {
+        "title": "Money Market Fund",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/money-market-fund"
+      }
+    },
+    {
+      "id": "p019",
+      "level": "foundation",
+      "topic": "Risk and return",
+      "lesson": "l05",
+      "question": "Which statement about risk and return is generally true?",
+      "options": [
+        "Higher return always means lower risk",
+        "Risk and return are unrelated",
+        "Low-risk investments always earn the most",
+        "Investments with higher potential returns usually carry more risk"
+      ],
+      "answer": 3,
+      "explanation": "Investors generally demand higher potential returns to accept more risk.",
+      "basis": "Adapted from SEC Investor.gov: What is Risk? (public domain)",
+      "learn_more": {
+        "title": "What is Risk?",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/what-risk"
+      }
+    },
+    {
+      "id": "p020",
+      "level": "foundation",
+      "topic": "Risk tolerance",
+      "lesson": "l05",
+      "question": "What does risk tolerance describe?",
+      "options": [
+        "The maximum a stock can fall in a day",
+        "A rule that limits how much you can invest",
+        "How much ups and downs you can handle without abandoning your plan",
+        "The interest rate on a savings account"
+      ],
+      "answer": 2,
+      "explanation": "Risk tolerance is your ability and willingness to accept swings in value.",
+      "basis": "Adapted from SEC Investor.gov glossary: Risk Tolerance (public domain)",
+      "learn_more": {
+        "title": "Risk Tolerance",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/risk-tolerance"
+      }
+    },
+    {
+      "id": "p021",
+      "level": "foundation",
+      "topic": "Shares",
+      "lesson": "l06",
+      "question": "What do you own when you buy a share of stock?",
+      "options": [
+        "A small piece of ownership in the company",
+        "A loan to the company",
+        "A guaranteed dividend",
+        "A promise of repayment on a set date"
+      ],
+      "answer": 0,
+      "explanation": "A share is ownership. A loan to a company with repayment on a set date is a bond.",
+      "basis": "Adapted from SEC Investor.gov: Stocks - FAQs (public domain)",
+      "learn_more": {
+        "title": "Stocks - FAQs",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/stocks"
+      }
+    },
+    {
+      "id": "p022",
+      "level": "foundation",
+      "topic": "Shares",
+      "lesson": "l06",
+      "question": "You buy 10 shares at $30 and later sell them at $36. Ignoring fees, what's your gain?",
+      "options": [
+        "$6",
+        "$36",
+        "$360",
+        "$60"
+      ],
+      "answer": 3,
+      "explanation": "You gained $6 per share on 10 shares: 10 x $6 = $60.",
+      "basis": "Adapted from SEC Investor.gov: Stocks - FAQs (public domain)",
+      "learn_more": {
+        "title": "Stock",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/stock"
+      }
+    },
+    {
+      "id": "p023",
+      "level": "foundation",
+      "topic": "Order types",
+      "lesson": "l07",
+      "question": "You want to buy a stock right away and don't mind small differences in price. Which order fits?",
+      "options": [
+        "A limit order far below today's price",
+        "A market order",
+        "A bond order",
+        "No order; shares are bought automatically"
+      ],
+      "answer": 1,
+      "explanation": "A market order executes promptly at the best available price, though the exact price isn't guaranteed.",
+      "basis": "Adapted from SEC Investor.gov: Types of Orders (public domain)",
+      "learn_more": {
+        "title": "Types of Orders",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/types-orders"
+      }
+    },
+    {
+      "id": "p024",
+      "level": "foundation",
+      "topic": "Indexes",
+      "lesson": "l08",
+      "question": "What does a stock market index such as the S&P 500 do?",
+      "options": [
+        "Tracks the combined performance of a group of stocks",
+        "Sets the price of every stock",
+        "Guarantees investor returns",
+        "Lists only the stocks that went up today"
+      ],
+      "answer": 0,
+      "explanation": "An index measures how a basket of stocks is doing, giving a quick read on part of the market.",
+      "basis": "Adapted from SEC Investor.gov glossary: Market Index (public domain)",
+      "learn_more": {
+        "title": "Market Index",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/market-index"
+      }
+    },
+    {
+      "id": "p025",
+      "level": "foundation",
+      "topic": "Bull and bear markets",
+      "lesson": "l10",
+      "question": "What is a bear market commonly understood to mean?",
+      "options": [
+        "A day when stocks rise",
+        "A market for agricultural products",
+        "A period when prices fall about 20% or more from a recent high",
+        "A period of steady, rising prices"
+      ],
+      "answer": 2,
+      "explanation": "Bear market is an informal term for a prolonged decline, often defined as 20% or more from a recent high.",
+      "basis": "Adapted from SEC Investor.gov glossary: Bear Market (public domain)",
+      "learn_more": {
+        "title": "Bear Market",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/bear-market"
+      }
+    },
+    {
+      "id": "p026",
+      "level": "foundation",
+      "topic": "Index funds",
+      "lesson": "l11",
+      "question": "Why do many beginners start with broad index funds?",
+      "options": [
+        "They never lose money",
+        "They offer instant diversification at low cost",
+        "They always beat the market",
+        "They pay guaranteed interest"
+      ],
+      "answer": 1,
+      "explanation": "A broad index fund spreads money across many companies cheaply, but it still rises and falls with the market.",
+      "basis": "Adapted from SEC Investor.gov glossary: Index Fund (public domain)",
+      "learn_more": {
+        "title": "Index Fund",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/index-fund"
+      }
+    },
+    {
+      "id": "p027",
+      "level": "foundation",
+      "topic": "Fees",
+      "lesson": "l12",
+      "question": "A fund charges a 0.5% expense ratio. How much does that cost per year on $4,000?",
+      "options": [
+        "$2",
+        "$200",
+        "$0.50",
+        "$20"
+      ],
+      "answer": 3,
+      "explanation": "0.5% of $4,000 = 0.005 x $4,000 = $20 a year.",
+      "basis": "Adapted from SEC Investor.gov glossary: Expense Ratio (public domain)",
+      "learn_more": {
+        "title": "Expense Ratio",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/expense-ratio"
+      }
+    },
+    {
+      "id": "p028",
+      "level": "foundation",
+      "topic": "Diversification",
+      "lesson": "l14",
+      "question": "What is the main goal of diversification?",
+      "options": [
+        "To guarantee profits",
+        "To own only the best stock",
+        "To reduce the damage any single investment can do",
+        "To avoid paying taxes"
+      ],
+      "answer": 2,
+      "explanation": "Spreading money across many investments lowers the impact of any one failure. It doesn't remove all risk.",
+      "basis": "Adapted from SEC Investor.gov: Asset Allocation and Diversification (public domain)",
+      "learn_more": {
+        "title": "Asset Allocation and Diversification",
+        "url": "https://www.investor.gov/introduction-investing/getting-started/asset-allocation"
+      }
+    },
+    {
+      "id": "p029",
+      "level": "foundation",
+      "topic": "Dividends",
+      "lesson": "l15",
+      "question": "What is a dividend?",
+      "options": [
+        "A payment a company makes to its shareholders, usually from profits",
+        "A fee you pay to buy shares",
+        "Interest paid on a savings account",
+        "A loan from your broker"
+      ],
+      "answer": 0,
+      "explanation": "Dividends distribute part of a company's earnings to shareholders. They're not guaranteed.",
+      "basis": "Adapted from SEC Investor.gov glossary: Dividend (public domain)",
+      "learn_more": {
+        "title": "Dividend",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/dividend"
+      }
+    },
+    {
+      "id": "p030",
+      "level": "foundation",
+      "topic": "Dollar-cost averaging",
+      "lesson": "l20",
+      "question": "Which is an example of dollar-cost averaging?",
+      "options": [
+        "Investing only when the news is good",
+        "Selling everything when prices drop",
+        "Investing a random amount whenever you feel like it",
+        "Investing $150 into the same fund every month"
+      ],
+      "answer": 3,
+      "explanation": "Dollar-cost averaging means investing a fixed amount on a regular schedule, regardless of price.",
+      "basis": "Adapted from SEC Investor.gov glossary: Dollar Cost Averaging (public domain)",
+      "learn_more": {
+        "title": "Dollar Cost Averaging",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/dollar-cost-averaging"
+      }
+    },
+    {
+      "id": "p031",
+      "level": "foundation",
+      "topic": "Behaviour",
+      "lesson": "l21",
+      "question": "The market falls 15% in a month and you feel like selling everything. According to this course, what's the main risk of acting on that feeling?",
+      "options": [
+        "Paying too little tax",
+        "Locking in losses and missing a possible recovery",
+        "Your broker closing your account",
+        "Earning too much interest"
+      ],
+      "answer": 1,
+      "explanation": "Panic selling turns temporary declines into permanent losses and can mean missing the rebound.",
+      "basis": "Adapted from SEC Investor.gov: What is Risk? (public domain)",
+      "learn_more": {
+        "title": "What is Risk?",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/what-risk"
+      }
+    },
+    {
+      "id": "p032",
+      "level": "foundation",
+      "topic": "Fraud",
+      "lesson": "l22",
+      "question": "A caller promises 'guaranteed 30% returns with no risk' if you invest today. What should you do?",
+      "options": [
+        "Treat it as a red flag, take time and check the seller's registration",
+        "Invest quickly before the offer expires",
+        "Ask for a bigger guarantee",
+        "Send a small amount by gift card to test it"
+      ],
+      "answer": 0,
+      "explanation": "Guaranteed high returns and pressure to hurry are classic signs of fraud. Checking registration is a good first step.",
+      "basis": "Adapted from SEC Investor.gov: How to Avoid Fraud (public domain)",
+      "learn_more": {
+        "title": "How to Avoid Fraud",
+        "url": "https://www.investor.gov/protect-your-investments/fraud/how-avoid-fraud"
+      }
+    },
+    {
+      "id": "p033",
+      "level": "foundation",
+      "topic": "Fraud",
+      "lesson": "l22",
+      "question": "How does a Ponzi scheme pay its early investors?",
+      "options": [
+        "From government bonds",
+        "From genuine business profits",
+        "With money from newer investors, not real profits",
+        "From FDIC insurance"
+      ],
+      "answer": 2,
+      "explanation": "Ponzi schemes collapse when new money dries up, because there are no real earnings behind the payouts.",
+      "basis": "Adapted from SEC Investor.gov: Ponzi Scheme (public domain)",
+      "learn_more": {
+        "title": "Ponzi Scheme",
+        "url": "https://www.investor.gov/protect-your-investments/fraud/types-fraud/ponzi-scheme"
+      }
+    },
+    {
+      "id": "p034",
+      "level": "foundation",
+      "topic": "Employer match",
+      "lesson": "l23",
+      "question": "Your employer adds 50 cents to your 401(k) for every $1 you contribute, up to 6% of pay. You earn $40,000 and contribute 6%. How much does the employer add?",
+      "options": [
+        "$2,400",
+        "$1,200",
+        "$600",
+        "$3,600"
+      ],
+      "answer": 1,
+      "explanation": "6% of $40,000 is $2,400 from you. Half of that, $1,200, comes from the employer match.",
+      "basis": "Adapted from SEC Investor.gov glossary: 401(k) Plan (public domain)",
+      "learn_more": {
+        "title": "401(k) Plan",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/401k-plan"
+      }
+    },
+    {
+      "id": "p035",
+      "level": "foundation",
+      "topic": "Capital gains",
+      "lesson": "l23",
+      "question": "When do you generally owe US tax on a capital gain from a stock in a regular brokerage account?",
+      "options": [
+        "Every day the price rises",
+        "When you buy the stock",
+        "Never, gains are tax-free",
+        "When you sell the stock for more than you paid"
+      ],
+      "answer": 3,
+      "explanation": "Gains are generally taxed when realised, meaning when you sell.",
+      "basis": "Adapted from IRS Topic no. 409 (public domain)",
+      "learn_more": {
+        "title": "Topic no. 409, Capital gains and losses",
+        "url": "https://www.irs.gov/taxtopics/tc409"
+      }
+    },
+    {
+      "id": "p036",
+      "level": "intermediate",
+      "topic": "Primary vs secondary market",
+      "lesson": "l06",
+      "question": "A company sells new shares to investors for the first time in an IPO. Where does that sale take place?",
+      "options": [
+        "In the secondary market",
+        "In the money market",
+        "In the primary market",
+        "In the futures market"
+      ],
+      "answer": 2,
+      "explanation": "New securities sold by the issuer are sold in the primary market; later trading between investors is the secondary market.",
+      "basis": "FINRA SIE outline: Knowledge of Capital Markets",
+      "learn_more": {
+        "title": "How Stock Markets Work",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work"
+      }
+    },
+    {
+      "id": "p037",
+      "level": "intermediate",
+      "topic": "Common vs preferred stock",
+      "lesson": "l06",
+      "question": "Compared with common stock, preferred stock typically...",
+      "options": [
+        "Usually pays a fixed dividend and ranks ahead of common stock for dividends and in liquidation, but usually has no vote",
+        "Has more votes and no dividends",
+        "Is a type of bond insured by the FDIC",
+        "Can never be sold"
+      ],
+      "answer": 0,
+      "explanation": "Preferred shareholders usually get priority on dividends and in liquidation, in exchange for limited voting rights and upside.",
+      "basis": "FINRA SIE outline: Understanding Products and Their Risks (equity securities)",
+      "learn_more": {
+        "title": "Stocks - FAQs",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/stocks"
+      }
+    },
+    {
+      "id": "p038",
+      "level": "intermediate",
+      "topic": "Stock splits",
+      "lesson": "l06",
+      "question": "You own 100 shares at $80. The company does a 2-for-1 stock split. What do you own afterwards, before any price change?",
+      "options": [
+        "200 shares at $80",
+        "50 shares at $160",
+        "100 shares at $40",
+        "200 shares at $40"
+      ],
+      "answer": 3,
+      "explanation": "A split changes the number of shares and the price per share, not the total value: still $8,000.",
+      "basis": "FINRA SIE outline: Understanding Products and Their Risks (corporate actions)",
+      "learn_more": {
+        "title": "Stocks - FAQs",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/stocks"
+      }
+    },
+    {
+      "id": "p039",
+      "level": "intermediate",
+      "topic": "Bid-ask spread",
+      "lesson": "l07",
+      "question": "A stock's bid is $25.40 and ask is $25.45. You buy 200 shares with a market order and immediately sell them with a market order. Ignoring commissions and price changes, what does the round trip cost?",
+      "options": [
+        "$5",
+        "$10",
+        "$0.05",
+        "$50"
+      ],
+      "answer": 1,
+      "explanation": "You buy near the ask and sell near the bid, losing the $0.05 spread on 200 shares: 200 x $0.05 = $10.",
+      "basis": "FINRA SIE outline: Trading, Customer Accounts and Prohibited Activities (orders and quotes)",
+      "learn_more": {
+        "title": "Executing an Order",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/executing-order"
+      }
+    },
+    {
+      "id": "p040",
+      "level": "intermediate",
+      "topic": "Stop orders",
+      "lesson": "l07",
+      "question": "A stock trades at $50. You place a sell stop order at $45. What happens if the price drops to $45?",
+      "options": [
+        "The order becomes a market order and sells at the next available price, which may be below $45",
+        "It sells exactly at $45, guaranteed",
+        "Nothing, stop orders only buy",
+        "The trade is cancelled"
+      ],
+      "answer": 0,
+      "explanation": "Once the stop price is reached, a stop order becomes a market order, so the fill price isn't guaranteed in a fast-moving market.",
+      "basis": "Adapted from SEC Investor.gov: Types of Orders (public domain)",
+      "learn_more": {
+        "title": "Types of Orders",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/types-orders"
+      }
+    },
+    {
+      "id": "p041",
+      "level": "intermediate",
+      "topic": "Limit orders",
+      "lesson": "l07",
+      "question": "You place a limit order to buy at $30 when a stock trades at $32. What's true?",
+      "options": [
+        "It fills right away at $32",
+        "It fills at $30 even if the price rises",
+        "It fills only if the stock can be bought at $30 or less",
+        "It sells your shares at $30"
+      ],
+      "answer": 2,
+      "explanation": "A buy limit order sets the maximum price you'll pay; it may never fill.",
+      "basis": "Adapted from SEC Investor.gov glossary: Limit Orders (public domain)",
+      "learn_more": {
+        "title": "Limit Orders",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/limit-orders"
+      }
+    },
+    {
+      "id": "p042",
+      "level": "intermediate",
+      "topic": "Market makers",
+      "lesson": "l07",
+      "question": "What role does a market maker play?",
+      "options": [
+        "Sets the official price of every stock",
+        "Stands ready to buy and sell a stock, posting bid and ask quotes",
+        "Regulates brokers on behalf of the SEC",
+        "Insures investors against losses"
+      ],
+      "answer": 1,
+      "explanation": "Market makers provide liquidity by quoting both sides and typically earn the spread.",
+      "basis": "FINRA SIE outline: Knowledge of Capital Markets (market structure)",
+      "learn_more": {
+        "title": "Executing an Order",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/executing-order"
+      }
+    },
+    {
+      "id": "p043",
+      "level": "intermediate",
+      "topic": "Settlement",
+      "lesson": "l07",
+      "question": "For most US stock trades, settlement now happens one business day after the trade (T+1). What does settlement mean?",
+      "options": [
+        "The order is placed",
+        "The trade is reported in the news",
+        "Dividends are paid",
+        "Cash and shares officially change hands"
+      ],
+      "answer": 3,
+      "explanation": "The trade date is when you agree to buy or sell; settlement is when ownership and payment are formally exchanged.",
+      "basis": "FINRA SIE outline: Trading, Customer Accounts and Prohibited Activities (settlement)",
+      "learn_more": {
+        "title": "Executing an Order",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/executing-order"
+      }
+    },
+    {
+      "id": "p044",
+      "level": "intermediate",
+      "topic": "Index weighting",
+      "lesson": "l08",
+      "question": "An index weighted by market capitalisation is most affected by which companies?",
+      "options": [
+        "Those with the highest share price",
+        "Those with the most employees",
+        "The largest companies by total market value",
+        "All companies equally"
+      ],
+      "answer": 2,
+      "explanation": "In a cap-weighted index such as the S&P 500, bigger companies carry bigger weights. The Dow, by contrast, is price-weighted.",
+      "basis": "FINRA SIE outline: Knowledge of Capital Markets (indexes)",
+      "learn_more": {
+        "title": "Market Index",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/market-index"
+      }
+    },
+    {
+      "id": "p045",
+      "level": "intermediate",
+      "topic": "Interest rates and stocks",
+      "lesson": "l09",
+      "question": "When interest rates rise, why might stock prices fall even if company profits don't change?",
+      "options": [
+        "Future profits are worth less in today's money and safer assets pay more",
+        "Companies are banned from paying dividends",
+        "Rising rates always cause recessions immediately",
+        "Stocks pay interest that falls when rates rise"
+      ],
+      "answer": 0,
+      "explanation": "A higher discount rate lowers the present value of future cash flows, and bonds and savings become stiffer competition.",
+      "basis": "FINRA SIE outline: Understanding Products and Their Risks (market risk)",
+      "learn_more": {
+        "title": "Monetary Policy",
+        "url": "https://www.federalreserve.gov/monetarypolicy.htm"
+      }
+    },
+    {
+      "id": "p046",
+      "level": "intermediate",
+      "topic": "Volatility",
+      "lesson": "l10",
+      "question": "The VIX rises sharply from 15 to 35. What is it signalling?",
+      "options": [
+        "The S&P 500 will rise 20%",
+        "Interest rates have risen 20%",
+        "Trading volume fell",
+        "Investors expect much larger S&P 500 swings over the next 30 days"
+      ],
+      "answer": 3,
+      "explanation": "The VIX reflects expected volatility from option prices. It says nothing about direction.",
+      "basis": "FINRA SIE outline: Understanding Products and Their Risks (options and volatility)",
+      "learn_more": {
+        "title": "VIX Volatility Products",
+        "url": "https://www.cboe.com/tradable-products/vix"
+      }
+    },
+    {
+      "id": "p047",
+      "level": "intermediate",
+      "topic": "ETFs vs mutual funds",
+      "lesson": "l11",
+      "question": "When you place an order to buy a traditional mutual fund during the trading day, what price do you usually get?",
+      "options": [
+        "The price at the moment you click buy",
+        "The fund's net asset value calculated after that day's close",
+        "Yesterday's opening price",
+        "Any price you choose"
+      ],
+      "answer": 1,
+      "explanation": "Mutual fund orders are filled at the next calculated NAV, usually after the market closes. ETFs trade at market prices during the day.",
+      "basis": "Adapted from SEC Investor.gov: Mutual Funds (public domain)",
+      "learn_more": {
+        "title": "Mutual Funds",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-funds-etfs/mutual-funds"
+      }
+    },
+    {
+      "id": "p048",
+      "level": "intermediate",
+      "topic": "Net asset value",
+      "lesson": "l11",
+      "question": "A fund holds $105 million of assets, owes $5 million and has 4 million shares outstanding. What is its NAV per share?",
+      "options": [
+        "$25.00",
+        "$26.25",
+        "$27.50",
+        "$20.00"
+      ],
+      "answer": 0,
+      "explanation": "NAV = (assets - liabilities) / shares = ($105m - $5m) / 4m = $25.00.",
+      "basis": "FINRA SIE outline: Understanding Products and Their Risks (investment companies)",
+      "learn_more": {
+        "title": "Mutual Funds",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-funds-etfs/mutual-funds"
+      }
+    },
+    {
+      "id": "p049",
+      "level": "intermediate",
+      "topic": "Fund costs",
+      "lesson": "l12",
+      "question": "Two index funds track the same index. Fund A charges 0.04% and Fund B charges 0.60%. Over the long run, what's the most likely result before taxes?",
+      "options": [
+        "Fund B returns more because it charges more",
+        "They return exactly the same",
+        "Fund A returns more, by roughly the fee difference each year",
+        "Fund A must hold riskier stocks"
+      ],
+      "answer": 2,
+      "explanation": "Funds tracking the same index hold nearly the same investments, so the cost difference flows almost directly to returns.",
+      "basis": "Adapted from SEC Investor.gov glossary: Expense Ratio (public domain)",
+      "learn_more": {
+        "title": "Fund Analyzer",
+        "url": "https://tools.finra.org/fund_analyzer/"
+      }
+    },
+    {
+      "id": "p050",
+      "level": "intermediate",
+      "topic": "Bond basics",
+      "lesson": "l13",
+      "question": "A $1,000 bond pays a 4% annual coupon. How much interest does it pay each year?",
+      "options": [
+        "$4",
+        "$40",
+        "$400",
+        "$1,040"
+      ],
+      "answer": 1,
+      "explanation": "Coupon payments are based on face value: 4% x $1,000 = $40 a year.",
+      "basis": "Adapted from SEC Investor.gov glossary: Coupon (public domain)",
+      "learn_more": {
+        "title": "Coupon",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/coupon"
+      }
+    },
+    {
+      "id": "p051",
+      "level": "intermediate",
+      "topic": "Treasury bills",
+      "lesson": "l13",
+      "question": "A 26-week Treasury bill with $1,000 face value is bought for $980. How do you earn interest?",
+      "options": [
+        "You get $20 coupons every month",
+        "You receive $980 back plus a dividend",
+        "Interest is paid only if rates rise",
+        "You receive $1,000 at maturity; the $20 difference is your interest"
+      ],
+      "answer": 3,
+      "explanation": "T-bills are typically sold at a discount and repaid at face value; the difference is the interest.",
+      "basis": "Adapted from TreasuryDirect: Treasury Bills (public domain)",
+      "learn_more": {
+        "title": "Treasury Bills",
+        "url": "https://www.treasurydirect.gov/marketable-securities/treasury-bills/"
+      }
+    },
+    {
+      "id": "p052",
+      "level": "intermediate",
+      "topic": "Credit ratings",
+      "lesson": "l13",
+      "question": "Which bond rating is the lowest that is still considered 'investment grade' by S&P?",
+      "options": [
+        "BB+",
+        "A",
+        "BBB-",
+        "CCC"
+      ],
+      "answer": 2,
+      "explanation": "S&P ratings from BBB- upward are investment grade; BB+ and below are high-yield (junk).",
+      "basis": "FINRA SIE outline: Understanding Products and Their Risks (debt securities)",
+      "learn_more": {
+        "title": "Corporate Bonds",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/bonds-or-fixed-income-products"
+      }
+    },
+    {
+      "id": "p053",
+      "level": "intermediate",
+      "topic": "Callable bonds",
+      "lesson": "l13",
+      "question": "Why might a company call (repay early) its bonds?",
+      "options": [
+        "Interest rates have fallen, so it can borrow again more cheaply",
+        "Interest rates have risen sharply",
+        "Its stock price has dropped",
+        "Bondholders asked for it"
+      ],
+      "answer": 0,
+      "explanation": "Issuers tend to call bonds when rates fall, which leaves investors reinvesting at lower rates (reinvestment risk).",
+      "basis": "Adapted from SEC Investor.gov: Bonds - FAQs (public domain)",
+      "learn_more": {
+        "title": "Bonds - FAQs",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/bonds-or-fixed-income-products/bonds"
+      }
+    },
+    {
+      "id": "p054",
+      "level": "intermediate",
+      "topic": "Municipal bonds",
+      "lesson": "l13",
+      "question": "What is a common tax feature of US municipal bonds?",
+      "options": [
+        "They are always exempt from every tax",
+        "They are taxed at double the normal rate",
+        "They are FDIC insured",
+        "Their interest is generally exempt from federal income tax"
+      ],
+      "answer": 3,
+      "explanation": "Muni bond interest is generally federally tax-exempt and may also be exempt from state tax for in-state residents. Capital gains can still be taxed.",
+      "basis": "FINRA SIE outline: Understanding Products and Their Risks (municipal securities)",
+      "learn_more": {
+        "title": "Bonds - FAQs",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/bonds-or-fixed-income-products/bonds"
+      }
+    },
+    {
+      "id": "p055",
+      "level": "intermediate",
+      "topic": "TIPS",
+      "lesson": "l13",
+      "question": "What happens to the principal of a Treasury Inflation-Protected Security (TIPS) when inflation rises?",
+      "options": [
+        "It is adjusted downward",
+        "It is adjusted upward",
+        "It stays fixed",
+        "It converts to cash"
+      ],
+      "answer": 1,
+      "explanation": "TIPS principal rises with inflation and falls with deflation; at maturity you get the adjusted or original principal, whichever is greater.",
+      "basis": "Adapted from TreasuryDirect: TIPS (public domain)",
+      "learn_more": {
+        "title": "TIPS",
+        "url": "https://www.treasurydirect.gov/marketable-securities/tips/"
+      }
+    },
+    {
+      "id": "p056",
+      "level": "intermediate",
+      "topic": "Types of risk",
+      "lesson": "l03",
+      "question": "Which risk is the main concern for someone holding a long-term bond paying a fixed 3% while inflation runs at 5%?",
+      "options": [
+        "Inflation (purchasing power) risk",
+        "Liquidity risk",
+        "Currency risk",
+        "Business risk of a single company"
+      ],
+      "answer": 0,
+      "explanation": "Fixed payments buy less when inflation exceeds the coupon, eroding real returns.",
+      "basis": "Adapted from SEC Investor.gov: What is Risk? (public domain)",
+      "learn_more": {
+        "title": "What is Risk?",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/what-risk"
+      }
+    },
+    {
+      "id": "p057",
+      "level": "intermediate",
+      "topic": "Liquidity risk",
+      "lesson": "l05",
+      "question": "What is liquidity risk?",
+      "options": [
+        "The risk that interest rates rise",
+        "The risk of a company failing",
+        "The risk you can't sell quickly without accepting a much lower price",
+        "The risk of inflation"
+      ],
+      "answer": 2,
+      "explanation": "Thinly traded assets can be hard to sell at a fair price when you need to.",
+      "basis": "Adapted from SEC Investor.gov: What is Risk? (public domain)",
+      "learn_more": {
+        "title": "What is Risk?",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/what-risk"
+      }
+    },
+    {
+      "id": "p058",
+      "level": "intermediate",
+      "topic": "Rebalancing",
+      "lesson": "l14",
+      "question": "Your target is 60% stocks and 40% bonds. After a strong year you're at 70/30. What does rebalancing involve?",
+      "options": [
+        "Buying more stocks because they did well",
+        "Selling some stocks and buying bonds to return to 60/40",
+        "Selling all bonds",
+        "Doing nothing until you retire"
+      ],
+      "answer": 1,
+      "explanation": "Rebalancing restores your chosen risk level by trimming what grew and adding to what lagged.",
+      "basis": "Adapted from SEC Investor.gov glossary: Rebalancing (public domain)",
+      "learn_more": {
+        "title": "Rebalancing",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/rebalancing"
+      }
+    },
+    {
+      "id": "p059",
+      "level": "intermediate",
+      "topic": "Dividend yield",
+      "lesson": "l15",
+      "question": "A stock pays a quarterly dividend of $0.75 and trades at $60. What is its annual dividend yield?",
+      "options": [
+        "1.25%",
+        "4.0%",
+        "7.5%",
+        "5.0%"
+      ],
+      "answer": 3,
+      "explanation": "Annual dividend = 4 x $0.75 = $3.00. Yield = $3.00 / $60 = 5.0%.",
+      "basis": "Adapted from SEC Investor.gov glossary: Dividend (public domain)",
+      "learn_more": {
+        "title": "Dividend",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/dividend"
+      }
+    },
+    {
+      "id": "p060",
+      "level": "intermediate",
+      "topic": "Ex-dividend date",
+      "lesson": "l15",
+      "question": "To receive an upcoming dividend, when must you generally buy the stock?",
+      "options": [
+        "On or after the ex-dividend date",
+        "On the payment date",
+        "Before the ex-dividend date",
+        "Any time before the year ends"
+      ],
+      "answer": 2,
+      "explanation": "Buyers on or after the ex-dividend date don't get that dividend; the seller does.",
+      "basis": "Adapted from SEC Investor.gov glossary: Dividend (public domain)",
+      "learn_more": {
+        "title": "Dividend",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/dividend"
+      }
+    },
+    {
+      "id": "p061",
+      "level": "intermediate",
+      "topic": "Company filings",
+      "lesson": "l18",
+      "question": "Which SEC filing contains a US public company's quarterly financial statements?",
+      "options": [
+        "Form 10-Q",
+        "Form 10-K",
+        "Form W-2",
+        "Form 1040"
+      ],
+      "answer": 0,
+      "explanation": "The 10-Q is the quarterly report; the 10-K is the more detailed annual report.",
+      "basis": "Adapted from SEC Investor.gov glossary: Form 10-Q (public domain)",
+      "learn_more": {
+        "title": "Form 10-Q",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/form-10-q"
+      }
+    },
+    {
+      "id": "p062",
+      "level": "intermediate",
+      "topic": "Margin",
+      "lesson": "l05",
+      "question": "You buy $10,000 of stock using $5,000 of your own money and $5,000 borrowed on margin. The stock falls 20%. Ignoring interest, what happens to your own money?",
+      "options": [
+        "It falls 20%, to $4,000",
+        "It falls 10%, to $4,500",
+        "Nothing, the broker absorbs the loss",
+        "It falls 40%, from $5,000 to $3,000"
+      ],
+      "answer": 3,
+      "explanation": "The holding drops $2,000 to $8,000, but you still owe $5,000. Your equity is $3,000: a 40% loss. Leverage magnifies losses.",
+      "basis": "Adapted from SEC Investor.gov glossary: Margin Account (public domain)",
+      "learn_more": {
+        "title": "Margin Account",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/margin-account"
+      }
+    },
+    {
+      "id": "p063",
+      "level": "intermediate",
+      "topic": "Short selling",
+      "lesson": "l07",
+      "question": "What is the maximum possible loss when you short-sell a stock?",
+      "options": [
+        "The amount you received when you sold",
+        "In theory, unlimited, because the price can keep rising",
+        "Zero, short sales are risk-free",
+        "Half the share price"
+      ],
+      "answer": 1,
+      "explanation": "A short seller must buy the shares back later. There's no ceiling on how high the price can go.",
+      "basis": "FINRA SIE outline: Trading, Customer Accounts and Prohibited Activities (short sales)",
+      "learn_more": {
+        "title": "Margin Account",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/margin-account"
+      }
+    },
+    {
+      "id": "p064",
+      "level": "intermediate",
+      "topic": "Market manipulation",
+      "lesson": "l22",
+      "question": "Promoters buy a thinly traded stock, spread false hype online, then sell as others pile in. What is this called?",
+      "options": [
+        "A pump-and-dump scheme",
+        "Dollar-cost averaging",
+        "Rebalancing",
+        "A stock split"
+      ],
+      "answer": 0,
+      "explanation": "Pump-and-dump schemes are illegal manipulation that leave late buyers holding shares at collapsed prices.",
+      "basis": "Adapted from SEC Investor.gov: Pump and Dump Schemes (public domain)",
+      "learn_more": {
+        "title": "Pump and Dump Schemes",
+        "url": "https://www.investor.gov/protect-your-investments/fraud/types-fraud/pump-and-dump-schemes"
+      }
+    },
+    {
+      "id": "p065",
+      "level": "intermediate",
+      "topic": "Retirement accounts",
+      "lesson": "l23",
+      "question": "What is the key tax difference between a traditional IRA and a Roth IRA?",
+      "options": [
+        "Roth IRAs are taxed twice",
+        "Traditional IRAs can't hold funds",
+        "Traditional may give a deduction now and is taxed on withdrawal; Roth uses after-tax money and qualified withdrawals are tax-free",
+        "There is no tax difference"
+      ],
+      "answer": 2,
+      "explanation": "The difference is when you pay tax: later for traditional, up front for Roth.",
+      "basis": "Adapted from IRS: Traditional and Roth IRAs (public domain)",
+      "learn_more": {
+        "title": "Traditional and Roth IRAs",
+        "url": "https://www.irs.gov/retirement-plans/traditional-and-roth-iras"
+      }
+    },
+    {
+      "id": "p066",
+      "level": "advanced",
+      "topic": "Time value of money: future value",
+      "lesson": "l02",
+      "question": "$5,000 is invested at 6% compounded annually for 10 years. What is the future value (to the nearest dollar)?",
+      "options": [
+        "$8,000",
+        "$8,954",
+        "$8,500",
+        "$9,487"
+      ],
+      "answer": 1,
+      "explanation": "FV = 5,000 x 1.06^10 = 5,000 x 1.7908 = about $8,954. $8,000 is what simple (non-compounded) interest would give.",
+      "basis": "CFA Level I topic: Quantitative Methods (time value of money)",
+      "learn_more": {
+        "title": "15.401 Finance Theory I: Assignments (problem sets)",
+        "url": "https://ocw.mit.edu/courses/15-401-finance-theory-i-fall-2008/resources/assignments/index.html"
+      }
+    },
+    {
+      "id": "p067",
+      "level": "advanced",
+      "topic": "Time value of money: present value",
+      "lesson": "l02",
+      "question": "How much must you invest today at 8% compounded annually to have $10,000 in five years (to the nearest dollar)?",
+      "options": [
+        "$6,000",
+        "$7,407",
+        "$9,200",
+        "$6,806"
+      ],
+      "answer": 3,
+      "explanation": "PV = 10,000 / 1.08^5 = 10,000 / 1.4693 = about $6,806.",
+      "basis": "CFA Level I topic: Quantitative Methods (time value of money)",
+      "learn_more": {
+        "title": "15.401 Finance Theory I: Assignments (problem sets)",
+        "url": "https://ocw.mit.edu/courses/15-401-finance-theory-i-fall-2008/resources/assignments/index.html"
+      }
+    },
+    {
+      "id": "p068",
+      "level": "advanced",
+      "topic": "Annuity future value",
+      "lesson": "l02",
+      "question": "You invest $1,000 at the end of each year for three years at 10% a year. What is the total value right after the third deposit?",
+      "options": [
+        "$3,000",
+        "$3,300",
+        "$3,310",
+        "$3,641"
+      ],
+      "answer": 2,
+      "explanation": "First deposit grows two years ($1,210), second grows one year ($1,100), third has no growth ($1,000): $3,310 in total.",
+      "basis": "CFA Level I topic: Quantitative Methods (annuities)",
+      "learn_more": {
+        "title": "15.401 Finance Theory I: Lecture Notes",
+        "url": "https://ocw.mit.edu/courses/15-401-finance-theory-i-fall-2008/resources/lecture-notes/index.html"
+      }
+    },
+    {
+      "id": "p069",
+      "level": "advanced",
+      "topic": "Effective annual rate",
+      "lesson": "l02",
+      "question": "A loan charges 12% a year compounded monthly. What is the effective annual rate (to two decimals)?",
+      "options": [
+        "12.68%",
+        "12.00%",
+        "12.36%",
+        "13.00%"
+      ],
+      "answer": 0,
+      "explanation": "EAR = (1 + 0.12/12)^12 - 1 = 1.01^12 - 1 = 12.68%. Compounding more often raises the effective rate.",
+      "basis": "CFA Level I topic: Quantitative Methods (interest rates)",
+      "learn_more": {
+        "title": "How does compound interest work?",
+        "url": "https://www.consumerfinance.gov/ask-cfpb/how-does-compound-interest-work-en-1683/"
+      }
+    },
+    {
+      "id": "p070",
+      "level": "advanced",
+      "topic": "Rule of 72",
+      "lesson": "l02",
+      "question": "At 9% a year, the Rule of 72 estimates 8 years to double. What is the exact doubling time (to one decimal)?",
+      "options": [
+        "7.2 years",
+        "8.5 years",
+        "9.0 years",
+        "8.0 years"
+      ],
+      "answer": 3,
+      "explanation": "Exact time = ln(2) / ln(1.09) = 0.6931 / 0.0862 = about 8.04 years, so the rule is very close at this rate.",
+      "basis": "CFA Level I topic: Quantitative Methods (time value of money)",
+      "learn_more": {
+        "title": "Compound Interest Calculator",
+        "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+      }
+    },
+    {
+      "id": "p071",
+      "level": "advanced",
+      "topic": "Real return",
+      "lesson": "l03",
+      "question": "An investment returns 8% in a year when inflation is 3%. What is the exact real return (to two decimals)?",
+      "options": [
+        "5.00%",
+        "4.85%",
+        "11.00%",
+        "2.67%"
+      ],
+      "answer": 1,
+      "explanation": "Real return = (1.08 / 1.03) - 1 = 4.85%. Subtracting (8% - 3% = 5%) is only an approximation.",
+      "basis": "CFA Level I topic: Quantitative Methods / Economics (nominal vs real rates)",
+      "learn_more": {
+        "title": "Inflation (PCE)",
+        "url": "https://www.federalreserve.gov/economy-at-a-glance-inflation-pce.htm"
+      }
+    },
+    {
+      "id": "p072",
+      "level": "advanced",
+      "topic": "Inflation-adjusted value",
+      "lesson": "l03",
+      "question": "At 3% annual inflation, roughly what will $100,000 in 25 years be worth in today's money?",
+      "options": [
+        "About $47,800",
+        "About $25,000",
+        "About $75,000",
+        "About $97,000"
+      ],
+      "answer": 0,
+      "explanation": "Real value = 100,000 / 1.03^25 = 100,000 / 2.0938 = about $47,761.",
+      "basis": "CFA Level I topic: Quantitative Methods (time value of money)",
+      "learn_more": {
+        "title": "Why does the Federal Reserve aim for inflation of 2 percent over the longer run?",
+        "url": "https://www.federalreserve.gov/faqs/economy_14400.htm"
+      }
+    },
+    {
+      "id": "p073",
+      "level": "advanced",
+      "topic": "Arithmetic vs geometric return",
+      "lesson": "l05",
+      "question": "An investment gains 50% one year and loses 50% the next. What is its compound (geometric) average annual return?",
+      "options": [
+        "0%",
+        "-25%",
+        "About -13.4%",
+        "+12.5%"
+      ],
+      "answer": 2,
+      "explanation": "$100 becomes $150, then $75. Geometric average = sqrt(0.75) - 1 = -13.4%. The arithmetic average of 0% overstates the result.",
+      "basis": "CFA Level I topic: Quantitative Methods (rates and returns)",
+      "learn_more": {
+        "title": "15.401 Finance Theory I: Lecture Notes",
+        "url": "https://ocw.mit.edu/courses/15-401-finance-theory-i-fall-2008/resources/lecture-notes/index.html"
+      }
+    },
+    {
+      "id": "p074",
+      "level": "advanced",
+      "topic": "Holding period return",
+      "lesson": "l15",
+      "question": "You buy a stock at $50, receive $2 in dividends and sell it a year later at $54. What is your holding period return?",
+      "options": [
+        "8%",
+        "12%",
+        "4%",
+        "10%"
+      ],
+      "answer": 1,
+      "explanation": "HPR = (price change + income) / start price = ($4 + $2) / $50 = 12%.",
+      "basis": "CFA Level I topic: Quantitative Methods (rates and returns)",
+      "learn_more": {
+        "title": "Dividend",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/dividend"
+      }
+    },
+    {
+      "id": "p075",
+      "level": "advanced",
+      "topic": "Bond pricing",
+      "lesson": "l13",
+      "question": "A 2-year bond has a $1,000 face value and pays a 5% annual coupon. If market yields are 6%, what is its price (to the nearest dollar)?",
+      "options": [
+        "$1,000",
+        "$1,018",
+        "$943",
+        "$982"
+      ],
+      "answer": 3,
+      "explanation": "Price = 50/1.06 + 1,050/1.06^2 = 47.17 + 934.50 = $981.67. It trades below par because its coupon is below the market yield.",
+      "basis": "CFA Level I topic: Fixed Income (bond valuation)",
+      "learn_more": {
+        "title": "Understanding Pricing and Interest Rates",
+        "url": "https://www.treasurydirect.gov/marketable-securities/understanding-pricing/"
+      }
+    },
+    {
+      "id": "p076",
+      "level": "advanced",
+      "topic": "Premium and discount",
+      "lesson": "l13",
+      "question": "A bond's coupon rate is 6% and its yield to maturity is 4%. How is it priced?",
+      "options": [
+        "Below face value (at a discount)",
+        "Exactly at face value",
+        "Above face value (at a premium)",
+        "It can't be priced"
+      ],
+      "answer": 2,
+      "explanation": "When the coupon exceeds the market yield, buyers pay more than face value; the premium shrinks toward par at maturity.",
+      "basis": "CFA Level I topic: Fixed Income (bond valuation)",
+      "learn_more": {
+        "title": "Understanding Pricing and Interest Rates",
+        "url": "https://www.treasurydirect.gov/marketable-securities/understanding-pricing/"
+      }
+    },
+    {
+      "id": "p077",
+      "level": "advanced",
+      "topic": "Current yield",
+      "lesson": "l13",
+      "question": "A $1,000 face value bond pays a 4% coupon and trades at $800. What is its current yield?",
+      "options": [
+        "5.0%",
+        "4.0%",
+        "3.2%",
+        "8.0%"
+      ],
+      "answer": 0,
+      "explanation": "Current yield = annual coupon / price = $40 / $800 = 5.0%.",
+      "basis": "CFA Level I topic: Fixed Income (yield measures)",
+      "learn_more": {
+        "title": "Yield",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/yield"
+      }
+    },
+    {
+      "id": "p078",
+      "level": "advanced",
+      "topic": "Duration",
+      "lesson": "l13",
+      "question": "A bond has a modified duration of 7. If its yield rises by 1 percentage point, roughly how does its price change?",
+      "options": [
+        "Rises about 7%",
+        "Falls about 1%",
+        "Falls about 0.7%",
+        "Falls about 7%"
+      ],
+      "answer": 3,
+      "explanation": "Approximate price change = -duration x change in yield = -7 x 1% = -7%. (Convexity makes the actual drop slightly smaller.)",
+      "basis": "CFA Level I topic: Fixed Income (interest rate risk and duration)",
+      "learn_more": {
+        "title": "15.401 Finance Theory I: Exams",
+        "url": "https://ocw.mit.edu/courses/15-401-finance-theory-i-fall-2008/pages/exams/"
+      }
+    },
+    {
+      "id": "p079",
+      "level": "advanced",
+      "topic": "Duration",
+      "lesson": "l13",
+      "question": "Which of these 10-year bonds has the highest interest-rate sensitivity (duration)?",
+      "options": [
+        "A bond with an 8% coupon",
+        "A zero-coupon bond",
+        "A bond with a 5% coupon",
+        "All three have the same duration"
+      ],
+      "answer": 1,
+      "explanation": "With no coupons, all the cash comes at maturity, so the zero has the longest duration of the three.",
+      "basis": "CFA Level I topic: Fixed Income (interest rate risk and duration)",
+      "learn_more": {
+        "title": "15.401 Finance Theory I: Exams",
+        "url": "https://ocw.mit.edu/courses/15-401-finance-theory-i-fall-2008/pages/exams/"
+      }
+    },
+    {
+      "id": "p080",
+      "level": "advanced",
+      "topic": "EPS",
+      "lesson": "l17",
+      "question": "A company earns net income of $240 million, pays $40 million in preferred dividends and has 50 million common shares. What is its basic EPS?",
+      "options": [
+        "$4.00",
+        "$4.80",
+        "$5.60",
+        "$0.25"
+      ],
+      "answer": 0,
+      "explanation": "Basic EPS = (net income - preferred dividends) / common shares = $200m / 50m = $4.00.",
+      "basis": "CFA Level I topic: Financial Statement Analysis (income statements and EPS)",
+      "learn_more": {
+        "title": "Beginners' Guide to Financial Statements",
+        "url": "https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements"
+      }
+    },
+    {
+      "id": "p081",
+      "level": "advanced",
+      "topic": "P/E and earnings yield",
+      "lesson": "l17",
+      "question": "A stock trades at $45 with EPS of $3. What are its P/E ratio and earnings yield?",
+      "options": [
+        "15 and about 15%",
+        "135 and about 3%",
+        "15 and about 6.7%",
+        "6.7 and about 15%"
+      ],
+      "answer": 2,
+      "explanation": "P/E = $45 / $3 = 15. Earnings yield is the inverse: $3 / $45 = about 6.7%.",
+      "basis": "CFA Level I topic: Equity Investments (price multiples)",
+      "learn_more": {
+        "title": "Price-earnings (P/E) Ratio",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/price-earnings-pe-ratio"
+      }
+    },
+    {
+      "id": "p082",
+      "level": "advanced",
+      "topic": "Market cap and P/E",
+      "lesson": "l17",
+      "question": "A company has a market cap of $30 billion and net income of $1.5 billion. What is its P/E ratio?",
+      "options": [
+        "45",
+        "20",
+        "5",
+        "2"
+      ],
+      "answer": 1,
+      "explanation": "P/E can be computed at the company level: market cap / net income = $30bn / $1.5bn = 20.",
+      "basis": "CFA Level I topic: Equity Investments (price multiples)",
+      "learn_more": {
+        "title": "Market Capitalization",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/market-capitalization"
+      }
+    },
+    {
+      "id": "p083",
+      "level": "advanced",
+      "topic": "Dividend discount model",
+      "lesson": "l15",
+      "question": "A stock is expected to pay a $2 dividend next year, growing 3% a year forever. Investors require 8%. Using the constant-growth model, what is its value?",
+      "options": [
+        "$25",
+        "$66.67",
+        "$20",
+        "$40"
+      ],
+      "answer": 3,
+      "explanation": "Value = D1 / (r - g) = $2 / (0.08 - 0.03) = $40.",
+      "basis": "CFA Level I topic: Equity Investments (equity valuation)",
+      "learn_more": {
+        "title": "15.401 Finance Theory I: Lecture Notes",
+        "url": "https://ocw.mit.edu/courses/15-401-finance-theory-i-fall-2008/resources/lecture-notes/index.html"
+      }
+    },
+    {
+      "id": "p084",
+      "level": "advanced",
+      "topic": "Portfolio expected return",
+      "lesson": "l14",
+      "question": "A portfolio is 60% in stocks expected to return 8% and 40% in bonds expected to return 3%. What is its expected return?",
+      "options": [
+        "5.5%",
+        "11.0%",
+        "6.0%",
+        "4.8%"
+      ],
+      "answer": 2,
+      "explanation": "Expected return is the weighted average: 0.6 x 8% + 0.4 x 3% = 4.8% + 1.2% = 6.0%.",
+      "basis": "CFA Level I topic: Portfolio Management (portfolio risk and return)",
+      "learn_more": {
+        "title": "Asset Allocation and Diversification",
+        "url": "https://www.investor.gov/introduction-investing/getting-started/asset-allocation"
+      }
+    },
+    {
+      "id": "p085",
+      "level": "advanced",
+      "topic": "Correlation",
+      "lesson": "l14",
+      "question": "Two assets each have volatility of 20%. A 50/50 portfolio of them would have the LOWEST volatility when their correlation is...",
+      "options": [
+        "-1",
+        "0",
+        "+0.5",
+        "+1"
+      ],
+      "answer": 0,
+      "explanation": "The lower the correlation, the more the assets offset each other. At -1, a 50/50 mix of equally volatile assets would have zero volatility in theory.",
+      "basis": "CFA Level I topic: Portfolio Management (diversification and correlation)",
+      "learn_more": {
+        "title": "Diversification",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/diversification"
+      }
+    },
+    {
+      "id": "p086",
+      "level": "advanced",
+      "topic": "Portfolio volatility",
+      "lesson": "l14",
+      "question": "Asset X has 20% volatility and asset Y has 10%. Their correlation is 0. What is the volatility of a 50/50 portfolio (to one decimal)?",
+      "options": [
+        "15.0%",
+        "10.0%",
+        "30.0%",
+        "11.2%"
+      ],
+      "answer": 3,
+      "explanation": "Variance = 0.5^2 x 0.20^2 + 0.5^2 x 0.10^2 = 0.0100 + 0.0025 = 0.0125. Volatility = sqrt(0.0125) = 11.2%, less than the 15% weighted average.",
+      "basis": "CFA Level I topic: Portfolio Management (portfolio risk and return)",
+      "learn_more": {
+        "title": "15.401 Finance Theory I: Assignments (problem sets)",
+        "url": "https://ocw.mit.edu/courses/15-401-finance-theory-i-fall-2008/resources/assignments/index.html"
+      }
+    },
+    {
+      "id": "p087",
+      "level": "advanced",
+      "topic": "Systematic risk",
+      "lesson": "l14",
+      "question": "Which risk remains even in a portfolio holding thousands of stocks?",
+      "options": [
+        "Company-specific risk",
+        "Systematic (market) risk",
+        "The risk of one CEO resigning",
+        "The risk of one product recall"
+      ],
+      "answer": 1,
+      "explanation": "Diversification removes most company-specific (unsystematic) risk, but economy-wide shocks affect nearly all stocks.",
+      "basis": "CFA Level I topic: Portfolio Management (systematic and unsystematic risk)",
+      "learn_more": {
+        "title": "Diversification",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/diversification"
+      }
+    },
+    {
+      "id": "p088",
+      "level": "advanced",
+      "topic": "Beta and CAPM",
+      "lesson": "l14",
+      "question": "The risk-free rate is 3%, the expected market return is 8% and a stock's beta is 1.2. What is its expected return under CAPM?",
+      "options": [
+        "9.0%",
+        "9.6%",
+        "8.0%",
+        "12.6%"
+      ],
+      "answer": 0,
+      "explanation": "CAPM: 3% + 1.2 x (8% - 3%) = 3% + 6% = 9.0%.",
+      "basis": "CFA Level I topic: Portfolio Management (CAPM)",
+      "learn_more": {
+        "title": "15.401 Finance Theory I: Exams",
+        "url": "https://ocw.mit.edu/courses/15-401-finance-theory-i-fall-2008/pages/exams/"
+      }
+    },
+    {
+      "id": "p089",
+      "level": "advanced",
+      "topic": "Sharpe ratio",
+      "lesson": "l05",
+      "question": "A fund returns 9% a year with 15% volatility. The risk-free rate is 3%. What is its Sharpe ratio?",
+      "options": [
+        "0.60",
+        "0.20",
+        "0.40",
+        "2.50"
+      ],
+      "answer": 2,
+      "explanation": "Sharpe ratio = (return - risk-free rate) / volatility = (9% - 3%) / 15% = 0.40.",
+      "basis": "CFA Level I topic: Portfolio Management (risk-adjusted return)",
+      "learn_more": {
+        "title": "15.401 Finance Theory I",
+        "url": "https://ocw.mit.edu/courses/15-401-finance-theory-i-fall-2008/"
+      }
+    },
+    {
+      "id": "p090",
+      "level": "advanced",
+      "topic": "Fees compounding",
+      "lesson": "l12",
+      "question": "$100,000 is invested for 20 years. One option nets 6% a year; another nets 5% because of a 1% higher fee. How much more does the cheaper option end with (nearest $1,000)?",
+      "options": [
+        "About $20,000",
+        "About $55,000",
+        "About $10,000",
+        "About $100,000"
+      ],
+      "answer": 1,
+      "explanation": "100,000 x 1.06^20 = $320,714 versus 100,000 x 1.05^20 = $265,330: a gap of about $55,384, more than half the original investment.",
+      "basis": "CFA Level I topic: Portfolio Management (investment costs)",
+      "learn_more": {
+        "title": "Expense Ratio",
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/expense-ratio"
+      }
+    }
+  ]
+}

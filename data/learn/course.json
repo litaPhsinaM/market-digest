@@ -67,7 +67,8 @@
                 "It doesn't matter, the outcome is the same"
               ],
               "answer": 1,
-              "explanation": "With a four-month time horizon there is no time to recover from a fall, so a safe, easy-to-reach place fits the job."
+              "explanation": "With a four-month time horizon there is no time to recover from a fall, so a safe, easy-to-reach place fits the job.",
+              "difficulty": "foundation"
             },
             {
               "question": "Why can investing make more sense for money you won't need for 15 years?",
@@ -78,7 +79,8 @@
                 "Long time horizons give room to ride out ups and downs"
               ],
               "answer": 3,
-              "explanation": "A long horizon doesn't remove risk, but it gives you time to wait through bad years instead of being forced to sell."
+              "explanation": "A long horizon doesn't remove risk, but it gives you time to wait through bad years instead of being forced to sell.",
+              "difficulty": "foundation"
             },
             {
               "question": "Which statement best describes the difference between saving and investing?",
@@ -89,7 +91,42 @@
                 "Saving prioritises safety and access; investing accepts ups and downs for more growth potential"
               ],
               "answer": 3,
-              "explanation": "Investing offers more growth potential, not a guarantee. Saving trades growth for safety and easy access."
+              "explanation": "Investing offers more growth potential, not a guarantee. Saving trades growth for safety and easy access.",
+              "difficulty": "foundation"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Save and Invest",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/save-and-invest",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Time Horizon",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/time-horizon",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Your Money, Your Goals",
+              "publisher": "CFPB",
+              "url": "https://www.consumerfinance.gov/consumer-tools/educator-tools/your-money-your-goals/",
+              "type": "course",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Economics & Personal Finance Resources",
+              "publisher": "Federal Reserve Education (FRE.org)",
+              "url": "https://www.federalreserveeducation.org/",
+              "type": "course",
+              "level": "foundation",
+              "free": true
             }
           ]
         },
@@ -154,7 +191,8 @@
                 "72 years"
               ],
               "answer": 2,
-              "explanation": "72 divided by 6 is 12, so about 12 years. It is an estimate, not an exact figure."
+              "explanation": "72 divided by 6 is 12, so about 12 years. It is an estimate, not an exact figure.",
+              "difficulty": "foundation"
             },
             {
               "question": "$100 grows at 10% a year. How much is it worth after two years?",
@@ -165,7 +203,8 @@
                 "$200"
               ],
               "answer": 1,
-              "explanation": "Year one gives $110. Year two adds 10% of $110, which is $11, for $121. The extra $1 is compounding."
+              "explanation": "Year one gives $110. Year two adds 10% of $110, which is $11, for $121. The extra $1 is compounding.",
+              "difficulty": "intermediate"
             },
             {
               "question": "Why do the later years of compounding add more dollars than the early years at the same rate?",
@@ -176,7 +215,34 @@
                 "The balance being grown is larger, so the same percentage is more dollars"
               ],
               "answer": 3,
-              "explanation": "A fixed percentage of a bigger number is a bigger number. That growing base is the heart of compounding."
+              "explanation": "A fixed percentage of a bigger number is a bigger number. That growing base is the heart of compounding.",
+              "difficulty": "intermediate"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Compound Interest",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/compound-interest",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Compound Interest Calculator",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+              "type": "tool",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "How does compound interest work?",
+              "publisher": "CFPB",
+              "url": "https://www.consumerfinance.gov/ask-cfpb/how-does-compound-interest-work-en-1683/",
+              "type": "article",
+              "level": "foundation",
+              "free": true
             }
           ]
         },
@@ -240,7 +306,8 @@
                 "It falls by roughly 3%"
               ],
               "answer": 3,
-              "explanation": "Your balance rises 1%, but prices rise 4%, so you can buy roughly 3% less."
+              "explanation": "Your balance rises 1%, but prices rise 4%, so you can buy roughly 3% less.",
+              "difficulty": "intermediate"
             },
             {
               "question": "What is the difference between a nominal and a real return?",
@@ -251,7 +318,8 @@
                 "Real returns only apply to property"
               ],
               "answer": 1,
-              "explanation": "The real return adjusts the headline return for rising prices, so it shows your change in buying power."
+              "explanation": "The real return adjusts the headline return for rising prices, so it shows your change in buying power.",
+              "difficulty": "foundation"
             },
             {
               "question": "Why is inflation a bigger concern for long-term money than for an emergency fund?",
@@ -262,7 +330,42 @@
                 "Inflation only affects stocks"
               ],
               "answer": 2,
-              "explanation": "A few percent a year matters little over months, but compounds into a large loss of buying power over decades."
+              "explanation": "A few percent a year matters little over months, but compounds into a large loss of buying power over decades.",
+              "difficulty": "intermediate"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Why does the Federal Reserve aim for inflation of 2 percent over the longer run?",
+              "publisher": "Federal Reserve Board",
+              "url": "https://www.federalreserve.gov/faqs/economy_14400.htm",
+              "type": "article",
+              "level": "intermediate",
+              "free": true
+            },
+            {
+              "title": "Inflation (PCE)",
+              "publisher": "Federal Reserve Board",
+              "url": "https://www.federalreserve.gov/economy-at-a-glance-inflation-pce.htm",
+              "type": "article",
+              "level": "intermediate",
+              "free": true
+            },
+            {
+              "title": "TIPS",
+              "publisher": "TreasuryDirect (US Treasury)",
+              "url": "https://www.treasurydirect.gov/marketable-securities/tips/",
+              "type": "article",
+              "level": "intermediate",
+              "free": true
+            },
+            {
+              "title": "I bonds",
+              "publisher": "TreasuryDirect (US Treasury)",
+              "url": "https://www.treasurydirect.gov/savings-bonds/i-bonds/",
+              "type": "article",
+              "level": "foundation",
+              "free": true
             }
           ]
         },
@@ -331,7 +434,8 @@
                 "The stock exchange refunds you"
               ],
               "answer": 1,
-              "explanation": "SIPC covers missing assets when a member brokerage fails, up to its limits. FDIC covers bank deposits, not brokerage accounts."
+              "explanation": "SIPC covers missing assets when a member brokerage fails, up to its limits. FDIC covers bank deposits, not brokerage accounts.",
+              "difficulty": "intermediate"
             },
             {
               "question": "Which of these is NOT covered by FDIC insurance, even if bought at a bank?",
@@ -342,7 +446,8 @@
                 "A CD"
               ],
               "answer": 2,
-              "explanation": "Money-market funds are investments, not deposits, so FDIC does not cover them, even though they are very low risk."
+              "explanation": "Money-market funds are investments, not deposits, so FDIC does not cover them, even though they are very low risk.",
+              "difficulty": "intermediate"
             },
             {
               "question": "Why does an emergency fund usually come before investing?",
@@ -353,7 +458,42 @@
                 "So you aren't forced to sell investments, possibly at a loss, when surprises hit"
               ],
               "answer": 3,
-              "explanation": "A cushion lets your investments stay put through bad times instead of being sold at the worst moment."
+              "explanation": "A cushion lets your investments stay put through bad times instead of being sold at the worst moment.",
+              "difficulty": "foundation"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Understanding Deposit Insurance",
+              "publisher": "FDIC",
+              "url": "https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Are My Deposit Accounts Insured by the FDIC?",
+              "publisher": "FDIC",
+              "url": "https://www.fdic.gov/resources/deposit-insurance/financial-products-insured",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "What SIPC Protects",
+              "publisher": "SIPC",
+              "url": "https://www.sipc.org/for-investors/what-sipc-protects",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Treasury Bills",
+              "publisher": "TreasuryDirect (US Treasury)",
+              "url": "https://www.treasurydirect.gov/marketable-securities/treasury-bills/",
+              "type": "article",
+              "level": "foundation",
+              "free": true
             }
           ]
         },
@@ -418,7 +558,8 @@
                 "All investments are like that"
               ],
               "answer": 1,
-              "explanation": "If high returns came without risk, prices would adjust until they didn't. Claims like this are a classic warning sign."
+              "explanation": "If high returns came without risk, prices would adjust until they didn't. Claims like this are a classic warning sign.",
+              "difficulty": "foundation"
             },
             {
               "question": "Which is generally lowest on the risk ladder?",
@@ -429,7 +570,8 @@
                 "A Treasury bill"
               ],
               "answer": 3,
-              "explanation": "Treasury bills are short-term loans to the US government and are considered among the safest assets."
+              "explanation": "Treasury bills are short-term loans to the US government and are considered among the safest assets.",
+              "difficulty": "foundation"
             },
             {
               "question": "Two investments have the same simple average return, but one swings much more. What usually happens?",
@@ -440,7 +582,34 @@
                 "Swings only matter for bonds"
               ],
               "answer": 0,
-              "explanation": "Losses hurt more than equal-sized gains help, so bigger swings tend to drag down long-run results."
+              "explanation": "Losses hurt more than equal-sized gains help, so bigger swings tend to drag down long-run results.",
+              "difficulty": "advanced"
+            }
+          ],
+          "resources": [
+            {
+              "title": "What is Risk?",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/what-risk",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Risk Tolerance",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/risk-tolerance",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "15.401 Finance Theory I",
+              "publisher": "MIT OpenCourseWare",
+              "url": "https://ocw.mit.edu/courses/15-401-finance-theory-i-fall-2008/",
+              "type": "course",
+              "level": "advanced",
+              "free": true
             }
           ]
         }
@@ -511,7 +680,8 @@
                 "A coupon for the company's products"
               ],
               "answer": 1,
-              "explanation": "A share is a unit of ownership. A loan to a company is a bond, which is a different thing."
+              "explanation": "A share is a unit of ownership. A loan to a company is a bond, which is a different thing.",
+              "difficulty": "foundation"
             },
             {
               "question": "If a company you own shares in goes bankrupt, what typically happens to shareholders?",
@@ -522,7 +692,8 @@
                 "The government reimburses them"
               ],
               "answer": 2,
-              "explanation": "Lenders and other creditors get paid before shareholders. But shareholders can't lose more than they invested."
+              "explanation": "Lenders and other creditors get paid before shareholders. But shareholders can't lose more than they invested.",
+              "difficulty": "foundation"
             },
             {
               "question": "Which is a way shareholders can earn money?",
@@ -533,7 +704,34 @@
                 "Fees charged to other shareholders"
               ],
               "answer": 0,
-              "explanation": "Shareholders profit when the price rises or when the company pays dividends. Neither is guaranteed."
+              "explanation": "Shareholders profit when the price rises or when the company pays dividends. Neither is guaranteed.",
+              "difficulty": "foundation"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Stock",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/stock",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Stocks - FAQs",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/stocks",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "ECON 252: Financial Markets (Robert Shiller, 2008)",
+              "publisher": "Open Yale Courses",
+              "url": "https://oyc.yale.edu/economics/econ-252-08",
+              "type": "video",
+              "level": "intermediate",
+              "free": true
             }
           ]
         },
@@ -607,7 +805,8 @@
                 "Whatever price you choose"
               ],
               "answer": 0,
-              "explanation": "A market buy usually fills at the ask, the lowest price a seller currently accepts."
+              "explanation": "A market buy usually fills at the ask, the lowest price a seller currently accepts.",
+              "difficulty": "foundation"
             },
             {
               "question": "What is the main risk of a limit order?",
@@ -618,7 +817,8 @@
                 "It always fills at the worst price"
               ],
               "answer": 1,
-              "explanation": "A limit order guarantees the price or better, but not that the trade happens."
+              "explanation": "A limit order guarantees the price or better, but not that the trade happens.",
+              "difficulty": "intermediate"
             },
             {
               "question": "Why can trading a small, rarely traded stock cost more than trading a giant company?",
@@ -629,7 +829,42 @@
                 "Its spread between bid and ask is often wider"
               ],
               "answer": 3,
-              "explanation": "Fewer buyers and sellers usually means a wider spread, which you pay every time you trade."
+              "explanation": "Fewer buyers and sellers usually means a wider spread, which you pay every time you trade.",
+              "difficulty": "intermediate"
+            }
+          ],
+          "resources": [
+            {
+              "title": "How Stock Markets Work",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Types of Orders",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/types-orders",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Limit Orders",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/limit-orders",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Executing an Order",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/executing-order",
+              "type": "article",
+              "level": "intermediate",
+              "free": true
             }
           ]
         },
@@ -698,7 +933,8 @@
                 "Exactly 5 companies gained"
               ],
               "answer": 1,
-              "explanation": "An index move reflects the combined result. Some stocks rise and some fall; the overall group rose 1%."
+              "explanation": "An index move reflects the combined result. Some stocks rise and some fall; the overall group rose 1%.",
+              "difficulty": "foundation"
             },
             {
               "question": "The Dow rises 300 points while a smaller index rises 30 points. What can you conclude?",
@@ -709,7 +945,8 @@
                 "Both rose exactly 1%"
               ],
               "answer": 2,
-              "explanation": "Points depend on the index's level. Only the percentage move lets you compare."
+              "explanation": "Points depend on the index's level. Only the percentage move lets you compare.",
+              "difficulty": "intermediate"
             },
             {
               "question": "How is the S&P 500 different from the Dow?",
@@ -720,7 +957,34 @@
                 "They are identical"
               ],
               "answer": 0,
-              "explanation": "The S&P 500 is broader and weighted by company value, which is why many treat it as the better gauge of the US market."
+              "explanation": "The S&P 500 is broader and weighted by company value, which is why many treat it as the better gauge of the US market.",
+              "difficulty": "intermediate"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Market Index",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/market-index",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Index Fund",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/index-fund",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "How Stock Markets Work",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work",
+              "type": "article",
+              "level": "foundation",
+              "free": true
             }
           ]
         },
@@ -784,7 +1048,8 @@
                 "Stocks can't rise on earnings day"
               ],
               "answer": 1,
-              "explanation": "Prices already reflect expectations. Missing them can push the price down even if results improved."
+              "explanation": "Prices already reflect expectations. Missing them can push the price down even if results improved.",
+              "difficulty": "intermediate"
             },
             {
               "question": "How do rising interest rates tend to affect stocks?",
@@ -795,7 +1060,8 @@
                 "They only affect bonds"
               ],
               "answer": 2,
-              "explanation": "Higher rates raise the bar stocks must beat and reduce today's value of future profits. The effect isn't automatic, but it is a common pressure."
+              "explanation": "Higher rates raise the bar stocks must beat and reduce today's value of future profits. The effect isn't automatic, but it is a common pressure.",
+              "difficulty": "advanced"
             },
             {
               "question": "Over many years, what tends to matter most for a company's share price?",
@@ -806,7 +1072,34 @@
                 "Its ability to grow profits"
               ],
               "answer": 3,
-              "explanation": "Short-term moves are noisy, but long-term prices tend to track business results, though not perfectly."
+              "explanation": "Short-term moves are noisy, but long-term prices tend to track business results, though not perfectly.",
+              "difficulty": "foundation"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Stocks - FAQs",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/stocks",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Monetary Policy",
+              "publisher": "Federal Reserve Board",
+              "url": "https://www.federalreserve.gov/monetarypolicy.htm",
+              "type": "article",
+              "level": "advanced",
+              "free": true
+            },
+            {
+              "title": "ECON 252: Financial Markets (Robert Shiller, 2008)",
+              "publisher": "Open Yale Courses",
+              "url": "https://oyc.yale.edu/economics/econ-252-08",
+              "type": "video",
+              "level": "intermediate",
+              "free": true
             }
           ]
         },
@@ -874,7 +1167,8 @@
                 "A bull market"
               ],
               "answer": 1,
-              "explanation": "A 10% to 20% fall is commonly called a correction; 20% or more is commonly called a bear market."
+              "explanation": "A 10% to 20% fall is commonly called a correction; 20% or more is commonly called a bear market.",
+              "difficulty": "foundation"
             },
             {
               "question": "The VIX jumps sharply. What does that tell you?",
@@ -885,7 +1179,8 @@
                 "Investors expect bigger price swings ahead"
               ],
               "answer": 3,
-              "explanation": "The VIX measures expected volatility, not direction. Prices could swing either way."
+              "explanation": "The VIX measures expected volatility, not direction. Prices could swing either way.",
+              "difficulty": "intermediate"
             },
             {
               "question": "Your investment falls 20%. What gain do you need to get back to where you started?",
@@ -896,7 +1191,34 @@
                 "40%"
               ],
               "answer": 2,
-              "explanation": "After falling from $100 to $80, you need $20 on $80, which is a 25% gain."
+              "explanation": "After falling from $100 to $80, you need $20 on $80, which is a 25% gain.",
+              "difficulty": "intermediate"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Bull Market",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/bull-market",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Bear Market",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/bear-market",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "VIX Volatility Products",
+              "publisher": "Cboe",
+              "url": "https://www.cboe.com/tradable-products/vix",
+              "type": "article",
+              "level": "advanced",
+              "free": true
             }
           ]
         }
@@ -971,7 +1293,8 @@
                 "Invest only in the top 5 companies"
               ],
               "answer": 1,
-              "explanation": "An index fund aims to match its index, not beat it, which keeps costs low."
+              "explanation": "An index fund aims to match its index, not beat it, which keeps costs low.",
+              "difficulty": "foundation"
             },
             {
               "question": "What's a key difference between an ETF and a traditional mutual fund?",
@@ -982,7 +1305,8 @@
                 "ETFs are insured by the FDIC"
               ],
               "answer": 0,
-              "explanation": "ETFs trade on exchanges throughout the day. Both types can track indexes, and neither is FDIC insured."
+              "explanation": "ETFs trade on exchanges throughout the day. Both types can track indexes, and neither is FDIC insured.",
+              "difficulty": "intermediate"
             },
             {
               "question": "What's a downside of an index fund?",
@@ -993,7 +1317,34 @@
                 "You get the market's ups and downs, and won't beat the market"
               ],
               "answer": 3,
-              "explanation": "An index fund rides the market in both directions and, by design, won't outperform it."
+              "explanation": "An index fund rides the market in both directions and, by design, won't outperform it.",
+              "difficulty": "foundation"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Exchange-Traded Funds (ETFs)",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-2",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Mutual Funds",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-funds-etfs/mutual-funds",
+              "type": "article",
+              "level": "intermediate",
+              "free": true
+            },
+            {
+              "title": "Index Fund",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/index-fund",
+              "type": "article",
+              "level": "foundation",
+              "free": true
             }
           ]
         },
@@ -1059,7 +1410,8 @@
                 "$0.20"
               ],
               "answer": 2,
-              "explanation": "0.20% of $10,000 is $20 a year."
+              "explanation": "0.20% of $10,000 is $20 a year.",
+              "difficulty": "intermediate"
             },
             {
               "question": "Why does a 1% fee gap matter so much over 30 years?",
@@ -1070,7 +1422,8 @@
                 "It doesn't matter much"
               ],
               "answer": 0,
-              "explanation": "Every dollar paid in fees also loses all its future growth, so the difference snowballs."
+              "explanation": "Every dollar paid in fees also loses all its future growth, so the difference snowballs.",
+              "difficulty": "intermediate"
             },
             {
               "question": "Which is the most accurate statement about fees?",
@@ -1081,7 +1434,34 @@
                 "Returns are uncertain, but fees are a certain cost"
               ],
               "answer": 3,
-              "explanation": "You can't control returns, but you can know and control costs. Higher fees don't guarantee better results."
+              "explanation": "You can't control returns, but you can know and control costs. Higher fees don't guarantee better results.",
+              "difficulty": "foundation"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Expense Ratio",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/expense-ratio",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Fund Analyzer",
+              "publisher": "FINRA",
+              "url": "https://tools.finra.org/fund_analyzer/",
+              "type": "tool",
+              "level": "intermediate",
+              "free": true
+            },
+            {
+              "title": "Compound Interest Calculator",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+              "type": "tool",
+              "level": "foundation",
+              "free": true
             }
           ]
         },
@@ -1156,7 +1536,8 @@
                 "It doubles"
               ],
               "answer": 1,
-              "explanation": "New bonds pay more, so your lower-paying bond must drop in price to compete."
+              "explanation": "New bonds pay more, so your lower-paying bond must drop in price to compete.",
+              "difficulty": "intermediate"
             },
             {
               "question": "Which bond's price is likely to move most when rates change?",
@@ -1167,7 +1548,8 @@
                 "They all move the same"
               ],
               "answer": 2,
-              "explanation": "The longer the time to maturity, the more sensitive a bond's price is to interest rate changes."
+              "explanation": "The longer the time to maturity, the more sensitive a bond's price is to interest rate changes.",
+              "difficulty": "advanced"
             },
             {
               "question": "Why do corporate bonds usually pay higher interest than US Treasury bonds?",
@@ -1178,7 +1560,42 @@
                 "Companies are required by law to pay more"
               ],
               "answer": 0,
-              "explanation": "Higher default risk means lenders demand a higher return to compensate."
+              "explanation": "Higher default risk means lenders demand a higher return to compensate.",
+              "difficulty": "intermediate"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Bonds - FAQs",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/bonds-or-fixed-income-products/bonds",
+              "type": "article",
+              "level": "intermediate",
+              "free": true
+            },
+            {
+              "title": "Understanding Pricing and Interest Rates",
+              "publisher": "TreasuryDirect (US Treasury)",
+              "url": "https://www.treasurydirect.gov/marketable-securities/understanding-pricing/",
+              "type": "article",
+              "level": "advanced",
+              "free": true
+            },
+            {
+              "title": "Treasury Notes",
+              "publisher": "TreasuryDirect (US Treasury)",
+              "url": "https://www.treasurydirect.gov/marketable-securities/treasury-notes/",
+              "type": "article",
+              "level": "intermediate",
+              "free": true
+            },
+            {
+              "title": "15.401 Finance Theory I: Assignments (problem sets)",
+              "publisher": "MIT OpenCourseWare",
+              "url": "https://ocw.mit.edu/courses/15-401-finance-theory-i-fall-2008/resources/assignments/index.html",
+              "type": "exam",
+              "level": "advanced",
+              "free": true
             }
           ]
         },
@@ -1248,7 +1665,8 @@
                 "The risk of a single CEO scandal"
               ],
               "answer": 2,
-              "explanation": "Spreading across many stocks reduces company-specific risk, but a broad market decline affects nearly everything."
+              "explanation": "Spreading across many stocks reduces company-specific risk, but a broad market decline affects nearly everything.",
+              "difficulty": "intermediate"
             },
             {
               "question": "Using this lesson's example numbers, why did Portfolio B lose less than Portfolio A?",
@@ -1259,7 +1677,8 @@
                 "B traded more often"
               ],
               "answer": 0,
-              "explanation": "B's bonds cushioned the stock loss. That cushion also means B would usually trail A in strong stock years."
+              "explanation": "B's bonds cushioned the stock loss. That cushion also means B would usually trail A in strong stock years.",
+              "difficulty": "intermediate"
             },
             {
               "question": "What is rebalancing?",
@@ -1270,7 +1689,42 @@
                 "Buying whichever fund rose most"
               ],
               "answer": 1,
-              "explanation": "Rebalancing keeps your risk level where you intended as different investments grow at different speeds."
+              "explanation": "Rebalancing keeps your risk level where you intended as different investments grow at different speeds.",
+              "difficulty": "foundation"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Asset Allocation and Diversification",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/getting-started/asset-allocation",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Diversification",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/diversification",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Rebalancing",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/rebalancing",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "15.401 Finance Theory I: Exams",
+              "publisher": "MIT OpenCourseWare",
+              "url": "https://ocw.mit.edu/courses/15-401-finance-theory-i-fall-2008/pages/exams/",
+              "type": "exam",
+              "level": "advanced",
+              "free": true
             }
           ]
         },
@@ -1340,7 +1794,8 @@
                 "4%"
               ],
               "answer": 3,
-              "explanation": "$2 divided by $50 is 0.04, or 4%."
+              "explanation": "$2 divided by $50 is 0.04, or 4%.",
+              "difficulty": "intermediate"
             },
             {
               "question": "Why does a stock's price typically drop around its ex-dividend date?",
@@ -1351,7 +1806,8 @@
                 "It doesn't; prices never change on that day"
               ],
               "answer": 1,
-              "explanation": "The dividend is value moving from the company to shareholders, so the price adjusts by roughly that amount."
+              "explanation": "The dividend is value moving from the company to shareholders, so the price adjusts by roughly that amount.",
+              "difficulty": "advanced"
             },
             {
               "question": "A stock suddenly shows a 15% dividend yield. What's a sensible first thought?",
@@ -1362,7 +1818,34 @@
                 "Yield doesn't depend on price"
               ],
               "answer": 0,
-              "explanation": "A very high yield often reflects a falling price and doubts about whether the dividend can continue."
+              "explanation": "A very high yield often reflects a falling price and doubts about whether the dividend can continue.",
+              "difficulty": "intermediate"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Dividend",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/dividend",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Topic no. 404, Dividends and other corporate distributions",
+              "publisher": "IRS",
+              "url": "https://www.irs.gov/taxtopics/tc404",
+              "type": "article",
+              "level": "intermediate",
+              "free": true
+            },
+            {
+              "title": "Stocks - FAQs",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/stocks",
+              "type": "article",
+              "level": "foundation",
+              "free": true
             }
           ]
         }
@@ -1434,7 +1917,8 @@
                 "45%"
               ],
               "answer": 1,
-              "explanation": "$5 million divided by $50 million is 0.10, or 10%."
+              "explanation": "$5 million divided by $50 million is 0.10, or 10%.",
+              "difficulty": "intermediate"
             },
             {
               "question": "Why can't you judge a company by revenue alone?",
@@ -1445,7 +1929,8 @@
                 "Revenue isn't reported publicly"
               ],
               "answer": 2,
-              "explanation": "Revenue is before costs. A company can sell a lot and still lose money."
+              "explanation": "Revenue is before costs. A company can sell a lot and still lose money.",
+              "difficulty": "foundation"
             },
             {
               "question": "A supermarket has a 3% net margin and a software company has a 25% net margin. What can you conclude?",
@@ -1456,7 +1941,34 @@
                 "The supermarket must be losing money"
               ],
               "answer": 0,
-              "explanation": "Different industries have very different cost structures. Margins are most useful compared with peers and with the company's own history."
+              "explanation": "Different industries have very different cost structures. Margins are most useful compared with peers and with the company's own history.",
+              "difficulty": "intermediate"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Beginners' Guide to Financial Statements",
+              "publisher": "SEC",
+              "url": "https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements",
+              "type": "article",
+              "level": "intermediate",
+              "free": true
+            },
+            {
+              "title": "How to Read a 10-K",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/getting-started/researching-investments/how-read-10-k",
+              "type": "article",
+              "level": "intermediate",
+              "free": true
+            },
+            {
+              "title": "Annual Report",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/annual-report",
+              "type": "article",
+              "level": "foundation",
+              "free": true
             }
           ]
         },
@@ -1521,7 +2033,8 @@
                 "63"
               ],
               "answer": 2,
-              "explanation": "P/E is price divided by EPS: $60 / $3 = 20."
+              "explanation": "P/E is price divided by EPS: $60 / $3 = 20.",
+              "difficulty": "intermediate"
             },
             {
               "question": "Stock X costs $300 per share and stock Y costs $30. What do you know about which company is bigger?",
@@ -1532,7 +2045,8 @@
                 "They are the same size"
               ],
               "answer": 0,
-              "explanation": "Size is market cap, which depends on both price and the number of shares."
+              "explanation": "Size is market cap, which depends on both price and the number of shares.",
+              "difficulty": "intermediate"
             },
             {
               "question": "A company has a very high P/E. What does that usually suggest?",
@@ -1543,7 +2057,34 @@
                 "The stock is about to fall"
               ],
               "answer": 1,
-              "explanation": "A high P/E usually reflects high growth expectations. Whether those expectations are justified is the real question."
+              "explanation": "A high P/E usually reflects high growth expectations. Whether those expectations are justified is the real question.",
+              "difficulty": "advanced"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Market Capitalization",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/market-capitalization",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Price-earnings (P/E) Ratio",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/price-earnings-pe-ratio",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "CFA Program Level I exam (topics overview)",
+              "publisher": "CFA Institute",
+              "url": "https://www.cfainstitute.org/programs/cfa-program/candidate-resources/level-i-exam",
+              "type": "exam",
+              "level": "advanced",
+              "free": true
             }
           ]
         },
@@ -1611,7 +2152,8 @@
                 "Trading is halted"
               ],
               "answer": 1,
-              "explanation": "Investors care about the future. Lowered guidance can outweigh a good quarter."
+              "explanation": "Investors care about the future. Lowered guidance can outweigh a good quarter.",
+              "difficulty": "intermediate"
             },
             {
               "question": "Why should you be careful with adjusted earnings?",
@@ -1622,7 +2164,8 @@
                 "They don't include revenue"
               ],
               "answer": 2,
-              "explanation": "Adjustments can be informative, but they are chosen by the company and tend to flatter profits."
+              "explanation": "Adjustments can be informative, but they are chosen by the company and tend to flatter profits.",
+              "difficulty": "intermediate"
             },
             {
               "question": "GAAP EPS is $0.80 and adjusted EPS is $1.20. Which is true?",
@@ -1633,7 +2176,34 @@
                 "GAAP EPS includes fewer costs"
               ],
               "answer": 0,
-              "explanation": "GAAP is the official standard; adjusted EPS excludes some costs. Both can be correct, but they answer different questions."
+              "explanation": "GAAP is the official standard; adjusted EPS excludes some costs. Both can be correct, but they answer different questions.",
+              "difficulty": "advanced"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Form 10-Q",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/form-10-q",
+              "type": "article",
+              "level": "intermediate",
+              "free": true
+            },
+            {
+              "title": "How to Read a 10-K",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/getting-started/researching-investments/how-read-10-k",
+              "type": "article",
+              "level": "intermediate",
+              "free": true
+            },
+            {
+              "title": "Beginners' Guide to Financial Statements",
+              "publisher": "SEC",
+              "url": "https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements",
+              "type": "article",
+              "level": "intermediate",
+              "free": true
             }
           ]
         },
@@ -1702,7 +2272,8 @@
                 "$300 million"
               ],
               "answer": 3,
-              "explanation": "Equity equals assets minus liabilities: $900 million minus $600 million is $300 million."
+              "explanation": "Equity equals assets minus liabilities: $900 million minus $600 million is $300 million.",
+              "difficulty": "intermediate"
             },
             {
               "question": "Which question can the balance sheet alone NOT answer?",
@@ -1713,7 +2284,8 @@
                 "What it owes within the next year"
               ],
               "answer": 2,
-              "explanation": "Profit comes from the income statement. The balance sheet is a snapshot of what's owned and owed."
+              "explanation": "Profit comes from the income statement. The balance sheet is a snapshot of what's owned and owed.",
+              "difficulty": "intermediate"
             },
             {
               "question": "Why might heavy debt be a risk for a company?",
@@ -1724,7 +2296,34 @@
                 "Debt can't be repaid"
               ],
               "answer": 0,
-              "explanation": "Debt creates fixed obligations. In a downturn or when rates rise, those can strain a company."
+              "explanation": "Debt creates fixed obligations. In a downturn or when rates rise, those can strain a company.",
+              "difficulty": "intermediate"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Beginners' Guide to Financial Statements",
+              "publisher": "SEC",
+              "url": "https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements",
+              "type": "article",
+              "level": "intermediate",
+              "free": true
+            },
+            {
+              "title": "How to Read a 10-K",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/getting-started/researching-investments/how-read-10-k",
+              "type": "article",
+              "level": "intermediate",
+              "free": true
+            },
+            {
+              "title": "15.401 Finance Theory I: Lecture Notes",
+              "publisher": "MIT OpenCourseWare",
+              "url": "https://ocw.mit.edu/courses/15-401-finance-theory-i-fall-2008/resources/lecture-notes/index.html",
+              "type": "course",
+              "level": "advanced",
+              "free": true
             }
           ]
         }
@@ -1796,7 +2395,8 @@
                 "45"
               ],
               "answer": 1,
-              "explanation": "$300 / $30 = 10 shares, and $300 / $15 = 20 shares, for 30 shares in total."
+              "explanation": "$300 / $30 = 10 shares, and $300 / $15 = 20 shares, for 30 shares in total.",
+              "difficulty": "intermediate"
             },
             {
               "question": "What is the main advantage of dollar-cost averaging?",
@@ -1807,7 +2407,8 @@
                 "It avoids all losses in a falling market"
               ],
               "answer": 2,
-              "explanation": "DCA's strength is discipline and reduced regret, not guaranteed higher returns."
+              "explanation": "DCA's strength is discipline and reduced regret, not guaranteed higher returns.",
+              "difficulty": "foundation"
             },
             {
               "question": "Why is market timing so hard?",
@@ -1818,7 +2419,34 @@
                 "It's illegal for individuals"
               ],
               "answer": 0,
-              "explanation": "Getting one call right isn't enough, and the best days often come right after the worst ones."
+              "explanation": "Getting one call right isn't enough, and the best days often come right after the worst ones.",
+              "difficulty": "intermediate"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Dollar Cost Averaging",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/dollar-cost-averaging",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Time Horizon",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/time-horizon",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Compound Interest Calculator",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+              "type": "tool",
+              "level": "foundation",
+              "free": true
             }
           ]
         },
@@ -1887,7 +2515,8 @@
                 "Loss aversion"
               ],
               "answer": 0,
-              "explanation": "The urge to jump in because others seem to be profiting is fear of missing out."
+              "explanation": "The urge to jump in because others seem to be profiting is fear of missing out.",
+              "difficulty": "foundation"
             },
             {
               "question": "Why can holding lots of your employer's stock be risky?",
@@ -1898,7 +2527,8 @@
                 "It can't be sold"
               ],
               "answer": 2,
-              "explanation": "If the company struggles, you could lose your income and your savings at the same time."
+              "explanation": "If the company struggles, you could lose your income and your savings at the same time.",
+              "difficulty": "foundation"
             },
             {
               "question": "After a string of winning trades, someone starts trading every day with bigger amounts. What trap might they be falling into?",
@@ -1909,7 +2539,34 @@
                 "Diversification"
               ],
               "answer": 1,
-              "explanation": "Early wins, often helped by luck, can create overconfidence, leading to more risk and trading costs."
+              "explanation": "Early wins, often helped by luck, can create overconfidence, leading to more risk and trading costs.",
+              "difficulty": "foundation"
+            }
+          ],
+          "resources": [
+            {
+              "title": "ECON 252: Financial Markets (Robert Shiller, 2008)",
+              "publisher": "Open Yale Courses",
+              "url": "https://oyc.yale.edu/economics/econ-252-08",
+              "type": "video",
+              "level": "intermediate",
+              "free": true
+            },
+            {
+              "title": "Risk Tolerance",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/risk-tolerance",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "What is Risk?",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/what-risk",
+              "type": "article",
+              "level": "foundation",
+              "free": true
             }
           ]
         },
@@ -1974,7 +2631,8 @@
                 "Safe if the website looks professional"
               ],
               "answer": 1,
-              "explanation": "Guaranteed high returns plus unusual payment methods are classic scam signals."
+              "explanation": "Guaranteed high returns plus unusual payment methods are classic scam signals.",
+              "difficulty": "foundation"
             },
             {
               "question": "In a pump-and-dump, who usually loses money?",
@@ -1985,7 +2643,8 @@
                 "Late buyers who arrive after the hype"
               ],
               "answer": 3,
-              "explanation": "Promoters sell to the late buyers at inflated prices; when hype fades, those buyers are left with losses."
+              "explanation": "Promoters sell to the late buyers at inflated prices; when hype fades, those buyers are left with losses.",
+              "difficulty": "foundation"
             },
             {
               "question": "A tiny company's stock jumps 300% in a week on social media buzz with no news from the company. What's a sensible response?",
@@ -1996,7 +2655,42 @@
                 "Borrow money to buy more"
               ],
               "answer": 0,
-              "explanation": "Questioning the story and the source protects you; chasing unexplained spikes is how many people get burned."
+              "explanation": "Questioning the story and the source protects you; chasing unexplained spikes is how many people get burned.",
+              "difficulty": "foundation"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Pump and Dump Schemes",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/protect-your-investments/fraud/types-fraud/pump-and-dump-schemes",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Ponzi Scheme",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/protect-your-investments/fraud/types-fraud/ponzi-scheme",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "How to Avoid Fraud",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/protect-your-investments/fraud/how-avoid-fraud",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "BrokerCheck",
+              "publisher": "FINRA",
+              "url": "https://brokercheck.finra.org/",
+              "type": "tool",
+              "level": "foundation",
+              "free": true
             }
           ]
         },
@@ -2066,7 +2760,8 @@
                 "Traditional IRAs are only for employers"
               ],
               "answer": 1,
-              "explanation": "The difference is mainly when you pay tax: on the way in (Roth) or on the way out (traditional)."
+              "explanation": "The difference is mainly when you pay tax: on the way in (Roth) or on the way out (traditional).",
+              "difficulty": "intermediate"
             },
             {
               "question": "In the US, you sell a stock for a profit after holding it for 8 months. How is the gain generally treated?",
@@ -2077,7 +2772,8 @@
                 "It's only taxed if you buy again"
               ],
               "answer": 0,
-              "explanation": "Gains on investments held one year or less are short-term and taxed at ordinary income rates."
+              "explanation": "Gains on investments held one year or less are short-term and taxed at ordinary income rates.",
+              "difficulty": "intermediate"
             },
             {
               "question": "Why might someone invest in a taxable brokerage account even though it has fewer tax breaks?",
@@ -2088,7 +2784,42 @@
                 "It's required before opening an IRA"
               ],
               "answer": 2,
-              "explanation": "Taxable accounts trade tax advantages for flexibility, which suits goals before retirement."
+              "explanation": "Taxable accounts trade tax advantages for flexibility, which suits goals before retirement.",
+              "difficulty": "foundation"
+            }
+          ],
+          "resources": [
+            {
+              "title": "401(k) Plan",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/401k-plan",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Traditional and Roth IRAs",
+              "publisher": "IRS",
+              "url": "https://www.irs.gov/retirement-plans/traditional-and-roth-iras",
+              "type": "article",
+              "level": "intermediate",
+              "free": true
+            },
+            {
+              "title": "Topic no. 409, Capital gains and losses",
+              "publisher": "IRS",
+              "url": "https://www.irs.gov/taxtopics/tc409",
+              "type": "article",
+              "level": "intermediate",
+              "free": true
+            },
+            {
+              "title": "Planning for retirement",
+              "publisher": "CFPB",
+              "url": "https://www.consumerfinance.gov/consumer-tools/retirement/",
+              "type": "article",
+              "level": "foundation",
+              "free": true
             }
           ]
         },
@@ -2152,7 +2883,8 @@
                 "Ignore all news forever"
               ],
               "answer": 1,
-              "explanation": "Dramatic words often describe normal moves. Percentages and your time horizon give perspective."
+              "explanation": "Dramatic words often describe normal moves. Percentages and your time horizon give perspective.",
+              "difficulty": "foundation"
             },
             {
               "question": "Why is trading on news you just read often a poor strategy?",
@@ -2163,7 +2895,8 @@
                 "Only professionals can read news"
               ],
               "answer": 2,
-              "explanation": "Markets react quickly to new information, so by the time you read it, the move has usually happened."
+              "explanation": "Markets react quickly to new information, so by the time you read it, the move has usually happened.",
+              "difficulty": "intermediate"
             },
             {
               "question": "What is the best use of the prediction game and paper trading?",
@@ -2174,7 +2907,34 @@
                 "To replace an emergency fund"
               ],
               "answer": 0,
-              "explanation": "Virtual money lets you practise and learn from mistakes safely."
+              "explanation": "Virtual money lets you practise and learn from mistakes safely.",
+              "difficulty": "foundation"
+            }
+          ],
+          "resources": [
+            {
+              "title": "Researching Investments",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/getting-started/researching-investments",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Five Questions to Ask Before You Invest",
+              "publisher": "SEC Investor.gov",
+              "url": "https://www.investor.gov/introduction-investing/getting-started/five-questions-ask-you-invest",
+              "type": "article",
+              "level": "foundation",
+              "free": true
+            },
+            {
+              "title": "Personal Finance",
+              "publisher": "Morningstar",
+              "url": "https://www.morningstar.com/personal-finance",
+              "type": "article",
+              "level": "foundation",
+              "free": true
             }
           ]
         }
