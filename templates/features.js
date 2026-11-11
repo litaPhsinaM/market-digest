@@ -159,6 +159,67 @@
   });
   addEventListener("hashchange", () => openStory(location.hash.slice(1)));
   if (location.hash.length > 1) setTimeout(() => openStory(decodeURIComponent(location.hash.slice(1))), 0);
+  // ---------- swipeable card stack (phones): swipe the top card away, the next comes from behind ----------
+  function initStack(root) {
+    const cards = $$(".stack-card:not(.stack-end)", root), end = $("[data-stack-end]", root);
+    const hint = root.parentElement.querySelector("[data-stack-hint]");
+    let i = 0, drag = null, moved = false;
+    function layout() {
+      [...cards, end].forEach((c, k) => {
+        const off = k - i;
+        c.style.transition = "transform .35s cubic-bezier(.2,.9,.3,1), opacity .3s";
+        if (off < 0) { c.style.opacity = 0; c.style.pointerEvents = "none"; c.classList.remove("top"); return; }
+        c.style.transform = `translateY(${Math.min(off, 3) * 14}px) scale(${1 - Math.min(off, 3) * 0.05})`;
+        c.style.opacity = off > 2 ? 0 : 1;
+        c.style.zIndex = 100 - off;
+        c.style.pointerEvents = off === 0 ? "auto" : "none";
+        c.classList.toggle("top", off === 0);
+      });
+    }
+    function fling(c, dx, dy) {
+      const up = dy < 0 && Math.abs(dy) >= Math.abs(dx);
+      c.style.transition = "transform .3s ease-in, opacity .3s ease-in";
+      c.style.transform = up ? `translateY(-130%) rotate(${dx * 0.03}deg)` : `translate(${dx > 0 ? 140 : -140}%, ${dy}px) rotate(${dx > 0 ? 18 : -18}deg)`;
+      c.style.opacity = 0;
+      setTimeout(() => { i++; layout(); }, 220);
+      if (hint) hint.hidden = true;
+      MD.track("stack_swipe", { n: i + 1 });
+    }
+    root.addEventListener("pointerdown", (e) => {
+      const c = e.target.closest(".stack-card.top");
+      if (!c || e.target.closest("button")) return;
+      drag = { c, x: e.clientX, y: e.clientY, id: e.pointerId }; moved = false;
+      c.style.transition = "none";
+      try { c.setPointerCapture(e.pointerId); } catch (err) { /* some browsers refuse; the drag still works without it */ }
+    });
+    root.addEventListener("pointermove", (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if (Math.abs(dx) + Math.abs(dy) > 8) moved = true;
+      drag.c.style.transform = `translate(${dx}px, ${Math.min(dy, 40)}px) rotate(${dx * 0.04}deg)`;
+    });
+    const release = (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const dx = e.clientX - drag.x, dy = e.clientY - drag.y, c = drag.c;
+      drag = null;
+      if (dy < -70 || Math.abs(dx) > 90) fling(c, dx, dy); else layout();  // not far enough: spring back
+      setTimeout(() => (moved = false), 0);  // only the click fired by this same gesture is ignored
+    };
+    root.addEventListener("pointerup", release);
+    root.addEventListener("pointercancel", release);
+    // A drag must not count as a tap (taps open the story through the normal [data-story] handler).
+    root.addEventListener("click", (e) => { if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; } }, true);
+    root.addEventListener("keydown", (e) => {
+      const c = e.target.closest(".stack-card.top");
+      if (!c) return;
+      if (e.key === "ArrowUp" || e.key === "ArrowRight") { e.preventDefault(); fling(c, 0, -100); }
+      if (e.key === "Enter" && c.dataset.story) { e.preventDefault(); c.click(); }
+    });
+    root.addEventListener("click", (e) => { if (e.target.closest("[data-stack-restart]")) { i = 0; layout(); } });
+    layout();
+  }
+  $$("[data-stack]").forEach(initStack);
+
   // First-visit intro: shown until dismissed or until the visitor has used the app on another day.
   const intro = $("#intro");
   if (intro) {

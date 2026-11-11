@@ -98,6 +98,24 @@
     {% endfor %}
   </div>
   {% endif %}
+  {# Phones: the same stories as a swipeable card stack (the hero + rail above are hidden there) #}
+  <div class="stack" data-stack aria-roledescription="card stack" aria-label="Top stories, swipe up for the next">
+    {% for t in hot.topics %}
+    <div class="stack-card c{{ loop.index0 % 4 }}" data-story="hot-{{ loop.index }}" role="button" tabindex="0" aria-label="Story {{ loop.index }}: {{ t.title }}">
+      <span class="sk-top"><span class="sk-n">{{ loop.index }} / {{ hot.topics|length }}</span>{% for sym in t.tickers if sym in co_syms %}<span class="sk-tick">{{ sym }}</span>{% endfor %}</span>
+      <span class="sk-title">{{ t.title }}</span>
+      <span class="sk-dek">{{ t.explanation }}</span>
+      <span class="sk-why"><b>Why it matters</b> {{ t.why_it_matters }}</span>
+      <span class="sk-foot"><span class="sk-src">{{ t.links|map(attribute='source')|join(' · ') }}</span><span class="sk-open">Tap to read</span></span>
+    </div>
+    {% endfor %}
+    <div class="stack-card stack-end" data-stack-end>
+      <span class="sk-title">You're caught up ✓</span>
+      <span class="sk-dek">That's today's {{ hot.topics|length }} top stories. Next: the episode summaries below, or the daily quiz.</span>
+      <button class="btn" type="button" data-stack-restart>Start again</button>
+    </div>
+  </div>
+  <p class="stack-hint muted small" data-stack-hint>Swipe up for the next story · tap to read</p>
 </section>
 {% endif %}
 

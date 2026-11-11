@@ -877,3 +877,32 @@ button.act.progress { cursor: pointer; font: inherit; }
   .rail { grid-auto-columns: 78%; margin: 0 -16px; padding: 12px 16px 6px; scroll-padding: 0 16px; }
   .know-grid { grid-template-columns: 1fr; }
 }
+
+/* =================== phone card stack =================== */
+.stack, .stack-hint { display: none; }
+@media (max-width: 640px) {
+  .top .hero, .top .rail { display: none; }
+  .stack { display: block; position: relative; height: 430px; margin: 4px 0 6px; touch-action: pan-x pan-y; }
+  .stack-hint { display: block; text-align: center; margin: 4px 0 0; }
+  .stack-card { position: absolute; inset: 0 0 42px 0; display: flex; flex-direction: column; gap: 10px; padding: 22px 20px 18px;
+    border-radius: 22px; color: #fff; cursor: grab; user-select: none; -webkit-user-select: none; overflow: hidden;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .28); will-change: transform; transform-origin: 50% 100%; touch-action: none; }
+  .stack-card:active { cursor: grabbing; }
+  .stack-card.c0 { background: radial-gradient(130% 120% at 100% 0%, #2a8f76, #164a3d 50%, #0f1f1b); }
+  .stack-card.c1 { background: radial-gradient(130% 120% at 0% 0%, #3a5fb0, #1b2f5c 50%, #0d1529); }
+  .stack-card.c2 { background: radial-gradient(130% 120% at 100% 0%, #b8432f, #5a2119 50%, #1f0e0b); }
+  .stack-card.c3 { background: radial-gradient(130% 120% at 0% 0%, #7b5bd6, #382a78 50%, #150f2e); }
+  .stack-end { background: var(--surface); color: var(--text); border: 1px solid var(--line); justify-content: center; align-items: flex-start; }
+  .stack-end .sk-dek { color: var(--text-2); }
+  .sk-top { display: flex; align-items: center; gap: 8px; }
+  .sk-n { font-size: .74rem; font-weight: 800; letter-spacing: .08em; color: rgba(255, 255, 255, .7); }
+  .sk-tick { font-size: .7rem; font-weight: 800; background: rgba(255, 255, 255, .18); border-radius: 6px; padding: 2px 7px; }
+  .sk-title { font-size: 1.55rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
+  .sk-dek { font-size: .98rem; line-height: 1.5; color: rgba(255, 255, 255, .86); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+  .sk-why { font-size: .88rem; line-height: 1.45; background: rgba(255, 255, 255, .1); border-radius: 12px; padding: 10px 12px; color: rgba(255, 255, 255, .9);
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .sk-why b { display: block; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255, 255, 255, .65); margin-bottom: 2px; }
+  .sk-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .sk-src { font-size: .74rem; font-weight: 650; color: rgba(255, 255, 255, .7); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sk-open { flex: none; font-size: .84rem; font-weight: 750; background: #fff; color: #111; border-radius: 99px; padding: 7px 14px; }
+}
