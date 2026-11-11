@@ -21,7 +21,7 @@
     "why_it_matters": "This could intensify the U.S.-China tech rivalry and lead to new export controls."
    },
    {
-    "point": "Alvin Graylin, a professor of AI policy at the University of Washington, believes AI technology is hard to contain and that new export controls may not stop lawmakers from pushing for stricter measures.",
+    "point": "Alvin Graylin, a professor of AI policy at the University of Washington, says AI technology can't be contained; he thinks new export controls could accelerate Beijing's push for tech independence, but doubts that will stop lawmakers from backing them.",
     "why_it_matters": "This highlights the challenges of controlling AI technology and the potential for increased geopolitical tensions."
    },
    {
@@ -44,7 +44,9 @@
    "Alvin Graylin believes that new AI export controls could further wall off the U.S. from Chinese competition and accelerate Beijing's push for technological independence, but he's not confident that'll stop lawmakers from backing them.",
    "Dan Michaels suggests that the U.S. will likely push its allies, especially in Europe, to follow suit in restricting China's access to AI technology."
   ],
-  "tickers": [],
+  "tickers": [
+   "Nvidia (NVDA)"
+  ],
   "glossary": [
    {
     "term": "AI",

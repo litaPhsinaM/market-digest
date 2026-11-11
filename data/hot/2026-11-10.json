@@ -11,29 +11,19 @@
    "headline_ids": [
     "h028fe8b3",
     "hd496d457",
-    "hd101f627",
     "hcfd647cb",
-    "h4e45e63f",
-    "h8051d200",
-    "h8625966f",
-    "h47a38f7c",
     "h84cf07d6",
     "h4d67c691",
     "h940b8a32",
     "hfc17e326",
-    "h5f8ecb54",
-    "h05c5fd62",
-    "h8ad028b7",
     "h4d0571f0"
    ]
   },
   {
-   "title": "Anthropic's $1.4 trillion IPO",
-   "explanation": "Anthropic is targeting a $1.4 trillion valuation in its IPO, which is expected to be the largest in AI history. The IPO is set to price on November 18 and trade the following day. The company's founders are each expected to sell about $250 million worth of shares in the offering.",
+   "title": "Anthropic's IPO at up to $1.4 trillion",
+   "explanation": "Anthropic is seeking a valuation of up to about $1.4 trillion in its IPO, a bid to become the first frontier AI lab to go public, and it could raise more money than SpaceX's record debut. The IPO is set to price on November 18 and trade the following day. Each of its seven founders is expected to sell about $250 million worth of shares.",
    "why_it_matters": "Anthropic's IPO is a major event in the AI sector and will be a test of investor appetite for AI companies following a recent selloff in the space.",
-   "tickers": [
-    "ANTH"
-   ],
+   "tickers": [],
    "headline_ids": [
     "h68e4f98a",
     "h9a5bae24",
@@ -43,43 +33,28 @@
     "ha2d67064",
     "h8e89ca04",
     "h75272258",
-    "hdbacfd04",
-    "h860fc8b7",
-    "h8149be24",
-    "h3a10cf0a",
-    "h8eebb20f",
-    "h05045298"
+    "hdbacfd04"
    ]
   },
   {
    "title": "Inflation concerns and Fed rate hike expectations",
    "explanation": "Recent inflation data and comments from Federal Reserve officials have raised concerns about the potential for higher interest rates. The CPI report showed inflation remaining higher than expected, and the 10-year Treasury yield has risen to 5% as investors anticipate more aggressive rate hikes.",
    "why_it_matters": "Inflation and the potential for rate hikes are major concerns for investors, as they affect the broader stock market and bond yields.",
-   "tickers": [
-    "TLT",
-    "TLT"
-   ],
+   "tickers": [],
    "headline_ids": [
     "h1fb3ee79",
     "hd101f627",
     "h8625966f",
-    "h8051d200",
     "h214f01b5",
     "h52d453c5",
-    "h8d33fc13",
-    "hd8d887b5",
-    "h2f74281a"
+    "hd8d887b5"
    ]
   },
   {
    "title": "Binance hack and cryptocurrency security concerns",
-   "explanation": "Hackers stole $6.3 billion from Binance in the largest ever heist. The stolen funds were largely in Bitcoin and Ether, and the incident has raised concerns about the security of cryptocurrency exchanges and the need for stronger measures to protect digital assets.",
+   "explanation": "Hackers stole $6.3 billion from Binance in the largest ever heist. About $3.13 billion is still in wallets linked to the hackers, mostly in Bitcoin and Ether, and the incident has raised concerns about the security of cryptocurrency exchanges and the need for stronger measures to protect digital assets.",
    "why_it_matters": "The Binance hack has highlighted the risks in the crypto space and the need for improved security measures, which could impact investor confidence in the sector.",
-   "tickers": [
-    "BNB",
-    "BTC",
-    "ETH"
-   ],
+   "tickers": [],
    "headline_ids": [
     "hb660a3a2",
     "h8fce71d1",
@@ -88,8 +63,8 @@
   },
   {
    "title": "IHeartMedia's debt collapse and stock plunge",
-   "explanation": "IHeartMedia's debt has fallen to record lows, and its shares have dropped 67% after the company missed earnings estimates. The company's financial situation has raised concerns about its ability to meet obligations and maintain operations.",
-   "why_it_matters": "IHeartMedia's financial struggles are a cautionary tale for investors in the media and entertainment sector, highlighting the risks of overleveraging and poor performance.",
+   "explanation": "IHeartMedia's debt has fallen to record lows and its shares sank 67% after the company's latest earnings projections fell far short of analyst estimates.",
+   "why_it_matters": "When a company with heavy debt disappoints, both its shares and its bonds can fall sharply as investors question whether it can meet its obligations.",
    "tickers": [
     "IHRT"
    ],
@@ -101,27 +76,10 @@
    "title": "Tokenization of stocks and the evolution of the stock market",
    "explanation": "Tokenization is changing how investors can access, transfer, and use stocks. The New York Stock Exchange has announced it will settle tokenized stocks exclusively through the Avalanche blockchain, signaling a shift in how financial markets operate.",
    "why_it_matters": "Tokenization is a significant development in the financial industry, offering new ways for investors to engage with stocks and potentially increasing market efficiency.",
-   "tickers": [
-    "AVAX",
-    "NYX"
-   ],
+   "tickers": [],
    "headline_ids": [
     "h964c15c7",
-    "h7868890a",
-    "h78dfe9df",
-    "h7868890a"
-   ]
-  },
-  {
-   "title": "Nvidia's China revenue exposure",
-   "explanation": "Nvidia's revenue from China is a significant portion of its sales, despite export controls. The company's ties to China have come under scrutiny following the scandal involving its CEO's affair with an alleged Chinese spy.",
-   "why_it_matters": "Nvidia's exposure to China is a key issue for investors, as it affects the company's operations, reputation, and potential regulatory risks.",
-   "tickers": [
-    "NVDA"
-   ],
-   "headline_ids": [
-    "h05045298",
-    "h36207b0c"
+    "h78dfe9df"
    ]
   }
  ],
