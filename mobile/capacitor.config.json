@@ -3,6 +3,7 @@
   "appName": "Market Digest",
   "webDir": "www",
   "server": {
+    "url": "https://litaphsinam.github.io/market-digest/",
     "androidScheme": "https"
   },
   "android": {
