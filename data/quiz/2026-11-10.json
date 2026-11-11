@@ -1,0 +1,41 @@
+{
+ "date": "2026-11-10",
+ "questions": [
+  {
+   "question": "What does a P/E ratio of 20 mean?",
+   "options": [
+    "A) The company's stock is overvalued compared to its earnings.",
+    "B) The company's stock is trading at 20 times its earnings per share.",
+    "C) The company's earnings are 20 times its stock price.",
+    "D) The company is expected to grow its earnings by 20% annually."
+   ],
+   "answer": 1,
+   "explanation": "The P/E (Price-to-Earnings) ratio of 20 means that the company's stock is trading at 20 times its earnings per share. This is a common way to assess whether a stock is overvalued or undervalued relative to its earnings. A higher P/E ratio may indicate that investors expect higher future growth, while a lower P/E may suggest the stock is undervalued or the company is not performing well compared to its peers. In this case, the P/E of 20 is simply a multiple of the company's earnings, not a direct measure of growth or valuation judgment on its own.",
+   "item_id": "bloomberg-surveillance-bcfeb6e40e"
+  },
+  {
+   "question": "Which of the following is a likely consequence of a 50 basis point rate hike by the Federal Reserve?",
+   "options": [
+    "A) A decrease in the value of the dollar.",
+    "B) A decrease in consumer spending.",
+    "C) A decrease in inflation.",
+    "D) A decrease in corporate borrowing costs."
+   ],
+   "answer": 2,
+   "explanation": "A 50 basis point rate hike by the Federal Reserve is likely to lead to a decrease in inflation. The Fed typically raises interest rates to combat inflation by making borrowing more expensive, which can slow down economic activity and reduce demand. This, in turn, can help bring inflation under control. While higher rates may also reduce consumer spending and borrowing, the primary goal of a rate hike in the context of inflation is to reduce it, not necessarily to directly affect the dollar's value or corporate borrowing costs in the short term.",
+   "item_id": "bloomberg-surveillance-bcfeb6e40e"
+  },
+  {
+   "question": "What is the main reason investors are cautious about a housing market rebound despite recent gains in homebuilder stocks?",
+   "options": [
+    "A) High mortgage rates are still a barrier for buyers.",
+    "B) The housing market is too small to have a significant impact on the economy.",
+    "C) Homebuilder stocks are overvalued compared to other sectors.",
+    "D) There is too much competition among homebuilders."
+   ],
+   "answer": 0,
+   "explanation": "Investors are cautious about a housing market rebound despite recent gains in homebuilder stocks because high mortgage rates are still a barrier for buyers. Even though homebuilder stocks may be performing well due to expectations of policy changes or reduced labor shortages, the overall housing market is still facing challenges such as weak demand, rising costs, and the typical seasonal slowdown. High mortgage rates make it more expensive for potential buyers to purchase homes, which can limit the recovery of the housing market in the near term.",
+   "item_id": "wsj-your-money-30a25c95fc"
+  }
+ ]
+}
