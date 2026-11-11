@@ -102,7 +102,7 @@
 
   // ---------- Play page ----------
   const play = $("#play");
-  let board = "streak", scope = "all";
+  let board = "streak", scope = "all", friendCount = null;
   async function loadBoard() {
     const tbody = $("#lb-body");
     if (!tbody) return;
@@ -130,8 +130,10 @@
       col = "💼 Return on $100k";
       fmt = (r) => `<span class="${r.return_pct >= 0 ? "pos" : "neg"}">${pct(r.return_pct)}</span> <span class="muted">${money(r.value)}</span>`;
     }
+    friendCount = null;
     if (scope === "friends" && MD.user) {
       const { data } = await MD.sb.from("follows").select("followee").eq("follower", MD.user.id);
+      friendCount = (data || []).length;
       const ids = new Set((data || []).map((f) => f.followee).concat(MD.user.id));
       rows = rows.filter((r) => ids.has(r.id));
     }
@@ -150,7 +152,7 @@
     const base = location.pathname.replace(/[^/]*$/, "");
     if (!MD.user) return `<div class="lb-empty"><b>Be the first on the board 🏆</b><span>Sign in (free, no password) to start your streak, take quizzes, make calls and trade.</span><button class="btn" type="button" data-signin-now>Sign in</button></div>`;
     if (!profile || !profile.username) return `<div class="lb-empty"><b>You're not on the board yet</b><span>Leaderboards show usernames only. Pick one and you'll appear here.</span><button class="btn" type="button" data-edit-username>Pick a username</button></div>`;
-    if (scope === "friends") return `<div class="lb-empty"><b>No friends here yet 👥</b><span>Copy your invite link above and send it to a friend: they'll follow you as soon as they open it.</span></div>`;
+    if (scope === "friends" && !friendCount) return `<div class="lb-empty"><b>No friends here yet 👥</b><span>Copy your invite link above and send it to a friend: they'll follow you as soon as they open it.</span></div>`;
     return {
       streak: `<div class="lb-empty"><b>No streaks yet 🔥</b><span>Read a story or take a quiz today to start yours.</span><a class="btn" href="${base}index.html">Go to today's stories</a></div>`,
       quiz: `<div class="lb-empty"><b>No quiz scores yet 🧠</b><span>Answer today's quiz or a practice round to get on this board.</span><a class="btn" href="${base}learn.html#practice">Try a practice round</a></div>`,
