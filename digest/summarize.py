@@ -2,13 +2,23 @@
 import json
 import re
 import os
+import threading
 import time
 import urllib.request
 from pathlib import Path
 
 from pydantic import BaseModel, Field
 
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+# Gemini (free tier): try models in order and fall back on 404 (model gone), 429 (quota), 5xx (overloaded) or timeouts.
+# 3.5-flash answers in ~3 s and 3.1-flash-lite in ~1 s; 3.7/3.8-flash are often overloaded (503), 2.5-* is gone for new
+# keys and Pro isn't in the free tier. The free tier allows only 20 requests a day per Flash model (per model, so a
+# longer list means more capacity): once 3.5-flash's are used up, the lite models do the rest of the day.
+# Override with GEMINI_MODEL (first choice) and GEMINI_FALLBACKS (comma-separated).
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash")
+GEMINI_FALLBACKS = os.environ.get("GEMINI_FALLBACKS", "gemini-3.1-flash-lite,gemini-3.5-flash-lite,gemini-3.7-flash,gemini-3.6-flash")
+# Transcribing is long and mechanical: the fast lite models first, which also saves 3.5-flash's quota for summaries.
+GEMINI_TRANSCRIBE_MODELS = os.environ.get("GEMINI_TRANSCRIBE_MODELS", "gemini-3.1-flash-lite,gemini-3.5-flash-lite,gemini-3.5-flash")
+GEMINI_RPM = float(os.environ.get("GEMINI_RPM", "8"))  # pace requests under the free tier's per-minute limits
 OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen3:14b")
 BACKEND = os.environ.get("DIGEST_BACKEND", "gemini")  # gemini | ollama
 
@@ -256,23 +266,134 @@ def _gemini():
     return _client
 
 
+def _models(spec: str) -> list[str]:
+    return list(dict.fromkeys(m.strip() for m in spec.split(",") if m.strip()))
+
+
+MODELS = _models(f"{GEMINI_MODEL},{GEMINI_FALLBACKS}")
+last_model = None  # the model that wrote the most recent answer (recorded with each summary)
+_dead: set[str] = set()  # models that are gone (404) or out of today's quota: not asked again this run
+_last_call = 0.0
+
+
+def _pace():
+    global _last_call
+    wait = _last_call + 60 / GEMINI_RPM - time.monotonic()
+    if wait > 0:
+        time.sleep(wait)
+    _last_call = time.monotonic()
+
+
+def _with_deadline(fn, seconds: float):
+    """Run fn() but give up after `seconds`. The HTTP timeout alone isn't enough: a stalled Gemini request was seen
+    holding the connection open for 10 minutes. The abandoned call finishes (or dies) in a daemon thread."""
+    box = {}
+
+    def run():
+        try:
+            box["ok"] = fn()
+        except BaseException as e:
+            box["err"] = e
+    t = threading.Thread(target=run, daemon=True)
+    t.start()
+    t.join(seconds)
+    if t.is_alive():
+        raise TimeoutError(f"no answer in {seconds:.0f}s")
+    if "err" in box:
+        raise box["err"]
+    return box["ok"]
+
+
+def _gemini_call(contents, cfg, parse, models=None, timeout=180, pauses=(0, 20, 60, 120)):
+    """Ask each model in turn until one gives an answer `parse` accepts; if all fail, more rounds with backoff."""
+    global last_model
+    import httpx
+    from google.genai import errors, types
+    cfg = cfg.model_copy(update={"http_options": types.HttpOptions(timeout=timeout * 1000)})
+    last = None
+    for pause in pauses:
+        live = [m for m in (models or MODELS) if m not in _dead]
+        if not live:
+            break
+        if pause:
+            print(f"    Gemini busy, retrying in {pause}s")
+            time.sleep(pause)
+        for model in live:
+            _pace()
+            try:
+                resp = _with_deadline(lambda: _gemini().models.generate_content(model=model, contents=contents,
+                                                                                config=cfg), timeout)
+                out = parse(resp)
+                last_model = model
+                return out
+            except errors.APIError as e:
+                last = e
+                if e.code == 404 or (e.code == 429 and "PerDay" in str(e)):
+                    _dead.add(model)
+                    print(f"    {model}: {'not available' if e.code == 404 else 'daily quota used up'}, skipping it")
+                elif e.code in (429, 500, 502, 503, 504):
+                    print(f"    {model}: {e.code}, trying the next model")
+                else:
+                    raise
+            except (TimeoutError, httpx.TimeoutException, httpx.TransportError) as e:
+                last = e
+                print(f"    {model}: {type(e).__name__}, trying the next model")
+            except ValueError as e:  # empty/blocked answer, or JSON that doesn't fit the schema
+                last = e
+                print(f"    {model}: unusable answer ({' '.join(str(e).split())[:80]}), trying the next model")
+    raise RuntimeError(f"no Gemini model answered: {last}") from last
+
+
 def _gemini_generate(contents, schema):
-    from google.genai import types, errors
+    from google.genai import types
     cfg = types.GenerateContentConfig(
         response_mime_type="application/json", response_schema=schema, temperature=0.3,
         media_resolution=types.MediaResolution.MEDIA_RESOLUTION_LOW,
     )
-    for attempt in range(4):
+    return _gemini_call(contents, cfg, lambda r: schema.model_validate_json(r.text or ""))
+
+
+TRANSCRIBE_PROMPT = """Transcribe this podcast episode word for word, in English, from start to finish.
+- Everything that is said, including ads and intros. Do not summarize, shorten or skip anything.
+- Plain text only: no timestamps, no speaker labels, no headings. Start a new paragraph when the speaker changes.
+- Write numbers as digits, the way a newspaper would: 4.3%, $3.2 billion, 25 basis points, 2026."""
+
+
+def transcribe(item, audio: Path) -> str | None:
+    """Cloud stand-in for local Whisper: Gemini transcribes the audio, so the quality checks and the forecast quotes
+    (claims.py) still have a transcript to verify against. None if it refused, failed or came back too short."""
+    from google.genai import types
+    cfg = types.GenerateContentConfig(response_mime_type="text/plain", temperature=0, max_output_tokens=65536)
+
+    def parse(resp):
+        text = (resp.text or "").strip()
+        cand = resp.candidates[0] if resp.candidates else None
+        reason = cand.finish_reason.name if cand and cand.finish_reason else "?"
+        if not text:
+            raise ValueError(f"no transcript (finish reason {reason})")
+        return text + (" [transcript truncated]" if reason == "MAX_TOKENS" else "")
+
+    try:
+        f = _upload(audio)
+    except Exception as e:
+        print(f"    ! audio upload failed: {e}")
+        return None
+    try:
+        text = _gemini_call([f, TRANSCRIBE_PROMPT], cfg, parse, models=_models(GEMINI_TRANSCRIBE_MODELS),
+                            timeout=420, pauses=(0, 30))
+    except Exception as e:
+        print(f"    ! Gemini transcript failed: {e}")
+        return None
+    finally:
         try:
-            resp = _gemini().models.generate_content(model=GEMINI_MODEL, contents=contents, config=cfg)
-            return schema.model_validate_json(resp.text)
-        except errors.APIError as e:
-            if e.code in (429, 500, 503) and attempt < 3:
-                wait = 30 * (attempt + 1)
-                print(f"    Gemini {e.code}, retrying in {wait}s")
-                time.sleep(wait)
-                continue
-            raise
+            _gemini().files.delete(name=f.name)
+        except Exception:
+            pass  # uploads expire on their own after 48 h
+    minutes, words = (item.duration or 0) / 60, len(text.split())
+    if minutes >= 3 and words < 60 * minutes:  # people speak ~150 words a minute
+        print(f"    ! transcript too short ({words} words for {minutes:.0f} min)")
+        return None
+    return text
 
 
 def _upload(path: Path):

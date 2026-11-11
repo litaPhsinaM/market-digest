@@ -1,6 +1,7 @@
 .venv/
 __pycache__/
 *.mp3
+!data/audio/*.mp3
 .env
 site/
 data/transcripts/
