@@ -1021,3 +1021,26 @@ button.act.progress { cursor: pointer; font: inherit; }
   .more-links a[hidden] { display: none; }
   .more-close { width: 100%; height: 46px; margin-bottom: 8px; }
 }
+
+/* =================== phone: market strip as a slim swipeable ticker row =================== */
+@media (max-width: 640px) {
+  .strip { display: grid; grid-auto-flow: column; grid-auto-columns: 148px; grid-template-columns: none; gap: 8px;
+    overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -16px; padding: 2px 16px 4px; scroll-padding: 0 16px;
+    scrollbar-width: none; -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
+  .strip::-webkit-scrollbar { display: none; }
+  .tile { scroll-snap-align: start; padding: 9px 11px 8px; border-radius: 14px; }
+  .tile-top { gap: 4px; }
+  .tile-name { font-size: .74rem; }
+  .tile .info { width: 16px; height: 16px; font-size: .6rem; }
+  .tile-price { font-size: 1.02rem; margin: 1px 0 3px; }
+  .tile-bot { gap: 4px; }
+  .tile .chg { font-size: .7rem; padding: 1px 5px; }
+  .tile .spark { width: 50px; height: 22px; }
+  .asof { font-size: .7rem; margin: 6px 2px 16px; line-height: 1.4; }
+}
+@media (max-width: 640px) {
+  .actions .act.progress { grid-column: 1 / -1; padding: 8px 12px; }
+  .actions .act.progress .ring { width: 30px; height: 30px; }
+  .actions .act.progress small { display: inline; margin-left: 6px; }
+  .actions .act.progress > span:last-child { display: flex; flex-wrap: wrap; align-items: baseline; }
+}
