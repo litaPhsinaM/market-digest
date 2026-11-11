@@ -5,6 +5,7 @@ words they never said), a deadline after the episode date, and, for market calls
 Market calls are scored automatically from real closing prices; other claims wait for a check.
 """
 import datetime as dt
+import difflib
 import json
 import re
 from pathlib import Path
@@ -31,7 +32,8 @@ class Claim(BaseModel):
                                   "up/down = a price will be higher/lower than now; above/below = a price will be above/below a target level.")
     subject: str = Field(description="What it's about: a stock ticker (NVDA), an index or asset name (S&P 500, 10-year, bitcoin, oil, gold), or 'Fed funds rate'.")
     target: float | None = Field(description="Target price/level for above/below claims, else null.")
-    deadline: str = Field(description="YYYY-MM-DD by when it should come true, resolved from the episode date (e.g. 'by year end' → Dec 31).")
+    deadline_said: str = Field(description="The timeframe in the speaker's words, e.g. 'by year end', 'next year', 'at the December meeting', 'not specified'.")
+    deadline: str = Field(description="YYYY-MM-DD by when it should come true, worked out from the episode date (e.g. 'by year end' → Dec 31), or 'none'.")
 
 
 class Claims(BaseModel):
@@ -40,6 +42,8 @@ class Claims(BaseModel):
 
 
 PROMPT = """From this {kind} ("{title}", {source}, aired {date}), extract forecasts that can later be checked as right or wrong.
+A forecast is about the FUTURE ("I expect the Fed to hike in December", "stocks will be higher by year end").
+Descriptions of data or events that already happened ("inflation came in hot") are NOT forecasts: skip them.
 Only include a forecast if it names WHAT will happen and BY WHEN (explicitly or clearly implied, e.g. "next month",
 "by year end", "at the December meeting"). Copy the quote exactly as it appears in the transcript. Prefer market calls
 (prices, indexes, yields) and central bank decisions. Hosts reading the news are not forecasting; skip that.
@@ -50,6 +54,76 @@ Transcript:
 
 def _norm(t: str) -> str:
     return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9%$. ]", " ", t.lower())).strip()
+
+
+MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
+
+
+def _month_end(y: int, m: int) -> dt.date:
+    return (dt.date(y + (m == 12), m % 12 + 1, 1) - dt.timedelta(days=1))
+
+
+def resolve_deadline(iso: str, said: str, said_on: dt.date) -> dt.date | None:
+    """Turn the model's deadline (ISO date or words like 'next year', 'December', 'early 2028') into a date, or None."""
+    try:
+        d = dt.date.fromisoformat(iso.strip()[:10])
+        if d > said_on:
+            return d
+    except ValueError:
+        pass
+    t = f"{iso} {said}".lower()
+    y = said_on.year
+    if re.search(r"next week", t): return said_on + dt.timedelta(days=7)
+    if re.search(r"next month", t): return _month_end(y + (said_on.month == 12), said_on.month % 12 + 1)
+    if re.search(r"next year", t): return dt.date(y + 1, 12, 31)
+    if re.search(r"(this|the) year|year[- ]end|end of (the )?year|by december", t): return dt.date(y, 12, 31)
+    m = re.search(r"\b(early|mid|late)?[- ]?(20\d\d)\b", t)
+    if m and int(m.group(2)) >= y:
+        yr = int(m.group(2))
+        return {"early": dt.date(yr, 3, 31), "mid": dt.date(yr, 6, 30)}.get(m.group(1), dt.date(yr, 12, 31))
+    q = re.search(r"\b(q[1-4]|first|second|third|fourth) quarter|\bq([1-4])\b", t)
+    if q:
+        n = {"first": 1, "second": 2, "third": 3, "fourth": 4}.get((q.group(1) or "").split()[0], None) or int(re.sub(r"\D", "", q.group(0)) or 4)
+        d = _month_end(y, n * 3)
+        return d if d > said_on else _month_end(y + 1, n * 3)
+    for i, name in enumerate(MONTHS, start=1):
+        if re.search(rf"\b{name}\b", t):
+            d = _month_end(y, i)
+            return d if d > said_on else _month_end(y + 1, i)
+    return None
+
+
+def infer_kind(model_kind: str, text: str) -> str:
+    k, t = model_kind.lower(), text.lower()
+    if k in PRICE_KINDS | {"rate_hike", "rate_cut", "rate_hold"}:
+        return k
+    if re.search(r"rate hike|hike rates|raise rates|tighten", t): return "rate_hike"
+    if re.search(r"rate cut|cut rates|lower rates|ease", t): return "rate_cut"
+    if re.search(r"(hold|pause|keep) rates|on hold", t): return "rate_hold"
+    if re.search(r"\b(above|over|at least) [\d$]", t): return "above"
+    if re.search(r"\b(below|under) [\d$]", t): return "below"
+    if re.search(r"higher|rise|rally|rebound|go up|gain|climb|bull", t): return "up"
+    if re.search(r"lower|fall|drop|decline|selloff|sell-off|go down|bear", t): return "down"
+    return "other"
+
+
+def quote_in(quote: str, flat: str) -> bool:
+    """Exact match, or ≥85% similar to some stretch of the transcript (models often change a word or two)."""
+    q = _norm(quote)
+    if q in flat:
+        return True
+    qw, fw = q.split(), flat.split()
+    n = len(qw)
+    if n < 6:
+        return False
+    first = set(qw[:3])
+    best = 0.0
+    for i in range(len(fw) - n + 1):
+        if fw[i] in first:
+            best = max(best, difflib.SequenceMatcher(None, qw, fw[i:i + n]).ratio())
+            if best >= 0.85:
+                return True
+    return False
 
 
 def _symbol(subject: str) -> str | None:
@@ -68,17 +142,17 @@ def extract(item, transcript: str) -> list[dict]:
     said = dt.date.fromisoformat(item.published)
     flat, kept = _norm(text), []
     for c in out.claims[:5]:
-        if len(c.quote.split()) < 6 or _norm(c.quote) not in flat:
+        if len(c.quote.split()) < 6 or not quote_in(c.quote, flat):
             print(f"    ✂ claim dropped (quote not found in transcript): {c.quote[:60]!r}")
             continue
-        try:
-            deadline = dt.date.fromisoformat(c.deadline)
-        except ValueError:
+        deadline = resolve_deadline(c.deadline, c.deadline_said, said)
+        if deadline is None:
+            print(f"    · skipped (no checkable deadline): {c.claim[:60]!r}")
             continue
-        if not (said < deadline <= said + dt.timedelta(days=400)):
+        if not (said < deadline <= said + dt.timedelta(days=800)):
             print(f"    ✂ claim dropped (bad deadline {c.deadline}): {c.claim[:60]!r}")
             continue
-        kind = c.kind if c.kind in PRICE_KINDS | {"rate_hike", "rate_cut", "rate_hold"} else "other"
+        kind = infer_kind(c.kind, c.claim + " " + c.quote)
         sym = _symbol(c.subject) if kind in PRICE_KINDS else None
         if kind in PRICE_KINDS and not sym:
             kind = "other"  # can't price it automatically

@@ -1,1 +1,38 @@
-[]
+[
+ {
+  "id": "bloomberg-surveillance-bcfeb6e40e-0",
+  "item_id": "bloomberg-surveillance-bcfeb6e40e",
+  "source": "Bloomberg Surveillance",
+  "episode": "Bloomberg Surveillance TV: November 10th, 2026",
+  "url": "https://omny.fm/shows/bloomberg-surveillance/bloomberg-surveillance-tv-november-10th-2026",
+  "said_on": "2026-11-10",
+  "speaker": "Cameron Dawson",
+  "role": "New Edge Wealth",
+  "quote": "the semiconductor companies, which are up 120 percent this year, expected to grow another 50 percent next year",
+  "claim": "semiconductor companies will grow another 50 percent next year",
+  "kind": "other",
+  "subject": "semiconductor companies",
+  "symbol": null,
+  "target": null,
+  "deadline": "2027-12-31",
+  "status": "open"
+ },
+ {
+  "id": "bloomberg-surveillance-bcfeb6e40e-1",
+  "item_id": "bloomberg-surveillance-bcfeb6e40e",
+  "source": "Bloomberg Surveillance",
+  "episode": "Bloomberg Surveillance TV: November 10th, 2026",
+  "url": "https://omny.fm/shows/bloomberg-surveillance/bloomberg-surveillance-tv-november-10th-2026",
+  "said_on": "2026-11-10",
+  "speaker": "Cameron Dawson",
+  "role": "New Edge Wealth",
+  "quote": "the market is starting to say, hey, we think that there's a higher probability that 27 or early 28 is the peak for semiconductor earnings",
+  "claim": "27 or early 28 is the peak for semiconductor earnings",
+  "kind": "other",
+  "subject": "semiconductor earnings",
+  "symbol": null,
+  "target": null,
+  "deadline": "2027-12-31",
+  "status": "open"
+ }
+]
