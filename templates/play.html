@@ -6,19 +6,19 @@
 
 <section class="play-guest-hero card" data-guest>
   <div class="eyebrow">Play</div>
-  <h1>Invest $100,000 of play money. Beat your friends.</h1>
-  <p class="muted">Real prices, zero risk. Paper-trade stocks and index funds, call where they go next, and race your friends on the leaderboard.</p>
-  <button class="btn big-cta" type="button" data-signin>Sign in to get your $100,000</button>
+  <h1>Start with $10,000. Grow it. Beat your friends.</h1>
+  <p class="muted">Real prices, zero risk. Invest your play money, make calls on where stocks go, and earn more by learning: correct quiz answers, finished lessons and right calls all pay.</p>
+  <button class="btn big-cta" type="button" data-signin>Sign in to get your $10,000</button>
 </section>
 
 <div class="play-app" data-need-auth hidden>
   <!-- Portfolio hero -->
   <section class="pf-hero" id="portfolio">
-    <div class="pf-label">Your portfolio <button class="info" type="button" data-tip="Everyone starts with $100,000 of play money. Orders fill at the next price update: every 15 minutes while the US market is open (9:30–4:00 New York time), otherwise at the next open." aria-label="How paper trading works">i</button></div>
-    <div class="pf-total" id="pf-total">$100,000.00</div>
+    <div class="pf-label">Your portfolio <button class="info" type="button" data-tip="Everyone starts with $10,000 of play money and earns more by learning and making right calls. Orders fill at the next price update: every 15 minutes while the US market is open (9:30–4:00 New York time), otherwise at the next open." aria-label="How paper trading works">i</button></div>
+    <div class="pf-total" id="pf-total">$10,000.00</div>
     <div class="pf-changes"><span class="pf-chip" id="pf-today"></span><span class="pf-chip" id="pf-ret"></span></div>
     <div class="pf-chart" id="pf-chart"></div>
-    <div class="pf-bp"><span>Buying power</span><b id="pf-cash">$100,000.00</b><span class="muted">·</span><span>Invested</span><b id="pf-inv">$0.00</b></div>
+    <div class="pf-bp"><span>Buying power</span><b id="pf-cash">$10,000.00</b><span class="muted">·</span><span>Invested</span><b id="pf-inv">$0.00</b></div>
     <div class="pf-pending" id="pf-pending" hidden></div>
     <div class="pf-actions">
       <button class="btn trade-btn" type="button" data-open-trade>Trade</button>
@@ -29,6 +29,19 @@
 
   <div class="play-cols">
     <div class="play-main">
+      <section class="card play-card earn-card">
+        <div class="pc-head"><h2>💰 Earn more money</h2><span class="muted small" id="earn-total"></span></div>
+        <ul class="earn-ways">
+          <li><span>🧠</span><span>Correct daily-quiz answer</span><b>+$100</b></li>
+          <li><span>🔮</span><span>Right call (more if you were confident)</span><b>+$100–$400</b></li>
+          <li><span>🎓</span><span>Finish a lesson</span><b>+$500</b></li>
+          <li><span>🔥</span><span>Every 7-day streak</span><b>+$1,000</b></li>
+          <li class="neg"><span>⚠️</span><span>Wrong call when 80%+ sure</span><b>−$100</b></li>
+        </ul>
+        <h3 class="sub-h">Your rewards</h3>
+        <ul class="olist" id="rewards"></ul>
+      </section>
+
       <section class="card play-card race-card">
         <div class="pc-head"><h2>🏁 Friends race</h2><span class="muted small" id="race-note"></span></div>
         <div class="race" id="race"></div>
@@ -77,12 +90,13 @@
   </div>
   <div class="board-tabs" role="tablist">
     <button type="button" role="tab" data-board="portfolio" aria-selected="true">💼 Portfolio</button>
+    <button type="button" role="tab" data-board="networth" aria-selected="false">💰 Net worth</button>
     <button type="button" role="tab" data-board="calls" aria-selected="false">🔮 Forecasting</button>
     <button type="button" role="tab" data-board="streak" aria-selected="false">🔥 Streak</button>
     <button type="button" role="tab" data-board="quiz" aria-selected="false">🧠 Quiz</button>
   </div>
   <table class="lb-table">
-    <thead><tr><th>#</th><th>Player</th><th class="num" id="lb-col">💼 Return on $100k</th><th></th></tr></thead>
+    <thead><tr><th>#</th><th>Player</th><th class="num" id="lb-col">💼 Investment return</th><th></th></tr></thead>
     <tbody id="lb-body"></tbody>
   </table>
 </section>

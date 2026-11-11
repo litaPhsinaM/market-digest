@@ -987,3 +987,8 @@ button.act.progress { cursor: pointer; font: inherit; }
 .tk-check { width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 12px; background: var(--up); color: #fff; font-size: 2.2rem; font-weight: 800; display: grid; place-items: center; animation: pop .5s cubic-bezier(.3, 1.6, .5, 1); }
 .tk-done p { margin: 6px 0 18px; }
 @media (max-width: 860px) { .play-cols { grid-template-columns: 1fr; } .racer { grid-template-columns: 26px minmax(50px, 90px) 1fr 70px; } }
+/* earn more */
+.earn-ways { list-style: none; margin: 0 0 8px; padding: 0; }
+.earn-ways li { display: grid; grid-template-columns: 26px 1fr auto; gap: 8px; align-items: center; padding: 7px 0; border-top: 1px solid var(--line); font-size: .9rem; }
+.earn-ways li:first-child { border-top: 0; }
+.earn-ways b { color: var(--up); font-variant-numeric: tabular-nums; } .earn-ways li.neg b { color: var(--down); }

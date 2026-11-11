@@ -126,9 +126,10 @@
     } else {
       const { data, error } = await MD.sb.rpc("leaderboard_portfolios");
       if (error) return (tbody.innerHTML = `<tr><td colspan="4">${esc(errMsg(error))}</td></tr>`);
-      rows = data.sort((a, b) => b.return_pct - a.return_pct);
-      col = "💼 Return on $100k";
-      fmt = (r) => `<span class="${r.return_pct >= 0 ? "pos" : "neg"}">${pct(r.return_pct)}</span> <span class="muted">${money(r.value)}</span>`;
+      rows = board === "networth" ? data.sort((a, b) => b.value - a.value) : data.sort((a, b) => b.return_pct - a.return_pct);
+      col = board === "networth" ? "💰 Net worth" : "💼 Investment return";
+      fmt = (r) => board === "networth" ? `<b>${money(r.value)}</b> <span class="muted">earned ${money(r.deposits)}</span>`
+        : `<span class="${r.return_pct >= 0 ? "pos" : "neg"}">${pct(r.return_pct)}</span> <span class="muted">${money(r.value)}</span>`;
     }
     friendCount = null;
     if (scope === "friends" && MD.user) {
@@ -228,7 +229,8 @@
 
   // ---------- portfolio (Robinhood-style) ----------
   let prices = {};      // symbol -> {price, name, prev, hist: [[iso, price], ...]}
-  let myPortfolio = { cash: 100000, rows: [] };
+  let myPortfolio = { cash: 10000, deposits: 10000, rows: [] };
+  let myRewards = [];
   const NAMES = { SPY: "S&P 500 index fund", QQQ: "Nasdaq-100 index fund", VTI: "Total US market fund" };
   const shortName = (n) => String(n || "").replace(/,? (Inc|Corp|Corporation|Holdings|Ltd|plc)\.?$/i, "").replace(/ (Inc|Corporation)\.?,?/, "");
 
@@ -248,14 +250,14 @@
   }
 
   // Portfolio value at each price update, rebuilt from your actual fills (cash + shares held × price at that time).
-  function valueSeries(orders) {
+  function valueSeries(orders, startCash) {
     const fills = orders.filter((o) => o.status === "filled").sort((a, b) => new Date(a.filled_at) - new Date(b.filled_at));
     const times = [...new Set(Object.values(prices).flatMap((p) => p.hist.map((h) => h[0])))].sort();
     const start = fills.length ? fills[0].filled_at : null;
     const out = [];
     for (const t of times) {
       if (start && t < start) continue;
-      let cash = 100000; const held = {};
+      let cash = startCash + myRewards.filter((r) => r.created_at <= t).reduce((s, r) => s + Number(r.amount), 0); const held = {};
       for (const f of fills) {
         if (f.filled_at > t) break;
         const amt = Number(f.qty) * Number(f.fill_price);
@@ -272,14 +274,14 @@
     return out;
   }
 
-  function lineChart(el, series, up) {
+  function lineChart(el, series, up, base) {
     if (series.length < 2) { el.innerHTML = `<div class="pf-flat"><span></span></div>`; return; }
     const W = el.clientWidth || 600, H = 140, vals = series.map((s) => s[1]);
-    let lo = Math.min(...vals, 100000), hi = Math.max(...vals, 100000); const pad = (hi - lo) * 0.1 || 1; lo -= pad; hi += pad;
+    let lo = Math.min(...vals, base), hi = Math.max(...vals, base); const pad = (hi - lo) * 0.1 || 1; lo -= pad; hi += pad;
     const X = (i) => (i / (series.length - 1)) * W, Y = (v) => H - ((v - lo) / (hi - lo)) * H;
     const d = series.map((s, i) => `${i ? "L" : "M"}${X(i).toFixed(1)},${Y(s[1]).toFixed(1)}`).join("");
     el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" class="${up ? "up" : "down"}" role="img" aria-label="Portfolio value over time">
-      <line class="base" x1="0" x2="${W}" y1="${Y(100000)}" y2="${Y(100000)}"/><path class="fill" d="${d}L${W},${H}L0,${H}Z"/><path class="ln" d="${d}"/></svg>`;
+      <line class="base" x1="0" x2="${W}" y1="${Y(base)}" y2="${Y(base)}"/><path class="fill" d="${d}L${W},${H}L0,${H}Z"/><path class="ln" d="${d}"/></svg>`;
   }
   const sparkline = (hist) => {
     if (!hist || hist.length < 2) return "";
@@ -295,21 +297,23 @@
   async function loadPortfolio() {
     const box = $("#portfolio");
     if (!box || !MD.user) return;
-    const [{ data: pf }, { data: pos }, { data: orders }] = await Promise.all([
-      MD.sb.from("portfolios").select("cash").eq("user_id", MD.user.id).maybeSingle(),
+    const [{ data: pf }, { data: pos }, { data: orders }, { data: rewards }] = await Promise.all([
+      MD.sb.from("portfolios").select("cash, deposits").eq("user_id", MD.user.id).maybeSingle(),
       MD.sb.from("positions").select("*").eq("user_id", MD.user.id),
       MD.sb.from("orders").select("*").eq("user_id", MD.user.id).order("placed_at", { ascending: false }).limit(200),
+      MD.sb.from("rewards").select("*").eq("user_id", MD.user.id).order("created_at", { ascending: false }).limit(100),
       loadPrices(),
     ]);
-    const cash = pf ? Number(pf.cash) : 100000;
+    const cash = pf ? Number(pf.cash) : 10000, deposits = pf ? Number(pf.deposits) : 10000;
+    myRewards = rewards || [];
     const rows = (pos || []).map((p) => {
       const q = prices[p.symbol] || {};
       const now = q.price ?? Number(p.avg_buy_price);
       return { ...p, qty: Number(p.qty), avg: Number(p.avg_buy_price), now, prev: q.prev ?? now, name: NAMES[p.symbol] || shortName(q.name) || p.symbol, hist: q.hist };
     }).sort((a, b) => b.qty * b.now - a.qty * a.now);
-    myPortfolio = { cash, rows };
+    myPortfolio = { cash, deposits, rows };
     const invested = rows.reduce((s, r) => s + r.qty * r.now, 0);
-    const total = cash + invested, ret = (total / 100000 - 1) * 100;
+    const total = cash + invested, ret = (total / deposits - 1) * 100;   // return on everything you've been given
     const todayChange = rows.reduce((s, r) => s + r.qty * (r.now - r.prev), 0);
     $("#pf-total").textContent = money(total);
     chip($("#pf-today"), todayChange, "today", false);
@@ -318,7 +322,9 @@
     $("#pf-inv").textContent = money(invested);
     // No fills yet: a flat dashed line instead of a chart of nothing.
     const filled = (orders || []).some((o) => o.status === "filled");
-    lineChart($("#pf-chart"), filled ? valueSeries(orders || []) : [], ret >= 0);
+    const earned = myRewards.reduce((s, r) => s + Number(r.amount), 0), start = deposits - earned;
+    lineChart($("#pf-chart"), filled ? valueSeries(orders || [], start) : [], ret >= 0, start);
+    renderRewards(earned);
     box.classList.toggle("down", ret < 0);
 
     const pending = (orders || []).filter((o) => o.status === "pending");
@@ -336,7 +342,7 @@
         <span class="h-id"><b>${esc(r.symbol)}</b><span class="muted small">${Number(r.qty).toLocaleString(undefined, { maximumFractionDigits: 4 })} shares</span></span>
         ${sparkline(r.hist)}
         <span class="h-val"><b>${money(value)}</b><span class="pf-chip ${g >= 0 ? "up" : "down"}">${g >= 0 ? "▲" : "▼"} ${pct(g)}</span></span></button></li>`;
-    }).join("") : `<li class="h-empty"><b>No holdings yet</b><span class="muted">Your $100,000 is waiting. Most beginners start with an index fund like <b>SPY</b>.</span>
+    }).join("") : `<li class="h-empty"><b>No holdings yet</b><span class="muted">Your ${money(cash)} is waiting. Most beginners start with an index fund like <b>SPY</b>.</span>
         <button class="btn" type="button" data-trade-sym="SPY">Buy SPY</button></li>`;
 
     $("#pf-orders").innerHTML = (orders || []).slice(0, 15).map((o) => `<li><span class="st st-${o.status}">${o.status}</span>
@@ -345,6 +351,14 @@
         ${o.note ? `<span class="muted small">· ${esc(o.note)}</span>` : ""}
         ${o.status === "pending" ? `<button class="mini" type="button" data-cancel="${o.id}">Cancel</button>` : ""}</li>`).join("") || `<li class="muted">No orders yet.</li>`;
     loadRace(total);
+  }
+  function renderRewards(earned) {
+    const box = $("#rewards");
+    if (!box) return;
+    $("#earn-total").textContent = earned ? `${earned >= 0 ? "+" : "−"}${money(Math.abs(earned))} earned so far` : "";
+    box.innerHTML = myRewards.slice(0, 12).map((r) => `<li><span class="pf-chip ${Number(r.amount) >= 0 ? "up" : "down"}">${Number(r.amount) >= 0 ? "+" : "−"}${money(Math.abs(Number(r.amount)))}</span>
+        <span>${esc(r.reason)}</span><span class="muted small">${new Date(r.created_at).toLocaleDateString([], { month: "short", day: "numeric" })}</span></li>`).join("")
+      || `<li class="muted">Nothing yet. Finish lesson 1 on the Learn tab for your first $500.</li>`;
   }
   const marketOpenNow = () => {
     const ny = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" }));
@@ -362,7 +376,7 @@
     ]);
     const ids = new Set((fol || []).map((f) => f.followee).concat(MD.user.id));
     let racers = (board || []).filter((r) => ids.has(r.id)).map((r) => ({ ...r, me: r.id === MD.user.id }));
-    if (!racers.some((r) => r.me)) racers.push({ id: MD.user.id, me: true, username: (profile && profile.username) || "you", display_name: "You", return_pct: (myTotal / 100000 - 1) * 100, value: myTotal });
+    if (!racers.some((r) => r.me)) racers.push({ id: MD.user.id, me: true, username: (profile && profile.username) || "you", display_name: "You", return_pct: (myTotal / myPortfolio.deposits - 1) * 100, value: myTotal });
     racers.sort((a, b) => b.return_pct - a.return_pct);
     const maxAbs = Math.max(1, ...racers.map((r) => Math.abs(r.return_pct)));
     box.innerHTML = racers.map((r, i) => `<div class="racer ${r.me ? "me" : ""}">
@@ -370,7 +384,7 @@
         <span class="r-name">${r.me ? "You" : esc(r.display_name || r.username)}</span>
         <span class="r-track"><span class="r-bar ${r.return_pct >= 0 ? "up" : "down"}" style="width:${Math.max(4, Math.abs(r.return_pct) / maxAbs * 100)}%"></span></span>
         <span class="r-val ${r.return_pct >= 0 ? "pos" : "neg"}">${pct(Number(r.return_pct))}</span></div>`).join("")
-      + (racers.length < 2 ? `<p class="muted small">Invite a friend to race: whoever grows their $100,000 the most wins. <button class="mini" type="button" id="race-invite">Copy invite link</button></p>` : "");
+      + (racers.length < 2 ? `<p class="muted small">Invite a friend to race: whoever grows their money the most wins. <button class="mini" type="button" id="race-invite">Copy invite link</button></p>` : "");
     const me = racers.findIndex((r) => r.me);
     $("#race-note").textContent = racers.length < 2 ? "" : me === 0 ? "You're in the lead 👑" : `You're #${me + 1} · ${(racers[0].return_pct - racers[me].return_pct).toFixed(2)}% behind ${racers[0].display_name || racers[0].username}`;
   }

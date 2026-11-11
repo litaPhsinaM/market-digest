@@ -32,7 +32,7 @@ behind the news. It's built for people who are new to investing.
   OpenCourseWare, Yale and more. Every link was checked when it was added.
 
 ### 🎮 Play (free account)
-- **Paper trading**: a virtual $100,000. Orders fill at the next price update, like a real order placed after hours.
+- **Paper trading**: start with $10,000 of play money and **earn more by learning**: correct quiz answers (+$100), finished lessons (+$500), right calls (+$100–$400) and 7-day streaks (+$1,000). Orders fill at the next price update, like a real order placed after hours. Rankings use your return on everything you have earned, so learning makes you richer but only good investing tops the board.
 - **Predictions with confidence**: call a stock up or down for tomorrow and say how sure you are. Calls are scored for
   calibration (the Brier score), so judgement beats luck.
 - **Coach**: points out panic selling, putting everything in one stock or overtrading, with a link to the lesson.
