@@ -122,16 +122,18 @@
       const scored = (r) => r.calls >= 5 && r.skill != null;
       rows = data.sort((a, b) => (scored(b) - scored(a)) || (b.skill ?? -999) - (a.skill ?? -999) || b.right_calls - a.right_calls);
       col = "🔮 Forecasting skill (60 days)";
-      fmt = (r) => r.skill != null ? `<b>${r.skill > 0 ? "+" : ""}${r.skill}</b> <span class="muted">${r.right_calls}/${r.calls} right</span>` : `<span class="muted">${r.calls} pending</span>`;
+      fmt = (r) => r.skill != null ? `<b>${r.skill > 0 ? "+" : ""}${r.skill}</b> <span class="muted">${r.right_calls} right of ${r.calls} calls</span>` : `<span class="muted">${r.calls} pending</span>`;
     } else {
       const { data, error } = await MD.sb.rpc("leaderboard_portfolios");
       if (error) return (tbody.innerHTML = `<tr><td colspan="4">${esc(errMsg(error))}</td></tr>`);
       rows = board === "networth" ? data.sort((a, b) => b.value - a.value) : data.sort((a, b) => b.return_pct - a.return_pct);
       col = board === "networth" ? "💰 Net worth" : "💼 Investment return";
-      fmt = (r) => board === "networth" ? `<b>${money(r.value)}</b> <span class="muted">earned ${money(r.deposits)}</span>`
+      // deposits = the $10,000 start + money earned by learning, so "earned" is the part above the start.
+      fmt = (r) => board === "networth" ? `<b>${money(r.value)}</b>${r.deposits > 10000 ? ` <span class="muted">${money(r.deposits - 10000)} earned</span>` : ""}`
         : `<span class="${r.return_pct >= 0 ? "pos" : "neg"}">${pct(r.return_pct)}</span> <span class="muted">${money(r.value)}</span>`;
     }
     friendCount = null;
+    if (scope === "friends" && !MD.user) rows = [];  // signed out: no friends list, show the sign-in prompt instead of everyone
     if (scope === "friends" && MD.user) {
       const { data } = await MD.sb.from("follows").select("followee").eq("follower", MD.user.id);
       friendCount = (data || []).length;
@@ -251,6 +253,8 @@
       p.hist.push([r.as_of, Number(r.price)]);
       p.name = r.name || p.name;
     }
+    // "Today" = vs the last price from an earlier New York day (the previous close), not vs the previous 15-min update.
+    const nyDay = (iso) => new Date(iso).toLocaleDateString("en-CA", { timeZone: "America/New_York" });
     for (const p of Object.values(prices)) {
       p.price = p.hist[p.hist.length - 1][1];
       // "today" = change since the last price of an earlier (New York) day, i.e. the previous close
@@ -486,9 +490,10 @@
       if (u) { tk.unit = u.dataset.unit; $$("[data-unit]").forEach((b) => b.setAttribute("aria-selected", b === u)); $("#tk-amt").value = ""; return updateEst(); }
       const a = e.target.closest("[data-amt]");
       if (a) {
-        const t = prices[tk.sym];
-        tk.unit = "usd"; $$("[data-unit]").forEach((b) => b.setAttribute("aria-selected", b.dataset.unit === "usd"));
-        $("#tk-amt").value = a.dataset.amt === "max" ? (tk.side === "buy" ? Math.floor(myPortfolio.cash * 100) / 100 : Math.floor(held(tk.sym) * t.price * 100) / 100) : a.dataset.amt;
+        // "Max" on a sell = every share you own (a dollar amount would round down and leave a sliver behind).
+        const sellAll = a.dataset.amt === "max" && tk.side === "sell";
+        tk.unit = sellAll ? "shares" : "usd"; $$("[data-unit]").forEach((b) => b.setAttribute("aria-selected", b.dataset.unit === tk.unit));
+        $("#tk-amt").value = sellAll ? held(tk.sym) : a.dataset.amt === "max" ? Math.floor(myPortfolio.cash * 100) / 100 : a.dataset.amt;
         return updateEst();
       }
       if (e.target.closest("#tk-go")) {

@@ -38,8 +38,12 @@
 
   function toast(msg) {
     const t = $("#toast");
-    t.textContent = msg; t.hidden = false; t.classList.add("on");
-    clearTimeout(toast.h); toast.h = setTimeout(() => { t.classList.remove("on"); setTimeout(() => (t.hidden = true), 250); }, 2400);
+    t.textContent = msg; t.hidden = false;
+    // As a popover the toast sits in the top layer, so it shows above an open sheet/dialog (and its blurred backdrop),
+    // not behind it. Re-showing it puts it above a dialog opened after it.
+    if (t.showPopover) { try { if (t.matches(":popover-open")) t.hidePopover(); t.showPopover(); } catch (e) { /* not supported */ } }
+    t.classList.add("on");
+    clearTimeout(toast.h); toast.h = setTimeout(() => { t.classList.remove("on"); setTimeout(() => { t.hidden = true; try { t.hidePopover && t.hidePopover(); } catch (e) {} }, 250); }, 2400);
   }
 
   // ---------- theme ----------
