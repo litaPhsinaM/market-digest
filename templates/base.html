@@ -153,6 +153,7 @@
 {% if supabase.url %}<script src="{{ prefix }}supabase.js"></script>
 <script src="{{ prefix }}account.js"></script>
 <script src="{{ prefix }}social.js"></script>
+{% if active == 'play' %}<script src="{{ prefix }}quant.js"></script>{% endif %}
 {% if active == 'admin' %}<script src="{{ prefix }}admin.js"></script>{% endif %}{% endif %}
 </body>
 </html>

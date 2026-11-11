@@ -29,6 +29,23 @@
 
   <div class="play-cols">
     <div class="play-main">
+      <section class="card play-card range-card" id="range">
+        <div class="pc-head"><h2>🎯 Daily range</h2><button class="info" type="button" data-tip="A classic trading-interview game. Pick a range you're 90% sure the S&P 500 will close inside. Tight and right scores the most; a miss costs 20× the distance you missed by, so a huge 'safe' range scores nothing. Scored after the 4 pm ET close: up to 100 points, worth $2 each." aria-label="How the range game works">i</button></div>
+        <p class="rg-q" id="rg-q">Loading today's question…</p>
+        <div class="rg-viz" id="rg-viz" aria-hidden="true"><div class="rg-band" id="rg-band"></div><div class="rg-now" id="rg-now"></div></div>
+        <div class="rg-nums"><span id="rg-low">–</span><span class="muted small" id="rg-mid"></span><span id="rg-high">–</span></div>
+        <label class="rg-sl"><span>Middle</span><input type="range" id="rg-center" min="-3" max="3" step="0.05" value="0" aria-label="Middle of your range, percent from now"><b id="rg-center-v">±0%</b></label>
+        <label class="rg-sl"><span>Width</span><input type="range" id="rg-width" min="0.1" max="3" step="0.05" value="0.6" aria-label="Half-width of your range, percent"><b id="rg-width-v">±0.6%</b></label>
+        <div class="rg-est muted small" id="rg-est"></div>
+        <button class="btn" type="button" id="rg-go">Lock in my range</button>
+        <div class="rg-mine" id="rg-mine" hidden></div>
+        <ul class="olist rg-hist" id="rg-hist"></ul>
+      </section>
+
+      <section class="card play-card" id="stats">
+        <div class="pc-head"><h2>📐 Your stats</h2><button class="info" type="button" data-tip="Beat the market: every trade you make is mirrored, dollar for dollar at the same moment, into SPY (an S&P 500 fund). Alpha is how much better or worse you did. Sharpe: your average daily return divided by how bumpy it was, yearly. Above 1 is good. Max drawdown: your biggest drop from a high point. Rewards don't count as returns." aria-label="What these stats mean">i</button></div>
+        <div class="qs-grid" id="qs-grid"></div>
+      </section>
       <section class="card play-card earn-card">
         <div class="pc-head"><h2>💰 Earn more money</h2><span class="muted small" id="earn-total"></span></div>
         <ul class="earn-ways">
@@ -91,6 +108,8 @@
   <div class="board-tabs" role="tablist">
     <button type="button" role="tab" data-board="portfolio" aria-selected="true">💼 Portfolio</button>
     <button type="button" role="tab" data-board="networth" aria-selected="false">💰 Net worth</button>
+    <button type="button" role="tab" data-board="skill" aria-selected="false">⚖️ Skill</button>
+    <button type="button" role="tab" data-board="range" aria-selected="false">🎯 Range</button>
     <button type="button" role="tab" data-board="calls" aria-selected="false">🔮 Forecasting</button>
     <button type="button" role="tab" data-board="streak" aria-selected="false">🔥 Streak</button>
     <button type="button" role="tab" data-board="quiz" aria-selected="false">🧠 Quiz</button>

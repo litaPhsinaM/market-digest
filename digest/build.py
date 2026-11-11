@@ -140,7 +140,7 @@ def build(root: Path):
     if out.exists():
         shutil.rmtree(out)
     (out / "days").mkdir(parents=True)
-    for asset in ("style.css", "app.js", "features.js", "account.js", "social.js", "learn.js", "admin.js", "supabase.js", "manifest.webmanifest"):
+    for asset in ("style.css", "app.js", "features.js", "account.js", "social.js", "learn.js", "admin.js", "quant.js", "supabase.js", "manifest.webmanifest"):
         shutil.copy(root / "templates" / asset, out / asset)
     shutil.copytree(root / "templates" / "icons", out / "icons")
     version = dt.datetime.now().strftime("%Y%m%d%H%M%S")

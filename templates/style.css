@@ -1103,3 +1103,24 @@ button.act.progress { cursor: pointer; font: inherit; }
   .story-grid.few-3 .sc:first-child .sc-title { font-size: 1.3rem; }
   .story-grid.few-3 .sc:first-child .sc-tldr, .story-grid.few-3 .sc:first-child .sc-points span { max-width: 75ch; }
 }
+
+/* =================== Play: daily range game + your stats =================== */
+.rg-q { margin: 2px 0 14px; line-height: 1.5; }
+.rg-viz { position: relative; height: 34px; border-radius: 10px; background: var(--surface-2); overflow: hidden; margin-bottom: 6px; }
+.rg-band { position: absolute; top: 0; bottom: 0; background: color-mix(in srgb, var(--accent) 35%, transparent); border-left: 2px solid var(--accent); border-right: 2px solid var(--accent); transition: left .08s, width .08s; }
+.rg-now { position: absolute; top: -2px; bottom: -2px; width: 2px; background: var(--text); }
+.rg-now::after { content: "now"; position: absolute; top: 9px; left: 6px; font-size: .68rem; font-weight: 700; color: var(--text-2); }
+.rg-nums { display: flex; justify-content: space-between; align-items: baseline; font-weight: 750; font-variant-numeric: tabular-nums; margin-bottom: 10px; }
+.rg-sl { display: grid; grid-template-columns: 64px 1fr 72px; align-items: center; gap: 10px; margin: 6px 0; font-size: .86rem; color: var(--text-2); }
+.rg-sl input { width: 100%; accent-color: var(--accent); }
+.rg-sl b { text-align: right; font-variant-numeric: tabular-nums; color: var(--text); }
+.rg-est { margin: 8px 0 12px; line-height: 1.45; }
+#rg-go { width: 100%; }
+.rg-mine { margin-top: 12px; padding: 10px 12px; border-radius: 12px; background: var(--surface-2); font-size: .88rem; line-height: 1.45; }
+.rg-hist { margin-top: 10px; } .rg-hist li { font-size: .84rem; } .rg-sum { color: var(--text-2); }
+.qs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 10px; }
+@media (max-width: 640px) { .qs-grid { grid-template-columns: 1fr 1fr; } }
+.qs { background: var(--surface-2); border-radius: 12px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px; }
+.qs span { font-size: .76rem; color: var(--text-3); font-weight: 650; }
+.qs b { font-size: 1.2rem; font-variant-numeric: tabular-nums; }
+.qs small { font-size: .74rem; color: var(--text-3); line-height: 1.3; }

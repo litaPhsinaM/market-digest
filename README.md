@@ -36,9 +36,15 @@ behind the news. It's built for people who are new to investing.
 - **Paper trading**: start with $10,000 of play money and **earn more by learning**: correct quiz answers (+$100), finished lessons (+$500), right calls (+$100–$400) and 7-day streaks (+$1,000). Orders fill at the next price update, like a real order placed after hours. Rankings use your return on everything you have earned, so learning makes you richer but only good investing tops the board.
 - **Predictions with confidence**: call a stock up or down for tomorrow and say how sure you are. Calls are scored for
   calibration (the Brier score), so judgement beats luck.
+- **Daily range game** 🎯: "Where will the S&P 500 close?" Set a range you're 90% sure of. Scored with an interval
+  score (tight and right wins; a miss costs 20× the distance), up to 100 points = $200, with your hit rate shown so
+  you can see whether your "90% sure" really is.
+- **Your stats** 📐: every trade is mirrored into the S&P 500 at the same moment, so you see your **alpha** (did you
+  beat the market?), plus a Sharpe-style risk-adjusted score and max drawdown from daily snapshots. New ⚖️ Skill and
+  🎯 Range leaderboards.
 - **Coach**: points out panic selling, putting everything in one stock or overtrading, with a link to the lesson.
 - **Friends and leaderboards**: follow friends by username or invite link; rankings for streaks, quizzes,
-  forecasting skill and portfolio return.
+  forecasting skill, portfolio return, risk-adjusted skill and the range game. Streaks are counted by the server.
 
 ### 🎙 Scorecard
 Forecasts made on the shows ("X expects a rate hike in December") are logged in the speaker's exact words and scored

@@ -115,6 +115,20 @@
       rows = data;
       col = board === "streak" ? "🔥 Streak" : "🧠 Correct answers";
       fmt = (r) => board === "streak" ? `${r.streak} day${r.streak === 1 ? "" : "s"}` : `${r.quiz_correct}`;
+    } else if (board === "skill") {
+      const { data, error } = await MD.sb.rpc("leaderboard_skill");
+      if (error) return (tbody.innerHTML = `<tr><td colspan="4">${esc(errMsg(error))}</td></tr>`);
+      // Beat-the-market first (alpha vs the same money in the S&P 500); Sharpe-style skill shows once there are 5 trading days.
+      rows = data.sort((a, b) => (b.alpha_pct ?? -999) - (a.alpha_pct ?? -999));
+      col = "⚖️ vs the S&P 500";
+      fmt = (r) => `<span class="${(r.alpha_pct ?? 0) >= 0 ? "pos" : "neg"}">${r.alpha_pct == null ? "–" : pct(r.alpha_pct)}</span>` +
+        ` <span class="muted">${r.sharpe != null ? `Sharpe ${r.sharpe}` : `${r.trades} trade${r.trades === 1 ? "" : "s"}`}</span>`;
+    } else if (board === "range") {
+      const { data, error } = await MD.sb.rpc("leaderboard_ranges");
+      if (error) return (tbody.innerHTML = `<tr><td colspan="4">${esc(errMsg(error))}</td></tr>`);
+      rows = data.sort((a, b) => b.avg_points - a.avg_points || b.scored - a.scored);
+      col = "🎯 Avg range score";
+      fmt = (r) => `<b>${r.avg_points}</b> <span class="muted">${r.hit_rate}% caught · ${r.scored} day${r.scored === 1 ? "" : "s"}</span>`;
     } else if (board === "calls") {
       const { data, error } = await MD.sb.rpc("leaderboard_predictions");
       if (error) return (tbody.innerHTML = `<tr><td colspan="4">${esc(errMsg(error))}</td></tr>`);
@@ -160,6 +174,8 @@
       streak: `<div class="lb-empty"><b>No streaks yet 🔥</b><span>Read a story or take a quiz today to start yours.</span><a class="btn" href="${base}index.html">Go to today's stories</a></div>`,
       quiz: `<div class="lb-empty"><b>No quiz scores yet 🧠</b><span>Answer today's quiz or a practice round to get on this board.</span><a class="btn" href="${base}learn.html#practice">Try a practice round</a></div>`,
       calls: `<div class="lb-empty"><b>No calls scored yet 🔮</b><span>Make today's call on the home page. It's scored at tomorrow's price update; rankings start after 5 scored calls.</span><a class="btn" href="${base}index.html#call-h">Make today's call</a></div>`,
+      skill: `<div class="lb-empty"><b>No one on this board yet ⚖️</b><span>Make a trade: every trade is compared with putting the same money in the S&P 500 at the same moment.</span><button class="btn" type="button" data-open-trade>Trade</button></div>`,
+      range: `<div class="lb-empty"><b>No range calls scored yet 🎯</b><span>Set today's 90% range for the S&P 500 above. It's scored after the 4 pm close.</span></div>`,
       portfolio: `<div class="lb-empty"><b>No portfolios yet 💼</b><span>Place your first paper trade in the box above. Try SPY: the whole S&P 500 in one fund.</span></div>`,
     }[board];
   }
