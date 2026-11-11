@@ -88,7 +88,7 @@
     <span class="hero-foot"><span class="hero-srcs">{% for h in lead.links[:3] %}<span>{{ h.source }}</span>{% endfor %}</span><span class="hero-cta">Read →</span></span>
   </button>
   {% if hot.topics|length > 1 %}
-  <div class="rail" role="list">
+  <div class="rail{% if hot.topics|length <= 4 %} rail-few rail-{{ hot.topics|length - 1 }}{% endif %}" role="list">
     {% for t in hot.topics[1:] %}
     <button class="rail-card" type="button" role="listitem" data-story="hot-{{ loop.index + 1 }}">
       <span class="rail-n">{{ loop.index + 1 }}</span>
@@ -218,7 +218,8 @@
   <h2 class="section-title">Today’s stories</h2>
   <span class="muted small">Tap a story to read it · ✓ when you’re done</span>
 </div>
-<div class="story-grid">
+{% set n_stories = items|selectattr('summary.worth_reading')|list|length %}
+<div class="story-grid{% if n_stories <= 4 %} few few-{{ n_stories }}{% endif %}">
 {% for it in items if it.summary.worth_reading %}{% set s = it.summary %}
   <button class="sc" type="button" data-story="{{ it.id }}" aria-label="Read: {{ s.headline }}">
     <span class="sc-top">
@@ -228,6 +229,7 @@
     </span>
     <span class="sc-title">{{ s.headline }}</span>
     <span class="sc-tldr">{{ s.tldr }}</span>
+    {% if n_stories <= 4 and s.key_points %}<span class="sc-points">{% for kp in s.key_points[:2] %}<span>{{ kp.point if kp.point is defined else kp }}</span>{% endfor %}</span>{% endif %}
     <span class="sc-meta">
       {% if s.level %}<span class="level {{ s.level }}">{{ s.level }}</span>{% endif %}
       <span>🎧 {{ it.duration|minutes }} min → 📖 2 min</span>

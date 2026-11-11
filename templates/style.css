@@ -1073,3 +1073,33 @@ button.act.progress { cursor: pointer; font: inherit; }
 .sc-steps span { font-size: .82rem; color: var(--text-3); }
 .sc-example { position: relative; border: 1px dashed var(--line-strong); border-radius: 14px; padding: 14px 16px; opacity: .85; }
 .sc-ex-tag { position: absolute; top: -10px; right: 12px; background: var(--surface); padding: 0 8px; font-size: .7rem; font-weight: 750; color: var(--text-3); text-transform: uppercase; letter-spacing: .06em; }
+
+/* =================== light days: fewer cards get more room (desktop/tablet) =================== */
+.sc-points { display: none; }
+@media (min-width: 641px) {
+  .rail-few { grid-auto-flow: row; grid-auto-columns: auto; overflow: visible; }
+  .rail-few.rail-1 { grid-template-columns: 1fr; } .rail-few.rail-2 { grid-template-columns: 1fr 1fr; } .rail-few.rail-3 { grid-template-columns: repeat(3, 1fr); }
+  .rail-few .rail-card { min-height: 0; padding: 18px 20px; }
+  .rail-few .rail-title { font-size: 1.08rem; }
+  .rail-few .rail-dek { -webkit-line-clamp: 4; font-size: .9rem; }
+  .rail-few.rail-1 .rail-dek, .rail-few.rail-2 .rail-dek { -webkit-line-clamp: 5; }
+  .story-grid.few { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+  .story-grid.few .sc { padding: 20px 20px 16px; gap: 10px; }
+  .story-grid.few .sc-title { font-size: 1.12rem; -webkit-line-clamp: 4; }
+  .story-grid.few .sc-tldr { -webkit-line-clamp: 6; font-size: .92rem; }
+  .story-grid.few .sc-points { display: flex; flex-direction: column; gap: 6px; margin: 2px 0 4px; padding: 0; }
+  .story-grid.few .sc-points span { position: relative; padding-left: 16px; font-size: .86rem; line-height: 1.45; color: var(--text-2);
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .story-grid.few .sc-points span::before { content: ""; position: absolute; left: 2px; top: .62em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .story-grid.few-1 .sc { padding: 26px 28px 20px; }
+  .story-grid.few-1 .sc-title { font-size: 1.4rem; letter-spacing: -0.02em; }
+  .story-grid.few-1 .sc-tldr { font-size: 1rem; -webkit-line-clamp: 8; max-width: 70ch; }
+  .story-grid.few-1 .sc-points span { font-size: .95rem; max-width: 70ch; }
+}
+@media (min-width: 641px) {
+  .story-grid.few { grid-template-columns: 1fr 1fr; }
+  .story-grid.few-1 { grid-template-columns: 1fr; }
+  .story-grid.few-3 .sc:first-child { grid-column: 1 / -1; }
+  .story-grid.few-3 .sc:first-child .sc-title { font-size: 1.3rem; }
+  .story-grid.few-3 .sc:first-child .sc-tldr, .story-grid.few-3 .sc:first-child .sc-points span { max-width: 75ch; }
+}
