@@ -16,6 +16,28 @@
   {% if since %}<p class="muted small">Tracking since {{ since }}. Rankings need at least 3 scored forecasts per person, so this page fills up over the coming weeks.</p>{% endif %}
 </section>
 
+{% if stats.total == 0 %}
+<section class="card sc-empty">
+  <div class="eyebrow">Getting started</div>
+  <h2>Collecting the first forecasts</h2>
+  <p>Each daily run reads the new episodes and logs predictions that can be checked later: a specific claim, a deadline and the
+    speaker's exact words. Market calls are scored automatically on real closing prices when the deadline passes.</p>
+  <ol class="sc-steps">
+    <li><b>Logged</b><span>after the next daily run</span></li>
+    <li><b>Open</b><span>until each forecast's deadline</span></li>
+    <li><b>Scored</b><span>✅ right or ❌ wrong, on real prices</span></li>
+    <li><b>Ranked</b><span>once someone has 3 scored forecasts</span></li>
+  </ol>
+  <div class="sc-example" aria-label="Example entry">
+    <div class="sc-ex-tag">Example of an entry (not real)</div>
+    <div class="cl-top"><span class="st st-pending">⏳ open</span> <b>A strategist</b> <span class="muted small">CIO at an asset manager</span></div>
+    <p class="cl-claim">The S&amp;P 500 will be higher at the end of the year than today.</p>
+    <blockquote>“I think we finish the year higher from here, this pullback is a buying opportunity.”</blockquote>
+    <div class="muted small">Said Nov 10 on a markets podcast · deadline Dec 31 · S&amp;P 500 7,520 → ?</div>
+  </div>
+</section>
+{% endif %}
+
 <div class="play-grid">
   <section class="card play-card">
     <div class="pc-head"><h2>🎯 Most accurate voices</h2></div>

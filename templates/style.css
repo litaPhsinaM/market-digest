@@ -1060,3 +1060,11 @@ button.act.progress { cursor: pointer; font: inherit; }
 .eng-stack summary { font-weight: 700; cursor: pointer; } .eng-stack ul { margin: 10px 0 0; padding-left: 18px; color: var(--text-2); font-size: .9rem; }
 .eng-stack li { margin-bottom: 6px; }
 @media (max-width: 640px) { .ef-arrow { display: none; } .ef { flex-basis: 70%; } }
+.sc-empty { padding: 20px 22px; margin-bottom: 16px; }
+.sc-empty h2 { font-size: 1.2rem; margin: 4px 0 6px; } .sc-empty > p { color: var(--text-2); max-width: 70ch; }
+.sc-steps { list-style: none; counter-reset: s; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin: 14px 0; padding: 0; }
+.sc-steps li { counter-increment: s; background: var(--surface-2); border-radius: 12px; padding: 10px 12px; display: flex; flex-direction: column; }
+.sc-steps li::before { content: counter(s); font-weight: 800; color: var(--accent); font-size: .8rem; }
+.sc-steps span { font-size: .82rem; color: var(--text-3); }
+.sc-example { position: relative; border: 1px dashed var(--line-strong); border-radius: 14px; padding: 14px 16px; opacity: .85; }
+.sc-ex-tag { position: absolute; top: -10px; right: 12px; background: var(--surface); padding: 0 8px; font-size: .7rem; font-weight: 750; color: var(--text-3); text-transform: uppercase; letter-spacing: .06em; }
