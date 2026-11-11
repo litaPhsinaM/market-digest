@@ -25,9 +25,8 @@ concurrency:
 jobs:
   prices:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      ran: ${{ steps.open.outputs.run }}
     steps:
       - name: Market open?
         id: open
@@ -61,6 +60,15 @@ jobs:
         if: steps.open.outputs.run == 'yes'
         with:
           path: site
+
+  # Publishing has to be its own job, after the build job has finished uploading the site.
+  deploy:
+    needs: prices
+    if: needs.prices.outputs.ran == 'yes'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - id: deployment
-        if: steps.open.outputs.run == 'yes'
         uses: actions/deploy-pages@v4
