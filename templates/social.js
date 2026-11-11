@@ -253,8 +253,6 @@
       p.hist.push([r.as_of, Number(r.price)]);
       p.name = r.name || p.name;
     }
-    // "Today" = vs the last price from an earlier New York day (the previous close), not vs the previous 15-min update.
-    const nyDay = (iso) => new Date(iso).toLocaleDateString("en-CA", { timeZone: "America/New_York" });
     for (const p of Object.values(prices)) {
       p.price = p.hist[p.hist.length - 1][1];
       // "today" = change since the last price of an earlier (New York) day, i.e. the previous close
