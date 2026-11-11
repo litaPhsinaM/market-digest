@@ -15,7 +15,20 @@
   </div>
   <p class="muted" id="adm-gate">Sign in with an admin account to see insights.</p>
   <div id="adm-body" hidden>
+    <div class="adm-live card">
+      <div class="live-now"><span class="live-dot" aria-hidden="true"></span><b id="live-10m">0</b> active now <span class="muted small">(last 10 min) · <span id="live-1h">0</span> in the last hour · updates every 30s</span></div>
+    </div>
     <div class="adm-tiles" id="adm-tiles"></div>
+    <section class="card adm-card wide adm-people">
+      <h2>People</h2><p class="muted small">Every account, newest activity first. Only you (admins) can see this.</p>
+      <div class="tbl-wrap"><table class="lb-table">
+        <thead><tr><th>Account</th><th>Device</th><th>Joined</th><th>Last sign-in</th><th class="num">🔥</th><th class="num">📖</th><th class="num">🧠</th><th class="num">💼</th><th class="num">🔮</th></tr></thead>
+        <tbody id="people"></tbody></table></div>
+    </section>
+    <section class="card adm-card wide">
+      <h2>Live activity</h2><p class="muted small">The latest things real users did (your own devices are excluded).</p>
+      <ul class="olist" id="feed"></ul>
+    </section>
     <div class="adm-grid">
       <section class="card adm-card wide"><h2>Daily active devices</h2><p class="muted small">Unique devices that opened the app each day; the lighter line is signed-in devices.</p><div class="adm-chart" id="ch-daily"></div></section>
       <section class="card adm-card"><h2>What people do</h2><p class="muted small">Event counts in the period.</p><div id="ch-features"></div></section>

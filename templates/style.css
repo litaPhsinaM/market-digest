@@ -791,3 +791,10 @@ button.act.progress { cursor: pointer; font: inherit; }
 .cl-claim { font-weight: 650; margin: 8px 0 4px; }
 .claim blockquote { margin: 0 0 8px; padding-left: 12px; border-left: 3px solid var(--line-strong); color: var(--text-2); font-style: italic; font-size: .92rem; }
 @media (max-width: 640px) { .sc-stats { grid-template-columns: 1fr 1fr; } }
+/* admin: live + people */
+.adm-live { padding: 12px 18px; margin-bottom: 12px; }
+.live-now { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.live-now b { font-size: 1.3rem; font-variant-numeric: tabular-nums; }
+.adm-people { margin-bottom: 16px; }
+.tbl-wrap { overflow-x: auto; }
+.tbl-wrap .lb-table { min-width: 720px; }

@@ -58,7 +58,29 @@
     bars($("#ch-lessons"), Object.entries(data.lessons).sort((a, b) => a[0].localeCompare(b[0])).map(([k, v]) => [`Lesson ${+k.slice(1) || k}`, v]));
     bars($("#ch-practice"), data.practice.map((p) => [p.level, p.rounds, `avg ${p.avg_score}/10`]));
     line($("#ch-signups"), data.signups.map((s) => ({ day: s.day, n: s.n })), "n");
+    loadPeople();
   }
+  const ago = (t) => {
+    if (!t) return "—";
+    const s = (Date.now() - new Date(t)) / 1000;
+    return s < 60 ? "just now" : s < 3600 ? `${Math.round(s / 60)} min ago` : s < 86400 ? `${Math.round(s / 3600)} h ago` : new Date(t).toLocaleDateString();
+  };
+  async function loadPeople() {
+    const [{ data: people }, { data: live }] = await Promise.all([MD.sb.rpc("admin_people", { p_limit: 200 }), MD.sb.rpc("admin_live", { p_limit: 40 })]);
+    if (live) {
+      $("#live-10m").textContent = live.online_10m; $("#live-1h").textContent = live.online_1h;
+      $("#feed").innerHTML = live.feed.map((e) => `<li><span class="muted small" style="min-width:76px">${ago(e.created_at)}</span>
+        <b>${esc(LABELS[e.event] || e.event)}</b> <span class="muted small">${esc({ web: "website", pwa: "installed web app", android: "Android app", ios: "iPhone app" }[e.platform] || e.platform || "")}
+        ${e.signed_in ? "· signed in" : ""} · device ${esc(e.device)}</span></li>`).join("") || `<li class="muted">Nothing yet. Activity shows up here as people use the app.</li>`;
+    }
+    $("#people").innerHTML = (people || []).map((p) => `<tr>
+        <td><b>${esc(p.username ? "@" + p.username : p.email)}</b>${p.username ? `<div class="muted small">${esc(p.email)}</div>` : ""}${p.confirmed ? "" : ` <span class="st st-pending">unconfirmed</span>`}</td>
+        <td>${esc(p.device || "—")}</td><td>${ago(p.joined)}</td><td>${ago(p.last_sign_in)}</td>
+        <td class="num">${p.streak ?? 0}</td><td class="num">${p.stories_read ?? 0}</td><td class="num">${p.quizzes ?? 0}</td><td class="num">${p.trades}</td><td class="num">${p.predictions}</td></tr>`).join("")
+      || `<tr><td colspan="9" class="muted">No accounts yet.</td></tr>`;
+  }
+  setInterval(() => { if (!$("#adm-body").hidden) loadPeople(); }, 30000);
+
   $$("[data-days]").forEach((b) => b.addEventListener("click", () => {
     days = +b.dataset.days;
     $$("[data-days]").forEach((x) => x.setAttribute("aria-selected", x === b));
