@@ -20,6 +20,25 @@ INDICES = [
 FUNDS = ["SPY", "QQQ", "VTI"]
 FUND_NAMES = ["S&P 500 index fund (SPY)", "Nasdaq-100 index fund (QQQ)", "Total US market fund (VTI)"]
 
+# Always-tradable list for paper trading (beyond the funds above and the companies in today's news).
+UNIVERSE = {
+    # funds & ETFs
+    "VOO": "S&P 500 fund (Vanguard)", "IWM": "Small US companies fund", "DIA": "Dow Jones 30 fund", "SCHD": "US dividend stocks fund",
+    "VXUS": "International stocks fund", "BND": "US bond fund", "TLT": "Long-term US Treasury bond fund", "GLD": "Gold fund",
+    "XLK": "Tech sector fund", "XLF": "Financials sector fund", "XLE": "Energy sector fund", "XLV": "Healthcare sector fund",
+    # popular stocks
+    "AAPL": "Apple", "MSFT": "Microsoft", "NVDA": "Nvidia", "GOOGL": "Alphabet (Google)", "AMZN": "Amazon", "META": "Meta Platforms",
+    "TSLA": "Tesla", "BRK-B": "Berkshire Hathaway", "AVGO": "Broadcom", "JPM": "JPMorgan Chase", "V": "Visa", "MA": "Mastercard",
+    "UNH": "UnitedHealth", "LLY": "Eli Lilly", "JNJ": "Johnson & Johnson", "PFE": "Pfizer", "MRK": "Merck", "ABBV": "AbbVie",
+    "XOM": "Exxon Mobil", "CVX": "Chevron", "PG": "Procter & Gamble", "KO": "Coca-Cola", "PEP": "PepsiCo", "MCD": "McDonald's",
+    "SBUX": "Starbucks", "NKE": "Nike", "DIS": "Disney", "NFLX": "Netflix", "COST": "Costco", "WMT": "Walmart", "TGT": "Target",
+    "HD": "Home Depot", "LOW": "Lowe's", "AMD": "AMD", "INTC": "Intel", "QCOM": "Qualcomm", "TXN": "Texas Instruments",
+    "ORCL": "Oracle", "CRM": "Salesforce", "ADBE": "Adobe", "IBM": "IBM", "CSCO": "Cisco", "UBER": "Uber", "ABNB": "Airbnb",
+    "SHOP": "Shopify", "PYPL": "PayPal", "COIN": "Coinbase", "PLTR": "Palantir", "SNOW": "Snowflake", "SPOT": "Spotify",
+    "BAC": "Bank of America", "WFC": "Wells Fargo", "GS": "Goldman Sachs", "MS": "Morgan Stanley", "AXP": "American Express",
+    "BA": "Boeing", "CAT": "Caterpillar", "GE": "GE Aerospace", "F": "Ford", "GM": "General Motors", "T": "AT&T", "VZ": "Verizon",
+}
+
 
 def tickers_from_summaries(items: list[dict]) -> dict[str, list[str]]:
     """Map ticker -> ids of items that discuss it. Accepts 'Nvidia (NVDA)' or bare 'NVDA'."""
@@ -78,7 +97,7 @@ def _safe_news(t):
 
 
 def snapshot(tickers: list[str]) -> dict:
-    symbols = [s for s, _, _ in INDICES] + ["^VIX"] + FUNDS + tickers
+    symbols = list(dict.fromkeys([s for s, _, _ in INDICES] + ["^VIX"] + FUNDS + tickers + list(UNIVERSE)))
     hist = yf.download(symbols, period="1y", interval="1d", auto_adjust=True, progress=False, timeout=30)["Close"]
 
     def quote(sym):
@@ -132,7 +151,10 @@ def snapshot(tickers: list[str]) -> dict:
     return {"as_of": dt.datetime.now(ZoneInfo("America/New_York")).isoformat(timespec="minutes"),
             "indices": indices, "companies": companies, "movers": movers(),
             "mood": mood(quote("^GSPC"), quote("^VIX")),
-            "funds": [{**q, "name": n} for f, n in zip(FUNDS, FUND_NAMES) if (q := quote(f))]}
+            "funds": [{**q, "name": n} for f, n in zip(FUNDS, FUND_NAMES) if (q := quote(f))],
+            # price-only quotes (no history) keep the snapshot small; the game reads history from the database
+            "universe": [{"symbol": sym, "name": name, "price": q["price"], "change_pct": q["change_pct"]}
+                         for sym, name in UNIVERSE.items() if (q := quote(sym))]}
 
 
 def mood(spx, vix):

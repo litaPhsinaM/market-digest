@@ -403,14 +403,24 @@
   const tradeDlg = $("#trade");
   const tradables = () => Object.entries(prices).filter(([s]) => !s.startsWith("^")).map(([s, p]) => ({ sym: s, ...p, name: NAMES[s] || shortName(p.name) || s }))
     .sort((a, b) => (["SPY", "QQQ", "VTI"].indexOf(b.sym) + 1 > 0) - (["SPY", "QQQ", "VTI"].indexOf(a.sym) + 1 > 0) || a.sym.localeCompare(b.sym));
+  const ETFS = ["SPY", "VOO", "QQQ", "VTI", "IWM", "DIA", "SCHD", "VXUS", "BND", "TLT", "GLD", "XLK", "XLF", "XLE", "XLV"];
+  const POPULAR = ["AAPL", "MSFT", "NVDA", "GOOGL", "AMZN", "META", "TSLA", "BRK-B", "AVGO", "JPM", "V", "MA", "NFLX", "AMD", "COST", "WMT",
+    "DIS", "NKE", "KO", "PEP", "MCD", "SBUX", "UNH", "LLY", "JNJ", "PFE", "MRK", "ABBV", "XOM", "CVX", "PG", "TGT", "HD", "LOW", "INTC",
+    "QCOM", "TXN", "ORCL", "CRM", "ADBE", "IBM", "CSCO", "UBER", "ABNB", "SHOP", "PYPL", "COIN", "PLTR", "SNOW", "SPOT", "BAC", "WFC",
+    "GS", "MS", "AXP", "BA", "CAT", "GE", "F", "GM", "T", "VZ"];
+  const groupOf = (s) => ETFS.includes(s) ? 0 : POPULAR.includes(s) ? 1 : 2;
+  const GROUPS = ["📈 Index funds & ETFs", "⭐ Popular stocks", "📰 In the news & today's movers"];
   function renderPick() {
     const q = ($("#tk-search").value || "").trim().toLowerCase();
-    const list = tradables().filter((t) => !q || t.sym.toLowerCase().includes(q) || t.name.toLowerCase().includes(q));
+    const list = tradables().filter((t) => !q || t.sym.toLowerCase().includes(q) || t.name.toLowerCase().includes(q))
+      .sort((a, b) => groupOf(a.sym) - groupOf(b.sym) || (groupOf(a.sym) === 0 ? ETFS.indexOf(a.sym) - ETFS.indexOf(b.sym) : groupOf(a.sym) === 1 ? POPULAR.indexOf(a.sym) - POPULAR.indexOf(b.sym) : a.sym.localeCompare(b.sym)));
+    let last = -1;
     $("#tk-list").innerHTML = list.map((t) => { const m = (t.price / t.prev - 1) * 100;
-      return `<li><button type="button" class="tk-item" data-pick="${esc(t.sym)}"><span class="co-logo">${esc(t.sym[0])}</span>
+      const g = groupOf(t.sym), head = !q && g !== last ? `<li class="tk-group">${GROUPS[g]}</li>` : ""; last = g;
+      return head + `<li><button type="button" class="tk-item" data-pick="${esc(t.sym)}"><span class="co-logo">${esc(t.sym[0])}</span>
         <span class="h-id"><b>${esc(t.sym)}</b><span class="muted small">${esc(t.name)}</span></span>${sparkline(t.hist)}
         <span class="h-val"><b>${money(t.price)}</b><span class="pf-chip ${m >= 0 ? "up" : "down"}">${m >= 0 ? "▲" : "▼"} ${pct(m)}</span></span></button></li>`; }).join("")
-      || `<li class="muted">No match. Only stocks shown on today's page and the SPY, QQQ, VTI funds can be traded here.</li>`;
+      || `<li class="muted">No match. Try a company name or ticker, e.g. Apple or AAPL.</li>`;
   }
   function showStep(step) { ["tk-pick", "tk-ticket", "tk-done"].forEach((id) => ($("#" + id).hidden = id !== step)); }
   async function openTrade(sym) {

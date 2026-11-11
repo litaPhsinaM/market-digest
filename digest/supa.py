@@ -69,6 +69,10 @@ def push_prices(snapshot: dict):
         if q["symbol"] not in seen:
             seen.add(q["symbol"])
             rows.append({"symbol": q["symbol"], "as_of": as_of, "price": round(q["price"], 4), "name": q.get("name")})
+    for q in snapshot.get("universe", []):
+        if q["symbol"] not in seen:
+            seen.add(q["symbol"])
+            rows.append({"symbol": q["symbol"], "as_of": as_of, "price": round(q["price"], 4), "name": q["name"]})
     for group in (snapshot.get("movers") or {}).values():
         for m in group:
             if m["symbol"] not in seen and m.get("price"):
