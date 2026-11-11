@@ -119,6 +119,22 @@
 </section>
 {% endif %}
 
+{# Today's call: the prediction game, one tap from the home page. Uses the most-discussed company, else the S&P 500 fund. #}
+{% set call_co = (companies|selectattr('mentioned_in')|list or companies)|first if companies else none %}
+{% if call_co %}{% set f = call_co|qf %}
+<section class="card call-card predict" aria-labelledby="call-h">
+  <div class="call-top">
+    <div><div class="eyebrow">🔮 Today’s call</div>
+      <h2 id="call-h">Will <b>{{ call_co.name|replace(', Inc.', '')|replace(' Inc.', '')|replace(' Corporation', '') }}</b> be higher at tomorrow’s update?</h2>
+      <p class="muted small">Now {{ f.price }} {{ chg(call_co) }} · scored tomorrow · no real money</p></div>
+    <svg class="spark" data-series='{{ call_co.history[-23:]|tojson }}' aria-hidden="true"></svg>
+  </div>
+  <label class="conf"><span>How sure are you? <b class="conf-v">60%</b></span><input class="conf-in" type="range" min="50" max="99" value="60" aria-label="How confident are you"></label>
+  <div class="pr-btns"><button class="pr up" type="button" data-predict="{{ call_co.symbol }}:up">▲ Higher</button><button class="pr down" type="button" data-predict="{{ call_co.symbol }}:down">▼ Lower</button></div>
+  <a class="call-more small" href="{{ prefix }}play.html">See your calls, leaderboards and paper portfolio →</a>
+</section>
+{% endif %}
+
 {% if brief %}
 <section class="know-grid">
   <div class="card know">

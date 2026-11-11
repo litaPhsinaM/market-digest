@@ -906,3 +906,9 @@ button.act.progress { cursor: pointer; font: inherit; }
   .sk-src { font-size: .74rem; font-weight: 650; color: rgba(255, 255, 255, .7); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .sk-open { flex: none; font-size: .84rem; font-weight: 750; background: #fff; color: #111; border-radius: 99px; padding: 7px 14px; }
 }
+/* today's call */
+.call-card { margin-top: 22px; padding: 18px 20px; background: linear-gradient(160deg, color-mix(in srgb, var(--s7) 14%, var(--surface)), var(--surface) 70%); }
+.call-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.call-top h2 { font-size: 1.15rem; font-weight: 720; margin: 4px 0 2px; line-height: 1.3; }
+.call-card .pr { height: 46px; font-size: 1rem; }
+.call-more { display: inline-block; margin-top: 12px; font-weight: 650; text-decoration: none; }
