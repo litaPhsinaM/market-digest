@@ -11,3 +11,6 @@ site.old/
 .DS_Store
 logs/
 .claude/
+mobile/ios/App/build/
+mobile/ios/App/Pods/
+mobile/.signing-keychain-pass
