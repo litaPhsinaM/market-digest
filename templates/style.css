@@ -1124,3 +1124,11 @@ button.act.progress { cursor: pointer; font: inherit; }
 .qs span { font-size: .76rem; color: var(--text-3); font-weight: 650; }
 .qs b { font-size: 1.2rem; font-variant-numeric: tabular-nums; }
 .qs small { font-size: .74rem; color: var(--text-3); line-height: 1.3; }
+
+/* Play: make it obvious the money is pretend */
+.pg-facts { list-style: none; padding: 0; margin: 14px 0 18px; display: grid; gap: 8px; }
+.pg-facts li { background: var(--surface-2); border-radius: 12px; padding: 10px 12px; font-size: .92rem; line-height: 1.4; }
+.pg-fine { margin-top: 10px; }
+.pf-play { display: inline-block; font-size: .66rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--accent);
+  border: 1px solid currentColor; border-radius: 99px; padding: 1px 7px; margin-left: 4px; vertical-align: 2px; }
+.play-guest-hero .big-cta { max-width: 100%; white-space: normal; }
