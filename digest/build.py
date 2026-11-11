@@ -153,7 +153,10 @@ def build(root: Path):
 
     def day_ctx(date):
         its = sorted(days[date], key=lambda i: (not i["summary"]["worth_reading"], i["source_name"]))
-        mkt = markets.get(date)
+        # Prices: the newest snapshot on or after this day (the home page gets intraday updates filed under a later
+        # date, e.g. by the cloud job running on UTC), falling back to the last one before it for older days.
+        later = sorted(d for d in markets if d >= date)
+        mkt = markets[later[-1]] if later and date == dates[0] else markets.get(date) or (markets[later[0]] if later else None)
         hot = hots.get(date)
         if hot:  # one link per outlet, so "Bloomberg ×3" reads as three different newsrooms
             for t in hot["topics"]:
