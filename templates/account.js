@@ -183,6 +183,12 @@
     document.dispatchEvent(new CustomEvent("md:auth", { detail: { user, event } }));
     renderAccount();
     if (user && (!was || was.id !== user.id)) {
+      // Developer tools appear only for admins (the database decides; this just shows the links).
+      sb.rpc("is_admin").then(({ data }) => {
+        MD.isAdmin = !!data;
+        const dev = $("#acct-dev"); if (dev) dev.hidden = !data;
+        document.querySelectorAll("[data-admin-only]").forEach((el) => (el.hidden = !data));
+      });
       sync(); listen();
       // Supabase also reports SIGNED_IN when it restores a saved session on page load; only count a real sign-in once.
       let seen = null; try { seen = localStorage.getItem("signed_in_as"); } catch (e) {}
@@ -193,6 +199,7 @@
       if (event === "SIGNED_IN" && dlg.open) dlg.close();
     }
     if (!user && channel) { sb.removeChannel(channel); channel = null; }
+    if (!user) { MD.isAdmin = false; document.querySelectorAll("[data-admin-only]").forEach((el) => (el.hidden = true)); const dev = $("#acct-dev"); if (dev) dev.hidden = true; }
   });
   renderAccount();
 })();

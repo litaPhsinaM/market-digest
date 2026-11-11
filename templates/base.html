@@ -35,6 +35,7 @@
       <a href="{{ prefix }}glossary.html" {% if active == 'glossary' %}aria-current="page"{% endif %}>Glossary</a>
       <a href="{{ prefix }}sources.html" {% if active == 'sources' %}aria-current="page"{% endif %}>Sources</a>
       <a href="{{ prefix }}about.html" {% if active == 'about' %}aria-current="page"{% endif %}>About</a>
+      <a href="{{ prefix }}admin.html" data-admin-only hidden {% if active == 'admin' %}aria-current="page"{% endif %}>🛠 Admin</a>
     </nav>
     <div class="bar-tools">
       <span class="streak" id="streak" hidden title="Days in a row you've read or taken the quiz"><span aria-hidden="true">🔥</span> <b>0</b></span>
@@ -98,6 +99,14 @@
     <p class="muted" id="acct-email"></p>
     <div class="acct-stats" id="acct-stats"></div>
     <p class="acct-status"><span class="dot" aria-hidden="true"></span><span id="acct-status">Synced across your devices</span></p>
+    <div class="acct-dev" id="acct-dev" hidden>
+      <div class="eyebrow">🛠 Developer</div>
+      <div class="dev-links">
+        <a href="{{ prefix }}admin.html#overview"><b>📊 Insights</b><span>Users, retention, features</span></a>
+        <a href="{{ prefix }}admin.html#people"><b>👥 People</b><span>See and manage accounts</span></a>
+        <a href="{{ prefix }}admin.html#activity"><b>⚡ Live activity</b><span>What's happening now</span></a>
+      </div>
+    </div>
     <button class="btn ghost" type="button" id="acct-signout">Sign out</button>
   </div>
 </dialog>

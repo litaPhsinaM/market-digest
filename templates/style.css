@@ -803,3 +803,13 @@ button.act.progress { cursor: pointer; font: inherit; }
 .adm-people { margin-bottom: 16px; }
 .tbl-wrap { overflow-x: auto; }
 .tbl-wrap .lb-table { min-width: 720px; }
+/* developer tools */
+.acct-dev { border-top: 1px solid var(--line); padding-top: 14px; margin-bottom: 14px; }
+.dev-links { display: grid; gap: 8px; margin-top: 8px; }
+.dev-links a { display: flex; flex-direction: column; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); text-decoration: none; color: var(--text); }
+.dev-links a:hover { border-color: var(--accent); }
+.dev-links span { font-size: .8rem; color: var(--text-3); }
+.adm-tabs { margin-bottom: 12px; }
+.manage { white-space: nowrap; }
+.manage select { height: 28px; border-radius: 8px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--text); font: inherit; font-size: .8rem; }
+.manage .st { margin-right: 4px; }

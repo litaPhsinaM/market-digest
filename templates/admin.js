@@ -76,15 +76,49 @@
     $("#people").innerHTML = (people || []).map((p) => `<tr>
         <td><b>${esc(p.username ? "@" + p.username : p.email)}</b>${p.username ? `<div class="muted small">${esc(p.email)}</div>` : ""}${p.confirmed ? "" : ` <span class="st st-pending">unconfirmed</span>`}</td>
         <td>${esc(p.device || "—")}</td><td>${ago(p.joined)}</td><td>${ago(p.last_sign_in)}</td>
-        <td class="num">${p.streak ?? 0}</td><td class="num">${p.stories_read ?? 0}</td><td class="num">${p.quizzes ?? 0}</td><td class="num">${p.trades}</td><td class="num">${p.predictions}</td></tr>`).join("")
-      || `<tr><td colspan="9" class="muted">No accounts yet.</td></tr>`;
+        <td class="num">${p.streak ?? 0}</td><td class="num">${p.stories_read ?? 0}</td><td class="num">${p.quizzes ?? 0}</td><td class="num">${p.trades}</td><td class="num">${p.predictions}</td>
+        <td class="manage">${p.is_admin ? `<span class="st st-filled">admin</span>` : ""}${p.banned ? `<span class="st st-rejected">banned</span>` : ""}
+          ${MD.user && p.id === MD.user.id ? `<span class="muted small">you</span>` : `<select data-user="${p.id}" data-who="${esc(p.username ? "@" + p.username : p.email)}" aria-label="Manage this account">
+            <option value="">Manage…</option>
+            ${p.banned ? `<option value="unban">Unban</option>` : `<option value="ban">Ban (sign out + block)</option>`}
+            ${p.username ? `<option value="clear_username">Clear username</option>` : ""}
+            ${p.is_admin ? `<option value="remove_admin">Remove admin</option>` : `<option value="make_admin">Make admin</option>`}
+            <option value="delete">Delete account…</option></select>`}</td></tr>`).join("")
+      || `<tr><td colspan="10" class="muted">No accounts yet.</td></tr>`;
   }
   setInterval(() => { if (!$("#adm-body").hidden) loadPeople(); }, 30000);
+
+  // Manage an account. Destructive actions ask for the name to be typed back, so nothing happens by accident.
+  const ACTION_TEXT = { ban: "ban", unban: "unban", clear_username: "clear the username of", make_admin: "make an admin", remove_admin: "remove admin rights from", delete: "PERMANENTLY DELETE" };
+  document.addEventListener("change", async (e) => {
+    const sel = e.target.closest("select[data-user]");
+    if (!sel || !sel.value) return;
+    const action = sel.value, who = sel.dataset.who;
+    sel.value = "";
+    if (action === "delete" || action === "ban") {
+      const typed = window.prompt(`Type ${who} to ${ACTION_TEXT[action]} this account${action === "delete" ? " and all their progress (can't be undone)" : ""}:`);
+      if (typed !== who) return MD.toast("Cancelled");
+    }
+    const { data, error } = await MD.sb.rpc("admin_user_action", { p_user: sel.dataset.user, p_action: action });
+    MD.toast(error ? error.message : `${who}: ${data}`);
+    loadPeople();
+  });
+
+  // Tabs: Overview / People / Live activity (also reachable as admin.html#people etc.)
+  function showTab(tab, reload = true) {
+    if (!["overview", "people", "activity"].includes(tab)) tab = "overview";
+    $$("[data-tab]").forEach((b) => b.setAttribute("aria-selected", b.dataset.tab === tab));
+    $$("[data-pane]").forEach((p) => (p.hidden = p.dataset.pane !== tab));
+    history.replaceState(null, "", "#" + tab);
+    if (tab === "overview" && reload) load();  // charts need a visible box to size themselves
+  }
+  $$("[data-tab]").forEach((b) => b.addEventListener("click", () => showTab(b.dataset.tab)));
+  addEventListener("hashchange", () => showTab(location.hash.slice(1)));
 
   $$("[data-days]").forEach((b) => b.addEventListener("click", () => {
     days = +b.dataset.days;
     $$("[data-days]").forEach((x) => x.setAttribute("aria-selected", x === b));
     load();
   }));
-  document.addEventListener("md:auth", load);
+  document.addEventListener("md:auth", () => { load().then(() => showTab(location.hash.slice(1), false)); });
 })();
