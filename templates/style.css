@@ -353,6 +353,7 @@ body.noscroll { overflow: hidden; }
 .i-sun { display: none; }
 :root[data-theme="dark"] .i-sun { display: block; } :root[data-theme="dark"] .i-moon { display: none; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .i-sun { display: block; } :root:not([data-theme="light"]) .i-moon { display: none; } }
+@media (hover: none) { .pal-in .kbd { display: none; } } /* no Esc key on a phone */
 .kbd { font-size: .7rem; font-weight: 650; color: var(--text-3); border: 1px solid var(--line); border-radius: 5px; padding: 1px 5px; }
 .streak { display: inline-flex; align-items: center; gap: 4px; height: 34px; padding: 0 10px; border-radius: 10px; background: var(--warn-soft);
   color: var(--warn); font-size: .9rem; font-variant-numeric: tabular-nums; }
@@ -525,6 +526,8 @@ body:has(.player:not([hidden])) .sitefoot { padding-bottom: 120px; }
 
 @media (max-width: 640px) {
   .search-btn .kbd { display: none; }
+  /* fade the right edge so it's clear the section tabs scroll sideways (Learn, Play… are often off-screen) */
+  .tabs { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); padding-right: 20px; }
   .tabs { flex: 1; min-width: 0; }
   .tabs a { padding: 7px 9px; }
   .actions { grid-template-columns: 1fr 1fr; }
@@ -658,6 +661,8 @@ button.act.progress { cursor: pointer; font: inherit; }
 .play-hero { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 20px; }
 .play-hero h1 { font-size: clamp(1.7rem, 3.6vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; margin: 6px 0; }
 .play-guest { padding: 16px 18px; max-width: 320px; display: grid; gap: 6px; }
+.play-guest .btn { justify-content: center; }
+@media (max-width: 640px) { .play-guest { max-width: none; flex: 1 1 100%; } }
 .play-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
 .play-card { padding: 20px 22px; min-width: 0; }
 .play-card.lb { grid-column: 1 / -1; }

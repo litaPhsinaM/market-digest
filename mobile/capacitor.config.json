@@ -4,11 +4,12 @@
   "webDir": "www",
   "server": {
     "url": "https://litaphsinam.github.io/market-digest/",
-    "androidScheme": "https"
+    "androidScheme": "https",
+    "errorPath": "offline.html"
   },
   "android": {
     "backgroundColor": "#111110",
-    "adjustMarginsForEdgeToEdge": "force"
+    "adjustMarginsForEdgeToEdge": "auto"
   },
   "plugins": {
     "SplashScreen": {
