@@ -196,6 +196,19 @@
           <div class="f-act">${p.last_active === today ? "🟢 Active today" : p.last_active ? "Last active " + p.last_active : "New"} · 🔥 ${p.streak} · 📖 ${p.stories_read} stories · 🧠 ${p.quiz_correct}</div></div>
         <button class="mini on" type="button" data-follow="${p.id}">Following</button></div>`).join("");
   }
+  async function loadFeed() {
+    const box = $("#friend-feed");
+    if (!box || !MD.user) return;
+    const { data } = await MD.sb.rpc("friend_feed", { p_limit: 25 });
+    const ago = (t) => { const m = Math.round((Date.now() - new Date(t)) / 60000); return m < 1 ? "just now" : m < 60 ? `${m} min ago` : m < 1440 ? `${Math.round(m / 60)} h ago` : new Date(t).toLocaleDateString(); };
+    const badge = { pending: "⏳ pending", filled: "✅ filled", rejected: "❌ rejected", right: "✅ right", wrong: "❌ wrong", void: "➖ no change" };
+    box.innerHTML = (data || []).map((f) => `<li><span>${f.kind === "prediction" ? "🔮" : "💼"}</span>
+        <span><b>${esc(f.display_name || f.username)}</b> ${f.kind === "prediction" ? "called" : ""} <b>${esc(f.symbol)}</b> ${esc(f.detail)}</span>
+        <span class="st st-${esc(f.status)}">${badge[f.status] || esc(f.status)}</span><span class="muted small">${ago(f.at)}</span></li>`).join("")
+      || `<li class="muted">Nothing yet. When friends make a call or a paper trade, it shows up here.</li>`;
+  }
+  setInterval(() => { if (play && MD.user && !document.hidden) loadFeed(); }, 30000);
+
   $("#find-form") && $("#find-form").addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!(await ready())) return;
@@ -307,7 +320,7 @@
     $$("[data-need-auth]").forEach((el) => (el.hidden = !signedIn));
     $$("[data-guest]").forEach((el) => (el.hidden = signedIn));
     loadBoard();
-    if (signedIn) { loadFriends(); loadPortfolio(); loadCalls(); loadCalibration(); loadCoach(); }
+    if (signedIn) { loadFriends(); loadFeed(); loadPortfolio(); loadCalls(); loadCalibration(); loadCoach(); }
   }
   if (play) {
     $$("[data-board]").forEach((b) => b.addEventListener("click", () => {
