@@ -209,6 +209,9 @@
       || `<li class="muted">Nothing yet. When friends make a call or a paper trade, it shows up here.</li>`;
   }
   setInterval(() => { if (play && MD.user && !document.hidden) loadFeed(); }, 30000);
+  // Live while open: prices change every 15 min in market hours, so refresh the portfolio, race and boards each minute.
+  setInterval(() => { if (play && MD.user && !document.hidden && profile) { loadPortfolio(); loadBoard(); } }, 60000);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden && play && MD.user && profile) { loadPortfolio(); loadBoard(); } });
 
   $("#find-form") && $("#find-form").addEventListener("submit", async (e) => {
     e.preventDefault();
