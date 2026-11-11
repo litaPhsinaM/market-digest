@@ -467,7 +467,9 @@
     addEventListener("load", () => navigator.serviceWorker.register(base + "sw.js", { updateViaCache: "none" })
       .then((r) => r.update()).catch(() => {}));
     // When a new version takes over, reload once so the page isn't a mix of old and new.
+    // (Only when replacing an older version: a first visit has no controller yet and shouldn't reload.)
+    const hadController = !!navigator.serviceWorker.controller;
     let reloaded = false;
-    navigator.serviceWorker.addEventListener("controllerchange", () => { if (!reloaded) { reloaded = true; location.reload(); } });
+    navigator.serviceWorker.addEventListener("controllerchange", () => { if (hadController && !reloaded) { reloaded = true; location.reload(); } });
   }
 })();
