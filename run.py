@@ -35,8 +35,10 @@ def save_state(state: dict):
     STATE.write_text(json.dumps(state, indent=1, sort_keys=True))
 
 
-# Transcribe on-device on a Mac (fast, free, and we keep the transcript); elsewhere send audio to Gemini.
-LOCAL_WHISPER = os.environ.get("DIGEST_TRANSCRIBE", "local" if sys.platform == "darwin" else "none") == "local"
+# How episodes get a transcript (the quality checks and forecast quotes are verified against it):
+#   local  = Whisper on the Mac (default on macOS)   gemini = Gemini transcribes the audio (default elsewhere, e.g. CI)
+#   none   = no transcript; Gemini summarizes the audio directly (no checks, no forecasts)
+TRANSCRIBE = os.environ.get("DIGEST_TRANSCRIBE", "local" if sys.platform == "darwin" else "gemini")
 
 
 def get_content(item) -> dict:
@@ -46,10 +48,15 @@ def get_content(item) -> dict:
         audio = sources.youtube_audio(item, tmp)
     else:
         audio = sources.download(item.media_url, tmp / "episode.mp3")
-    if LOCAL_WHISPER or summarize.BACKEND == "ollama":
+    if TRANSCRIBE == "local" or summarize.BACKEND == "ollama":
         from digest.transcribe import transcribe
         print("    transcribing…")
         return {"transcript": transcribe(audio)}
+    if TRANSCRIBE == "gemini":
+        print("    transcribing (Gemini)…")
+        if text := summarize.transcribe(item, audio):
+            return {"transcript": text}
+        print("    summarizing the audio directly instead (no transcript checks or forecasts for this one)")
     return {"audio": audio}
 
 
@@ -60,7 +67,7 @@ def process(item, today: str) -> bool:
         (TRANSCRIPTS / f"{item.id}.txt").write_text(content["transcript"])
     summary = summarize.summarize_item(item, **content)
     record = {**item.to_dict(), "digest_date": today, "backend": summarize.BACKEND,
-              "model": summarize.OLLAMA_MODEL if summarize.BACKEND == "ollama" else summarize.GEMINI_MODEL,
+              "model": summarize.OLLAMA_MODEL if summarize.BACKEND == "ollama" else (summarize.last_model or summarize.GEMINI_MODEL),
               "summary": summary.model_dump()}
     (ITEMS / f"{item.id}.json").write_text(json.dumps(record, indent=1))
     print(f"    {'✓' if summary.worth_reading else '✗ not worth reading:'} {summary.headline}")
@@ -213,7 +220,10 @@ def main():
                     help="re-summarize saved items from their transcripts (all of today's if no ids), redo the brief, build")
     ap.add_argument("--source", help="only this source id")
     ap.add_argument("--limit", type=int, default=2, help="max new items per source")
+    ap.add_argument("--max-minutes", type=float, help="stop starting new episodes after this long (the rest wait for "
+                                                      "the next run), so a time-limited cloud job still finishes the day")
     args = ap.parse_args()
+    started = dt.datetime.now()
 
     for d in (ITEMS, BRIEFS, TRANSCRIPTS, MARKET, HOT, QUIZ, AUDIO):
         d.mkdir(parents=True, exist_ok=True)
@@ -267,6 +277,9 @@ def main():
         for item in new:
             if args.dry_run:
                 print(f"  · {item.title} ({(item.duration or 0) // 60} min)")
+                continue
+            if args.max_minutes and (dt.datetime.now() - started).total_seconds() > args.max_minutes * 60:
+                print(f"    (out of time, leaving for the next run: {item.title})")
                 continue
             try:
                 process(item, today)

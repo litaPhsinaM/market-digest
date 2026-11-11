@@ -86,7 +86,7 @@ podcast RSS → Whisper (mlx) → Qwen 14B   ──►  static site (this repo, 
 quiz, audio (Kokoro), forecasts + prices
 ```
 
-The AI runs once a day on one Mac (local models, no API costs). The site is static; the browser talks to Supabase
+The AI runs once a day on one Mac (local models, no API costs), or in GitHub Actions with Gemini's free tier (below). The site is static; the browser talks to Supabase
 directly with the public key, and row-level security keeps each user's data private. The Android app (`mobile/`) is a
 Capacitor shell that loads the live site, so content and features update without a new APK.
 
@@ -123,7 +123,27 @@ python migrate.py --status            # database migrations: applied / pending
 ```
 
 Pushing to `main` publishes the site (`.github/workflows/pages.yml`). `scripts/daily.sh` and `scripts/prices.sh` are
-the scheduled morning run and hourly market-hours price refresh.
+the Mac's morning run and market-hours price refresh.
+
+### Running in the cloud (GitHub Actions + Gemini)
+
+`.github/workflows/daily.yml` does the same daily run without the Mac, on Google Gemini's free tier
+(`DIGEST_BACKEND=gemini`), in about 30 minutes: Gemini transcribes each episode (`DIGEST_TRANSCRIBE=gemini`, instead
+of Whisper) so the quality checks and forecast quotes are still verified against a transcript, then summarizes it;
+the audio briefing uses the same Kokoro voice on CPU (`kokoro-onnx`). Models are tried in order (`GEMINI_MODEL`,
+then `GEMINI_FALLBACKS`) when one is unavailable, out of quota or slow; requests are paced to `GEMINI_RPM` (8/min).
+The free tier allows about 20 requests a day per Flash model, so later episodes are often written by the lite models.
+It commits `data/` as market-digest-bot and publishes the site. Transcripts are kept 30 days as a run artifact, not
+in the repo.
+
+To turn it on:
+1. Repository secrets (Settings → Secrets and variables → Actions): `GEMINI_API_KEY` (from aistudio.google.com) and
+   `SUPABASE_DB_URL` (the session-pooler URL, as for the price job).
+2. Try it: Actions → Daily digest → Run workflow.
+3. Timer: rename `supabase/migrations/016_daily_timer.sql.pending` to `.sql` and run `python migrate.py`. It reuses
+   the GitHub token from migration 015 (`scripts/set-dispatch-token.py`) and starts the run at 5:30 am New York time
+   on weekdays. A GitHub schedule at 11:41 UTC is the backup and skips itself if the digest is already out.
+4. Stop running `scripts/daily.sh` on the Mac, or both will write the day's quiz and audio.
 
 ### Android app
 
