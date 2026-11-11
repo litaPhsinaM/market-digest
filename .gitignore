@@ -10,3 +10,4 @@ site.tmp/
 site.old/
 .DS_Store
 logs/
+.claude/
