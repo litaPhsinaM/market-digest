@@ -1,0 +1,66 @@
+# Every 15 minutes while the US market is open: fetch prices (Yahoo Finance), push them to the database (which fills
+# pending paper trades and scores due predictions), save the snapshot and republish the site. No AI needed, so this
+# runs in the cloud and doesn't depend on the Mac being on.
+name: Update prices
+
+on:
+  schedule:
+    - cron: "*/15 13-21 * * 1-5"   # UTC; the job itself checks it's 9:30–16:15 in New York (handles daylight saving)
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Run even if the market is closed"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  prices:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Market open?
+        id: open
+        run: |
+          day=$(TZ=America/New_York date +%u); hm=$(TZ=America/New_York date +%H%M)
+          if [ "${{ inputs.force }}" = "true" ] || { [ "$day" -le 5 ] && [ "$hm" -ge 0930 ] && [ "$hm" -le 1615 ]; }; then
+            echo "run=yes" >> "$GITHUB_OUTPUT"; else echo "Market closed ($day $hm ET), skipping."; fi
+      - uses: actions/checkout@v4
+        if: steps.open.outputs.run == 'yes'
+      - uses: actions/setup-python@v5
+        if: steps.open.outputs.run == 'yes'
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install
+        if: steps.open.outputs.run == 'yes'
+        run: pip install jinja2 pyyaml feedparser pydantic yfinance "psycopg[binary]"
+      - name: Fetch prices, update database, build site
+        if: steps.open.outputs.run == 'yes'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: python run.py --market-only
+      - name: Save snapshot
+        if: steps.open.outputs.run == 'yes'
+        run: |
+          git config user.name "market-digest-bot"
+          git config user.email "market-digest-bot@users.noreply.github.com"
+          git add data/market
+          git diff --cached --quiet || { git commit -m "Prices $(TZ=America/New_York date '+%F %H:%M') ET [skip ci]" && git pull --rebase && git push; }
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.open.outputs.run == 'yes'
+        with:
+          path: site
+      - id: deployment
+        if: steps.open.outputs.run == 'yes'
+        uses: actions/deploy-pages@v4
