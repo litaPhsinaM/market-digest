@@ -15,7 +15,10 @@
   MD.sb = sb;
   // Where sign-in links should come back to. A page opened as a local file can't be returned to, so the
   // email's 6-digit code is the way in there (and in the native app).
-  const here = /^https?:$/.test(location.protocol) ? location.origin + location.pathname : undefined;
+  // Always the full page address (including /market-digest/), so Supabase never falls back to the bare domain.
+  const LIVE = "https://litaphsinam.github.io/market-digest/";
+  const here = /^https?:$/.test(location.protocol) && !/^https?:\/\/localhost(:\d+)?$/.test(location.origin) || location.port === "8765"
+    ? location.origin + location.pathname : LIVE;
 
   // ---------- anonymous usage events ----------
   let device;
@@ -147,7 +150,7 @@
     e.preventDefault();
     email = $("#acct-email-in").value.trim();
     const b = e.submitter || $("#acct-email-form button"); b.disabled = true;
-    const { error } = await sb.auth.signInWithOtp({ email, options: { emailRedirectTo: native ? undefined : here } });
+    const { error } = await sb.auth.signInWithOtp({ email, options: { emailRedirectTo: here } });
     b.disabled = false;
     if (error) { setMsg(error.message); return; }
     $("#acct-code-form").hidden = false;
