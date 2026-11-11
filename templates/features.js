@@ -117,7 +117,8 @@
   });
   renderRead();
   // ---------- story sheets: tap a card to read, ✓ to mark read, then on to the next ----------
-  const sheets = $$("dialog.sheet");
+  const sheets = $$("dialog.sheet.story");   // episode stories: these count toward "N of M read"
+  const allSheets = $$("dialog.sheet");      // plus top stories, things to know, concept
   function openStory(id) {
     const d = document.getElementById(id);
     if (!d || !d.classList.contains("sheet")) return false;
@@ -141,7 +142,7 @@
     toast("🎉 That's every story. Try the quiz!");
     $("#quiz")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
-  sheets.forEach((d) => {
+  allSheets.forEach((d) => {
     d.addEventListener("click", (e) => { if (e.target === d || e.target.closest("[data-sheet-close]")) d.close(); });
     d.addEventListener("close", () => { if (location.hash === "#" + d.id) history.replaceState(null, "", location.pathname + location.search); });
   });
@@ -158,6 +159,14 @@
   });
   addEventListener("hashchange", () => openStory(location.hash.slice(1)));
   if (location.hash.length > 1) setTimeout(() => openStory(decodeURIComponent(location.hash.slice(1))), 0);
+  // First-visit intro: shown until dismissed or until the visitor has used the app on another day.
+  const intro = $("#intro");
+  if (intro) {
+    const seen = store.get("intro_hidden", false) || store.get("days", []).some((d) => d !== todayLocal());
+    intro.hidden = seen;
+    intro.addEventListener("click", (e) => { if (e.target.closest("[data-dismiss-intro]")) { intro.hidden = true; store.set("intro_hidden", true); } });
+  }
+
   $("#next-unread") && $("#next-unread").addEventListener("click", () => {
     const next = nextUnread(null);
     next ? openStory(next) : $("#quiz")?.scrollIntoView({ behavior: "smooth", block: "start" });

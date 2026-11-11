@@ -120,5 +120,7 @@
     $$("[data-days]").forEach((x) => x.setAttribute("aria-selected", x === b));
     load();
   }));
-  document.addEventListener("md:auth", () => { load().then(() => showTab(location.hash.slice(1), false)); });
+  const onAuth = () => { load().then(() => showTab(location.hash.slice(1), false)); };
+  document.addEventListener("md:auth", onAuth);
+  if (MD.authReady) onAuth();
 })();

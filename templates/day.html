@@ -62,12 +62,13 @@
 {% endif %}
 
 {% if is_home %}
-<section class="intro">
+<section class="intro" id="intro" hidden>
   <div>
-    <strong>Learn the market in 5 minutes a day.</strong>
-    Every morning we listen to {{ n_podcasts }} trusted finance podcasts and scan {{ n_feeds }} newsrooms, then explain what matters in plain English: key points, the numbers, the jargon and the lesson behind the news.
+    <strong>New here? Learn the market in 5 minutes a day.</strong>
+    We listen to {{ n_podcasts }} trusted finance podcasts and scan {{ n_feeds }} newsrooms every morning, then explain what matters in plain English.
   </div>
-  <div class="intro-acts"><a class="btn" href="{{ prefix }}learn.html">New to investing? Start here →</a><a class="btn ghost" href="{{ prefix }}about.html">How it works</a></div>
+  <div class="intro-acts"><a class="btn" href="{{ prefix }}learn.html">Start lesson 1 →</a><a class="btn ghost" href="{{ prefix }}about.html">How it works</a>
+    <button class="close" type="button" data-dismiss-intro aria-label="Hide this">×</button></div>
 </section>
 {% endif %}
 
@@ -75,51 +76,107 @@
 <div class="col-main">
 
 {% if hot and hot.topics %}
-<section class="hot" aria-labelledby="hot-h">
-  <div class="hot-head">
-    <h2 class="section-title" id="hot-h">What’s hot <span class="live-dot" aria-hidden="true"></span></h2>
-    <span class="muted small">From {{ hot.scanned }} headlines across {{ hot.feeds }} newsrooms</span>
+{% set lead = hot.topics[0] %}
+<section class="top" aria-labelledby="top-h">
+  <div class="sec-head"><h2 class="section-title" id="top-h">Top stories <span class="live-dot" aria-hidden="true"></span></h2>
+    <span class="muted small">From {{ hot.scanned }} headlines · {{ hot.feeds }} newsrooms</span></div>
+  <button class="hero" type="button" data-story="hot-1">
+    <span class="hero-kicker">#1 today{% for sym in lead.tickers if sym in co_syms %} · {{ sym }}{% endfor %}</span>
+    <span class="hero-title">{{ lead.title }}</span>
+    <span class="hero-dek">{{ lead.explanation }}</span>
+    <span class="hero-foot"><span class="hero-srcs">{% for h in lead.links[:3] %}<span>{{ h.source }}</span>{% endfor %}</span><span class="hero-cta">Read →</span></span>
+  </button>
+  {% if hot.topics|length > 1 %}
+  <div class="rail" role="list">
+    {% for t in hot.topics[1:] %}
+    <button class="rail-card" type="button" role="listitem" data-story="hot-{{ loop.index + 1 }}">
+      <span class="rail-n">{{ loop.index + 1 }}</span>
+      <span class="rail-title">{{ t.title }}</span>
+      <span class="rail-dek">{{ t.explanation }}</span>
+      <span class="rail-src">{{ t.links|map(attribute='source')|first }}{% if t.links|length > 1 %} +{{ t.links|length - 1 }}{% endif %}</span>
+    </button>
+    {% endfor %}
   </div>
-  <div class="hot-grid">
-  {% for t in hot.topics %}
-    <article class="card hot-card{{ ' lead' if loop.first }}">
-      <div class="hot-rank">{{ loop.index }}</div>
-      <h3>{{ t.title }}</h3>
-      <p>{{ t.explanation }}</p>
-      <p class="hot-why"><span class="eyebrow">Why it matters</span> {{ t.why_it_matters }}</p>
-      <div class="hot-foot">
-        {% for sym in t.tickers if sym in co_syms %}<button class="ticker" type="button" data-open="{{ sym }}">{{ sym }}</button>{% endfor %}
-        <button class="share" type="button" data-share data-kind="What's hot" data-title="{{ t.title }}" data-text="{{ t.explanation }}" aria-label="Share this story">Share</button>
-        <ul class="hot-src">{% for h in t.links %}<li><a href="{{ h.url }}" target="_blank" rel="noopener" title="{{ h.title }}">{{ h.source }}</a></li>{% endfor %}</ul>
-      </div>
-    </article>
-  {% endfor %}
-  </div>
-  <p class="asof">Based on headlines and the newsrooms’ own short summaries. Tap a source to read the full article.</p>
+  {% endif %}
 </section>
 {% endif %}
 
 {% if brief %}
-<section class="card brief">
-  <div class="eyebrow">The big picture</div>
-  <p class="lede">{{ brief.big_picture }}</p>
-
-  <div class="themes">
-  {% for t in brief.themes %}
-    <div class="theme">
-      <h3>{{ t.title }}</h3>
-      <p>{{ t.explanation }}</p>
-      <p class="refs">{% for id in t.item_ids if id in by_id %}<a href="#{{ id }}">{{ by_id[id].source_name }}</a>{% if not loop.last %}<span aria-hidden="true"> · </span>{% endif %}{% endfor %}</p>
-    </div>
-  {% endfor %}
+<section class="know-grid">
+  <div class="card know">
+    <div class="eyebrow">In short</div>
+    <p class="know-lede">{{ brief.big_picture }}</p>
+    {% if brief.themes %}
+    <ol class="know-list">
+      {% for t in brief.themes[:3] %}
+      <li><button type="button" data-story="theme-{{ loop.index }}"><span class="kn">{{ loop.index }}</span><span class="kt">{{ t.title }}</span><span class="kgo" aria-hidden="true">›</span></button></li>
+      {% endfor %}
+    </ol>
+    {% endif %}
   </div>
-
-  <div class="concept">
-    <div class="eyebrow">Concept of the day</div>
-    <h3>{{ brief.concept_of_the_day.concept }}</h3>
-    <p>{{ brief.concept_of_the_day.explanation }}</p>
-  </div>
+  <button class="card concept-card" type="button" data-story="concept">
+    <span class="eyebrow">Concept of the day</span>
+    <span class="cc-title">{{ brief.concept_of_the_day.concept }}</span>
+    <span class="cc-dek">{{ brief.concept_of_the_day.explanation }}</span>
+    <span class="cc-cta">Learn it in 1 minute →</span>
+  </button>
 </section>
+{% endif %}
+
+{# Detail sheets for everything above: opened by tapping a card #}
+{% if hot and hot.topics %}{% for t in hot.topics %}
+<dialog class="sheet" id="hot-{{ loop.index }}" aria-labelledby="hot-{{ loop.index }}-h">
+<article class="ep">
+  <div class="sheet-grab" aria-hidden="true"></div>
+  <header class="ep-head"><span class="avatar s8" aria-hidden="true">{{ loop.index }}</span>
+    <div class="ep-who"><div class="ep-src">Top story #{{ loop.index }}</div><div class="ep-meta">From {{ t.links|length }} newsroom{{ '' if t.links|length == 1 else 's' }}</div></div>
+    <button class="close" type="button" data-sheet-close aria-label="Close">×</button></header>
+  <h3 class="ep-title" id="hot-{{ loop.index }}-h">{{ t.title }}</h3>
+  <p class="tldr">{{ t.explanation }}</p>
+  <div class="lesson"><div class="eyebrow">Why it matters</div><p>{{ t.why_it_matters }}</p></div>
+  {% if t.tickers %}<div class="ep-tags sheet-tags">{% for sym in t.tickers if sym in co_syms %}<button class="ticker" type="button" data-open="{{ sym }}">{{ sym }}</button>{% endfor %}</div>{% endif %}
+  <h4>Read the reporting</h4>
+  <ul class="news">{% for h in t.links %}<li><a href="{{ h.url }}" target="_blank" rel="noopener">{{ h.title }}</a><span class="muted">{{ h.source }}</span></li>{% endfor %}</ul>
+  <footer class="sheet-foot">
+    <button class="share" type="button" data-share data-kind="Top story" data-title="{{ t.title }}" data-text="{{ t.explanation }}">Share</button>
+    <button class="btn ghost" type="button" data-sheet-close>Done</button>
+  </footer>
+  <p class="asof">Summarised from headlines and the newsrooms’ own short descriptions.</p>
+</article>
+</dialog>
+{% endfor %}{% endif %}
+
+{% if brief %}
+{% for t in brief.themes[:3] %}
+<dialog class="sheet" id="theme-{{ loop.index }}" aria-labelledby="theme-{{ loop.index }}-h">
+<article class="ep">
+  <div class="sheet-grab" aria-hidden="true"></div>
+  <header class="ep-head"><span class="avatar s1" aria-hidden="true">{{ loop.index }}</span>
+    <div class="ep-who"><div class="ep-src">Thing to know #{{ loop.index }}</div><div class="ep-meta">From today’s episodes</div></div>
+    <button class="close" type="button" data-sheet-close aria-label="Close">×</button></header>
+  <h3 class="ep-title" id="theme-{{ loop.index }}-h">{{ t.title }}</h3>
+  <p class="tldr">{{ t.explanation }}</p>
+  {% set refs = t.item_ids|select('in', by_id)|list %}
+  {% if refs %}<h4>Go to the story</h4>
+  <div class="story-grid mini">{% for id in refs %}{% set it = by_id[id] %}
+    <button class="sc" type="button" data-story="{{ id }}"><span class="sc-top"><span class="avatar sm s{{ (src_index.get(it.source_id, 0) % 8) + 1 }}">{{ it.source_name|initials }}</span><span class="sc-src">{{ it.source_name }}</span></span>
+      <span class="sc-title">{{ it.summary.headline }}</span></button>{% endfor %}</div>{% endif %}
+  <footer class="sheet-foot"><button class="btn ghost" type="button" data-sheet-close>Done</button></footer>
+</article>
+</dialog>
+{% endfor %}
+<dialog class="sheet" id="concept" aria-labelledby="concept-h">
+<article class="ep">
+  <div class="sheet-grab" aria-hidden="true"></div>
+  <header class="ep-head"><span class="avatar s4" aria-hidden="true">💡</span>
+    <div class="ep-who"><div class="ep-src">Concept of the day</div><div class="ep-meta">1-minute lesson</div></div>
+    <button class="close" type="button" data-sheet-close aria-label="Close">×</button></header>
+  <h3 class="ep-title" id="concept-h">{{ brief.concept_of_the_day.concept }}</h3>
+  <p class="tldr">{{ brief.concept_of_the_day.explanation }}</p>
+  <div class="tryit"><span aria-hidden="true">🎓</span><div><b>Want the full picture?</b><p>The <a href="{{ prefix }}learn.html">Start here course</a> builds up concepts like this one step by step, with quizzes.</p></div></div>
+  <footer class="sheet-foot"><button class="btn ghost" type="button" data-sheet-close>Got it</button></footer>
+</article>
+</dialog>
 {% endif %}
 
 <div class="stories-head">
@@ -146,7 +203,7 @@
 </div>
 
 {% for it in items if it.summary.worth_reading %}{% set s = it.summary %}
-<dialog class="sheet" id="{{ it.id }}" aria-labelledby="{{ it.id }}-h">
+<dialog class="sheet story" id="{{ it.id }}" aria-labelledby="{{ it.id }}-h">
 <article class="ep">
   <div class="sheet-grab" aria-hidden="true"></div>
   <header class="ep-head">

@@ -180,6 +180,7 @@
     const was = user;
     user = session ? session.user : null;
     MD.user = user;
+    MD.authReady = true;  // scripts that load after this point check it, so they never miss the first sign-in state
     document.dispatchEvent(new CustomEvent("md:auth", { detail: { user, event } }));
     renderAccount();
     if (user && (!was || was.id !== user.id)) {
