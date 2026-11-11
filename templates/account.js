@@ -19,6 +19,7 @@
 
   // ---------- anonymous usage events ----------
   let device;
+  MD.device = () => device;
   try { device = localStorage.getItem("device") || crypto.randomUUID(); localStorage.setItem("device", device); } catch (e) { device = "unknown"; }
   const day = ($(".actions") || {}).dataset?.day || null;
   MD.track = (event, props = {}) => {
@@ -180,7 +181,13 @@
     renderAccount();
     if (user && (!was || was.id !== user.id)) {
       sync(); listen();
-      if (event === "SIGNED_IN") { MD.toast("✓ Signed in, your progress now syncs"); MD.track("sign_in"); if (dlg.open) dlg.close(); }
+      // Supabase also reports SIGNED_IN when it restores a saved session on page load; only count a real sign-in once.
+      let seen = null; try { seen = localStorage.getItem("signed_in_as"); } catch (e) {}
+      if (event === "SIGNED_IN" && seen !== user.id) {
+        try { localStorage.setItem("signed_in_as", user.id); } catch (e) {}
+        MD.toast("✓ Signed in, your progress now syncs"); MD.track("sign_in");
+      }
+      if (event === "SIGNED_IN" && dlg.open) dlg.close();
     }
     if (!user && channel) { sb.removeChannel(channel); channel = null; }
   });

@@ -46,9 +46,10 @@
       $("#adm-gate").hidden = false; $("#adm-body").hidden = true; return;
     }
     $("#adm-gate").hidden = true; $("#adm-body").hidden = false;
+    if (MD.device) MD.sb.rpc("mark_internal_device", { p_device: MD.device() }); // keep the team's own device out of the stats
     const t = data.totals;
     $("#adm-tiles").innerHTML = [["Active devices (7d)", t.devices_7d], ["Active devices (30d)", t.devices_30d], ["Accounts", t.users],
-      ["With username", t.profiles], ["Paper portfolios", t.portfolios], ["Predictions", t.predictions], ["Friend follows", t.follows]]
+      ["With username", t.profiles], ["Paper portfolios", t.portfolios], ["Predictions", t.predictions], ["Friend follows", t.follows], ["Your devices (excluded)", t.internal_devices]]
       .map(([k, v]) => `<div class="tile"><div class="tile-name">${k}</div><div class="tile-price">${fmt(v)}</div></div>`).join("");
     line($("#ch-daily"), data.daily, "devices", "signed_in");
     bars($("#ch-features"), Object.entries(data.features).filter(([k]) => k !== "setup_check").sort((a, b) => b[1] - a[1]).map(([k, v]) => [LABELS[k] || k, v]));
