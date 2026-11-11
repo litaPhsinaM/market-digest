@@ -45,8 +45,12 @@
     const username = $("#uname-in").value.trim().toLowerCase();
     const display_name = $("#uname-name").value.trim() || null;
     if (!/^[a-z0-9_]{3,20}$/.test(username)) return showUnameErr("3–20 characters: letters, numbers or _");
-    const row = { id: MD.user.id, username, ...(display_name ? { display_name } : {}) };
-    let { error } = await MD.sb.from("profiles").upsert(row);
+    // Users may only change username/display name, so update the existing row (an upsert would also rewrite the id).
+    const fields = { username, ...(display_name ? { display_name } : {}) };
+    const { data: existing } = await MD.sb.from("profiles").select("id").eq("id", MD.user.id).maybeSingle();
+    let { error } = existing
+      ? await MD.sb.from("profiles").update(fields).eq("id", MD.user.id)
+      : await MD.sb.from("profiles").insert({ id: MD.user.id, ...fields });
     if (error && /duplicate|unique/i.test(error.message)) return showUnameErr("That username is taken, try another");
     if (error) return showUnameErr(errMsg(error));
     await loadProfile();
