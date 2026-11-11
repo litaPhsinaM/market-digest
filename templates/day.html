@@ -62,6 +62,7 @@
 {% endif %}
 
 {% if is_home %}
+<div class="stale" id="stale" data-date="{{ date }}" hidden>🕗 You're seeing <b>{{ pretty_date }}</b>'s stories. Today's digest is on its way. Prices, games and lessons are live.</div>
 <section class="intro" id="intro" hidden>
   <div>
     <strong>New here? Learn the market in 5 minutes a day.</strong>
@@ -120,9 +121,8 @@
 {% endif %}
 
 {# Today's call: the prediction game, one tap from the home page. Uses the most-discussed company, else the S&P 500 fund. #}
-{% set call_co = (companies|selectattr('mentioned_in')|list or companies)|first if companies else none %}
 {% if call_co %}{% set f = call_co|qf %}
-<section class="card call-card predict" aria-labelledby="call-h">
+<section class="card call-card predict" aria-labelledby="call-h" data-call-sym="{{ call_co.symbol }}">
   <div class="call-top">
     <div><div class="eyebrow">🔮 Today’s call</div>
       <h2 id="call-h">Will <b>{{ call_co.name|replace(', Inc.', '')|replace(' Inc.', '')|replace(' Corporation', '') }}</b> be higher at tomorrow’s update?</h2>
@@ -131,6 +131,7 @@
   </div>
   <label class="conf"><span>How sure are you? <b class="conf-v">60%</b></span><input class="conf-in" type="range" min="50" max="99" value="60" aria-label="How confident are you"></label>
   <div class="pr-btns"><button class="pr up" type="button" data-predict="{{ call_co.symbol }}:up">▲ Higher</button><button class="pr down" type="button" data-predict="{{ call_co.symbol }}:down">▼ Lower</button></div>
+  <div class="call-made" hidden></div>
   <a class="call-more small" href="{{ prefix }}play.html">See your calls, leaderboards and paper portfolio →</a>
 </section>
 {% endif %}

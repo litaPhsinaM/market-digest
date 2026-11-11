@@ -220,6 +220,10 @@
   }
   $$("[data-stack]").forEach(initStack);
 
+  // Yesterday's digest still up (today's not generated yet)? Say so instead of pretending it's today's.
+  const stale = $("#stale");
+  if (stale && stale.dataset.date < todayLocal()) stale.hidden = false;
+
   // First-visit intro: shown until dismissed or until the visitor has used the app on another day.
   const intro = $("#intro");
   if (intro) {

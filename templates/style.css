@@ -992,3 +992,5 @@ button.act.progress { cursor: pointer; font: inherit; }
 .earn-ways li { display: grid; grid-template-columns: 26px 1fr auto; gap: 8px; align-items: center; padding: 7px 0; border-top: 1px solid var(--line); font-size: .9rem; }
 .earn-ways li:first-child { border-top: 0; }
 .earn-ways b { color: var(--up); font-variant-numeric: tabular-nums; } .earn-ways li.neg b { color: var(--down); }
+.stale { margin: 0 0 14px; padding: 10px 14px; border-radius: 12px; background: var(--warn-soft); font-size: .9rem; }
+.call-made { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 12px; background: var(--accent-soft); margin-top: 4px; }

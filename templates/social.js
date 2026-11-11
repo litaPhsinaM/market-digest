@@ -567,12 +567,28 @@
     }
   }
 
+  // Today's call: if you already have an open call on this stock, show it instead of the buttons.
+  async function showMyCall() {
+    const card = $("[data-call-sym]");
+    if (!card || !MD.user || !MD.sb) return;
+    const { data } = await MD.sb.from("predictions").select("direction, confidence, status, made_at")
+      .eq("user_id", MD.user.id).eq("symbol", card.dataset.callSym).order("made_at", { ascending: false }).limit(1);
+    const p = data && data[0];
+    if (!p || p.status !== "pending") return;
+    $(".pr-btns", card).hidden = true; $(".conf", card).hidden = true;
+    const made = $(".call-made", card); made.hidden = false;
+    made.innerHTML = `<b>Your call is in: ${p.direction === "up" ? "▲ higher" : "▼ lower"}, ${Math.round(p.confidence * 100)}% sure.</b>
+      <span class="muted small">Scored at the next price update after ${new Date(new Date(p.made_at).getTime() + 20 * 3600e3).toLocaleString([], { weekday: "short", hour: "numeric", minute: "2-digit" })}. Right calls earn up to $400.</span>`;
+  }
+  document.addEventListener("click", (e) => { if (e.target.closest("[data-call-sym] [data-predict]")) setTimeout(showMyCall, 800); });
+
   const onAuth = async () => {
     // A failed lookup (offline, or tables not set up yet) must not stop the rest of the page from updating.
     try { await loadProfile(); } catch (e) { profile = null; }
     if (MD.user && !(profile && profile.username) && (play || new URLSearchParams(location.search).get("follow"))) openUsername();
     loadPlay();
     followFromLink();
+    showMyCall();
   };
   document.addEventListener("md:auth", onAuth);
   if (MD.authReady) onAuth();  // sign-in state arrived before this script loaded

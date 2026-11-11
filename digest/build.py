@@ -173,7 +173,10 @@ def build(root: Path):
         soon = (dt.date.fromisoformat(date) + dt.timedelta(days=14)).isoformat()
         earnings = sorted((c for c in (mkt or {}).get("companies", []) if c.get("next_earnings") and c["next_earnings"] <= soon),
                           key=lambda c: c["next_earnings"])
-        return {"date": date, "brief": briefs.get(date), "items": its, "market": mkt, "hot": hots.get(date),
+        cos = (mkt or {}).get("companies", [])
+        pool = [c for c in cos if c.get("mentioned_in")] or cos
+        call_co = pool[dt.date.fromisoformat(date).toordinal() % len(pool)] if pool else None
+        return {"date": date, "brief": briefs.get(date), "items": its, "market": mkt, "hot": hots.get(date), "call_co": call_co,
                 "quiz": quizzes.get(date), "earnings": earnings,
                 "audio": audio.get(date) if (out / "audio" / f"{date}.mp3").exists() else None,
                 "n_podcasts": len(srcs), "n_feeds": len(feeds),
