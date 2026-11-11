@@ -244,7 +244,9 @@
       const tradable = (lp || []).filter((p) => !p.symbol.startsWith("^")).sort((a, b) => a.symbol.localeCompare(b.symbol));
       const funds = ["SPY", "QQQ", "VTI"];
       sel.innerHTML = tradable.sort((a, b) => (funds.includes(b.symbol) - funds.includes(a.symbol))).map((p) => `<option value="${esc(p.symbol)}" data-price="${p.price}">${esc(p.symbol)} · ${esc(p.name || "")} · ${money(p.price)}</option>`).join("");
-      sel.dispatchEvent(new Event("change"));
+      // Set the starting choice directly (not via a synthetic change event) so the cost estimate always works.
+      const box = sel.closest(".trade"), opt = sel.options[0];
+      if (opt) { box.dataset.sym = opt.value; box.dataset.price = opt.dataset.price; }
     }
   }
   $("#qt-sym") && $("#qt-sym").addEventListener("change", (e) => {
