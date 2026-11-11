@@ -314,7 +314,8 @@
   }
 
   document.addEventListener("md:auth", async () => {
-    await loadProfile();
+    // A failed lookup (offline, or tables not set up yet) must not stop the rest of the page from updating.
+    try { await loadProfile(); } catch (e) { profile = null; }
     if (MD.user && !(profile && profile.username) && (play || new URLSearchParams(location.search).get("follow"))) openUsername();
     loadPlay();
     followFromLink();

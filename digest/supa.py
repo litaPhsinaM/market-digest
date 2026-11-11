@@ -1,7 +1,7 @@
 """Push trusted data to Supabase: prices (which fill paper-trading orders and settle predictions) and quiz answer keys.
 
-Needs the project's SECRET key in .env as SUPABASE_SECRET_KEY (never commit it; .env is git-ignored).
-Without it this step is skipped and the site still works; only the games don't get new prices.
+Uses the database connection in .env (SUPABASE_DB_URL), or the API with SUPABASE_SECRET_KEY if that's all there is.
+Neither is ever committed (.env is git-ignored). Without them this step is skipped; only the games miss new prices.
 """
 import json
 import os
@@ -24,9 +24,31 @@ def _env():
     return url, os.environ.get("SUPABASE_SECRET_KEY")
 
 
+def _db_url():
+    _env()
+    if not os.environ.get("SUPABASE_DB_URL"):
+        return None
+    from migrate import db_url  # handles passwords with special characters
+    return db_url()
+
+
+def _key_ok(key) -> bool:
+    return bool(key) and key.startswith("sb_secret_") and "..." not in key and "…" not in key
+
+
 def available() -> bool:
     url, key = _env()
-    return bool(url and key)
+    return bool(_db_url() or (url and _key_ok(key)))
+
+
+def _upsert_sql(table: str, rows: list[dict], conflict: str):
+    import psycopg
+    cols = list(rows[0])
+    sql = (f"insert into public.{table} ({', '.join(cols)}) values ({', '.join(['%s'] * len(cols))}) "
+           f"on conflict ({conflict}) do update set {', '.join(f'{c} = excluded.{c}' for c in cols if c not in conflict)}")
+    with psycopg.connect(_db_url()) as conn:
+        with conn.cursor() as cur:
+            cur.executemany(sql, [[r[c] for c in cols] for r in rows])
 
 
 def _post(table: str, rows: list[dict], upsert: bool = False):
@@ -52,11 +74,17 @@ def push_prices(snapshot: dict):
             if m["symbol"] not in seen and m.get("price"):
                 seen.add(m["symbol"])
                 rows.append({"symbol": m["symbol"], "as_of": as_of, "price": round(m["price"], 4), "name": m.get("name")})
-    _post("prices", rows, upsert=True)
+    if _db_url():
+        _upsert_sql("prices", rows, "symbol, as_of")
+    else:
+        _post("prices", rows, upsert=True)
     print(f"Pushed {len(rows)} prices to Supabase (fills pending orders, settles predictions)")
 
 
 def push_quiz_keys(day: str, quiz: dict):
     rows = [{"day": day, "q": i, "answer": q["answer"]} for i, q in enumerate(quiz.get("questions", []))]
     if rows:
-        _post("quiz_keys", rows, upsert=True)
+        if _db_url():
+            _upsert_sql("quiz_keys", rows, "day, q")
+        else:
+            _post("quiz_keys", rows, upsert=True)
