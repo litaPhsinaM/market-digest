@@ -322,6 +322,11 @@
   };
   document.addEventListener("md:auth", onAuth);
   if (MD.authReady) onAuth();  // sign-in state arrived before this script loaded
+  // Safety net: if the page still shows the guest view while someone is signed in, catch up once everything has loaded.
+  addEventListener("load", () => setTimeout(() => {
+    const guest = $("[data-guest]");
+    if (MD.user && guest && !guest.hidden) onAuth();
+  }, 800));
   if (play && !MD.sb) $("#lb-body").innerHTML = `<tr><td colspan="4" class="muted">Leaderboards need the online site.</td></tr>`;
   if (play && MD.sb) loadBoard();
 })();
