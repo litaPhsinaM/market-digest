@@ -11,6 +11,10 @@ on:
       limit:
         description: "Max new episodes per podcast"
         default: "2"
+      dry_run:
+        description: "Test only: check secrets, models, voice, feeds and the build; write and publish nothing"
+        type: boolean
+        default: false
   schedule:
     - cron: "41 11 * * 1-5"   # backup, after the timer's run (6:41/7:41 am New York); skips itself if today's digest exists
 
@@ -76,16 +80,19 @@ jobs:
           7d5df8ecf7d4b1878015a32686053fd0eebe2bc377234608764cc0ef3636a6c5  kokoro-v1.0.onnx
           bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d  voices-v1.0.bin
           EOF
+      - name: Preflight (dry run only)
+        if: steps.due.outputs.run == 'yes' && inputs.dry_run == true
+        run: python scripts/preflight.py
       - name: New episodes, brief, hot topics, prices, quiz, audio
-        if: steps.due.outputs.run == 'yes'
+        if: steps.due.outputs.run == 'yes' && inputs.dry_run != true
         timeout-minutes: 32   # no new episode is started after 22 min, so the brief, quiz and audio still get written
         run: python run.py --limit "${{ inputs.limit || '2' }}" --max-minutes 22
       - name: Forecasts for the Scorecard
-        if: steps.due.outputs.run == 'yes' && !cancelled()
+        if: steps.due.outputs.run == 'yes' && inputs.dry_run != true && !cancelled()
         timeout-minutes: 5
         run: python run.py --claims
       - name: Keep the transcripts (not published; for run.py --redo)
-        if: steps.due.outputs.run == 'yes' && !cancelled()
+        if: steps.due.outputs.run == 'yes' && inputs.dry_run != true && !cancelled()
         uses: actions/upload-artifact@v4
         with:
           name: transcripts-${{ github.run_id }}
@@ -93,7 +100,7 @@ jobs:
           retention-days: 30
           if-no-files-found: ignore
       - name: Save data
-        if: steps.due.outputs.run == 'yes' && !cancelled()
+        if: steps.due.outputs.run == 'yes' && inputs.dry_run != true && !cancelled()
         # Like prices.yml: the price job may have pushed meanwhile, so start from the latest main, lay this run's files
         # on top (its copy wins) and retry if someone beat us to it. Also saved after a failed step, so finished
         # episodes aren't summarized again (that would spend the day's free quota twice).
@@ -116,17 +123,17 @@ jobs:
           done
           git fetch -q origin main && git merge-base --is-ancestor HEAD origin/main || { echo "Couldn't push the digest"; exit 1; }
       - name: Rebuild the site from everything now on main
-        if: steps.due.outputs.run == 'yes' && !cancelled()
+        if: steps.due.outputs.run == 'yes' && inputs.dry_run != true && !cancelled()
         run: python run.py --build-only
       - uses: actions/upload-pages-artifact@v3
-        if: steps.due.outputs.run == 'yes' && !cancelled()
+        if: steps.due.outputs.run == 'yes' && inputs.dry_run != true && !cancelled()
         with:
           path: site
 
   # Publishing has to be its own job, after the build job has finished uploading the site.
   deploy:
     needs: digest
-    if: ${{ !cancelled() && needs.digest.outputs.ran == 'yes' }}
+    if: ${{ !cancelled() && needs.digest.outputs.ran == 'yes' && inputs.dry_run != true }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages
