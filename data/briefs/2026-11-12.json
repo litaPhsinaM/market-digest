@@ -1,6 +1,6 @@
 {
  "date": "2026-11-12",
- "big_picture": "CoreWeave's 168% revenue growth sparked a rally in AI stocks, while Nvidia faces federal scrutiny over $4.6 billion in chips allegedly smuggled to China via MegaSpeed. US jobless claims reached a 50-year low of 189,000, and California voters rejected a proposed billionaire wealth tax.",
+ "big_picture": "CoreWeave's 168% revenue growth sparked a rally in AI stocks, while Nvidia faces federal scrutiny over $4.6 billion in chips allegedly smuggled to China via MegaSpeed. US jobless claims fell to 189,000, the lowest since 1969, and California rejected a proposed billionaire wealth tax.",
  "themes": [
   {
    "title": "AI Infrastructure Earnings and Market Rally",
@@ -28,7 +28,7 @@
   },
   {
    "title": "California Wealth Tax Rejection",
-   "explanation": "California voters rejected a proposed wealth tax on billionaires, though proponents suggest the measure could return to the ballot in 2028. The failure reflects ongoing legal and political obstacles to taxing unrealized wealth in the United States.",
+   "explanation": "California rejected a proposed wealth tax on billionaires, though proponents suggest the measure could return to the ballot in 2028. The failure reflects ongoing legal and political obstacles to taxing unrealized wealth in the United States.",
    "item_ids": [
     "wsj-whats-news-36f050f89a"
    ]
