@@ -12,7 +12,7 @@ Status key: [ ] not started · [~] in progress · [x] done
 
 ## The list (in order: quick safety wins, then the biggest user value)
 
-1. [ ] **A CLAUDE.md / AGENTS.md in the repo** describing the architecture and rules (never give advice, verify
+1. [x] **A CLAUDE.md / AGENTS.md in the repo** describing the architecture and rules (never give advice, verify
    numbers against transcripts, pull --rebase before pushing, migrations are applied by the owner). Makes every
    future AI-assisted session faster and safer. Effort: S.
 
