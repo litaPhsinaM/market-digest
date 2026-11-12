@@ -3,6 +3,7 @@ import datetime as dt
 import json
 import re
 import shutil
+import os
 from collections import defaultdict
 from pathlib import Path
 
@@ -184,14 +185,22 @@ def build(root: Path):
                 "pretty_date": dt.date.fromisoformat(date).strftime("%A, %B %-d, %Y"),
                 "listen_min": sum(_minutes(i["duration"]) for i in its)}
 
-    def render(name, path, prefix, **ctx):
-        (out / path).write_text(env.get_template(name).render(prefix=prefix, **ctx))
+    today_iso = dt.date.today().isoformat()
+    site_url = os.environ.get("SITE_URL", "https://litaphsinam.github.io/market-digest/")
+    pages = []  # (path, lastmod) for sitemap.xml
+
+    def render(name, path, prefix, lastmod=None, **ctx):
+        canonical = site_url + ("" if path == "index.html" else path)
+        (out / path).parent.mkdir(parents=True, exist_ok=True)
+        (out / path).write_text(env.get_template(name).render(prefix=prefix, canonical=canonical, site_url=site_url, **ctx))
+        if name not in ("admin.html", "empty.html"):
+            pages.append((canonical, lastmod or today_iso))
 
     for i, date in enumerate(dates):
         nav = {"newer": dates[i - 1] if i else None, "older": dates[i + 1] if i + 1 < len(dates) else None}
-        render("day.html", f"days/{date}.html", "../", **day_ctx(date), nav=nav)
+        render("day.html", f"days/{date}.html", "../", lastmod=date, **day_ctx(date), nav=nav)
     if dates:
-        render("day.html", "index.html", "", **day_ctx(dates[0]),
+        render("day.html", "index.html", "", lastmod=dates[0], **day_ctx(dates[0]),
                nav={"newer": None, "older": dates[1] if len(dates) > 1 else None}, is_home=True)
     else:
         render("empty.html", "index.html", "")
@@ -208,7 +217,17 @@ def build(root: Path):
     lessons = [{**l, "unit": u["title"]} for u in course["units"] for l in u["lessons"]] if course else []
     practice_path = data / "learn" / "practice.json"
     practice = json.loads(practice_path.read_text()) if practice_path.exists() else None
+    for l in lessons:
+        l["slug"] = f"{l['id']}-" + re.sub(r"[^a-z0-9]+", "-", l["title"].lower()).strip("-")[:60]
     render("learn.html", "learn.html", "", course=course, lessons=lessons, practice=practice)
+    for i, l in enumerate(lessons):  # one indexable page per lesson
+        render("lesson.html", f"lessons/{l['slug']}.html", "../", l=l, total=len(lessons), all=lessons,
+               next=lessons[i + 1] if i + 1 < len(lessons) else None)
+    # Search engines: sitemap of every public page, and robots.txt pointing to it (admin stays out).
+    urls = "".join(f"<url><loc>{u}</loc><lastmod>{m}</lastmod></url>" for u, m in pages)
+    (out / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>'
+                                     f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')
+    (out / "robots.txt").write_text(f"User-agent: *\nDisallow: /market-digest/admin.html\nSitemap: {site_url}sitemap.xml\n")
     (out / "search.json").write_text(json.dumps(_search_index(items, hots, glossary, markets), separators=(",", ":")))
     old = root / "site.old"
     if old.exists():

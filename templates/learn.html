@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 {% set active = 'learn' %}
 {% block title %}Learn · Market Digest{% endblock %}
+{% block description %}Free investing course for beginners: 29 short lessons from ‘what is a stock?’ to reading charts, MACD, RSI and why most trading strategies fail, with quizzes and 90 practice questions.{% endblock %}
+{% block jsonld %}<script type="application/ld+json">{{ {
+  "@context": "https://schema.org", "@type": "Course", "name": "Learn the stock market: a free beginner course",
+  "description": "29 short lessons from what a stock is to reading charts and why most trading strategies fail, with quizzes.",
+  "provider": {"@type": "Organization", "name": "Market Digest", "sameAs": site_url}, "isAccessibleForFree": true, "inLanguage": "en",
+  "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT2H"},
+  "offers": {"@type": "Offer", "price": 0, "priceCurrency": "USD", "category": "Free"},
+  "hasPart": lessons|map(attribute='title')|list
+} | tojson }}</script>{% endblock %}
 {% block content %}
 <section class="learn-hero">
   <div class="eyebrow">Learn</div>

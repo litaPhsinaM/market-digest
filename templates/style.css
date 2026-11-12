@@ -1139,3 +1139,12 @@ button.act.progress { cursor: pointer; font: inherit; }
 .bot-how summary { cursor: pointer; font-weight: 700; color: var(--text); }
 .bot-how ol { padding-left: 18px; line-height: 1.5; } .bot-how li { margin: 6px 0; }
 #tb-moves li { align-items: flex-start; } #tb-moves li > span:first-child { display: flex; flex-direction: column; gap: 2px; }
+
+/* Standalone lesson pages (SEO) */
+.crumbs { margin: 4px 2px 10px; } .crumbs a { color: inherit; }
+.lesson-page { padding: 22px 24px; max-width: 760px; } .lesson-page h1 { font-size: 1.7rem; margin: 6px 0 8px; }
+.lesson-page h2 { font-size: 1.12rem; margin: 22px 0 6px; } .lesson-page p { line-height: 1.65; }
+.lesson-cta { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 6px; }
+.lesson-index { columns: 2; column-gap: 28px; padding-left: 20px; line-height: 1.9; max-width: 760px; }
+.lesson-index a[aria-current] { font-weight: 800; }
+@media (max-width: 640px) { .lesson-index { columns: 1; } .lesson-page { padding: 18px 16px; } }

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% set active = 'learn' %}
+{% block title %}{{ l.title }} · Free investing lesson · Market Digest{% endblock %}
+{% block description %}{{ l.hook }} {{ l.takeaway }}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block jsonld %}<script type="application/ld+json">{{ {
+  "@context": "https://schema.org", "@type": "LearningResource", "name": l.title, "description": l.hook,
+  "learningResourceType": "lesson", "educationalLevel": "beginner", "inLanguage": "en", "isAccessibleForFree": true,
+  "timeRequired": "PT" ~ l.minutes ~ "M", "url": canonical,
+  "isPartOf": {"@type": "Course", "name": "Learn the stock market: a free beginner course", "url": site_url ~ "learn.html"},
+  "teaches": l.key_terms|map(attribute='term')|list,
+  "provider": {"@type": "Organization", "name": "Market Digest", "url": site_url}
+}|tojson }}</script>{% endblock %}
+{% block content %}
+<nav class="crumbs small muted" aria-label="Breadcrumb"><a href="{{ prefix }}learn.html">Learn</a> › {{ l.unit }} › Lesson {{ l.id[1:]|int }}</nav>
+<article class="card lesson-page">
+  <div class="eyebrow">Lesson {{ l.id[1:]|int }} of {{ total }} · {{ l.minutes }} min</div>
+  <h1>{{ l.title }}</h1>
+  <p class="lede">{{ l.hook }}</p>
+  {% for sec in l.sections %}
+  <h2>{{ sec.heading }}</h2>
+  {% for para in sec.body %}<p>{{ para|bold }}</p>{% endfor %}
+  {% endfor %}
+  {% if l.example %}
+  <div class="example"><div class="eyebrow">Example: {{ l.example.title }}</div>{% for para in l.example.body %}<p>{{ para|bold }}</p>{% endfor %}</div>
+  {% endif %}
+  {% if l.key_terms %}
+  <h2>Key terms</h2>
+  <dl class="terms">{% for t in l.key_terms %}<div class="term"><dt>{{ t.term }}</dt><dd>{{ t.definition }}</dd></div>{% endfor %}</dl>
+  {% endif %}
+  <div class="lesson"><div class="eyebrow">Remember</div><p>{{ l.takeaway }}</p></div>
+  <div class="lesson-cta">
+    <a class="btn" href="{{ prefix }}learn.html#{{ l.id }}">Take the quiz (+$500 play money) →</a>
+    {% if next %}<a class="btn ghost" href="{{ next.slug }}.html">Next: {{ next.title }} →</a>{% endif %}
+  </div>
+  {% if l.resources %}
+  <h2>Go deeper</h2>
+  <ul class="res">
+    {% for r in l.resources %}<li><a href="{{ r.url }}" target="_blank" rel="noopener"><span class="res-main"><b>{{ r.title }}</b>
+      <span class="muted small">{{ r.publisher }} · {{ r.type }}</span></span></a></li>{% endfor %}
+  </ul>
+  {% endif %}
+</article>
+<h2 class="section-title">All lessons</h2>
+<ol class="lesson-index">{% for x in all %}<li><a href="{{ x.slug }}.html"{% if x.id == l.id %} aria-current="page"{% endif %}>{{ x.title }}</a></li>{% endfor %}</ol>
+<p class="asof">For learning only, not personal financial advice.</p>
+{% endblock %}
