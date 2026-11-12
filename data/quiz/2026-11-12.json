@@ -2,7 +2,7 @@
  "date": "2026-11-12",
  "questions": [
   {
-   "question": "If an investment fee drops by 50 basis points, how much has the fee decreased in percentage terms?",
+   "question": "If an investment fee drops by 50 basis points, how many percentage points lower is the fee?",
    "options": [
     "5.0%",
     "0.5%",
@@ -10,7 +10,7 @@
     "50%"
    ],
    "answer": 1,
-   "explanation": "One basis point is equal to one-hundredth of one percent, so 50 basis points equals 0.5%. Today's story on index investing noted that Vanguard fees dropped from 76 basis points, showing how small shifts impact investor costs.",
+   "explanation": "One basis point is equal to one-hundredth of one percent, so 50 basis points equals 0.5 percentage points (for example, a 1.0% fee becoming 0.5%). Today's story on index investing noted that Vanguard fees dropped from 76 basis points, showing how small shifts impact investor costs.",
    "item_id": "rational-reminder-115f7adba7"
   },
   {
@@ -18,7 +18,7 @@
    "options": [
     "The company is shrinking its operations",
     "The company has reached its maximum market share",
-    "There is massive, sustained demand for AI infrastructure",
+    "There is strong demand for AI infrastructure right now",
     "Investors are withdrawing capital due to high debt"
    ],
    "answer": 2,
