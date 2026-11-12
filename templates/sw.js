@@ -21,6 +21,9 @@ self.addEventListener("fetch", (e) => {
     : fetch(url.href, { cache: "no-cache", credentials: "same-origin" }).catch(() => fetch(e.request));
   e.respondWith(
     fresh().then((res) => {
+      // A page that moved (e.g. an old address): hand the browser the redirect itself. Returning the redirected
+      // response for a page visit is a network error (ERR_FAILED), which is what stranded the old github.io copy.
+      if (res.redirected && e.request.mode === "navigate") return Response.redirect(res.url, 301);
       if (res.ok && !url.pathname.endsWith(".mp3")) {
         const copy = res.clone();
         caches.open(CACHE).then((c) => c.put(e.request, copy));
