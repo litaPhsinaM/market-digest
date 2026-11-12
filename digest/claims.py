@@ -42,8 +42,14 @@ class Claims(BaseModel):
 
 
 PROMPT = """From this {kind} ("{title}", {source}, aired {date}), extract forecasts that can later be checked as right or wrong.
-A forecast is about the FUTURE ("I expect the Fed to hike in December", "stocks will be higher by year end").
-Descriptions of data or events that already happened ("inflation came in hot") are NOT forecasts: skip them.
+A forecast is the SPEAKER'S OWN prediction about the FUTURE ("I expect the Fed to hike in December", "stocks will
+be higher by year end"). Skip all of these, they are NOT forecasts:
+- facts or data that already happened ("inflation came in hot", "the yield jumped 20 basis points", "the stock is off 30%")
+- descriptions of the present ("the AI trade is the main driver", "the IPO is oversubscribed", "the economy is weak")
+- decisions or schedules already announced, reported by a host or reporter ("it is expected to start trading next week")
+- what other people hope or plan ("negotiators are hoping for a deal")
+- vague moods with nothing to check ("the next couple of years will be ugly")
+List each forecast once.
 Only include a forecast if it names WHAT will happen and BY WHEN (explicitly or clearly implied, e.g. "next month",
 "by year end", "at the December meeting"). Copy the quote exactly as it appears in the transcript. Prefer market calls
 (prices, indexes, yields) and central bank decisions. Hosts reading the news are not forecasting; skip that.
@@ -141,8 +147,12 @@ def extract(item, transcript: str) -> list[dict]:
     out = summarize._generate(PROMPT.format(kind="podcast episode", title=item.title, source=item.source_name,
                                             date=item.published, transcript=text), Claims)
     said = dt.date.fromisoformat(item.published)
-    flat, kept = _norm(text), []
+    flat, kept, seen = _norm(text), [], set()
     for c in out.claims[:5]:
+        key = _norm(c.claim)
+        if key in seen:  # models sometimes list the same forecast twice
+            continue
+        seen.add(key)
         if len(c.quote.split()) < 6 or not quote_in(c.quote, flat):
             print(f"    ✂ claim dropped (quote not found in transcript): {c.quote[:60]!r}")
             continue

@@ -146,7 +146,7 @@
       col = board === "networth" ? "💰 Net worth" : "💼 Investment return";
       // deposits = the $10,000 start + money earned by learning, so "earned" is the part above the start.
       fmt = (r) => board === "networth" ? `<b>${money(r.value)}</b>${r.deposits > 10000 ? ` <span class="muted">${money(r.deposits - 10000)} earned</span>` : ""}`
-        : `<span class="${r.return_pct >= 0 ? "pos" : "neg"}">${pct(r.return_pct)}</span> <span class="muted">${money(r.value)}</span>`;
+        : `<span class="${r.return_pct > 0 ? "pos" : r.return_pct < 0 ? "neg" : ""}">${pct(r.return_pct)}</span> <span class="muted">${money(r.value)}</span>`;
     }
     friendCount = null;
     if (scope === "friends" && !MD.user) rows = [];  // signed out: no friends list, show the sign-in prompt instead of everyone
@@ -416,7 +416,7 @@
         <span class="r-rank">${i === 0 && racers.length > 1 ? "👑" : i + 1}</span>
         <span class="r-name">${r.me ? "You" : esc(r.display_name || r.username)}</span>
         <span class="r-track"><span class="r-bar ${r.return_pct >= 0 ? "up" : "down"}" style="width:${Math.max(4, Math.abs(r.return_pct) / maxAbs * 100)}%"></span></span>
-        <span class="r-val ${r.return_pct >= 0 ? "pos" : "neg"}">${pct(Number(r.return_pct))}</span></div>`).join("")
+        <span class="r-val ${r.return_pct > 0 ? "pos" : r.return_pct < 0 ? "neg" : ""}">${pct(Number(r.return_pct))}</span></div>`).join("")
       + (racers.length < 2 ? `<p class="muted small">Invite a friend to race: whoever grows their money the most wins. <button class="mini" type="button" id="race-invite">Copy invite link</button></p>` : "");
     const me = racers.findIndex((r) => r.me);
     $("#race-note").textContent = racers.length < 2 ? "" : me === 0 ? "You're in the lead 👑" : `You're #${me + 1} · ${(racers[0].return_pct - racers[me].return_pct).toFixed(2)}% behind ${racers[0].display_name || racers[0].username}`;

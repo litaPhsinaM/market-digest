@@ -14,16 +14,16 @@
  "summary": {
   "segments": [
    "Nvidia scandal and chip smuggling",
-   "Mega Speed company investigation",
+   "MegaSpeed company investigation",
    "How chip smuggling works",
    "Huawei's AI chip progress",
    "Future of export controls"
   ],
-  "headline": "Nvidia's Mega Speed scandal and the global AI chip race",
-  "tldr": "Nvidia is under scrutiny following reports of an executive's relationship with Mega Speed, a Singaporean firm suspected of potentially diverting restricted AI chips to China. The case highlights significant loopholes in US export controls, where Chinese firms can bypass restrictions by renting cloud computing capacity from data centers in Southeast Asia.",
+  "headline": "Nvidia's MegaSpeed scandal and the global AI chip race",
+  "tldr": "Nvidia is under scrutiny following reports of an executive's relationship with MegaSpeed, a Singaporean firm suspected of potentially diverting restricted AI chips to China. The case highlights significant loopholes in US export controls, where Chinese firms can bypass restrictions by renting cloud computing capacity from data centers in Southeast Asia.",
   "key_points": [
    {
-    "point": "Mega Speed, a major Southeast Asian buyer of Nvidia chips, is under investigation for potential chip smuggling and its opaque ownership structure.",
+    "point": "MegaSpeed, a major Southeast Asian buyer of Nvidia chips, is under investigation for potential chip smuggling and its opaque ownership structure.",
     "why_it_matters": "It illustrates how companies may bypass US export restrictions by using shell entities to acquire advanced hardware for Chinese offtakers."
    },
    {
@@ -42,7 +42,7 @@
   "numbers": [
    {
     "figure": "$4.6B",
-    "context": "The total value of Nvidia hardware purchased by Mega Speed."
+    "context": "The total value of Nvidia hardware purchased by MegaSpeed."
    },
    {
     "figure": "160,000",
@@ -80,7 +80,7 @@
    {
     "term": "Shell company",
     "definition": "A company that has no active business operations or significant assets, often used to obscure ownership or facilitate financial transactions.",
-    "example": "Mega Speed was incorporated in Singapore through a BVI shell company."
+    "example": "MegaSpeed was incorporated in Singapore through a BVI shell company."
    },
    {
     "term": "Sovereign AI",

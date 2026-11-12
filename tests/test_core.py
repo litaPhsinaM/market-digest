@@ -129,3 +129,8 @@ def test_every_answer_shape_maps_to_a_job():
     from digest import summarize
     for schema in (summarize.ItemSummary, summarize.Quiz, summarize.Briefing, summarize.DailyBrief, summarize.HotTopics):
         assert schema.__name__ in summarize._SCHEMA_TASK
+
+
+def test_forecast_prompt_rejects_facts_and_moods():
+    for phrase in ("already happened", "descriptions of the present", "vague moods", "List each forecast once"):
+        assert phrase in claims.PROMPT
