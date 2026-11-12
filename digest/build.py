@@ -186,7 +186,7 @@ def build(root: Path):
                 "listen_min": sum(_minutes(i["duration"]) for i in its)}
 
     today_iso = dt.date.today().isoformat()
-    site_url = os.environ.get("SITE_URL", "https://litaphsinam.github.io/market-digest/")
+    site_url = os.environ.get("SITE_URL", "https://stocksplain.app/")
     pages = []  # (path, lastmod) for sitemap.xml
 
     def render(name, path, prefix, lastmod=None, **ctx):
@@ -227,7 +227,7 @@ def build(root: Path):
     urls = "".join(f"<url><loc>{u}</loc><lastmod>{m}</lastmod></url>" for u, m in pages)
     (out / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>'
                                      f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')
-    (out / "robots.txt").write_text(f"User-agent: *\nDisallow: /market-digest/admin.html\nSitemap: {site_url}sitemap.xml\n")
+    (out / "robots.txt").write_text(f"User-agent: *\nDisallow: /admin.html\nSitemap: {site_url}sitemap.xml\n")
     (out / "search.json").write_text(json.dumps(_search_index(items, hots, glossary, markets), separators=(",", ":")))
     old = root / "site.old"
     if old.exists():

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% set active = 'learn' %}
-{% block title %}{{ l.title }} · Free investing lesson · Market Digest{% endblock %}
+{% block title %}{{ l.title }} · Free investing lesson · Stocksplain{% endblock %}
 {% block description %}{{ l.hook }} {{ l.takeaway }}{% endblock %}
 {% block og_type %}article{% endblock %}
 {% block jsonld %}<script type="application/ld+json">{{ {
@@ -9,7 +9,7 @@
   "timeRequired": "PT" ~ l.minutes ~ "M", "url": canonical,
   "isPartOf": {"@type": "Course", "name": "Learn the stock market: a free beginner course", "url": site_url ~ "learn.html"},
   "teaches": l.key_terms|map(attribute='term')|list,
-  "provider": {"@type": "Organization", "name": "Market Digest", "url": site_url}
+  "provider": {"@type": "Organization", "name": "Stocksplain", "url": site_url}
 }|tojson }}</script>{% endblock %}
 {% block content %}
 <nav class="crumbs small muted" aria-label="Breadcrumb"><a href="{{ prefix }}learn.html">Learn</a> › {{ l.unit }} › Lesson {{ l.id[1:]|int }}</nav>

@@ -200,7 +200,7 @@ Material:
 
 BRIEFING_PROMPT = """Write a 3-minute spoken morning briefing (380-480 words) for a beginner investor, read aloud by a warm,
 clear radio host. Use ONLY the material below (JSON).
-- Open with "Good morning, this is Market Digest for {date}." then the biggest story.
+- Open with "Good morning, this is Stocksplain for {date}." then the biggest story.
 - Cover the 3-4 most important stories, then end with today's concept explained simply, and a one-line sign-off.
 - Write for the ear: short sentences, no lists, no markdown, no URLs, no tickers (say "Nvidia", not "NVDA").
   Write numbers the way you'd say them ("about six and a half billion dollars", "five percent").

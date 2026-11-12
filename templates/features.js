@@ -437,7 +437,7 @@
     const cta = s.href ? `<a class="st-cta" href="${esc(s.href)}" data-st-close>${s.kind === "quiz" ? "Take the quiz →" : "Read the full story →"}</a>` : "";
     $("#st-card").className = "st-card k-" + s.kind;
     $("#st-card").innerHTML = s.kind === "cover"
-      ? `<div class="st-brand">Market Digest</div><div class="st-label">Today in 60 seconds</div><h2>${esc(s.title)}</h2>${mood}<p>${esc(s.text)}</p><div class="st-tap">Tap the right side for the next card · left to go back · hold to pause</div>`
+      ? `<div class="st-brand">Stocksplain</div><div class="st-label">Today in 60 seconds</div><h2>${esc(s.title)}</h2>${mood}<p>${esc(s.text)}</p><div class="st-tap">Tap the right side for the next card · left to go back · hold to pause</div>`
       : `<div class="st-label">${esc(s.label)}</div><h2>${esc(s.title)}</h2><p>${esc(s.text)}</p>${extra}${cta}`;
     $("#st-card").classList.remove("in"); void $("#st-card").offsetWidth; $("#st-card").classList.add("in");
     schedule(DUR);
@@ -548,7 +548,7 @@
     x.fillStyle = "#1f6f5c"; x.beginPath(); x.roundRect(80, 80, 64, 64, 16); x.fill();
     x.strokeStyle = "#fff"; x.lineWidth = 7; x.lineCap = x.lineJoin = "round";
     x.beginPath(); x.moveTo(96, 124); x.lineTo(110, 110); x.lineTo(119, 119); x.lineTo(130, 104); x.stroke();
-    x.fillStyle = "#f0efec"; x.font = `700 38px ${font}`; x.fillText("Market Digest", 166, 125);
+    x.fillStyle = "#f0efec"; x.font = `700 38px ${font}`; x.fillText("Stocksplain", 166, 125);
     x.fillStyle = "#5cc0a2"; x.font = `700 28px ${font}`; x.fillText(kind.toUpperCase(), 80, 260);
     x.fillStyle = "#ffffff"; x.font = `800 72px ${font}`;
     let y = 350;
@@ -561,7 +561,7 @@
     const blob = await new Promise((r) => c.toBlob(r, "image/png"));
     const file = new File([blob], "market-digest.png", { type: "image/png" });
     if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      try { await navigator.share({ files: [file], title, text: `${title}, via Market Digest` }); return; } catch (e) { if (e.name === "AbortError") return; }
+      try { await navigator.share({ files: [file], title, text: `${title}, via Stocksplain` }); return; } catch (e) { if (e.name === "AbortError") return; }
     }
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob); a.download = "market-digest.png"; a.click();

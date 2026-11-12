@@ -15,8 +15,8 @@
   MD.sb = sb;
   // Where sign-in links should come back to. A page opened as a local file can't be returned to, so the
   // email's 6-digit code is the way in there (and in the native app).
-  // Always the full page address (including /market-digest/), so Supabase never falls back to the bare domain.
-  const LIVE = "https://litaphsinam.github.io/market-digest/";
+  // Always the full page address, so Supabase sends sign-in links back to the live site.
+  const LIVE = "https://stocksplain.app/";
   const here = /^https?:$/.test(location.protocol) && !/^https?:\/\/localhost(:\d+)?$/.test(location.origin) || location.port === "8765"
     ? location.origin + location.pathname : LIVE;
 

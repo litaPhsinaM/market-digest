@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% set active = 'glossary' %}
-{% block title %}Glossary · Market Digest{% endblock %}
+{% block title %}Glossary · Stocksplain{% endblock %}
 {% block description %}Plain-English investing glossary: every finance term from the daily digest explained simply, with examples. P/E ratio, basis points, ETFs, MACD, RSI, dilution and more.{% endblock %}
 {% block jsonld %}<script type="application/ld+json">{{ {
-  "@context": "https://schema.org", "@type": "DefinedTermSet", "name": "Market Digest investing glossary", "url": canonical,
+  "@context": "https://schema.org", "@type": "DefinedTermSet", "name": "Stocksplain investing glossary", "url": canonical,
   "hasDefinedTerm": terms[:200]|map(attribute='term')|list
 } | tojson }}</script>{% endblock %}
 {% block content %}

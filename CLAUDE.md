@@ -1,7 +1,7 @@
-# Market Digest: notes for AI assistants
+# Stocksplain (repo: market-digest): notes for AI assistants
 
 A free app that teaches beginners investing: it turns 15 finance podcasts and 12 newsrooms into a 5-minute daily
-lesson, with quizzes, lessons, paper trading and a pundit scorecard. Live at https://litaphsinam.github.io/market-digest/
+lesson, with quizzes, lessons, paper trading and a pundit scorecard. Live at https://stocksplain.app/ (GitHub Pages custom domain; the old github.io address redirects)
 (web, Android APK, iPhone app via Capacitor). Owner: Manish (GitHub `litaPhsinaM`).
 
 ## Rules that matter most

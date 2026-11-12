@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{% block title %}Market Digest{% endblock %}</title>
+<title>{% block title %}Stocksplain{% endblock %}</title>
 <meta name="description" content="{% block description %}Learn investing in 5 minutes a day: free plain-English summaries of 15 trusted finance podcasts and 12 newsrooms, with quizzes, 29 beginner lessons and paper trading on real prices.{% endblock %}">
 {% if canonical %}<link rel="canonical" href="{{ canonical }}">{% endif %}
 {% block robots %}<meta name="robots" content="index, follow, max-image-preview:large">{% endblock %}
-<meta property="og:site_name" content="Market Digest">
+<meta property="og:site_name" content="Stocksplain">
 <meta property="og:type" content="{% block og_type %}website{% endblock %}">
 <meta property="og:title" content="{{ self.title() }}">
 <meta property="og:description" content="{{ self.description() }}">
@@ -28,7 +28,7 @@
 <meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Digest">
+<meta name="apple-mobile-web-app-title" content="Stocksplain">
 <link rel="apple-touch-icon" href="{{ prefix }}icons/apple-touch-icon.png">
 <link rel="icon" href="{{ prefix }}icons/icon-192.png">
 <link rel="stylesheet" href="{{ prefix }}style.css">
@@ -38,7 +38,7 @@
   <div class="appbar-in">
     <a class="brand" href="{{ prefix }}index.html">
       <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8"/><path d="M7 21l6-6 4 4 8-9"/></svg>
-      <span>Market Digest</span>
+      <span>Stocksplain</span>
     </a>
     <nav class="tabs" aria-label="Sections">
       <a href="{{ prefix }}index.html" {% if active == 'today' %}aria-current="page"{% endif %}>Today</a>
@@ -79,7 +79,7 @@
       <a href="{{ prefix }}glossary.html"><span>📖</span><b>Glossary</b><small>Every term, explained simply</small></a>
       <a href="{{ prefix }}archive.html"><span>🗂</span><b>Archive</b><small>Past days’ digests</small></a>
       <a href="{{ prefix }}sources.html"><span>📻</span><b>Sources</b><small>The shows and newsrooms we follow</small></a>
-      <a href="{{ prefix }}about.html"><span>ℹ️</span><b>About</b><small>How Market Digest works</small></a>
+      <a href="{{ prefix }}about.html"><span>ℹ️</span><b>About</b><small>How Stocksplain works</small></a>
       <a href="{{ prefix }}admin.html" data-admin-only hidden><span>🛠</span><b>Admin</b><small>Insights and people</small></a>
     </div>
     <button class="btn ghost more-close" type="button" data-sheet-close>Close</button>

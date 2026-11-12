@@ -1,11 +1,16 @@
 {
   "appId": "io.github.litaphsinam.marketdigest",
-  "appName": "Market Digest",
+  "appName": "Stocksplain",
   "webDir": "www",
   "server": {
-    "url": "https://litaphsinam.github.io/market-digest/",
+    "url": "https://stocksplain.app/",
     "androidScheme": "https",
-    "errorPath": "offline.html"
+    "errorPath": "offline.html",
+    "allowNavigation": [
+      "stocksplain.app",
+      "www.stocksplain.app",
+      "litaphsinam.github.io"
+    ]
   },
   "android": {
     "backgroundColor": "#111110",

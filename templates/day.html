@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 {% set active = 'today' if is_home else 'archive' %}
-{% block title %}Market Digest · {{ pretty_date }}{% endblock %}
-{% block description %}{% if brief and brief.big_picture %}{{ brief.big_picture|truncate(158, false, '…') }}{% else %}Market Digest for {{ pretty_date }}: plain-English summaries of today's finance podcasts and market news, for people learning to invest.{% endif %}{% endblock %}
+{% block title %}Stocksplain · {{ pretty_date }}{% endblock %}
+{% block description %}{% if brief and brief.big_picture %}{{ brief.big_picture|truncate(158, false, '…') }}{% else %}Stocksplain for {{ pretty_date }}: plain-English summaries of today's finance podcasts and market news, for people learning to invest.{% endif %}{% endblock %}
 {% block og_type %}article{% endblock %}
 {% block jsonld %}<script type="application/ld+json">{{ {
   "@context": "https://schema.org", "@type": "NewsArticle",
-  "headline": ("Market Digest · " ~ pretty_date),
+  "headline": ("Stocksplain · " ~ pretty_date),
   "description": (brief.big_picture if brief and brief.big_picture else "Daily plain-English market digest."),
   "datePublished": date, "dateModified": date, "inLanguage": "en",
   "isAccessibleForFree": true,
   "mainEntityOfPage": canonical,
   "image": [site_url ~ "icons/og.jpg"],
-  "author": {"@type": "Organization", "name": "Market Digest", "url": site_url},
-  "publisher": {"@type": "Organization", "name": "Market Digest", "logo": {"@type": "ImageObject", "url": site_url ~ "icons/icon-512.png"}}
+  "author": {"@type": "Organization", "name": "Stocksplain", "url": site_url},
+  "publisher": {"@type": "Organization", "name": "Stocksplain", "logo": {"@type": "ImageObject", "url": site_url ~ "icons/icon-512.png"}}
 }|tojson }}</script>{% if is_home %}
-<script type="application/ld+json">{{ {"@context": "https://schema.org", "@type": "WebSite", "name": "Market Digest", "url": site_url,
+<script type="application/ld+json">{{ {"@context": "https://schema.org", "@type": "WebSite", "name": "Stocksplain", "url": site_url,
   "description": "Learn investing in 5 minutes a day: free plain-English summaries of trusted finance podcasts and news, a beginner course and paper trading.",
   "potentialAction": {"@type": "SearchAction", "target": site_url ~ "archive.html?q={search_term_string}", "query-input": "required name=search_term_string"}}|tojson }}</script>{% endif %}{% endblock %}
 {% macro chg(q) %}{% set f = q|qf %}<span class="chg {{ 'up' if q.change >= 0 else 'down' }}"><span aria-hidden="true">{{ '▲' if q.change >= 0 else '▼' }}</span> {{ f.change }}</span>{% endmacro %}

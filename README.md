@@ -1,10 +1,10 @@
-# Market Digest
+# Stocksplain
 
-**Learn the market in 5 minutes a day.** Every morning Market Digest listens to 15 trusted finance podcasts and scans
+**Learn the market in 5 minutes a day.** Every morning Stocksplain listens to 15 trusted finance podcasts and scans
 12 newsrooms, then explains what matters in plain English: the key points, the numbers, the jargon and the lesson
 behind the news. It's built for people who are new to investing.
 
-- **Website:** https://litaphsinam.github.io/market-digest/
+- **Website:** https://stocksplain.app/
 - **Android app:** [download the latest APK](https://github.com/litaPhsinaM/market-digest/releases/latest)
 - **iPhone:** open the website in Safari → **Share → Add to Home Screen**
 
@@ -83,7 +83,7 @@ cards so the page never looks empty.
 
 15 podcasts (WSJ, Bloomberg, CNBC, NPR, Marketplace, Freakonomics, Odd Lots, Rational Reminder, Goldman Sachs and
 more) and 12 newsroom feeds; the full list with the reason each was chosen is on the
-[Sources page](https://litaphsinam.github.io/market-digest/sources.html) and in `sources.yaml`.
+[Sources page](https://stocksplain.app/sources.html) and in `sources.yaml`.
 
 ---
 
@@ -167,7 +167,7 @@ To turn it on:
 ```bash
 python run.py --build-only
 cd mobile && npm install
-LIVE_URL=https://litaphsinam.github.io/market-digest/ npm run sync
+LIVE_URL=https://stocksplain.app/ npm run sync
 cd android && ./gradlew assembleDebug   # → app/build/outputs/apk/debug/app-debug.apk
 ```
 
