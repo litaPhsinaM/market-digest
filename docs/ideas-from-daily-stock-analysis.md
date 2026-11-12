@@ -66,6 +66,20 @@ Status key: [ ] not started · [~] in progress · [x] done
 15. [ ] **Multi-provider model routing via LiteLLM** (Gemini, Claude, OpenAI, DeepSeek, Qwen, Ollama through one
     interface). Only if we add a second paid provider; our Gemini fallback chain covers today. Effort: M.
 
+
+16. [ ] **🤖 TrendBot: a robot player on the leaderboard** that paper-trades daily with their exact 100-point technical
+    rules (src/stock_analyzer.py: trend 30 = MA5>MA10>MA20 alignment, bias 20 = distance from MA5 / "don't chase
+    above 5%", volume 15 = volume vs 5-day average, MACD 15, support 10, RSI 10). It competes with players and the
+    S&P 500 using real prices. Teaches whether a famous trading formula beats beginners or the index. Pure experiment,
+    no advice. Effort: M.
+
+17. [ ] **📈 "Chart check" on company sheets**: the same indicators (trend, RSI, MACD, volume ratio) explained in plain
+    English ("RSI 68: it has risen fast; traders call this nearly 'overbought'"), never as buy/sell. Effort: S–M.
+
+How their AAPL screen is made (checked in their code, 2026-11-11): prices, volume and P/E from Yahoo; the "Watch 59"
+score is the 100-point checklist above (plain maths); an LLM only writes the "Key insights" prose from those numbers,
+and that prose gives advice ("investors should avoid chasing highs..."), which we must never do.
+
 Their data sources we can't use: AkShare, Tushare, Baostock, Pytdx, efinance, Tencent (Chinese markets); Longbridge
 and Futu (broker accounts). Alpha Vantage only as a last-resort backup (25 requests/day free).
 
