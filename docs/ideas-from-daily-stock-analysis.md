@@ -56,6 +56,21 @@ Status key: [ ] not started · [~] in progress · [x] done
 11. [ ] **Social sentiment** (Reddit / X / Polymarket, US stocks) as a "what retail is saying" side note, clearly
     labelled as chatter, not information. Effort: S–M, needs an API key.
 
+## Data sources worth borrowing
+
+Their data layer (`data_provider/`) mixes free and keyed sources. For a US, education-first app:
+
+- [ ] **Economic calendar**: FXMacroData's free public USD endpoints (no key: release calendar, policy-rate history)
+  or **FRED** (official, free key). Powers an automatic "Coming up this week: CPI Thu, Fed meeting Dec 17" block, so
+  "watch for" comes from real schedules instead of whatever the AI hears on podcasts. Effort: S.
+- [ ] **Finnhub** (free key): company news and the earnings calendar for company sheets. Check its terms before
+  showing data publicly. Effort: S.
+- [ ] **Prediction-market odds** (Polymarket public data, or Kalshi): "markets price an 86% chance of a December hike"
+  as a teaching side note. Effort: S–M.
+- [ ] **SEC EDGAR** (official, free; not used by them): filings and insider trades for company sheets. Effort: M.
+- [ ] Brave Search API (free tier) for news search. Alpha Vantage only as a backup (25 requests/day free).
+- Not useful: AkShare, Tushare, Baostock, Pytdx, efinance, Tencent (Chinese markets); Longbridge and Futu (broker accounts).
+
 ## Not for us
 
 - Buy / sell / watch calls, scores, entry and exit levels: that's financial advice.
