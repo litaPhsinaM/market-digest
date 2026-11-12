@@ -1132,3 +1132,10 @@ button.act.progress { cursor: pointer; font: inherit; }
 .pf-play { display: inline-block; font-size: .66rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--accent);
   border: 1px solid currentColor; border-radius: 99px; padding: 1px 7px; margin-left: 4px; vertical-align: 2px; }
 .play-guest-hero .big-cta { max-width: 100%; white-space: normal; }
+
+/* Play: TrendBot */
+.bot-intro { margin: 0 0 12px; line-height: 1.5; color: var(--text-2); }
+.bot-how { margin-top: 12px; font-size: .88rem; color: var(--text-2); }
+.bot-how summary { cursor: pointer; font-weight: 700; color: var(--text); }
+.bot-how ol { padding-left: 18px; line-height: 1.5; } .bot-how li { margin: 6px 0; }
+#tb-moves li { align-items: flex-start; } #tb-moves li > span:first-child { display: flex; flex-direction: column; gap: 2px; }

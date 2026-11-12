@@ -50,6 +50,13 @@ jobs:
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
         run: python run.py --market-only
+      - name: TrendBot (once a day, after 3:45 pm ET)
+        if: steps.open.outputs.run == 'yes'
+        continue-on-error: true   # the robot player must never block the price update
+        timeout-minutes: 6
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: python -m digest.trendbot
       - name: Save snapshot
         if: steps.open.outputs.run == 'yes'
         # The Mac's daily run may have pushed meanwhile, and it writes today's snapshot too, so a rebase can conflict.

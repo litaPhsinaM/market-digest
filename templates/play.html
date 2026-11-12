@@ -108,6 +108,29 @@
   </div>
 </div>
 
+<section class="card play-card bot-card" id="trendbot" hidden>
+  <div class="pc-head"><h2>🤖 TrendBot</h2><span class="muted small" id="tb-when"></span></div>
+  <p class="bot-intro">A robot player trading with a famous <b>100-point chart checklist</b> from a popular open-source trading tool.
+    Same $10,000, same real prices, no learning bonuses. <b>Can a trading formula beat you, or the S&amp;P 500?</b></p>
+  <div class="qs-grid" id="tb-stats"></div>
+  <h3 class="sub-h">Latest moves</h3>
+  <ul class="olist" id="tb-moves"></ul>
+  <details class="bot-how">
+    <summary>How TrendBot decides</summary>
+    <ol>
+      <li>Every trading day at about 3:45 pm ET it scores 61 big US stocks out of 100: <b>trend</b> (are the 5, 10 and 20-day price
+        averages stacked upward? 30 pts), <b>not chasing</b> (price close to its 5-day average, 20), <b>volume</b> (15),
+        <b>MACD</b> momentum (15), <b>support</b> (10) and <b>RSI</b> (10).</li>
+      <li>It sells anything scoring as Sell, and buys the best-scoring Buy stocks it doesn't own, up to 10 stocks of about 10% each.</li>
+      <li>Orders fill at the next real price update, exactly like yours.</li>
+    </ol>
+    <p class="muted small">The checklist is the <code>StockTrendAnalyzer</code> from
+      <a href="https://github.com/ZhuLinsen/daily_stock_analysis" target="_blank" rel="noopener">ZhuLinsen/daily_stock_analysis</a>
+      (MIT license), used unchanged. This is an experiment with play money, not advice: rules like these often lose to simply
+      holding the index.</p>
+  </details>
+</section>
+
 <section class="card play-card lb">
   <div class="pc-head"><h2>🏆 Leaderboards</h2>
     <div class="seg-tabs" role="tablist"><button type="button" role="tab" data-scope="all" aria-selected="true">Everyone</button><button type="button" role="tab" data-scope="friends" aria-selected="false">Friends</button></div>

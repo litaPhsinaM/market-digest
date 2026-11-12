@@ -114,10 +114,42 @@
       tile("Max drawdown", sk && Number(sk.days) ? pct(sk.max_drawdown_pct) : "–", "biggest drop from a high point", sk && sk.max_drawdown_pct < -10 ? "neg" : "");
   }
 
+  // ---------- TrendBot: the robot player (public; logic in digest/trendbot.py) ----------
+  const TREND = { STRONG_BULL: "strong uptrend", BULL: "uptrend", WEAK_BULL: "weak uptrend", CONSOLIDATION: "moving sideways",
+    WEAK_BEAR: "weak downtrend", BEAR: "downtrend", STRONG_BEAR: "strong downtrend" };
+  const why = (d) => {
+    const bits = [`${TREND[d.trend] || "trend unclear"}`];
+    if (d.bias_pct != null) bits.push(`${Math.abs(d.bias_pct).toFixed(1)}% ${d.bias_pct >= 0 ? "above" : "below"} its 5-day average`);
+    if (d.volume_ratio != null) bits.push(`volume ${Number(d.volume_ratio).toFixed(1)}× normal`);
+    if (d.rsi != null) bits.push(`RSI ${Math.round(d.rsi)}`);
+    return bits.join(" · ");
+  };
+  async function loadBot() {
+    const box = $("#trendbot");
+    if (!box) return;
+    const { data, error } = await MD.sb.rpc("trendbot_status");
+    if (error || !data) return;  // not set up yet: keep the card hidden
+    box.hidden = false;
+    const ret = (data.value / data.start - 1) * 100;
+    $("#tb-when").textContent = data.last_day ? `last traded ${new Date(data.last_day + "T12:00:00").toLocaleDateString([], { month: "short", day: "numeric" })}` : "starts trading at 3:45 pm ET";
+    const tile = (label, value, sub, cls = "") => `<div class="qs"><span>${label}</span><b class="${cls}">${value}</b><small>${sub}</small></div>`;
+    $("#tb-stats").innerHTML =
+      tile("Portfolio", money(data.value), `started with ${money(data.start)}`) +
+      tile("Return", pct(ret), ret >= 0 ? "so far" : "so far (ouch)", ret >= 0 ? "pos" : "neg") +
+      tile("Holdings", String(data.holdings.length), data.pending ? `${data.pending} order${data.pending > 1 ? "s" : ""} filling at the next update` : "stocks it owns") +
+      tile("Cash", money(data.cash), "waiting for a Buy signal");
+    const moves = (data.decisions || []).filter((d) => d.symbol !== "-" && d.action !== "hold").slice(0, 12);
+    $("#tb-moves").innerHTML = moves.length
+      ? moves.map((d) => `<li><span><b class="${d.action === "buy" ? "pos" : "neg"}">${d.action === "buy" ? "Bought" : "Sold"} ${d.symbol}</b>
+          <span class="muted small">score ${d.score}/100 · ${why(d)}</span></span>
+          <span class="muted small">${new Date(d.day + "T12:00:00").toLocaleDateString([], { month: "short", day: "numeric" })}</span></li>`).join("")
+      : `<li class="muted">No trades yet. It makes its first moves at 3:45 pm ET on the next trading day.</li>`;
+  }
+
   ["#rg-center", "#rg-width"].forEach((s) => $(s).addEventListener("input", draw));
   $("#rg-go").addEventListener("click", lockIn);
   setReady(false);
-  const go = async () => { await loadRange(); loadStats(); };
+  const go = async () => { loadBot(); await loadRange(); loadStats(); };
   document.addEventListener("md:auth", go);
   if (MD.authReady) go();
   setInterval(() => { if (!document.hidden) loadStats(); }, 60000);

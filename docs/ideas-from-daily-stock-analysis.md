@@ -67,7 +67,7 @@ Status key: [ ] not started · [~] in progress · [x] done
     interface). Only if we add a second paid provider; our Gemini fallback chain covers today. Effort: M.
 
 
-16. [ ] **🤖 TrendBot: a robot player on the leaderboard** that paper-trades daily with their exact 100-point technical
+16. [~] **🤖 TrendBot: a robot player on the leaderboard** that paper-trades daily with their exact 100-point technical
     rules (src/stock_analyzer.py: trend 30 = MA5>MA10>MA20 alignment, bias 20 = distance from MA5 / "don't chase
     above 5%", volume 15 = volume vs 5-day average, MACD 15, support 10, RSI 10). It competes with players and the
     S&P 500 using real prices. Teaches whether a famous trading formula beats beginners or the index. Pure experiment,
