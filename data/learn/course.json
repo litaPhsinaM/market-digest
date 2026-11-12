@@ -1,6 +1,6 @@
 {
  "title": "Start here: investing from zero",
- "intro": "New to investing? Start here. In 24 short lessons you'll go from 'what is a stock?' to reading company numbers and building smart habits, with a quick quiz after each one. It's education, not advice, and you can go at your own pace.",
+ "intro": "New to investing? Start here. In 29 short lessons you'll go from 'what is a stock?' to reading company numbers, building smart habits and seeing how traders think, with a quick quiz after each one. It's education, not advice, and you can go at your own pace.",
  "units": [
   {
    "id": "u1",
@@ -3085,7 +3085,7 @@
       {
        "heading": "MACD: are the averages speeding up?",
        "body": [
-        "**MACD** compares a fast average (12 days) with a slow one (26 days), using exponential averages that weight recent days more. When the fast line crosses above its own 9-day average, momentum is turning up; crossing below, it is fading. Above zero means the short-term trend is above the longer one."
+        "**MACD** compares a fast average (12 days) with a slow one (26 days), using exponential averages that weight recent days more. The gap between them is the **MACD line**. When it crosses above its own 9-day average (the **signal line**), momentum is turning up; crossing below, it is fading. Above zero means the short-term trend is above the longer one."
        ]
       },
       {
@@ -3485,7 +3485,7 @@
       "title": "How a small edge disappears (illustrative)",
       "body": [
        "A strategy earns 9% a year before costs; the index fund earns 8% and charges 0.03%.",
-       "The strategy trades 50 times a year at about 0.1% cost per trade (5% a year), and short-term taxes take more. The 1% 'edge' turns into roughly 4% a year behind the index, every year."
+       "The strategy trades 50 times a year at about 0.1% cost per trade (5% a year), and short-term taxes take more. The 1% 'edge' turns into roughly 4% a year behind the index before taxes, and further behind after them."
       ]
      },
      "key_terms": [
