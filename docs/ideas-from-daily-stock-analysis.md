@@ -76,6 +76,24 @@ Status key: [ ] not started · [~] in progress · [x] done
 17. [ ] **📈 "Chart check" on company sheets**: the same indicators (trend, RSI, MACD, volume ratio) explained in plain
     English ("RSI 68: it has risen fast; traders call this nearly 'overbought'"), never as buy/sell. Effort: S–M.
 
+18. [ ] **🩺 Admin: System health tab** (their health + generation-backend status panels). Last morning run (time,
+    duration, episodes, errors), last price update (red if stale), TrendBot's last decision, database timer runs
+    (cron.job_run_details), latest CI result. Catch a failed run before users do. Effort: S–M.
+
+19. [ ] **🚩 "Report a mistake" + Hide** for a public app: a report link on every story and forecast, a report queue in
+    admin, and a Hide button that removes a story or forecast from the site immediately (no rebuild by Claude needed).
+    Effort: M.
+
+20. [ ] **🤖 Admin: AI usage** (their Token Usage page): per run, which model did each job, request counts, models that
+    hit their daily limit, summaries that needed repair. Written by run.py into the run log. Effort: S–M.
+
+21. [ ] **📻 Admin: Source health** (their Data Center): last new episode per podcast, failing feeds and newsrooms.
+    Effort: S.
+
+22. [ ] **⏸ Admin: kill switches**: pause TrendBot, the range game or the morning run from the admin page. Effort: S–M.
+
+Not copying: editing AI models/keys in a web settings form (ours live in GitHub/Supabase secrets, which is safer).
+
 How their AAPL screen is made (checked in their code, 2026-11-11): prices, volume and P/E from Yahoo; the "Watch 59"
 score is the 100-point checklist above (plain maths); an LLM only writes the "Key insights" prose from those numbers,
 and that prose gives advice ("investors should avoid chasing highs..."), which we must never do.
