@@ -2,186 +2,134 @@
  "date": "2026-11-12",
  "topics": [
   {
-   "title": "Nvidia board weighs replacing CEO Jensen Huang amid scandal",
-   "explanation": "Nvidia's board of directors is evaluating potential replacements for CEO Jensen Huang following reports of extramarital affairs, including one involving a woman suspected of spying for China. The board has engaged an outside firm to assist with executive search efforts while lawmakers raise national security questions. The uncertainty surrounding Huang's status has pressured Nvidia shares and weighed on broader tech futures.",
-   "why_it_matters": "Executive turnover at a dominant chipmaker can trigger significant stock price volatility and impact the wider tech ecosystem.",
+   "title": "Nvidia CEO Jensen Huang resigns amid scandal",
+   "explanation": "Nvidia CEO Jensen Huang has resigned from his position following reports of extramarital affairs, including one with a woman suspected of spying for China. The company has appointed CFO Colette Kress as interim CEO while it searches for a permanent successor.",
+   "why_it_matters": "As a central player in the artificial intelligence industry, Nvidia's sudden leadership vacuum creates significant uncertainty for investors regarding the company's future strategy and its role in the broader AI market.",
    "tickers": [
     "NVDA"
    ],
    "headline_ids": [
-    "ha3afa214",
-    "h72bf0a9d",
-    "h77d11504",
-    "h9d0d4618",
-    "hdfffc5d3"
+    "h3b9e89cb",
+    "h6ad6c9a2",
+    "h37130803",
+    "h84726a05",
+    "h9ed6bfff"
    ]
   },
   {
-   "title": "CoreWeave stock rallies after beating third-quarter revenue expectations",
-   "explanation": "CoreWeave posted third-quarter financial results that topped revenue estimates and allowed the company to raise its full-year guidance. To finance its continuing artificial intelligence expansion, the firm is relying on customer prepayments, shorter contracts, and contract-backed borrowing. Following the earnings report, Chief Executive Officer Mike Intrator announced the cancellation of his planned share sale program.",
-   "why_it_matters": "Strong earnings from specialized cloud providers signal ongoing demand for artificial intelligence hardware and infrastructure.",
-   "tickers": [],
-   "headline_ids": [
-    "hb913f5db",
-    "h16dadfeb",
-    "h22996a43",
-    "hc063829a",
-    "h6b00f188"
-   ]
-  },
-  {
-   "title": "Drone developer Uforce reaches $6 billion valuation in funding round",
-   "explanation": "Defense technology startup Uforce achieved a $6 billion valuation after closing a $700 million financing round. The investment round included backing from the UK National Wealth Fund, marking its largest commitment to a defense company. Uforce manufactures combat drones and naval defense vessels originally developed in Ukraine.",
-   "why_it_matters": "Substantial capital raises for military tech startups highlight growing investor confidence in battle-proven defense hardware.",
-   "tickers": [],
-   "headline_ids": [
-    "h3e2f5769",
-    "hf0b2d405"
-   ]
-  },
-  {
-   "title": "Meta infrastructure chief Santosh Janardhan to step down",
-   "explanation": "Meta announced that its longtime head of infrastructure and co-head of engineering, Santosh Janardhan, will step down from his position. Former Amazon Web Services executive David Brown will take over the infrastructure division. Janardhan originally joined Meta in 2009 before taking on senior engineering management duties.",
-   "why_it_matters": "Leadership transitions in tech infrastructure can affect how major platforms build out their data center capacity.",
+   "title": "CoreWeave earnings boost investor confidence in AI sector",
+   "explanation": "AI computing supplier CoreWeave reported stronger-than-expected earnings, which helped soothe investor anxiety regarding the debt loads fueling the AI infrastructure build-out. The positive results contributed to a rebound in tech stocks and provided a lift to the broader Nasdaq.",
+   "why_it_matters": "CoreWeave's performance serves as a key indicator for the health of the AI ecosystem, showing that demand for AI infrastructure remains strong despite broader market volatility.",
    "tickers": [
-    "META"
+    "NVDA"
    ],
    "headline_ids": [
-    "h592e6678",
-    "h6bc57b8d"
+    "h1f4b4fd6",
+    "h22996a43",
+    "h6b00f188",
+    "ha124c3ae",
+    "hd5b1f0df"
    ]
   },
   {
-   "title": "Investors examine India as an emerging market alternative to AI tech stocks",
-   "explanation": "Market strategists are discussing whether India can draw global capital as high-flying artificial intelligence trades experience increased volatility. Top asset managers noted that while the AI boom previously drew capital away from emerging markets, India offers a potential alternative for international investors. The discussions focus on how capital allocation may shift if tech sector momentum cools.",
-   "why_it_matters": "Shifts in investor sentiment can reallocate global funds away from overheated tech sectors and into emerging regional markets.",
+   "title": "US home sales hit 16-year low",
+   "explanation": "Sales of existing US homes fell in October to their lowest level since 2010. High mortgage rates near 7% and rising home prices have deterred potential buyers from entering the market.",
+   "why_it_matters": "The housing market is a critical component of the economy, and a significant drop in sales volume can signal broader cooling in consumer spending and economic activity.",
    "tickers": [],
    "headline_ids": [
-    "h4b85b1ef",
-    "h3ca05985"
+    "h894067f1",
+    "h400d2dfb"
    ]
   }
  ],
  "headlines": {
-  "ha3afa214": {
-   "id": "ha3afa214",
-   "source": "Bloomberg Technology",
-   "title": "Nvidia's Board Weighs Huang's Future After Affairs",
-   "blurb": "Nvidia's board is working with an outside firm to identify potential replacements for Chief Executive Officer Jensen Huang following reports of multiple extramarital affairs, according to a person familiar with the matter. Bloomberg Opinion's Parmy Olson breaks down the\u2026",
-   "url": "https://www.bloomberg.com/news/videos/2026-11-12/nvidia-s-board-weighs-huang-s-future-after-affairs-video",
-   "published": "2026-11-12T10:27"
-  },
-  "h72bf0a9d": {
-   "id": "h72bf0a9d",
-   "source": "Financial Times",
-   "title": "Nvidia shares slide as board considers Huang\u2019s future",
-   "blurb": "Stock down more than 6% ahead of Wall Street open as chief executive\u2019s fate hangs in balance",
-   "url": "https://www.ft.com/content/a93307a7-e2cd-4abd-bd89-c38832d8c40e?syn-25a6b1a6=1",
-   "published": "2026-11-12T10:14"
-  },
-  "h77d11504": {
-   "id": "h77d11504",
-   "source": "MarketWatch",
-   "title": "Nvidia\u2019s stock drops as the board reportedly prepares to remove CEO Jensen Huang",
-   "blurb": "Nvidia\u2019s board of directors reportedly met late Wednesday to determine the CEO\u2019s fate.",
-   "url": "https://www.marketwatch.com/story/nvidias-stock-drops-as-the-board-reportedly-prepares-to-remove-ceo-jensen-huang-9edee58d?mod=mw_rss_topstories",
-   "published": "2026-11-12T10:07"
-  },
-  "h3e2f5769": {
-   "id": "h3e2f5769",
+  "h3b9e89cb": {
+   "id": "h3b9e89cb",
    "source": "CNBC",
-   "title": "Ukrainian defense tech startup hits $6 billion valuation as investors bet on battle-tested drones",
-   "blurb": "UFORCE's NEMESIS drones have completed 300,000 combat flights, and its MAGURA naval vessels have contributed to the destruction of Russian warships.",
-   "url": "https://www.cnbc.com/2026/11/12/uforce-defense-tech-drones-warfare-ukraine.html",
-   "published": "2026-11-12T09:05"
+   "title": "Nvidia live updates: Jensen Huang agrees to testify before Congress following resignation",
+   "blurb": "Nvidia CEO Jensen Huang has faced increased scrutiny since revealing an affair. Follow live updates on the investigation, NVDA stock and succession plans.",
+   "url": "https://www.cnbc.com/2026/11/12/nvidia-jensen-huang-ceo-live-updates.html",
+   "published": "2026-11-12T17:14"
   },
-  "hf0b2d405": {
-   "id": "hf0b2d405",
-   "source": "Bloomberg Technology",
-   "title": "Drone Startup Uforce Valued at $6 Billion With UK Wealth Fund Backing",
-   "blurb": "The UK National Wealth Fund made its largest defense investment as part of a $700 million financing round for Uforce, a drone startup initially formed in Ukraine.",
-   "url": "https://www.bloomberg.com/news/articles/2026-11-12/drone-startup-uforce-valued-at-6-billion-with-uk-wealth-fund-backing",
-   "published": "2026-11-12T08:30"
-  },
-  "h4b85b1ef": {
-   "id": "h4b85b1ef",
-   "source": "Bloomberg Technology",
-   "title": "The Case For India in a World Obsessed With the AI Trade",
-   "blurb": "As the AI trade wobbles, could India prove a safe haven of choice? Top investor Srini Sriniwasan, managing director at at Kotak Alternate Asset Managers, makes the pitch to Bloomberg\u2019s Menaka Doshi. She also speaks with Mark Machin, co-founder and managing partner at Intrepid\u2026",
-   "url": "https://www.bloomberg.com/news/videos/2026-11-12/the-case-for-india-in-a-world-obsessed-with-the-ai-trade",
-   "published": "2026-11-12T08:18"
-  },
-  "h3ca05985": {
-   "id": "h3ca05985",
-   "source": "Bloomberg Technology",
-   "title": "Can India Attract Investors in an AI-Obsessed World? | Emerging",
-   "blurb": "The AI boom has been sucking up global capital, leaving markets like India on the sidelines. In this episode of the Emerging podcast, Menaka Doshi sits down with Intrepid Growth Partners\u2019 Mark Machin and Kotak Alternate Asset Managers\u2019 Srini Sriniwasan to talk about whether\u2026",
-   "url": "https://www.bloomberg.com/news/videos/2026-11-12/the-case-for-investing-in-india-in-an-ai-fixated-world-video",
-   "published": "2026-11-12T08:07"
-  },
-  "h9d0d4618": {
-   "id": "h9d0d4618",
+  "h6ad6c9a2": {
+   "id": "h6ad6c9a2",
    "source": "CNBC Tech",
-   "title": "Nvidia board meeting to decide CEO Jensen Huang\u2019s fate stretches into evening",
-   "blurb": "Nvidia's board is meeting days after CEO Jensen Huang admitted to an affair with a woman who is believed by U.S. intelligence of being a Chinese spy.",
-   "url": "https://www.cnbc.com/2026/11/11/nvidia-jensen-huang-affair-employee.html",
-   "published": "2026-11-12T06:11"
+   "title": "Who is Colette Kress? Nvidia's finance chief steps in as interim CEO after Huang exit",
+   "blurb": "Colette Kress joined Nvidia in 2013 after nearly 25 years in finance roles at Cisco, Microsoft and other tech companies.",
+   "url": "https://www.cnbc.com/2026/11/12/colette-kress-nvidia-cfo-interim-ceo-candidate.html",
+   "published": "2026-11-12T17:08"
   },
-  "h592e6678": {
-   "id": "h592e6678",
+  "h37130803": {
+   "id": "h37130803",
    "source": "CNBC",
-   "title": "Meta head of infrastructure will leave and be succeeded by former AWS cloud exec",
-   "blurb": "Meta's head of infrastructure and co-head of engineering Santosh Janardhan will leave in 2027, with former AWS senior vice president David Brown taking over.",
-   "url": "https://www.cnbc.com/2026/11/11/meta-infrastructure-departure-aws-cloud.html",
-   "published": "2026-11-12T00:46"
+   "title": "Nvidia stock pares morning losses after CEO Jensen Huang announces resignation",
+   "blurb": "Chief Financial Officer Colette Kress will serve as interim CEO until a new leader is appointed.",
+   "url": "https://www.cnbc.com/2026/11/12/nvidia-nvda-jensen-huang-second-affair.html",
+   "published": "2026-11-12T16:59"
   },
-  "hdfffc5d3": {
-   "id": "hdfffc5d3",
-   "source": "Bloomberg Technology",
-   "title": "Nvidia Working With Outside Firm to Identify CEO Candidates",
-   "blurb": "Nvidia Corp.\u2019s board has been working with an outside firm to identify potential replacements for Chief Executive Officer Jensen Huang following reports of multiple extramarital affairs, including one with a woman who is reportedly suspected of spying for China, a person\u2026",
-   "url": "https://www.bloomberg.com/news/articles/2026-11-11/nvidia-working-with-outside-firm-to-identify-ceo-candidates",
-   "published": "2026-11-11T23:46"
+  "h894067f1": {
+   "id": "h894067f1",
+   "source": "MarketWatch",
+   "title": "Home sales plummet to lowest level since \u2018Great Recession\u2019 as prices hit all-time high",
+   "blurb": "Home sales fell in October to a 16-year low as buyers bolted from the housing market in the face of 7% mortgage rates.",
+   "url": "https://www.marketwatch.com/story/home-sales-plummet-to-lowest-level-since-the-great-recession-as-buyers-flee-the-market-624e6270?mod=mw_rss_topstories",
+   "published": "2026-11-12T15:52"
+  },
+  "h1f4b4fd6": {
+   "id": "h1f4b4fd6",
+   "source": "Bloomberg Markets",
+   "title": "CoreWeave Bonds Rise After Strong Earnings Soothe Debt Anxiety",
+   "blurb": "CoreWeave Inc. bonds edged higher on Thursday after the AI computing supplier\u2019s stronger-than-expected results soothed concerns about its debt load.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-12/coreweave-bonds-rise-after-strong-earnings-soothe-debt-anxiety",
+   "published": "2026-11-12T15:50"
+  },
+  "h400d2dfb": {
+   "id": "h400d2dfb",
+   "source": "Bloomberg Markets",
+   "title": "Sales of Existing US Homes Tumble to Lowest Level Since 2010",
+   "blurb": "US previously owned home sales fell last month to a 16-year low as a cascade of negative news on mortgage rates and inflation deterred would-be buyers.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-12/sales-of-existing-us-homes-tumble-to-lowest-level-since-2010",
+   "published": "2026-11-12T15:00"
+  },
+  "h84726a05": {
+   "id": "h84726a05",
+   "source": "TechCrunch",
+   "title": "Nvidia\u2019s Jensen Huang resigns, chipmaker names CFO Colette Kress as interim CEO",
+   "blurb": "Nvidia gets a new chief executive, days after former CEO Jensen Huang admitted to a romantic affair with an alleged Chinese spy.",
+   "url": "https://techcrunch.com/2026/11/12/nvidias-jensen-huang-resigns-chipmaker-names-cfo-colette-kress-as-interim-ceo/",
+   "published": "2026-11-12T14:10"
+  },
+  "h9ed6bfff": {
+   "id": "h9ed6bfff",
+   "source": "Financial Times",
+   "title": "Nvidia shares tumble on Huang exit",
+   "blurb": "",
+   "url": "https://www.ft.com/content/b4a0f3d9-f075-47ea-9a85-77cdade9a06f?syn-25a6b1a6=1",
+   "published": "2026-11-12T05:57"
+  },
+  "hd5b1f0df": {
+   "id": "hd5b1f0df",
+   "source": "CNBC Markets",
+   "title": "Thursday's big stock stories: What\u2019s likely to move the market in the next trading session",
+   "blurb": "CoreWeave shares soared on the back of its earnings report, reviving the tech trade and lifting the Nasdaq Composite on Wednesday.",
+   "url": "https://www.cnbc.com/2026/11/11/thursdays-big-stock-stories-whats-likely-to-move-the-market.html",
+   "published": "2026-11-12T01:14"
   },
   "h22996a43": {
    "id": "h22996a43",
-   "source": "CNBC",
+   "source": "CNBC Tech",
    "title": "Jim Cramer says investors need to pay attention to CoreWeave. Here's why",
    "blurb": "Cramer said he's becoming less skeptical of CoreWeave after strong earnings and reassuring comments from its CEO.",
    "url": "https://www.cnbc.com/2026/11/11/jim-cramer-coreweave-earnings-ceo-interview.html",
    "published": "2026-11-11T23:41"
   },
-  "hb913f5db": {
-   "id": "hb913f5db",
-   "source": "CNBC Tech",
-   "title": "CoreWeave beats on revenue and lifts guidance, easing AI slowdown concerns",
-   "blurb": "CoreWeave's stock has been hammered heading into the neocloud's Q3 earnings report.",
-   "url": "https://www.cnbc.com/2026/11/10/coreweave-crwv-q3-earnings-report-2026.html",
-   "published": "2026-11-11T21:13"
-  },
-  "h16dadfeb": {
-   "id": "h16dadfeb",
-   "source": "CNBC Tech",
-   "title": "CoreWeave soars more than 24% for best day since April 2025 after strong Q3 report",
-   "blurb": "Neoclouds such as CoreWeave, Nebius and IREN have come under scrutiny this month as investors assessed the sustainability of the AI trade.",
-   "url": "https://www.cnbc.com/2026/11/11/coreweave-crwv-outlook-earnings-ai.html",
-   "published": "2026-11-11T21:11"
-  },
-  "h6bc57b8d": {
-   "id": "h6bc57b8d",
-   "source": "TechCrunch",
-   "title": "Meta is losing its longtime head of infrastructure",
-   "blurb": "Santosh Janardhan, who originally joined the company in 2009, will be stepping down from his role.",
-   "url": "https://techcrunch.com/2026/11/11/meta-is-losing-its-longtime-head-of-infrastructure/",
-   "published": "2026-11-11T20:12"
-  },
-  "hc063829a": {
-   "id": "hc063829a",
-   "source": "TechCrunch",
-   "title": "CoreWeave turns to customer prepayments, shorter contracts to fund AI growth",
-   "blurb": "CoreWeave is increasingly asking customers to pay up front, borrowing against specific contracts, and even looking to short-term deals that could lead to higher prices, according to the company\u2019s third-quarter earnings.",
-   "url": "https://techcrunch.com/2026/11/11/coreweave-turns-to-customer-prepayments-shorter-contracts-to-fund-ai-growth/",
-   "published": "2026-11-11T19:54"
+  "ha124c3ae": {
+   "id": "ha124c3ae",
+   "source": "WSJ Markets",
+   "title": "Investors Run Back to AI Stocks, Less Than a Week After a Historic Selloff",
+   "blurb": "CoreWeave, an AI data-center operator, delivered strong results late Tuesday. Tech stocks roared back the next morning.",
+   "url": "https://www.wsj.com/finance/stocks/investors-run-back-to-ai-stocks-less-than-a-week-after-a-historic-selloff-854483e8?mod=rss_markets_main",
+   "published": "2026-11-11T21:58"
   },
   "h6b00f188": {
    "id": "h6b00f188",
@@ -194,102 +142,102 @@
  },
  "latest": [
   {
-   "id": "hfbc9d479",
-   "source": "Bloomberg Markets",
-   "title": "What We're Watching at COP31",
-   "blurb": "Bloomberg's John Ainger, Selcan Hacao\u011flu, Lili Pike and Rebecca Penty discuss the key climate issues they're following at Bloomberg Green at COP31 in Antalya, T\u00fcrkiye. (Source: Bloomberg)",
-   "url": "https://www.bloomberg.com/news/videos/2026-11-12/what-we-re-watching-at-cop31-video",
-   "published": "2026-11-12T10:31"
-  },
-  {
-   "id": "h66fa64e8",
+   "id": "h3b9e89cb",
    "source": "CNBC",
-   "title": "Ukraine warns of fresh Starshield disruptions as U.S. envoys arrive in Moscow for talks with Putin",
-   "blurb": "Starshield is SpaceX's military-grade satellite network designed for government and national security use, building on the technology developed for Starlink.",
-   "url": "https://www.cnbc.com/2026/11/12/starlink-starshield-ukraine-restrictions-spacex.html",
-   "published": "2026-11-12T10:30"
+   "title": "Nvidia live updates: Jensen Huang agrees to testify before Congress following resignation",
+   "blurb": "Nvidia CEO Jensen Huang has faced increased scrutiny since revealing an affair. Follow live updates on the investigation, NVDA stock and succession plans.",
+   "url": "https://www.cnbc.com/2026/11/12/nvidia-jensen-huang-ceo-live-updates.html",
+   "published": "2026-11-12T17:14"
   },
   {
-   "id": "hc32c6861",
+   "id": "hb66f4c01",
+   "source": "MarketWatch",
+   "title": "The bond market now has an even bigger fear than the AI fallout",
+   "blurb": "The sharp selloff in tech stocks made Treasurys look more attractive in recent weeks, but another big driver of yields is emerging.",
+   "url": "https://www.marketwatch.com/story/the-bond-market-now-has-an-even-bigger-fear-than-the-ai-fallout-b6401b54?mod=mw_rss_topstories",
+   "published": "2026-11-12T17:11"
+  },
+  {
+   "id": "ha66a64fd",
+   "source": "CNBC",
+   "title": "Buy Nvidia with 'both hands' because the valuation is at 'stupid' levels, says analyst Meeks",
+   "blurb": "The Freedom Capital head of technology research noted that the stock with Thursday's decline is trading at just 10 times fiscal 2028 earnings estimates from analysts.",
+   "url": "https://www.cnbc.com/2026/11/12/buy-nvidia-with-both-hands-because-the-valuation-is-at-stupid-levels-says-analyst-meeks.html",
+   "published": "2026-11-12T17:08"
+  },
+  {
+   "id": "h6ad6c9a2",
+   "source": "CNBC Tech",
+   "title": "Who is Colette Kress? Nvidia's finance chief steps in as interim CEO after Huang exit",
+   "blurb": "Colette Kress joined Nvidia in 2013 after nearly 25 years in finance roles at Cisco, Microsoft and other tech companies.",
+   "url": "https://www.cnbc.com/2026/11/12/colette-kress-nvidia-cfo-interim-ceo-candidate.html",
+   "published": "2026-11-12T17:08"
+  },
+  {
+   "id": "hca82d66d",
+   "source": "CNBC",
+   "title": "Here's what Colette Kress and Harvey Jones wrote to Nvidia employees",
+   "blurb": "Interim CEO Colette Kress and board chair Harvey Jones emailed Nvidia employees, expressing gratitude for \"resilience, professionalism and continued dedication",
+   "url": "https://www.cnbc.com/2026/11/12/nvidia-kress-jones-employee-emails.html",
+   "published": "2026-11-12T17:07"
+  },
+  {
+   "id": "h169fdbc1",
    "source": "Bloomberg Markets",
-   "title": "BoA, Temasek, Citi Leaders on Where Capital is Moving",
-   "blurb": "\u200b\u200bAlexandra Liftman, Global Environmental Executive, Bank of America; Kyung-Ah Park, Chief Sustainability Officer, Temasek; and Valerie Smith, Chief Sustainability Officer, Citi discuss how investors and banks are making strategic choices about where to deploy capital with\u2026",
-   "url": "https://www.bloomberg.com/news/videos/2026-11-12/boa-temasek-citi-leaders-on-where-capital-is-moving-video",
-   "published": "2026-11-12T10:29"
-  },
-  {
-   "id": "ha3afa214",
-   "source": "Bloomberg Technology",
-   "title": "Nvidia's Board Weighs Huang's Future After Affairs",
-   "blurb": "Nvidia's board is working with an outside firm to identify potential replacements for Chief Executive Officer Jensen Huang following reports of multiple extramarital affairs, according to a person familiar with the matter. Bloomberg Opinion's Parmy Olson breaks down the\u2026",
-   "url": "https://www.bloomberg.com/news/videos/2026-11-12/nvidia-s-board-weighs-huang-s-future-after-affairs-video",
-   "published": "2026-11-12T10:27"
+   "title": "Trump\u2019s Russia Diesel Deal Struggles to Find Willing US Buyer",
+   "blurb": "An accord brokered by President Donald Trump to sell Russian diesel to the US appears to have failed to clear a key hurdle: finding a willing customer.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-12/trump-s-russia-diesel-deal-struggles-to-find-willing-us-buyer",
+   "published": "2026-11-12T17:06"
   },
   {
    "id": "hc0228f20",
    "source": "CNBC",
-   "title": "Nasdaq-100 futures slide, dragged lower as Nvidia sell-off resumes: Live updates",
-   "blurb": "All three of the major averages rallied on Wednesday, driven by gains in CoreWeave and a rebound in Nvidia.",
+   "title": "Nasdaq turns positive as traders shake off Nvidia CEO exit, AMD shares gain: Live updates",
+   "blurb": "Nvidia shares slumped on the departure of CEO Jensen Huang.",
    "url": "https://www.cnbc.com/2026/11/11/stock-market-today-live-updates.html",
-   "published": "2026-11-12T10:27"
+   "published": "2026-11-12T17:06"
   },
   {
-   "id": "h01ffb69b",
-   "source": "Bloomberg Markets",
-   "title": "Barclays\u2019 Lafargue Says Nvidia Turmoil Doesn\u2019t Derail AI Trade",
-   "blurb": "Investors should stay exposed to the AI boom, even as financing risks and Nvidia Corp.\u2019s leadership turmoil test the trade\u2019s resilience, said Julien Lafargue, chief market strategist at Barclays Private Bank.",
-   "url": "https://www.bloomberg.com/news/articles/2026-11-12/barclays-lafargue-says-nvidia-turmoil-doesn-t-derail-ai-trade",
-   "published": "2026-11-12T10:26"
+   "id": "ha4da00f3",
+   "source": "CNBC",
+   "title": "Jensen Huang's Nvidia exit casts shadow over Wall Street\u2019s $500 billion AI financing bet",
+   "blurb": "Nvidia's leadership crisis threatens to spill over into the AI financing boom.",
+   "url": "https://www.cnbc.com/2026/11/12/nvidia-ceo-exit-ai-financing.html",
+   "published": "2026-11-12T17:06"
   },
   {
-   "id": "haf074d23",
-   "source": "Bloomberg Markets",
-   "title": "What Will It Take For a Clean, Resilient Energy Economy?",
-   "blurb": "Albert Cheung, CEO, BloombergNEF discusses what it will take to build a cleaner, more resilient energy economy at Bloomberg Green at COP31 in Antalya, T\u00fcrkiye. (Source: Bloomberg)",
-   "url": "https://www.bloomberg.com/news/videos/2026-11-12/what-will-it-take-for-a-clean-resilient-energy-economy-video",
-   "published": "2026-11-12T10:22"
-  },
-  {
-   "id": "h04cba233",
-   "source": "Bloomberg Markets",
-   "title": "Damac Group on Dubai, Real Estate, Global Growth in 2026",
-   "blurb": "Hussain Sajwani, Founder & Chariman, DAMAC Group, discusses Dubai, real estate investment and global growth with Bloomberg\u2019s Guy Johnson at Bloomberg Invest Dubai 2026. (Source: Bloomberg)",
-   "url": "https://www.bloomberg.com/news/videos/2026-11-12/damac-group-on-dubai-real-estate-global-growth-in-2026-video",
-   "published": "2026-11-12T10:18"
-  },
-  {
-   "id": "h412aba59",
-   "source": "Bloomberg Markets",
-   "title": "Family Businesses on Resilience, Succession in 2026",
-   "blurb": "Mishal Kanoo, Chairman, The Kanoo Group and Shravin Bharti Mittal, Founder & CEO, Unbound; Director, Bharti Global Limited, discuss resilience, long-term investment and preparing the next generation of family leadership with Bloomberg\u2019s Abeer Abu Omar at Bloomberg Invest Dubai\u2026",
-   "url": "https://www.bloomberg.com/news/videos/2026-11-12/family-businesses-on-resilience-succession-in-2026-video",
-   "published": "2026-11-12T10:17"
-  },
-  {
-   "id": "h05b92b8d",
+   "id": "hf2483a4f",
    "source": "MarketWatch",
-   "title": "I inherited $1.4 million from my father. Am I wrong to ask my husband of 25 years for a postnuptial agreement?",
-   "blurb": "\u201cHe has always said he wants his daughter to inherit a chunk of his estate, and I\u2019ve never objected to that.\u201d",
-   "url": "https://www.marketwatch.com/story/i-inherited-1-4-million-from-my-father-am-i-wrong-to-ask-my-husband-of-25-years-for-a-postnuptial-agreement-b739c51d?mod=mw_rss_topstories",
-   "published": "2026-11-12T10:15"
+   "title": "\u2018We had the worst fight\u2019: I want my husband to retire at 65, but I don\u2019t want to lose his $280,000 salary. Is that unreasonable?",
+   "blurb": "\u201cWe have $2.6 million, most of it in his 401(k) and IRAs, plus $450,000 in a brokerage account.\u201d",
+   "url": "https://www.marketwatch.com/story/we-had-the-worst-fight-weve-ever-had-i-want-my-husband-to-retire-at-65-but-i-dont-want-to-lose-his-280-000-salary-48511469?mod=mw_rss_topstories",
+   "published": "2026-11-12T17:01"
   },
   {
-   "id": "h72bf0a9d",
-   "source": "Financial Times",
-   "title": "Nvidia shares slide as board considers Huang\u2019s future",
-   "blurb": "Stock down more than 6% ahead of Wall Street open as chief executive\u2019s fate hangs in balance",
-   "url": "https://www.ft.com/content/a93307a7-e2cd-4abd-bd89-c38832d8c40e?syn-25a6b1a6=1",
-   "published": "2026-11-12T10:14"
+   "id": "h8badbe29",
+   "source": "Bloomberg Technology",
+   "title": "Shopping Malls a \u2018Pretty Good Offset\u2019 for AI Trade, URW CEO Says",
+   "blurb": "US shopping centers offer investors an unlikely hedge for their artificial intelligence wagers, according to the chief executive officer of Europe\u2019s largest mall landlord.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-12/shopping-malls-a-pretty-good-offset-for-ai-trade-urw-ceo-says",
+   "published": "2026-11-12T17:00"
   },
   {
-   "id": "h86e7d165",
-   "source": "Bloomberg Markets",
-   "title": "UAE Minister of Investment's Investment Outlook",
-   "blurb": "H.E. Mohamed Hassan Alsuwaidi, UAE Minister of Investment, joins Bloomberg\u2019s Guy Johnson to discuss the country\u2019s investment outlook, the resilience of its financial markets and the future of global capital amid shifting geopolitical dynamics at Bloomberg Invest Dubai 2026.\u2026",
-   "url": "https://www.bloomberg.com/news/videos/2026-11-12/uae-minister-of-investment-s-investment-outlook-video",
-   "published": "2026-11-12T10:13"
+   "id": "hb7617a9f",
+   "source": "CNBC Tech",
+   "title": "Coinbase CEO says industry collaboration can help contain fallout from hacks like Binance breach",
+   "blurb": "Coinbase CEO Brian Armstrong joined \"Squawk Box\" for his first TV interview since the Binance hack to share his perspective on cybersecurity.",
+   "url": "https://www.cnbc.com/2026/11/12/coinbase-ceo-brian-armstrong-talks-binance-hack-democrats-sweep.html",
+   "published": "2026-11-12T17:00"
+  },
+  {
+   "id": "h9235b881",
+   "source": "MarketWatch",
+   "title": "My wife and I are in our 70s. Should we pay off our 2.5% mortgage or invest in a stock market driven by AI?",
+   "blurb": "\u201cWe are weighing up the wisdom of investing in a market driven by artificial intelligence.\u201d",
+   "url": "https://www.marketwatch.com/story/we-are-in-our-70s-should-we-pay-off-our-2-5-mortgage-or-build-up-our-savings-5a35e9c1?mod=mw_rss_topstories",
+   "published": "2026-11-12T17:00"
   }
  ],
  "feeds": 12,
- "scanned": 119
+ "scanned": 129
 }
