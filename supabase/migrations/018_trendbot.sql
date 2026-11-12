@@ -8,6 +8,12 @@ insert into auth.users (instance_id, id, aud, role, email, encrypted_password, r
 values ('00000000-0000-0000-0000-000000000000', 'b07b07b0-7000-4000-8000-00000000b07b', 'authenticated', 'authenticated',
         'trendbot@bots.invalid', '', '{"provider": "bot"}', '{"bot": true}', now(), now(), '2999-01-01')
 on conflict (id) do nothing;
+-- Supabase Auth expects these text fields to be '' rather than NULL; NULLs make any lookup of this row error out.
+update auth.users set confirmation_token = coalesce(confirmation_token, ''), recovery_token = coalesce(recovery_token, ''),
+  email_change = coalesce(email_change, ''), email_change_token_new = coalesce(email_change_token_new, ''),
+  email_change_token_current = coalesce(email_change_token_current, ''), phone_change = coalesce(phone_change, ''),
+  phone_change_token = coalesce(phone_change_token, ''), reauthentication_token = coalesce(reauthentication_token, '')
+where id = 'b07b07b0-7000-4000-8000-00000000b07b';
 
 insert into public.profiles (id, username, display_name)
 values ('b07b07b0-7000-4000-8000-00000000b07b', 'trendbot', '🤖 TrendBot')
