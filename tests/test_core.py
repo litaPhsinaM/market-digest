@@ -111,3 +111,21 @@ def test_quote_must_be_in_transcript():
     assert claims.quote_in("the Fed will raise rates by fifty basis points at the December meeting", flat)
     assert claims.quote_in("the Fed will raise rates by 50 basis points at the December meeting", flat)  # one word off
     assert not claims.quote_in("the Fed will cut rates sharply in the spring because inflation is falling", flat)
+
+
+# ---------- model routing (each morning job goes to the model that's best at it, with fallbacks) ----------
+
+def test_each_job_has_its_own_first_choice_and_fallbacks():
+    from digest import summarize
+    firsts = {t: summarize.task_models(t)[0] for t in ("summary", "forecasts", "top_stories", "brief", "quiz", "audio_script")}
+    assert firsts["forecasts"] == "gemini-3-flash-preview"
+    assert firsts["brief"] == "gemini-3.6-flash"
+    for t in firsts:
+        assert len(summarize.task_models(t)) >= 4          # never a single point of failure
+        assert "gemini-3.1-flash-lite" in summarize.task_models(t)
+
+
+def test_every_answer_shape_maps_to_a_job():
+    from digest import summarize
+    for schema in (summarize.ItemSummary, summarize.Quiz, summarize.Briefing, summarize.DailyBrief, summarize.HotTopics):
+        assert schema.__name__ in summarize._SCHEMA_TASK

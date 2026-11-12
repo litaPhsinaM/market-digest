@@ -9,15 +9,31 @@ from pathlib import Path
 
 from pydantic import BaseModel, Field
 
-# Gemini (free tier): try models in order and fall back on 404 (model gone), 429 (quota), 5xx (overloaded) or timeouts.
-# 3.5-flash answers in ~3 s and 3.1-flash-lite in ~1 s; 3.7/3.8-flash are often overloaded (503), 2.5-* is gone for new
-# keys and Pro isn't in the free tier. The free tier allows only 20 requests a day per Flash model (per model, so a
-# longer list means more capacity): once 3.5-flash's are used up, the lite models do the rest of the day.
-# Override with GEMINI_MODEL (first choice) and GEMINI_FALLBACKS (comma-separated).
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash")
-GEMINI_FALLBACKS = os.environ.get("GEMINI_FALLBACKS", "gemini-3.1-flash-lite,gemini-3.5-flash-lite,gemini-3.7-flash,gemini-3.6-flash")
-# Transcribing is long and mechanical: the fast lite models first, which also saves 3.5-flash's quota for summaries.
-GEMINI_TRANSCRIBE_MODELS = os.environ.get("GEMINI_TRANSCRIBE_MODELS", "gemini-3.1-flash-lite,gemini-3.5-flash-lite,gemini-3.5-flash")
+# Gemini (free tier): each job goes to the model that did it best in our benchmark (2026-11-11, real episodes scored
+# with checks.py / claims.py), then falls back on 404 (gone), 429 (daily quota used), 5xx (overloaded) or timeouts.
+# Every free model has its OWN daily quota, so spreading jobs across models multiplies capacity.
+#   3.6-flash        best writing (top stories, summaries) but a tiny quota  -> the two once-a-day jobs only
+#   3-flash-preview  best at finding forecasts with real quotes, fast        -> forecasts, quiz
+#   3.1-flash-lite   fastest, most reliable, clean summaries                 -> per-episode summaries, audio script
+#   3.5-flash-lite   best transcription match vs Whisper                     -> transcripts
+#   3.5-flash        good when it answers, but often overloaded (503)        -> fallback only
+# Override any job with GEMINI_MODELS_<JOB>=model1,model2 (e.g. GEMINI_MODELS_SUMMARY), or all with GEMINI_MODEL.
+_TASKS = {
+    "summary":    "gemini-3.1-flash-lite,gemini-3.5-flash-lite,gemini-3-flash-preview,gemini-3.5-flash",
+    "repair":     "gemini-3.1-flash-lite,gemini-3.5-flash-lite,gemini-3-flash-preview,gemini-3.5-flash",
+    "forecasts":  "gemini-3-flash-preview,gemini-3.1-flash-lite,gemini-3.5-flash",
+    "top_stories": "gemini-3.6-flash,gemini-3.5-flash,gemini-3-flash-preview,gemini-3.1-flash-lite",
+    "brief":      "gemini-3.6-flash,gemini-3-flash-preview,gemini-3.5-flash,gemini-3.1-flash-lite",
+    "quiz":       "gemini-3-flash-preview,gemini-3.5-flash,gemini-3.1-flash-lite",
+    "audio_script": "gemini-3.1-flash-lite,gemini-3.5-flash-lite,gemini-3-flash-preview",
+}
+# Which job an answer belongs to, from the shape we ask for.
+_SCHEMA_TASK = {"ItemSummary": "summary", "Repair": "repair", "Claims": "forecasts", "HotTopics": "top_stories",
+                "DailyBrief": "brief", "Quiz": "quiz", "Briefing": "audio_script"}
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "")  # set to force one model first for every job
+GEMINI_FALLBACKS = os.environ.get("GEMINI_FALLBACKS", "gemini-3.1-flash-lite,gemini-3.5-flash-lite,gemini-3-flash-preview,gemini-3.5-flash")
+# Transcribing is long and mechanical: the lite models match Whisper ~86% at ~10 s per 8-minute episode.
+GEMINI_TRANSCRIBE_MODELS = os.environ.get("GEMINI_TRANSCRIBE_MODELS", "gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemini-flash-lite-latest")
 GEMINI_RPM = float(os.environ.get("GEMINI_RPM", "8"))  # pace requests under the free tier's per-minute limits
 OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen3:14b")
 BACKEND = os.environ.get("DIGEST_BACKEND", "gemini")  # gemini | ollama
@@ -271,6 +287,13 @@ def _models(spec: str) -> list[str]:
 
 
 MODELS = _models(f"{GEMINI_MODEL},{GEMINI_FALLBACKS}")
+
+
+def task_models(task: str | None) -> list[str]:
+    """Models for a job, best first: forced GEMINI_MODEL, then GEMINI_MODELS_<JOB> or the benchmark's pick, then the
+    general fallbacks so a job never fails just because its favourite models are busy."""
+    pick = os.environ.get(f"GEMINI_MODELS_{(task or '').upper()}") or _TASKS.get(task or "", "")
+    return _models(f"{GEMINI_MODEL},{pick},{GEMINI_FALLBACKS}")
 last_model = None  # the model that wrote the most recent answer (recorded with each summary)
 _dead: set[str] = set()  # models that are gone (404) or out of today's quota: not asked again this run
 _last_call = 0.0
@@ -350,7 +373,8 @@ def _gemini_generate(contents, schema):
         response_mime_type="application/json", response_schema=schema, temperature=0.3,
         media_resolution=types.MediaResolution.MEDIA_RESOLUTION_LOW,
     )
-    return _gemini_call(contents, cfg, lambda r: schema.model_validate_json(r.text or ""))
+    return _gemini_call(contents, cfg, lambda r: schema.model_validate_json(r.text or ""),
+                        models=task_models(_SCHEMA_TASK.get(schema.__name__)))
 
 
 TRANSCRIBE_PROMPT = """Transcribe this podcast episode word for word, in English, from start to finish.
