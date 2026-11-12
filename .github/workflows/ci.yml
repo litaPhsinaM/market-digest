@@ -1,0 +1,39 @@
+# Tests on every push and pull request: the NYSE calendar, fact checks, forecast parsing, and a full site build.
+# Bot price commits are tagged [skip ci], so they don't run this.
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - name: Install
+        # requirements.txt minus mlx-whisper (Apple only)
+        run: |
+          grep -v '^mlx' requirements.txt > "$RUNNER_TEMP/requirements.txt"
+          pip install -r "$RUNNER_TEMP/requirements.txt" pytest
+      - name: Tests
+        run: python -m pytest -q tests
+      - name: Site builds
+        run: python run.py --build-only
+      - name: JavaScript parses
+        run: for f in templates/*.js; do node --check "$f"; done

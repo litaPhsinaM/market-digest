@@ -16,7 +16,7 @@ Status key: [ ] not started · [~] in progress · [x] done
    numbers against transcripts, pull --rebase before pushing, migrations are applied by the owner). Makes every
    future AI-assisted session faster and safer. Effort: S.
 
-2. [ ] **Tests + CI**. They have ~300 tests and a CI workflow on every push. We have none, and today's audits found
+2. [x] **Tests + CI**. They have ~300 tests and a CI workflow on every push. We have none, and today's audits found
    real bugs (frozen prices, audio never published). Start with tests for checks.py, claims.py (deadlines, quotes),
    hours.py (holidays), the range-game scoring and the build. Effort: S to start.
 
