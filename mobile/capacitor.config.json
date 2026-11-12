@@ -5,12 +5,7 @@
   "server": {
     "url": "https://stocksplain.app/",
     "androidScheme": "https",
-    "errorPath": "offline.html",
-    "allowNavigation": [
-      "stocksplain.app",
-      "www.stocksplain.app",
-      "litaphsinam.github.io"
-    ]
+    "errorPath": "offline.html"
   },
   "android": {
     "backgroundColor": "#111110",
