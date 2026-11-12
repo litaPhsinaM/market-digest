@@ -67,7 +67,7 @@ Status key: [ ] not started · [~] in progress · [x] done
     interface). Only if we add a second paid provider; our Gemini fallback chain covers today. Effort: M.
 
 
-16. [~] **🤖 TrendBot: a robot player on the leaderboard** that paper-trades daily with their exact 100-point technical
+16. [x] **🤖 TrendBot: a robot player on the leaderboard** that paper-trades daily with their exact 100-point technical
     rules (src/stock_analyzer.py: trend 30 = MA5>MA10>MA20 alignment, bias 20 = distance from MA5 / "don't chase
     above 5%", volume 15 = volume vs 5-day average, MACD 15, support 10, RSI 10). It competes with players and the
     S&P 500 using real prices. Teaches whether a famous trading formula beats beginners or the index. Pure experiment,
@@ -93,6 +93,11 @@ Status key: [ ] not started · [~] in progress · [x] done
 22. [ ] **⏸ Admin: kill switches**: pause TrendBot, the range game or the morning run from the admin page. Effort: S–M.
 
 Not copying: editing AI models/keys in a web settings form (ours live in GitHub/Supabase secrets, which is safer).
+
+23. [x] **Learn unit 6: "How traders think (and why it's hard)"**: five lessons (l25 to l29) teaching every
+    strategy in their repo (moving averages, volume/MACD/RSI and the 100-point checklist, chart strategies, factor and news
+    strategies, why most strategies fail), with Elliott waves and Chan theory labelled as unproven. Answer keys in
+    migration 019.
 
 How their AAPL screen is made (checked in their code, 2026-11-11): prices, volume and P/E from Yahoo; the "Watch 59"
 score is the 100-point checklist above (plain maths); an LLM only writes the "Key insights" prose from those numbers,

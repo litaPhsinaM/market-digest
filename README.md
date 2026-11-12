@@ -25,7 +25,8 @@ behind the news. It's built for people who are new to investing.
 - **Biggest movers**: today's top gainers, losers and most-traded stocks.
 
 ### 🎓 Learn
-- **Start here**: 24 short lessons in 5 units, from "what is a stock?" to reading a company and avoiding scams,
+- **Start here**: 29 short lessons in 6 units, from "what is a stock?" to reading a company, avoiding scams, and how
+  traders read charts (moving averages, MACD, RSI, chart and factor strategies, and why most strategies fail),
   each with a worked example, key terms, a "try it" task and a 3-question quiz.
 - **Practice by level**: 90 original questions at 🟢 foundation, 🟡 intermediate (FINRA SIE exam topics) and
   🔴 advanced (CFA Level I topics) levels. Not affiliated with either.
@@ -42,6 +43,8 @@ behind the news. It's built for people who are new to investing.
 - **Your stats** 📐: every trade is mirrored into the S&P 500 at the same moment, so you see your **alpha** (did you
   beat the market?), plus a Sharpe-style risk-adjusted score and max drawdown from daily snapshots. New ⚖️ Skill and
   🎯 Range leaderboards.
+- **🤖 TrendBot**: a robot player that trades daily with the 100-point chart checklist from the open-source
+  [daily_stock_analysis](https://github.com/ZhuLinsen/daily_stock_analysis) (MIT), with every move and its reasons public.
 - **Coach**: points out panic selling, putting everything in one stock or overtrading, with a link to the lesson.
 - **Friends and leaderboards**: follow friends by username or invite link; rankings for streaks, quizzes,
   forecasting skill, portfolio return, risk-adjusted skill and the range game. Streaks are counted by the server.
