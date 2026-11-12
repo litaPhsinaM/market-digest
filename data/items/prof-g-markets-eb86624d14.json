@@ -1,0 +1,82 @@
+{
+ "id": "prof-g-markets-eb86624d14",
+ "source_id": "prof-g-markets",
+ "source_name": "Prof G Markets",
+ "kind": "podcast",
+ "title": "The Trillion-Dollar Cover-Up: What Washington Knew About Jensen Huang",
+ "url": "https://www.podtrac.com/pts/redirect.mp3/pdst.fm/e/pscrb.fm/rss/p/mgln.ai/e/257/traffic.megaphone.fm/VMP4175975823.mp3",
+ "media_url": "https://www.podtrac.com/pts/redirect.mp3/pdst.fm/e/pscrb.fm/rss/p/mgln.ai/e/257/traffic.megaphone.fm/VMP4175975823.mp3",
+ "published": "2026-11-12",
+ "duration": 2290,
+ "digest_date": "2026-11-12",
+ "backend": "gemini",
+ "model": "gemini-3.1-flash-lite",
+ "summary": {
+  "segments": [
+   "Market rally and Nvidia earnings",
+   "Dollar strength and rate hike bets",
+   "Nvidia CEO scandal and China export controls",
+   "Legal implications of export violations"
+  ],
+  "headline": "Nvidia CEO scandal threatens US-China chip export compliance",
+  "tldr": "Nvidia shares are under pressure following reports of an affair between CEO Jensen Huang and an executive linked to a Chinese-connected firm. The situation has intensified scrutiny over whether Nvidia knowingly bypassed US export controls on advanced AI chips to China.",
+  "key_points": [
+   {
+    "point": "US policy requires licenses for exporting advanced AI chips to China or any China-headquartered company globally.",
+    "why_it_matters": "This regulation aims to prevent Chinese firms from accessing technology that could be used for military or strategic advantages."
+   },
+   {
+    "point": "Reports suggest Nvidia CEO Jensen Huang had an affair with an executive at MegaSpeed International, a firm suspected of smuggling chips to China.",
+    "why_it_matters": "If the CEO had knowledge of these violations, it could constitute a felony and pose significant legal and national security risks."
+   },
+   {
+    "point": "The Commerce Department allegedly delayed blacklisting MegaSpeed and halted investigations following intervention from Nvidia.",
+    "why_it_matters": "This raises questions about the effectiveness of government oversight and the influence of private companies on national security enforcement."
+   },
+   {
+    "point": "Exporting chips to a company known to be a Chinese entity or engaged in control violations is a felony.",
+    "why_it_matters": "Proving 'knowledge' is a high legal bar, but the potential consequences for the company and its leadership are severe."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "24%",
+    "context": "The percentage increase in Nvidia's stock price following its earnings report."
+   }
+  ],
+  "lesson": "When a company's business model relies on high-demand, restricted technology, its regulatory compliance becomes a critical risk factor; if leadership is compromised, the entire organization faces potential legal and operational fallout.",
+  "opinions_and_predictions": [
+   "Ed Elson believes Jensen Huang likely knew about Alice Huang's connections to the Chinese government due to their close relationship.",
+   "Chris Maguire (Council on Foreign Relations) is skeptical that the situation reaches the level of treason but emphasizes that compliance violations are a major problem.",
+   "Chris Maguire suggests that espionage campaigns typically aim to extract information or influence decision-makers, and it is common for spies to hide their true affiliations."
+  ],
+  "tickers": [
+   "Nvidia (NVDA)"
+  ],
+  "glossary": [
+   {
+    "term": "Export controls",
+    "definition": "Government regulations that restrict the transfer of sensitive technology or goods to certain countries or entities.",
+    "example": "The US restricts the sale of advanced AI chips to China to prevent them from gaining a technological edge."
+   },
+   {
+    "term": "Cutout",
+    "definition": "A person or organization used as a front to hide the true identity or purpose of an intelligence operation.",
+    "example": "Officials suspect MegaSpeed acted as a Chinese cutout to acquire restricted chips."
+   },
+   {
+    "term": "Blacklisting",
+    "definition": "Placing an entity on a government list that prohibits them from doing business with domestic companies.",
+    "example": "Agencies pressured the Commerce Department to blacklist MegaSpeed for violating export rules."
+   }
+  ],
+  "level": "intermediate",
+  "topics": [
+   "ai stocks",
+   "geopolitics",
+   "export controls"
+  ],
+  "quality_note": "The report combines market data with investigative reporting from the New York Times, Wall Street Journal, and Financial Times, alongside expert analysis from a Council on Foreign Relations fellow.",
+  "worth_reading": true
+ }
+}

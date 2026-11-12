@@ -1,0 +1,41 @@
+{
+ "date": "2026-11-12",
+ "questions": [
+  {
+   "question": "If an investment fee drops by 50 basis points, how much has the fee decreased in percentage terms?",
+   "options": [
+    "5.0%",
+    "0.5%",
+    "0.05%",
+    "50%"
+   ],
+   "answer": 1,
+   "explanation": "One basis point is equal to one-hundredth of one percent, so 50 basis points equals 0.5%. Today's story on index investing noted that Vanguard fees dropped from 76 basis points, showing how small shifts impact investor costs.",
+   "item_id": "rational-reminder-115f7adba7"
+  },
+  {
+   "question": "CoreWeave reported revenue growth of 168%; what does this specific figure primarily signal to market investors?",
+   "options": [
+    "The company is shrinking its operations",
+    "The company has reached its maximum market share",
+    "There is massive, sustained demand for AI infrastructure",
+    "Investors are withdrawing capital due to high debt"
+   ],
+   "answer": 2,
+   "explanation": "This triple-digit growth indicates that the demand for the hardware and data centers needed for AI is still surging. Because CoreWeave is a bellwether for the sector, its performance signals the health of the broader AI build-out.",
+   "item_id": "marketplace-4649bdfa83"
+  },
+  {
+   "question": "Why does an investigation into whether a CEO bypassed 'export controls' matter for a company's stock price?",
+   "options": [
+    "It creates legal and national security risks that could lead to fines or bans",
+    "It helps the company avoid international taxes",
+    "It increases the company's quarterly dividend",
+    "It makes the company's products cheaper for consumers"
+   ],
+   "answer": 0,
+   "explanation": "Violating government restrictions on sensitive technology can lead to felony charges and being blacklisted from key markets. As seen with Nvidia today, these regulatory risks can cause immediate stock price volatility and threaten leadership stability.",
+   "item_id": "prof-g-markets-eb86624d14"
+  }
+ ]
+}

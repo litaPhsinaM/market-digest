@@ -1,0 +1,88 @@
+{
+ "date": "2026-11-12",
+ "big_picture": "CoreWeave's 168% revenue growth sparked a rally in AI stocks, while Nvidia faces federal scrutiny over $4.6 billion in chips allegedly smuggled to China via MegaSpeed. US jobless claims reached a 50-year low of 189,000, and California voters rejected a proposed billionaire wealth tax.",
+ "themes": [
+  {
+   "title": "AI Infrastructure Earnings and Market Rally",
+   "explanation": "CoreWeave reported 168% revenue growth, lifting its shares by 25% and the Nasdaq by 1.6%. This rally, combined with a 24% gain in Nvidia stock following its own earnings, eased investor concerns about the sustainability of debt-heavy AI infrastructure models.",
+   "item_ids": [
+    "wsj-whats-news-36f050f89a",
+    "marketplace-4649bdfa83",
+    "prof-g-markets-eb86624d14"
+   ]
+  },
+  {
+   "title": "Nvidia Export Control Investigation",
+   "explanation": "Nvidia is under scrutiny for potential export control violations involving MegaSpeed, which purchased $4.6 billion in hardware and is suspected of smuggling chips to China. While Chinese firms like DeepSeek have ordered 160,000 domestic Huawei chips as an alternative, production bottlenecks remain a major constraint.",
+   "item_ids": [
+    "prof-g-markets-eb86624d14",
+    "odd-lots-d90c51a4d6"
+   ]
+  },
+  {
+   "title": "US Jobless Claims and Labor Reliability",
+   "explanation": "US initial jobless claims fell to 189,000, the lowest level since 1969. However, some economists argue this metric is less reliable today because states have restricted access to unemployment benefits.",
+   "item_ids": [
+    "marketplace-4649bdfa83"
+   ]
+  },
+  {
+   "title": "California Wealth Tax Rejection",
+   "explanation": "California voters rejected a proposed wealth tax on billionaires, though proponents suggest the measure could return to the ballot in 2028. The failure reflects ongoing legal and political obstacles to taxing unrealized wealth in the United States.",
+   "item_ids": [
+    "wsj-whats-news-36f050f89a"
+   ]
+  },
+  {
+   "title": "High School Financial Literacy Mandates",
+   "explanation": "39 US states now require personal finance education for high school graduation, up from previous years. Research from the New York Fed shows that students with this education were 6% more likely to pay down credit card debt during the pandemic.",
+   "item_ids": [
+    "indicator-b93b8e507c"
+   ]
+  },
+  {
+   "title": "Index Fund Equilibrium and Common Ownership",
+   "explanation": "Index funds have reached a 20% ownership threshold in large US firms, which may be lowering expected returns by shifting demand while supply remains fixed. This 'common ownership' can weaken competition between firms and lead to higher consumer prices through centralized voting.",
+   "item_ids": [
+    "rational-reminder-115f7adba7"
+   ]
+  },
+  {
+   "title": "Airline Restrictions on AI Booking Agents",
+   "explanation": "United Airlines has banned personal AI assistants from booking flights on its website due to data security and regulatory concerns. This move highlights the friction between rapid AI adoption and the operational constraints of service industries.",
+   "item_ids": [
+    "wsj-whats-news-36f050f89a"
+   ]
+  },
+  {
+   "title": "Music Streaming Rights and Missing Tracks",
+   "explanation": "A London-based lawyer has successfully lobbied to return 900 music releases to streaming platforms over the last decade. Many tracks are missing from digital services due to complex rights issues or lost master tapes rather than a lack of demand.",
+   "item_ids": [
+    "wsj-whats-news-36f050f89a"
+   ]
+  },
+  {
+   "title": "Orchestra Financial Crises",
+   "explanation": "Classical orchestras like the Nashville Symphony are facing financial crises due to high fixed costs and declining endowment support. Some institutions have required corporate bailouts to survive as they struggle with hall maintenance and shifting donor priorities.",
+   "item_ids": [
+    "marketplace-4649bdfa83"
+   ]
+  },
+  {
+   "title": "US LNG Market Share Expansion",
+   "explanation": "US LNG suppliers are capturing global market share following energy disruptions, such as the cancellation of Polish contracts with Qatar. The US is positioned for long-term growth as countries seek to diversify their energy sources away from volatile regions.",
+   "item_ids": [
+    "marketplace-4649bdfa83"
+   ]
+  }
+ ],
+ "concept_of_the_day": {
+  "concept": "Common Ownership",
+  "explanation": "Common ownership occurs when a few large institutional investors hold significant stakes in multiple competing companies within the same industry. In the US, the 'big three' asset managers often reach a 20% ownership threshold in large publicly traded firms. This structure can reduce the incentive for those companies to compete aggressively, as shared owners benefit from industry-wide profits rather than one firm winning market share. Today's discussion highlighted how centralized voting at these firms can lead to higher product prices and harm consumer welfare. It also suggests that as indexing becomes universal, the resulting market equilibrium can lower expected returns for all investors. This phenomenon illustrates that corporate governance and ownership structures are critical to maintaining competitive market incentives."
+ },
+ "watch_for": [
+  "California wealth tax proposal may return to the ballot in 2028",
+  "US export control officers overseas expected to double to 25",
+  "Huawei expected to fulfill DeepSeek order for 160,000 chips in over a year"
+ ]
+}

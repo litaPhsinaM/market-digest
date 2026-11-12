@@ -1,0 +1,100 @@
+{
+ "id": "rational-reminder-115f7adba7",
+ "source_id": "rational-reminder",
+ "source_name": "Rational Reminder (Ben Felix)",
+ "kind": "podcast",
+ "title": "The Winners and Losers of Index Investing | #435",
+ "url": "https://rationalreminder.libsyn.com/the-winners-and-losers-of-index-investing-435",
+ "media_url": "https://dts.podtrac.com/redirect.mp3/traffic.libsyn.com/secure/rationalreminder/RRP_-_EP.435_Martin_Schmalz_-_AUDIO_V1.mp3?dest-id=763774",
+ "published": "2026-11-12",
+ "duration": 4831,
+ "digest_date": "2026-11-12",
+ "backend": "gemini",
+ "model": "gemini-3.1-flash-lite",
+ "summary": {
+  "segments": [
+   "Growth of index investing",
+   "Equilibrium effects of index funds",
+   "Common ownership and competition",
+   "Why wealthy investors avoid indexing",
+   "Horizon dependent risk aversion"
+  ],
+  "headline": "Index investing's equilibrium effects and behavioral wealth destruction",
+  "tldr": "Martin Schmalz discusses how index funds, while beneficial for individuals, may create systemic equilibrium effects that reduce expected returns. He also explores why wealthy entrepreneurs often fail to preserve wealth due to behavioral biases and a lack of diversification.",
+  "key_points": [
+   {
+    "point": "Index funds increase asset prices and lower expected returns by shifting demand into equities while supply remains fixed.",
+    "why_it_matters": "This suggests that while indexing is a great deal for an individual, the collective adoption of index funds changes market dynamics in ways that may reduce overall expected returns."
+   },
+   {
+    "point": "Common ownership of competitors, often driven by centralized voting at large asset managers, can lead to higher product prices.",
+    "why_it_matters": "It highlights that the structure of corporate governance and ownership, rather than just indexing itself, can weaken competitive incentives and harm consumer welfare."
+   },
+   {
+    "point": "Wealthy entrepreneurs often struggle to preserve wealth because the traits that drive business success\u2014like overconfidence and intuition\u2014are antithetical to successful investing.",
+    "why_it_matters": "It illustrates that wealth creation and wealth preservation are distinct disciplines, and failing to diversify leads to significant capital loss."
+   },
+   {
+    "point": "Horizon dependent risk aversion explains why investors panic and sell during volatility.",
+    "why_it_matters": "Understanding that people become more risk-averse as risks become imminent helps explain why investors frequently make poor trading decisions during market downturns."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "76 basis points",
+    "context": "The approximate cost of Vanguard index funds in 1980, which has since dropped significantly."
+   },
+   {
+    "figure": "20%",
+    "context": "The threshold of ownership in large US publicly traded firms often reached by the 'big three' asset managers."
+   }
+  ],
+  "lesson": "When a strategy becomes universally adopted, the resulting change in market equilibrium can diminish the original benefits of that strategy, a phenomenon known as a tragedy of the commons.",
+  "opinions_and_predictions": [
+   "Martin Schmalz believes we are likely at the limit of the asset price increase effect caused by the growth of index funds.",
+   "Martin Schmalz conjectures that the cooperative, customer-owned structure of Vanguard allowed it to offer products at cost rather than maximizing margins.",
+   "Martin Schmalz suggests that if one were concerned about common ownership, private markets would be a more pressing area of concern than public markets."
+  ],
+  "tickers": [
+   "Tesla (TSLA)",
+   "Delta Air Lines (DAL)",
+   "United Airlines (UAL)"
+  ],
+  "glossary": [
+   {
+    "term": "Basis point",
+    "definition": "One hundredth of one percent (0.01%).",
+    "example": "A fee reduction from 76 to 3 basis points is a significant cost saving."
+   },
+   {
+    "term": "Common ownership",
+    "definition": "A situation where the same shareholders own significant stakes in competing companies.",
+    "example": "Large asset managers owning shares in both Delta and United Airlines."
+   },
+   {
+    "term": "Idiosyncratic risk",
+    "definition": "Risk that is specific to a single company or industry rather than the market as a whole.",
+    "example": "Holding only one stock exposes an investor to the risk of that specific company failing."
+   },
+   {
+    "term": "Volatility drag",
+    "definition": "The mathematical reduction in the compounded annual growth rate of a portfolio caused by volatility.",
+    "example": "A 50% loss requires a 100% gain just to break even, illustrating why avoiding large swings is vital for long-term compounding."
+   },
+   {
+    "term": "Tunneling",
+    "definition": "A practice where controlling shareholders or managers transfer assets or profits out of a company for their own benefit.",
+    "example": "A controlling shareholder forcing a company to buy their own personal art at inflated prices."
+   }
+  ],
+  "level": "intermediate",
+  "topics": [
+   "index funds",
+   "market efficiency",
+   "behavioral finance",
+   "antitrust"
+  ],
+  "quality_note": "The source features a finance professor discussing academic research and economic theory; claims are framed as theoretical possibilities or empirical observations rather than investment advice.",
+  "worth_reading": true
+ }
+}

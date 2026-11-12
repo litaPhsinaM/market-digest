@@ -1,0 +1,100 @@
+{
+ "id": "wsj-whats-news-36f050f89a",
+ "source_id": "wsj-whats-news",
+ "source_name": "WSJ What's News",
+ "kind": "podcast",
+ "title": "How One Guy Saves Past Pop Hits From Extinction in the Age of Streaming",
+ "url": "https://www.wsj.com/podcasts/whats-news",
+ "media_url": "https://dowjones.simplecastaudio.com/3d1c8b0a-4b6d-4ea9-a455-ab1adaa7e74b/episodes/fc24fcc7-0f64-48b6-be0b-1e9481e8ddfd/audio/128/default.mp3?aid=rss_feed&awCollectionId=3d1c8b0a-4b6d-4ea9-a455-ab1adaa7e74b&awEpisodeId=fc24fcc7-0f64-48b6-be0b-1e9481e8ddfd&feed=BA5QWI2p",
+ "published": "2026-11-11",
+ "duration": 749,
+ "digest_date": "2026-11-12",
+ "backend": "gemini",
+ "model": "gemini-3.1-flash-lite",
+ "summary": {
+  "segments": [
+   "Market performance and AI stock trends",
+   "United Airlines bans AI booking agents",
+   "J.D",
+   "Ukraine-Russia peace talks in Abu Dhabi",
+   "California billionaire wealth tax rejection",
+   "White House warns House oversight chair",
+   "Rescuing lost music for streaming services"
+  ],
+  "headline": "CoreWeave earnings lift AI stocks; California rejects wealth tax",
+  "tldr": "Markets rallied behind strong AI-related earnings, while United Airlines moved to restrict AI booking bots. Meanwhile, California voters rejected a billionaire tax, and a London-based lawyer is successfully lobbying to bring lost music tracks to streaming platforms.",
+  "key_points": [
+   {
+    "point": "CoreWeave shares rose 25% following a strong earnings report, boosting other data center and chip stocks.",
+    "why_it_matters": "Positive sentiment in AI-related hardware helps stabilize broader market volatility and investor confidence in the AI sector."
+   },
+   {
+    "point": "United Airlines is banning personal AI assistants from booking flights on its website due to concerns over data security and regulatory compliance.",
+    "why_it_matters": "This highlights the friction between the rapid adoption of AI agents and the operational and legal constraints of established service industries."
+   },
+   {
+    "point": "California voters rejected a proposed billionaire wealth tax, though proponents suggest the issue may return to the ballot in 2028.",
+    "why_it_matters": "The failure of this measure reflects the ongoing political and legal challenges surrounding wealth taxation in the United States."
+   },
+   {
+    "point": "A London-based lawyer has successfully lobbied to get 900 music releases back onto streaming platforms over the last 10 years.",
+    "why_it_matters": "Many songs are missing from streaming due to digitization gaps, lost master tapes, or complex rights issues, rather than a lack of consumer interest."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "25%",
+    "context": "The surge in CoreWeave shares after the company reported strong earnings."
+   },
+   {
+    "figure": "1.6%",
+    "context": "The gain in the Nasdaq index during the trading session."
+   },
+   {
+    "figure": "900",
+    "context": "The number of music releases a lawyer has helped get back onto streaming platforms over the last 10 years."
+   }
+  ],
+  "lesson": "When digital assets like music or data are moved across platforms, ownership and rights issues often cause content to be lost or excluded, creating a gap between historical availability and modern access.",
+  "opinions_and_predictions": [
+   "Some US officials believe it is a political risk for J.D. Vance to lead Iran peace talks, as he could become the face of failure if negotiations collapse.",
+   "Bernie Sanders stated that a federal billionaire wealth tax will be passed.",
+   "Paul Kieran (WSJ) notes that a federal wealth tax faces significant legal obstacles, particularly with the current Supreme Court."
+  ],
+  "tickers": [
+   "Amazon (AMZN)",
+   "Meta (META)"
+  ],
+  "glossary": [
+   {
+    "term": "IPO",
+    "definition": "Initial Public Offering; the first time a company sells shares of stock to the public.",
+    "example": "Anthropic is expected to begin trading publicly through an IPO."
+   },
+   {
+    "term": "AI agent",
+    "definition": "Software that can perform tasks or make decisions on behalf of a user, such as booking travel or shopping.",
+    "example": "United Airlines is banning AI agents from booking flights on its website."
+   },
+   {
+    "term": "Volatility",
+    "definition": "The rate at which the price of a stock or market index increases or decreases over a period.",
+    "example": "Markets have experienced significant volatility recently, including major sell-offs."
+   },
+   {
+    "term": "Rights issues",
+    "definition": "Legal complications regarding who is allowed to distribute or profit from intellectual property like music.",
+    "example": "Some songs are missing from streaming because labels did not secure digital rights for samples used in the tracks."
+   }
+  ],
+  "level": "beginner",
+  "topics": [
+   "ai stocks",
+   "market trends",
+   "tax policy",
+   "streaming media"
+  ],
+  "quality_note": "The report relies on WSJ journalists and official statements, providing a mix of market data and political reporting.",
+  "worth_reading": true
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "id": "indicator-b93b8e507c",
+ "source_id": "indicator",
+ "source_name": "The Indicator from Planet Money",
+ "kind": "podcast",
+ "title": "Should personal finance be part of the liberal arts?",
+ "url": "https://www.npr.org/2026/11/12/nx-s1-6037729/should-personal-finance-be-part-of-the-liberal-arts",
+ "media_url": "https://prfx.byspotify.com/e/play.podtrac.com/npr-510325/npr.simplecastaudio.com/0a4e8d3b-fe23-4948-9e39-20fcf16f9331/episodes/0109a642-aed7-4067-83bd-d7d2b3e528e5/audio/128/default.mp3?awCollectionId=0a4e8d3b-fe23-4948-9e39-20fcf16f9331&awEpisodeId=0109a642-aed7-4067-83bd-d7d2b3e528e5&feed=IFy3imsg&t=podcast&e=nx-s1-6037729&p=510325&d=561&size=8992039",
+ "published": "2026-11-12",
+ "duration": 561,
+ "digest_date": "2026-11-12",
+ "backend": "gemini",
+ "model": "gemini-3.1-flash-lite",
+ "summary": {
+  "segments": [
+   "Pop quiz on PESTEL business factors",
+   "Rise of AP Business and personal finance",
+   "Inside an AP Business classroom",
+   "Financial education and student outcomes",
+   "Business as a new liberal art"
+  ],
+  "headline": "High schools integrate personal finance into new AP Business curriculum",
+  "tldr": "High schools are increasingly adopting AP Business with Personal Finance courses to prepare students for the workforce and financial decision-making. Proponents argue that business literacy is a modern essential that complements traditional liberal arts by teaching students how to adapt to economic change.",
+  "key_points": [
+   {
+    "point": "39 states now require some form of personal finance education for high school graduation.",
+    "why_it_matters": "This shift reflects a growing national consensus that financial literacy is a fundamental skill for young adults entering the economy."
+   },
+   {
+    "point": "Research from the New York Fed indicates that students with financial education were 6% more likely to pay down credit card debt during the pandemic.",
+    "why_it_matters": "It provides empirical evidence that classroom instruction on finance can lead to tangible, positive changes in real-world financial behavior."
+   },
+   {
+    "point": "The College Board launched an AP Business course to teach management, finance, and adaptation skills like PESTEL analysis.",
+    "why_it_matters": "Standardizing business education allows high school students to earn college credit while gaining practical skills for the modern workforce."
+   },
+   {
+    "point": "David Coleman, CEO of the College Board, argues that business should be considered a liberal art because it fosters leadership and the ability to adapt to change.",
+    "why_it_matters": "Framing business as a liberal art suggests that financial acumen is necessary to support and sustain other intellectual or creative pursuits."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "39",
+    "context": "The number of states that currently require some form of personal finance class for high school graduation."
+   },
+   {
+    "figure": "6%",
+    "context": "The increased likelihood that individuals with financial education would pay down credit card debt during the pandemic."
+   }
+  ],
+  "lesson": "When education aligns with practical life skills\u2014such as managing debt or understanding market forces\u2014it creates measurable improvements in individual financial health and economic decision-making.",
+  "opinions_and_predictions": [
+   "Jerry Kimball (teacher) believes every student should take a business course because everyone is a consumer.",
+   "David Coleman (CEO of the College Board) predicts that business will be a new part of the liberal arts because it teaches constant adaptation.",
+   "David Coleman (CEO of the College Board) argues that the original purpose of the liberal arts was to develop well-rounded leaders, and financial acumen is now required to achieve that."
+  ],
+  "tickers": [],
+  "glossary": [
+   {
+    "term": "PESTEL",
+    "definition": "An acronym for six external factors that affect a business: Political, Economic, Social, Technological, Environmental, and Legal.",
+    "example": "A student might analyze how AI technology impacts a specific industry as part of a PESTEL assessment."
+   },
+   {
+    "term": "Roth IRA",
+    "definition": "A retirement savings account where you contribute money that has already been taxed, allowing the investment to grow and be withdrawn tax-free in retirement.",
+    "example": "A student referee might put 70% of their paycheck into a Roth IRA to save for the future."
+   },
+   {
+    "term": "Liberal Arts",
+    "definition": "Academic subjects like history, literature, and philosophy that focus on general knowledge and intellectual skills rather than specific professional training.",
+    "example": "Proponents argue that business should be included alongside traditional liberal arts subjects like English and chemistry."
+   },
+   {
+    "term": "Career and Technical Education",
+    "definition": "Educational programs designed to prepare students for specific careers or trades by providing hands-on training.",
+    "example": "The new AP Business class is intended to slot into the broader category of career and technical education."
+   }
+  ],
+  "level": "beginner",
+  "topics": [
+   "personal finance",
+   "education",
+   "economics"
+  ],
+  "quality_note": "The source features interviews with a teacher, a student, and the CEO of the College Board, supported by cited research from the New York Fed.",
+  "worth_reading": true
+ }
+}
