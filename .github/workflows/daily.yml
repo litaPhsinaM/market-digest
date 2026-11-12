@@ -91,14 +91,6 @@ jobs:
         if: steps.due.outputs.run == 'yes' && inputs.dry_run != true && !cancelled()
         timeout-minutes: 5
         run: python run.py --claims
-      - name: Keep the transcripts (not published; for run.py --redo)
-        if: steps.due.outputs.run == 'yes' && inputs.dry_run != true && !cancelled()
-        uses: actions/upload-artifact@v4
-        with:
-          name: transcripts-${{ github.run_id }}
-          path: data/transcripts/
-          retention-days: 30
-          if-no-files-found: ignore
       - name: Save data
         if: steps.due.outputs.run == 'yes' && inputs.dry_run != true && !cancelled()
         # Like prices.yml: the price job may have pushed meanwhile, so start from the latest main, lay this run's files
