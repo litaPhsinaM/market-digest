@@ -76,7 +76,7 @@ def _():
     if not voice.available():
         raise RuntimeError("voice model not available: the run would skip the audio briefing")
     out = Path(tempfile.mkdtemp()) / "test.mp3"
-    voice.speak("Good morning. This is a test of the Market Digest audio briefing.", out)
+    voice.speak("Good morning. This is a test of the Stocksplain audio briefing.", out)
     return f"spoke a test sentence ({out.stat().st_size // 1024} KB mp3)"
 
 

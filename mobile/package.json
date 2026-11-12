@@ -2,7 +2,7 @@
   "name": "market-digest-app",
   "private": true,
   "version": "1.0.0",
-  "description": "Market Digest as a native Android/iOS app (Capacitor wrapper around the website).",
+  "description": "Stocksplain as a native Android/iOS app (Capacitor wrapper around the website).",
   "scripts": {
     "sync": "node sync-web.mjs && npx cap sync",
     "apk": "npm run sync && cd android && ./gradlew assembleDebug"
