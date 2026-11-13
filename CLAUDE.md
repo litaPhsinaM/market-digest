@@ -23,6 +23,17 @@ lesson, with quizzes, lessons, paper trading and a pundit scorecard. Live at htt
   plain `100vh`). Don't auto-focus inputs on touch screens (the keyboard covers the pop-up).
 - Class names collide: `.mini` (small button) and `.feed` (pill) are taken; check `style.css` before naming a new class.
 
+## Brand and design rules
+
+- **Type:** page titles and section headings use the display serif (`--font-display`, Fraunces, loaded once in
+  `base.html`); UI, body text and all numbers use the sans (`--font`). One title scale for every page (end of `style.css`).
+- **Page header pattern:** `.eyebrow` + serif `h1` + one-line `.lede`. Keep headers compact: content should start in
+  the top half of a 1440×900 screen.
+- **Colour accents:** green `#3fbf8f` (primary), blue `#6aa0ff`, amber `#e0a33b`, purple `#b48cff`, red `#ef7d7d`,
+  cyan `#4fc3d9`; used for groups/topics, never for meaning that conflicts with up/down green/red.
+- **Motion:** cards below the fold fade up once (`.rv` → `.in`, features.js), pages cross-fade (`@view-transition`),
+  tappable cards lift 2px on hover. Everything is off under `prefers-reduced-motion`.
+
 ## How it runs
 
 ```
