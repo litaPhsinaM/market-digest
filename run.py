@@ -97,6 +97,9 @@ def log_claims(item, transcript: str):
 def backfill_claims():
     from digest import claims
     have = {c["item_id"] for c in claims.load()}
+    reviewed = DATA / "claims_reviewed.json"  # forecasts removed by hand review: never re-extract those episodes
+    if reviewed.exists():
+        have |= {c["item_id"] for c in json.loads(reviewed.read_text())}
     for p in sorted(ITEMS.glob("*.json")):
         r = json.loads(p.read_text())
         t = TRANSCRIPTS / f"{r['id']}.txt"
