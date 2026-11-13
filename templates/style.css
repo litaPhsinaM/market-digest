@@ -1707,3 +1707,51 @@ main h1, .course-hero h1, .src-hero h1, .dict-title h1, .about-hero h1, .learn-h
 .ar-sec.ar-first { margin-top: 18px; }
 .about-hero + .ar-first .section-title { display: none; }   /* the page header already introduces it */
 .ar-hero { margin-top: 22px; padding-top: 0; border-top: 0; }
+
+/* light mode: accent colours used as text get darker shades so they stay readable (WCAG AA) */
+:root[data-theme="light"] .src-facts li b, .src-group .sg-head h2, .scd-stats b, .scd-latest span { color: color-mix(in srgb, var(--g, var(--c)) 58%, #000); }
+:root[data-theme="light"] .src-facts li b { color: color-mix(in srgb, var(--c) 58%, #000); }
+:root[data-theme="light"] .desk-n { color: color-mix(in srgb, var(--d) 55%, #000); }
+:root[data-theme="light"] .desk .today { color: #fff; background: color-mix(in srgb, var(--d) 70%, #000); }
+:root[data-theme="light"] .sh-n { color: #fff; background: color-mix(in srgb, var(--c) 72%, #000); }
+:root[data-theme="light"] .gt-topic.t-stocks, .gt-topic.t-trading { color: #17714f; }
+:root[data-theme="light"] .gt-topic.t-economy, .gt-topic.t-bonds { color: #2556b8; background: rgba(37, 86, 184, .1); }
+:root[data-theme="light"] .gt-topic.t-companies, .gt-topic.t-banking { color: #8a5600; background: rgba(160, 100, 0, .1); }
+:root[data-theme="light"] .gt-topic.t-tech, .gt-topic.t-crypto { color: #6a3fc4; background: rgba(106, 63, 196, .1); }
+:root[data-theme="light"] .ar-time .t-alt time { color: #2556b8; }
+:root[data-theme="light"] .ar-time li.t-alt { border-top-color: #2556b8; }
+:root[data-theme="light"] .steps li:nth-child(n) .step-n { color: #fff; background: color-mix(in srgb, var(--step, #3fbf8f) 70%, #000); }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .src-facts li b, .src-group .sg-head h2, .scd-stats b, .scd-latest span { color: color-mix(in srgb, var(--g, var(--c)) 58%, #000); }
+  :root:not([data-theme="dark"]) .src-facts li b { color: color-mix(in srgb, var(--c) 58%, #000); }
+  :root:not([data-theme="dark"]) .desk-n { color: color-mix(in srgb, var(--d) 55%, #000); }
+  :root:not([data-theme="dark"]) .desk .today { color: #fff; background: color-mix(in srgb, var(--d) 70%, #000); }
+  :root:not([data-theme="dark"]) .sh-n { color: #fff; background: color-mix(in srgb, var(--c) 72%, #000); }
+  :root:not([data-theme="dark"]) .gt-topic.t-stocks, .gt-topic.t-trading { color: #17714f; }
+  :root:not([data-theme="dark"]) .gt-topic.t-economy, .gt-topic.t-bonds { color: #2556b8; background: rgba(37, 86, 184, .1); }
+  :root:not([data-theme="dark"]) .gt-topic.t-companies, .gt-topic.t-banking { color: #8a5600; background: rgba(160, 100, 0, .1); }
+  :root:not([data-theme="dark"]) .gt-topic.t-tech, .gt-topic.t-crypto { color: #6a3fc4; background: rgba(106, 63, 196, .1); }
+  :root:not([data-theme="dark"]) .ar-time .t-alt time { color: #2556b8; }
+  :root:not([data-theme="dark"]) .ar-time li.t-alt { border-top-color: #2556b8; }
+  :root:not([data-theme="dark"]) .steps li:nth-child(n) .step-n { color: #fff; background: color-mix(in srgb, var(--step, #3fbf8f) 70%, #000); }
+}
+.steps li:nth-child(1) { --step: #3fbf8f; } .steps li:nth-child(2) { --step: #6aa0ff; } .steps li:nth-child(3) { --step: #e0a33b; }
+.steps li:nth-child(4) { --step: #b48cff; } .steps li:nth-child(5) { --step: #ef7d7d; }
+
+/* lesson pages: article + sidebar, reading bar */
+.lesson-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 24px; align-items: start; }
+.lesson-layout .lesson-page { max-width: none; }
+.lesson-side { position: sticky; top: 84px; display: grid; gap: 12px; }
+.ls-unit { margin: -4px 0 8px; }
+.ls-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.ls-list a { display: flex; gap: 10px; align-items: baseline; padding: 6px 8px; border-radius: 8px; color: var(--text); text-decoration: none; font-size: .86rem; line-height: 1.35; }
+.ls-list a span { flex: none; width: 22px; font-size: .74rem; font-weight: 800; color: var(--text-3); font-variant-numeric: tabular-nums; }
+.ls-list a:hover { background: var(--surface-2); }
+.ls-list a[aria-current] { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+.ls-list a[aria-current] span { color: var(--accent); }
+.ls-all > summary { cursor: pointer; list-style: none; } .ls-all > summary::-webkit-details-marker { display: none; }
+.ls-all > summary::after { content: " ＋"; color: var(--text-3); } .ls-all[open] > summary::after { content: " －"; }
+.ls-u { font-size: .7rem; font-weight: 750; text-transform: uppercase; letter-spacing: .07em; color: var(--text-3); margin: 12px 0 4px; }
+.ls-course { width: 100%; justify-content: center; }
+.page-read { position: fixed; top: 0; left: 0; right: 0; z-index: 60; height: 3px; }
+@media (max-width: 1000px) { .lesson-layout { grid-template-columns: minmax(0, 1fr); } .lesson-side { position: static; } }

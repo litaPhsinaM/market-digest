@@ -12,7 +12,9 @@
   "provider": {"@type": "Organization", "name": "Stocksplain", "url": site_url}
 }|tojson }}</script>{% endblock %}
 {% block content %}
+<div class="read-bar page-read" aria-hidden="true"><span></span></div>
 <nav class="crumbs small muted" aria-label="Breadcrumb"><a href="{{ prefix }}learn.html">Learn</a> › {{ l.unit }} › Lesson {{ l.id[1:]|int }}</nav>
+<div class="lesson-layout">
 <article class="card lesson-page">
   <div class="eyebrow">Lesson {{ l.id[1:]|int }} of {{ total }} · {{ l.minutes }} min</div>
   <h1>{{ l.title }}</h1>
@@ -30,7 +32,7 @@
   {% endif %}
   <div class="lesson"><div class="eyebrow">Remember</div><p>{{ l.takeaway }}</p></div>
   <div class="lesson-cta">
-    <a class="btn" href="{{ prefix }}learn.html#{{ l.id }}">Take the quiz (+$500 play money) →</a>
+    <a class="btn" href="{{ prefix }}learn.html#{{ l.id }}">Take the quiz and finish (+$500 play money) →</a>
     {% if next %}<a class="btn ghost" href="{{ next.slug }}.html">Next: {{ next.title }} →</a>{% endif %}
   </div>
   {% if l.resources %}
@@ -41,7 +43,26 @@
   </ul>
   {% endif %}
 </article>
-<h2 class="section-title">All lessons</h2>
-<ol class="lesson-index">{% for x in all %}<li><a href="{{ x.slug }}.html"{% if x.id == l.id %} aria-current="page"{% endif %}>{{ x.title }}</a></li>{% endfor %}</ol>
+<aside class="lesson-side">
+  <section class="card side">
+    <h2 class="side-title">In this unit</h2>
+    <p class="muted small ls-unit">{{ l.unit }}</p>
+    <ol class="ls-list">{% for x in all if x.unit == l.unit %}<li><a href="{{ x.slug }}.html"{% if x.id == l.id %} aria-current="page"{% endif %}><span>{{ x.id[1:]|int }}</span>{{ x.title }}</a></li>{% endfor %}</ol>
+  </section>
+  <details class="card side ls-all">
+    <summary class="side-title">All {{ total }} lessons</summary>
+    {% for unit, group in all|groupby('unit') %}<p class="ls-u">{{ unit }}</p>
+    <ol class="ls-list">{% for x in group %}<li><a href="{{ x.slug }}.html"{% if x.id == l.id %} aria-current="page"{% endif %}><span>{{ x.id[1:]|int }}</span>{{ x.title }}</a></li>{% endfor %}</ol>{% endfor %}
+  </details>
+  <a class="btn ls-course" href="{{ prefix }}learn.html">Open the full course →</a>
+</aside>
+</div>
 <p class="asof">For learning only, not personal financial advice.</p>
+<script>
+(function () {  // reading progress for the page
+  const bar = document.querySelector(".page-read span"); if (!bar) return;
+  const f = () => { const max = document.documentElement.scrollHeight - innerHeight; bar.style.width = (max > 0 ? Math.min(100, 100 * scrollY / max) : 100) + "%"; };
+  addEventListener("scroll", f, { passive: true }); f();
+})();
+</script>
 {% endblock %}

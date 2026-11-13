@@ -259,6 +259,7 @@ def build(root: Path):
     for asset in ("style.css", "app.js", "features.js", "account.js", "social.js", "learn.js", "admin.js", "quant.js", "supabase.js", "manifest.webmanifest"):
         shutil.copy(root / "templates" / asset, out / asset)
     shutil.copytree(root / "templates" / "icons", out / "icons")
+    shutil.copy(root / "templates" / "icons" / "favicon.ico", out / "favicon.ico")  # browsers and Google look here first
     version = dt.datetime.now().strftime("%Y%m%d%H%M%S")
     (out / "sw.js").write_text((root / "templates" / "sw.js").read_text().replace("__VERSION__", version))
     (out / "audio").mkdir()

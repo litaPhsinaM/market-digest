@@ -14,9 +14,11 @@
   "author": {"@type": "Organization", "name": "Stocksplain", "url": site_url},
   "publisher": {"@type": "Organization", "name": "Stocksplain", "logo": {"@type": "ImageObject", "url": site_url ~ "icons/icon-512.png"}}
 }|tojson }}</script>{% if is_home %}
-<script type="application/ld+json">{{ {"@context": "https://schema.org", "@type": "WebSite", "name": "Stocksplain", "url": site_url,
+<script type="application/ld+json">{{ {"@context": "https://schema.org", "@type": "WebSite", "name": "Stocksplain", "alternateName": ["Stocksplain app", "stocksplain.app"], "url": site_url,
   "description": "Learn investing in 5 minutes a day: free plain-English summaries of trusted finance podcasts and news, a beginner course and paper trading.",
-  "potentialAction": {"@type": "SearchAction", "target": site_url ~ "archive.html?q={search_term_string}", "query-input": "required name=search_term_string"}}|tojson }}</script>{% endif %}{% endblock %}
+  "potentialAction": {"@type": "SearchAction", "target": site_url ~ "archive.html?q={search_term_string}", "query-input": "required name=search_term_string"}}|tojson }}</script>
+<script type="application/ld+json">{{ {"@context": "https://schema.org", "@type": "Organization", "name": "Stocksplain", "url": site_url,
+  "logo": site_url ~ "icons/icon-512.png", "sameAs": ["https://github.com/litaPhsinaM/stocksplain"]}|tojson }}</script>{% endif %}{% endblock %}
 {% macro chg(q) %}{% set f = q|qf %}<span class="chg {{ 'up' if q.change >= 0 else 'down' }}"><span aria-hidden="true">{{ '▲' if q.change >= 0 else '▼' }}</span> {{ f.change }}</span>{% endmacro %}
 {% set companies = market.companies if market else [] %}
 {% set co_syms = companies|map(attribute='symbol')|list %}
