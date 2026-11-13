@@ -234,9 +234,8 @@
   <h2 class="section-title">Today’s stories</h2>
   <span class="muted small">Tap a story to read it · ✓ when you’re done</span>
 </div>
-{% set n_stories = items|selectattr('summary.worth_reading')|list|length %}
-<div class="story-grid{% if n_stories <= 4 %} few few-{{ n_stories }}{% endif %}">
-{% for it in items if it.summary.worth_reading %}{% set s = it.summary %}
+{% set n_stories = items|selectattr('summary.worth_reading')|rejectattr('id', 'in', repeat_ids)|list|length %}
+{% macro story_card(it) %}{% set s = it.summary %}
   <button class="sc" type="button" data-story="{{ it.id }}" aria-label="Read: {{ s.headline }}">
     <span class="sc-top">
       <span class="avatar sm s{{ (src_index.get(it.source_id, 0) % 8) + 1 }}" aria-hidden="true">{{ it.source_name|initials }}</span>
@@ -252,8 +251,17 @@
       {% for raw in s.tickers[:2] %}{% set sym = (raw.split('(')[-1].rstrip(')')).strip() %}{% if sym in co_syms %}<span class="sc-tick">{{ sym }}</span>{% endif %}{% endfor %}
     </span>
   </button>
-{% endfor %}
+{% endmacro %}
+<div class="story-grid{% if n_stories <= 4 %} few few-{{ n_stories }}{% endif %}">
+{% for it in items if it.summary.worth_reading and it.id not in repeat_ids %}{{ story_card(it) }}{% endfor %}
 </div>
+{% set reps = items|selectattr('summary.worth_reading')|selectattr('id', 'in', repeat_ids)|list %}
+{% if reps %}
+<details class="more-stories">
+  <summary>{{ reps|length }} more episode{{ 's' if reps|length > 1 }} on the same stories</summary>
+  <div class="story-grid">{% for it in reps %}{{ story_card(it) }}{% endfor %}</div>
+</details>
+{% endif %}
 
 {% for it in items if it.summary.worth_reading %}{% set s = it.summary %}
 <dialog class="sheet story" id="{{ it.id }}" aria-labelledby="{{ it.id }}-h">
@@ -373,8 +381,8 @@
       <li><a href="{{ i.url }}" target="_blank" rel="noopener">
         <span class="ec-id"><span class="ec-label">{{ i.label }}</span>
           <small>{% if i.vs == 'last month' %}{{ mon }}{% else %}{{ mon[:3] }} {{ i.date[8:10]|int }}{% endif %}{% if i.change %} · {{ i.change }}{% endif %}</small></span>
-        <b class="ec-val">{{ i.text }}</b></a>
-        <p class="ec-why">{{ i.explain }}</p></li>
+        <b class="ec-val">{{ i.text }}</b></a><button class="info ec-info" type="button" data-tip="{{ i.explain }}" aria-label="About {{ i.label }}">i</button>
+</li>
     {% endfor %}</ul>
     {% if econ.upcoming %}
     <h3 class="ec-sub">Coming up</h3>
@@ -391,15 +399,16 @@
     <h2 class="side-title">Companies in the news</h2>
     <ul class="cos">
     {% for c in companies %}{% set f = c|qf %}
-      <li class="co-li" data-sym="{{ c.symbol }}"><button class="co-row" type="button" data-open="{{ c.symbol }}">
+      <li class="co-li{% if loop.index > 6 %} co-extra{% endif %}" data-sym="{{ c.symbol }}"><button class="co-row" type="button" data-open="{{ c.symbol }}">
         <span class="co-logo" aria-hidden="true">{{ c.symbol[:1] }}</span>
         <span class="co-id"><span class="co-name">{{ c.name|replace(', Inc.', '')|replace(' Inc.', '')|replace(' Corporation', '') }}</span>
-          <span class="co-sym">{{ c.symbol }}{% if c.mentioned_in %} · <span class="mention">in today’s stories</span>{% endif %}</span></span>
+          <span class="co-sym">{{ c.symbol }}{% if c.mentioned_in %} · <span class="mention" title="Mentioned in today’s stories">in news</span>{% endif %}</span></span>
         <svg class="spark sm" data-series='{{ c.history[-23:]|tojson }}' aria-hidden="true"></svg>
         <span class="co-px"><span class="co-price">{{ f.price }}</span>{{ chg(c) }}</span>
       </button><button class="star" type="button" data-star="{{ c.symbol }}" aria-pressed="false" aria-label="Add {{ c.symbol }} to your watchlist">☆</button></li>
     {% endfor %}
     </ul>
+    {% if companies|length > 6 %}<button class="side-link co-more" type="button" data-co-more>Show all {{ companies|length }} companies</button>{% endif %}
     <p class="side-note">Tap a company for its chart, stats and headlines. ☆ Star one to pin it to the top.</p>
   </section>
   {% endif %}
@@ -433,7 +442,7 @@
   </section>
   {% endif %}
 
-  {% set words = [] %}{% for it in items if it.summary.worth_reading %}{% for t in it.summary.glossary %}{% if words|length < 6 %}{% set _ = words.append(t) %}{% endif %}{% endfor %}{% endfor %}
+  {% set words = [] %}{% for it in items if it.summary.worth_reading %}{% for t in it.summary.glossary %}{% if words|length < 4 %}{% set _ = words.append(t) %}{% endif %}{% endfor %}{% endfor %}
   {% if words %}
   <section class="card side">
     <h2 class="side-title">Words of the day</h2>
@@ -442,12 +451,6 @@
   </section>
   {% endif %}
 
-  {% if brief and brief.watch_for %}
-  <section class="card side">
-    <h2 class="side-title">Worth watching</h2>
-    <ul class="watch">{% for w in brief.watch_for %}<li>{{ w }}</li>{% endfor %}</ul>
-  </section>
-  {% endif %}
 </aside>
 </div>
 

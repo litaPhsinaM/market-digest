@@ -241,7 +241,15 @@ def build(root: Path):
         call_co = pool[dt.date.fromisoformat(date).toordinal() % len(pool)] if pool else None
         good = [i for i in its if i["summary"]["worth_reading"]]
         econ_day = max((d for d in econs if d <= date), default=None)
+        seen_keys, repeats = set(), set()
+        for it in good:  # the first episode on a story stays up front; later ones on the same story fold away
+            lead = re.split(r"[;:]", it["summary"]["headline"])[0]  # the episode's main story, not its second item
+            k = _keys(lead, _named(it["summary"].get("tickers"), lead))
+            if k and k & seen_keys:
+                repeats.add(it["id"])
+            seen_keys |= k
         return {"date": date, "brief": briefs.get(date), "items": its, "story_slides": story_slides(hots.get(date), good),
+                "repeat_ids": repeats,
                 "econ": econs.get(econ_day) if econ_day else None, "market": mkt, "hot": hots.get(date), "call_co": call_co,
                 "quiz": quizzes.get(date), "earnings": earnings,
                 "audio": audio.get(date) if (out / "audio" / f"{date}.mp3").exists() else None,

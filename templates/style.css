@@ -1167,3 +1167,48 @@ button.act.progress { cursor: pointer; font: inherit; }
 .side-more { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 24px; align-items: start; }
 .side-more > * { min-width: 0; }
 .col-side.tall { position: static; }
+
+/* ---------- Play: trading-app layout (portfolio + chart, your stocks beside it, games below) ---------- */
+.rh { display: grid; grid-template-columns: minmax(0, 1fr) 360px; grid-template-areas: "hero side" "rest side"; gap: 8px 28px; align-items: start; }
+.rh > .pf-hero { grid-area: hero; min-width: 0; }
+.rh-side { grid-area: side; display: grid; gap: 16px; min-width: 0; }
+.rh-rest { grid-area: rest; display: grid; gap: 16px; min-width: 0; }
+.play-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
+.play-grid > * { min-width: 0; }
+.play-sec { font-size: 1.05rem; margin: 18px 0 0; }
+.rh-rest > .play-sec:first-child { margin-top: 0; }
+.pf-scrub { min-height: 1.3em; margin-top: 2px; font-variant-numeric: tabular-nums; }
+.pf-scrub .up { color: var(--up); font-weight: 700; } .pf-scrub .down { color: var(--down); font-weight: 700; }
+.pf-chart { position: relative; touch-action: pan-y; cursor: crosshair; }
+.pf-chart .cur { stroke: var(--text-2); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.pf-chart .dot { stroke: var(--bg); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.pf-chart .up .dot { fill: var(--up); } .pf-chart .down .dot { fill: var(--down); }
+.pf-ranges { display: flex; gap: 4px; border-bottom: 1px solid var(--line); padding-bottom: 10px; margin-bottom: 10px; }
+.pf-ranges button { border: 0; background: none; color: var(--text-2); font: inherit; font-size: .82rem; font-weight: 700; padding: 6px 12px; border-radius: 8px; cursor: pointer; }
+.pf-ranges button:hover { color: var(--text); background: var(--surface-2); }
+.pf-ranges button[aria-selected="true"] { color: var(--up); background: var(--up-soft); }
+.pf-hero.down .pf-ranges button[aria-selected="true"] { color: var(--down); background: var(--down-soft); }
+.h-id .h-sub { display: block; }
+.h-val { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; margin-left: auto; }
+.h-gain { font-size: .72rem; color: var(--text-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.h-gain.up { color: var(--up); } .h-gain.down { color: var(--down); }
+@media (max-width: 1080px) {
+  .rh { grid-template-columns: minmax(0, 1fr); grid-template-areas: "hero" "side" "rest"; }
+}
+@media (max-width: 720px) { .play-grid { grid-template-columns: minmax(0, 1fr); } }
+.rh .pf-changes { display: none; }  /* the line under the chart shows the change for the chosen range */
+.h-gain .up { color: var(--up); } .h-gain .down { color: var(--down); }
+.rh-side .h-id { min-width: 0; flex: 1; } .rh-side .h-id b { display: block; }
+.qs-grid > p { grid-column: 1 / -1; margin: 0; }
+
+/* home: repeated episodes folded away; compact sidebar lists */
+.more-stories { margin-top: 12px; }
+.more-stories > summary { cursor: pointer; font-weight: 700; font-size: .9rem; color: var(--text-2); padding: 10px 0; list-style: none; }
+.more-stories > summary::before { content: "＋ "; }
+.more-stories[open] > summary::before { content: "－ "; }
+.more-stories > .story-grid { margin-top: 4px; }
+.cos:not(.all) .co-extra:not(.starred) { display: none; }
+.co-more { background: none; border: 0; padding: 8px 0 0; cursor: pointer; font: inherit; }
+.ec li { display: flex; align-items: center; gap: 8px; }
+.ec li > a { flex: 1; min-width: 0; }
+.ec-info { flex: none; }

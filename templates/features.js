@@ -619,4 +619,12 @@
     addEventListener("load", () => { balance(); setTimeout(balance, 800); });
     wide.addEventListener("change", balance);
   }
+  // "Show all N companies" on the Today page
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-co-more]");
+    if (!b) return;
+    const list = b.parentElement.querySelector(".cos");
+    const all = list.classList.toggle("all");
+    b.textContent = all ? "Show fewer" : `Show all ${list.children.length} companies`;
+  });
 })();

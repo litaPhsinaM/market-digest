@@ -20,12 +20,14 @@
 </section>
 
 <div class="play-app" data-need-auth hidden>
-  <!-- Portfolio hero -->
+  <div class="rh">
   <section class="pf-hero" id="portfolio">
     <div class="pf-label">Your portfolio <span class="pf-play">play money</span> <button class="info" type="button" data-tip="Everyone starts with $10,000 of play money and earns more by learning and making right calls. Orders fill at the next price update: every 15 minutes while the US market is open (9:30–4:00 New York time), otherwise at the next open." aria-label="How paper trading works">i</button></div>
     <div class="pf-total" id="pf-total">$10,000.00</div>
     <div class="pf-changes"><span class="pf-chip" id="pf-today"></span><span class="pf-chip" id="pf-ret"></span></div>
+    <div class="pf-scrub muted small" id="pf-scrub" aria-live="polite"></div>
     <div class="pf-chart" id="pf-chart"></div>
+    <div class="pf-ranges" role="tablist" aria-label="Chart range"><button type="button" role="tab" data-range="1D" aria-selected="true">1D</button><button type="button" role="tab" data-range="1W">1W</button><button type="button" role="tab" data-range="1M">1M</button><button type="button" role="tab" data-range="ALL">ALL</button></div>
     <div class="pf-bp"><span>Buying power</span><b id="pf-cash">$10,000.00</b><span class="muted">·</span><span>Invested</span><b id="pf-inv">$0.00</b></div>
     <div class="pf-pending" id="pf-pending" hidden></div>
     <div class="pf-actions">
@@ -35,8 +37,27 @@
     </div>
   </section>
 
-  <div class="play-cols">
-    <div class="play-main">
+    <aside class="rh-side">
+      <section class="card play-card">
+        <div class="pc-head"><h2>Your stocks</h2><button class="mini" type="button" data-open-trade>+ Buy</button></div>
+        <ul class="holdings" id="pf-pos"></ul>
+        <div class="coach" id="coach"></div>
+      </section>
+
+      <section class="card play-card" id="watch-card" hidden>
+        <div class="pc-head"><h2>☆ Watchlist</h2><a class="mini" href="index.html">Edit on Today</a></div>
+        <ul class="holdings" id="pf-watch"></ul>
+      </section>
+
+      <section class="card play-card">
+        <div class="pc-head"><h2>Recent orders</h2></div>
+        <ul class="olist" id="pf-orders"></ul>
+      </section>
+    </aside>
+
+    <div class="rh-rest">
+      <h2 class="play-sec">Today’s games</h2>
+      <div class="play-grid">
       <section class="card play-card range-card" id="range">
         <div class="pc-head"><h2>🎯 Daily range</h2><button class="info" type="button" data-tip="A classic trading-interview game. Pick a range you're 90% sure the S&P 500 will close inside. Tight and right scores the most; a miss costs 20× the distance you missed by, so a huge 'safe' range scores nothing. Scored after the 4 pm ET close: up to 100 points, worth $2 each." aria-label="How the range game works">i</button></div>
         <p class="rg-q" id="rg-q">Loading today's question…</p>
@@ -50,47 +71,25 @@
         <ul class="olist rg-hist" id="rg-hist"></ul>
       </section>
 
-      <section class="card play-card" id="stats">
-        <div class="pc-head"><h2>📐 Your stats</h2><button class="info" type="button" data-tip="Beat the market: every trade you make is mirrored, dollar for dollar at the same moment, into SPY (an S&P 500 fund). Alpha is how much better or worse you did. Sharpe: your average daily return divided by how bumpy it was, yearly. Above 1 is good. Max drawdown: your biggest drop from a high point. Rewards don't count as returns." aria-label="What these stats mean">i</button></div>
-        <div class="qs-grid" id="qs-grid"></div>
-      </section>
-      <section class="card play-card earn-card">
-        <div class="pc-head"><h2>💰 Earn more money</h2><span class="muted small" id="earn-total"></span></div>
-        <ul class="earn-ways">
-          <li><span>🧠</span><span>Correct daily-quiz answer</span><b>+$100</b></li>
-          <li><span>🔮</span><span>Right call (more if you were confident)</span><b>+$100–$400</b></li>
-          <li><span>🎓</span><span>Finish a lesson</span><b>+$500</b></li>
-          <li><span>🔥</span><span>Every 7-day streak</span><b>+$1,000</b></li>
-          <li class="neg"><span>⚠️</span><span>Wrong call when 80%+ sure</span><b>−$100</b></li>
-        </ul>
-        <h3 class="sub-h">Your rewards</h3>
-        <ul class="olist" id="rewards"></ul>
-      </section>
-
-      <section class="card play-card race-card">
-        <div class="pc-head"><h2>🏁 Friends race</h2><span class="muted small" id="race-note"></span></div>
-        <div class="race" id="race"></div>
-      </section>
-
-      <section class="card play-card">
-        <div class="pc-head"><h2>Holdings</h2><button class="mini" type="button" data-open-trade>+ Buy</button></div>
-        <ul class="holdings" id="pf-pos"></ul>
-        <div class="coach" id="coach"></div>
-      </section>
-
-      <section class="card play-card">
-        <div class="pc-head"><h2>Orders</h2></div>
-        <ul class="olist" id="pf-orders"></ul>
-      </section>
-    </div>
-
-    <div class="play-side">
       <section class="card play-card">
         <div class="pc-head"><h2>🔮 Your calls</h2><span class="muted small" id="calls-sum"></span></div>
         <div class="calib" id="calib"></div>
         <ul class="olist" id="calls"></ul>
       </section>
+      </div>
 
+      <section class="card play-card" id="stats">
+        <div class="pc-head"><h2>📐 Your stats</h2><button class="info" type="button" data-tip="Beat the market: every trade you make is mirrored, dollar for dollar at the same moment, into SPY (an S&P 500 fund). Alpha is how much better or worse you did. Sharpe: your average daily return divided by how bumpy it was, yearly. Above 1 is good. Max drawdown: your biggest drop from a high point. Rewards don't count as returns." aria-label="What these stats mean">i</button></div>
+        <div class="qs-grid" id="qs-grid"></div>
+      </section>
+
+      <h2 class="play-sec">Friends and rewards</h2>
+      <section class="card play-card race-card">
+        <div class="pc-head"><h2>🏁 Friends race</h2><span class="muted small" id="race-note"></span></div>
+        <div class="race" id="race"></div>
+      </section>
+
+      <div class="play-grid">
       <section class="card play-card">
         <div class="pc-head"><h2>👥 Friends</h2><button class="mini" type="button" data-edit-username>You: <span data-me-username>…</span></button></div>
         <div class="invite">
@@ -105,6 +104,20 @@
         <h3 class="sub-h">Friends’ moves</h3>
         <ul class="olist" id="friend-feed"></ul>
       </section>
+
+      <section class="card play-card earn-card">
+        <div class="pc-head"><h2>💰 Earn more money</h2><span class="muted small" id="earn-total"></span></div>
+        <ul class="earn-ways">
+          <li><span>🧠</span><span>Correct daily-quiz answer</span><b>+$100</b></li>
+          <li><span>🔮</span><span>Right call (more if you were confident)</span><b>+$100–$400</b></li>
+          <li><span>🎓</span><span>Finish a lesson</span><b>+$500</b></li>
+          <li><span>🔥</span><span>Every 7-day streak</span><b>+$1,000</b></li>
+          <li class="neg"><span>⚠️</span><span>Wrong call when 80%+ sure</span><b>−$100</b></li>
+        </ul>
+        <h3 class="sub-h">Your rewards</h3>
+        <ul class="olist" id="rewards"></ul>
+      </section>
+      </div>
     </div>
   </div>
 </div>

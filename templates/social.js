@@ -9,7 +9,7 @@
   const money = (v) => "$" + Number(v).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const pct = (v) => (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(2) + "%";
   const errMsg = (e) => (e && (e.message || e.error_description)) || "Something went wrong";
-  let profile = null;
+  let profile = null, myDaily = [];
 
   const needAccount = (why) => {
     MD.toast(why || "Sign in to play");
@@ -295,30 +295,83 @@
         if (f.side === "buy") { cash -= amt; held[f.symbol] = (held[f.symbol] || 0) + Number(f.qty); }
         else { cash += amt; held[f.symbol] = (held[f.symbol] || 0) - Number(f.qty); }
       }
-      let v = cash;
+      let v = cash, known = true;
       for (const [s, q] of Object.entries(held)) {
+        if (!q) continue;
         const h = prices[s]?.hist.filter((x) => x[0] <= t).pop();
-        if (h) v += q * h[1];
+        if (h) v += q * h[1]; else known = false;
       }
-      out.push([t, v]);
+      if (known) out.push([t, v]);
     }
     return out;
   }
 
-  function lineChart(el, series, up, base) {
-    if (series.length < 2) { el.innerHTML = `<div class="pf-flat"><span></span></div>`; return; }
-    const W = el.clientWidth || 600, H = 140, vals = series.map((s) => s[1]);
-    let lo = Math.min(...vals, base), hi = Math.max(...vals, base); const pad = (hi - lo) * 0.1 || 1; lo -= pad; hi += pad;
-    const X = (i) => (i / (series.length - 1)) * W, Y = (v) => H - ((v - lo) / (hi - lo)) * H;
-    const d = series.map((s, i) => `${i ? "L" : "M"}${X(i).toFixed(1)},${Y(s[1]).toFixed(1)}`).join("");
-    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" class="${up ? "up" : "down"}" role="img" aria-label="Portfolio value over time">
-      <line class="base" x1="0" x2="${W}" y1="${Y(base)}" y2="${Y(base)}"/><path class="fill" d="${d}L${W},${H}L0,${H}Z"/><path class="ln" d="${d}"/></svg>`;
+  // Portfolio chart, trading-app style: 1D from 15-minute prices, 1W/1M/ALL from daily snapshots (portfolio_daily),
+  // coloured by the change over the chosen range. Drag or hover to read any point; the big number follows.
+  let chartRange = "1D", chartData = null;
+  const nyDate = (t) => new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }).format(new Date(t));
+  const when = (t, intraday) => new Date(t).toLocaleString([], intraday
+    ? { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" } : { month: "short", day: "numeric", year: "numeric" });
+  function rangeSeries(range) {
+    const { intra, daily, total } = chartData;
+    if (range === "1D") {
+      const last = intra.length ? nyDate(intra[intra.length - 1][0]) : null;
+      const day = intra.filter((x) => nyDate(x[0]) === last);
+      return { pts: day.length >= 2 ? day : intra, intraday: true };
+    }
+    const days = { "1W": 7, "1M": 31, ALL: 99999 }[range];
+    const cut = new Date(Date.now() - days * 864e5).toISOString().slice(0, 10);
+    const pts = daily.filter((d) => d.day >= cut).map((d) => [d.day + "T21:00:00Z", Number(d.value)]);
+    if (!pts.length || pts[pts.length - 1][0].slice(0, 10) < nyDate(Date.now())) pts.push([new Date().toISOString(), total]);
+    return pts.length >= 2 ? { pts, intraday: false } : { pts: intra, intraday: true };
   }
-  const sparkline = (hist) => {
+  const changeText = (v, base, label) => {
+    const d = v - base, p = base ? (d / base) * 100 : 0, cls = d >= 0 ? "up" : "down";
+    return `<span class="${cls}">${d >= 0 ? "▲" : "▼"} ${money(Math.abs(d))} (${pct(p)})</span> ${esc(label)}`;
+  };
+  function drawChart() {
+    const el = $("#pf-chart"), lab = $("#pf-scrub"), big = $("#pf-total");
+    if (!el || !chartData) return;
+    $$("[data-range]").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.range === chartRange)));
+    const { pts, intraday } = chartData.filled ? rangeSeries(chartRange) : { pts: [], intraday: true };
+    if (pts.length < 2) { el.innerHTML = `<div class="pf-flat"><span></span></div>`; lab.textContent = ""; return; }
+    const W = el.clientWidth || 600, H = 140, vals = pts.map((x) => x[1]), base = vals[0], up = vals[vals.length - 1] >= base;
+    let lo = Math.min(...vals), hi = Math.max(...vals); const pad = (hi - lo) * 0.12 || 1; lo -= pad; hi += pad;
+    const X = (i) => (i / (pts.length - 1)) * W, Y = (v) => H - ((v - lo) / (hi - lo)) * H;
+    const d = pts.map((x, i) => `${i ? "L" : "M"}${X(i).toFixed(1)},${Y(x[1]).toFixed(1)}`).join("");
+    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" class="${up ? "up" : "down"}" role="img" aria-label="Portfolio value, ${chartRange}">
+      <line class="base" x1="0" x2="${W}" y1="${Y(base)}" y2="${Y(base)}"/><path class="fill" d="${d}L${W},${H}L0,${H}Z"/><path class="ln" d="${d}"/>
+      <line class="cur" y1="0" y2="${H}" x1="0" x2="0" visibility="hidden"/><circle class="dot" r="4" cx="0" cy="0" visibility="hidden"/></svg>`;
+    $("#portfolio").classList.toggle("down", !up);
+    const label = { "1D": intraday ? "today" : "", "1W": "past week", "1M": "past month", ALL: "all time" }[chartRange] || "";
+    const rest = () => { big.textContent = money(chartData.total); lab.innerHTML = changeText(vals[vals.length - 1], base, label); };
+    rest();
+    const svg = $("svg", el), cur = $(".cur", svg), dot = $(".dot", svg);
+    const at = (e) => {
+      const r = svg.getBoundingClientRect(), i = Math.max(0, Math.min(pts.length - 1, Math.round(((e.clientX - r.left) / r.width) * (pts.length - 1))));
+      cur.setAttribute("x1", X(i)); cur.setAttribute("x2", X(i)); dot.setAttribute("cx", X(i)); dot.setAttribute("cy", Y(pts[i][1]));
+      cur.setAttribute("visibility", "visible"); dot.setAttribute("visibility", "visible");
+      big.textContent = money(pts[i][1]); lab.innerHTML = changeText(pts[i][1], base, when(pts[i][0], intraday));
+    };
+    el.onpointermove = at; el.onpointerdown = at;
+    el.onpointerleave = () => { cur.setAttribute("visibility", "hidden"); dot.setAttribute("visibility", "hidden"); rest(); };
+  }
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-range]");
+    if (b) { chartRange = b.dataset.range; drawChart(); }
+  });
+  addEventListener("resize", () => { clearTimeout(drawChart.t); drawChart.t = setTimeout(drawChart, 150); });
+
+  const todayHist = (hist) => {
+    if (!hist || !hist.length) return hist;
+    const last = nyDate(hist[hist.length - 1][0]), day = hist.filter((h) => nyDate(h[0]) === last);
+    return day.length >= 2 ? day : hist;
+  };
+  const sparkline = (hist, up) => {
     if (!hist || hist.length < 2) return "";
     const v = hist.map((h) => h[1]), lo = Math.min(...v), hi = Math.max(...v), r = hi - lo || 1;
     const d = v.map((x, i) => `${i ? "L" : "M"}${(i / (v.length - 1) * 60).toFixed(1)},${(22 - (x - lo) / r * 20).toFixed(1)}`).join("");
-    return `<svg class="h-spark ${v[v.length - 1] >= v[0] ? "up" : "down"}" viewBox="0 0 60 24" aria-hidden="true"><path d="${d}"/></svg>`;
+    return `<svg class="h-spark ${(up ?? v[v.length - 1] >= v[0]) ? "up" : "down"}" viewBox="0 0 60 24" aria-hidden="true"><path d="${d}"/></svg>`;
   };
   const chip = (el, val, label, isPct = true) => {
     el.className = "pf-chip " + (val >= 0 ? "up" : "down");
@@ -334,6 +387,7 @@
       MD.sb.from("orders").select("*").eq("user_id", MD.user.id).order("placed_at", { ascending: false }).limit(200),
       MD.sb.from("rewards").select("*").eq("user_id", MD.user.id).order("created_at", { ascending: false }).limit(100),
       loadPrices(),
+      MD.sb.from("portfolio_daily").select("day, value").eq("user_id", MD.user.id).order("day").then((r) => { myDaily = r.data || []; }),
     ]);
     const cash = pf ? Number(pf.cash) : 10000, deposits = pf ? Number(pf.deposits) : 10000;
     myRewards = rewards || [];
@@ -354,9 +408,9 @@
     // No fills yet: a flat dashed line instead of a chart of nothing.
     const filled = (orders || []).some((o) => o.status === "filled");
     const earned = myRewards.reduce((s, r) => s + Number(r.amount), 0), start = deposits - earned;
-    lineChart($("#pf-chart"), filled ? valueSeries(orders || [], start) : [], ret >= 0, start);
+    chartData = { intra: filled ? valueSeries(orders || [], start) : [], daily: myDaily, total, filled };
+    drawChart();
     renderRewards(earned);
-    box.classList.toggle("down", ret < 0);
 
     const pending = (orders || []).filter((o) => o.status === "pending");
     const banner = $("#pf-pending");
@@ -366,15 +420,32 @@
         pending.map((o) => `<span class="pend">${o.side === "buy" ? "Buy" : "Sell"} ${Number(o.qty)} ${esc(o.symbol)}</span>`).join(" ");
     }
 
+    const stockRow = (sym, sub, now, prev, hist, extra = "") => {
+      const day = prev ? (now / prev - 1) * 100 : 0;
+      return `<li><button type="button" class="h-row" data-trade-sym="${esc(sym)}">
+        <span class="co-logo">${esc(sym[0])}</span>
+        <span class="h-id"><b>${esc(sym)}</b><span class="muted small h-sub">${sub}</span></span>
+        ${sparkline(todayHist(hist), day >= 0)}
+        <span class="h-val"><b>${money(now)}</b><span class="pf-chip ${day >= 0 ? "up" : "down"}">${day >= 0 ? "▲" : "▼"} ${pct(day)}</span>${extra}</span></button></li>`;
+    };
     $("#pf-pos").innerHTML = rows.length ? rows.map((r) => {
       const g = (r.now / r.avg - 1) * 100, value = r.qty * r.now;
-      return `<li><button type="button" class="h-row" data-trade-sym="${esc(r.symbol)}">
-        <span class="co-logo">${esc(r.symbol[0])}</span>
-        <span class="h-id"><b>${esc(r.symbol)}</b><span class="muted small">${Number(r.qty).toLocaleString(undefined, { maximumFractionDigits: 4 })} shares</span></span>
-        ${sparkline(r.hist)}
-        <span class="h-val"><b>${money(value)}</b><span class="pf-chip ${g >= 0 ? "up" : "down"}">${g >= 0 ? "▲" : "▼"} ${pct(g)}</span></span></button></li>`;
+      const shares = Number(r.qty).toLocaleString(undefined, { maximumFractionDigits: 4 });
+      return stockRow(r.symbol, `${shares} share${r.qty === 1 ? "" : "s"}`, r.now, r.prev, r.hist,
+        `<span class="h-gain" title="Your ${shares} shares are worth ${money(value)}. Gain since you bought, at your average price of ${money(r.avg)}: ${pct(g)}">${money(value)} · <span class="${g >= 0 ? "up" : "down"}">${pct(g)}</span></span>`);
     }).join("") : `<li class="h-empty"><b>No holdings yet</b><span class="muted">Your ${money(cash)} is waiting. Most beginners start with an index fund like <b>SPY</b>.</span>
         <button class="btn" type="button" data-trade-sym="SPY">Buy SPY</button></li>`;
+
+    // Watchlist: the stocks you starred on the Today page
+    const owned = new Set(rows.map((r) => r.symbol));
+    const stars = ((MD.store && MD.store.get("stars", [])) || []).filter((sym) => prices[sym] && !owned.has(sym));
+    if ($("#watch-card")) {
+      $("#watch-card").hidden = !stars.length;
+      $("#pf-watch").innerHTML = stars.map((sym) => {
+        const q = prices[sym];
+        return stockRow(sym, esc(NAMES[sym] || shortName(q.name) || sym), q.price, q.prev, q.hist);
+      }).join("");
+    }
 
     $("#pf-orders").innerHTML = (orders || []).slice(0, 15).map((o) => `<li><span class="st st-${o.status}">${o.status}</span>
         ${o.side === "buy" ? "Buy" : "Sell"} ${Number(o.qty).toLocaleString(undefined, { maximumFractionDigits: 4 })} <b>${esc(o.symbol)}</b>
