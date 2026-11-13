@@ -23,7 +23,7 @@ from digest import build, sources, summarize
 ROOT = Path(__file__).parent
 DATA = ROOT / "data"
 ITEMS, BRIEFS, TRANSCRIPTS, MARKET = DATA / "items", DATA / "briefs", DATA / "transcripts", DATA / "market"
-HOT, QUIZ, AUDIO = DATA / "hot", DATA / "quiz", DATA / "audio"
+HOT, QUIZ, AUDIO, ECON = DATA / "hot", DATA / "quiz", DATA / "audio", DATA / "econ"
 STATE = DATA / "state.json"
 
 
@@ -187,6 +187,20 @@ def write_extras(today: str):
     voice.prune(AUDIO)
 
 
+def write_econ(today: str):
+    """Official US economic numbers + upcoming data releases (FRED). Optional: skipped without FRED_API_KEY."""
+    from digest import econ
+    try:
+        snap = econ.snapshot(today)
+    except Exception as e:
+        print(f"! economy card failed: {e}")
+        return
+    if snap:
+        ECON.mkdir(parents=True, exist_ok=True)
+        (ECON / f"{today}.json").write_text(json.dumps(snap, indent=1))
+        print(f"Economy card: {len(snap['indicators'])} numbers, {len(snap['upcoming'])} upcoming releases")
+
+
 def write_market(today: str, cfg: dict):
     from digest import market
     todays = [r for r in (json.loads(p.read_text()) for p in ITEMS.glob("*.json")) if r["digest_date"] == today]
@@ -243,7 +257,7 @@ def main():
     args = ap.parse_args()
     started = dt.datetime.now()
 
-    for d in (ITEMS, BRIEFS, TRANSCRIPTS, MARKET, HOT, QUIZ, AUDIO):
+    for d in (ITEMS, BRIEFS, TRANSCRIPTS, MARKET, HOT, QUIZ, AUDIO, ECON):
         d.mkdir(parents=True, exist_ok=True)
     if args.build_only:
         build.build(ROOT)
@@ -260,6 +274,7 @@ def main():
         if args.hot_only:
             write_hot(today, cfg)
         write_market(today, cfg)
+        write_econ(today)
         build.build(ROOT)
         return
     if args.claims:
@@ -320,6 +335,7 @@ def main():
         write_market(today, cfg)
     except Exception as e:  # prices are a nice-to-have; never block the digest
         print(f"! market snapshot failed: {e}")
+    write_econ(today)
     try:
         write_extras(today)
     except Exception as e:

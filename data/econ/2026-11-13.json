@@ -1,0 +1,103 @@
+{
+ "date": "2026-11-13",
+ "fetched": "2026-11-13T18:20+00:00",
+ "indicators": [
+  {
+   "id": "CPIAUCSL",
+   "label": "Inflation (this month)",
+   "vs": "last month",
+   "change": "down from +0.6% last month",
+   "value": 0.35,
+   "prev": 0.649,
+   "text": "+0.4%",
+   "unit": "%",
+   "date": "2026-10-01",
+   "explain": "How much prices rose in the latest month (consumer price index). The yearly rate can't be calculated because the government didn't publish data for the same month last year.",
+   "url": "https://fred.stlouisfed.org/series/CPIAUCSL"
+  },
+  {
+   "id": "UNRATE",
+   "label": "Unemployment",
+   "vs": "last month",
+   "change": "down from 4.2% last month",
+   "value": 4.1,
+   "prev": 4.2,
+   "text": "4.1%",
+   "unit": "%",
+   "date": "2026-10-01",
+   "explain": "Share of people who want a job but don't have one. Low means a strong job market.",
+   "url": "https://fred.stlouisfed.org/series/UNRATE"
+  },
+  {
+   "id": "PAYEMS",
+   "label": "Jobs added",
+   "vs": "last month",
+   "change": "up from +60K last month",
+   "value": 165.0,
+   "prev": 60.0,
+   "text": "+165K",
+   "unit": "K",
+   "date": "2026-10-01",
+   "explain": "How many jobs US employers added last month (nonfarm payrolls), in thousands.",
+   "url": "https://fred.stlouisfed.org/series/PAYEMS"
+  },
+  {
+   "id": "DFEDTARU",
+   "label": "Fed interest rate",
+   "vs": "",
+   "change": "",
+   "value": 4.0,
+   "prev": 4.0,
+   "text": "4.00%",
+   "unit": "%",
+   "date": "2026-11-13",
+   "explain": "The top of the Federal Reserve's target rate. Higher rates make borrowing costlier and can cool prices.",
+   "url": "https://fred.stlouisfed.org/series/DFEDTARU"
+  },
+  {
+   "id": "GASREGW",
+   "label": "Gas price",
+   "vs": "last week",
+   "change": "down from $4.15 last week",
+   "value": 3.995,
+   "prev": 4.153,
+   "text": "$4.00",
+   "unit": "$",
+   "date": "2026-11-09",
+   "explain": "Average US price of a gallon of regular gas, weekly. A quick read on energy costs for households.",
+   "url": "https://fred.stlouisfed.org/series/GASREGW"
+  }
+ ],
+ "upcoming": [
+  {
+   "date": "2026-11-13",
+   "name": "Wholesale prices (PPI)",
+   "release_id": 46
+  },
+  {
+   "date": "2026-11-17",
+   "name": "Retail sales",
+   "release_id": 9
+  },
+  {
+   "date": "2026-11-17",
+   "name": "Factory output",
+   "release_id": 13
+  },
+  {
+   "date": "2026-11-19",
+   "name": "Weekly jobless claims",
+   "release_id": 180
+  },
+  {
+   "date": "2026-11-25",
+   "name": "GDP (economic growth)",
+   "release_id": 53
+  },
+  {
+   "date": "2026-11-25",
+   "name": "PCE inflation and consumer spending",
+   "release_id": 54
+  }
+ ]
+}

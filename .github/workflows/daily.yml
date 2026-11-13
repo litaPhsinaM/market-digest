@@ -37,6 +37,7 @@ jobs:
       DIGEST_BACKEND: gemini
       DIGEST_TRANSCRIBE: gemini
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
       SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
       PYTHONUNBUFFERED: "1"
     steps:

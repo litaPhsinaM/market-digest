@@ -166,7 +166,7 @@ def build(root: Path):
     cfg = yaml.safe_load((root / "sources.yaml").read_text())
     srcs, feeds = cfg["sources"], cfg.get("news", [])
     load = lambda sub: {p.stem: json.loads(p.read_text()) for p in (data / sub).glob("*.json")} if (data / sub).exists() else {}
-    hots, quizzes, audio = load("hot"), load("quiz"), load("audio")
+    hots, quizzes, audio, econs = load("hot"), load("quiz"), load("audio"), load("econ")
 
     days = defaultdict(list)
     for it in items:
@@ -240,7 +240,9 @@ def build(root: Path):
         pool = [c for c in cos if c.get("mentioned_in")] or cos
         call_co = pool[dt.date.fromisoformat(date).toordinal() % len(pool)] if pool else None
         good = [i for i in its if i["summary"]["worth_reading"]]
-        return {"date": date, "brief": briefs.get(date), "items": its, "story_slides": story_slides(hots.get(date), good), "market": mkt, "hot": hots.get(date), "call_co": call_co,
+        econ_day = max((d for d in econs if d <= date), default=None)
+        return {"date": date, "brief": briefs.get(date), "items": its, "story_slides": story_slides(hots.get(date), good),
+                "econ": econs.get(econ_day) if econ_day else None, "market": mkt, "hot": hots.get(date), "call_co": call_co,
                 "quiz": quizzes.get(date), "earnings": earnings,
                 "audio": audio.get(date) if (out / "audio" / f"{date}.mp3").exists() else None,
                 "n_podcasts": len(srcs), "n_feeds": len(feeds),

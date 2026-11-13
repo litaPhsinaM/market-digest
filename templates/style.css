@@ -1148,3 +1148,17 @@ button.act.progress { cursor: pointer; font: inherit; }
 .lesson-index { columns: 2; column-gap: 28px; padding-left: 20px; line-height: 1.9; max-width: 760px; }
 .lesson-index a[aria-current] { font-weight: 800; }
 @media (max-width: 640px) { .lesson-index { columns: 1; } .lesson-page { padding: 18px 16px; } }
+
+/* Economy this week */
+.ec { list-style: none; margin: 0; padding: 0; }
+.ec li { border-top: 1px solid var(--line); padding: 9px 0; }
+.ec li:first-child { border-top: 0; }
+.ec a { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; color: inherit; text-decoration: none; }
+.ec a:hover .ec-label { text-decoration: underline; }
+.ec-id { display: flex; flex-direction: column; min-width: 0; }
+.ec-label { font-weight: 600; font-size: .92rem; }
+.ec-id small { color: var(--text-2); font-size: .76rem; }
+.ec-val { font-variant-numeric: tabular-nums; font-size: 1.05rem; white-space: nowrap; }
+.ec-why { margin: 4px 0 0; color: var(--text-2); font-size: .78rem; line-height: 1.4; }
+.ec-sub { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-2); margin: 14px 0 4px; }
+.ec-rel { font-size: .88rem; }

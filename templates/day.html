@@ -366,6 +366,26 @@
   </section>
   {% endif %}
 
+  {% if econ and econ.indicators %}
+  <section class="card side econ">
+    <h2 class="side-title">Economy this week <button class="info" type="button" data-tip="The latest official US numbers that move markets: prices, jobs, interest rates and energy. Each one is published by a government agency on a set schedule. Tap a number to see its full history." aria-label="About the economy card">i</button></h2>
+    <ul class="ec">{% for i in econ.indicators %}{% set mon = ['January','February','March','April','May','June','July','August','September','October','November','December'][i.date[5:7]|int - 1] %}
+      <li><a href="{{ i.url }}" target="_blank" rel="noopener">
+        <span class="ec-id"><span class="ec-label">{{ i.label }}</span>
+          <small>{% if i.vs == 'last month' %}{{ mon }}{% else %}{{ mon[:3] }} {{ i.date[8:10]|int }}{% endif %}{% if i.change %} · {{ i.change }}{% endif %}</small></span>
+        <b class="ec-val">{{ i.text }}</b></a>
+        <p class="ec-why">{{ i.explain }}</p></li>
+    {% endfor %}</ul>
+    {% if econ.upcoming %}
+    <h3 class="ec-sub">Coming up</h3>
+    <ul class="earn">{% for u in econ.upcoming %}
+      <li><span class="earn-date"><b>{{ u.date[8:10]|int }}</b><small>{{ ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][u.date[5:7]|int - 1] }}</small></span><span class="ec-rel">{{ u.name }}</span></li>
+    {% endfor %}</ul>
+    {% endif %}
+    <p class="side-note">Source: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a>, Federal Reserve Bank of St. Louis, from BLS, the Federal Reserve and EIA data.</p>
+  </section>
+  {% endif %}
+
   {% if companies %}
   <section class="card side">
     <h2 class="side-title">Companies in the news</h2>
