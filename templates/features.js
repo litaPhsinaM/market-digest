@@ -411,6 +411,7 @@
   if (pal) {
     palQ.addEventListener("input", runSearch);
     palQ.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") { e.preventDefault(); pal.close(); return; }  // one press closes (a search box would clear first)
       if (e.key === "ArrowDown") { e.preventDefault(); moveSel(1); }
       if (e.key === "ArrowUp") { e.preventDefault(); moveSel(-1); }
       if (e.key === "Enter") { const a = $("li[aria-selected=true] a", palRes); if (a) { pal.close(); location.href = a.href; } }
