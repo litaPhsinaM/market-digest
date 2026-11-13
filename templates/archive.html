@@ -3,12 +3,23 @@
 {% block title %}Archive · Stocksplain{% endblock %}
 {% block description %}Every past Stocksplain: daily plain-English summaries of finance podcasts and market news, archived by date.{% endblock %}
 {% block content %}
-<h1>Archive</h1>
-{% for d in days %}
+<section class="page-hero">
+  <div class="eyebrow">Archive</div>
+  <h1>Every day so far</h1>
+  <p class="lede">{{ days|length }} daily digests. Tap a day for its full page, or a story to jump straight to it.</p>
+</section>
+<div class="arch-list">
+{% for d in days %}{% set good = d["items"]|selectattr("summary.worth_reading")|list %}
 <section class="arch">
-  <h3><a href="days/{{ d.date }}.html">{{ d.date }}</a></h3>
-  {% if d.brief %}<p class="muted">Concept of the day: {{ d.brief.concept_of_the_day.concept }}</p>{% endif %}
-  <ul>{% for it in d["items"] if it.summary.worth_reading %}<li><a href="days/{{ d.date }}.html#{{ it.id }}">{{ it.summary.headline }}</a> <span class="muted">· {{ it.source_name }}</span></li>{% endfor %}</ul>
+  <a class="arch-date" href="days/{{ d.date }}.html">
+    <span class="ad-day">{{ d.date[8:10]|int }}</span><span class="ad-mon">{{ ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.date[5:7]|int - 1] }} {{ d.date[:4] }}</span>
+  </a>
+  <div class="arch-body">
+    <div class="arch-meta"><a href="days/{{ d.date }}.html"><b>{{ good|length }} stories</b></a>{% if d.brief %} · Concept of the day: <b>{{ d.brief.concept_of_the_day.concept }}</b>{% endif %}
+      {% if d.hot and d.hot.topics %} · Top story: {{ d.hot.topics[0].title }}{% endif %}</div>
+    <ul>{% for it in good %}<li><a href="days/{{ d.date }}.html#{{ it.id }}">{{ it.summary.headline }}</a><span class="arch-src">{{ it.source_name }}</span></li>{% endfor %}</ul>
+  </div>
 </section>
 {% else %}<p>Nothing yet.</p>{% endfor %}
+</div>
 {% endblock %}

@@ -1529,3 +1529,63 @@ dialog.lesson h4 { margin-top: 26px; }
 @media (max-width: 560px) { .dict-letter, .dict .gterm { scroll-margin-top: 190px; } }
 .dict-letter, .dict .gterm { scroll-margin-top: 172px; }
 @media (max-width: 560px) { .dict-title .lede { display: none; } .dict-title h1 { font-size: 1.6rem; } .dict-letter, .dict .gterm { scroll-margin-top: 200px; } }
+
+/* =================== Brand: one look across every page =================== */
+:root { --font-display: "Fraunces", Georgia, "Times New Roman", serif; }
+/* page titles + section headings use the display serif; UI, numbers and body stay in the sans */
+main h1, .section-title, .play-sec, .sg-head h2, .dict-L, .ub-title, .lesson-page h2, .page-hero h1,
+.course-hero h1, .learn-hero h1, .play-guest-hero h1, .about-hero h1, .ep-title, .st-card h2 { font-family: var(--font-display); }
+main h1 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.08; }
+.section-title, .play-sec { font-weight: 800; letter-spacing: -0.01em; }
+.section-title { font-size: 1.35rem; }
+.ub-title { font-weight: 800; font-size: 1.15rem; }
+.ep-title { font-weight: 800; letter-spacing: -0.01em; }
+.pf-total, .lp-n, .cs-stats b, .qs b, .mk-val, .co-price { font-family: var(--font); }   /* numbers stay crisp sans */
+.page-hero { margin-bottom: 20px; }
+.page-hero h1 { margin: 6px 0 8px; }
+.page-hero .lede { color: var(--text-2); max-width: 680px; margin: 0; }
+
+/* archive */
+.arch-list { display: grid; gap: 12px; }
+.arch { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 18px; padding: 16px 18px; margin: 0; }
+.arch-date { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border-radius: 14px; text-decoration: none;
+  background: var(--accent-soft); color: var(--accent); align-self: start; padding: 12px 6px; }
+.ad-day { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; line-height: 1; }
+.ad-mon { font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.arch-meta { font-size: .86rem; color: var(--text-2); margin-bottom: 6px; }
+.arch-meta a { color: var(--text); text-decoration: none; }
+.arch ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+.arch li { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-top: 1px solid var(--line); font-size: .92rem; }
+.arch li a { color: var(--text); text-decoration: none; } .arch li a:hover { color: var(--accent); }
+.arch-src { flex: none; font-size: .76rem; color: var(--text-3); white-space: nowrap; }
+@media (max-width: 560px) {
+  .arch { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .arch-date { flex-direction: row; justify-content: flex-start; gap: 8px; padding: 6px 12px; align-self: stretch; }
+  .ad-day { font-size: 1.4rem; }
+  .arch li { flex-direction: column; gap: 2px; }
+}
+
+/* motion: one hover lift for things you can tap, cards fade up as they scroll in, pages fade between each other */
+.sc, .lvl, .wotd, .src-card, .scd-latest, .arch, .desk, .lr, .tick-chip, .dt-chip, .h-row, .co-row, .claim {
+  transition: transform .18s ease, border-color .18s ease, background-color .18s ease, box-shadow .18s ease, opacity .45s ease; }
+@media (hover: hover) {
+  .sc:hover, .lvl:hover, .wotd:hover, .src-card:hover, .arch:hover, .claim:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0, 0, 0, .18); }
+}
+.rv { opacity: 0; transform: translateY(14px); }
+.rv.in { opacity: 1; transform: none; transition: opacity .5s ease, transform .5s cubic-bezier(.2, .8, .2, 1); }
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .22s; }
+@media (prefers-reduced-motion: reduce) {
+  .rv { opacity: 1 !important; transform: none !important; }
+  * { scroll-behavior: auto !important; }
+  @view-transition { navigation: none; }
+}
+/* About in the brand family */
+.about-sec h2 { font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; letter-spacing: -0.01em; }
+.why-grid .why:nth-child(1) { border-top: 3px solid #3fbf8f; } .why-grid .why:nth-child(2) { border-top: 3px solid #6aa0ff; } .why-grid .why:nth-child(3) { border-top: 3px solid #e0a33b; }
+.steps .step-n { background: var(--accent); color: var(--accent-ink); }
+.steps li:nth-child(2) .step-n { background: #6aa0ff; color: #111; } .steps li:nth-child(3) .step-n { background: #e0a33b; color: #111; }
+.steps li:nth-child(4) .step-n { background: #b48cff; color: #111; } .steps li:nth-child(5) .step-n { background: #ef7d7d; color: #111; }
+/* one title scale on every page (page-specific hero rules above set their own sizes) */
+main h1, .course-hero h1, .src-hero h1, .dict-title h1, .about-hero h1, .learn-hero h1, .play-guest-hero h1, .page-hero h1, .lesson-page h1 {
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem); line-height: 1.08; }

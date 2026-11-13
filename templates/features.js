@@ -649,4 +649,17 @@
     if (!matchMedia("(pointer: coarse)").matches) return;
     setTimeout(() => { fitScreen(); e.target.scrollIntoView({ block: "center", behavior: "smooth" }); }, 350);
   });
+  // ---------- gentle reveal of cards as they scroll into view (off for "reduce motion") ----------
+  if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const SEL = ".card, .src-card, .unit-block, .desk, .sc, .claim, .src-how li, .arch, .lvl, .play-card, .ec li, .story-grid > *";
+    const io = new IntersectionObserver((es) => es.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    }), { rootMargin: "0px 0px -6% 0px" });
+    const arm = () => document.querySelectorAll(SEL).forEach((el) => {
+      if (el.dataset.rv || el.closest("dialog, .stories, details:not([open])")) return;  // folded content shows instantly when opened
+      el.dataset.rv = "1";
+      if (el.getBoundingClientRect().top > innerHeight) { el.classList.add("rv"); io.observe(el); }  // only below the fold: no flash
+    });
+    arm(); setTimeout(arm, 1200);  // cards that scripts add later (Play, Learn) get it too
+  }
 })();
