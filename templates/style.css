@@ -1390,3 +1390,61 @@ dialog.lesson h4 { margin-top: 26px; }
 .sc-next { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; font-size: .86rem; }
 .sc-next li { display: flex; gap: 10px; align-items: baseline; }
 .sc-when { flex: none; font-size: .74rem; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+
+/* ---------- Glossary as a dictionary ---------- */
+.dict-hero { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 28px; align-items: end; margin-bottom: 18px; }
+.dict-title h1, .dict-L, .gt-word, .wotd-term { font-family: "Fraunces", Georgia, "Times New Roman", serif; }
+.dict-title h1 { font-size: clamp(2rem, 4.6vw, 3.1rem); font-weight: 800; letter-spacing: -0.02em; margin: 6px 0 10px; line-height: 1.04; }
+.dict-title .lede { color: var(--text-2); max-width: 640px; }
+.wotd { display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; border-radius: 18px; text-decoration: none; color: var(--text);
+  background: linear-gradient(160deg, var(--accent-soft), var(--surface) 65%); border: 1px solid var(--line); }
+.wotd:hover { border-color: var(--line-strong); }
+.wotd-k { font-size: .7rem; font-weight: 750; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }
+.wotd-term { font-size: 1.8rem; font-weight: 800; line-height: 1.1; }
+.wotd-topic { font-size: .78rem; color: var(--text-2); }
+.wotd-def { font-size: .92rem; line-height: 1.5; color: var(--text-2); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.dict-tools { position: sticky; top: 61px; z-index: 5; background: var(--bg); padding: 12px 0 10px; margin-bottom: 8px; border-bottom: 1px solid var(--line); display: grid; gap: 10px; }
+.dict-search { margin: 0; max-width: 520px; }
+.dict-topics { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.dict-topics::-webkit-scrollbar { display: none; }
+.dt-chip { flex: none; border: 1px solid var(--line); background: var(--surface); color: var(--text-2); border-radius: 99px; padding: 6px 12px; font: inherit;
+  font-size: .82rem; font-weight: 650; cursor: pointer; white-space: nowrap; }
+.dt-chip span { color: var(--text-3); font-weight: 600; margin-left: 2px; font-variant-numeric: tabular-nums; }
+.dt-chip[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+.dt-chip[aria-pressed="true"] span { color: inherit; opacity: .7; }
+.az { display: flex; flex-wrap: wrap; gap: 2px; }
+.az a, .az span { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 8px; font-weight: 750; font-size: .86rem; text-decoration: none; }
+.az a { color: var(--text); } .az a:hover { background: var(--surface-2); }
+.az span, .az a.off { color: var(--text-3); opacity: .45; pointer-events: none; }
+.dict-letter { scroll-margin-top: 230px; padding-top: 10px; }
+.dict-L { font-size: 2.6rem; font-weight: 800; color: var(--accent); margin: 8px 0 4px; line-height: 1; border-bottom: 2px solid var(--line); padding-bottom: 8px; }
+.dict-cols { column-count: 2; column-gap: 40px; }
+.gterm { break-inside: avoid; padding: 14px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 230px; }
+.gterm h3 { margin: 0 0 4px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; font-size: 1rem; }
+.gt-word { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.01em; }
+.gt-topic { font-family: inherit; font-size: .66rem; font-weight: 750; text-transform: uppercase; letter-spacing: .08em; padding: 2px 8px;
+  border-radius: 99px; background: var(--surface-2); color: var(--text-2); }
+.gt-topic.t-stocks, .gt-topic.t-trading { color: var(--up); background: var(--up-soft); }
+.gt-topic.t-economy, .gt-topic.t-bonds { color: #6aa0ff; background: rgba(106, 160, 255, .13); }
+.gt-topic.t-companies, .gt-topic.t-banking { color: #e0a33b; background: rgba(224, 163, 59, .14); }
+.gt-topic.t-tech, .gt-topic.t-crypto { color: #b48cff; background: rgba(180, 140, 255, .14); }
+.gt-aka { margin: 0 0 4px; font-size: .78rem; font-style: italic; color: var(--text-3); }
+.gt-def { margin: 0; line-height: 1.6; }
+.gterm .ex { margin: 6px 0 0; font-style: italic; color: var(--text-2); font-size: .9rem; }
+.gterm .refs { margin: 6px 0 0; font-size: .8rem; color: var(--text-3); }
+.gterm:target { background: var(--accent-soft); border-radius: 10px; padding-left: 10px; padding-right: 10px; }
+.dict-none { padding: 20px 0; }
+@media (max-width: 900px) {
+  .dict-hero { grid-template-columns: minmax(0, 1fr); }
+  .dict-cols { column-count: 1; }
+}
+@media (max-width: 560px) {
+  .az { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .az::-webkit-scrollbar { display: none; }
+  .az a, .az span { flex: none; width: 30px; }
+  .dict-letter, .gterm { scroll-margin-top: 250px; }
+}
+/* dictionary entries: ruled lines, not boxes (overrides the old .gterm card style) */
+.dict .gterm { background: none; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; box-shadow: none; padding: 14px 2px; margin: 0; }
+.dict .gterm:target { background: var(--accent-soft); border-radius: 10px; padding: 14px 10px; }
+@media (min-width: 900px) { .dict-topics { flex-wrap: wrap; overflow: visible; } }

@@ -186,7 +186,30 @@ def build(root: Path):
                 for t in l.get("key_terms", []):
                     entry = glossary.setdefault(t["term"].strip().lower(), {"term": t["term"], "definition": t["definition"], "example": "", "seen": []})
                     entry.setdefault("lessons", []).append({"id": l["id"], "title": l["title"]})
-    glossary = sorted(glossary.values(), key=lambda t: t["term"].lower())
+    # dictionary: merge duplicate spellings into one entry, give every word a topic (data/glossary_meta.json)
+    from digest import glossary_meta
+    meta = glossary_meta.load()
+    for key in list(glossary):
+        target = meta.get(key, {}).get("same_as")
+        if target and target in glossary and target != key:
+            main, dup = glossary[target], glossary.pop(key)
+            main["seen"] = main.get("seen", []) + dup.get("seen", [])
+            main["lessons"] = main.get("lessons", []) + [l for l in dup.get("lessons", []) if l not in main.get("lessons", [])]
+            main.setdefault("aka", []).append(dup["term"])
+            if dup.get("lessons") and not main.get("lessons_def"):  # a lesson's definition is the reviewed one: prefer it
+                main["definition"], main["lessons_def"] = dup["definition"], True
+    topics = {k: (label, emoji) for k, label, emoji, _ in glossary_meta.TOPICS}
+    for key, t in glossary.items():
+        t["topic"] = meta.get(key, {}).get("topic", "other")
+        t["topic_label"], t["topic_emoji"] = topics.get(t["topic"], topics["other"])
+        first = t["term"].strip()[:1].upper()
+        t["letter"] = first if first.isalpha() else "#"
+        t["seen"] = sorted({s["id"]: s for s in t.get("seen", [])}.values(), key=lambda s: s["date"], reverse=True)
+    glossary = sorted(glossary.values(), key=lambda t: t["term"].lower().lstrip("'\"("))
+    finance = [t for t in glossary if t["topic"] != "other" and len(t["definition"]) > 40]
+    word_of_day = finance[dt.date.today().toordinal() % len(finance)] if finance else None
+    glossary_topics = [{"key": k, "label": label, "emoji": e, "n": sum(t["topic"] == k for t in glossary)}
+                       for k, label, e, _ in glossary_meta.TOPICS if any(t["topic"] == k for t in glossary)]
 
     env = Environment(loader=FileSystemLoader(root / "templates"), autoescape=select_autoescape())
     env.filters["minutes"] = _minutes
@@ -279,7 +302,8 @@ def build(root: Path):
         render("empty.html", "index.html", "")
     render("archive.html", "archive.html", "",
            days=[{"date": d, **day_ctx(d)} for d in dates])
-    render("glossary.html", "glossary.html", "", terms=glossary)
+    render("glossary.html", "glossary.html", "", terms=glossary, topics=glossary_topics, word_of_day=word_of_day,
+           letters=sorted({t["letter"] for t in glossary}))
     render("sources.html", "sources.html", "", sources=srcs, feeds=feeds)
     render("about.html", "about.html", "", n_podcasts=len(srcs), n_feeds=len(feeds))
     render("play.html", "play.html", "")

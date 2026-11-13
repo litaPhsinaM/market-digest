@@ -213,6 +213,19 @@ def write_econ(today: str):
         print(f"Economy card: {len(snap['indicators'])} numbers, {len(snap['upcoming'])} upcoming releases")
 
 
+def write_glossary_meta():
+    """Give new glossary terms a topic (and spot duplicates) for the dictionary page."""
+    from digest import glossary_meta
+    terms = [g["term"] for p in ITEMS.glob("*.json") for g in json.loads(p.read_text())["summary"].get("glossary", [])]
+    course = DATA / "learn" / "course.json"
+    if course.exists():
+        terms += [k["term"] for u in json.loads(course.read_text())["units"] for l in u["lessons"] for k in l.get("key_terms", [])]
+    try:
+        glossary_meta.classify(terms)
+    except Exception as e:
+        print(f"! glossary topics failed: {e}")
+
+
 def write_market(today: str, cfg: dict):
     from digest import market
     todays = [r for r in (json.loads(p.read_text()) for p in ITEMS.glob("*.json")) if r["digest_date"] == today]
@@ -348,6 +361,7 @@ def main():
     except Exception as e:  # prices are a nice-to-have; never block the digest
         print(f"! market snapshot failed: {e}")
     write_econ(today)
+    write_glossary_meta()
     try:
         write_extras(today)
     except Exception as e:

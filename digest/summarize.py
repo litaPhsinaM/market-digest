@@ -30,7 +30,7 @@ _TASKS = {
 }
 # Which job an answer belongs to, from the shape we ask for.
 _SCHEMA_TASK = {"ItemSummary": "summary", "Repair": "repair", "Claims": "forecasts", "HotTopics": "top_stories",
-                "DailyBrief": "brief", "Quiz": "quiz", "Briefing": "audio_script"}
+                "DailyBrief": "brief", "Quiz": "quiz", "Briefing": "audio_script", "GlossaryTags": "quiz"}
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "")  # set to force one model first for every job
 GEMINI_FALLBACKS = os.environ.get("GEMINI_FALLBACKS", "gemini-3.1-flash-lite,gemini-3.5-flash-lite,gemini-3-flash-preview,gemini-3.5-flash")
 # Transcribing is long and mechanical: the lite models match Whisper ~86% at ~10 s per 8-minute episode.

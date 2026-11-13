@@ -1,0 +1,605 @@
+{
+ "401(k)": {
+  "topic": "personal"
+ },
+ "active fund": {
+  "topic": "stocks"
+ },
+ "adjusted earnings": {
+  "topic": "companies"
+ },
+ "ai": {
+  "topic": "tech"
+ },
+ "ai accelerators": {
+  "topic": "tech"
+ },
+ "ai agent": {
+  "topic": "tech"
+ },
+ "ai ecosystem": {
+  "topic": "tech"
+ },
+ "ai trade": {
+  "topic": "tech"
+ },
+ "ask": {
+  "topic": "trading"
+ },
+ "asset allocation": {
+  "topic": "stocks"
+ },
+ "assets": {
+  "topic": "companies"
+ },
+ "backtest": {
+  "topic": "trading"
+ },
+ "balance sheet": {
+  "topic": "companies"
+ },
+ "basis point": {
+  "topic": "bonds"
+ },
+ "bear market": {
+  "topic": "stocks"
+ },
+ "bellwether": {
+  "topic": "stocks"
+ },
+ "bid": {
+  "topic": "trading"
+ },
+ "blacklisting": {
+  "topic": "policy"
+ },
+ "blind signing": {
+  "topic": "crypto"
+ },
+ "bond": {
+  "topic": "bonds"
+ },
+ "breakout / false breakout": {
+  "topic": "trading"
+ },
+ "bull market": {
+  "topic": "stocks"
+ },
+ "capital gain": {
+  "topic": "personal"
+ },
+ "career and technical education": {
+  "topic": "other"
+ },
+ "circular financing": {
+  "topic": "companies"
+ },
+ "citizens' assembly": {
+  "topic": "other"
+ },
+ "clearing event": {
+  "topic": "trading"
+ },
+ "commission": {
+  "topic": "trading"
+ },
+ "common ownership": {
+  "topic": "stocks"
+ },
+ "composting": {
+  "topic": "other"
+ },
+ "compound growth": {
+  "topic": "personal"
+ },
+ "concentration risk": {
+  "topic": "stocks"
+ },
+ "consumer price index (cpi)": {
+  "topic": "economy"
+ },
+ "containerization": {
+  "topic": "other"
+ },
+ "convertible debt": {
+  "topic": "bonds"
+ },
+ "convertible notes": {
+  "topic": "bonds"
+ },
+ "core inflation": {
+  "topic": "economy"
+ },
+ "corporate governance": {
+  "topic": "companies"
+ },
+ "correction": {
+  "topic": "trading"
+ },
+ "coupon": {
+  "topic": "bonds"
+ },
+ "cpi": {
+  "topic": "economy",
+  "same_as": "consumer price index (cpi)"
+ },
+ "cpi (consumer price index)": {
+  "topic": "economy",
+  "same_as": "consumer price index (cpi)"
+ },
+ "cuda": {
+  "topic": "tech"
+ },
+ "cutout": {
+  "topic": "other"
+ },
+ "daily digest": {
+  "topic": "other"
+ },
+ "de-grossing": {
+  "topic": "trading"
+ },
+ "debt-to-asset ratio": {
+  "topic": "companies"
+ },
+ "diversification": {
+  "topic": "stocks"
+ },
+ "dividend": {
+  "topic": "stocks"
+ },
+ "dividend yield": {
+  "topic": "stocks"
+ },
+ "dollar-cost averaging": {
+  "topic": "personal"
+ },
+ "dow jones industrial average": {
+  "topic": "stocks"
+ },
+ "earnings": {
+  "topic": "companies"
+ },
+ "earnings estimate": {
+  "topic": "companies"
+ },
+ "efficient-market hypothesis": {
+  "topic": "stocks"
+ },
+ "emergency fund": {
+  "topic": "personal"
+ },
+ "employer match": {
+  "topic": "personal"
+ },
+ "endowment": {
+  "topic": "stocks"
+ },
+ "eps": {
+  "topic": "companies"
+ },
+ "estate tax": {
+  "topic": "policy"
+ },
+ "etf": {
+  "topic": "stocks"
+ },
+ "event-driven": {
+  "topic": "trading"
+ },
+ "ex-dividend date": {
+  "topic": "stocks"
+ },
+ "expectations": {
+  "topic": "stocks"
+ },
+ "expense ratio": {
+  "topic": "stocks"
+ },
+ "export controls": {
+  "topic": "policy"
+ },
+ "factor": {
+  "topic": "stocks"
+ },
+ "fdic insurance": {
+  "topic": "banking"
+ },
+ "fomo": {
+  "topic": "personal"
+ },
+ "fully diluted basis": {
+  "topic": "companies"
+ },
+ "gaap": {
+  "topic": "companies"
+ },
+ "golden cross / death cross": {
+  "topic": "trading"
+ },
+ "gpu": {
+  "topic": "tech"
+ },
+ "growth equity": {
+  "topic": "stocks"
+ },
+ "guidance": {
+  "topic": "companies"
+ },
+ "hacker": {
+  "topic": "tech"
+ },
+ "headline inflation": {
+  "topic": "economy"
+ },
+ "headline risk": {
+  "topic": "trading"
+ },
+ "home bias": {
+  "topic": "stocks"
+ },
+ "hot wallet": {
+  "topic": "crypto"
+ },
+ "hyperscalers": {
+  "topic": "tech"
+ },
+ "idiosyncratic risk": {
+  "topic": "stocks"
+ },
+ "index": {
+  "topic": "stocks"
+ },
+ "index fund": {
+  "topic": "stocks"
+ },
+ "inflation": {
+  "topic": "economy"
+ },
+ "institutional capital": {
+  "topic": "stocks"
+ },
+ "interest rates": {
+  "topic": "economy"
+ },
+ "interim ceo": {
+  "topic": "companies"
+ },
+ "investing": {
+  "topic": "stocks"
+ },
+ "ipo": {
+  "topic": "stocks"
+ },
+ "k-shaped economy": {
+  "topic": "economy"
+ },
+ "key man risk": {
+  "topic": "companies",
+  "same_as": "key-person risk"
+ },
+ "key-person risk": {
+  "topic": "companies"
+ },
+ "know your customer (kyc)": {
+  "topic": "banking"
+ },
+ "lagging indicator": {
+  "topic": "economy"
+ },
+ "liabilities": {
+  "topic": "companies"
+ },
+ "liberal arts": {
+  "topic": "other"
+ },
+ "limit order": {
+  "topic": "trading"
+ },
+ "lump sum investing": {
+  "topic": "personal"
+ },
+ "m&a": {
+  "topic": "companies"
+ },
+ "macd": {
+  "topic": "trading"
+ },
+ "margin": {
+  "topic": "companies"
+ },
+ "mark-to-market": {
+  "topic": "trading"
+ },
+ "market cap": {
+  "topic": "stocks",
+  "same_as": "market capitalization"
+ },
+ "market capitalization": {
+  "topic": "stocks"
+ },
+ "market order": {
+  "topic": "trading"
+ },
+ "market timing": {
+  "topic": "trading"
+ },
+ "maturity": {
+  "topic": "bonds"
+ },
+ "media rights": {
+  "topic": "companies"
+ },
+ "meme stock": {
+  "topic": "stocks"
+ },
+ "momentum (factor)": {
+  "topic": "trading"
+ },
+ "mortgage interest deduction": {
+  "topic": "policy"
+ },
+ "mortgage rate": {
+  "topic": "banking",
+  "same_as": "mortgage rates"
+ },
+ "mortgage rates": {
+  "topic": "banking"
+ },
+ "moving average (ma)": {
+  "topic": "trading"
+ },
+ "multi-strategy fund": {
+  "topic": "stocks"
+ },
+ "mutual fund": {
+  "topic": "stocks"
+ },
+ "name, image, and likeness (nil)": {
+  "topic": "policy"
+ },
+ "nasdaq composite": {
+  "topic": "stocks"
+ },
+ "natural hedge": {
+  "topic": "trading"
+ },
+ "nda (non-disclosure agreement)": {
+  "topic": "policy"
+ },
+ "negative gamma": {
+  "topic": "trading"
+ },
+ "neoclouds": {
+  "topic": "tech"
+ },
+ "net income": {
+  "topic": "companies"
+ },
+ "nominal growth": {
+  "topic": "economy"
+ },
+ "operating losses": {
+  "topic": "companies"
+ },
+ "opportunity cost": {
+  "topic": "personal"
+ },
+ "options": {
+  "topic": "trading"
+ },
+ "overbought / oversold": {
+  "topic": "trading"
+ },
+ "overconfidence": {
+  "topic": "personal"
+ },
+ "overfitting": {
+  "topic": "trading"
+ },
+ "p/e ratio": {
+  "topic": "stocks"
+ },
+ "panic selling": {
+  "topic": "trading"
+ },
+ "pe ratio": {
+  "topic": "stocks",
+  "same_as": "p/e ratio"
+ },
+ "pension": {
+  "topic": "personal"
+ },
+ "pestel": {
+  "topic": "companies"
+ },
+ "ponzi scheme": {
+  "topic": "personal"
+ },
+ "price takers": {
+  "topic": "trading"
+ },
+ "price target": {
+  "topic": "stocks"
+ },
+ "price-to-sales ratio": {
+  "topic": "stocks"
+ },
+ "priced in": {
+  "topic": "trading"
+ },
+ "private equity": {
+  "topic": "stocks"
+ },
+ "prospectus": {
+  "topic": "stocks"
+ },
+ "public benefit corporation (pbc)": {
+  "topic": "companies"
+ },
+ "pullback": {
+  "topic": "trading"
+ },
+ "pump-and-dump": {
+  "topic": "trading"
+ },
+ "quit rate": {
+  "topic": "economy"
+ },
+ "range trading": {
+  "topic": "trading"
+ },
+ "rate hike": {
+  "topic": "economy"
+ },
+ "real return": {
+  "topic": "personal"
+ },
+ "rebalancing": {
+  "topic": "personal"
+ },
+ "recipiency rate": {
+  "topic": "economy"
+ },
+ "return": {
+  "topic": "stocks"
+ },
+ "revenue": {
+  "topic": "companies"
+ },
+ "reverse solicitation": {
+  "topic": "policy"
+ },
+ "rights issues": {
+  "topic": "stocks"
+ },
+ "risk": {
+  "topic": "stocks"
+ },
+ "risk tolerance": {
+  "topic": "personal"
+ },
+ "roth ira": {
+  "topic": "personal"
+ },
+ "rsi": {
+  "topic": "trading"
+ },
+ "rule of 72": {
+  "topic": "personal"
+ },
+ "s&p 500": {
+  "topic": "stocks"
+ },
+ "s-1 filing": {
+  "topic": "stocks"
+ },
+ "saving": {
+  "topic": "personal"
+ },
+ "sectoral bargaining": {
+  "topic": "policy"
+ },
+ "share (stock)": {
+  "topic": "stocks"
+ },
+ "shareholder": {
+  "topic": "stocks"
+ },
+ "shareholders' equity": {
+  "topic": "companies"
+ },
+ "shell company": {
+  "topic": "companies"
+ },
+ "short seller": {
+  "topic": "trading"
+ },
+ "sipc": {
+  "topic": "banking"
+ },
+ "smas": {
+  "topic": "stocks"
+ },
+ "sortition": {
+  "topic": "other"
+ },
+ "sovereign ai": {
+  "topic": "tech"
+ },
+ "spread": {
+  "topic": "trading"
+ },
+ "stablecoin": {
+  "topic": "crypto"
+ },
+ "step-up basis": {
+  "topic": "policy"
+ },
+ "succession planning": {
+  "topic": "companies"
+ },
+ "support": {
+  "topic": "trading"
+ },
+ "survivorship bias": {
+  "topic": "trading"
+ },
+ "tail risk": {
+  "topic": "trading"
+ },
+ "take-or-pay commitment": {
+  "topic": "companies"
+ },
+ "target-date fund": {
+  "topic": "personal"
+ },
+ "tax alpha": {
+  "topic": "personal"
+ },
+ "tax loss harvesting": {
+  "topic": "personal"
+ },
+ "time horizon": {
+  "topic": "personal"
+ },
+ "total return": {
+  "topic": "stocks"
+ },
+ "transfer stations": {
+  "topic": "other"
+ },
+ "treasury bill": {
+  "topic": "bonds"
+ },
+ "trend following": {
+  "topic": "trading"
+ },
+ "tunneling": {
+  "topic": "companies"
+ },
+ "usb stick": {
+  "topic": "tech"
+ },
+ "valuations": {
+  "topic": "stocks"
+ },
+ "vix": {
+  "topic": "trading"
+ },
+ "volatility": {
+  "topic": "trading"
+ },
+ "volatility drag": {
+  "topic": "trading"
+ },
+ "volume ratio": {
+  "topic": "trading"
+ },
+ "wage theft": {
+  "topic": "policy"
+ },
+ "yield": {
+  "topic": "bonds"
+ }
+}
