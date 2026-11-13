@@ -157,9 +157,14 @@
       rows = rows.filter((r) => ids.has(r.id));
     }
     $("#lb-col").textContent = col;
-    tbody.innerHTML = rows.length ? rows.slice(0, 50).map((r, i) => `<tr class="${MD.user && r.id === MD.user.id ? "me" : ""}">
+    const compact = !!$("#lb-slot #lb");
+    const ranked = rows.map((r, i) => ({ r, i }));
+    let shown = ranked.slice(0, compact ? 10 : 50);
+    const mine = MD.user && ranked.find((x) => x.r.id === MD.user.id);
+    if (mine && !shown.includes(mine)) shown = shown.concat(mine);
+    tbody.innerHTML = rows.length ? shown.map(({ r, i }) => `<tr class="${MD.user && r.id === MD.user.id ? "me" : ""}">
         <td class="rank">${i < 3 ? ["🥇", "🥈", "🥉"][i] : i + 1}</td>
-        <td><b>${esc(r.display_name || r.username)}</b> <span class="muted">@${esc(r.username)}</span></td>
+        <td><b>${esc(r.display_name || r.username)}</b> <span class="muted lb-user">@${esc(r.username)}</span></td>
         <td class="num">${fmt(r)}</td>
         <td>${MD.user && r.id !== MD.user.id ? `<button class="mini" type="button" data-follow="${r.id}">Follow</button>` : ""}</td></tr>`).join("")
       : `<tr><td colspan="4">${emptyBoard()}</td></tr>`;
@@ -220,13 +225,30 @@
   async function loadFeed() {
     const box = $("#friend-feed");
     if (!box || !MD.user) return;
-    const { data } = await MD.sb.rpc("friend_feed", { p_limit: 25 });
-    const ago = (t) => { const m = Math.round((Date.now() - new Date(t)) / 60000); return m < 1 ? "just now" : m < 60 ? `${m} min ago` : m < 1440 ? `${Math.round(m / 60)} h ago` : new Date(t).toLocaleDateString(); };
-    const badge = { pending: "⏳ pending", filled: "✅ filled", rejected: "❌ rejected", right: "✅ right", wrong: "❌ wrong", void: "➖ no change" };
-    box.innerHTML = (data || []).map((f) => `<li><span>${f.kind === "prediction" ? "🔮" : "💼"}</span>
-        <span><b>${esc(f.display_name || f.username)}</b> ${f.kind === "prediction" ? "called" : ""} <b>${esc(f.symbol)}</b> ${esc(f.detail)}</span>
-        <span class="st st-${esc(f.status)}">${badge[f.status] || esc(f.status)}</span><span class="muted small">${ago(f.at)}</span></li>`).join("")
-      || `<li class="muted">Nothing yet. When friends make a call or a paper trade, it shows up here.</li>`;
+    const { data } = await MD.sb.rpc("friend_feed", { p_limit: 30 });
+    if (!Object.keys(prices || {}).length) { try { await loadPrices(); } catch (e) {} }
+    const ago = (t) => { const m = Math.round((Date.now() - new Date(t)) / 60000); return m < 1 ? "just now" : m < 60 ? `${m}m` : m < 1440 ? `${Math.round(m / 60)}h` : m < 10080 ? `${Math.round(m / 1440)}d` : new Date(t).toLocaleDateString([], { month: "short", day: "numeric" }); };
+    const badge = { pending: "⏳ Pending", filled: "Filled", rejected: "Rejected", right: "✅ Right", wrong: "❌ Wrong", void: "No change" };
+    const rows = data || [];
+    $("#feed-note").textContent = rows.length ? `${new Set(rows.map((f) => f.username)).size} friend${new Set(rows.map((f) => f.username)).size === 1 ? "" : "s"}` : "";
+    box.innerHTML = rows.map((f, n) => {
+      const who = esc(f.display_name || f.username), q = prices[f.symbol];
+      const at = /\$([\d,]+(?:\.\d+)?)/.exec(f.detail || ""), then = at ? Number(at[1].replace(/,/g, "")) : null;
+      const since = q && then && f.kind !== "prediction" && f.status === "filled" ? (q.price / then - 1) * 100 : null;
+      const sell = /\bsold\b/i.test(f.detail || "");
+      return `<li class="post${n >= 8 ? " extra" : ""}">
+        <span class="f-av" aria-hidden="true">${esc((f.display_name || f.username)[0].toUpperCase())}</span>
+        <div class="post-main">
+          <div class="post-head"><b>${who}</b> <span class="muted">@${esc(f.username)} · ${ago(f.at)}</span></div>
+          <div class="post-body">${f.kind === "prediction" ? `🔮 made a call on <b>${esc(f.symbol)}</b>: ${esc(f.detail)}` : `💼 <b>${esc(f.symbol)}</b> · ${esc(f.detail)}`}
+            <span class="st st-${esc(f.status)}">${badge[f.status] || esc(f.status)}</span></div>
+          ${q ? `<div class="post-tick"><button type="button" class="tick-chip" data-trade-sym="${esc(f.symbol)}"><b>${esc(f.symbol)}</b> ${money(q.price)}
+            <span class="${(q.price >= q.prev) ? "pos" : "neg"}">${pct((q.price / q.prev - 1) * 100)} today</span></button>
+            ${since != null ? `<span class="since ${since >= 0 ? "pos" : "neg"}">${since >= 0 ? "▲" : "▼"} ${pct(since)} since ${sell ? "they sold" : "they bought"}</span>` : ""}</div>` : ""}
+        </div></li>`;
+    }).join("") || `<li class="muted post-empty">Nothing yet. When friends trade or make a call, it shows up here. Invite one with your link →</li>`;
+    const more = $('[data-showall="#friend-feed"]');
+    if (more) { more.hidden = rows.length <= 8; box.classList.remove("all"); more.textContent = "Show more"; }
   }
   setInterval(() => { if (play && MD.user && !document.hidden) loadFeed(); }, 30000);
   // Live while open: prices change every 15 min in market hours, so refresh the portfolio, race and boards each minute.
@@ -301,7 +323,7 @@
         const h = prices[s]?.hist.filter((x) => x[0] <= t).pop();
         if (h) v += q * h[1]; else known = false;
       }
-      if (known) out.push([t, v]);
+      if (known) out.push([t, v, startCash + myRewards.filter((r) => r.created_at <= t).reduce((x, r) => x + Number(r.amount), 0)]);
     }
     return out;
   }
@@ -309,6 +331,8 @@
   // Portfolio chart, trading-app style: 1D from 15-minute prices, 1W/1M/ALL from daily snapshots (portfolio_daily),
   // coloured by the change over the chosen range. Drag or hover to read any point; the big number follows.
   let chartRange = "1D", chartData = null;
+  // "trading" = profit/loss from trades only (learning rewards are money added, like a deposit); "account" = total value
+  let chartMode = (MD.store && MD.store.get("chartmode", "trading")) || "trading";
   const nyDate = (t) => new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }).format(new Date(t));
   const when = (t, intraday) => new Date(t).toLocaleString([], intraday
     ? { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" } : { month: "short", day: "numeric", year: "numeric" });
@@ -321,37 +345,46 @@
     }
     const days = { "1W": 7, "1M": 31, ALL: 99999 }[range];
     const cut = new Date(Date.now() - days * 864e5).toISOString().slice(0, 10);
-    const pts = daily.filter((d) => d.day >= cut).map((d) => [d.day + "T21:00:00Z", Number(d.value)]);
-    if (!pts.length || pts[pts.length - 1][0].slice(0, 10) < nyDate(Date.now())) pts.push([new Date().toISOString(), total]);
+    const pts = daily.filter((d) => d.day >= cut).map((d) => [d.day + "T21:00:00Z", Number(d.value), Number(d.deposits)]);
+    if (!pts.length || pts[pts.length - 1][0].slice(0, 10) < nyDate(Date.now())) pts.push([new Date().toISOString(), total, chartData.deposits]);
     return pts.length >= 2 ? { pts, intraday: false } : { pts: intra, intraday: true };
   }
-  const changeText = (v, base, label) => {
-    const d = v - base, p = base ? (d / base) * 100 : 0, cls = d >= 0 ? "up" : "down";
+  const changeText = (v, base, label, of = base) => {
+    const d = v - base, p = of ? (d / of) * 100 : 0, cls = d >= 0 ? "up" : "down";
     return `<span class="${cls}">${d >= 0 ? "▲" : "▼"} ${money(Math.abs(d))} (${pct(p)})</span> ${esc(label)}`;
   };
   function drawChart() {
     const el = $("#pf-chart"), lab = $("#pf-scrub"), big = $("#pf-total");
     if (!el || !chartData) return;
     $$("[data-range]").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.range === chartRange)));
+    $$("[data-chartmode]").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.chartmode === chartMode)));
+    const pl = $("#pf-title");
+    if (pl) pl.textContent = chartMode === "trading" ? "Your trading profit/loss" : "Your account value";
     const { pts, intraday } = chartData.filled ? rangeSeries(chartRange) : { pts: [], intraday: true };
     if (pts.length < 2) { el.innerHTML = `<div class="pf-flat"><span></span></div>`; lab.textContent = ""; return; }
-    const W = el.clientWidth || 600, H = 140, vals = pts.map((x) => x[1]), base = vals[0], up = vals[vals.length - 1] >= base;
+    const trading = chartMode === "trading";
+    const W = el.clientWidth || 600, H = 140, vals = pts.map((x) => trading ? x[1] - x[2] : x[1]), base = vals[0], up = vals[vals.length - 1] >= base;
+    // trading %: the gain divided by all the money you've been given (start + learning rewards), same as the leaderboard
+    const baseMoney = trading ? pts[pts.length - 1][2] : vals[0];
     let lo = Math.min(...vals), hi = Math.max(...vals); const pad = (hi - lo) * 0.12 || 1; lo -= pad; hi += pad;
     const X = (i) => (i / (pts.length - 1)) * W, Y = (v) => H - ((v - lo) / (hi - lo)) * H;
-    const d = pts.map((x, i) => `${i ? "L" : "M"}${X(i).toFixed(1)},${Y(x[1]).toFixed(1)}`).join("");
+    const d = vals.map((v, i) => `${i ? "L" : "M"}${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join("");
     el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" class="${up ? "up" : "down"}" role="img" aria-label="Portfolio value, ${chartRange}">
       <line class="base" x1="0" x2="${W}" y1="${Y(base)}" y2="${Y(base)}"/><path class="fill" d="${d}L${W},${H}L0,${H}Z"/><path class="ln" d="${d}"/>
       <line class="cur" y1="0" y2="${H}" x1="0" x2="0" visibility="hidden"/><circle class="dot" r="4" cx="0" cy="0" visibility="hidden"/></svg>`;
     $("#portfolio").classList.toggle("down", !up);
     const label = { "1D": intraday ? "today" : "", "1W": "past week", "1M": "past month", ALL: "all time" }[chartRange] || "";
-    const rest = () => { big.textContent = money(chartData.total); lab.innerHTML = changeText(vals[vals.length - 1], base, label); };
+    const signed = (v) => (v >= 0 ? "+" : "−") + money(Math.abs(v));
+    const head = (v) => trading ? signed(v) : money(v);
+    const rest = () => { big.textContent = head(trading ? chartData.total - chartData.deposits : chartData.total);
+      lab.innerHTML = changeText(vals[vals.length - 1], base, label, baseMoney); };
     rest();
     const svg = $("svg", el), cur = $(".cur", svg), dot = $(".dot", svg);
     const at = (e) => {
       const r = svg.getBoundingClientRect(), i = Math.max(0, Math.min(pts.length - 1, Math.round(((e.clientX - r.left) / r.width) * (pts.length - 1))));
-      cur.setAttribute("x1", X(i)); cur.setAttribute("x2", X(i)); dot.setAttribute("cx", X(i)); dot.setAttribute("cy", Y(pts[i][1]));
+      cur.setAttribute("x1", X(i)); cur.setAttribute("x2", X(i)); dot.setAttribute("cx", X(i)); dot.setAttribute("cy", Y(vals[i]));
       cur.setAttribute("visibility", "visible"); dot.setAttribute("visibility", "visible");
-      big.textContent = money(pts[i][1]); lab.innerHTML = changeText(pts[i][1], base, when(pts[i][0], intraday));
+      big.textContent = head(vals[i]); lab.innerHTML = changeText(vals[i], base, when(pts[i][0], intraday), baseMoney);
     };
     el.onpointermove = at; el.onpointerdown = at;
     el.onpointerleave = () => { cur.setAttribute("visibility", "hidden"); dot.setAttribute("visibility", "hidden"); rest(); };
@@ -359,6 +392,8 @@
   document.addEventListener("click", (e) => {
     const b = e.target.closest("[data-range]");
     if (b) { chartRange = b.dataset.range; drawChart(); }
+    const m = e.target.closest("[data-chartmode]");
+    if (m) { chartMode = m.dataset.chartmode; if (MD.store) MD.store.set("chartmode", chartMode); drawChart(); }
   });
   addEventListener("resize", () => { clearTimeout(drawChart.t); drawChart.t = setTimeout(drawChart, 150); });
 
@@ -387,7 +422,7 @@
       MD.sb.from("orders").select("*").eq("user_id", MD.user.id).order("placed_at", { ascending: false }).limit(200),
       MD.sb.from("rewards").select("*").eq("user_id", MD.user.id).order("created_at", { ascending: false }).limit(100),
       loadPrices(),
-      MD.sb.from("portfolio_daily").select("day, value").eq("user_id", MD.user.id).order("day").then((r) => { myDaily = r.data || []; }),
+      MD.sb.from("portfolio_daily").select("day, value, deposits").eq("user_id", MD.user.id).order("day").then((r) => { myDaily = r.data || []; }),
     ]);
     const cash = pf ? Number(pf.cash) : 10000, deposits = pf ? Number(pf.deposits) : 10000;
     myRewards = rewards || [];
@@ -408,7 +443,11 @@
     // No fills yet: a flat dashed line instead of a chart of nothing.
     const filled = (orders || []).some((o) => o.status === "filled");
     const earned = myRewards.reduce((s, r) => s + Number(r.amount), 0), start = deposits - earned;
-    chartData = { intra: filled ? valueSeries(orders || [], start) : [], daily: myDaily, total, filled };
+    chartData = { intra: filled ? valueSeries(orders || [], start) : [], daily: myDaily, total, deposits, filled };
+    // where the money came from: the start, what learning earned, and what trading made or lost
+    const trade = total - deposits;
+    $("#pf-split").innerHTML = `<span>Started with <b>${money(start)}</b></span><span>Earned by learning <b class="pos">+${money(earned)}</b></span>
+      <span>Trading <b class="${trade >= 0 ? "pos" : "neg"}">${trade >= 0 ? "+" : "−"}${money(Math.abs(trade))} (${pct((trade / deposits) * 100)})</b></span>`;
     drawChart();
     renderRewards(earned);
 
@@ -447,7 +486,8 @@
       }).join("");
     }
 
-    $("#pf-orders").innerHTML = (orders || []).slice(0, 15).map((o) => `<li><span class="st st-${o.status}">${o.status}</span>
+    const om = $('[data-showall="#pf-orders"]'); if (om) om.hidden = (orders || []).length <= 5;
+    $("#pf-orders").innerHTML = (orders || []).slice(0, 30).map((o, n) => `<li class="${n >= 5 ? "extra" : ""}"><span class="st st-${o.status}">${o.status}</span>
         ${o.side === "buy" ? "Buy" : "Sell"} ${Number(o.qty).toLocaleString(undefined, { maximumFractionDigits: 4 })} <b>${esc(o.symbol)}</b>
         ${o.fill_price ? "at " + money(o.fill_price) : ""} <span class="muted small">${new Date(o.placed_at).toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}</span>
         ${o.note ? `<span class="muted small">· ${esc(o.note)}</span>` : ""}
@@ -458,7 +498,8 @@
     const box = $("#rewards");
     if (!box) return;
     $("#earn-total").textContent = earned ? `${earned >= 0 ? "+" : "−"}${money(Math.abs(earned))} earned so far` : "";
-    box.innerHTML = myRewards.slice(0, 12).map((r) => `<li><span class="pf-chip ${Number(r.amount) >= 0 ? "up" : "down"}">${Number(r.amount) >= 0 ? "+" : "−"}${money(Math.abs(Number(r.amount)))}</span>
+    const rm = $('[data-showall="#rewards"]'); if (rm) rm.hidden = myRewards.length <= 5;
+    box.innerHTML = myRewards.slice(0, 40).map((r, n) => `<li class="${n >= 5 ? "extra" : ""}"><span class="pf-chip ${Number(r.amount) >= 0 ? "up" : "down"}">${Number(r.amount) >= 0 ? "+" : "−"}${money(Math.abs(Number(r.amount)))}</span>
         <span>${esc(r.reason)}</span><span class="muted small">${new Date(r.created_at).toLocaleDateString([], { month: "short", day: "numeric" })}</span></li>`).join("")
       || `<li class="muted">Nothing yet. Finish lesson 1 on the Learn tab for your first $500.</li>`;
   }
@@ -649,15 +690,16 @@
     const signedIn = !!MD.user;
     $$("[data-need-auth]").forEach((el) => (el.hidden = !signedIn));
     $$("[data-guest]").forEach((el) => (el.hidden = signedIn));
+    if (signedIn) {  // signed in: leaderboard sits in the right column, TrendBot at the end of the left one
+      if ($("#lb-slot") && $("#lb")) $("#lb-slot").appendChild($("#lb"));
+      if ($("#tb-slot") && $("#trendbot")) $("#tb-slot").appendChild($("#trendbot"));
+    }
     loadBoard();
     if (signedIn) { loadFriends(); loadFeed(); loadPortfolio(); loadCalls(); loadCalibration(); loadCoach(); }
   }
   if (play) {
-    $$("[data-board]").forEach((b) => b.addEventListener("click", () => {
-      board = b.dataset.board;
-      $$("[data-board]").forEach((x) => x.setAttribute("aria-selected", x === b));
-      loadBoard();
-    }));
+    const pick = $("#lb-pick");
+    if (pick) pick.addEventListener("change", () => { board = pick.value; loadBoard(); });
     $$("[data-scope]").forEach((b) => b.addEventListener("click", () => {
       scope = b.dataset.scope;
       $$("[data-scope]").forEach((x) => x.setAttribute("aria-selected", x === b));
@@ -694,6 +736,18 @@
   }
   document.addEventListener("click", (e) => { if (e.target.closest("[data-call-sym] [data-predict]")) setTimeout(showMyCall, 800); });
 
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-showall]");
+    if (!b) return;
+    const list = $(b.dataset.showall), all = list.classList.toggle("all");
+    b.dataset.label = b.dataset.label || b.textContent;
+    b.textContent = all ? "Show fewer" : b.dataset.label;
+  });
+  const sideCol = $(".rh-side");
+  if (sideCol && "ResizeObserver" in window) {
+    const fit = () => sideCol.style.setProperty("--side-top", Math.min(76, innerHeight - sideCol.offsetHeight - 16) + "px");
+    new ResizeObserver(fit).observe(sideCol); addEventListener("resize", fit);
+  }
   const onAuth = async () => {
     // A failed lookup (offline, or tables not set up yet) must not stop the rest of the page from updating.
     try { await loadProfile(); } catch (e) { profile = null; }

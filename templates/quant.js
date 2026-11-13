@@ -1,6 +1,7 @@
 // Play page: the daily 90% range game and "Your stats" (beat the market, Sharpe, max drawdown). All scoring happens in
 // the database (supabase/migrations/017_quant_games.sql); this file only draws the controls and results.
 (() => {
+  const esc = (t) => String(t ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const $ = (s) => document.querySelector(s);
   if (!$("#range")) return;
   const money = (v) => "$" + Number(v).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -139,11 +140,16 @@
       tile("Holdings", String(data.holdings.length), data.pending ? `${data.pending} order${data.pending > 1 ? "s" : ""} filling at the next update` : "stocks it owns") +
       tile("Cash", money(data.cash), "waiting for a Buy signal");
     const moves = (data.decisions || []).filter((d) => d.symbol !== "-" && d.action !== "hold").slice(0, 12);
+    const dt = (d) => new Date(d.day + "T12:00:00").toLocaleDateString([], { month: "short", day: "numeric" });
     $("#tb-moves").innerHTML = moves.length
-      ? moves.map((d) => `<li><span><b class="${d.action === "buy" ? "pos" : "neg"}">${d.action === "buy" ? "Bought" : "Sold"} ${d.symbol}</b>
-          <span class="muted small">score ${d.score}/100 · ${why(d)}</span></span>
-          <span class="muted small">${new Date(d.day + "T12:00:00").toLocaleDateString([], { month: "short", day: "numeric" })}</span></li>`).join("")
-      : `<li class="muted">No trades yet. It makes its first moves at 3:45 pm ET on the next trading day.</li>`;
+      ? `<table class="tb-table"><thead><tr><th>Move</th><th class="num">Score</th><th>Trend</th><th class="num">vs 5-day avg</th><th class="num">Volume</th><th class="num">RSI</th><th class="num">Date</th></tr></thead><tbody>` +
+        moves.map((d, n) => `<tr class="${n >= 6 ? "extra" : ""}"><td><b class="${d.action === "buy" ? "pos" : "neg"}">${d.action === "buy" ? "Bought" : "Sold"} ${esc(d.symbol)}</b></td>
+          <td class="num"><b>${d.score}</b><span class="muted">/100</span></td><td>${esc(TREND[d.trend] || "unclear")}</td>
+          <td class="num">${d.bias_pct == null ? "–" : (d.bias_pct >= 0 ? "+" : "−") + Math.abs(d.bias_pct).toFixed(1) + "%"}</td>
+          <td class="num">${d.volume_ratio == null ? "–" : Number(d.volume_ratio).toFixed(1) + "×"}</td>
+          <td class="num">${d.rsi == null ? "–" : Math.round(d.rsi)}</td><td class="num muted">${dt(d)}</td></tr>`).join("") + `</tbody></table>`
+      : `<p class="muted">No trades yet. It makes its first moves at 3:45 pm ET on the next trading day.</p>`;
+    const tm = $('[data-showall="#tb-moves"]'); if (tm) tm.hidden = moves.length <= 6;
   }
 
   ["#rg-center", "#rg-width"].forEach((s) => $(s).addEventListener("input", draw));

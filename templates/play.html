@@ -22,12 +22,14 @@
 <div class="play-app" data-need-auth hidden>
   <div class="rh">
   <section class="pf-hero" id="portfolio">
-    <div class="pf-label">Your portfolio <span class="pf-play">play money</span> <button class="info" type="button" data-tip="Everyone starts with $10,000 of play money and earns more by learning and making right calls. Orders fill at the next price update: every 15 minutes while the US market is open (9:30–4:00 New York time), otherwise at the next open." aria-label="How paper trading works">i</button></div>
+    <div class="pf-top"><div class="pf-label"><span id="pf-title">Your trading profit/loss</span> <span class="pf-play">play money</span> <button class="info" type="button" data-tip="Everyone starts with $10,000 of play money and earns more by learning and making right calls. Orders fill at the next price update: every 15 minutes while the US market is open (9:30–4:00 New York time), otherwise at the next open." aria-label="How paper trading works">i</button></div>
+      <div class="seg-tabs pf-mode" role="tablist" aria-label="Chart shows"><button type="button" role="tab" data-chartmode="trading" aria-selected="true" title="Only what your trades made or lost. Money earned from quizzes, lessons and calls is left out, like a deposit.">Trading</button><button type="button" role="tab" data-chartmode="account" aria-selected="false" title="Everything in your account: the $10,000 start, money earned by learning, and your trading gains or losses.">Account</button></div></div>
     <div class="pf-total" id="pf-total">$10,000.00</div>
     <div class="pf-changes"><span class="pf-chip" id="pf-today"></span><span class="pf-chip" id="pf-ret"></span></div>
     <div class="pf-scrub muted small" id="pf-scrub" aria-live="polite"></div>
     <div class="pf-chart" id="pf-chart"></div>
     <div class="pf-ranges" role="tablist" aria-label="Chart range"><button type="button" role="tab" data-range="1D" aria-selected="true">1D</button><button type="button" role="tab" data-range="1W">1W</button><button type="button" role="tab" data-range="1M">1M</button><button type="button" role="tab" data-range="ALL">ALL</button></div>
+    <div class="pf-split" id="pf-split"></div>
     <div class="pf-bp"><span>Buying power</span><b id="pf-cash">$10,000.00</b><span class="muted">·</span><span>Invested</span><b id="pf-inv">$0.00</b></div>
     <div class="pf-pending" id="pf-pending" hidden></div>
     <div class="pf-actions">
@@ -49,9 +51,12 @@
         <ul class="holdings" id="pf-watch"></ul>
       </section>
 
+      <div id="lb-slot"></div>
+
       <section class="card play-card">
         <div class="pc-head"><h2>Recent orders</h2></div>
         <ul class="olist" id="pf-orders"></ul>
+        <button class="side-link more-btn" type="button" data-showall="#pf-orders" hidden>Show all orders</button>
       </section>
     </aside>
 
@@ -83,15 +88,22 @@
         <div class="qs-grid" id="qs-grid"></div>
       </section>
 
-      <h2 class="play-sec">Friends and rewards</h2>
+      <h2 class="play-sec">Friends</h2>
+      <div class="social-grid">
+      <section class="card play-card feed-card">
+        <div class="pc-head"><h2>📣 Friends’ activity</h2><span class="muted small" id="feed-note"></span></div>
+        <ul class="ffeed" id="friend-feed"></ul>
+        <button class="side-link more-btn" type="button" data-showall="#friend-feed" hidden>Show more</button>
+      </section>
+
+      <div class="social-side">
       <section class="card play-card race-card">
         <div class="pc-head"><h2>🏁 Friends race</h2><span class="muted small" id="race-note"></span></div>
         <div class="race" id="race"></div>
       </section>
 
-      <div class="play-grid">
       <section class="card play-card">
-        <div class="pc-head"><h2>👥 Friends</h2><button class="mini" type="button" data-edit-username>You: <span data-me-username>…</span></button></div>
+        <div class="pc-head"><h2>👥 Find friends</h2><button class="mini" type="button" data-edit-username>You: <span data-me-username>…</span></button></div>
         <div class="invite">
           <label class="small muted" for="invite-link">Your invite link: friends who open it follow you</label>
           <div class="acct-row"><input id="invite-link" readonly><button class="btn" type="button" id="invite-copy">Copy</button></div>
@@ -101,23 +113,25 @@
           <div class="acct-row"><input id="find-in" placeholder="@username" autocapitalize="none"><button class="btn ghost" type="submit">Follow</button></div>
         </form>
         <div class="friends" id="friends-list"></div>
-        <h3 class="sub-h">Friends’ moves</h3>
-        <ul class="olist" id="friend-feed"></ul>
       </section>
 
       <section class="card play-card earn-card">
-        <div class="pc-head"><h2>💰 Earn more money</h2><span class="muted small" id="earn-total"></span></div>
-        <ul class="earn-ways">
-          <li><span>🧠</span><span>Correct daily-quiz answer</span><b>+$100</b></li>
-          <li><span>🔮</span><span>Right call (more if you were confident)</span><b>+$100–$400</b></li>
-          <li><span>🎓</span><span>Finish a lesson</span><b>+$500</b></li>
-          <li><span>🔥</span><span>Every 7-day streak</span><b>+$1,000</b></li>
-          <li class="neg"><span>⚠️</span><span>Wrong call when 80%+ sure</span><b>−$100</b></li>
+        <div class="pc-head"><h2>💰 Earn play money</h2><span class="muted small" id="earn-total"></span></div>
+        <ul class="earn-chips">
+          <li>🧠 Quiz answer right <b>+$100</b></li>
+          <li>🔮 Right call <b>+$100–400</b></li>
+          <li>🎓 Finish a lesson <b>+$500</b></li>
+          <li>🔥 7-day streak <b>+$1,000</b></li>
+          <li class="neg">⚠️ Wrong call when 80%+ sure <b>−$100</b></li>
         </ul>
         <h3 class="sub-h">Your rewards</h3>
         <ul class="olist" id="rewards"></ul>
+        <button class="side-link more-btn" type="button" data-showall="#rewards" hidden>Show all rewards</button>
       </section>
       </div>
+      </div>
+
+      <div id="tb-slot"></div>
     </div>
   </div>
 </div>
@@ -128,7 +142,8 @@
     Same $10,000, same real prices, no learning bonuses. <b>Can a trading formula beat you, or the S&amp;P 500?</b></p>
   <div class="qs-grid" id="tb-stats"></div>
   <h3 class="sub-h">Latest moves</h3>
-  <ul class="olist" id="tb-moves"></ul>
+  <div class="tb-moves" id="tb-moves"></div>
+  <button class="side-link more-btn" type="button" data-showall="#tb-moves" hidden>Show all moves</button>
   <details class="bot-how">
     <summary>How TrendBot decides</summary>
     <ol>
@@ -145,19 +160,20 @@
   </details>
 </section>
 
-<section class="card play-card lb">
-  <div class="pc-head"><h2>🏆 Leaderboards</h2>
+<section class="card play-card lb" id="lb">
+  <div class="pc-head"><h2>🏆 Leaderboard</h2>
     <div class="seg-tabs" role="tablist"><button type="button" role="tab" data-scope="all" aria-selected="true">Everyone</button><button type="button" role="tab" data-scope="friends" aria-selected="false">Friends</button></div>
   </div>
-  <div class="board-tabs" role="tablist">
-    <button type="button" role="tab" data-board="portfolio" aria-selected="true">💼 Portfolio</button>
-    <button type="button" role="tab" data-board="networth" aria-selected="false">💰 Net worth</button>
-    <button type="button" role="tab" data-board="skill" aria-selected="false">⚖️ Skill</button>
-    <button type="button" role="tab" data-board="range" aria-selected="false">🎯 Range</button>
-    <button type="button" role="tab" data-board="calls" aria-selected="false">🔮 Forecasting</button>
-    <button type="button" role="tab" data-board="streak" aria-selected="false">🔥 Streak</button>
-    <button type="button" role="tab" data-board="quiz" aria-selected="false">🧠 Quiz</button>
-  </div>
+  <label class="lb-pick"><span class="sr-only">Ranking</span>
+    <select id="lb-pick">
+      <option value="portfolio">💼 Investment return</option>
+      <option value="networth">💰 Net worth</option>
+      <option value="skill">⚖️ Skill vs the S&amp;P 500</option>
+      <option value="range">🎯 Daily range score</option>
+      <option value="calls">🔮 Forecasting skill</option>
+      <option value="streak">🔥 Learning streak</option>
+      <option value="quiz">🧠 Quiz answers</option>
+    </select></label>
   <table class="lb-table">
     <thead><tr><th>#</th><th>Player</th><th class="num" id="lb-col">💼 Investment return</th><th></th></tr></thead>
     <tbody id="lb-body"></tbody>

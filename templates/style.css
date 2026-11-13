@@ -1212,3 +1212,78 @@ button.act.progress { cursor: pointer; font: inherit; }
 .ec li { display: flex; align-items: center; gap: 8px; }
 .ec li > a { flex: 1; min-width: 0; }
 .ec-info { flex: none; }
+
+/* ---------- Play, round 2: sticky right column, social feed, compact lists ---------- */
+@media (min-width: 1081px) {
+  .rh-side { position: sticky; top: var(--side-top, 76px); }  /* pins once its last card is on screen (social.js) */
+}
+.extra { display: none !important; }
+.all > .extra, .all > tbody > .extra, .all .extra { display: revert !important; }
+.more-btn { background: none; border: 0; padding: 8px 0 0; cursor: pointer; font: inherit; font-weight: 700; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* leaderboard: dropdown + compact table in the right column */
+.lb-pick select { width: 100%; margin: 4px 0 8px; padding: 8px 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface-2); color: var(--text); font: inherit; font-size: .88rem; font-weight: 650; }
+.rh-side .lb .pc-head { flex-wrap: wrap; gap: 8px; }
+.rh-side .lb-table { font-size: .82rem; }
+.rh-side .lb-table thead { display: none; }
+.rh-side .lb-table td { padding: 7px 4px; }
+.rh-side .lb-table .lb-user { display: block; font-size: .74rem; }
+.rh-side .lb-table td.num { white-space: nowrap; }
+.rh-side .lb-table td.num .muted { display: block; font-size: .74rem; }
+.rh-side .lb-table .mini { padding: 3px 8px; font-size: .72rem; }
+.lb-table tr.me td { background: var(--up-soft); }
+
+/* friends: feed + side column */
+.social-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+.social-side { display: grid; gap: 16px; min-width: 0; }
+.ffeed { list-style: none; margin: 0; padding: 0; }
+.post { display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+.post:first-child { border-top: 0; padding-top: 4px; }
+.post-main { min-width: 0; flex: 1; display: grid; gap: 4px; }
+.post-head { font-size: .88rem; } .post-body { font-size: .9rem; line-height: 1.45; }
+.post-body .st { margin-left: 4px; }
+.post-tick { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 2px; }
+.tick-chip { display: inline-flex; gap: 6px; align-items: center; border: 1px solid var(--line); background: var(--surface-2); color: var(--text);
+             border-radius: 99px; padding: 4px 10px; font: inherit; font-size: .78rem; cursor: pointer; font-variant-numeric: tabular-nums; }
+.tick-chip:hover { border-color: var(--text-3); }
+.since { font-size: .78rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.since.pos, .tick-chip .pos { color: var(--up); } .since.neg, .tick-chip .neg { color: var(--down); }
+.post-empty { padding: 8px 0; }
+
+/* rewards: ways to earn as chips */
+.earn-chips { list-style: none; margin: 0 0 6px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.earn-chips li { border: 1px solid var(--line); border-radius: 99px; padding: 6px 12px; font-size: .82rem; background: var(--surface-2); }
+.earn-chips li b { color: var(--up); margin-left: 4px; } .earn-chips li.neg b { color: var(--down); }
+
+/* TrendBot moves as a table */
+.tb-table { width: 100%; border-collapse: collapse; font-size: .84rem; font-variant-numeric: tabular-nums; }
+.tb-table th { text-align: left; font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: var(--text-3); padding: 6px; border-bottom: 1px solid var(--line); font-weight: 700; }
+.tb-table td { padding: 8px 6px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.tb-table .num { text-align: right; }
+.tb-moves { overflow-x: auto; }
+@media (max-width: 900px) { .social-grid { grid-template-columns: minmax(0, 1fr); } }
+.rh-side .h-spark { width: 44px; }
+.rh-side .h-row { gap: 10px; }
+.ffeed.all > .extra { display: flex !important; }
+.social-side .pc-head { flex-wrap: wrap; gap: 6px 10px; }
+.social-side .earn-chips li { font-size: .78rem; padding: 5px 10px; }
+#lb-slot, #tb-slot, .tb-moves { min-width: 0; max-width: 100%; }
+/* phones/tablets: one column in order of importance: portfolio → your stocks → watchlist → games → friends → leaderboard → orders → TrendBot */
+@media (max-width: 1080px) {
+  .rh { display: flex; flex-direction: column; gap: 16px; }
+  .rh-side, .rh-rest { display: contents; }
+  .rh > .pf-hero { order: 0; }
+  .rh-side > section:first-child { order: 1; }
+  #watch-card { order: 2; }
+  .rh-rest > * { order: 3; }
+  #lb-slot { order: 4; }
+  .rh-side > section:has(#pf-orders) { order: 5; }
+  .rh-rest > #tb-slot { order: 6; }
+}
+
+.pf-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.pf-mode button { padding: 4px 12px; font-size: .78rem; }
+.pf-split { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: .84rem; color: var(--text-2); margin-bottom: 6px; }
+.pf-split b { color: var(--text); font-variant-numeric: tabular-nums; } .pf-split b.pos { color: var(--up); } .pf-split b.neg { color: var(--down); }
+.pf-chart { overflow: hidden; }  /* a stray point can never cover the buttons */
