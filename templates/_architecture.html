@@ -1,0 +1,184 @@
+{% set total_loc = arch.loc|sum(attribute='n') %}
+<section class="ar-hero" id="engineering">
+  <div class="eyebrow">Under the hood · for engineers</div>
+  <h2 class="ar-h">How Stocksplain is built</h2>
+  <p class="lede">A news app, an investing course and a multiplayer trading game that <b>run themselves every day with zero servers</b>.
+    The clock is a database, the compute is free CI minutes, the AI is never trusted with a number, and every rule that
+    touches money lives in Postgres.</p>
+  <ul class="ar-badges">
+    <li>0 servers</li><li>$0 hosting</li><li>Runs itself at 5:30 am ET</li><li>Prices every 15 min</li><li>Web · Android · iOS</li>
+  </ul>
+</section>
+
+<section class="ar-stats">
+  <div class="ar-stat"><b>{{ '{:,}'.format(total_loc) }}</b><span>lines of code</span></div>
+  <div class="ar-stat"><b>{{ arch.tables|length }}</b><span>Postgres tables</span></div>
+  <div class="ar-stat"><b>{{ arch.n_functions }}</b><span>SQL functions</span></div>
+  <div class="ar-stat"><b>{{ arch.n_policies }}</b><span>row-level security policies</span></div>
+  <div class="ar-stat"><b>{{ arch.n_migrations }}</b><span>schema migrations</span></div>
+  <div class="ar-stat"><b>{{ arch.n_tests }}</b><span>test functions in CI</span></div>
+  <div class="ar-loc" aria-label="Code by language">
+    <div class="ar-locbar">{% for l in arch.loc %}<span style="width: {{ (100 * l.n / total_loc)|round(1) }}%; background: {{ l.c }}" title="{{ l.lang }}: {{ l.n }} lines"></span>{% endfor %}</div>
+    <ul>{% for l in arch.loc %}<li><i style="background: {{ l.c }}"></i>{{ l.lang }} <b>{{ '{:,}'.format(l.n) }}</b></li>{% endfor %}</ul>
+  </div>
+</section>
+
+<!-- ============ system diagram ============ -->
+<section class="ar-sec">
+  <h2 class="section-title">The system at a glance</h2>
+  <p class="ar-sub">Four lanes, left to right: what starts work, what does it, where results live, and how they reach you. The lines are real data flows.</p>
+  <div class="ar-diagram" id="ar-diagram">
+    <svg class="ar-wires" id="ar-wires" aria-hidden="true"></svg>
+    <div class="lane"><div class="lane-h"><span>⏰</span>Clock</div>
+      <div class="node n-db" id="n-cron"><b>pg_cron</b><span>Postgres timers in Supabase: 5:30 am daily, every 15 min in market hours, after the close</span></div>
+      <div class="node n-db" id="n-net"><b>pg_net + Vault</b><span>HTTP from SQL; a scoped GitHub token kept encrypted</span></div>
+    </div>
+    <div class="lane"><div class="lane-h"><span>⚙️</span>Compute</div>
+      <div class="node n-ci" id="n-daily"><b>Daily pipeline</b><span>GitHub Actions: ingest → transcribe → summarize → verify → build</span></div>
+      <div class="node n-ci" id="n-prices"><b>Price job</b><span>Every 15 min: quotes in, paper orders filled, calls settled</span></div>
+      <div class="node n-ai" id="n-ai"><b>Gemini models</b><span>Routed per job, with fallbacks and hard timeouts</span></div>
+      <div class="node n-ci" id="n-tts"><b>Kokoro TTS</b><span>Local neural voice for the audio briefing</span></div>
+    </div>
+    <div class="lane"><div class="lane-h"><span>🗄️</span>Data</div>
+      <div class="node n-ext" id="n-src"><b>{{ n_podcasts }} podcasts · {{ n_feeds }} newsrooms</b><span>RSS feeds · Yahoo prices · FRED economic data</span></div>
+      <div class="node n-git" id="n-repo"><b>Git as the content DB</b><span>Every summary, quiz and forecast is a versioned JSON file</span></div>
+      <div class="node n-db" id="n-pg"><b>Supabase Postgres</b><span>{{ arch.tables|length }} tables · RLS · game logic in SQL</span></div>
+    </div>
+    <div class="lane"><div class="lane-h"><span>📱</span>Delivery</div>
+      <div class="node n-git" id="n-pages"><b>GitHub Pages + Cloudflare</b><span>Static HTML from Jinja, custom domain, HTTPS</span></div>
+      <div class="node n-app" id="n-web"><b>Web app</b><span>Vanilla JS modules, service worker for offline</span></div>
+      <div class="node n-app" id="n-mobile"><b>Android + iOS</b><span>Capacitor shells loading the live site</span></div>
+    </div>
+  </div>
+  <ul class="ar-legend">
+    <li><i class="l-db"></i>Postgres / Supabase</li><li><i class="l-ci"></i>GitHub Actions</li><li><i class="l-ai"></i>AI</li>
+    <li><i class="l-git"></i>Git / static hosting</li><li><i class="l-ext"></i>External data</li><li><i class="l-app"></i>Clients</li>
+  </ul>
+</section>
+
+<!-- ============ a day in the life ============ -->
+<section class="ar-sec">
+  <h2 class="section-title">A day in the life of the pipeline</h2>
+  <p class="ar-sub">Typical weekday. The morning run takes about 25 to 30 minutes end to end; nobody touches a keyboard.</p>
+  <ol class="ar-time">
+    <li><time>5:30</time><div><b>The database wakes up GitHub</b><code>cron.schedule → net.http_post → workflow_dispatch</code><p>A Postgres timer calls the GitHub API with a token stored in Supabase Vault. GitHub's own scheduler skipped runs for this repo, so the database is the clock.</p></div></li>
+    <li><time>5:31</time><div><b>Ingest</b><code>RSS × {{ n_podcasts }} → new episodes → audio</code><p>Each show's feed is read; anything new since the last run is queued with its audio file.</p></div></li>
+    <li><time>5:33</time><div><b>Transcribe and summarize</b><code>Gemini → Pydantic schema → JSON</code><p>Audio becomes a transcript, then a structured study sheet: key points, numbers, lesson, opinions, glossary, tickers. Every answer must match a typed schema.</p></div></li>
+    <li><time>5:45</time><div><b>Verify before anything ships</b><code>checks.py: numbers · dates · tickers · quotes</code><p>Every number and date in a summary must appear in the transcript; tickers must exist on the exchange list; flagged fields go through a repair pass or are cut.</p></div></li>
+    <li><time>5:50</time><div><b>Top stories, forecasts, audio</b><code>{{ n_feeds }} newsrooms · round-robin · Kokoro</code><p>Headlines from six desks are balanced so no single feed dominates; forecasts are logged only if the quote is in the transcript; the briefing is spoken by a local voice model.</p></div></li>
+    <li><time>5:58</time><div><b>Build and publish</b><code>Jinja → site/ → git commit → Pages</code><p>The whole site is rebuilt as static HTML and pushed. Phones pick it up on next open.</p></div></li>
+    <li class="t-alt"><time>9:32 →</time><div><b>Every 15 minutes, market hours</b><code>Yahoo → prices → fill_orders() · settle()</code><p>Quotes land in Postgres; SQL functions fill pending paper trades and settle the day's calls. The NYSE calendar (holidays, early closes) decides when to skip.</p></div></li>
+    <li class="t-alt"><time>3:45</time><div><b>TrendBot trades</b><code>StockTrendAnalyzer · 100-point checklist</code><p>A robot player scores 61 stocks on trend, momentum and volume and trades with the same rules as everyone else.</p></div></li>
+    <li class="t-alt"><time>4:25</time><div><b>After the close</b><code>after_close(): ranges · Sharpe · drawdown</code><p>The 90% range game is scored and every portfolio gets a daily snapshot for risk stats and the 1W/1M charts.</p></div></li>
+  </ol>
+</section>
+
+<!-- ============ design decisions ============ -->
+<section class="ar-sec">
+  <h2 class="section-title">Design decisions</h2>
+  <p class="ar-sub">The interesting part of any system is the trade-offs. Here are the ones that shaped this one.</p>
+  <div class="ar-decisions">
+    <article class="dec c1"><h3>The AI is never trusted with a number</h3>
+      <p><b>Problem.</b> Language models invent figures, misspell names and turn questions into "forecasts".</p>
+      <p><b>Decision.</b> Deterministic checks after every generation: numbers and dates must occur in the source, tickers must be listed, quotes must match the transcript (exact or 85%+ fuzzy), names are corrected against newsroom spellings.</p>
+      <p class="dec-t"><b>Trade-off.</b> Some true facts get cut when the transcript phrases them differently. We accept losing a sentence over publishing a wrong one.</p></article>
+    <article class="dec c2"><h3>A database as the clock</h3>
+      <p><b>Problem.</b> GitHub's built-in schedule silently skipped runs for this repo.</p>
+      <p><b>Decision.</b> <code>pg_cron</code> in Supabase fires on time and calls GitHub's API through <code>pg_net</code>, with the token encrypted in Vault. The jobs themselves check the NYSE calendar.</p>
+      <p class="dec-t"><b>Trade-off.</b> One more moving part, and a renamed repo means updating the SQL (it happened; migration 020).</p></article>
+    <article class="dec c3"><h3>Game rules live in Postgres, not the browser</h3>
+      <p><b>Problem.</b> Anything in front-end JavaScript can be edited by a player.</p>
+      <p><b>Decision.</b> Orders, fills, rewards and scoring are <code>security definer</code> SQL functions; tables are locked down with {{ arch.n_policies }} row-level security policies, so a user can only read or write their own rows.</p>
+      <p class="dec-t"><b>Trade-off.</b> Logic is harder to iterate on than JS, so every change ships as a reviewed migration.</p></article>
+    <article class="dec c4"><h3>Static-first delivery</h3>
+      <p><b>Problem.</b> A free project can't pay for servers, and servers are what fall over.</p>
+      <p><b>Decision.</b> Everything that's the same for every reader is pre-rendered HTML on GitHub Pages; only personal data (portfolio, streaks, friends) comes from Supabase at runtime. The mobile apps are Capacitor shells over the same site.</p>
+      <p class="dec-t"><b>Trade-off.</b> Content updates need a rebuild, which is why the pipeline ends in a git commit.</p></article>
+    <article class="dec c5"><h3>Route each job to the right model</h3>
+      <p><b>Problem.</b> Free-tier models differ: some are fast, some are smarter, some are often overloaded (503).</p>
+      <p><b>Decision.</b> Each job has its own ordered fallback chain and hard timeouts (table below), benchmarked per task, with a local model as a last resort for offline runs.</p>
+      <p class="dec-t"><b>Trade-off.</b> Output style varies slightly when a fallback answers; schemas keep the shape identical.</p></article>
+    <article class="dec c6"><h3>Measure skill, not luck</h3>
+      <p><b>Problem.</b> A leaderboard of returns rewards whoever took the biggest risk.</p>
+      <p><b>Decision.</b> Every trade is mirrored into the S&amp;P 500 at the same moment (alpha), portfolios get Sharpe ratio and max drawdown from daily snapshots, and forecasts are ranked by a Brier-style skill score.</p>
+      <p class="dec-t"><b>Trade-off.</b> These need history, so the fair boards fill in over weeks, not days.</p></article>
+  </div>
+</section>
+
+<!-- ============ model routing + data model ============ -->
+<section class="ar-sec ar-two">
+  <div>
+    <h2 class="section-title">Model routing</h2>
+    <p class="ar-sub">Tried left to right until one answers in time.</p>
+    <table class="ar-table"><thead><tr><th>Job</th><th>Models, in order</th></tr></thead><tbody>
+      {% for r in arch.routing %}<tr><td><b>{{ r.job }}</b></td><td>{% for m in r.models %}<code class="{{ 'first' if loop.first }}">{{ m }}</code>{% if not loop.last %}<span class="arr">→</span>{% endif %}{% endfor %}</td></tr>{% endfor %}
+    </tbody></table>
+  </div>
+  <div>
+    <h2 class="section-title">Data model</h2>
+    <p class="ar-sub">{{ arch.tables|length }} Postgres tables, every one behind row-level security.</p>
+    <div class="ar-tables">{% for t in arch.tables %}<code>{{ t }}</code>{% endfor %}</div>
+  </div>
+</section>
+
+<!-- ============ output charts ============ -->
+{% if arch.series %}
+<section class="ar-sec">
+  <h2 class="section-title">What it produced, day by day</h2>
+  <div class="ar-charts">
+    <div class="ar-chart"><h3>Episodes summarized</h3>
+      <div class="bars">{% for d in arch.series %}<div class="bar" title="{{ d.date }}: {{ d.episodes }}"><span style="height: {{ (100 * d.episodes / arch.max_ep)|round }}%; background: #3fbf8f"></span><b>{{ d.episodes }}</b><i>{{ d.date[5:] }}</i></div>{% endfor %}</div></div>
+    <div class="ar-chart"><h3>Newsroom headlines scanned</h3>
+      <div class="bars">{% for d in arch.series %}<div class="bar" title="{{ d.date }}: {{ d.headlines }}"><span style="height: {{ (100 * d.headlines / arch.max_hl)|round }}%; background: #6aa0ff"></span><b>{{ d.headlines }}</b><i>{{ d.date[5:] }}</i></div>{% endfor %}</div></div>
+  </div>
+  <p class="ar-sub">The jump in headlines is the day the news desks grew from 12 to {{ n_feeds }} feeds.</p>
+</section>
+{% endif %}
+
+<!-- ============ stack ============ -->
+<section class="ar-sec">
+  <h2 class="section-title">The stack</h2>
+  <div class="ar-stack">
+    {% for group, items in [
+      ('Pipeline', ['Python 3.10', 'Pydantic schemas', 'feedparser', 'yfinance', 'FRED API', 'Jinja2']),
+      ('AI', ['Gemini (per-job routing)', 'Kokoro ONNX TTS', 'Ollama qwen3 (offline fallback)']),
+      ('Database', ['Postgres (Supabase)', 'Row-level security', 'pg_cron', 'pg_net', 'Vault', 'SQL functions']),
+      ('Infra', ['GitHub Actions', 'GitHub Pages', 'Cloudflare DNS', 'Service worker']),
+      ('Clients', ['Vanilla JS modules', 'Supabase JS (auth, RPC)', 'Capacitor 7 (Android, iOS)']),
+      ('Quality', ['pytest + CI', 'Playwright QA (every pop-up, 3 screen sizes)', 'Deterministic fact checks'])] %}
+    <div class="stk"><h3>{{ group }}</h3><ul>{% for i in items %}<li>{{ i }}</li>{% endfor %}</ul></div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="ar-cta card">
+  <div><h2>Read the code</h2><p class="muted">The whole project is open on GitHub: the pipeline, the SQL, the checks and the tests.</p></div>
+  <a class="btn" href="https://github.com/litaPhsinaM/stocksplain" target="_blank" rel="noopener">github.com/litaPhsinaM/stocksplain →</a>
+</section>
+
+<script>
+// Draw the data-flow wires between diagram nodes (recomputed on resize). Each pair is [from, to].
+(function () {
+  const svg = document.getElementById("ar-wires"), box = document.getElementById("ar-diagram");
+  if (!svg || !box) return;
+  const links = [["n-cron", "n-net"], ["n-net", "n-daily"], ["n-net", "n-prices"], ["n-src", "n-daily"], ["n-daily", "n-ai"], ["n-daily", "n-tts"],
+                 ["n-daily", "n-repo"], ["n-prices", "n-pg"], ["n-repo", "n-pages"], ["n-pages", "n-web"], ["n-pages", "n-mobile"], ["n-pg", "n-web"], ["n-pg", "n-mobile"]];
+  function draw() {
+    const b = box.getBoundingClientRect();
+    svg.setAttribute("viewBox", `0 0 ${b.width} ${b.height}`);
+    if (b.width < 900) { svg.innerHTML = ""; return; }  // stacked on small screens: no wires
+    svg.innerHTML = links.map(([a, z], i) => {
+      const A = document.getElementById(a).getBoundingClientRect(), Z = document.getElementById(z).getBoundingClientRect();
+      const sameLane = Math.abs(A.left - Z.left) < 20;
+      let x1, y1, x2, y2;
+      if (sameLane) { x1 = A.left + A.width / 2 - b.left; y1 = A.bottom - b.top; x2 = Z.left + Z.width / 2 - b.left; y2 = Z.top - b.top; }
+      else { const fwd = Z.left > A.left; x1 = (fwd ? A.right : A.left) - b.left; y1 = A.top + A.height / 2 - b.top; x2 = (fwd ? Z.left : Z.right) - b.left; y2 = Z.top + Z.height / 2 - b.top; }
+      const mx = (x1 + x2) / 2, d = sameLane ? `M${x1},${y1} L${x2},${y2}` : `M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`;
+      return `<path class="w" d="${d}"/><path class="w-flow" d="${d}" style="animation-delay:${(i * 0.35).toFixed(2)}s"/>`;
+    }).join("");
+  }
+  addEventListener("resize", () => { clearTimeout(draw.t); draw.t = setTimeout(draw, 120); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw); else draw();
+  setTimeout(draw, 400);
+})();
+</script>

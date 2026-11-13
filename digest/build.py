@@ -157,6 +157,36 @@ def story_slides(hot: dict | None, items: list[dict], max_hot: int = 8, max_tota
     return out
 
 
+
+def _arch_stats(root: Path, data: Path, items: list, hots: dict) -> dict:
+    """Real numbers for the engineering page, counted from the code and data at build time."""
+    import glob as _glob
+    lines = lambda pats: sum(sum(1 for _ in open(f, encoding="utf-8", errors="ignore")) for p in pats for f in _glob.glob(str(root / p)))
+    sql = "".join(Path(f).read_text() for f in sorted(_glob.glob(str(root / "supabase/migrations/*.sql"))))
+    tables = sorted(set(re.findall(r"create table if not exists public\.(\w+)", sql)))
+    summ = (root / "digest/summarize.py").read_text()
+    tasks = re.search(r"_TASKS = \{(.*?)\n\}", summ, re.S)
+    routing = [{"job": k.replace("_", " "), "models": [m.replace("gemini-", "") for m in v.split(",")]}
+               for k, v in re.findall(r'"(\w+)":\s*"([^"]+)"', tasks.group(1))] if tasks else []
+    tests = sum(len(re.findall(r"^def test_", Path(f).read_text(), re.M)) for f in _glob.glob(str(root / "tests/*.py")))
+    per_day = {}
+    for it in items:
+        per_day[it["digest_date"]] = per_day.get(it["digest_date"], 0) + 1
+    days = sorted(set(per_day) | set(hots))[-14:]
+    series = [{"date": d, "episodes": per_day.get(d, 0), "headlines": (hots.get(d) or {}).get("scanned", 0)} for d in days]
+    return {
+        "loc": [{"lang": "Python", "n": lines(["digest/*.py", "run.py", "migrate.py", "scripts/*.py"]), "c": "#3fbf8f"},
+                {"lang": "JavaScript", "n": lines(["templates/*.js"]), "c": "#e0a33b"},
+                {"lang": "SQL", "n": lines(["supabase/migrations/*.sql"]), "c": "#6aa0ff"},
+                {"lang": "HTML templates", "n": lines(["templates/*.html"]), "c": "#ef7d7d"},
+                {"lang": "CSS", "n": lines(["templates/*.css"]), "c": "#b48cff"}],
+        "tables": tables, "n_functions": len(re.findall(r"create or replace function", sql)),
+        "n_policies": len(re.findall(r"create policy", sql)), "n_migrations": len(_glob.glob(str(root / "supabase/migrations/*.sql"))),
+        "n_tests": tests, "routing": routing, "series": series,
+        "max_ep": max([d["episodes"] for d in series] or [1]) or 1, "max_hl": max([d["headlines"] for d in series] or [1]) or 1,
+    }
+
+
 def build(root: Path):
     # Build into a temporary folder and swap it in at the end, so the live site is never half-built,
     # and a failed build leaves the previous site untouched.
@@ -325,7 +355,8 @@ def build(root: Path):
     render("sources.html", "sources.html", "", sources=srcs, feeds=feeds, show_stats=show_stats, used_today=used_today,
            feed_groups=[g for g in feed_groups if g["feeds"]], src_index=src_index,
            n_episodes=sum(v["episodes"] for v in show_stats.values()), today=dates[0] if dates else None)
-    render("about.html", "about.html", "", n_podcasts=len(srcs), n_feeds=len(feeds))
+    render("about.html", "about.html", "", n_podcasts=len(srcs), n_feeds=len(feeds),
+           arch=_arch_stats(root, data, items, hots), n_terms=len(glossary), n_lessons=sum(len(u["lessons"]) for u in json.loads(course_path.read_text())["units"]) if course_path.exists() else 0)
     render("play.html", "play.html", "")
     render("admin.html", "admin.html", "")
     render("scorecard.html", "scorecard.html", "", **_scorecard(data))
