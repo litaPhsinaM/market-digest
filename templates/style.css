@@ -1656,3 +1656,49 @@ main h1, .course-hero h1, .src-hero h1, .dict-title h1, .about-hero h1, .learn-h
 @media (max-width: 900px) { .ar-diagram { grid-template-columns: 1fr 1fr; gap: 16px; } }
 @media (max-width: 600px) { .ar-diagram, .ar-charts, .ar-stack { grid-template-columns: minmax(0, 1fr); } .ar-stats { grid-template-columns: 1fr 1fr; } .ar-time li { grid-template-columns: minmax(0, 1fr); gap: 2px; } }
 @media (prefers-reduced-motion: reduce) { .ar-wires .w-flow { animation: none; display: none; } }
+
+/* ---------- About: compact layout ---------- */
+.about-hero { padding: 8px 0 4px; }
+.about-hero .lede { margin-bottom: 12px; }
+.about-sec { margin-top: 26px; }
+.about-sec h2 { font-size: 1.35rem; margin-bottom: 10px; }
+.why-grid { gap: 10px; } .why { padding: 12px 14px; }
+.why h3 { font-size: .96rem; } .why p { font-size: .86rem; margin: 0; line-height: 1.45; }
+/* how it works: one row of steps */
+.steps { max-width: none; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.steps li { flex-direction: column; gap: 8px; padding: 12px 14px; }
+.steps h3 { font-size: .95rem; } .steps p { font-size: .82rem; line-height: 1.45; margin: 0; }
+/* what to keep in mind: two columns */
+.about-sec .fine { columns: 2; column-gap: 32px; padding-left: 18px; margin: 0; }
+.about-sec .fine li { break-inside: avoid; font-size: .88rem; line-height: 1.5; margin-bottom: 8px; }
+/* engineering */
+.ar-hero { margin-top: 30px; padding-top: 22px; }
+.ar-hero .lede { font-size: .95rem; margin: 0; }
+.ar-badges { margin-top: 10px; gap: 6px; } .ar-badges li { font-size: .74rem; padding: 4px 10px; }
+.ar-stats { margin: 14px 0 4px; gap: 8px; } .ar-stat { padding: 10px 12px; } .ar-stat b { font-size: 1.35rem; }
+.ar-sec { margin-top: 24px; } .ar-sub { margin: 2px 0 10px; font-size: .86rem; }
+.ar-sec .section-title { font-size: 1.3rem; }
+.ar-diagram { gap: 28px; padding: 14px; } .lane { gap: 10px; } .node { padding: 8px 10px; }
+/* a day in the life: 3 × 3 grid of time cards */
+.ar-time { border: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.ar-time li { display: block; padding: 12px 14px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--accent); }
+.ar-time li.t-alt { border-top-color: #6aa0ff; }
+.ar-time li::before { display: none; }
+.ar-time time { display: inline-block; font-size: .95rem; margin-right: 8px; }
+.ar-time b { font-size: .92rem; }
+.ar-time code { display: block; width: fit-content; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: 6px 0 4px; }
+.ar-time p { font-size: .8rem; line-height: 1.45; }
+.ar-decisions { gap: 10px; } .dec { padding: 12px 14px; } .dec h3 { font-size: 1rem; margin-bottom: 4px; }
+.dec p { font-size: .82rem; line-height: 1.45; margin-top: 4px; } .dec .dec-t { padding-top: 6px; }
+.ar-two { gap: 20px; } .ar-table td, .ar-table th { padding: 5px 6px; }
+.bars { height: 110px; } .ar-chart { padding: 12px 14px; }
+.ar-stack { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.stk { padding: 10px 12px; } .stk ul { padding-left: 14px; font-size: .78rem; line-height: 1.6; }
+.ar-cta { margin-top: 22px; padding: 14px 18px; }
+@media (max-width: 1100px) { .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } .ar-stack { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 760px) {
+  .steps, .ar-time { grid-template-columns: minmax(0, 1fr); }
+  .steps li { flex-direction: row; }
+  .about-sec .fine { columns: 1; }
+  .ar-stack { grid-template-columns: 1fr 1fr; }
+}
