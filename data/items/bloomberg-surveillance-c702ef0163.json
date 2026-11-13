@@ -1,0 +1,112 @@
+{
+ "id": "bloomberg-surveillance-c702ef0163",
+ "source_id": "bloomberg-surveillance",
+ "source_name": "Bloomberg Surveillance",
+ "kind": "podcast",
+ "title": "Jensen Huang Ousted by Nvidia Board as CEO",
+ "url": "https://omny.fm/shows/bloomberg-surveillance/jensen-huang-ousted-by-nvidia-board-as-ceo",
+ "media_url": "https://podtrac.com/pts/redirect.mp3/tracking.swap.fm/track/UVBrz8bN8aM2Xe47PEPu/traffic.omny.fm/d/clips/e73c998e-6e60-432f-8610-ae210140c5b1/8e704079-ca57-4eac-9741-ae27003e2b7f/2f465697-f64f-44f4-8bee-b50001036481/audio.mp3?utm_source=Podcast&in_playlist=9739700c-72c3-4176-ae55-ae27003e2b96",
+ "published": "2026-11-12",
+ "duration": 2769,
+ "digest_date": "2026-11-13",
+ "backend": "gemini",
+ "model": "gemini-3.1-flash-lite",
+ "summary": {
+  "segments": [
+   "Jensen Huang resigns as Nvidia CEO",
+   "Search for new Nvidia CEO",
+   "Nvidia's ecosystem and product cycle",
+   "Impact on AI cloud providers",
+   "Nvidia stock reaction",
+   "Expert analysis on Nvidia's future"
+  ],
+  "headline": "Jensen Huang resigns as Nvidia CEO; CFO Collette Kress named interim",
+  "tldr": "Nvidia CEO Jensen Huang has resigned effective immediately, with CFO Collette Kress stepping in as interim CEO. Analysts are concerned about the loss of Huang's central role in managing the company's complex AI ecosystem and supply chain relationships.",
+  "key_points": [
+   {
+    "point": "Jensen Huang has resigned as Nvidia CEO, with CFO Collette Kress serving as interim CEO.",
+    "why_it_matters": "The sudden departure of a founder-CEO who is central to the company's strategy creates significant leadership uncertainty."
+   },
+   {
+    "point": "Nvidia's business model relies on complex, circular deals and deep relationships with hyperscalers, all centered around Huang.",
+    "why_it_matters": "The company's ability to maintain its dominant market position and supply chain efficiency may be compromised without Huang's personal oversight."
+   },
+   {
+    "point": "Ian Buck is considered a front-runner for the permanent CEO position due to his technical expertise with CUDA.",
+    "why_it_matters": "Investors are looking for a technical luminary to lead the company and calm market anxiety regarding future product cycles."
+   },
+   {
+    "point": "Competitors like Amazon, Microsoft, and Google may use this transition to close the gap in AI accelerators.",
+    "why_it_matters": "Nvidia's massive market lead is being challenged as cloud providers look to reduce their reliance on Nvidia chips."
+   },
+   {
+    "point": "Ted Mortinson notes Nvidia is vulnerable on price and gross margins, with portfolio managers likely to reduce overweight positions.",
+    "why_it_matters": "The leadership vacuum and competitive pressure could lead to price concessions and a reallocation of capital away from Nvidia."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "6.6%",
+    "context": "Nvidia's weighting in the S&P and Nasdaq indices."
+   },
+   {
+    "figure": "-10%",
+    "context": "Nvidia stock decline in pre-market trading following the news."
+   }
+  ],
+  "lesson": "When a company's success is heavily dependent on a single leader's personal relationships and unique vision, the sudden loss of that leader creates 'key-person risk,' which can destabilize the company's ecosystem and stock valuation.",
+  "opinions_and_predictions": [
+   "Mandeep Singh (Bloomberg) expects the CEO search to take one or two quarters.",
+   "Ana Ragna (Bloomberg) believes this transition provides a chance for cloud providers to catch up to Nvidia.",
+   "Ted Mortinson (Technology analyst) suggests Demis Hassabis would be an ideal candidate for the CEO role.",
+   "Ted Mortinson predicts Nvidia will face price and gross margin pressure as competitors gain ground."
+  ],
+  "tickers": [
+   "Nvidia (NVDA)",
+   "Amazon (AMZN)",
+   "Microsoft (MSFT)",
+   "Alphabet (GOOGL)",
+   "AMD (AMD)",
+   "Broadcom (AVGO)",
+   "Marvell (MRVL)",
+   "Apple (AAPL)",
+   "Oracle (ORCL)"
+  ],
+  "glossary": [
+   {
+    "term": "Hyperscalers",
+    "definition": "Large cloud computing providers that offer massive scale for data storage and processing.",
+    "example": "Amazon, Microsoft, and Google are the primary hyperscalers buying Nvidia chips."
+   },
+   {
+    "term": "CUDA",
+    "definition": "A software platform created by Nvidia that allows developers to use their graphics chips for general-purpose computing.",
+    "example": "Ian Buck is credited with the development of the CUDA platform."
+   },
+   {
+    "term": "Key-person risk",
+    "definition": "The risk that a company will suffer if a specific, essential individual leaves or is unable to perform their duties.",
+    "example": "Jensen Huang's departure creates significant key-person risk for Nvidia."
+   },
+   {
+    "term": "Interim CEO",
+    "definition": "A temporary chief executive officer appointed to lead a company during a transition period.",
+    "example": "CFO Collette Kress was named the interim CEO of Nvidia."
+   },
+   {
+    "term": "AI Accelerators",
+    "definition": "Specialized hardware designed to speed up artificial intelligence and machine learning tasks.",
+    "example": "Nvidia's GPUs are the industry standard for AI accelerators."
+   }
+  ],
+  "level": "intermediate",
+  "topics": [
+   "ai stocks",
+   "corporate leadership",
+   "semiconductors",
+   "market volatility"
+  ],
+  "quality_note": "The source features analysis from Bloomberg reporters and industry experts, relying on market observations and professional assessments of company leadership and competitive dynamics.",
+  "worth_reading": true
+ }
+}

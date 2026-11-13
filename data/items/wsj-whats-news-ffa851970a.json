@@ -1,0 +1,106 @@
+{
+ "id": "wsj-whats-news-ffa851970a",
+ "source_id": "wsj-whats-news",
+ "source_name": "WSJ What's News",
+ "kind": "podcast",
+ "title": "Jensen Huang, a Leader of the Global AI Boom, Is Out as Nvidia CEO",
+ "url": "https://www.wsj.com/podcasts/whats-news",
+ "media_url": "https://dowjones.simplecastaudio.com/3d1c8b0a-4b6d-4ea9-a455-ab1adaa7e74b/episodes/01c2d349-01a9-4329-930d-e967291c4335/audio/128/default.mp3?aid=rss_feed&awCollectionId=3d1c8b0a-4b6d-4ea9-a455-ab1adaa7e74b&awEpisodeId=01c2d349-01a9-4329-930d-e967291c4335&feed=BA5QWI2p",
+ "published": "2026-11-12",
+ "duration": 873,
+ "digest_date": "2026-11-13",
+ "backend": "gemini",
+ "model": "gemini-3.1-flash-lite",
+ "summary": {
+  "segments": [
+   "Jensen Huang resigns as Nvidia CEO",
+   "Nvidia market cap and leadership transition",
+   "Market reaction to Nvidia leadership crisis",
+   "US home sales hit 16-year low",
+   "Trump reverses course on Iran deal",
+   "Starlink service disruption in Ukraine",
+   "Arts and culture recommendations"
+  ],
+  "headline": "Nvidia CEO Jensen Huang resigns; US home sales hit 16-year low",
+  "tldr": "Nvidia CEO Jensen Huang has resigned following reports of personal scandals, leaving the company to navigate a leadership transition during a critical period for the AI industry. Meanwhile, the US housing market faces a significant downturn as high mortgage rates drive sales to their lowest level since 2010.",
+  "key_points": [
+   {
+    "point": "Jensen Huang resigned as Nvidia CEO after 33 years following reports of two personal affairs.",
+    "why_it_matters": "Huang was considered the central figurehead of the AI boom, and his departure creates significant uncertainty for the company's future strategy and industry influence."
+   },
+   {
+    "point": "Nvidia appointed Finance Chief Collette Kress as interim CEO and Harvey Jones as board chair.",
+    "why_it_matters": "The board is attempting to provide stability while searching for a permanent successor to manage the company's complex AI financing ecosystem."
+   },
+   {
+    "point": "US home sales fell 5.5% in October, reaching the lowest level since August 2010.",
+    "why_it_matters": "Rising mortgage rates have frozen the housing market, though some buyers are finding opportunities to negotiate price cuts or seller concessions due to lower competition."
+   },
+   {
+    "point": "Nvidia shares closed down 4.3% after falling as much as 14% during the trading session.",
+    "why_it_matters": "The recovery suggests that while the leadership change is shocking, the market still views Nvidia as essential to the broader AI economy."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "$4 trillion",
+    "context": "The market capitalization of Nvidia as of the market close."
+   },
+   {
+    "figure": "-4.3%",
+    "context": "The daily decline in Nvidia's stock price at the market close."
+   },
+   {
+    "figure": "-5.5%",
+    "context": "The decline in US home sales for the month of October."
+   },
+   {
+    "figure": "-0.4%",
+    "context": "The closing decline of the Nasdaq index for the day."
+   }
+  ],
+  "lesson": "When a company's leadership is highly centralized and tied to a single figurehead, the sudden departure of that person creates significant uncertainty regarding the firm's strategic direction and external relationships.",
+  "opinions_and_predictions": [
+   "Asa Fitch (WSJ) believes the market reaction was tempered because Nvidia remains central to the AI ecosystem.",
+   "Asa Fitch (WSJ) expects analysts will closely watch how interim CEO Collette Kress manages the company's aggressive financing deals.",
+   "Amrith Ram Kumar (WSJ) predicts a vacuum in the chip industry as someone must now replace Huang as the primary lobbyist for export rules.",
+   "Nicholas Miller (WSJ) suggests that the housing market will likely remain gloomy as mortgage rates are expected to stay elevated."
+  ],
+  "tickers": [
+   "Nvidia (NVDA)",
+   "AMD (AMD)",
+   "Broadcom (AVGO)",
+   "CoreWeave"
+  ],
+  "glossary": [
+   {
+    "term": "Market cap",
+    "definition": "The total dollar value of a company's outstanding shares of stock.",
+    "example": "Nvidia's market cap reached $4 trillion."
+   },
+   {
+    "term": "Interim CEO",
+    "definition": "A temporary chief executive officer appointed to lead a company while the board searches for a permanent replacement.",
+    "example": "Collette Kress was named interim CEO of Nvidia."
+   },
+   {
+    "term": "Mortgage rates",
+    "definition": "The interest rate charged on a loan used to purchase property.",
+    "example": "Rising mortgage rates have contributed to a decline in home sales."
+   },
+   {
+    "term": "Price target",
+    "definition": "An analyst's projection of a stock's future price based on earnings and market conditions.",
+    "example": "Analysts are lowering their price targets for Nvidia following the CEO's resignation."
+   }
+  ],
+  "level": "intermediate",
+  "topics": [
+   "ai stocks",
+   "housing market",
+   "corporate governance"
+  ],
+  "quality_note": "The report combines verified corporate news regarding executive changes and economic data with analyst commentary on market sentiment.",
+  "worth_reading": true
+ }
+}

@@ -1,0 +1,81 @@
+{
+ "id": "squawk-pod-cff7f52094",
+ "source_id": "squawk-pod",
+ "source_name": "Squawk Pod (CNBC)",
+ "kind": "podcast",
+ "title": "Jensen Huang Resigns: What\u2019s Next, & Who is Alice Huang? 11/12/26",
+ "url": "https://www.cnbc.com",
+ "media_url": "https://dts.podtrac.com/redirect.mp3/cnbc.simplecastaudio.com/2abef7ca-625f-4c74-9157-968d7da67c81/episodes/5d869e84-fef2-4a87-9277-6050f3c62740/audio/128/default.mp3?aid=rss_feed&awCollectionId=2abef7ca-625f-4c74-9157-968d7da67c81&awEpisodeId=5d869e84-fef2-4a87-9277-6050f3c62740&feed=VHAcgaw_",
+ "published": "2026-11-12",
+ "duration": 2745,
+ "digest_date": "2026-11-13",
+ "backend": "gemini",
+ "model": "gemini-3.1-flash-lite",
+ "summary": {
+  "segments": [
+   "Jensen Huang resigns from Nvidia",
+   "Colet Kress appointed interim CEO",
+   "Alice Wong alleged spy scandal",
+   "Nvidia board considers Jensen Wong's future",
+   "Second affair with Kimberly Powell reported",
+   "Internal schism in Trump administration regarding China"
+  ],
+  "headline": "Nvidia CEO Jensen Huang resigns amid scandal; Colet Kress named interim CEO",
+  "tldr": "Nvidia CEO Jensen Huang has resigned following reports of multiple extramarital affairs and connections to an alleged Chinese spy. The company has appointed CFO Colet Kress as interim CEO while the board evaluates the firm's future amid national security and corporate governance concerns.",
+  "key_points": [
+   {
+    "point": "Jensen Huang resigned as CEO of Nvidia following reports of a second extramarital affair with an employee, Kimberly Powell.",
+    "why_it_matters": "The revelation of personal conduct issues involving company leadership creates significant corporate governance risks and uncertainty for shareholders."
+   },
+   {
+    "point": "Nvidia's board is actively considering the company's future leadership, with CFO Colet Kress appointed as interim CEO.",
+    "why_it_matters": "Leadership transitions at major technology firms, especially during periods of crisis, can impact strategic direction and market stability."
+   },
+   {
+    "point": "Reports indicate Jensen Huang had a relationship with an alleged Chinese spy, Alice Wong, who was reportedly introduced to him by her own husband.",
+    "why_it_matters": "Connections between high-level executives and foreign intelligence assets pose severe national security risks and potential regulatory repercussions for the company."
+   },
+   {
+    "point": "There is internal disagreement within the Trump administration regarding Nvidia's ability to continue selling products into Chinese markets.",
+    "why_it_matters": "Geopolitical tensions and trade restrictions directly impact Nvidia's revenue streams and long-term growth strategy in critical international markets."
+   }
+  ],
+  "numbers": [],
+  "lesson": "When a company's leadership becomes embroiled in personal scandals that intersect with national security or corporate ethics, the resulting key-person risk often forces a board to prioritize stability and reputation over the individual's past performance.",
+  "opinions_and_predictions": [
+   "Amon Javers (CNBC) suggests the board is questioning if Jensen Huang's personal recklessness reflects a broader pattern of aggressive, self-destructive business risk-taking.",
+   "Joe Kernan (CNBC) and Becky Quick (CNBC) speculated that Eric Schmidt could be a potential candidate for the CEO role.",
+   "Andrew Ross Sorkin (CNBC) noted that the next CEO must act as an 'ambassador' capable of managing complex relationships with TSMC and Asian governments."
+  ],
+  "tickers": [
+   "Nvidia (NVDA)",
+   "Apple (AAPL)",
+   "AMD (AMD)"
+  ],
+  "glossary": [
+   {
+    "term": "Key-person risk",
+    "definition": "The risk that a company's success is overly dependent on a single individual, making the firm vulnerable if that person leaves or is compromised.",
+    "example": "The board is evaluating if Jensen Huang's departure creates too much key-person risk for Nvidia."
+   },
+   {
+    "term": "NDA (Non-Disclosure Agreement)",
+    "definition": "A legal contract that prohibits individuals from sharing confidential information.",
+    "example": "Nvidia security reportedly sought an NDA from an employee who witnessed a private moment."
+   },
+   {
+    "term": "Interim CEO",
+    "definition": "A temporary leader appointed to manage a company while the board searches for a permanent replacement.",
+    "example": "Colet Kress was appointed as interim CEO following the resignation."
+   }
+  ],
+  "level": "intermediate",
+  "topics": [
+   "corporate governance",
+   "geopolitics",
+   "tech stocks"
+  ],
+  "quality_note": "The report relies on investigative journalism from the New York Times and Wall Street Journal, with commentary provided by CNBC reporters and hosts.",
+  "worth_reading": true
+ }
+}

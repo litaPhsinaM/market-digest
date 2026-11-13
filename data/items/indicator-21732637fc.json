@@ -1,0 +1,105 @@
+{
+ "id": "indicator-21732637fc",
+ "source_id": "indicator",
+ "source_name": "The Indicator from Planet Money",
+ "kind": "podcast",
+ "title": "An inflation scare, workers get their fair share, and Nvidia\u2019s billion-dollar affairs",
+ "url": "https://www.npr.org/2026/11/13/nx-s1-6039338/an-inflation-scare-workers-get-their-fair-share-and-nvidias-billion-dollar-affairs",
+ "media_url": "https://prfx.byspotify.com/e/play.podtrac.com/npr-510325/npr.simplecastaudio.com/0a4e8d3b-fe23-4948-9e39-20fcf16f9331/episodes/4513547c-5843-494d-bdc6-023a020ea17d/audio/128/default.mp3?awCollectionId=0a4e8d3b-fe23-4948-9e39-20fcf16f9331&awEpisodeId=4513547c-5843-494d-bdc6-023a020ea17d&feed=IFy3imsg&t=podcast&e=nx-s1-6039338&p=510325&d=546&size=8744608",
+ "published": "2026-11-13",
+ "duration": 546,
+ "digest_date": "2026-11-13",
+ "backend": "gemini",
+ "model": "gemini-3.1-flash-lite",
+ "summary": {
+  "segments": [
+   "October CPI inflation report",
+   "Recovered stolen wages",
+   "Nvidia CEO Jensen Wong resignation"
+  ],
+  "headline": "October inflation rises 0.4%; Nvidia CEO resigns amid scandals",
+  "tldr": "The U.S. consumer price index rose 0.4% in October, driven by energy, food, and AI-related demand. Meanwhile, nearly $1 billion in stolen wages was recovered for workers, and Nvidia CEO Jensen Wong resigned following revelations of personal affairs and potential national security risks.",
+  "key_points": [
+   {
+    "point": "The consumer price index (CPI) increased 0.4% in October, exceeding economist expectations.",
+    "why_it_matters": "Rising inflation, particularly in services and AI-related hardware, suggests that price pressures remain persistent rather than transitory."
+   },
+   {
+    "point": "The Economic Policy Institute reported that $960 million in stolen wages was recovered for workers in 2025.",
+    "why_it_matters": "Wage theft, including unpaid overtime and sub-minimum wage pay, remains a significant issue primarily affecting low-wage workers in sectors like construction and food service."
+   },
+   {
+    "point": "Nvidia CEO Jensen Wong resigned after admitting to affairs, including one with an executive linked to a firm that allegedly bypassed export restrictions to send AI chips to China.",
+    "why_it_matters": "The scandal highlights significant corporate governance risks and potential national security implications for major technology companies."
+   },
+   {
+    "point": "Nvidia's market value dropped approximately $465 billion following the news of the CEO's affairs.",
+    "why_it_matters": "The sudden departure of a high-profile leader can cause massive volatility in a company's valuation, especially when the CEO is closely tied to the firm's identity."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "0.4%",
+    "context": "The monthly increase in the consumer price index for October."
+   },
+   {
+    "figure": "$960 million",
+    "context": "The total amount of stolen wages recovered from employers in 2025."
+   },
+   {
+    "figure": "$15 billion",
+    "context": "The estimated annual cost of minimum wage violations alone."
+   },
+   {
+    "figure": "-11%",
+    "context": "The approximate drop in Nvidia's stock price since the first affair news broke."
+   },
+   {
+    "figure": "$465 billion",
+    "context": "The estimated loss in Nvidia's market value following the scandal."
+   }
+  ],
+  "lesson": "When a company's leadership is deeply intertwined with its strategic direction and public image, personal scandals involving key executives can trigger significant market volatility and governance crises.",
+  "opinions_and_predictions": [
+   "Austin Goolsby (Chicago Fed President) described the latest inflation report as distressing and borderline disturbing.",
+   "Austin Goolsby (Chicago Fed President) expressed concern that demand for AI data center equipment is creating upward pressure on prices for consumer electronics.",
+   "Ricky Movi (Host) noted that Jensen Wong was the face of the AI economy and a rare example of a prominent CEO being forced out due to scandal."
+  ],
+  "tickers": [
+   "Nvidia (NVDA)",
+   "Uber Eats",
+   "Coca-Cola (KO)"
+  ],
+  "glossary": [
+   {
+    "term": "Consumer Price Index (CPI)",
+    "definition": "A measure that examines the weighted average of prices of a basket of consumer goods and services to track inflation.",
+    "example": "The CPI increased 0.4% in October."
+   },
+   {
+    "term": "Wage theft",
+    "definition": "The denial of wages or employee benefits that are rightfully owed to an employee by an employer.",
+    "example": "Paying less than the minimum wage or failing to pay overtime counts as wage theft."
+   },
+   {
+    "term": "Short seller",
+    "definition": "An investor who bets that a stock's price will decline by borrowing shares and selling them, hoping to buy them back later at a lower price.",
+    "example": "A short seller spotted an odd relationship between the Nvidia CEO and an executive at another firm."
+   },
+   {
+    "term": "Market capitalization",
+    "definition": "The total dollar market value of a company's outstanding shares of stock.",
+    "example": "The loss in Nvidia's value was compared to the entire market capitalization of Coca-Cola."
+   }
+  ],
+  "level": "intermediate",
+  "topics": [
+   "inflation",
+   "labor rights",
+   "corporate governance",
+   "ai"
+  ],
+  "quality_note": "The report combines economic data from the Bureau of Labor Statistics and the Economic Policy Institute with reported news regarding corporate leadership changes.",
+  "worth_reading": true
+ }
+}

@@ -1,0 +1,105 @@
+{
+ "id": "wsj-whats-news-0548250264",
+ "source_id": "wsj-whats-news",
+ "source_name": "WSJ What's News",
+ "kind": "podcast",
+ "title": "Nvidia\u2019s Board Prepares to Oust Jensen Huang",
+ "url": "https://www.wsj.com/podcasts/whats-news",
+ "media_url": "https://dowjones.simplecastaudio.com/3d1c8b0a-4b6d-4ea9-a455-ab1adaa7e74b/episodes/cc1c14b4-4380-44e0-acd3-01ba755bdaee/audio/128/default.mp3?aid=rss_feed&awCollectionId=3d1c8b0a-4b6d-4ea9-a455-ab1adaa7e74b&awEpisodeId=cc1c14b4-4380-44e0-acd3-01ba755bdaee&feed=BA5QWI2p",
+ "published": "2026-11-12",
+ "duration": 780,
+ "digest_date": "2026-11-13",
+ "backend": "gemini",
+ "model": "gemini-3.1-flash-lite",
+ "summary": {
+  "segments": [
+   "Nvidia board prepares to oust Jensen Huang",
+   "Nvidia stock falls on leadership crisis",
+   "Political scrutiny of Huang's China ties",
+   "Democrat Scott Colm wins Mississippi Senate race",
+   "AI talent commands salary premiums",
+   "US workers holding onto current jobs"
+  ],
+  "headline": "Nvidia board weighs ousting CEO Jensen Huang; Democrat Scott Colm wins Mississippi Senate seat",
+  "tldr": "Nvidia's board is considering removing CEO Jensen Huang following reports of undisclosed relationships and concerns over his ties to China. Meanwhile, Democrat Scott Colm secured a historic Senate victory in Mississippi, and the labor market shows a divide between high-demand AI specialists and workers staying put in their current roles.",
+  "key_points": [
+   {
+    "point": "Nvidia's board is meeting to determine the future of CEO Jensen Huang after reports of multiple relationships, including one with a suspected Chinese agent.",
+    "why_it_matters": "As the company's only CEO and central figure, his departure creates significant leadership and strategic uncertainty for a major AI industry player."
+   },
+   {
+    "point": "Nvidia faces 'key man risk' due to its lack of a formal succession plan and highly centralized management structure.",
+    "why_it_matters": "When a company's operations and vision are entirely dependent on one individual, the firm becomes highly vulnerable to that person's personal and professional crises."
+   },
+   {
+    "point": "Lawmakers are calling for investigations into Huang's relationships and his past business dealings involving China.",
+    "why_it_matters": "Political scrutiny adds regulatory and reputational risk, potentially impacting the company's ability to operate globally and maintain government relationships."
+   },
+   {
+    "point": "Democrat Scott Colm won the Mississippi Senate race, becoming the state's first Democratic senator since 1982.",
+    "why_it_matters": "This unexpected victory may shift national political attention and campaign spending toward Mississippi in future election cycles."
+   },
+   {
+    "point": "While the broader labor market is stagnant, specialized AI workers are receiving salary premiums due to high demand and rapid industry adoption.",
+    "why_it_matters": "This highlights a bifurcated job market where specific technical skills remain highly valuable despite overall economic cooling."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "-8%",
+    "context": "The decline in Nvidia's stock price in off-hours trading following the news of the leadership crisis."
+   },
+   {
+    "figure": "20%",
+    "context": "The amount by which Citi slashed its price target for Nvidia stock."
+   },
+   {
+    "figure": "2%",
+    "context": "The level at or below which the US quit rate has remained for more than a year."
+   }
+  ],
+  "lesson": "When a company's strategy and culture are built entirely around a single founder, the business faces 'key-person risk,' where the loss or scandal of that individual threatens the entire organization's stability and valuation.",
+  "opinions_and_predictions": [
+   "Charu Channa (Saxo Bank) believes the valuation risk for Nvidia has increased and it is difficult to call a bottom for the stock.",
+   "Charu Channa (Saxo Bank) suggests that if AI spending shifts to other chipmakers like AMD and Broadcom, it could lead to a healthier, broader market correction.",
+   "Charu Channa (Saxo Bank) warns that if circular financing deals involving Nvidia are questioned due to governance risks, it could cause ripple effects throughout the AI sector."
+  ],
+  "tickers": [
+   "Nvidia (NVDA)",
+   "AMD (AMD)",
+   "Broadcom (AVGO)",
+   "Micron (MU)"
+  ],
+  "glossary": [
+   {
+    "term": "Key man risk",
+    "definition": "The danger to a company if a single essential person leaves or is incapacitated.",
+    "example": "Nvidia's lack of a successor for Jensen Huang is a classic example of key man risk."
+   },
+   {
+    "term": "Price target",
+    "definition": "An analyst's projection of a stock's future price.",
+    "example": "Citi slashed its price target for Nvidia by 20%."
+   },
+   {
+    "term": "Concentration risk",
+    "definition": "The danger of having too much exposure to a single asset or sector.",
+    "example": "Investors holding broad indices like the S&P 500 were unknowingly exposed to Nvidia's specific risks."
+   },
+   {
+    "term": "Quit rate",
+    "definition": "The percentage of the total workforce that voluntarily leaves their jobs during a specific period.",
+    "example": "The US quit rate has been at or below 2% for over a year."
+   }
+  ],
+  "level": "intermediate",
+  "topics": [
+   "ai stocks",
+   "corporate governance",
+   "labor market",
+   "politics"
+  ],
+  "quality_note": "The report relies on exclusive reporting from the Wall Street Journal regarding internal board discussions and includes analysis from financial strategists.",
+  "worth_reading": true
+ }
+}

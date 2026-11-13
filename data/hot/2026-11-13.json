@@ -1,0 +1,305 @@
+{
+ "date": "2026-11-13",
+ "topics": [
+  {
+   "title": "Jensen Huang ousted as Nvidia CEO following scandal",
+   "explanation": "Nvidia CEO Jensen Huang has resigned after reports emerged of multiple extramarital affairs, including one with a woman suspected of spying for China. The company has appointed finance chief Colette Kress as interim CEO while it searches for a permanent replacement.",
+   "why_it_matters": "As the central figure of the AI infrastructure boom, Huang's sudden departure creates significant uncertainty for the world's most valuable chipmaker and the broader artificial intelligence industry.",
+   "tickers": [
+    "NVDA"
+   ],
+   "headline_ids": [
+    "h35841fa8",
+    "haa0175cd",
+    "h8a629626",
+    "h1a116592",
+    "h3b9e89cb"
+   ]
+  },
+  {
+   "title": "Microsoft services hit by global outage",
+   "explanation": "Microsoft is working to restore access to services including Outlook and Teams following a major global outage. The company stated the disruption was not caused by malicious or cyber activity.",
+   "why_it_matters": "The outage has significantly impacted business and government communications worldwide, forcing some traders and companies to rely on alternative methods like phones and faxes.",
+   "tickers": [
+    "MSFT"
+   ],
+   "headline_ids": [
+    "hd29d43d9",
+    "h023cc410",
+    "h5efc2134",
+    "hecb6dcc1",
+    "h71f35087"
+   ]
+  },
+  {
+   "title": "Bond yields surge as inflation concerns rise",
+   "explanation": "Treasury yields are rising as investors react to October inflation data that exceeded expectations and concerns over a more hawkish Federal Reserve. The move has reversed recent gains in the bond market.",
+   "why_it_matters": "Higher bond yields generally increase borrowing costs for companies and consumers, which can put downward pressure on stock valuations.",
+   "tickers": [],
+   "headline_ids": [
+    "hef827b1f",
+    "h56336ba5",
+    "h5aff13db",
+    "h242da0c0",
+    "h6488d894"
+   ]
+  },
+  {
+   "title": "Global oil markets see production surge",
+   "explanation": "Oil markets have shifted toward a surplus as Iraq's production reached its highest level since 2019 and UAE output remained high. The increase in supply comes despite ongoing shipping disruptions in the Middle East.",
+   "why_it_matters": "Fluctuations in global oil supply and prices directly impact energy costs and can influence broader market sentiment and inflation expectations.",
+   "tickers": [],
+   "headline_ids": [
+    "hc618ee08",
+    "hd25249c5",
+    "hd96a6632"
+   ]
+  }
+ ],
+ "headlines": {
+  "hef827b1f": {
+   "id": "hef827b1f",
+   "source": "Bloomberg Markets",
+   "title": "That Haven Trade in Treasury Bonds Didn\u2019t Last Long",
+   "blurb": "Inflation, hawkish Fed are pushing yields higher.",
+   "url": "https://www.bloomberg.com/news/newsletters/2026-11-13/that-haven-trade-in-treasury-bonds-didn-t-last-long",
+   "published": "2026-11-13T10:55"
+  },
+  "hd29d43d9": {
+   "id": "hd29d43d9",
+   "source": "CNBC",
+   "title": "Widespread Microsoft outage continues, taking down Outlook and other 365 services",
+   "blurb": "A Microsoft outage on Thursday affected users of services like Outlook, Teams and 365.",
+   "url": "https://www.cnbc.com/2026/11/12/microsoft-outage-outlook-aws-google.html",
+   "published": "2026-11-13T10:55"
+  },
+  "h35841fa8": {
+   "id": "h35841fa8",
+   "source": "CNBC",
+   "title": "Nvidia scandal draws in Commerce Secretary Lutnick, who reportedly agrees to testify about China chip sales",
+   "blurb": "Commerce Secretary Lutnick will testify before the Senate Banking Committee following revelations about Jensen Huang's affair with an alleged Chinese spy.",
+   "url": "https://www.cnbc.com/2026/11/13/nvidia-scandal-lutnick-chip-sales.html",
+   "published": "2026-11-13T10:54"
+  },
+  "h56336ba5": {
+   "id": "h56336ba5",
+   "source": "CNBC",
+   "title": "The Fed expected rate cuts this year. Now it\u2019s bracing for another inflation fight",
+   "blurb": "The most recent inflation reading for October had beaten expectations, coming in at 0.4% for the month.",
+   "url": "https://www.cnbc.com/2026/11/13/us-inflation-outlook-federal-reserve-rate-hike.html",
+   "published": "2026-11-13T10:00"
+  },
+  "haa0175cd": {
+   "id": "haa0175cd",
+   "source": "CNBC",
+   "title": "Nvidia stock inches higher as investors continue to weigh Jensen Huang\u2019s departure",
+   "blurb": "Jensen Huang resigned as CEO of Nvidia on Thursday after coming under scrutiny for two extramarital affairs.",
+   "url": "https://www.cnbc.com/2026/11/13/nvidia-nvda-stock-jensen-huang-transition.html",
+   "published": "2026-11-13T10:00"
+  },
+  "h8a629626": {
+   "id": "h8a629626",
+   "source": "WSJ Markets",
+   "title": "Stock Market Today: Nvidia Shares Set to Recoup Some Losses as Investors Eye Fallout",
+   "blurb": "AI trade faces two major tests next week with chip giant's earnings and Anthropic's IPO",
+   "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-13-2026?mod=rss_markets_main",
+   "published": "2026-11-13T09:55"
+  },
+  "h023cc410": {
+   "id": "h023cc410",
+   "source": "Financial Times",
+   "title": "Microsoft races to restore services after global outage",
+   "blurb": "Issue affecting Outlook, Teams and other services not caused by \u2018malicious or cyber activity\u2019, company says",
+   "url": "https://www.ft.com/content/025b2769-bca8-4a74-b9f5-5d7ad7da32c7?syn-25a6b1a6=1",
+   "published": "2026-11-13T09:42"
+  },
+  "h5aff13db": {
+   "id": "h5aff13db",
+   "source": "WSJ Markets",
+   "title": "Stock Futures Lower as Investors Look to U.S. Inflation Data",
+   "blurb": "Stock futures fell as the fallout from Nvidia\u2019s leadership change continued to hang over markets, while longer-dated Treasurys continued to sell off ahead of key U.S. inflation data.",
+   "url": "https://www.wsj.com/finance/stocks/stock-futures-lower-as-investors-look-to-u-s-inflation-data-5b1b5988?mod=rss_markets_main",
+   "published": "2026-11-13T09:28"
+  },
+  "hc618ee08": {
+   "id": "hc618ee08",
+   "source": "Bloomberg Markets",
+   "title": "Iraq October Oil Output Jumps to Highest Since 2019, IEA Says",
+   "blurb": "Iraq\u2019s oil output surged in October and production in the United Arab Emirates held near the previous month\u2019s high, as Gulf producers increased crude flows despite shipping disruptions caused by the Iran war, the International Energy Agency said.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-13/iraq-october-oil-output-jumps-to-highest-since-2019-iea-says",
+   "published": "2026-11-13T09:05"
+  },
+  "hd25249c5": {
+   "id": "hd25249c5",
+   "source": "Financial Times",
+   "title": "Global oil markets swing to surplus as Gulf shipments rebound",
+   "blurb": "IEA analysts warn it will take months to rebuild stockpiles depleted by conflict",
+   "url": "https://www.ft.com/content/20b68fe2-9d60-4c0c-b714-1f3e03015823?syn-25a6b1a6=1",
+   "published": "2026-11-13T09:04"
+  },
+  "h5efc2134": {
+   "id": "h5efc2134",
+   "source": "Bloomberg Technology",
+   "title": "Microsoft Struggles to Restore Access to Software",
+   "blurb": "Microsoft is racing to restore access to its flagship software half a day after an outage began, leaving users unable to access email and chat services in one of the tech giant\u2019s most severe disruptions in recent memory. Bloomberg's Peter Elstrom has the latest. (Source:\u2026",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-13/microsoft-struggles-to-restore-access-to-software-video",
+   "published": "2026-11-13T08:48"
+  },
+  "h1a116592": {
+   "id": "h1a116592",
+   "source": "CNBC",
+   "title": "Nvidia\u2019s turmoil is prompting a rotation across chip stocks. Here's what we know",
+   "blurb": "That shift comes as Nvidia grapples with the fallout from Huang's resignation, following revelations about his multiple affairs.",
+   "url": "https://www.cnbc.com/2026/11/13/nvidia-jensen-huang-affairs-amd-broadcom-tsmc.html",
+   "published": "2026-11-13T08:27"
+  },
+  "h3b9e89cb": {
+   "id": "h3b9e89cb",
+   "source": "CNBC Tech",
+   "title": "Trump calls Huang saga a 'horrible thing' and 'so sad to see'",
+   "blurb": "Nvidia CFO Colette Kress has been named interim CEO during the search for Huang\u2019s replacement.",
+   "url": "https://www.cnbc.com/2026/11/12/nvidia-jensen-huang-ceo-live-updates.html",
+   "published": "2026-11-13T07:49"
+  },
+  "hecb6dcc1": {
+   "id": "hecb6dcc1",
+   "source": "Bloomberg Technology",
+   "title": "Microsoft Outage Sends Traders Back to Phones and Fax",
+   "blurb": "Traders were forced to do business by phone and Whatsapp, and even fire up their fax machines, as a worldwide outage of Microsoft software crippled communications and snarled email services at stock exchanges.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-13/microsoft-outage-gums-up-markets-forces-traders-to-use-phones",
+   "published": "2026-11-13T07:00"
+  },
+  "h242da0c0": {
+   "id": "h242da0c0",
+   "source": "Bloomberg Markets",
+   "title": "Treasury Yield Surge Shatters Hopes Worst of Bond Rout Is Over",
+   "blurb": "Just when global bond investors were starting to believe the worst of this year\u2019s rout was over, surging Treasury yields are making them think again.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-13/treasury-yield-surge-shatters-hopes-worst-of-bond-rout-is-over",
+   "published": "2026-11-13T06:00"
+  },
+  "hd96a6632": {
+   "id": "hd96a6632",
+   "source": "Bloomberg Markets",
+   "title": "Latest Oil Market News and Analysis for Nov. 13",
+   "blurb": "Oil held gains after President Donald Trump said the US could forgo a deal with Iran, dimming prospects for a quick breakthrough to end the war that has roiled global energy markets.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-12/latest-oil-market-news-and-analysis-for-nov-13",
+   "published": "2026-11-12T23:02"
+  },
+  "h6488d894": {
+   "id": "h6488d894",
+   "source": "Bloomberg Markets",
+   "title": "US Stocks Drift as Fed Bets Face Inflation Test: Markets Wrap",
+   "blurb": "US stocks struggled for direction ahead of inflation data that will cap a dramatic week in which traders ramped up bets on Federal Reserve interest-rate hikes and Jensen Huang was ousted from Nvidia Corp.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-12/stock-market-today-dow-s-p-live-updates",
+   "published": "2026-11-12T22:17"
+  },
+  "h71f35087": {
+   "id": "h71f35087",
+   "source": "Bloomberg Technology",
+   "title": "Microsoft Races to Fix Outlook in One of Its Longest Outages",
+   "blurb": "Microsoft Corp. is struggling to restore access to its flagship software and end an outage that has paralyzed government offices, traders and businesses globally.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-12/microsoft-says-it-s-working-to-fix-outlook-copilot-outage",
+   "published": "2026-11-12T19:14"
+  }
+ },
+ "latest": [
+  {
+   "id": "hef827b1f",
+   "source": "Bloomberg Markets",
+   "title": "That Haven Trade in Treasury Bonds Didn\u2019t Last Long",
+   "blurb": "Inflation, hawkish Fed are pushing yields higher.",
+   "url": "https://www.bloomberg.com/news/newsletters/2026-11-13/that-haven-trade-in-treasury-bonds-didn-t-last-long",
+   "published": "2026-11-13T10:55"
+  },
+  {
+   "id": "hd29d43d9",
+   "source": "CNBC",
+   "title": "Widespread Microsoft outage continues, taking down Outlook and other 365 services",
+   "blurb": "A Microsoft outage on Thursday affected users of services like Outlook, Teams and 365.",
+   "url": "https://www.cnbc.com/2026/11/12/microsoft-outage-outlook-aws-google.html",
+   "published": "2026-11-13T10:55"
+  },
+  {
+   "id": "h35841fa8",
+   "source": "CNBC",
+   "title": "Nvidia scandal draws in Commerce Secretary Lutnick, who reportedly agrees to testify about China chip sales",
+   "blurb": "Commerce Secretary Lutnick will testify before the Senate Banking Committee following revelations about Jensen Huang's affair with an alleged Chinese spy.",
+   "url": "https://www.cnbc.com/2026/11/13/nvidia-scandal-lutnick-chip-sales.html",
+   "published": "2026-11-13T10:54"
+  },
+  {
+   "id": "h588878ce",
+   "source": "WSJ Markets",
+   "title": "European Stock Indexes Turn Positive as Oil Drops",
+   "blurb": "European stock indexes turned positive, reversing earlier declines, as a fall in oil prices buoyed sentiment.",
+   "url": "https://www.wsj.com/finance/stocks/nikkei-rises-1-1-led-by-chip-stocks-eb2ed881?mod=rss_markets_main",
+   "published": "2026-11-13T10:52"
+  },
+  {
+   "id": "h1044b9be",
+   "source": "WSJ Markets",
+   "title": "CVS Breakup Won\u2019t Satisfy Washington. It Could Still Work for Wall Street.",
+   "blurb": "Spinning off its drugstores won\u2019t quiet CVS\u2019s critics, but it could leave shareholders with a more valuable company.",
+   "url": "https://www.wsj.com/health/healthcare/cvs-breakup-wont-satisfy-washington-it-could-still-work-for-wall-street-1b5004e3?mod=rss_markets_main",
+   "published": "2026-11-13T10:30"
+  },
+  {
+   "id": "he35ff791",
+   "source": "MarketWatch",
+   "title": "\u2018She has a history of financial mismanagement\u2019: My brother cut my sister out of his will. I\u2019m getting everything. Do I tell her?",
+   "blurb": "\u201cI\u2019m torn between respecting my brother\u2019s wishes, being fair to my sister, and preserving a relationship that means a great deal to me.\u201d",
+   "url": "https://www.marketwatch.com/story/she-has-a-history-of-financial-mismanagement-my-brother-cut-my-sister-out-of-his-will-im-getting-everything-do-i-tell-her-3e537851?mod=mw_rss_topstories",
+   "published": "2026-11-13T10:15"
+  },
+  {
+   "id": "ha37b855b",
+   "source": "Bloomberg Technology",
+   "title": "Goldman Sees S&P 500 Rising 14% on Cheap Hyperscaler Valuations",
+   "blurb": "Goldman Sachs Group Inc. strategists are bullish on US stocks for 2027, predicting the S&P 500 will advance 14% over the coming year after a selloff in the biggest technology companies left their valuations historically cheap.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-13/goldman-sees-s-p-500-rising-14-on-cheap-hyperscaler-valuations",
+   "published": "2026-11-13T10:14"
+  },
+  {
+   "id": "h560fe5c6",
+   "source": "MarketWatch",
+   "title": "Earnings growth is set to peter out \u2014 but not the bull market, says Goldman Sachs. Here\u2019s what the firm recommends.",
+   "blurb": "Earnings growth is almost halving across major indices in 2027 but stocks have already discounted much of that deceleration. Goldman recommends investors focus closely on those companies still delivering strong growth \u2013 as strong growth becomes a scarce commodity.",
+   "url": "https://www.marketwatch.com/story/earnings-growth-is-set-to-peter-out-but-not-the-bull-market-says-goldman-sachs-heres-what-the-firm-recommends-bf409a6d?mod=mw_rss_topstories",
+   "published": "2026-11-13T10:14"
+  },
+  {
+   "id": "h896cbc9f",
+   "source": "Bloomberg Markets",
+   "title": "Mexico Graft Scandal Erodes Trust in Electoral Authority, Threatens Sheinbaum",
+   "blurb": "Nearly half of Mexicans have little or no confidence the country\u2019s electoral authority can organize fair elections next year, according to a new poll, as a widening graft scandal batters the institution.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-13/mexico-graft-scandal-erodes-trust-in-electoral-authority-threatens-sheinbaum",
+   "published": "2026-11-13T10:00"
+  },
+  {
+   "id": "h56336ba5",
+   "source": "CNBC",
+   "title": "The Fed expected rate cuts this year. Now it\u2019s bracing for another inflation fight",
+   "blurb": "The most recent inflation reading for October had beaten expectations, coming in at 0.4% for the month.",
+   "url": "https://www.cnbc.com/2026/11/13/us-inflation-outlook-federal-reserve-rate-hike.html",
+   "published": "2026-11-13T10:00"
+  },
+  {
+   "id": "haa0175cd",
+   "source": "CNBC",
+   "title": "Nvidia stock inches higher as investors continue to weigh Jensen Huang\u2019s departure",
+   "blurb": "Jensen Huang resigned as CEO of Nvidia on Thursday after coming under scrutiny for two extramarital affairs.",
+   "url": "https://www.cnbc.com/2026/11/13/nvidia-nvda-stock-jensen-huang-transition.html",
+   "published": "2026-11-13T10:00"
+  },
+  {
+   "id": "h8a629626",
+   "source": "WSJ Markets",
+   "title": "Stock Market Today: Nvidia Shares Set to Recoup Some Losses as Investors Eye Fallout",
+   "blurb": "AI trade faces two major tests next week with chip giant's earnings and Anthropic's IPO",
+   "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-13-2026?mod=rss_markets_main",
+   "published": "2026-11-13T09:55"
+  }
+ ],
+ "feeds": 12,
+ "scanned": 125
+}

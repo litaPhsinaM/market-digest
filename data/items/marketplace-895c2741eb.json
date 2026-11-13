@@ -1,0 +1,106 @@
+{
+ "id": "marketplace-895c2741eb",
+ "source_id": "marketplace",
+ "source_name": "Marketplace",
+ "kind": "podcast",
+ "title": "Nvidia was AI's linchpin. Now what?",
+ "url": "https://www.marketplace.org/episode/2026/11/12/nvidia-was-ais-linchpin-now-what",
+ "media_url": "https://pscrb.fm/rss/p/mgln.ai/e/5/dts.podtrac.com/redirect.mp3/tracking.swap.fm/track/VnCzW2iO9G8z4eDWfXCd/play.publicradio.org/podcast/o/marketplace/pm/2026/11/12/pm_20261112_PM_Podcast_64.mp3?awCollectionId=mkp-MKP-PM&awEpisodeId=01M78QT8R57TER39EZR9D2WCH1",
+ "published": "2026-11-12",
+ "duration": 1523,
+ "digest_date": "2026-11-13",
+ "backend": "gemini",
+ "model": "gemini-3.1-flash-lite",
+ "summary": {
+  "segments": [
+   "Nvidia's central role in AI",
+   "Impact of tariffs on inflation",
+   "Housing affordability crisis in Pinedale",
+   "Career transitions for teachers",
+   "Airlines focus on premium seats",
+   "Bloomberg's private alternative to BLS data"
+  ],
+  "headline": "Nvidia's AI dominance; Bloomberg launches private inflation tracker",
+  "tldr": "Nvidia remains the linchpin of the AI economy, though its massive influence faces scrutiny. Meanwhile, rising tariffs and housing shortages persist, while Bloomberg Economics has launched a private inflation tracker to supplement government data.",
+  "key_points": [
+   {
+    "point": "Nvidia is the center of a 'circular financing' web in AI, providing chips while also investing in the startups that buy them.",
+    "why_it_matters": "This interdependency makes the broader AI industry highly sensitive to Nvidia's financial health and strategic decisions."
+   },
+   {
+    "point": "Tariffs on steel and aluminum are causing manufacturers to raise prices, with experts noting that domestic protectionism reduces competition and sustains inflation.",
+    "why_it_matters": "Tariff policies can create long-term inflationary pressure that persists well after the initial implementation."
+   },
+   {
+    "point": "Pinedale, Wyoming, is experiencing a housing affordability crisis where service workers are priced out by remote workers and limited supply.",
+    "why_it_matters": "This illustrates how local economies struggle to house essential workers when remote migration drives up property values."
+   },
+   {
+    "point": "Bloomberg Economics launched a private CPI tracker using millions of data points, reporting 4.6% inflation for October.",
+    "why_it_matters": "Private sector alternatives are emerging to provide more granular, real-time data to supplement official government statistics."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "$4T",
+    "context": "Nvidia's market capitalization as of the close of the session."
+   },
+   {
+    "figure": "4.6%",
+    "context": "The year-over-year inflation reading for October according to the Bloomberg Price Project."
+   },
+   {
+    "figure": "$450,000",
+    "context": "The average home price in Pinedale, Wyoming, up from much lower levels seven years ago."
+   },
+   {
+    "figure": "57%",
+    "context": "The percentage of US public school teachers who report feeling burned out."
+   }
+  ],
+  "lesson": "When a company acts as the primary infrastructure provider for an entire sector, its financial health and leadership stability become systemic risks for the broader economy.",
+  "opinions_and_predictions": [
+   "Megan McCarty Carino believes Nvidia is the 'white-hot center' of AI and that the industry would not be the same without it.",
+   "Jason Miller (Michigan State University) predicts tariffs will allow domestic manufacturers to keep raising prices due to reduced competition.",
+   "Anna Wong (Bloomberg Economics) thinks the Fed faces a difficult job because the economy shows both deflationary and inflationary forces simultaneously."
+  ],
+  "tickers": [
+   "Nvidia (NVDA)",
+   "Advanced Micro Devices (AMD)",
+   "Intel (INTC)",
+   "Alphabet (GOOGL)",
+   "JetBlue (JBLU)"
+  ],
+  "glossary": [
+   {
+    "term": "Circular financing",
+    "definition": "A system where companies invest in each other or provide funding to customers who then use that money to buy the company's own products.",
+    "example": "Nvidia provides venture funding to AI startups that subsequently use that capital to purchase Nvidia chips."
+   },
+   {
+    "term": "Market capitalization",
+    "definition": "The total dollar market value of a company's outstanding shares of stock.",
+    "example": "Nvidia's market cap reached nearly $4 trillion."
+   },
+   {
+    "term": "K-shaped economy",
+    "definition": "An economic scenario where different sectors or groups recover at vastly different rates, often widening the gap between the wealthy and the working class.",
+    "example": "Wealthy travelers continue to pay for premium airline seats while others face rising costs of living."
+   },
+   {
+    "term": "CPI (Consumer Price Index)",
+    "definition": "A measure that examines the weighted average of prices of a basket of consumer goods and services to track inflation.",
+    "example": "Bloomberg created a private alternative to the official CPI data."
+   }
+  ],
+  "level": "intermediate",
+  "topics": [
+   "ai stocks",
+   "inflation",
+   "housing",
+   "corporate governance"
+  ],
+  "quality_note": "The source features reports from journalists and interviews with economists, providing a mix of market data and expert analysis on economic trends.",
+  "worth_reading": true
+ }
+}

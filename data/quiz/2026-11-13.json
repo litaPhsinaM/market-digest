@@ -1,0 +1,41 @@
+{
+ "date": "2026-11-13",
+ "questions": [
+  {
+   "question": "What does 'key man risk' refer to in a business context?",
+   "options": [
+    "The risk that a company has too many male executives in leadership",
+    "The danger that a company's success is overly dependent on one essential individual",
+    "The possibility that a company's physical infrastructure will fail",
+    "The risk of a company's stock being manipulated by a single large investor"
+   ],
+   "answer": 1,
+   "explanation": "Key man risk is the danger that a firm's stability depends too heavily on one essential person. Nvidia faced this today when the sudden departure of its founder-CEO caused significant market uncertainty and a drop in valuation.",
+   "item_id": "wsj-whats-news-0548250264"
+  },
+  {
+   "question": "Today's report noted a 0.4% increase in the Consumer Price Index (CPI). What does this figure represent?",
+   "options": [
+    "The percentage of new jobs added to the economy in October",
+    "The average change in prices consumers paid for a basket of goods",
+    "The total growth of the US economy's production for the month",
+    "The interest rate set by the Federal Reserve for bank loans"
+   ],
+   "answer": 1,
+   "explanation": "The CPI measures the average change over time in the prices paid by consumers for a basket of goods and services. A 0.4% increase suggests that inflation is rising faster than economists had anticipated, impacting consumer purchasing power.",
+   "item_id": "indicator-21732637fc"
+  },
+  {
+   "question": "Why is the 'step-up basis' tax rule considered a factor in the housing affordability crisis?",
+   "options": [
+    "It requires homeowners to pay a penalty if they do not sell their home within ten years",
+    "It provides a government subsidy to help young families afford their first down payment",
+    "It incentivizes owners to hold property until death to avoid capital gains taxes for heirs",
+    "It automatically increases the interest rate on a mortgage every time a house is sold"
+   ],
+   "answer": 2,
+   "explanation": "This rule allows heirs to avoid capital gains taxes by resetting an asset's value to its market price at the time of the owner's death. This discourages people from selling their homes during their lifetime, which reduces the supply of available housing and keeps prices high.",
+   "item_id": "prof-g-markets-3630fbb9d9"
+  }
+ ]
+}

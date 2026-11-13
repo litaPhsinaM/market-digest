@@ -1,0 +1,51 @@
+{
+ "date": "2026-11-13",
+ "big_picture": "Nvidia CEO Jensen Huang resigned following reports of personal scandals and potential national security risks, causing significant market volatility. Meanwhile, U.S. inflation rose 0.4% in October, and the housing market reached its lowest sales level since 2010.",
+ "themes": [
+  {
+   "title": "Nvidia leadership crisis and strategic uncertainty",
+   "explanation": "Jensen Huang resigned as CEO after reports of extramarital affairs and connections to an alleged Chinese agent. CFO Collette Kress has been named interim CEO while the board searches for a successor to manage the company's complex AI ecosystem and regulatory challenges. The stock experienced significant volatility, losing approximately $465 billion in market value during the scandal.",
+   "item_ids": [
+    "wsj-whats-news-0548250264",
+    "bloomberg-surveillance-f789f5df8d",
+    "bloomberg-surveillance-c702ef0163",
+    "indicator-21732637fc",
+    "marketplace-895c2741eb",
+    "wsj-whats-news-ffa851970a",
+    "squawk-pod-cff7f52094"
+   ]
+  },
+  {
+   "title": "Macroeconomic indicators and housing market downturn",
+   "explanation": "The Consumer Price Index rose 0.4% in October, exceeding expectations, while a private Bloomberg tracker estimated inflation at 4.6%. Simultaneously, U.S. home sales fell 5.5% in October to the lowest level since 2010, driven by high mortgage rates and limited supply.",
+   "item_ids": [
+    "indicator-21732637fc",
+    "marketplace-895c2741eb",
+    "wsj-whats-news-ffa851970a"
+   ]
+  },
+  {
+   "title": "Economic inequality and labor issues",
+   "explanation": "Voter frustration over affordability remains high, with 55% of Americans reporting their financial situation is worsening. Structural issues like the step-up tax basis contribute to housing unaffordability, while $960 million in stolen wages was recovered for workers in 2025.",
+   "item_ids": [
+    "indicator-21732637fc",
+    "prof-g-markets-3630fbb9d9"
+   ]
+  },
+  {
+   "title": "Mississippi Senate election results",
+   "explanation": "Democrat Scott Colm won the Mississippi Senate seat, marking the first Democratic victory in the state since 1982.",
+   "item_ids": [
+    "wsj-whats-news-0548250264"
+   ]
+  }
+ ],
+ "concept_of_the_day": {
+  "concept": "Key-person risk",
+  "explanation": "Key-person risk occurs when a company's operations, strategy, and market valuation are so heavily dependent on a single individual that their departure or scandal threatens the entire organization. In Nvidia's case, Jensen Huang was the face of the AI boom and the primary architect of the company's complex financing and supply chain relationships. His sudden resignation triggered a massive drop in market value because investors feared the company could not maintain its competitive edge or navigate geopolitical export controls without his specific influence. This concept highlights how centralized management can become a systemic vulnerability."
+ },
+ "watch_for": [
+  "Nvidia CEO search process expected to take one to two quarters",
+  "Anthropic IPO market impact"
+ ]
+}

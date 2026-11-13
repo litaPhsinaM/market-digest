@@ -1,0 +1,86 @@
+{
+ "id": "bloomberg-surveillance-f789f5df8d",
+ "source_id": "bloomberg-surveillance",
+ "source_name": "Bloomberg Surveillance",
+ "kind": "podcast",
+ "title": "Bloomberg Surveillance TV: November 12th, 2026",
+ "url": "https://omny.fm/shows/bloomberg-surveillance/bloomberg-surveillance-tv-november-12th-2026",
+ "media_url": "https://podtrac.com/pts/redirect.mp3/tracking.swap.fm/track/UVBrz8bN8aM2Xe47PEPu/traffic.omny.fm/d/clips/e73c998e-6e60-432f-8610-ae210140c5b1/8e704079-ca57-4eac-9741-ae27003e2b7f/d07516c8-25bc-42cb-831f-b500011dd8a8/audio.mp3?utm_source=Podcast&in_playlist=9739700c-72c3-4176-ae55-ae27003e2b96",
+ "published": "2026-11-12",
+ "duration": 981,
+ "digest_date": "2026-11-13",
+ "backend": "gemini",
+ "model": "gemini-3.1-flash-lite",
+ "summary": {
+  "segments": [
+   "Nvidia and tech sector tail risk",
+   "IP theft and China compute competition",
+   "Anthropic IPO and market clearing",
+   "National security and Nvidia export controls"
+  ],
+  "headline": "Nvidia's leadership and export control scrutiny spark tech sector uncertainty",
+  "tldr": "The tech sector faces potential instability as questions arise regarding Nvidia's leadership and its role in navigating complex geopolitical and regulatory landscapes. Experts are debating the national security implications of chip smuggling to China and the potential impact of these developments on upcoming major IPOs.",
+  "key_points": [
+   {
+    "point": "Peter Sheer (Academy) identifies Jensen Huang as a central force whose potential sidelining creates tail risk for the entire tech trade.",
+    "why_it_matters": "When a company's growth is heavily dependent on a single leader's ability to navigate Washington and solve financing problems, that leader's absence can disrupt the entire sector."
+   },
+   {
+    "point": "Brad Carson (former Defense Department Undersecretary) claims Nvidia has turned a blind eye to chip smuggling into China, which now accounts for roughly one-third of China's compute power.",
+    "why_it_matters": "This highlights the tension between corporate lobbying for market access and national security interests, potentially leading to stricter export controls."
+   },
+   {
+    "point": "Peter Sheer suggests the Anthropic IPO should aim to raise enough capital to avoid returning to the market for at least a year to act as a market-calming event.",
+    "why_it_matters": "Large IPOs can serve as a barometer for market health; if they fail to secure sufficient funding, it can increase pressure on bond yields and equities."
+   },
+   {
+    "point": "There is a growing global trend toward regional chip self-sufficiency, with Europe and other regions seeking to reduce reliance on both the US and China.",
+    "why_it_matters": "This shift indicates a move away from a globalized tech stack toward fragmented, localized compute capacity, which could alter long-term investment strategies."
+   }
+  ],
+  "numbers": [],
+  "lesson": "When a company's market dominance is tied to a specific leader's unique ability to navigate regulatory and political environments, the loss or sidelining of that person creates key-person risk that can impact the entire industry.",
+  "opinions_and_predictions": [
+   "Peter Sheer (Academy) believes the credit markets are not convinced the Nvidia situation is resolved.",
+   "Peter Sheer (Academy) predicts that if the Anthropic IPO raises too little money, pressure on bond yields and equities will increase.",
+   "Brad Carson (former Defense Department Undersecretary) expects the Nvidia scrutiny will make it harder for the company to lobby against export controls.",
+   "Brad Carson (former Defense Department Undersecretary) argues that lawmakers must implement stricter 'know your customer' laws to prevent China from accessing chips via cloud compute rentals."
+  ],
+  "tickers": [
+   "Nvidia (NVDA)",
+   "Intel (INTC)",
+   "CoreWeave",
+   "Anthropic"
+  ],
+  "glossary": [
+   {
+    "term": "Tail risk",
+    "definition": "The risk of an event occurring that is statistically unlikely but would have a massive, negative impact if it happened.",
+    "example": "Peter Sheer suggests the potential departure of Nvidia's CEO is a tail risk for the tech sector."
+   },
+   {
+    "term": "Export controls",
+    "definition": "Government regulations that restrict the sale or transfer of specific technologies or goods to foreign countries for national security reasons.",
+    "example": "Lawmakers are debating stricter export controls to keep advanced AI chips out of China."
+   },
+   {
+    "term": "Know your customer (KYC)",
+    "definition": "Legal requirements for businesses to verify the identity of their clients and monitor their activities to prevent illegal behavior.",
+    "example": "Brad Carson suggests applying KYC laws to ensure Nvidia chips aren't being rented by restricted entities."
+   },
+   {
+    "term": "Clearing event",
+    "definition": "A significant market event that resolves uncertainty and allows investors to move forward with clearer expectations.",
+    "example": "The Anthropic IPO is viewed as a potential clearing event for the current market environment."
+   }
+  ],
+  "level": "intermediate",
+  "topics": [
+   "geopolitics",
+   "semiconductors",
+   "ai stocks"
+  ],
+  "quality_note": "The source features market analysts and former government officials providing expert commentary, though claims regarding corporate intent and national security risks are speculative.",
+  "worth_reading": true
+ }
+}

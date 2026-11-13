@@ -1,0 +1,96 @@
+{
+ "id": "prof-g-markets-3630fbb9d9",
+ "source_id": "prof-g-markets",
+ "source_name": "Prof G Markets",
+ "kind": "podcast",
+ "title": "Here\u2019s What It Will Really Take To Fix America\u2019s Economy \u2014 ft. Kathryn Anne Edwards",
+ "url": "https://www.podtrac.com/pts/redirect.mp3/pdst.fm/e/pscrb.fm/rss/p/mgln.ai/e/257/traffic.megaphone.fm/VMP4643132543.mp3",
+ "media_url": "https://www.podtrac.com/pts/redirect.mp3/pdst.fm/e/pscrb.fm/rss/p/mgln.ai/e/257/traffic.megaphone.fm/VMP4643132543.mp3",
+ "published": "2026-11-13",
+ "duration": 4116,
+ "digest_date": "2026-11-13",
+ "backend": "gemini",
+ "model": "gemini-3.1-flash-lite",
+ "summary": {
+  "segments": [
+   "Texas election results and public education",
+   "Economic sentiment and affordability crisis",
+   "Policy approaches to job search data",
+   "Housing market affordability and tax incentives",
+   "Rising income and corporate profit inequality",
+   "Estate tax reform and worker power"
+  ],
+  "headline": "Addressing America's economic affordability and inequality crisis",
+  "tldr": "Economist Kathryn Anne Edwards argues that recent election results reflect deep-seated voter frustration with affordability and government responsiveness rather than just inflation. She advocates for structural policy shifts, including estate tax reform and stronger labor protections, to address rising income inequality.",
+  "key_points": [
+   {
+    "point": "Public sentiment on the economy is at record lows, with 55% of Americans reporting their financial situation is worsening.",
+    "why_it_matters": "This disconnect between macro indicators and personal financial stability drives voter dissatisfaction and demands for government action."
+   },
+   {
+    "point": "Housing prices now cost more than seven times average incomes, exacerbated by tax policies like the step-up basis.",
+    "why_it_matters": "Current tax structures incentivize homeowners to hold properties until death, reducing supply and keeping housing unaffordable for younger generations."
+   },
+   {
+    "point": "Corporate profits as a share of gross domestic income have reached levels not seen since 1929.",
+    "why_it_matters": "High corporate profitability alongside stagnant wage growth for lower-income workers indicates a significant structural imbalance in the economy."
+   },
+   {
+    "point": "Kathryn Anne Edwards proposes an estate tax on inheritances over $1 million to fund a children's trust.",
+    "why_it_matters": "This mechanism aims to reduce intergenerational wealth inequality and provide universal access to early childhood development."
+   }
+  ],
+  "numbers": [
+   {
+    "figure": "55%",
+    "context": "The percentage of Americans who say their financial situation is actively getting worse."
+   },
+   {
+    "figure": "7x",
+    "context": "The ratio of average housing prices to average incomes."
+   },
+   {
+    "figure": "$30M",
+    "context": "The current estate tax exemption for couples, which the speaker suggests is too high."
+   }
+  ],
+  "lesson": "When tax policies (like step-up basis) incentivize holding assets rather than selling them, they artificially restrict supply and inflate prices, creating market distortions that hurt affordability.",
+  "opinions_and_predictions": [
+   "Kathryn Anne Edwards believes the recent election was a referendum on affordability and corruption rather than a mandate to hit specific inflation targets.",
+   "Kathryn Anne Edwards predicts that a significant rift will emerge within the Democratic Party regarding how radical their economic policy changes should be.",
+   "Kathryn Anne Edwards argues that income inequality is the largest risk to the economy, society, and the livelihood of Americans."
+  ],
+  "tickers": [],
+  "glossary": [
+   {
+    "term": "Step-up basis",
+    "definition": "A tax rule that adjusts the value of an inherited asset to its current market value at the time of the owner's death, effectively wiping out capital gains taxes on the increase in value.",
+    "example": "Homeowners may hold onto properties until death to avoid capital gains taxes, benefiting from this step-up in basis."
+   },
+   {
+    "term": "Sectoral bargaining",
+    "definition": "A process where unions and employers negotiate wages and working conditions for an entire industry rather than just a single company.",
+    "example": "The speaker suggests this as a way to improve wages for service sector workers."
+   },
+   {
+    "term": "Estate tax",
+    "definition": "A tax levied on the transfer of the estate of a deceased person.",
+    "example": "The speaker proposes lowering the exemption to $1 million to fund children's programs."
+   },
+   {
+    "term": "Mortgage interest deduction",
+    "definition": "A tax incentive that allows homeowners to deduct the interest paid on their mortgage from their taxable income.",
+    "example": "The speaker argues this primarily benefits the top 10% of earners."
+   }
+  ],
+  "level": "intermediate",
+  "topics": [
+   "economic policy",
+   "inequality",
+   "housing market",
+   "taxation"
+  ],
+  "quality_note": "The source features a professional economist providing policy analysis and historical comparisons, though some proposals are speculative political recommendations.",
+  "worth_reading": true
+ }
+}
