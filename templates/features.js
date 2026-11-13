@@ -597,4 +597,26 @@
     let reloaded = false;
     navigator.serviceWorker.addEventListener("controllerchange", () => { if (hadController && !reloaded) { reloaded = true; location.reload(); } });
   }
+  // ---------- keep the two columns even on wide screens ----------
+  // On quiet news days the sidebar runs far past the stories, leaving an empty gap on the left. Move its last cards
+  // under the stories (two side by side) until the columns are about even; put them back on narrow screens.
+  const sideCol = $(".col-side"), mainCol = $(".col-main");
+  if (sideCol && mainCol) {
+    const wide = matchMedia("(min-width: 1081px)");
+    const order = [...sideCol.children];
+    let more = null;
+    const balance = () => {
+      if (more) { order.forEach((c) => sideCol.appendChild(c)); more.remove(); more = null; }
+      sideCol.classList.remove("tall");
+      if (!wide.matches) return;
+      const cards = [...sideCol.children];
+      while (cards.length > 2 && sideCol.offsetHeight > mainCol.offsetHeight + 120) {
+        if (!more) { more = document.createElement("div"); more.className = "side-more"; mainCol.appendChild(more); }
+        more.prepend(cards.pop());
+      }
+      if (sideCol.offsetHeight > innerHeight - 100) sideCol.classList.add("tall");  // too tall to stick in place
+    };
+    addEventListener("load", () => { balance(); setTimeout(balance, 800); });
+    wide.addEventListener("change", balance);
+  }
 })();
