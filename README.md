@@ -5,7 +5,7 @@
 behind the news. It's built for people who are new to investing.
 
 - **Website:** https://stocksplain.app/
-- **Android app:** [download the latest APK](https://github.com/litaPhsinaM/market-digest/releases/latest)
+- **Android app:** [download the latest APK](https://github.com/litaPhsinaM/stocksplain/releases/latest)
 - **iPhone:** open the website in Safari → **Share → Add to Home Screen**
 
 ## What's inside
@@ -77,7 +77,7 @@ cards so the page never looks empty.
 - **Nothing here is financial advice.**
 - Not affiliated with any show, newsroom or company mentioned. We publish short summaries in our own words, never
   transcripts or full articles, and always link back. Creators who want a show removed can
-  [open a request](https://github.com/litaPhsinaM/market-digest/issues/new?title=Removal%20request).
+  [open a request](https://github.com/litaPhsinaM/stocksplain/issues/new?title=Removal%20request).
 
 ## Sources
 

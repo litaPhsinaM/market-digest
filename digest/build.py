@@ -228,7 +228,7 @@ def build(root: Path):
     (out / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>'
                                      f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')
     # Short, branded link for the Android app: stocksplain.app/android → the newest GitHub release.
-    rel = "https://github.com/litaPhsinaM/market-digest/releases/latest"
+    rel = "https://github.com/litaPhsinaM/stocksplain/releases/latest"
     (out / "android").mkdir(exist_ok=True)
     (out / "android" / "index.html").write_text(
         f'<!doctype html><meta charset="utf-8"><title>Stocksplain for Android</title>'
