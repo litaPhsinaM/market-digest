@@ -164,7 +164,10 @@ def _near(a: str, b: str) -> bool:
 
 
 def name_fixes(texts: list[str], reference: list[str]) -> dict[str, str]:
-    known = {f"{m.group(1)} {m.group(2)}" for t in reference for m in _NAME.finditer(t or "")}
+    names = REF / "names.txt"  # hand-checked spellings of people who come up often
+    extra = [ln.strip() for ln in names.read_text().splitlines() if ln.strip() and not ln.startswith("#")] if names.exists() else []
+    known = {f"{m.group(1)} {m.group(2)}" for t in list(reference) + extra for m in _NAME.finditer(t or "")}
+    known_last = {k.split()[1] for k in known}
     fixes = {}
     for t in texts:
         for m in _NAME.finditer(t or ""):
@@ -174,7 +177,9 @@ def name_fixes(texts: list[str], reference: list[str]) -> dict[str, str]:
             f, l = m.group(1), m.group(2)
             for k in known:
                 kf, kl = k.split()
-                if (l == kl and _near(f, kf)) or (f == kf and _near(l, kl)):
+                # sound-alike surname (Huang/Wong): same first name, same ending, and that first name has one known surname
+                alike = f == kf and l[-2:] == kl[-2:] and l not in known_last and sum(x.split()[0] == kf for x in known) == 1
+                if (l == kl and _near(f, kf)) or (f == kf and _near(l, kl)) or (_near(f, kf) and _near(l, kl)) or alike:
                     fixes[got] = k
                     break
     return fixes

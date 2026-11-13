@@ -1755,3 +1755,5 @@ main h1, .course-hero h1, .src-hero h1, .dict-title h1, .about-hero h1, .learn-h
 .ls-course { width: 100%; justify-content: center; }
 .page-read { position: fixed; top: 0; left: 0; right: 0; z-index: 60; height: 3px; }
 @media (max-width: 1000px) { .lesson-layout { grid-template-columns: minmax(0, 1fr); } .lesson-side { position: static; } }
+
+.ec-today { margin-left: 4px; padding: 1px 7px; border-radius: 999px; font-size: .68rem; font-weight: 750; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }

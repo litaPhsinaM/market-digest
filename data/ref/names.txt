@@ -1,0 +1,31 @@
+# Correct spellings of people who come up often in finance podcasts (one per line).
+# Used to fix audio-transcription misspellings. Add only names you've checked.
+Jerome Powell
+Austan Goolsbee
+Christopher Waller
+Michelle Bowman
+Philip Jefferson
+Lisa Cook
+Mary Daly
+Neel Kashkari
+Raphael Bostic
+Susan Collins
+Lorie Logan
+Beth Hammack
+Alberto Musalem
+Jeffrey Schmid
+Scott Bessent
+Jensen Huang
+Colette Kress
+Lisa Su
+Satya Nadella
+Sundar Pichai
+Tim Cook
+Andy Jassy
+Mark Zuckerberg
+Elon Musk
+Sam Altman
+Dario Amodei
+Warren Buffett
+Jamie Dimon
+Lip-Bu Tan

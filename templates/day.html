@@ -389,7 +389,7 @@
     {% if econ.upcoming %}
     <h3 class="ec-sub">Coming up</h3>
     <ul class="earn">{% for u in econ.upcoming %}
-      <li><span class="earn-date"><b>{{ u.date[8:10]|int }}</b><small>{{ ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][u.date[5:7]|int - 1] }}</small></span><span class="ec-rel">{{ u.name }}</span></li>
+      <li><span class="earn-date"><b>{{ u.date[8:10]|int }}</b><small>{{ ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][u.date[5:7]|int - 1] }}</small></span><span class="ec-rel">{{ u.name }}{% if u.date == date %} <span class="ec-today">out today</span>{% endif %}</span></li>
     {% endfor %}</ul>
     {% endif %}
     <p class="side-note">Source: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a>, Federal Reserve Bank of St. Louis, from BLS, the Federal Reserve and EIA data.</p>

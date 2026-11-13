@@ -179,3 +179,10 @@ def test_official_forecasts_score_from_data(monkeypatch):
     vals[("MORTGAGE30US", "2026-12-31")] = (7.0, "2026-10-01")                 # stale reading: don't score
     m2 = {**base, "kind": "metric_below", "metric": "mortgage_30y", "target": 7.25}
     assert claims._resolve_official(m2, dt.date(2027, 1, 20)) == 0 and m2["status"] == "open"
+
+
+def test_name_fixes_sound_alike_surname():
+    from digest import checks
+    fx = checks.name_fixes(["Jensen Wong resigned", "Wailin Wong hosts", "Alice Wong"], ["Jensen Huang quits"])
+    assert fx.get("Jensen Wong") == "Jensen Huang"
+    assert "Wailin Wong" not in fx and "Alice Wong" not in fx

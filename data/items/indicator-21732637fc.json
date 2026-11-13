@@ -15,10 +15,10 @@
   "segments": [
    "October CPI inflation report",
    "Recovered stolen wages",
-   "Nvidia CEO Jensen Wong resignation"
+   "Nvidia CEO Jensen Huang resignation"
   ],
   "headline": "October inflation rises 0.4%; Nvidia CEO resigns amid scandals",
-  "tldr": "The U.S. consumer price index rose 0.4% in October, driven by energy, food, and AI-related demand. Meanwhile, nearly $1 billion in stolen wages was recovered for workers, and Nvidia CEO Jensen Wong resigned following revelations of personal affairs and potential national security risks.",
+  "tldr": "The U.S. consumer price index rose 0.4% in October, driven by energy, food, and AI-related demand. Meanwhile, nearly $1 billion in stolen wages was recovered for workers, and Nvidia CEO Jensen Huang resigned following revelations of personal affairs and potential national security risks.",
   "key_points": [
    {
     "point": "The consumer price index (CPI) increased 0.4% in October, exceeding economist expectations.",
@@ -29,7 +29,7 @@
     "why_it_matters": "Wage theft, including unpaid overtime and sub-minimum wage pay, remains a significant issue primarily affecting low-wage workers in sectors like construction and food service."
    },
    {
-    "point": "Nvidia CEO Jensen Wong resigned after admitting to affairs, including one with an executive linked to a firm that allegedly bypassed export restrictions to send AI chips to China.",
+    "point": "Nvidia CEO Jensen Huang resigned after admitting to affairs, including one with an executive linked to a firm that allegedly bypassed export restrictions to send AI chips to China.",
     "why_it_matters": "The scandal highlights significant corporate governance risks and potential national security implications for major technology companies."
    },
    {
@@ -61,9 +61,9 @@
   ],
   "lesson": "When a company's leadership is deeply intertwined with its strategic direction and public image, personal scandals involving key executives can trigger significant market volatility and governance crises.",
   "opinions_and_predictions": [
-   "Austin Goolsby (Chicago Fed President) described the latest inflation report as distressing and borderline disturbing.",
-   "Austin Goolsby (Chicago Fed President) expressed concern that demand for AI data center equipment is creating upward pressure on prices for consumer electronics.",
-   "Ricky Movi (Host) noted that Jensen Wong was the face of the AI economy and a rare example of a prominent CEO being forced out due to scandal."
+   "Austan Goolsbee (Chicago Fed President) described the latest inflation report as distressing and borderline disturbing.",
+   "Austan Goolsbee (Chicago Fed President) expressed concern that demand for AI data center equipment is creating upward pressure on prices for consumer electronics.",
+   "Ricky Movi (Host) noted that Jensen Huang was the face of the AI economy and a rare example of a prominent CEO being forced out due to scandal."
   ],
   "tickers": [
    "Nvidia (NVDA)",
