@@ -1702,3 +1702,8 @@ main h1, .course-hero h1, .src-hero h1, .dict-title h1, .about-hero h1, .learn-h
   .about-sec .fine { columns: 1; }
   .ar-stack { grid-template-columns: 1fr 1fr; }
 }
+
+/* About order: diagram first, right under the header */
+.ar-sec.ar-first { margin-top: 18px; }
+.about-hero + .ar-first .section-title { display: none; }   /* the page header already introduces it */
+.ar-hero { margin-top: 22px; padding-top: 0; border-top: 0; }
