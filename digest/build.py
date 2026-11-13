@@ -227,6 +227,14 @@ def build(root: Path):
     urls = "".join(f"<url><loc>{u}</loc><lastmod>{m}</lastmod></url>" for u, m in pages)
     (out / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>'
                                      f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')
+    # Short, branded link for the Android app: stocksplain.app/android → the newest GitHub release.
+    rel = "https://github.com/litaPhsinaM/market-digest/releases/latest"
+    (out / "android").mkdir(exist_ok=True)
+    (out / "android" / "index.html").write_text(
+        f'<!doctype html><meta charset="utf-8"><title>Stocksplain for Android</title>'
+        f'<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url={rel}">'
+        f'<script>location.replace("{rel}")</script><p>Opening the Stocksplain Android download… '
+        f'<a href="{rel}">Tap here if nothing happens</a>.</p>')
     (out / "robots.txt").write_text(f"User-agent: *\nDisallow: /admin.html\nSitemap: {site_url}sitemap.xml\n")
     (out / "search.json").write_text(json.dumps(_search_index(items, hots, glossary, markets), separators=(",", ":")))
     old = root / "site.old"
