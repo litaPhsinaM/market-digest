@@ -32,8 +32,15 @@
       body: JSON.stringify({ event, day, device: device.slice(0, 40), platform, signed_in: !!user, props }),
     }).catch(() => {});
   };
+  // Where a visitor first came from: links like stocksplain.app/?ref=reddit (short lowercase tags only).
+  let src = null;
   try {
-    if (localStorage.getItem("opened") !== MD.todayLocal()) { localStorage.setItem("opened", MD.todayLocal()); MD.track("open"); }
+    const ref = new URLSearchParams(location.search).get("ref");
+    if (ref && /^[a-z0-9_-]{2,24}$/.test(ref) && !localStorage.getItem("src")) localStorage.setItem("src", ref);
+    src = localStorage.getItem("src");
+  } catch (e) {}
+  try {
+    if (localStorage.getItem("opened") !== MD.todayLocal()) { localStorage.setItem("opened", MD.todayLocal()); MD.track("open", src ? { src } : {}); }
   } catch (e) {}
 
   // ---------- progress document ----------
@@ -195,7 +202,7 @@
       let seen = null; try { seen = localStorage.getItem("signed_in_as"); } catch (e) {}
       if (event === "SIGNED_IN" && seen !== user.id) {
         try { localStorage.setItem("signed_in_as", user.id); } catch (e) {}
-        MD.toast("✓ Signed in, your progress now syncs"); MD.track("sign_in");
+        MD.toast("✓ Signed in, your progress now syncs"); MD.track("sign_in", src ? { src } : {});
       }
       if (event === "SIGNED_IN" && dlg.open) dlg.close();
     }
