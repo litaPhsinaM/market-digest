@@ -11,50 +11,98 @@
   "hasPart": lessons|map(attribute='title')|list
 } | tojson }}</script>{% endblock %}
 {% block content %}
-<section class="learn-hero">
-  <div class="eyebrow">Learn</div>
-  <h1>{{ course.title if course else "Start here: investing from zero" }}</h1>
-  <p class="lede">{{ course.intro if course else "A short course for complete beginners is on its way." }}</p>
+<section class="course-hero">
+  <div class="ch-main">
+    <div class="eyebrow">Free course · for complete beginners</div>
+    <h1>{{ course.title if course else "Start here: investing from zero" }}</h1>
+    <p class="lede">{{ course.intro if course else "A short course for complete beginners is on its way." }}</p>
+    {% if course %}
+    <ul class="ch-facts">
+      <li><b>{{ lessons|length }}</b> lessons</li><li><b>{{ course.units|length }}</b> units</li>
+      {% set mins = lessons|sum(attribute='minutes') %}<li><b>{{ mins // 60 }} h {{ mins % 60 }} min</b> in total, about {{ (mins / lessons|length)|round|int }} min each</li>
+      <li>A quiz in every lesson</li><li>Free, no ads</li>
+    </ul>
+    {% endif %}
+  </div>
   {% if course %}
-  <div class="learn-progress" id="learn-progress" data-total="{{ lessons|length }}">
-    <svg class="ring big" viewBox="0 0 36 36" aria-hidden="true"><circle class="ring-bg" cx="18" cy="18" r="15"/><circle class="ring-fg" id="lp-ring" cx="18" cy="18" r="15"/></svg>
-    <div><b><span id="lp-n">0</span> of {{ lessons|length }} lessons</b><span class="muted small" id="lp-msg">About {{ lessons|sum(attribute='minutes') }} minutes in total, one a day is perfect</span></div>
-    <button class="btn" type="button" id="lp-next">Start lesson 1 →</button>
+  <div class="ch-card learn-progress" id="learn-progress" data-total="{{ lessons|length }}">
+    <div class="ch-prog">
+      <svg class="ring big" viewBox="0 0 36 36" aria-hidden="true"><circle class="ring-bg" cx="18" cy="18" r="15"/><circle class="ring-fg" id="lp-ring" cx="18" cy="18" r="15"/></svg>
+      <div><b><span id="lp-n">0</span> of {{ lessons|length }} lessons done</b><span class="muted small" id="lp-msg">About {{ lessons|sum(attribute='minutes') }} minutes in total, one a day is perfect</span></div>
+    </div>
+    <div class="ch-next"><span class="eyebrow" id="lp-next-k">Start here</span><b id="lp-next-title">{{ lessons[0].title }}</b>
+      <span class="muted small" id="lp-next-meta">Lesson 1 · {{ lessons[0].unit }} · {{ lessons[0].minutes }} min</span></div>
+    <button class="btn big-cta" type="button" id="lp-next">Start lesson 1 →</button>
   </div>
   {% endif %}
 </section>
 
 {% if course %}
-{% for u in course.units %}
-<section class="unit">
-  <div class="unit-head"><span class="unit-n">Unit {{ loop.index }}</span><h2>{{ u.title }}</h2><p class="muted">{{ u.blurb }}</p></div>
-  <div class="lesson-grid">
+<div class="course-layout">
+<div class="syllabus">
+{% for u in course.units %}{% set ui = loop.index %}
+<details class="unit-block" data-unit="{{ ui }}" open>
+  <summary>
+    <span class="ub-n" aria-hidden="true">{{ ui }}</span>
+    <span class="ub-head"><span class="ub-k">Unit {{ ui }} · {{ u.lessons|length }} lessons<span class="ub-min"> · {{ u.lessons|sum(attribute='minutes') }} min</span></span>
+      <b class="ub-title">{{ u.title }}</b><span class="ub-blurb">{{ u.blurb }}</span></span>
+    <span class="ub-prog"><span class="ub-count" data-unit-count>0/{{ u.lessons|length }}</span><span class="ub-bar"><i data-unit-bar></i></span></span>
+    <span class="ub-chev" aria-hidden="true"></span>
+  </summary>
+  <ol class="lesson-list">
   {% for l in u.lessons %}
-    <button class="lc" type="button" data-lesson="{{ l.id }}">
-      <span class="lc-n">{{ l.id[1:]|int }}</span>
-      <span class="lc-body"><span class="lc-title">{{ l.title }}</span><span class="lc-hook">{{ l.hook }}</span></span>
-      <span class="lc-meta">{{ l.minutes }} min</span>
-      <span class="lc-done" aria-hidden="true">✓</span>
-    </button>
+    <li><button class="lr" type="button" data-lesson="{{ l.id }}">
+      <span class="lr-st" aria-hidden="true"><span class="lr-num">{{ l.id[1:]|int }}</span></span>
+      <span class="lr-body"><span class="lr-title">{{ l.title }}</span><span class="lr-hook">{{ l.hook }}</span></span>
+      <span class="lr-side"><span class="lr-tag" data-tag></span><span class="lr-min">{{ l.minutes }} min</span></span>
+    </button></li>
   {% endfor %}
-  </div>
-</section>
+  </ol>
+</details>
 {% endfor %}
+</div>
+
+<aside class="course-side">
+  <section class="card side">
+    <h2 class="side-title">Your progress</h2>
+    <div class="cs-stats">
+      <div><b id="cs-done">0</b><span>lessons done</span></div>
+      <div><b id="cs-min">0</b><span>minutes learned</span></div>
+      <div><b id="cs-quiz">0</b><span>quiz answers right</span></div>
+      <div><b id="cs-units">0</b><span>units finished</span></div>
+    </div>
+    <p class="side-note">Progress saves on this device, and syncs across devices when you're signed in.</p>
+  </section>
+
+  {% if practice %}
+  <section class="card side" id="practice">
+    <h2 class="side-title">Practice by level <button class="info" type="button" data-tip="Original questions written to the topics of real finance programs and exams, from everyday money (FDIC/CFPB level) to analyst level (CFA Level I topics). Not affiliated with any of them." aria-label="About practice">i</button></h2>
+    <div class="lvl-list">
+    {% for key, emoji in [('foundation', '🟢'), ('intermediate', '🟡'), ('advanced', '🔴')] %}
+      <button class="lvl" type="button" data-level="{{ key }}">
+        <span class="lvl-top">{{ emoji }} <b>{{ key|capitalize }}</b><span class="lvl-best" data-best="{{ key }}"></span></span>
+        <span class="muted small">{{ practice.levels[key] }}</span>
+        <span class="small lvl-n">{{ practice.questions|selectattr('level', 'equalto', key)|list|length }} questions · 10 per round</span>
+      </button>
+    {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="card side cs-earn">
+    <h2 class="side-title">Learn and earn</h2>
+    <p class="small">Every finished lesson adds <b class="pos">+$500</b> of play money to your portfolio, and every right quiz answer <b class="pos">+$100</b>. Use it to practise on <a href="play.html">Play</a>.</p>
+  </section>
+
+  <section class="card side">
+    <h2 class="side-title">Glossary</h2>
+    <p class="small">Every finance word from the lessons and the daily news, explained in plain English.</p>
+    <a class="side-link" href="glossary.html">Open the glossary →</a>
+  </section>
+</aside>
+</div>
 
 {% if practice %}
-<section class="unit practice-sec" id="practice">
-  <div class="unit-head"><span class="unit-n">Practice</span><h2>Test yourself by level</h2>
-    <p class="muted">Original questions written to the topics of real finance programs and exams, from everyday money (FDIC/CFPB level) to analyst level (CFA Level I topics). Not affiliated with any of them.</p></div>
-  <div class="lvl-grid">
-    {% for key, emoji in [('foundation', '🟢'), ('intermediate', '🟡'), ('advanced', '🔴')] %}
-    <button class="lvl" type="button" data-level="{{ key }}">
-      <span class="lvl-top">{{ emoji }} <b>{{ key|capitalize }}</b><span class="lvl-best" data-best="{{ key }}"></span></span>
-      <span class="muted small">{{ practice.levels[key] }}</span>
-      <span class="small">{{ practice.questions|selectattr('level', 'equalto', key)|list|length }} questions · 10 per round</span>
-    </button>
-    {% endfor %}
-  </div>
-</section>
 <script type="application/json" id="practice-data">{{ practice.questions|tojson }}</script>
 <dialog class="sheet practice-run" id="practice-run" aria-label="Practice round">
   <article class="ep">
@@ -71,6 +119,7 @@
 
 {% for l in lessons %}
 <dialog class="sheet lesson" id="{{ l.id }}" aria-labelledby="{{ l.id }}-h" data-lesson-id="{{ l.id }}">
+<div class="read-bar" aria-hidden="true"><span></span></div>
 <article class="ep">
   <div class="sheet-grab" aria-hidden="true"></div>
   <header class="ep-head">

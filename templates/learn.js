@@ -20,8 +20,40 @@
     $("#lp-n").textContent = done.length;
     $("#lp-ring").style.strokeDashoffset = 94.25 * (1 - done.length / ids.length);
     const next = ids.find((id) => !get(id).done);
+    // syllabus: status per lesson row, progress per unit, the "up next" card and the sidebar stats
+    $$("[data-lesson]").forEach((c) => c.classList.toggle("is-next", c.dataset.lesson === next));
+    $$("[data-lesson] [data-tag]").forEach((t) => {
+      const id = t.closest("[data-lesson]").dataset.lesson;
+      t.textContent = get(id).done ? "Done" : id === next ? "Up next" : "";
+    });
+    let unitsDone = 0;
+    $$(".unit-block").forEach((u) => {
+      const rows = $$("[data-lesson]", u), n = rows.filter((r) => get(r.dataset.lesson).done).length;
+      $("[data-unit-count]", u).textContent = `${n}/${rows.length}`;
+      $("[data-unit-bar]", u).style.width = (100 * n / rows.length) + "%";
+      u.classList.toggle("is-done", n === rows.length);
+      if (n === rows.length) unitsDone++;
+    });
+    const nextSheet = next && document.getElementById(next);
+    if (nextSheet) {
+      $("#lp-next-k").textContent = done.length ? "Up next" : "Start here";
+      $("#lp-next-title").textContent = $(".ep-title", nextSheet).textContent;
+      $("#lp-next-meta").textContent = $(".ep-meta", nextSheet).textContent.replace(/ of \d+/, "") + " · " + $(".ep-src", nextSheet).textContent;
+    } else if (!next) {
+      $("#lp-next-k").textContent = "All done"; $("#lp-next-title").textContent = "You finished the course 🎓"; $("#lp-next-meta").textContent = "Try a practice round to keep it fresh";
+    }
+    const minutes = sheets.filter((d) => get(d.id).done).reduce((s, d) => s + (+(/(\d+) min/.exec($(".ep-meta", d).textContent) || [0, 0])[1]), 0);
+    const right = sheets.reduce((s, d) => { const a = get(d.id).quiz || {}; return s + $$(".q", d).filter((q) => q.dataset.q in a && +a[q.dataset.q] === +q.dataset.answer).length; }, 0);
+    const set = (id, v) => { const el = $(id); if (el) el.textContent = v; };
+    set("#cs-done", done.length); set("#cs-min", minutes); set("#cs-quiz", right); set("#cs-units", unitsDone);
+    // phones: fold the units you're not working on (only the first time, so we never fight the reader)
+    if (!render.folded && matchMedia("(max-width: 720px)").matches) {
+      render.folded = true;
+      const cur = nextSheet && $(`[data-lesson="${next}"]`)?.closest(".unit-block");
+      $$(".unit-block").forEach((u) => { u.open = !next ? false : u === cur; });
+    }
     const btn = $("#lp-next");
-    btn.textContent = !done.length ? "Start lesson 1 →" : next ? `Continue: lesson ${+next.slice(1)} →` : "Course complete 🎓";
+    btn.textContent = !done.length ? "Start lesson 1 →" : next ? "Continue →" : "Course complete 🎓";
     btn.disabled = !next;
     $("#lp-msg").textContent = !done.length ? $("#lp-msg").textContent : next ? `${ids.length - done.length} to go. One a day keeps the streak alive 🔥` : "You finished the course. The daily digest will make a lot more sense now!";
     // quizzes
@@ -159,4 +191,13 @@
   MD.refresh = () => { refresh(); render(); renderBest(); }; // progress synced in from another device
   render();
   renderBest();
+  // reading progress bar at the top of each lesson
+  sheets.forEach((d) => {
+    const bar = d.querySelector(".read-bar span");
+    if (!bar) return;
+    d.addEventListener("scroll", () => {
+      const max = d.scrollHeight - d.clientHeight;
+      bar.style.width = (max > 0 ? Math.min(100, (100 * d.scrollTop) / max) : 100) + "%";
+    }, { passive: true });
+  });
 })();
