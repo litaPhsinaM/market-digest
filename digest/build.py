@@ -95,6 +95,68 @@ def _slug(text):
     return "".join(ch if ch.isalnum() else "-" for ch in text.lower()).strip("-")
 
 
+
+# ---------- "Today in 60 seconds": one slide per different story ----------
+# Every podcast leads with the day's biggest story, so slides are de-duplicated: a slide is skipped when it shares a
+# company/ticker or a name with one already shown, and an episode whose lead repeats falls back to its next key
+# point about something else.
+_STOP = set("""The This That These What Why How When Where Who CEO CFO AI US UK EU Inc Corp Co Wall Street Stocks Stock
+Market Markets Global New Big Today Week Year America American Americans World Says Said After Amid Over From With And
+For Into Its Their Our Your Not More Less First Last Top Q1 Q2 Q3 Q4 January February March April May June July August
+September October November December Monday Tuesday Wednesday Thursday Friday Saturday Sunday""".split())
+
+
+def _keys(text: str, tickers=()) -> set[str]:
+    text = re.sub(r"[’']s\b", "", text or "")
+    words = {w for w in re.findall(r"\b[A-Z][A-Za-z]{2,}\b", text) if w not in _STOP}
+    tks = set()
+    for t in tickers or ():
+        m = re.search(r"\(([A-Z.]{1,6})\)", t)
+        tks.add(m.group(1) if m else t.split()[0])
+        name = re.sub(r"\s*\(.*", "", t).split()
+        if name and name[0][0].isupper() and not name[0].isupper():
+            tks.add(name[0])
+    return {k.lower() for k in words | tks}
+
+
+def _named(tickers, text: str) -> list[str]:
+    """Only the tickers whose company is actually named in this text (an episode's ticker list covers all of it)."""
+    out = []
+    for t in tickers or ():
+        name = re.sub(r"\s*\(.*", "", t).split()
+        sym = re.search(r"\(([A-Z.]{1,6})\)", t)
+        if (name and name[0] in text) or (sym and sym.group(1) in text) or (t.isupper() and re.search(rf"\b{t}\b", text)):
+            out.append(t)
+    return out
+
+
+def story_slides(hot: dict | None, items: list[dict], max_hot: int = 8, max_total: int = 14) -> list[dict]:
+    used: set[str] = set()
+    out = []
+    for t in (hot or {}).get("topics", [])[:max_hot]:
+        k = _keys(t["title"] + " " + t["why_it_matters"], _named(t.get("tickers"), t["title"]))
+        if k & used:
+            continue
+        used |= k
+        out.append({"kind": "hot", "label": "What’s hot · " + str(len(out) + 1), "title": t["title"],
+                    "text": t["explanation"], "why": t["why_it_matters"]})
+    for it in items:
+        s = it["summary"]
+        cands = [(s["headline"], s["tldr"], {"lesson": s["lesson"]}, _keys(s["headline"], _named(s.get("tickers"), s["headline"])))]
+        for kp in s.get("key_points", []):
+            both = kp["point"] + " " + kp["why_it_matters"]
+            cands.append((kp["point"], kp["why_it_matters"], {}, _keys(both, _named(s.get("tickers"), both))))
+        for title, text, extra, k in cands:
+            if not (k & used):
+                used |= k
+                out.append({"kind": "story", "label": it["source_name"], "title": title, "text": text,
+                            "href": "#" + it["id"], **extra})
+                break
+        if len(out) >= max_total:
+            break
+    return out
+
+
 def build(root: Path):
     # Build into a temporary folder and swap it in at the end, so the live site is never half-built,
     # and a failed build leaves the previous site untouched.
@@ -177,7 +239,8 @@ def build(root: Path):
         cos = (mkt or {}).get("companies", [])
         pool = [c for c in cos if c.get("mentioned_in")] or cos
         call_co = pool[dt.date.fromisoformat(date).toordinal() % len(pool)] if pool else None
-        return {"date": date, "brief": briefs.get(date), "items": its, "market": mkt, "hot": hots.get(date), "call_co": call_co,
+        good = [i for i in its if i["summary"]["worth_reading"]]
+        return {"date": date, "brief": briefs.get(date), "items": its, "story_slides": story_slides(hots.get(date), good), "market": mkt, "hot": hots.get(date), "call_co": call_co,
                 "quiz": quizzes.get(date), "earnings": earnings,
                 "audio": audio.get(date) if (out / "audio" / f"{date}.mp3").exists() else None,
                 "n_podcasts": len(srcs), "n_feeds": len(feeds),

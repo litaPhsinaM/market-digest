@@ -1,4 +1,5 @@
 """Turn an episode/video into a learner-focused summary, and a set of summaries into a daily brief."""
+from typing import Literal
 import json
 import re
 import os
@@ -124,22 +125,31 @@ class HotTopic(BaseModel):
     tickers: list[str] = Field(description="US stock tickers of listed companies central to this story, e.g. ['NVDA']. Only real, "
                                            "currently traded company tickers; no indexes, agencies or private companies. No crypto coins "
                                            "(BTC, ETH), ETFs (TLT), or not-yet-listed companies (Binance, Anthropic before trading). Empty if none.")
+    beat: Literal["markets", "economy", "tech", "energy", "policy", "world"] = Field(
+        description="The topic area: markets (companies, deals, earnings), economy (inflation, jobs, rates, central banks), "
+                    "tech, energy (oil, gas, power, metals, mining, farm goods), policy (laws, regulation, elections, trade, "
+                    "taxes), or world (other countries' economies and markets).")
     headline_ids: list[str] = Field(description="ids of the 2-5 headlines whose title or blurb is about THIS exact story (names the same "
                                                 "company/event). Never repeat an id. Most headlines will not belong to any topic; leaving "
                                                 "them unused is expected.")
 
 
 class HotTopics(BaseModel):
-    topics: list[HotTopic] = Field(description="The 3-7 biggest specific business, market, economy and tech stories, most important first. "
-                                               "Fewer is better than padding with vague topics.")
+    topics: list[HotTopic] = Field(description="The 4-8 biggest specific stories that matter to markets, most important first, spread "
+                                               "across topic areas. Fewer is better than padding with vague topics.")
 
 
 HOT_PROMPT = """You are a finance editor picking today's hottest stories for a beginner investor, from the newsroom
-headlines below (JSON: id, source, title, blurb).
+headlines below (JSON: id, source, beat, title, blurb).
 - Each topic is ONE specific news story (an event, a company, a data release), never a broad category.
   Group headlines about that same story together. Prefer stories reported by several outlets.
-- Focus on markets, the economy, companies, deals, central banks and technology. Skip celebrity, sport and
-  politics unless it clearly moves markets.
+- Cover the whole picture that moves markets, not just one story: companies and deals, the economy (inflation,
+  jobs, interest rates, central banks), technology, energy and commodities (oil, gas, metals, mining, food),
+  policy and politics (laws, regulation, trade, taxes, elections) and world economies. Each headline's "beat" says
+  which desk it came from. When there is real news in them, include stories from at least 4 different areas.
+- ONE topic per company or event: if a big story has several angles (a CEO quits, the stock falls, lawmakers
+  react), fold them into that single topic instead of listing each angle separately.
+- Skip celebrity, sport, crime and politics that doesn't affect markets or the economy.
 - You only have headlines and short blurbs: describe what is *reported*, and don't add facts or numbers
   that aren't in them.
 - Describe, don't prescribe: never say what investors should do.
@@ -498,7 +508,7 @@ def _summarize_item(item, transcript, audio) -> ItemSummary:
 
 
 def hot_topics(headlines: list[dict]) -> HotTopics:
-    slim = [{k: h[k] for k in ("id", "source", "title", "blurb")} for h in headlines]
+    slim = [{k: h.get(k, "") for k in ("id", "source", "beat", "title", "blurb")} for h in headlines]
     prompt = HOT_PROMPT.format(headlines=json.dumps(slim, indent=0))
     gen = _ollama_generate if BACKEND == "ollama" else (lambda p, s: _gemini_generate([p], s))
     result = gen(prompt, HotTopics)
@@ -507,7 +517,7 @@ def hot_topics(headlines: list[dict]) -> HotTopics:
         t.headline_ids = [i for i in t.headline_ids if i in valid]
     from digest import checks
     kept = checks.check_hot([t.model_dump() for t in result.topics], {h["id"]: h for h in headlines})
-    return HotTopics(topics=[HotTopic(**t) for t in kept][:7])
+    return HotTopics(topics=[HotTopic(**t) for t in kept][:8])
 
 
 def daily_brief(items: list[dict]) -> DailyBrief:

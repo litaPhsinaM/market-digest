@@ -149,3 +149,47 @@ def check_hot(topics: list[dict], headlines: dict[str, dict]) -> list[dict]:
         t["tickers"] = [s for s in dict.fromkeys(x.strip().upper() for x in t["tickers"]) if valid_ticker(s)]
         out.append(t)
     return out
+
+
+# ---------- name spellings ----------
+# Audio transcription mangles names ("Collette Kress", "Colet Kress" for Colette Kress). Newsroom headlines spell them
+# correctly, so a two-word name in a summary that is one or two letters off a name in today's headlines (same first
+# OR last word, the other word very close) is rewritten to the headline spelling.
+_NAME = re.compile(r"(?=\b([A-Z][a-z]{2,})\s+([A-Z][a-z]{2,})\b)")  # lookahead: overlapping pairs
+
+
+def _near(a: str, b: str) -> bool:
+    import difflib
+    return a != b and a[0] == b[0] and difflib.SequenceMatcher(None, a.lower(), b.lower()).ratio() >= 0.8
+
+
+def name_fixes(texts: list[str], reference: list[str]) -> dict[str, str]:
+    known = {f"{m.group(1)} {m.group(2)}" for t in reference for m in _NAME.finditer(t or "")}
+    fixes = {}
+    for t in texts:
+        for m in _NAME.finditer(t or ""):
+            got = f"{m.group(1)} {m.group(2)}"
+            if got in known or got in fixes:
+                continue
+            f, l = m.group(1), m.group(2)
+            for k in known:
+                kf, kl = k.split()
+                if (l == kl and _near(f, kf)) or (f == kf and _near(l, kl)):
+                    fixes[got] = k
+                    break
+    return fixes
+
+
+def fix_names(obj, fixes: dict[str, str]):
+    """Apply name fixes to every string inside a JSON-like structure."""
+    if not fixes:
+        return obj
+    if isinstance(obj, str):
+        for wrong, right in fixes.items():
+            obj = re.sub(rf"\b{re.escape(wrong)}\b", right, obj)
+        return obj
+    if isinstance(obj, list):
+        return [fix_names(x, fixes) for x in obj]
+    if isinstance(obj, dict):
+        return {k: fix_names(v, fixes) for k, v in obj.items()}
+    return obj

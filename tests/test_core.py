@@ -134,3 +134,27 @@ def test_every_answer_shape_maps_to_a_job():
 def test_forecast_prompt_rejects_facts_and_moods():
     for phrase in ("already happened", "descriptions of the present", "vague moods", "List each forecast once"):
         assert phrase in claims.PROMPT
+
+
+# ---------- 60-second stories and name spellings ----------
+def test_story_slides_skip_repeats():
+    from digest.build import story_slides
+    hot = {"topics": [
+        {"title": "Nvidia CEO Jensen Huang resigns", "explanation": "x", "why_it_matters": "y", "tickers": ["NVDA"]},
+        {"title": "NVIDIA shares slide after Huang exit", "explanation": "x", "why_it_matters": "y", "tickers": ["NVDA"]},
+        {"title": "Oil prices jump on OPEC cut", "explanation": "x", "why_it_matters": "y", "tickers": []}]}
+    item = lambda src, head, kps: {"id": src, "source_name": src, "summary": {
+        "headline": head, "tldr": "t", "lesson": "l", "tickers": ["Nvidia (NVDA)"],
+        "key_points": [{"point": p, "why_it_matters": "w"} for p in kps]}}
+    items = [item("A", "Nvidia's CEO resigns amid scandal", ["Huang quit on Thursday", "October inflation rose 0.4%"]),
+             item("B", "Nvidia CEO Jensen Huang steps down", ["Nvidia named an interim CEO"])]
+    titles = [s["title"] for s in story_slides(hot, items)]
+    assert titles == ["Nvidia CEO Jensen Huang resigns", "Oil prices jump on OPEC cut", "October inflation rose 0.4%"]
+
+
+def test_name_fixes_use_headline_spelling():
+    from digest import checks
+    ref = ["Nvidia names CFO Colette Kress interim CEO", "Democrat Scott Colom wins Mississippi Senate seat"]
+    fx = checks.name_fixes(["Collette Kress named", "Colet Kress", "Scott Colm won", "John Smith", "Jensen Huang"], ref)
+    assert fx == {"Collette Kress": "Colette Kress", "Colet Kress": "Colette Kress", "Scott Colm": "Scott Colom"}
+    assert checks.fix_names({"a": ["Colet Kress said"]}, fx) == {"a": ["Colette Kress said"]}

@@ -2,304 +2,387 @@
  "date": "2026-11-13",
  "topics": [
   {
-   "title": "Jensen Huang ousted as Nvidia CEO following scandal",
-   "explanation": "Nvidia CEO Jensen Huang has resigned after reports emerged of multiple extramarital affairs, including one with a woman suspected of spying for China. The company has appointed finance chief Colette Kress as interim CEO while it searches for a permanent replacement.",
-   "why_it_matters": "As the central figure of the AI infrastructure boom, Huang's sudden departure creates significant uncertainty for the world's most valuable chipmaker and the broader artificial intelligence industry.",
+   "title": "Nvidia CEO Jensen Huang resigns amid affair and spy scandal",
+   "explanation": "Jensen Huang has stepped down as CEO of Nvidia following revelations of extramarital affairs, including one with a woman suspected of being a Chinese spy. The scandal has triggered investigations by Congress into the company's China chip sales and its past dealings with the Trump administration.",
+   "why_it_matters": "As a central player in the AI boom, Nvidia's leadership crisis and potential regulatory fallout are creating significant market volatility and uncertainty for the broader AI sector.",
    "tickers": [
     "NVDA"
    ],
+   "beat": "markets",
    "headline_ids": [
-    "h35841fa8",
     "haa0175cd",
-    "h8a629626",
-    "h1a116592",
-    "h3b9e89cb"
+    "h2fe5b0ae",
+    "h59c58e3f",
+    "h61212767",
+    "h15d0ecd0"
    ]
   },
   {
-   "title": "Microsoft services hit by global outage",
-   "explanation": "Microsoft is working to restore access to services including Outlook and Teams following a major global outage. The company stated the disruption was not caused by malicious or cyber activity.",
-   "why_it_matters": "The outage has significantly impacted business and government communications worldwide, forcing some traders and companies to rely on alternative methods like phones and faxes.",
+   "title": "Microsoft global cloud outage causes widespread disruption",
+   "explanation": "A massive, multi-day outage affecting Microsoft's Outlook, Teams, and 365 services has impacted millions of users and government infrastructure worldwide. While the company reports gradual service restoration, the incident has raised concerns about the stability of global cloud dependencies.",
+   "why_it_matters": "Large-scale outages in critical cloud infrastructure can paralyze businesses and government operations, potentially leading to significant financial liabilities for the provider.",
    "tickers": [
     "MSFT"
    ],
+   "beat": "tech",
    "headline_ids": [
+    "hbcbd633b",
+    "h4be096ef",
     "hd29d43d9",
-    "h023cc410",
-    "h5efc2134",
-    "hecb6dcc1",
-    "h71f35087"
+    "h625517f2",
+    "h6a8f5fb2"
    ]
   },
   {
-   "title": "Bond yields surge as inflation concerns rise",
-   "explanation": "Treasury yields are rising as investors react to October inflation data that exceeded expectations and concerns over a more hawkish Federal Reserve. The move has reversed recent gains in the bond market.",
-   "why_it_matters": "Higher bond yields generally increase borrowing costs for companies and consumers, which can put downward pressure on stock valuations.",
+   "title": "US wholesale inflation rises as Fed officials signal need for more rate hikes",
+   "explanation": "US producer price index (PPI) data showed wholesale inflation climbing at its fastest pace since 2022, while Federal Reserve officials have indicated that inflation remains too high and further interest rate tightening may be necessary.",
+   "why_it_matters": "Higher-than-expected inflation and hawkish central bank policy typically pressure bond markets and can increase borrowing costs for businesses and consumers.",
    "tickers": [],
+   "beat": "economy",
    "headline_ids": [
-    "hef827b1f",
-    "h56336ba5",
-    "h5aff13db",
-    "h242da0c0",
-    "h6488d894"
+    "h4947c04f",
+    "h609ca8f1",
+    "h861ba88e",
+    "h22fe4633",
+    "h7e72ed2e"
    ]
   },
   {
-   "title": "Global oil markets see production surge",
-   "explanation": "Oil markets have shifted toward a surplus as Iraq's production reached its highest level since 2019 and UAE output remained high. The increase in supply comes despite ongoing shipping disruptions in the Middle East.",
-   "why_it_matters": "Fluctuations in global oil supply and prices directly impact energy costs and can influence broader market sentiment and inflation expectations.",
+   "title": "Global oil markets swing to surplus as Gulf shipments rebound",
+   "explanation": "Global oil supply has moved into a surplus as shipments from the Gulf region recover and Russian crude production increases. Despite this, geopolitical risks in the Middle East continue to influence energy market pricing.",
+   "why_it_matters": "Shifts in global oil supply and demand dynamics directly impact energy costs, which are a key component of broader economic inflation.",
    "tickers": [],
+   "beat": "energy",
    "headline_ids": [
-    "hc618ee08",
     "hd25249c5",
-    "hd96a6632"
+    "hf2012d4f",
+    "hd9046acc",
+    "hd8b62984",
+    "h7994396f"
+   ]
+  },
+  {
+   "title": "Anthropic IPO draws high investor demand despite valuation concerns",
+   "explanation": "AI company Anthropic is preparing for an IPO with a reported target valuation of $1.4 trillion. The offering has attracted significant interest, though institutional investors from mainland China and Hong Kong have been excluded from participating.",
+   "why_it_matters": "The IPO serves as a major test for investor appetite in the AI sector, especially as companies face high compute costs and cash burn rates.",
+   "tickers": [],
+   "beat": "tech",
+   "headline_ids": [
+    "h7d6f3305",
+    "he295d5c6"
    ]
   }
  ],
  "headlines": {
-  "hef827b1f": {
-   "id": "hef827b1f",
-   "source": "Bloomberg Markets",
-   "title": "That Haven Trade in Treasury Bonds Didn\u2019t Last Long",
-   "blurb": "Inflation, hawkish Fed are pushing yields higher.",
-   "url": "https://www.bloomberg.com/news/newsletters/2026-11-13/that-haven-trade-in-treasury-bonds-didn-t-last-long",
-   "published": "2026-11-13T10:55"
-  },
-  "hd29d43d9": {
-   "id": "hd29d43d9",
-   "source": "CNBC",
-   "title": "Widespread Microsoft outage continues, taking down Outlook and other 365 services",
-   "blurb": "A Microsoft outage on Thursday affected users of services like Outlook, Teams and 365.",
-   "url": "https://www.cnbc.com/2026/11/12/microsoft-outage-outlook-aws-google.html",
-   "published": "2026-11-13T10:55"
-  },
-  "h35841fa8": {
-   "id": "h35841fa8",
-   "source": "CNBC",
-   "title": "Nvidia scandal draws in Commerce Secretary Lutnick, who reportedly agrees to testify about China chip sales",
-   "blurb": "Commerce Secretary Lutnick will testify before the Senate Banking Committee following revelations about Jensen Huang's affair with an alleged Chinese spy.",
-   "url": "https://www.cnbc.com/2026/11/13/nvidia-scandal-lutnick-chip-sales.html",
-   "published": "2026-11-13T10:54"
-  },
-  "h56336ba5": {
-   "id": "h56336ba5",
-   "source": "CNBC",
-   "title": "The Fed expected rate cuts this year. Now it\u2019s bracing for another inflation fight",
-   "blurb": "The most recent inflation reading for October had beaten expectations, coming in at 0.4% for the month.",
-   "url": "https://www.cnbc.com/2026/11/13/us-inflation-outlook-federal-reserve-rate-hike.html",
-   "published": "2026-11-13T10:00"
-  },
   "haa0175cd": {
    "id": "haa0175cd",
-   "source": "CNBC",
-   "title": "Nvidia stock inches higher as investors continue to weigh Jensen Huang\u2019s departure",
+   "source": "CNBC Tech",
+   "beat": "tech",
+   "title": "Nvidia stock sinks 4% in fallout from Jensen Huang resignation",
    "blurb": "Jensen Huang resigned as CEO of Nvidia on Thursday after coming under scrutiny for two extramarital affairs.",
    "url": "https://www.cnbc.com/2026/11/13/nvidia-nvda-stock-jensen-huang-transition.html",
-   "published": "2026-11-13T10:00"
+   "published": "2026-11-13T16:33"
   },
-  "h8a629626": {
-   "id": "h8a629626",
-   "source": "WSJ Markets",
-   "title": "Stock Market Today: Nvidia Shares Set to Recoup Some Losses as Investors Eye Fallout",
-   "blurb": "AI trade faces two major tests next week with chip giant's earnings and Anthropic's IPO",
-   "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-13-2026?mod=rss_markets_main",
-   "published": "2026-11-13T09:55"
+  "hbcbd633b": {
+   "id": "hbcbd633b",
+   "source": "The Guardian Business",
+   "beat": "world",
+   "title": "Microsoft outage live: millions still affected as disruption stretches beyond 18 hours",
+   "blurb": "Microsoft reports it is \u2018continuing to see improvements in service availability\u2019, after millions of customers around the world suffered disruption Tell us: have you been affected by the Microsoft outage? Microsoft struggles to fix huge outage affecting Outlook and Teams What\u2026",
+   "url": "https://www.theguardian.com/technology/live/2026/nov/13/microsoft-outage-down-today-live-update-outlook-teams-365-when-fixed-latest-status-cause-news",
+   "published": "2026-11-13T16:32"
   },
-  "h023cc410": {
-   "id": "h023cc410",
-   "source": "Financial Times",
-   "title": "Microsoft races to restore services after global outage",
-   "blurb": "Issue affecting Outlook, Teams and other services not caused by \u2018malicious or cyber activity\u2019, company says",
-   "url": "https://www.ft.com/content/025b2769-bca8-4a74-b9f5-5d7ad7da32c7?syn-25a6b1a6=1",
-   "published": "2026-11-13T09:42"
+  "h4947c04f": {
+   "id": "h4947c04f",
+   "source": "Bloomberg Technology",
+   "beat": "tech",
+   "title": "Fed's Collins Talks Inflation Risks, Rate Policy and AI",
+   "blurb": "Federal Reserve Bank of Boston President Susan Collins, discusses inflation risks, monetary policy and broader economic conditions during an interview with Michael McKee on \"Bloomberg Open Interest.\" Collins says inflation remains too high and is showing signs of broadening\u2026",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-13/fed-s-collins-talks-inflation-risks-rate-policy-and-ai-video",
+   "published": "2026-11-13T16:24"
   },
-  "h5aff13db": {
-   "id": "h5aff13db",
-   "source": "WSJ Markets",
-   "title": "Stock Futures Lower as Investors Look to U.S. Inflation Data",
-   "blurb": "Stock futures fell as the fallout from Nvidia\u2019s leadership change continued to hang over markets, while longer-dated Treasurys continued to sell off ahead of key U.S. inflation data.",
-   "url": "https://www.wsj.com/finance/stocks/stock-futures-lower-as-investors-look-to-u-s-inflation-data-5b1b5988?mod=rss_markets_main",
-   "published": "2026-11-13T09:28"
-  },
-  "hc618ee08": {
-   "id": "hc618ee08",
-   "source": "Bloomberg Markets",
-   "title": "Iraq October Oil Output Jumps to Highest Since 2019, IEA Says",
-   "blurb": "Iraq\u2019s oil output surged in October and production in the United Arab Emirates held near the previous month\u2019s high, as Gulf producers increased crude flows despite shipping disruptions caused by the Iran war, the International Energy Agency said.",
-   "url": "https://www.bloomberg.com/news/articles/2026-11-13/iraq-october-oil-output-jumps-to-highest-since-2019-iea-says",
-   "published": "2026-11-13T09:05"
+  "h4be096ef": {
+   "id": "h4be096ef",
+   "source": "The Verge",
+   "beat": "tech",
+   "title": "Microsoft\u2019s massive Outlook outage continues",
+   "blurb": "Service is gradually starting to recover for Microsoft Outlook and 365 after an almost two-day outage impacting millions of users around the world. While some apps and features are still running in a degraded state, some people (including Verge staffers) are reporting that\u2026",
+   "url": "https://www.theverge.com/tech/1032862/microsoft-outlook-down-outage",
+   "published": "2026-11-13T16:17"
   },
   "hd25249c5": {
    "id": "hd25249c5",
    "source": "Financial Times",
+   "beat": "world",
    "title": "Global oil markets swing to surplus as Gulf shipments rebound",
-   "blurb": "IEA analysts warn it will take months to rebuild stockpiles depleted by conflict",
+   "blurb": "IEA analysts warn it will take months to rebuild stockpiles depleted by US-Iran war",
    "url": "https://www.ft.com/content/20b68fe2-9d60-4c0c-b714-1f3e03015823?syn-25a6b1a6=1",
-   "published": "2026-11-13T09:04"
+   "published": "2026-11-13T15:42"
   },
-  "h5efc2134": {
-   "id": "h5efc2134",
-   "source": "Bloomberg Technology",
-   "title": "Microsoft Struggles to Restore Access to Software",
-   "blurb": "Microsoft is racing to restore access to its flagship software half a day after an outage began, leaving users unable to access email and chat services in one of the tech giant\u2019s most severe disruptions in recent memory. Bloomberg's Peter Elstrom has the latest. (Source:\u2026",
-   "url": "https://www.bloomberg.com/news/videos/2026-11-13/microsoft-struggles-to-restore-access-to-software-video",
-   "published": "2026-11-13T08:48"
+  "h609ca8f1": {
+   "id": "h609ca8f1",
+   "source": "BLS (jobs and prices data)",
+   "beat": "economy",
+   "title": "Major Economic Indicators Latest Numbers",
+   "blurb": "Consumer Price Index (CPI): +0.4% in Oct 2026 News Release Historical Data Unemployment Rate: 4.1% in Oct 2026 News Release Historical Data Payroll Employment: +165,000(p) in Oct 2026 News Release Historical Data Average Hourly Earnings: +$0.14(p) in Oct 2026 News Release\u2026",
+   "url": "https://www.bls.gov/bls/",
+   "published": "2026-11-13T15:01"
   },
-  "h1a116592": {
-   "id": "h1a116592",
+  "h61212767": {
+   "id": "h61212767",
+   "source": "NPR Politics",
+   "beat": "policy",
+   "title": "Nvidia CEO steps down. And, Sen. Chris Van Hollen to run for majority leader",
+   "blurb": "Nvidia's chief financial officer has been appointed interim CEO after Jensen Huang stepped down from the role. And, Sen. Chris Van Hollen says he will challenge Chuck Schumer for majority leader.",
+   "url": "https://www.npr.org/2026/11/13/g-s1-153532/up-first-newsletter-nvidia-jensen-huang-colette-kress-ukraine-russia-chris-van-hollen",
+   "published": "2026-11-13T12:07"
+  },
+  "hf2012d4f": {
+   "id": "hf2012d4f",
+   "source": "CNBC Energy",
+   "beat": "energy",
+   "title": "Russian crude production rebounds after Trump diesel deal, IEA says as oil markets return to surplus",
+   "blurb": "Russia\u2019s crude output rose to 8.73 million barrels a day in October as recovering Gulf exports pushed global supply above demand, the IEA said.",
+   "url": "https://www.cnbc.com/2026/11/13/russia-oil-exports-iea-diesel-deal.html",
+   "published": "2026-11-13T12:05"
+  },
+  "hd29d43d9": {
+   "id": "hd29d43d9",
    "source": "CNBC",
-   "title": "Nvidia\u2019s turmoil is prompting a rotation across chip stocks. Here's what we know",
-   "blurb": "That shift comes as Nvidia grapples with the fallout from Huang's resignation, following revelations about his multiple affairs.",
-   "url": "https://www.cnbc.com/2026/11/13/nvidia-jensen-huang-affairs-amd-broadcom-tsmc.html",
-   "published": "2026-11-13T08:27"
+   "beat": "markets",
+   "title": "Microsoft says email delivery and service availability 'improving' across more infrastructure",
+   "blurb": "A Microsoft outage on Thursday and Friday affected users of services like Outlook, Teams and 365.",
+   "url": "https://www.cnbc.com/2026/11/12/microsoft-outage-outlook-aws-google.html",
+   "published": "2026-11-13T16:38"
   },
-  "h3b9e89cb": {
-   "id": "h3b9e89cb",
-   "source": "CNBC Tech",
-   "title": "Trump calls Huang saga a 'horrible thing' and 'so sad to see'",
-   "blurb": "Nvidia CFO Colette Kress has been named interim CEO during the search for Huang\u2019s replacement.",
-   "url": "https://www.cnbc.com/2026/11/12/nvidia-jensen-huang-ceo-live-updates.html",
-   "published": "2026-11-13T07:49"
+  "h2fe5b0ae": {
+   "id": "h2fe5b0ae",
+   "source": "The Guardian Business",
+   "beat": "world",
+   "title": "A timeline of the affair scandal that sank Nvidia\u2019s Jensen Huang",
+   "blurb": "CEO behind the meteoric rise of Nvidia stepped down after it was revealed he had an affair with an alleged Chinese spy Jensen Huang has stepped down as CEO of Nvidia , the company at the center of the AI boom, after leading it for more than 30 years. Huang, an electrical\u2026",
+   "url": "https://www.theguardian.com/technology/2026/nov/12/jensen-huang-affair-timeline",
+   "published": "2026-11-13T04:00"
   },
-  "hecb6dcc1": {
-   "id": "hecb6dcc1",
+  "h625517f2": {
+   "id": "h625517f2",
+   "source": "Ars Technica",
+   "beat": "tech",
+   "title": "Microsoft\u2019s global outage may be worse than Amazon's or CrowdStrike's, expert says",
+   "blurb": "Governments, hospitals, courts scrambled by global Microsoft outage.",
+   "url": "https://arstechnica.com/tech-policy/2026/11/microsoft-blames-failed-server-health-checks-not-hackers-for-global-outage/",
+   "published": "2026-11-13T15:26"
+  },
+  "h59c58e3f": {
+   "id": "h59c58e3f",
+   "source": "TechCrunch",
+   "beat": "tech",
+   "title": "The unfolding Jensen Huang scandal: a timeline",
+   "blurb": "Jensen Huang has resigned from Nvidia following an affair, which could have ramifications for national security as the U.S. and China race to develop the most advanced AI infrastructure.",
+   "url": "https://techcrunch.com/2026/11/13/nvidia-ceo-jensen-huangs-affair-with-alleged-chinese-spy-a-timeline/",
+   "published": "2026-11-13T15:58"
+  },
+  "h7d6f3305": {
+   "id": "h7d6f3305",
    "source": "Bloomberg Technology",
-   "title": "Microsoft Outage Sends Traders Back to Phones and Fax",
-   "blurb": "Traders were forced to do business by phone and Whatsapp, and even fire up their fax machines, as a worldwide outage of Microsoft software crippled communications and snarled email services at stock exchanges.",
-   "url": "https://www.bloomberg.com/news/articles/2026-11-13/microsoft-outage-gums-up-markets-forces-traders-to-use-phones",
-   "published": "2026-11-13T07:00"
+   "beat": "tech",
+   "title": "Anthropic IPO: AI\u2019s $1.4T Test",
+   "blurb": "Anthropic\u2019s potential IPO is drawing extraordinary investor demand, with a reported target valuation of $1.4 trillion. Bloomberg\u2019s Bailey Lipschultz joins Bloomberg Open Interest to explain why investors see the AI company as a must-own and why soaring compute costs, cash burn,\u2026",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-13/anthropic-ipo-ai-s-1-4t-test-video",
+   "published": "2026-11-13T15:51"
   },
-  "h242da0c0": {
-   "id": "h242da0c0",
+  "h6a8f5fb2": {
+   "id": "h6a8f5fb2",
+   "source": "NPR Business",
+   "beat": "world",
+   "title": "A negative Outlook: Microsoft scrambles to fix email outage",
+   "blurb": "Early Friday, after Outlook had been down for more than 12 hours, Microsoft reported \"marginal success.\"",
+   "url": "https://www.npr.org/2026/11/12/nx-s1-6039343/outlook-down-widespread-outage-microsoft-email",
+   "published": "2026-11-13T01:26"
+  },
+  "h15d0ecd0": {
+   "id": "h15d0ecd0",
+   "source": "NPR Business",
+   "beat": "world",
+   "title": "CEO Jensen Huang resigns from chip giant Nvidia",
+   "blurb": "The chip giant Nvidia announced that CEO Jensen Huang was stepping down following allegations that he'd had extramarital affairs, including one with a woman suspected of being a Chinese spy.",
+   "url": "https://www.npr.org/2026/11/12/nx-s1-6038865/ceo-jensen-huang-resigns-from-chip-giant-nvidia",
+   "published": "2026-11-12T22:02"
+  },
+  "h861ba88e": {
+   "id": "h861ba88e",
    "source": "Bloomberg Markets",
-   "title": "Treasury Yield Surge Shatters Hopes Worst of Bond Rout Is Over",
-   "blurb": "Just when global bond investors were starting to believe the worst of this year\u2019s rout was over, surging Treasury yields are making them think again.",
-   "url": "https://www.bloomberg.com/news/articles/2026-11-13/treasury-yield-surge-shatters-hopes-worst-of-bond-rout-is-over",
-   "published": "2026-11-13T06:00"
+   "beat": "markets",
+   "title": "US Wholesale Inflation Picks Up to Fastest Pace Since 2022",
+   "blurb": "US wholesale inflation climbed in October from a year earlier at the fastest pace since 2022, adding to evidence of persistent price pressures throughout the economy. Tani Fukui, Senior Director of Economic & Market Strategy at MetLife Investment Management, discusses consumer\u2026",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-13/us-wholesale-inflation-hits-fastest-pace-since-2022-video",
+   "published": "2026-11-13T16:00"
   },
-  "hd96a6632": {
-   "id": "hd96a6632",
+  "h22fe4633": {
+   "id": "h22fe4633",
+   "source": "CNBC",
+   "beat": "markets",
+   "title": "Wholesale prices rose 0.3% in October, putting annual rate at 6.5%, the highest in nearly four years",
+   "blurb": "The producer price index was expected to increase 0.4% in October, according to the Dow Jones consensus.",
+   "url": "https://www.cnbc.com/2026/11/13/ppi-inflation-report-october-2026.html",
+   "published": "2026-11-13T15:44"
+  },
+  "h7994396f": {
+   "id": "h7994396f",
+   "source": "OilPrice.com",
+   "beat": "energy",
+   "title": "Why Falling Oil Prices Won't Save America From Inflation",
+   "blurb": "Don\u2019t look to falling oil prices to stave off inflation now. Brent is down from above $100 to the low $90s; Saudi Arabia pumped 10.56 million barrels a day in October, back at pre-war levels and above its quota, and gasoline just posted its steepest one-day drop in 18 years.\u2026",
+   "url": "https://oilprice.com/Energy/Energy-General/Why-Falling-Oil-Prices-Wont-Save-America-From-Inflation.html",
+   "published": "2026-11-13T12:30"
+  },
+  "h7e72ed2e": {
+   "id": "h7e72ed2e",
    "source": "Bloomberg Markets",
-   "title": "Latest Oil Market News and Analysis for Nov. 13",
-   "blurb": "Oil held gains after President Donald Trump said the US could forgo a deal with Iran, dimming prospects for a quick breakthrough to end the war that has roiled global energy markets.",
-   "url": "https://www.bloomberg.com/news/articles/2026-11-12/latest-oil-market-news-and-analysis-for-nov-13",
-   "published": "2026-11-12T23:02"
+   "beat": "markets",
+   "title": "Fed's Collins Says Additional Policy Tightening Is Appropriate",
+   "blurb": "Federal Reserve Bank of Boston President Susan Collins says recent data show inflation is too high and broadening. Speaking with Michael McKee on \"Bloomberg Open Interest,\" Collins adds that because of the increasing inflation risks, more rate tightening is needed. (Source:\u2026",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-13/fed-s-collins-says-additional-policy-firming-appropriate-video",
+   "published": "2026-11-13T15:49"
   },
-  "h6488d894": {
-   "id": "h6488d894",
+  "hd9046acc": {
+   "id": "hd9046acc",
+   "source": "OilPrice.com",
+   "beat": "energy",
+   "title": "WTI Stages Sharp Comeback as Middle East Supply Risks Intensify",
+   "blurb": "December WTI crude oil futures are lower for the week, but the market has recovered a good portion of its early loss. The contract opened at $90.83, broke to $83.88, then rallied back to $88.20. At that price, WTI is down $2.63 for the week, or 2.90%. Traders took war premium\u2026",
+   "url": "https://oilprice.com/Energy/Energy-General/WTI-Stages-Sharp-Comeback-as-Middle-East-Supply-Risks-Intensify.html",
+   "published": "2026-11-13T12:30"
+  },
+  "he295d5c6": {
+   "id": "he295d5c6",
    "source": "Bloomberg Markets",
-   "title": "US Stocks Drift as Fed Bets Face Inflation Test: Markets Wrap",
-   "blurb": "US stocks struggled for direction ahead of inflation data that will cap a dramatic week in which traders ramped up bets on Federal Reserve interest-rate hikes and Jensen Huang was ousted from Nvidia Corp.",
-   "url": "https://www.bloomberg.com/news/articles/2026-11-12/stock-market-today-dow-s-p-live-updates",
-   "published": "2026-11-12T22:17"
+   "beat": "markets",
+   "title": "Anthropic IPO Share Orders From China Are Said to Be Rebuffed",
+   "blurb": "Institutional investors based in mainland China and Hong Kong have been excluded from placing orders in Anthropic PBC\u2019s initial public offering, according to people familiar with the matter, highlighting the sensitivities around an industry both Washington and Beijing consider\u2026",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-13/anthropic-ipo-share-orders-from-china-are-said-to-be-rebuffed",
+   "published": "2026-11-13T15:37"
   },
-  "h71f35087": {
-   "id": "h71f35087",
-   "source": "Bloomberg Technology",
-   "title": "Microsoft Races to Fix Outlook in One of Its Longest Outages",
-   "blurb": "Microsoft Corp. is struggling to restore access to its flagship software and end an outage that has paralyzed government offices, traders and businesses globally.",
-   "url": "https://www.bloomberg.com/news/articles/2026-11-12/microsoft-says-it-s-working-to-fix-outlook-copilot-outage",
-   "published": "2026-11-12T19:14"
+  "hd8b62984": {
+   "id": "hd8b62984",
+   "source": "OilPrice.com",
+   "beat": "energy",
+   "title": "Asian Refiners Turn Back to Gulf Oil Despite War Risks",
+   "blurb": "Asia\u2019s refiners are back to buying Middle Eastern oil as flows through the Strait of Hormuz rise, freight rates ease from record highs, and Gulf producers are offering their crude at discounts to regional benchmarks. Chinese, Japanese, and Thai oil refiners are increasingly\u2026",
+   "url": "https://oilprice.com/Latest-Energy-News/World-News/Asian-Refiners-Turn-Back-to-Gulf-Oil-Despite-War-Risks.html",
+   "published": "2026-11-13T11:30"
   }
  },
  "latest": [
   {
-   "id": "hef827b1f",
-   "source": "Bloomberg Markets",
-   "title": "That Haven Trade in Treasury Bonds Didn\u2019t Last Long",
-   "blurb": "Inflation, hawkish Fed are pushing yields higher.",
-   "url": "https://www.bloomberg.com/news/newsletters/2026-11-13/that-haven-trade-in-treasury-bonds-didn-t-last-long",
-   "published": "2026-11-13T10:55"
+   "id": "hd6ac25ea",
+   "source": "CNBC",
+   "beat": "markets",
+   "title": "How Apple became the safe \u2018Costco\u2019 of tech. Bernstein says keep buying",
+   "blurb": "Apple's safe haven status has driven its multiples to all-time highs, bringing it in line with some high quality consumer stocks",
+   "url": "https://www.cnbc.com/2026/11/13/how-apple-became-the-safe-costco-of-tech-bernstein-says-keep-buying.html",
+   "published": "2026-11-13T16:41"
   },
   {
    "id": "hd29d43d9",
    "source": "CNBC",
-   "title": "Widespread Microsoft outage continues, taking down Outlook and other 365 services",
-   "blurb": "A Microsoft outage on Thursday affected users of services like Outlook, Teams and 365.",
+   "beat": "markets",
+   "title": "Microsoft says email delivery and service availability 'improving' across more infrastructure",
+   "blurb": "A Microsoft outage on Thursday and Friday affected users of services like Outlook, Teams and 365.",
    "url": "https://www.cnbc.com/2026/11/12/microsoft-outage-outlook-aws-google.html",
-   "published": "2026-11-13T10:55"
+   "published": "2026-11-13T16:38"
   },
   {
-   "id": "h35841fa8",
+   "id": "hd8fd8dbe",
    "source": "CNBC",
-   "title": "Nvidia scandal draws in Commerce Secretary Lutnick, who reportedly agrees to testify about China chip sales",
-   "blurb": "Commerce Secretary Lutnick will testify before the Senate Banking Committee following revelations about Jensen Huang's affair with an alleged Chinese spy.",
-   "url": "https://www.cnbc.com/2026/11/13/nvidia-scandal-lutnick-chip-sales.html",
-   "published": "2026-11-13T10:54"
-  },
-  {
-   "id": "h588878ce",
-   "source": "WSJ Markets",
-   "title": "European Stock Indexes Turn Positive as Oil Drops",
-   "blurb": "European stock indexes turned positive, reversing earlier declines, as a fall in oil prices buoyed sentiment.",
-   "url": "https://www.wsj.com/finance/stocks/nikkei-rises-1-1-led-by-chip-stocks-eb2ed881?mod=rss_markets_main",
-   "published": "2026-11-13T10:52"
-  },
-  {
-   "id": "h1044b9be",
-   "source": "WSJ Markets",
-   "title": "CVS Breakup Won\u2019t Satisfy Washington. It Could Still Work for Wall Street.",
-   "blurb": "Spinning off its drugstores won\u2019t quiet CVS\u2019s critics, but it could leave shareholders with a more valuable company.",
-   "url": "https://www.wsj.com/health/healthcare/cvs-breakup-wont-satisfy-washington-it-could-still-work-for-wall-street-1b5004e3?mod=rss_markets_main",
-   "published": "2026-11-13T10:30"
-  },
-  {
-   "id": "he35ff791",
-   "source": "MarketWatch",
-   "title": "\u2018She has a history of financial mismanagement\u2019: My brother cut my sister out of his will. I\u2019m getting everything. Do I tell her?",
-   "blurb": "\u201cI\u2019m torn between respecting my brother\u2019s wishes, being fair to my sister, and preserving a relationship that means a great deal to me.\u201d",
-   "url": "https://www.marketwatch.com/story/she-has-a-history-of-financial-mismanagement-my-brother-cut-my-sister-out-of-his-will-im-getting-everything-do-i-tell-her-3e537851?mod=mw_rss_topstories",
-   "published": "2026-11-13T10:15"
-  },
-  {
-   "id": "ha37b855b",
-   "source": "Bloomberg Technology",
-   "title": "Goldman Sees S&P 500 Rising 14% on Cheap Hyperscaler Valuations",
-   "blurb": "Goldman Sachs Group Inc. strategists are bullish on US stocks for 2027, predicting the S&P 500 will advance 14% over the coming year after a selloff in the biggest technology companies left their valuations historically cheap.",
-   "url": "https://www.bloomberg.com/news/articles/2026-11-13/goldman-sees-s-p-500-rising-14-on-cheap-hyperscaler-valuations",
-   "published": "2026-11-13T10:14"
-  },
-  {
-   "id": "h560fe5c6",
-   "source": "MarketWatch",
-   "title": "Earnings growth is set to peter out \u2014 but not the bull market, says Goldman Sachs. Here\u2019s what the firm recommends.",
-   "blurb": "Earnings growth is almost halving across major indices in 2027 but stocks have already discounted much of that deceleration. Goldman recommends investors focus closely on those companies still delivering strong growth \u2013 as strong growth becomes a scarce commodity.",
-   "url": "https://www.marketwatch.com/story/earnings-growth-is-set-to-peter-out-but-not-the-bull-market-says-goldman-sachs-heres-what-the-firm-recommends-bf409a6d?mod=mw_rss_topstories",
-   "published": "2026-11-13T10:14"
-  },
-  {
-   "id": "h896cbc9f",
-   "source": "Bloomberg Markets",
-   "title": "Mexico Graft Scandal Erodes Trust in Electoral Authority, Threatens Sheinbaum",
-   "blurb": "Nearly half of Mexicans have little or no confidence the country\u2019s electoral authority can organize fair elections next year, according to a new poll, as a widening graft scandal batters the institution.",
-   "url": "https://www.bloomberg.com/news/articles/2026-11-13/mexico-graft-scandal-erodes-trust-in-electoral-authority-threatens-sheinbaum",
-   "published": "2026-11-13T10:00"
-  },
-  {
-   "id": "h56336ba5",
-   "source": "CNBC",
-   "title": "The Fed expected rate cuts this year. Now it\u2019s bracing for another inflation fight",
-   "blurb": "The most recent inflation reading for October had beaten expectations, coming in at 0.4% for the month.",
-   "url": "https://www.cnbc.com/2026/11/13/us-inflation-outlook-federal-reserve-rate-hike.html",
-   "published": "2026-11-13T10:00"
+   "beat": "markets",
+   "title": "Nasdaq falls on Friday as Nvidia keeps sliding, but major averages are up for week: Live updates",
+   "blurb": "Nvidia shares rebounded from its recent pressure and the latest inflation data came in slightly lighter than expected.",
+   "url": "https://www.cnbc.com/2026/11/12/stock-market-today-live-updates.html",
+   "published": "2026-11-13T16:35"
   },
   {
    "id": "haa0175cd",
-   "source": "CNBC",
-   "title": "Nvidia stock inches higher as investors continue to weigh Jensen Huang\u2019s departure",
+   "source": "CNBC Tech",
+   "beat": "tech",
+   "title": "Nvidia stock sinks 4% in fallout from Jensen Huang resignation",
    "blurb": "Jensen Huang resigned as CEO of Nvidia on Thursday after coming under scrutiny for two extramarital affairs.",
    "url": "https://www.cnbc.com/2026/11/13/nvidia-nvda-stock-jensen-huang-transition.html",
-   "published": "2026-11-13T10:00"
+   "published": "2026-11-13T16:33"
   },
   {
-   "id": "h8a629626",
-   "source": "WSJ Markets",
-   "title": "Stock Market Today: Nvidia Shares Set to Recoup Some Losses as Investors Eye Fallout",
-   "blurb": "AI trade faces two major tests next week with chip giant's earnings and Anthropic's IPO",
-   "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-13-2026?mod=rss_markets_main",
-   "published": "2026-11-13T09:55"
+   "id": "hf92152ec",
+   "source": "Bloomberg Economics",
+   "beat": "economy",
+   "title": "Nagel Says \u2018Highly Probable\u2019 That ECB Will Have to Act Again",
+   "blurb": "European Central Bank Governing Council member Joachim Nagel said it\u2019s very likely that borrowing costs will have to be raised further due to upward pressure on consumer prices.",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-13/nagel-says-highly-probable-that-ecb-will-have-to-act-again",
+   "published": "2026-11-13T16:32"
+  },
+  {
+   "id": "hbcbd633b",
+   "source": "The Guardian Business",
+   "beat": "world",
+   "title": "Microsoft outage live: millions still affected as disruption stretches beyond 18 hours",
+   "blurb": "Microsoft reports it is \u2018continuing to see improvements in service availability\u2019, after millions of customers around the world suffered disruption Tell us: have you been affected by the Microsoft outage? Microsoft struggles to fix huge outage affecting Outlook and Teams What\u2026",
+   "url": "https://www.theguardian.com/technology/live/2026/nov/13/microsoft-outage-down-today-live-update-outlook-teams-365-when-fixed-latest-status-cause-news",
+   "published": "2026-11-13T16:32"
+  },
+  {
+   "id": "h89ded08b",
+   "source": "MarketWatch",
+   "beat": "markets",
+   "title": "\u2018The thought of living to 100 terrifies me\u2019: Is Social Security a giant Ponzi scheme?",
+   "blurb": "There is already a demographic \u2018run\u2019 on Social Security.",
+   "url": "https://www.marketwatch.com/story/the-thought-of-living-to-100-terrifies-me-is-social-security-a-giant-ponzi-scheme-84a64e7e?mod=mw_rss_topstories",
+   "published": "2026-11-13T16:30"
+  },
+  {
+   "id": "hc682ad14",
+   "source": "OilPrice.com",
+   "beat": "energy",
+   "title": "India's Road Fuel Demand Won't Peak Until 2034",
+   "blurb": "India\u2019s fuel demand for road transportation is nearly a decade away from peaking despite rising sales of electric two- and three-wheelers, as commercial transport and conventional fleets will keep using greater volumes of gasoline and diesel, BloombergNEF has said. India\u2019s fuel\u2026",
+   "url": "https://oilprice.com/Latest-Energy-News/World-News/Indias-Road-Fuel-Demand-Wont-Peak-Until-2034.html",
+   "published": "2026-11-13T16:30"
+  },
+  {
+   "id": "h6265171f",
+   "source": "MarketWatch",
+   "beat": "markets",
+   "title": "Nvidia\u2019s stock is on a losing streak not seen in 14 years. What comes next?",
+   "blurb": "Nvidia has wiped out $657 billion in market capitalization this week \u2014 its sixth consecutive week of stock declines.",
+   "url": "https://www.marketwatch.com/story/nvidias-stock-is-on-a-losing-streak-not-seen-in-14-years-what-comes-next-a07e801e?mod=mw_rss_topstories",
+   "published": "2026-11-13T16:26"
+  },
+  {
+   "id": "hfcdcf30e",
+   "source": "Ars Technica",
+   "beat": "tech",
+   "title": "Windows 0-day dropped by disgruntled researcher hands hackers System rights",
+   "blurb": "\"SignDrop\" exploit lets local users gain all-powerful System rights.",
+   "url": "https://arstechnica.com/security/2026/11/windows-0-day-dropped-by-disgruntled-researcher-hands-hackers-system-rights/",
+   "published": "2026-11-13T16:26"
+  },
+  {
+   "id": "h5fc9892d",
+   "source": "CNBC",
+   "beat": "markets",
+   "title": "HSBC downgrades Nvidia, says stock to struggle until new CEO named",
+   "blurb": "Analyst Frank Lee downgraded the chipmaker to hold from buy.",
+   "url": "https://www.cnbc.com/2026/11/13/hsbc-downgrades-nvidia-says-stock-to-struggle-until-new-ceo-named.html",
+   "published": "2026-11-13T16:24"
+  },
+  {
+   "id": "h4947c04f",
+   "source": "Bloomberg Technology",
+   "beat": "tech",
+   "title": "Fed's Collins Talks Inflation Risks, Rate Policy and AI",
+   "blurb": "Federal Reserve Bank of Boston President Susan Collins, discusses inflation risks, monetary policy and broader economic conditions during an interview with Michael McKee on \"Bloomberg Open Interest.\" Collins says inflation remains too high and is showing signs of broadening\u2026",
+   "url": "https://www.bloomberg.com/news/videos/2026-11-13/fed-s-collins-talks-inflation-risks-rate-policy-and-ai-video",
+   "published": "2026-11-13T16:24"
   }
  ],
- "feeds": 12,
- "scanned": 125
+ "feeds": 27,
+ "scanned": 264
 }

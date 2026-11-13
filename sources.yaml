@@ -131,18 +131,41 @@ sources:
 # Newsroom headlines for "What's hot". Only the headline and the feed's own short blurb are used,
 # never the full article; every topic links back to the original stories.
 news:
-  - {name: Bloomberg Markets, url: "https://feeds.bloomberg.com/markets/news.rss"}
-  - {name: Bloomberg Technology, url: "https://feeds.bloomberg.com/technology/news.rss"}
-  - {name: CNBC, url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114"}
-  - {name: CNBC Markets, url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=15839069"}
-  - {name: CNBC Tech, url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=19854910"}
-  - {name: WSJ Markets, url: "https://feeds.content.dowjones.io/public/rss/RSSMarketsMain"}
-  - {name: MarketWatch, url: "https://feeds.content.dowjones.io/public/rss/mw_topstories"}
-  - {name: Financial Times, url: "https://www.ft.com/rss/home"}
-  - {name: The Economist, url: "https://www.economist.com/finance-and-economics/rss.xml"}
-  - {name: TechCrunch, url: "https://techcrunch.com/feed/"}
-  - {name: Federal Reserve, url: "https://www.federalreserve.gov/feeds/press_all.xml"}
-  - {name: SEC, url: "https://www.sec.gov/news/pressreleases.rss"}
+# Newsroom headlines for "What's hot" (headline + the feed's own short blurb only). `beat` is the topic area, so the
+# day's top stories can cover more than one subject. Public RSS feeds only; no paywall scraping.
+  # markets and companies
+  - {name: Bloomberg Markets, beat: markets, url: "https://feeds.bloomberg.com/markets/news.rss"}
+  - {name: CNBC, beat: markets, url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114"}
+  - {name: CNBC Markets, beat: markets, url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=15839069"}
+  - {name: WSJ Markets, beat: markets, url: "https://feeds.content.dowjones.io/public/rss/RSSMarketsMain"}
+  - {name: MarketWatch, beat: markets, url: "https://feeds.content.dowjones.io/public/rss/mw_topstories"}
+  - {name: SEC, beat: markets, url: "https://www.sec.gov/news/pressreleases.rss"}
+  # economy, inflation, jobs, interest rates
+  - {name: Bloomberg Economics, beat: economy, url: "https://feeds.bloomberg.com/economics/news.rss"}
+  - {name: CNBC Economy, beat: economy, url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=20910258"}
+  - {name: The Economist, beat: economy, url: "https://www.economist.com/finance-and-economics/rss.xml"}
+  - {name: Federal Reserve, beat: economy, url: "https://www.federalreserve.gov/feeds/press_all.xml"}
+  - {name: BLS (jobs and prices data), beat: economy, url: "https://www.bls.gov/feed/bls_latest.rss"}
+  # technology
+  - {name: Bloomberg Technology, beat: tech, url: "https://feeds.bloomberg.com/technology/news.rss"}
+  - {name: CNBC Tech, beat: tech, url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=19854910"}
+  - {name: TechCrunch, beat: tech, url: "https://techcrunch.com/feed/"}
+  - {name: Ars Technica, beat: tech, url: "https://feeds.arstechnica.com/arstechnica/index"}
+  - {name: The Verge, beat: tech, url: "https://www.theverge.com/rss/index.xml"}
+  # energy, commodities and resources
+  - {name: CNBC Energy, beat: energy, url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=19836768"}
+  - {name: US Energy Information Administration, beat: energy, url: "https://www.eia.gov/rss/todayinenergy.xml"}
+  - {name: OilPrice.com, beat: energy, url: "https://oilprice.com/rss/main"}
+  - {name: MINING.COM, beat: energy, url: "https://www.mining.com/feed/"}
+  # policy and politics that move markets
+  - {name: Bloomberg Politics, beat: policy, url: "https://feeds.bloomberg.com/politics/news.rss"}
+  - {name: CNBC Politics, beat: policy, url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=10000113"}
+  - {name: NPR Politics, beat: policy, url: "https://feeds.npr.org/1014/rss.xml"}
+  # world business
+  - {name: Financial Times, beat: world, url: "https://www.ft.com/rss/home"}
+  - {name: BBC Business, beat: world, url: "https://feeds.bbci.co.uk/news/business/rss.xml"}
+  - {name: The Guardian Business, beat: world, url: "https://www.theguardian.com/business/rss"}
+  - {name: NPR Business, beat: world, url: "https://feeds.npr.org/1006/rss.xml"}
 
 # Optional accounts + sync. Both values are public by design (the key is Supabase's "publishable" key;
 # row-level security in supabase/migrations keeps each user's data private).

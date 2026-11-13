@@ -25,7 +25,10 @@
   MD.device = () => device;
   try { device = localStorage.getItem("device") || crypto.randomUUID(); localStorage.setItem("device", device); } catch (e) { device = "unknown"; }
   const day = ($(".actions") || {}).dataset?.day || null;
+  // Don't count robots: search-engine renderers, link previews and automated test browsers.
+  const robot = navigator.webdriver || /bot|crawl|spider|slurp|headless|lighthouse|preview|facebookexternalhit/i.test(navigator.userAgent);
   MD.track = (event, props = {}) => {
+    if (robot) return;
     fetch(url + "/rest/v1/events", {
       method: "POST", keepalive: true,
       headers: { apikey: key, Authorization: "Bearer " + key, "Content-Type": "application/json", Prefer: "return=minimal" },

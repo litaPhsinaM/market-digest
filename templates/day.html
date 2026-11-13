@@ -518,8 +518,7 @@
 {% endif %}
 
 {% set slides = [{'kind': 'cover', 'title': pretty_date, 'text': (brief.big_picture if brief else ''), 'mood': (market.mood if market and market.mood else none)}] %}
-{% if hot %}{% for t in hot.topics[:5] %}{% set _ = slides.append({'kind': 'hot', 'label': 'What’s hot · ' ~ loop.index, 'title': t.title, 'text': t.explanation, 'why': t.why_it_matters}) %}{% endfor %}{% endif %}
-{% for it in good %}{% set _ = slides.append({'kind': 'story', 'label': it.source_name, 'title': it.summary.headline, 'text': it.summary.tldr, 'lesson': it.summary.lesson, 'href': '#' ~ it.id}) %}{% endfor %}
+{% for sl in story_slides %}{% set _ = slides.append(sl) %}{% endfor %}
 {% if brief %}{% set _ = slides.append({'kind': 'concept', 'label': 'Concept of the day', 'title': brief.concept_of_the_day.concept, 'text': brief.concept_of_the_day.explanation}) %}{% endif %}
 {% if quiz and quiz.questions %}{% set _ = slides.append({'kind': 'quiz', 'label': 'Daily quiz', 'title': 'Ready to test yourself?', 'text': quiz.questions|length ~ ' quick questions on what you just learned.', 'href': '#quiz'}) %}{% endif %}
 <script type="application/json" id="slides-data">{{ slides|tojson }}</script>

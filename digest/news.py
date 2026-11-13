@@ -38,11 +38,29 @@ def collect(feeds: list[dict]) -> list[dict]:
             seen.add(key)
             out.append({
                 "id": "h" + hashlib.sha1(e.link.encode()).hexdigest()[:8],
-                "source": f["name"], "title": _clean(e.title, 200), "blurb": _clean(e.get("summary", "")),
+                "source": f["name"], "beat": f.get("beat", "markets"), "title": _clean(e.title, 200), "blurb": _clean(e.get("summary", "")),
                 "url": e.link, "published": time.strftime("%Y-%m-%dT%H:%M", pub),
             })
             n += 1
             if n >= PER_FEED:
                 break
     out.sort(key=lambda h: h["published"], reverse=True)
+    return out
+
+
+def balanced(headlines: list[dict], limit: int = 200) -> list[dict]:
+    """Pick headlines round-robin across outlets (newest first within each), so a busy feed can't crowd out
+    the energy, policy or world desks before the editor sees them."""
+    by_src: dict[str, list[dict]] = {}
+    for h in headlines:  # already newest first
+        by_src.setdefault(h["source"], []).append(h)
+    out, queues = [], list(by_src.values())
+    while queues and len(out) < limit:
+        for q in list(queues):
+            if q:
+                out.append(q.pop(0))
+            if not q:
+                queues.remove(q)
+            if len(out) >= limit:
+                break
     return out

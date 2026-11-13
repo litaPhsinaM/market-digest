@@ -125,17 +125,35 @@ def redo(ids: list[str], today: str):
 
 def write_hot(today: str, cfg: dict):
     from digest import news
-    headlines = news.collect(cfg.get("news", []))
+    scanned = news.collect(cfg.get("news", []))
+    headlines = news.balanced(scanned)
     print(f"Picking hot topics from {len(headlines)} headlines")
     if not headlines:
         return
-    topics = summarize.hot_topics(headlines[:150])
+    topics = summarize.hot_topics(headlines)
     used = {i for t in topics.topics for i in t.headline_ids}
     (HOT / f"{today}.json").write_text(json.dumps({
         "date": today, "topics": topics.model_dump()["topics"],
         "headlines": {h["id"]: h for h in headlines if h["id"] in used},
-        "latest": headlines[:12], "feeds": len(cfg.get("news", [])), "scanned": len(headlines),
+        "latest": scanned[:12], "feeds": len(cfg.get("news", [])), "scanned": len(scanned),
     }, indent=1))
+    fix_spellings(today, [h["title"] + " " + h["blurb"] for h in scanned])
+
+
+def fix_spellings(today: str, reference: list[str]):
+    """Correct names the audio transcription misspelled, using how today's newsroom headlines spell them."""
+    from digest import checks
+    files = [p for p in ITEMS.glob("*.json") if json.loads(p.read_text()).get("digest_date") == today]
+    if (BRIEFS / f"{today}.json").exists():
+        files.append(BRIEFS / f"{today}.json")
+    for p in files:
+        rec = json.loads(p.read_text())
+        part = rec["summary"] if "summary" in rec else rec
+        fixes = checks.name_fixes(re.findall(r'"([^"]{3,})"', json.dumps(part)), reference)
+        if fixes:
+            fixed = checks.fix_names(rec, fixes)
+            p.write_text(json.dumps(fixed, indent=1))
+            print(f"  spelling: {p.stem}: " + ", ".join(f"{a} → {b}" for a, b in fixes.items()))
 
 
 def write_extras(today: str):

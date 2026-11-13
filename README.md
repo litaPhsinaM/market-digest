@@ -1,7 +1,7 @@
 # Stocksplain
 
 **Learn the market in 5 minutes a day.** Every morning Stocksplain listens to 15 trusted finance podcasts and scans
-12 newsrooms, then explains what matters in plain English: the key points, the numbers, the jargon and the lesson
+27 newsrooms, then explains what matters in plain English: the key points, the numbers, the jargon and the lesson
 behind the news. It's built for people who are new to investing.
 
 - **Website:** https://stocksplain.app/
