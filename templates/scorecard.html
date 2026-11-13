@@ -7,7 +7,8 @@
   <div class="eyebrow">Scorecard</div>
   <h1>Who's actually right about markets?</h1>
   <p class="lede">Every day we log the checkable forecasts made on the shows we follow, in the speaker's exact words, and score them when
-    their deadline arrives. Market calls are checked automatically against real closing prices.</p>
+    their deadline arrives. Market calls are checked automatically against real closing prices, and Fed decisions and
+    economic numbers (inflation, jobs, mortgage rates, GDP) against official data from FRED.</p>
   <div class="sc-stats">
     <div><b>{{ stats.total }}</b><span>forecasts logged</span></div>
     <div><b>{{ stats.open }}</b><span>still open</span></div>
@@ -47,7 +48,8 @@
       {% for s in speakers %}<tr><td class="rank">{{ loop.index }}</td><td><b>{{ s.speaker }}</b><div class="muted small">{{ s.role }}</div></td>
         <td class="num">{{ s.right }}/{{ s.scored }}</td><td class="num">{{ s.accuracy }}%</td></tr>{% endfor %}
     </tbody></table>
-    {% else %}<p class="muted">No one has 3 scored forecasts yet. Check back as deadlines pass.</p>{% endif %}
+    {% else %}<p class="muted">No one has 3 scored forecasts yet. Here's what gets scored next:</p>
+    <ul class="sc-next">{% for c in open[:4] %}<li><span class="sc-when">{{ c.deadline }}</span><span><b>{{ c.speaker }}</b>: {{ c.claim }}</span></li>{% endfor %}</ul>{% endif %}
   </section>
   <section class="card play-card">
     <div class="pc-head"><h2>📻 By show</h2></div>
@@ -68,7 +70,9 @@
   <p class="cl-claim">{{ c.claim }}</p>
   <blockquote>“{{ c.quote }}”</blockquote>
   <div class="muted small">Said {{ c.said_on }} on <a href="{{ c.url }}" target="_blank" rel="noopener">{{ c.source }}</a> · deadline {{ c.deadline }}
-    {% if c.start_price %} · {{ c.symbol }} {{ '%.2f'|format(c.start_price) }} → {{ '%.2f'|format(c.end_price) }}{% endif %}</div>
+    {% if c.start_price %} · {{ c.symbol }} {{ '%.2f'|format(c.start_price) }} → {{ '%.2f'|format(c.end_price) }}{% endif %}
+    {% if c.start_value is defined %} · {{ c.value_label }} {{ c.start_value }}% → {{ c.end_value }}%{% endif %}
+    {% if c.status == 'open' and (c.kind in ['rate_hike', 'rate_cut', 'rate_hold'] or c.kind.startswith('metric_')) %} · <span class="auto-check">checked automatically on official data</span>{% endif %}</div>
 </li>
 {% endmacro %}
 
@@ -79,6 +83,6 @@
 <h2 class="section-title">Scored</h2>
 <ul class="claims">{% for c in resolved %}{{ claim_row(c) }}{% endfor %}</ul>
 {% endif %}
-<p class="asof">Forecasts are extracted by AI and only kept if the exact quote is found in the episode transcript. Market calls are scored on closing prices;
-  others are marked "awaiting check" until verified. Spotted a mistake? <a href="https://github.com/litaPhsinaM/stocksplain/issues/new?title=Scorecard%20correction">Tell us</a>.</p>
+<p class="asof">Forecasts are extracted by AI and only kept if the exact quote is found in the episode transcript. Market calls are scored on closing prices, Fed decisions and
+  economic numbers on official data (FRED, Federal Reserve Bank of St. Louis); others are marked "awaiting check" until verified. Spotted a mistake? <a href="https://github.com/litaPhsinaM/stocksplain/issues/new?title=Scorecard%20correction">Tell us</a>.</p>
 {% endblock %}

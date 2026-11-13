@@ -1386,3 +1386,7 @@ dialog.lesson h4 { margin-top: 26px; }
 .ch-prog > div { flex: 1; min-width: 0; }
 .ch-card { align-items: stretch; }
 @media (max-width: 560px) { .ub-min { display: none; } }
+.auto-check { color: var(--accent); font-weight: 650; }
+.sc-next { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; font-size: .86rem; }
+.sc-next li { display: flex; gap: 10px; align-items: baseline; }
+.sc-when { flex: none; font-size: .74rem; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }

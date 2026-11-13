@@ -146,6 +146,15 @@ def fix_spellings(today: str, reference: list[str]):
     files = [p for p in ITEMS.glob("*.json") if json.loads(p.read_text()).get("digest_date") == today]
     if (BRIEFS / f"{today}.json").exists():
         files.append(BRIEFS / f"{today}.json")
+    from digest import claims as _claims
+    ledger = _claims.load()
+    fx = checks.name_fixes([c["claim"] for c in ledger if c.get("said_on") == today], reference)
+    if fx:
+        for c in ledger:
+            if c.get("said_on") == today:
+                c["claim"], c["subject"] = checks.fix_names(c["claim"], fx), checks.fix_names(c.get("subject", ""), fx)
+        _claims.save(ledger)
+        print("  spelling (forecasts): " + ", ".join(f"{a} → {b}" for a, b in fx.items()))
     for p in files:
         rec = json.loads(p.read_text())
         part = rec["summary"] if "summary" in rec else rec

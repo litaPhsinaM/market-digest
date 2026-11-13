@@ -21,6 +21,16 @@ LEDGER = ROOT / "data" / "claims.json"
 INDEX_SYMBOLS = {"s&p 500": "^GSPC", "s&p": "^GSPC", "nasdaq": "^IXIC", "dow": "^DJI", "dow jones": "^DJI",
                  "10-year": "^TNX", "10-year treasury yield": "^TNX", "bitcoin": "BTC-USD", "oil": "CL=F", "gold": "GC=F"}
 PRICE_KINDS = {"up", "down", "above", "below"}
+RATE_KINDS = {"rate_hike", "rate_cut", "rate_hold"}
+# official numbers we can check on FRED: series, how to read it, publication lag (days after the deadline before it's final)
+METRICS = {
+    "inflation": ("CPIAUCSL", "yoy", 45, "Inflation (CPI, yearly)"),
+    "unemployment": ("UNRATE", "level", 40, "Unemployment rate"),
+    "fed_funds": ("DFEDTARU", "level", 3, "Fed rate (top of range)"),
+    "mortgage_30y": ("MORTGAGE30US", "level", 10, "30-year mortgage rate"),
+    "gdp_growth": ("A191RL1Q225SBEA", "level", 100, "Real GDP growth"),
+    "10y_yield": ("DGS10", "level", 3, "10-year Treasury yield"),
+}
 
 
 class Claim(BaseModel):
@@ -31,7 +41,11 @@ class Claim(BaseModel):
     kind: str = Field(description="up | down | above | below | rate_hike | rate_cut | rate_hold | other. "
                                   "up/down = a price will be higher/lower than now; above/below = a price will be above/below a target level.")
     subject: str = Field(description="What it's about: a stock ticker (NVDA), an index or asset name (S&P 500, 10-year, bitcoin, oil, gold), or 'Fed funds rate'.")
-    target: float | None = Field(description="Target price/level for above/below claims, else null.")
+    target: float | None = Field(description="Target price/level for above/below claims (e.g. 7.25 for 'below 7.25%'); for rate_hike/rate_cut "
+                                             "the size in percentage points if said (0.25 for 'a 25 basis point hike'); else null.")
+    metric: str = Field(default="none", description="If the forecast is about an official US number, which one: inflation (CPI, yearly %), unemployment "
+                                                    "(rate %), fed_funds (Fed's rate %), mortgage_30y (30-year mortgage rate %), gdp_growth (real GDP "
+                                                    "growth %), 10y_yield (10-year Treasury yield %). Otherwise 'none'.")
     deadline_said: str = Field(description="The timeframe in the speaker's words, e.g. 'by year end', 'next year', 'at the December meeting', 'not specified'.")
     deadline: str = Field(description="YYYY-MM-DD by when it should come true, worked out from the episode date (e.g. 'by year end' → Dec 31), or 'none'.")
 
@@ -49,6 +63,11 @@ be higher by year end"). Skip all of these, they are NOT forecasts:
 - decisions or schedules already announced, reported by a host or reporter ("it is expected to start trading next week")
 - what other people hope or plan ("negotiators are hoping for a deal")
 - vague moods with nothing to check ("the next couple of years will be ugly")
+- questions, even about the future ("how likely is that?", "will they hike?")
+- guesses hedged with maybe / might / could ("maybe they get it done by year end", "that could mean worse sales")
+- advice or what someone SHOULD do ("they should raise enough money")
+- other people's forecasts repeated by the speaker ("economists think", "is expected to reach $67 billion")
+- "if X then Y" scenarios with nothing that can be checked
 List each forecast once.
 Only include a forecast if it names WHAT will happen and BY WHEN (explicitly or clearly implied, e.g. "next month",
 "by year end", "at the December meeting"). Copy the quote exactly as it appears in the transcript. Prefer market calls
@@ -169,13 +188,17 @@ def extract(item, transcript: str) -> list[dict]:
             kind = "other"  # can't price it automatically
         if c.target is not None and 1900 <= c.target <= 2100 and float(c.target).is_integer() and str(int(c.target)) in c.deadline_said + c.deadline:
             c.target = None  # the model put the deadline year in the target field
-        if kind in {"above", "below"} and c.target is None:
+        metric = (c.metric or "none").strip().lower()
+        if kind in {"above", "below"} and metric in METRICS and c.target is not None:
+            kind = "metric_" + kind  # an official number vs a level, scored from FRED
+        elif kind in {"above", "below"} and c.target is None:
             kind = "other"
         kept.append({
             "id": f"{item.id}-{len(kept)}", "item_id": item.id, "source": item.source_name, "episode": item.title,
             "url": item.url, "said_on": item.published, "speaker": c.speaker.strip(), "role": c.speaker_role.strip(),
             "quote": c.quote.strip(), "claim": c.claim.strip(), "kind": kind, "subject": c.subject.strip(),
             "symbol": sym, "target": c.target, "deadline": deadline.isoformat(), "status": "open",
+            **({"metric": metric} if kind.startswith("metric_") else {}),
         })
     return kept
 
@@ -204,12 +227,72 @@ def _close_on_or_before(symbol: str, day: dt.date) -> float | None:
     return float(close.iloc[-1].iloc[0] if hasattr(close.iloc[-1], "iloc") else close.iloc[-1])
 
 
+def _fred_value(series: str, how: str, day: dt.date):
+    """The official value on or before `day` (for 'yoy': % change from the same month a year earlier). (value, date) or None."""
+    import os
+    if not os.environ.get("FRED_API_KEY"):
+        return None
+    from digest import econ
+    rows = econ._get("series/observations", series_id=series, observation_end=day.isoformat(), sort_order="desc", limit=30)["observations"]
+    obs = [(o["date"], float(o["value"])) for o in rows if o["value"] not in (".", "")]
+    if not obs:
+        return None
+    d0, v0 = obs[0]
+    if how == "yoy":
+        ago = dict(obs).get(f"{int(d0[:4]) - 1}{d0[4:]}")
+        return ((v0 / ago - 1) * 100, d0) if ago else None
+    return v0, d0
+
+
+def _resolve_official(c: dict, today: dt.date) -> int:
+    """Score Fed decisions and official-number forecasts from FRED once the data covering the deadline is out."""
+    deadline = dt.date.fromisoformat(c["deadline"])
+    if c["kind"] in RATE_KINDS:
+        series, how, lag, label = METRICS["fed_funds"]
+    else:
+        series, how, lag, label = METRICS.get(c.get("metric", ""), (None, None, 0, ""))
+        if not series:
+            c["status"] = "awaiting_check"; return 1
+    if today < deadline + dt.timedelta(days=lag):
+        return 0  # wait until the number for the deadline has been published
+    try:
+        end = _fred_value(series, how, deadline)
+        start = _fred_value(series, how, dt.date.fromisoformat(c["said_on"]))
+    except Exception as e:
+        print(f"  ! FRED lookup failed for {c['id']}: {e}")
+        return 0
+    if not end or not start:
+        return 0
+    # never score on stale numbers: the official reading must be dated close to the deadline
+    max_gap = {"CPIAUCSL": 45, "UNRATE": 45, "A191RL1Q225SBEA": 120, "MORTGAGE30US": 10}.get(series, 7)
+    if (deadline - dt.date.fromisoformat(end[1])).days > max_gap:
+        return 0
+    move = end[0] - start[0]
+    size = c.get("target")
+    if c["kind"] == "rate_hike":
+        right = move > 0.001 and (size is None or abs(move - size) < 0.01)
+    elif c["kind"] == "rate_cut":
+        right = move < -0.001 and (size is None or abs(-move - size) < 0.01)
+    elif c["kind"] == "rate_hold":
+        right = abs(move) < 0.001
+    elif c["kind"] == "metric_above":
+        right = end[0] > c["target"]
+    else:
+        right = end[0] < c["target"]
+    c.update(status="right" if right else "wrong", start_value=round(start[0], 2), end_value=round(end[0], 2),
+             value_label=label, value_date=end[1], resolved_on=today.isoformat())
+    return 1
+
+
 def resolve(today: dt.date | None = None):
     """Score market calls whose deadline has passed. Other kinds stay 'awaiting check'."""
     today = today or dt.date.today()
     ledger, changed = load(), 0
     for c in ledger:
         if c["status"] != "open" or dt.date.fromisoformat(c["deadline"]) >= today:
+            continue
+        if c["kind"] in RATE_KINDS or c["kind"].startswith("metric_"):
+            changed += _resolve_official(c, today)
             continue
         if c["kind"] not in PRICE_KINDS:
             c["status"] = "awaiting_check"; changed += 1

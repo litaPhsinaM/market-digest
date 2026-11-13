@@ -158,3 +158,24 @@ def test_name_fixes_use_headline_spelling():
     fx = checks.name_fixes(["Collette Kress named", "Colet Kress", "Scott Colm won", "John Smith", "Jensen Huang"], ref)
     assert fx == {"Collette Kress": "Colette Kress", "Colet Kress": "Colette Kress", "Scott Colm": "Scott Colom"}
     assert checks.fix_names({"a": ["Colet Kress said"]}, fx) == {"a": ["Colette Kress said"]}
+
+
+# ---------- scorecard: Fed decisions and official numbers ----------
+def test_official_forecasts_score_from_data(monkeypatch):
+    import datetime as dt
+    from digest import claims
+    vals = {}
+    monkeypatch.setattr(claims, "_fred_value", lambda series, how, day: vals[(series, day.isoformat())])
+    base = {"id": "x", "said_on": "2026-11-10", "deadline": "2026-12-31", "status": "open"}
+    vals.update({("DFEDTARU", "2026-11-10"): (4.0, "2026-11-10"), ("DFEDTARU", "2026-12-31"): (4.25, "2026-12-31")})
+    hike = {**base, "kind": "rate_hike", "target": 0.25}
+    assert claims._resolve_official(hike, dt.date(2026, 12, 20)) == 0          # too early: waits for the data
+    assert claims._resolve_official(hike, dt.date(2027, 1, 5)) == 1 and hike["status"] == "right"
+    big = {**base, "kind": "rate_hike", "target": 0.5}
+    claims._resolve_official(big, dt.date(2027, 1, 5)); assert big["status"] == "wrong"   # hiked, but not by 50
+    vals.update({("MORTGAGE30US", "2026-11-10"): (7.18, "2026-11-06"), ("MORTGAGE30US", "2026-12-31"): (7.31, "2026-12-30")})
+    m = {**base, "kind": "metric_below", "metric": "mortgage_30y", "target": 7.25}
+    claims._resolve_official(m, dt.date(2027, 1, 20)); assert m["status"] == "wrong" and m["end_value"] == 7.31
+    vals[("MORTGAGE30US", "2026-12-31")] = (7.0, "2026-10-01")                 # stale reading: don't score
+    m2 = {**base, "kind": "metric_below", "metric": "mortgage_30y", "target": 7.25}
+    assert claims._resolve_official(m2, dt.date(2027, 1, 20)) == 0 and m2["status"] == "open"
