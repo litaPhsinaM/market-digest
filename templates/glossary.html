@@ -13,7 +13,7 @@
   <div class="dict-title">
     <div class="eyebrow">Glossary</div>
     <h1>The Stocksplain Dictionary</h1>
-    <p class="lede">Every money and market word from the lessons and the daily news, explained in plain English. {{ terms|length }} words in {{ topics|length }} topics, and growing every morning.</p>
+    <p class="lede">{{ terms|length }} money and market words from the lessons and the news, in plain English. New words every morning.</p>
   </div>
   {% if word_of_day %}
   <a class="wotd" href="#{{ word_of_day.term|slug }}">
@@ -26,14 +26,14 @@
 </section>
 
 <div class="dict-tools" id="dict-tools">
-  <input id="q" class="search dict-search" type="search" placeholder="Look up a word…" aria-label="Look up a word" autocomplete="off">
+  <div class="dict-row"><input id="q" class="search dict-search" type="search" placeholder="Look up a word…" aria-label="Look up a word" autocomplete="off">
+  <nav class="az" aria-label="Jump to letter">
+    {% for L in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}{% if L in letters %}<a href="#letter-{{ L }}" data-letter="{{ L }}">{{ L }}</a>{% else %}<span aria-hidden="true">{{ L }}</span>{% endif %}{% endfor %}
+  </nav></div>
   <div class="dict-topics" role="group" aria-label="Topics">
     <button type="button" class="dt-chip" data-topic="" aria-pressed="true">All <span>{{ terms|length }}</span></button>
     {% for t in topics %}<button type="button" class="dt-chip" data-topic="{{ t.key }}" aria-pressed="false">{{ t.emoji }} {{ t.label }} <span>{{ t.n }}</span></button>{% endfor %}
   </div>
-  <nav class="az" aria-label="Jump to letter">
-    {% for L in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}{% if L in letters %}<a href="#letter-{{ L }}" data-letter="{{ L }}">{{ L }}</a>{% else %}<span aria-hidden="true">{{ L }}</span>{% endif %}{% endfor %}
-  </nav>
 </div>
 
 <p class="muted dict-none" id="g-none" hidden>No words match. Try a shorter word, another topic, or search everything with 🔍.</p>

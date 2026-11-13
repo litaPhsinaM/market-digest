@@ -1498,3 +1498,34 @@ dialog.lesson h4 { margin-top: 26px; }
 .desk li { flex-wrap: nowrap; }
 .desk .today { margin-left: auto; flex: none; }
 .today-key { font-size: .7rem; font-weight: 750; text-transform: uppercase; padding: 1px 7px; border-radius: 99px; background: var(--accent); color: var(--accent-ink); }
+
+/* glossary: compact header so the words start on the first screen */
+.dict-hero { grid-template-columns: minmax(0, 1fr) 360px; gap: 20px; align-items: center; margin-bottom: 6px; }
+.dict-title .eyebrow { display: none; }
+.dict-title h1 { font-size: clamp(1.7rem, 3.2vw, 2.3rem); margin: 0 0 4px; }
+.dict-title .lede { font-size: .95rem; margin: 0; }
+.wotd { padding: 10px 14px; gap: 1px; border-radius: 14px; }
+.wotd-term { font-size: 1.2rem; }
+.wotd-topic { display: none; }
+.wotd-def { font-size: .82rem; -webkit-line-clamp: 2; }
+.dict-tools { padding: 8px 0; gap: 8px; margin-bottom: 0; }
+.dict-row { display: flex; align-items: center; gap: 14px; }
+.dict-row .dict-search { flex: 0 0 300px; height: 38px; padding: 0 12px; font-size: .92rem; }
+.dict-row .az { flex: 1; min-width: 0; justify-content: space-between; flex-wrap: nowrap; }
+.dict-row .az a, .dict-row .az span { width: auto; min-width: 20px; height: 26px; font-size: .8rem; }
+.dict-topics { flex-wrap: nowrap !important; overflow-x: auto !important; gap: 5px; }
+.dt-chip { padding: 4px 10px; font-size: .76rem; }
+.dict-letter { padding-top: 2px; scroll-margin-top: 150px; }
+.dict-L { font-size: 1.7rem; margin: 10px 0 0; padding-bottom: 4px; border-bottom-width: 1px; }
+.dict .gterm { padding: 10px 2px; scroll-margin-top: 150px; }
+.gt-word { font-size: 1.15rem; }
+.gt-def { line-height: 1.5; font-size: .95rem; }
+@media (max-width: 900px) {
+  .dict-hero { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .dict-row { flex-direction: column; align-items: stretch; gap: 8px; }
+  .dict-row .dict-search { flex: none; width: 100%; }
+  .dict-row .az { justify-content: flex-start; overflow-x: auto; scrollbar-width: none; }
+}
+@media (max-width: 560px) { .dict-letter, .dict .gterm { scroll-margin-top: 190px; } }
+.dict-letter, .dict .gterm { scroll-margin-top: 172px; }
+@media (max-width: 560px) { .dict-title .lede { display: none; } .dict-title h1 { font-size: 1.6rem; } .dict-letter, .dict .gterm { scroll-margin-top: 200px; } }
