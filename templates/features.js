@@ -627,4 +627,25 @@
     const all = list.classList.toggle("all");
     b.textContent = all ? "Show fewer" : `Show all ${list.children.length} companies`;
   });
+  // ---------- pop-ups that always fit the screen (web, Android and iPhone apps) ----------
+  const vv = window.visualViewport, root = document.documentElement;
+  const fitScreen = () => {
+    const h = vv ? vv.height : innerHeight;
+    const kb = vv ? Math.max(0, Math.round(innerHeight - vv.height - vv.offsetTop)) : 0;  // on-screen keyboard
+    root.style.setProperty("--vvh", Math.round(h) + "px");
+    root.style.setProperty("--kb", kb + "px");
+  };
+  fitScreen();
+  if (vv) { vv.addEventListener("resize", fitScreen); vv.addEventListener("scroll", fitScreen); }
+  addEventListener("resize", fitScreen);
+  addEventListener("orientationchange", () => setTimeout(fitScreen, 300));
+  const syncOpen = () => root.classList.toggle("dlg-open", !!document.querySelector("dialog[open]"));
+  new MutationObserver(syncOpen).observe(document.body, { subtree: true, attributes: true, attributeFilter: ["open"] });
+  document.addEventListener("close", syncOpen, true);
+  // a field tapped inside a pop-up scrolls into view once the keyboard has opened
+  document.addEventListener("focusin", (e) => {
+    if (!e.target.closest || !e.target.closest("dialog") || !e.target.matches("input, textarea, select")) return;
+    if (!matchMedia("(pointer: coarse)").matches) return;
+    setTimeout(() => { fitScreen(); e.target.scrollIntoView({ block: "center", behavior: "smooth" }); }, 350);
+  });
 })();

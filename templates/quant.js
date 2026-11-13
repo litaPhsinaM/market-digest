@@ -129,7 +129,7 @@
     const box = $("#trendbot");
     if (!box) return;
     const { data, error } = await MD.sb.rpc("trendbot_status");
-    if (error || !data) return;  // not set up yet: keep the card hidden
+    if (error || !data || !Array.isArray(data.holdings)) return;  // not set up yet (or no data): keep the card hidden
     box.hidden = false;
     const ret = (data.value / data.start - 1) * 100;
     $("#tb-when").textContent = data.last_day ? `last traded ${new Date(data.last_day + "T12:00:00").toLocaleDateString([], { month: "short", day: "numeric" })}` : "starts trading at 3:45 pm ET";

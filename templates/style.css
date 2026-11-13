@@ -869,8 +869,8 @@ button.act.progress { cursor: pointer; font: inherit; }
 .cc-title { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.01em; }
 .cc-dek { font-size: .9rem; color: var(--text-2); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .cc-cta { margin-top: auto; font-weight: 700; color: var(--warn); font-size: .9rem; }
-.story-grid.mini { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
-.story-grid.mini .sc { min-height: 0; }
+.story-grid.compact { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.story-grid.compact .sc { min-height: 0; }
 
 /* sidebar: shorter definitions */
 .mini-terms dd { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -1287,3 +1287,16 @@ button.act.progress { cursor: pointer; font: inherit; }
 .pf-split { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: .84rem; color: var(--text-2); margin-bottom: 6px; }
 .pf-split b { color: var(--text); font-variant-numeric: tabular-nums; } .pf-split b.pos { color: var(--up); } .pf-split b.neg { color: var(--down); }
 .pf-chart { overflow: hidden; }  /* a stray point can never cover the buttons */
+
+/* ---------- pop-ups always fit what's actually visible ----------
+   Phone screens change height as the browser bar, the app's tab bar and the on-screen keyboard come and go.
+   100vh ignores that (so a pop-up's bottom could hide behind the keyboard); --vvh is the visible height and --kb the
+   keyboard's, kept current by features.js. dvh is the fallback where those aren't set. */
+.sheet { max-height: calc(100vh - 48px); max-height: calc(var(--vvh, 100dvh) - 48px); }
+.co-dialog { max-height: calc(100vh - 40px); max-height: calc(var(--vvh, 100dvh) - 40px); }
+.acct, .pal, dialog { max-height: calc(var(--vvh, 100dvh) - 32px); }
+dialog { overscroll-behavior: contain; }
+html.dlg-open { overflow: hidden; }   /* the page behind an open pop-up doesn't scroll or jump */
+@media (max-width: 640px) {
+  .sheet { max-height: calc(var(--vvh, 100dvh) - 12px); margin-bottom: var(--kb, 0px); transition: margin-bottom .15s; }
+}

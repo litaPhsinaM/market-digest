@@ -18,7 +18,10 @@ lesson, with quizzes, lessons, paper trading and a pundit scorecard. Live at htt
   cron jobs directly.
 - **Secrets live in `.env` (git-ignored) and GitHub/Supabase secrets.** Never print them, commit them, or ask for them
   in chat; ask the owner to paste them into `.env`.
-- Test UI changes at phone width (390px) and desktop (1440px), light and dark, before publishing.
+- Test UI changes at phone width (390px) and desktop (1440px), light and dark, before publishing. Pop-ups: run
+  `scripts/qa_popups.py` (every dialog must fit the visible screen; sizes use `--vvh`/`--kb` from features.js, never
+  plain `100vh`). Don't auto-focus inputs on touch screens (the keyboard covers the pop-up).
+- Class names collide: `.mini` (small button) and `.feed` (pill) are taken; check `style.css` before naming a new class.
 
 ## How it runs
 

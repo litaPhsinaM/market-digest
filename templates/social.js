@@ -580,7 +580,8 @@
     $("#tk-price").textContent = money(t.price);
     const m = (t.price / t.prev - 1) * 100; chip($("#tk-move"), m, "today");
     $("#tk-amt").value = ""; setSide(tk.side); showStep("tk-ticket"); updateEst();
-    setTimeout(() => $("#tk-amt").focus(), 50);
+    // On phones focusing opens the keyboard over the window before you've seen it, so only do it with a mouse
+    if (matchMedia("(hover: hover) and (pointer: fine)").matches) setTimeout(() => $("#tk-amt").focus(), 50);
   }
   function held(sym) { return myPortfolio.rows.find((r) => r.symbol === sym)?.qty || 0; }
   function setSide(side) {

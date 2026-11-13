@@ -209,7 +209,7 @@
   <p class="tldr">{{ t.explanation }}</p>
   {% set refs = t.item_ids|select('in', by_id)|list %}
   {% if refs %}<h4>Go to the story</h4>
-  <div class="story-grid mini">{% for id in refs %}{% set it = by_id[id] %}
+  <div class="story-grid compact">{% for id in refs %}{% set it = by_id[id] %}
     <button class="sc" type="button" data-story="{{ id }}"><span class="sc-top"><span class="avatar sm s{{ (src_index.get(it.source_id, 0) % 8) + 1 }}">{{ it.source_name|initials }}</span><span class="sc-src">{{ it.source_name }}</span></span>
       <span class="sc-title">{{ it.summary.headline }}</span></button>{% endfor %}</div>{% endif %}
   <footer class="sheet-foot"><button class="btn ghost" type="button" data-sheet-close>Done</button></footer>
