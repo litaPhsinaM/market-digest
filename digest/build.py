@@ -304,7 +304,27 @@ def build(root: Path):
            days=[{"date": d, **day_ctx(d)} for d in dates])
     render("glossary.html", "glossary.html", "", terms=glossary, topics=glossary_topics, word_of_day=word_of_day,
            letters=sorted({t["letter"] for t in glossary}))
-    render("sources.html", "sources.html", "", sources=srcs, feeds=feeds)
+    claims_ledger = json.loads((data / "claims.json").read_text()) if (data / "claims.json").exists() else []
+    show_stats = {}
+    for src in srcs:
+        mine = [i for i in items if i["source_id"] == src["id"] and i["summary"]["worth_reading"]]
+        latest = max(mine, key=lambda i: (i["digest_date"], i.get("published", "")), default=None)
+        show_stats[src["id"]] = {"episodes": len(mine), "forecasts": sum(c["source"] == src["name"] for c in claims_ledger),
+                                 "latest": {"title": latest["summary"]["headline"], "date": latest["digest_date"], "id": latest["id"]} if latest else None}
+    latest_hot = hots.get(dates[0]) if dates else None
+    used_today = {}
+    if latest_hot:
+        for t in latest_hot.get("topics", []):
+            for hid in t.get("headline_ids", []):
+                h = latest_hot.get("headlines", {}).get(hid)
+                if h:
+                    used_today[h["source"]] = used_today.get(h["source"], 0) + 1
+    beats = [("markets", "Markets & companies", "📈"), ("economy", "Economy & the Fed", "🏛"), ("tech", "Technology", "🤖"),
+             ("energy", "Energy & resources", "⚡"), ("policy", "Policy & politics", "🧾"), ("world", "World business", "🌍")]
+    feed_groups = [{"key": k, "label": label, "emoji": e, "feeds": [f for f in feeds if f.get("beat", "markets") == k]} for k, label, e in beats]
+    render("sources.html", "sources.html", "", sources=srcs, feeds=feeds, show_stats=show_stats, used_today=used_today,
+           feed_groups=[g for g in feed_groups if g["feeds"]], src_index=src_index,
+           n_episodes=sum(v["episodes"] for v in show_stats.values()), today=dates[0] if dates else None)
     render("about.html", "about.html", "", n_podcasts=len(srcs), n_feeds=len(feeds))
     render("play.html", "play.html", "")
     render("admin.html", "admin.html", "")

@@ -2,29 +2,64 @@
 {% set active = 'sources' %}
 {% block title %}Sources · Stocksplain{% endblock %}
 {% block description %}The 15 finance podcasts and 27 newsrooms Stocksplain follows, and why each was chosen: WSJ, Bloomberg, CNBC, NPR Planet Money, Marketplace, Odd Lots and more.{% endblock %}
+{% block head_extra %}<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">{% endblock %}
 {% block content %}
-<h1>Sources</h1>
-<p class="muted">Hand-picked for explaining <em>why</em>, not just <em>what</em>: hosts with real credentials or newsroom standards, and no stock-tip hype.
-  Stocksplain is not affiliated with any of them, so if you like a show, go and listen to it.</p>
+<section class="src-hero">
+  <div class="eyebrow">Sources</div>
+  <h1>Where the news comes from</h1>
+  <p class="lede">Hand-picked shows and newsrooms that explain <em>why</em>, not just <em>what</em>: hosts with real credentials or newsroom
+    standards, and no stock-tip hype. We're not affiliated with any of them, so if you like a show, go and listen to it.</p>
+  <ul class="src-facts">
+    <li class="c1"><b>{{ sources|selectattr('enabled', 'ne', false)|list|length }}</b> shows</li>
+    <li class="c2"><b>{{ feeds|length }}</b> newsrooms</li>
+    <li class="c3"><b>{{ n_episodes }}</b> episodes summarized so far</li>
+    <li class="c4"><b>{{ feed_groups|length }}</b> news desks</li>
+  </ul>
+</section>
 
-{% for group, label, blurb in [('daily', 'Daily news', 'What happened today in markets and business.'),
-                               ('learn', 'Learn the basics', 'Explainers that make the economy and investing click.'),
-                               ('deep', 'Go deeper', 'Expert long-form for when you want more.')] %}
-<h2 class="section-title">{{ label }} <span class="muted small">{{ blurb }}</span></h2>
-<div class="src-grid">
-{% for s in sources if s.group == group and s.enabled is not false %}
-  <div class="card src">
-    <h3>{{ s.name }}</h3>
-    <p class="muted small">Podcast · {{ s.cadence }}</p>
-    <p>{{ s.why }}</p>
+<ol class="src-how">
+  <li class="c1"><span class="sh-n">1</span><div><b>We listen</b><span>New episodes are transcribed every morning at 5:30 am ET.</span></div></li>
+  <li class="c2"><span class="sh-n">2</span><div><b>We summarize and check</b><span>AI writes the plain-English summary; numbers, dates and quotes must match the transcript or they're cut.</span></div></li>
+  <li class="c3"><span class="sh-n">3</span><div><b>We link back</b><span>Every story credits and links the original episode or article.</span></div></li>
+</ol>
+
+{% for group, label, blurb, color in [('daily', 'Daily news', 'What happened today in markets and business.', 'g-daily'),
+                               ('learn', 'Learn the basics', 'Explainers that make the economy and investing click.', 'g-learn'),
+                               ('deep', 'Go deeper', 'Expert long-form for when you want more.', 'g-deep')] %}
+<section class="src-group {{ color }}">
+  <div class="sg-head"><h2>{{ label }}</h2><span>{{ blurb }}</span></div>
+  <div class="src-cards">
+  {% for s in sources if s.group == group and s.enabled is not false %}{% set st = show_stats.get(s.id, {}) %}
+    <article class="src-card">
+      <div class="scd-top">
+        <span class="avatar s{{ (src_index.get(s.id, 0) % 8) + 1 }}" aria-hidden="true">{{ s.name|initials }}</span>
+        <div><h3>{{ s.name }}</h3><span class="scd-meta">{{ 'YouTube' if s.kind == 'youtube' else 'Podcast' }} · {{ s.cadence }}</span></div>
+      </div>
+      <p class="scd-why">{{ s.why }}</p>
+      <div class="scd-stats">
+        <span><b>{{ st.episodes or 0 }}</b> summarized</span>
+        {% if st.forecasts %}<a href="scorecard.html"><b>{{ st.forecasts }}</b> on the Scorecard</a>{% endif %}
+      </div>
+      {% if st.latest %}<a class="scd-latest" href="days/{{ st.latest.date }}.html#{{ st.latest.id }}"><span>Latest</span>{{ st.latest.title }}</a>{% endif %}
+    </article>
+  {% endfor %}
   </div>
-{% endfor %}
-</div>
+</section>
 {% endfor %}
 
-{% if feeds %}
-<h2 class="section-title">Newsrooms <span class="muted small">Headlines used for “Top stories”</span></h2>
-<p class="muted small" style="margin-bottom:12px">Only the headline and each feed’s own short summary are used, never the full article. Every topic links to the original reporting.</p>
-<div class="feed-list">{% for f in feeds %}<span class="feed">{{ f.name }}</span>{% endfor %}</div>
+{% if feed_groups %}
+<section class="src-news">
+  <div class="sg-head"><h2>Newsrooms</h2><span>Headlines used for Top stories (<b class="today-key">today</b> = in today's). Only the headline and each feed's own short summary are used, never the full article, and every story links to the original reporting.</span></div>
+  <div class="news-desks">
+  {% for g in feed_groups %}
+    <div class="desk d-{{ g.key }}">
+      <h3><span aria-hidden="true">{{ g.emoji }}</span> {{ g.label }} <span class="desk-n">{{ g.feeds|length }}</span></h3>
+      <ul>{% for f in g.feeds %}<li><span class="dot" aria-hidden="true"></span>{{ f.name }}{% if used_today.get(f.name) %}<span class="today" title="Headlines from this newsroom are in today's Top stories">today</span>{% endif %}</li>{% endfor %}</ul>
+    </div>
+  {% endfor %}
+  </div>
+</section>
 {% endif %}
+<p class="asof">Creator who wants a show removed? <a href="https://github.com/litaPhsinaM/stocksplain/issues/new?title=Removal%20request">Open a request</a> and we'll take it down.</p>
 {% endblock %}
